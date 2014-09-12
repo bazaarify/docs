@@ -1,0 +1,2929 @@
+FORMAT: 1A
+HOST: http://www.google.com
+
+# BirdEye
+The BirdEye API is built on HTTP. Our API is RESTful and it:
+
+* Uses predictable, resource-oriented URLs.
+* Uses built-in HTTP capabilities for passing parameters and authentication.
+* Responds with standard HTTP response codes to indicate errors.
+* Returns JSON.
+
+
+
+# Group Base
+All API URLs referenced in this documentation start with the following base part
+
+## Base URL [http://api.birdeye.com:8080/resources/v1]
+
+
+## 1052 [/1052]
+User email id cannot be blank
+
++ Model (application/json)
+
+        {
+            errorCode: 1052,
+            errorMessage: "User email id cannot be blank"
+        }
+        
+## 1150 [/1150]
+
++ Model (application/json)
+
+        {
+            errorCode: 1150,
+            errorMessage: "Business already associated with this reseller"
+        }
+
+## 1151 [/1151]
+
++ Model (application/json)
+
+        {
+            errorCode: 1151,
+            errorMessage: "Business already associated with another reseller"
+        }
+        
+## 1045 [/1045]
+
++ Model (application/json)
+
+        {
+            errorCode: 1045,
+            errorMessage: "Business name cannot be blank"
+        }
+    
+## 1046 [/1046]
+
++ Model (application/json)
+
+        {
+            errorCode: 1046,
+            errorMessage: "Business name cannot be more than 250 characters"
+        }
+        
+## 1047 [/1047]
+
++ Model (application/json)
+
+        {
+            errorCode: 1047,
+            errorMessage: "Business name cannot be less than 3 characters"
+        }
+        
+## 1094 [/1094]
+
++ Model (application/json)
+
+        {
+            errorCode: 1094,
+            errorMessage: "Postal code cannot be blank"
+        }
+
+## 1075 [/1075]
+
++ Model (application/json)
+
+        {
+            errorCode: 1075,
+            errorMessage: "Business location zip cannot be more than 6 numbers"
+        }
+
+## 1025 [/1025]
+
++ Model (application/json)
+
+        {
+            errorCode: 1025,
+            errorMessage: "Invalid business type"
+        }
+
+## 1161 [/1161]
+
++ Model (application/json)
+
+        {
+            errorCode: 1161,
+            errorMessage: "Invalid API key"
+        }
+
+## 1167 [/1167]
+
++ Model (application/json)
+
+        {
+            errorCode: 1167,
+            errorMessage: "API key is missing"
+        }
+
+## 1033 [/1033]
+
++ Model (application/json)
+
+        {
+            errorCode: 1033,
+            errorMessage: "You are not authorized to perform this action"
+        }
+
+## 1175 [/1175]
+
++ Model (application/json)
+
+        {
+            errorCode: 1175,
+            errorMessage: "No business found with the given id"
+        }
+
+##  1010 [/1010]
+
++ Model (application/json)
+
+        {
+            errorCode: 1010,
+            errorMessage: "No user found with the given id"
+        }
+
+## 1076 [/1076]
+
++ Model (application/json)
+
+        {
+            errorCode: 1176,
+            errorMessage: "Business info cannot be blank"
+        }
+        
+## 1162 [/1162]
+
++ Model (application/json)
+
+        {
+            errorCode: 1162,
+            errorMessage: "Either search string or location or both should be specified"
+        }
+        
+## 1163 [/1163]
+
++ Model (application/json)
+
+        {
+            errorCode: 1163,
+            errorMessage: "Invalid start index value"
+        }
+        
+## 1164 [/1164]
+
++ Model (application/json)
+
+        {
+            errorCode: 1164,
+            errorMessage: "Invalid result count value"
+        }
+
+## 1011 [/1011]
+
++ Model (application/json)
+
+        {
+            errorCode: 1011,
+            errorMessage: "Business id is invalid"
+        }
+        
+## 1048 [/1048]
+
++ Model (application/json)
+
+        {
+            errorCode: 1048,
+            errorMessage: "Business email id cannot be blank."
+        }
+
+## 1049 [/1049]
+
++ Model (application/json)
+
+        {
+            errorCode: 1049,
+            errorMessage: "Business email id is invalid."
+        }
+
+## 1050 [/1050]
+
++ Model (application/json)
+
+        {
+            errorCode: 1050,
+            errorMessage: "Business email id cannot be more than 40 characters."
+        }
+
+## 1055 [/1055]
+
++ Model (application/json)
+
+        {
+            errorCode: 1055,
+            errorMessage: "Not a valid US phone number."
+        }
+
+## 1056 [/1056]
+
++ Model (application/json)
+
+        {
+            errorCode: 1056,
+            errorMessage: "Not a valid US fax number."
+        }
+        
+
+## 1069 [/1069]
+
++ Model (application/json)
+
+        {
+            errorCode: 1069,
+            errorMessage: "Business description cannot be more than 4000 characters."
+        }
+        
+## 1070 [/1070]
+
++ Model (application/json)
+
+        {
+            errorCode: 1070,
+            errorMessage: "Business keywords cannot be more than 1000 characters."
+        }
+        
+## 1190 [/1190]
+
++ Model (application/json)
+
+        {
+            errorCode: 1190,
+            errorMessage: "Invalid category"
+        }               
+
+## 1184 [/1184]
+
++ Model (application/json)
+
+        {
+            errorCode: 1184,
+            errorMessage: "Status change is not allowed"
+        }
+
+## 1191 [/1191]
+
++ Model (application/json)
+
+        {
+            errorCode: 1191,
+            errorMessage: "Invalid status."
+        }
+
+## 1174 [/1174]
+
++ Model (application/json)
+    
+        {
+            errorCode: 1174,
+            errorMessage: "Reseller can't be removed as it has child accounts."
+        }
+
+## 1160 [/1160]
+
++ Model (application/json)
+    
+        {
+            errorCode: 1160,
+            errorMessage: "User is already associated with business."
+        }
+
+## 1053 [/1053]
+
++ Model (application/json)
+    
+        {
+            errorCode: 1053,
+            errorMessage: "User email id is invalid"
+        }
+
+## 1054 [/1054]
+
++ Model (application/json)
+
+        {
+            errorCode: 1054,
+            errorMessage: "User email id cannot be more than 40 characters"
+        }
+        
+## 1014 [/1014]
+
++ Model (application/json)
+
+        {
+            errorCode: 1014,
+            errorMessage: "User role cannot be blank"
+        }
+
+        
+## 1013 [/1013]
+
++ Model (application/json)
+
+        {
+            errorCode: 1013,
+            errorMessage: "Unknown user role"
+        }
+
+        
+## 1057 [/1057]
+
++ Model (application/json)
+
+        {
+            errorCode: 1057,
+            errorMessage: "First name cannot be more than 50 characters"
+        }
+
+## 1059 [/1059]
+
++ Model (application/json)
+
+        {
+            errorCode: 1059,
+            errorMessage: "Last name cannot be more than 50 characters"
+        }
+
+## 1188 [/1188]
+
++ Model (application/json)
+
+        {
+            errorCode: 1188,
+            errorMessage: "User is not associated with the business."
+        }
+
+
+## 1189 [/1189]
+
++ Model (application/json)
+
+        {
+            errorCode: 1189,
+            errorMessage: "User with given email id not found."
+        }
+
+## 1177 [/1177]
+
++ Model (application/json)
+
+        {
+            errorCode: 1177,
+            errorMessage: "User is not authorized to perform any action on any business"
+        }
+        
+## 1081 [/1081]
+
++ Model (application/json)
+
+        {
+            errorCode: 1081,
+            errorMessage: "Review comment is too long"
+        }
+
+        
+## 1082 [/1082]
+
++ Model (application/json)
+
+        {
+            errorCode: 1082,
+            errorMessage: "Review rating is missing"
+        }
+                
+## 1142 [/1142]
+
++ Model (application/json)
+
+        {
+            errorCode: 1142,
+            errorMessage: "Customer name cannot be blank"
+        }
+        
+                        
+## 1086 [/1086]
+
++ Model (application/json)
+
+        {
+            errorCode: 1086,
+            errorMessage: "Customer email id cannot be blank."
+        }
+        
+## 1087 [/1087]
+
++ Model (application/json)
+
+        {
+            errorCode: 1087,
+            errorMessage: "Customer email id is invalid."
+        }
+        
+## 1088 [/1088]
+
++ Model (application/json)
+
+        {
+            errorCode: 1088,
+            errorMessage: "Customer email id cannot be more than 40 characters."
+        }
+
+## 1170 [/1170]
+
++ Model (application/json)
+
+        {
+            errorCode: 1170,
+            errorMessage: "SMS Alert flag is invalid. Valid values are 0 or 1."
+        }
+        
+              
+        
+        
+        
+# Group Business
+APIs related to business
+
+## Create [/signup/reseller/subaccount{?rid,api_key,email_id}]
+A Reseller can create a Business using:
+
+### Create a business [POST]
+
+#### Request
+
+<center><b>Example CURL Request</b></center>
+        
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"businessName\" : \"Snapdragon Salon\", \"zip\" : \"85012\",\"type\":\"Business\" }" "http://api.birdeye.com:8080/resources/v1/signup/reseller/subaccount?rid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&email_id=rhonda@reviewmanagement.com" –v
+        
+
+> __Notes__
+
+> - _The business creation API internally calls the business aggregation API which may take upto couple of mins._
+> - _Save this business id as it will be required in the add user API call_
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </thead>
+        
+        <tbody>
+            <tr>
+                <td>businessName</td>
+                <td>required, string</td>
+                <td>Name of the Business that needs to be added</td>
+            </tr>
+            <tr>
+                <td>zip</td>
+                <td>required, string</td>
+                <td>Postal code of the business location</td>
+            </tr>
+            <tr>
+                <td>type</td>
+                <td>type</td>
+                <td>Business type. Valid values are “Business, Enterprise, Reseller”. Default is “Business”.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+ 
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </thead>
+        
+        <tbody>
+                <td>businessId</td>
+                <td>required, string</td>
+                <td>The business ID</td>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </thead>
+        
+        <tbody>
+         <tr><td>401 Unauthorized</td><td>1161</td><td>Invalid API key</td></tr>
+         <tr><td>401 Unauthorized</td><td>1167</td><td>API key is missing</td></tr>
+         <tr><td>401 Unauthorized</td><td>1033</td><td>You are not authorized to perform this action</td></tr>
+         <tr><td>404 Not Found</td><td>1175</td><td>No business found with the given id</td></tr>
+         <tr><td>404 Not Found</td><td>1010</td><td>No user found with the given id</td></tr>
+         <tr><td>400 Bad Request</td><td>1176</td><td>Business info cannot be blank</td></tr>
+         <tr><td>400 Bad Request</td><td>1052</td><td>User email id cannot be blank</td></tr>
+         <tr><td>400 Bad Request</td><td>1150</td><td>Business already associated with this reseller</td></tr>
+         <tr><td>400 Bad Request</td><td>1151</td><td>Business already associated with another reseller</td></tr>
+         <tr><td>400 Bad Request</td><td>1045</td><td>Business name cannot be blank</td></tr>
+         <tr><td>400 Bad Request</td><td>1046</td><td>Business name cannot be more than 250 characters</td></tr>
+         <tr><td>400 Bad Request</td><td>1047</td><td>Business name cannot be less than 3 characters</td></tr>
+         <tr><td>400 Bad Request</td><td>1094</td><td>Postal code cannot be blank.</td></tr>
+         <tr><td>400 Bad Request</td><td></td><td>Business location zip cannot be more than 6 numbers</td></tr>
+         <tr><td>400 Bad Request</td><td>1025</td><td>Invalid business type.</td></tr>
+         </tbody>
+    </table>
+</div>
+
+
+
++ Parameters
+
+    + rid (required, number) ... the reseller id
+    + api_key (required, string) ... the API key
+    + email_id (required, string) ... valid email id
+
+
++ Request (application/json)
+    
+    + Body 
+        
+            {
+                "businessName": "The Business Name",
+                "zip": 32323,
+                "type": "Business"
+            }
+
++ Response 200 (application/json)
+
+    + Body 
+        
+            {
+                "businessId":”653356544”
+            }
+    
++ Response 401 (application/json)
+
+    [1161][]
+        
++ Response 401 (application/json)
+
+    [1167][]
+    
++ Response 401 (application/json)
+
+    [1033][]
+    
++ Response 404 (application/json)
+
+    [1175][]
+    
++ Response 404 (application/json)
+
+    [1010][]
+    
++ Response 400 (application/json)
+
+    [1076][]
+
++ Response 400 (application/json)
+
+    [1052][]
+
++ Response 400 (application/json)
+
+    [1150][]
+    
++ Response 400 (application/json)
+
+    [1151][]
+    
++ Response 400 (applicaton/json)
+
+    [1045][]
+    
++ Response 400 (applicaton/json)
+
+    [1046][]
+    
++ Response 400 (applicaton/json)
+
+    [1047][]
+    
++ Response 400 (applicaton/json)
+
+    [1094][]
+    
++ Response 400 (applicaton/json)
+
+    [1075][]
+    
++ Response 400 (applicaton/json)
+
+    [1025][]
+    
+## Search [/business/search{?search_str,loc,sindex,count,sort,api_key,nearby}]
+Business from BirdEye platform can be searched using:
+
+### Search Business [GET]
+
+#### Request
+
+<center><b>Example CURL Request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/business/search?search_str=ray%20lord&loc=29063&sindex=20&count=20&sort=rating&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&nearby=1" -v
+
+#### Response
+
+<center><b>Example Response Body</b></center>
+
+    {
+      "name": "Ray A. Lord",
+      "category": "Lawyers",
+      "address": {
+        "address1": "7436 Broad River Rd Suite 110",
+        "address2": null,
+        "city": "Irmo",
+        "state": "South Carolina",
+        "zip": "29063",
+        "countryCode": "US",
+        "countryName": "United States of America"
+      },
+      "reviewCount": 105,
+      "avgRating": 4.9,
+      "coverImageURL": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/profile/lawyer.jpg",
+      "profileURL": "http://reviews2.getlegal.com/ray-a-lord-755009344",
+      "logoURL": null,
+      "phone": "(803) 610-4056",
+      "businessId": "755009344_1"
+    }
+
+<div class="paramsTableWrap">
+<table class="paramsTable">
+    <caption>Error Codes</caption>
+    <thead>
+        <tr>
+            <th>HTTP Status</th><th>BirdEye error code</th><th>Description</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr><td>401 Unauthorized</td><td>1161</td><td>Invalid API key</td></tr>
+         <tr><td>400 Bad Request</td><td>1162</td><td>Either search string or location or both should be specified</td></tr>
+         <tr><td>400 Bad Request</td><td>1163</td><td>Invalid start index value</td></tr>
+         <tr><td>400 Bad Request</td><td>1164</td><td>Invalid result count value</td></tr>
+         <tr><td>401 Unauthorized</td><td>1167</td><td>API key is missing</td></tr>
+    </tbody>
+ </table>
+</div>
+
++ Parameters
+    + search_str (required, string) ... Search criteria for business. This could be business name or category
+    + loc (required, string) ... Location of the business. This could be “City,State” or zip code.
+    + sindex (required, string) ... Starting point for search results. Default value is 0. e.g. 0:start from 1st result, 25: start from 26th result
+    + count (required, integer) ... Specifies the number of results to be returned. Default is 500. e.g. 50:return 50 results
+    + sort (required, string) ... Results can be sorted by relevance, rating. By default it is relevance.
+    + api_key (required, string) ... Partner specific API key provided by BirdEye for data exchange.
+    + nearby (required, string) ... Flag to search business in neay by locations. Default is 1 e.g. 0: don’t search in near by cities, 1: search in near by cities
+
++ Request (application/json)
+
++ Response 200 (application/json)
+    
+    + Body
+    
+            {
+              "name": "Ray A. Lord",
+              "category": "Lawyers",
+              "address": {
+                "address1": "7436 Broad River Rd Suite 110",
+                "address2": null,
+                "city": "Irmo",
+                "state": "South Carolina",
+                "zip": "29063",
+                "countryCode": "US",
+                "countryName": "United States of America"
+              },
+              "reviewCount": 105,
+              "avgRating": 4.9,
+              "coverImageURL": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/profile/lawyer.jpg",
+              "profileURL": "http://reviews2.getlegal.com/ray-a-lord-755009344",
+              "logoURL": null,
+              "phone": "(803) 610-4056",
+              "businessId": "755009344_1"
+            }
+
++ Response 401 (application/json)
+
+    [1161][]
+            
++ Response 400 (application/json)
+
+    [1162][]
+            
++ Response 401 (application/json)
+
+    [1163][]
+            
++ Response 401 (application/json)
+
+    [1164][]
+            
++ Response 401 (application/json)
+
+    [1167][]
+    
+    
+## Business [/business/{businessId}{?api_key}]
+Multiple operations can be performed on a business. 
+
+**Notes**
+
+_Business id returned by create business API._
+
++ Parameters
+    
+    + businessId (string, required) ... the business ID
+    + api_key (string, required) ... the API key 
+
+### Get Business [GET]
+
+Business info from BirdEye platform can be fetched using:
+
+#### Request
+
+<center><b>Example CURL Request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    
+#### Response
+
+<center><b>Example Response Body</b></center>
+
+    {
+      "name": "Dieci Lifestyle Spa",
+      "alias": "Dieci Lifestyle Spa - Livingston, NJ",
+      "emailId": "4568@livelovespa.com",
+      "phone": "(973) 716-0101",
+      "fax": "(973) 716-0102",
+      "websiteURL": "http://www.diecispa.com/",
+      "description": "Specialties\nBridal ServicesMakeup: Makeovers/Lessons/ Faux Lash applicationMassagesFacialsMicrocurrentMicrodermabrasionBody…",
+      "keywords": "Hair Salons,Day Spas,Beauty Salon,Beauty Salons,Salons,Massage Therapists",
+      "services": "Beauty Salon, Hair Spa",
+      "logoURL": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
+      "coverImageURL": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
+      "image1URL": "http://s3-media4.ak.yelpcdn.com/bphoto/EyhdAImviVMTKyBt1RwJEQ/l.jpg",
+      "image2URL": "http://s3-media2.ak.yelpcdn.com/bphoto/La4hj6d8wltisn4xV9iTFA/l.jpg",
+      "image3URL": "http://s3-media2.ak.yelpcdn.com/bphoto/oEpSKfwxR9rFWJ6vZ02sLg/l.jpg",
+      "timezone": "Pacific Standard Time",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "payment": "Visa, MasterCard, American Express, Debit Cards, Check",
+      "hoursOfOperations": [
+        {
+          "day": "5",
+          "startHour": "7:00",
+          "endHour": "17:30",
+          "isOpen": 1,
+          "comment": ""
+        },
+        {
+          "day": "1",
+          "startHour": "8:00",
+          "endHour": "21:00",
+          "isOpen": 1,
+          "comment": ""
+        },
+        {
+          "day": "4",
+          "startHour": "8:00",
+          "endHour": "21:00",
+          "isOpen": 1,
+          "comment": ""
+        },
+        {
+          "day": "6",
+          "startHour": "9:00",
+          "endHour": "15:00",
+          "isOpen": 1,
+          "comment": ""
+        },
+        {
+          "day": "3",
+          "startHour": "8:00",
+          "endHour": "21:00",
+          "isOpen": 1,
+          "comment": ""
+        },
+        {
+          "day": "2",
+          "startHour": "8:00",
+          "endHour": "21:00",
+          "isOpen": 1,
+          "comment": ""
+        },
+        {
+          "day": "0",
+          "startHour": null,
+          "endHour": null,
+          "isOpen": 0,
+          "comment": "Mon closed"
+        }
+      ],
+      "working24x7": 0,
+      "location": {
+        "address1": "90 W Mount Pleasant Ave",
+        "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+        "city": "Livingston",
+        "state": "NJ",
+        "zip": "07039",
+        "countryCode": "US",
+        "countryName": "United States of America"
+      },
+      "reviewCount": 53,
+      "avgRating": 3.4,
+      "category": "Hair Salons,Day Spas,Beauty Salon,Beauty Salons,Salons,Massage Therapists",
+      "socialProfileURLs": {
+        "yelpUrl": "http://www.yelp.com/biz/dieci-lifestyle-spa-livingston",
+        "googleUrl": "https://plus.google.com/103245698313954543671/about?gl=US&hl=en-US",
+        "facebookUrl": null,
+        "twitterUrl": null,
+        "linkedinUrl": null
+      }
+    }
+    
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>name</td>
+            <td>Business name</td>
+        </tr>
+        <tr>
+            <td>alias</td>
+            <td>Alias for business. default: business name followed by city, state</td>
+        </tr>
+        <tr>
+            <td>emailId</td>
+            <td>Email id for business</td>
+        </tr>
+        <tr>
+            <td>phone</td>
+            <td>Business contact number</td>
+        </tr>
+        <tr>
+            <td>fax</td>
+            <td>Business fax number</td>
+        </tr>
+        <tr>
+            <td>websiteURL</td>
+            <td>Business website URL</td>
+        </tr>
+        <tr>
+            <td>description</td>
+            <td>Description for business</td>
+        </tr>
+        <tr>
+            <td>keywords</td>
+            <td>Keywords about the business. Useful in SEO</td>
+        </tr>
+        <tr>
+            <td>services</td>
+            <td>Services offered by business</td>
+        </tr>
+        <tr>
+            <td>logoURL</td>
+            <td>Logo image URL for business</td>
+        </tr>
+        <tr>
+            <td>coverImageURL</td>
+            <td>Cover image URL for business displayed on custom review site.</td>
+        </tr>
+        <tr>
+            <td>image1URL, image2URL, image3URL</td>
+            <td>Images for the business</td>
+        </tr>
+        <tr>
+            <td>timezone</td>
+            <td>Timezone in which business works</td>
+        </tr>
+        <tr>
+            <td>languages</td>
+            <td>Languages in which business deals</td>
+        </tr>
+        <tr>
+            <td>payment</td>
+            <td>Payment methods supported by business</td>
+        </tr>
+        <tr>
+            <td>hoursOfOperations</td>
+            <td>Working hours of business for each day. 
+            <br>day: 0(Monday), 1(Tuesday).
+            <br>startHour: 9:00 (9 AM)
+            <br>endHour: 18:00 (6 PM)
+            <br>isOpen:  0(Business closed today), 
+            <br>1(Business open today)
+            <br>comment: “By appointment only”</td>
+        </tr>
+        <tr>
+            <td>working24x7</td>
+            <td>Whether business is 24x7 open or not (0-false, 1-true)</td>
+        </tr>
+        <tr>
+            <td>location</td>
+            <td>Business address</td>
+        </tr>
+        <tr>
+            <td>reviewCount</td>
+            <td>Count of approved reviews for business</td>
+        </tr>
+        <tr>
+            <td>avgRating</td>
+            <td>Average rating of business based on approved reviews</td>
+        </tr>
+        <tr>
+            <td>category</td>
+            <td>Business categories</td>
+        </tr>
+        <tr>
+            <td>socialProfileURLs</td>
+            <td>
+                Profile URLs for business on top rated social sites
+                <br>e.g. Yelp, Google, Facebook, Linkedin, Twitter
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404  Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+    
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "name": "Dieci Lifestyle Spa",
+              "alias": "Dieci Lifestyle Spa - Livingston, NJ",
+              "emailId": "4568@livelovespa.com",
+              "phone": "(973) 716-0101",
+              "fax": "(973) 716-0102",
+              "websiteURL": "http://www.diecispa.com/",
+              "description": "Specialties\nBridal ServicesMakeup: Makeovers/Lessons/ Faux Lash applicationMassagesFacialsMicrocurrentMicrodermabrasionBody…",
+              "keywords": "Hair Salons,Day Spas,Beauty Salon,Beauty Salons,Salons,Massage Therapists",
+              "services": "Beauty Salon, Hair Spa",
+              "logoURL": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
+              "coverImageURL": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
+              "image1URL": "http://s3-media4.ak.yelpcdn.com/bphoto/EyhdAImviVMTKyBt1RwJEQ/l.jpg",
+              "image2URL": "http://s3-media2.ak.yelpcdn.com/bphoto/La4hj6d8wltisn4xV9iTFA/l.jpg",
+              "image3URL": "http://s3-media2.ak.yelpcdn.com/bphoto/oEpSKfwxR9rFWJ6vZ02sLg/l.jpg",
+              "timezone": "Pacific Standard Time",
+              "languages": [
+                "English",
+                "Spanish"
+              ],
+              "payment": "Visa, MasterCard, American Express, Debit Cards, Check",
+              "hoursOfOperations": [
+                {
+                  "day": "5",
+                  "startHour": "7:00",
+                  "endHour": "17:30",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "1",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "4",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "6",
+                  "startHour": "9:00",
+                  "endHour": "15:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "3",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "2",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "0",
+                  "startHour": null,
+                  "endHour": null,
+                  "isOpen": 0,
+                  "comment": "Mon closed"
+                }
+              ],
+              "working24x7": 0,
+              "location": {
+                "address1": "90 W Mount Pleasant Ave",
+                "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+                "city": "Livingston",
+                "state": "NJ",
+                "zip": "07039",
+                "countryCode": "US",
+                "countryName": "United States of America"
+              },
+              "reviewCount": 53,
+              "avgRating": 3.4,
+              "category": "Hair Salons,Day Spas,Beauty Salon,Beauty Salons,Salons,Massage Therapists",
+              "socialProfileURLs": {
+                "yelpUrl": "http://www.yelp.com/biz/dieci-lifestyle-spa-livingston",
+                "googleUrl": "https://plus.google.com/103245698313954543671/about?gl=US&hl=en-US",
+                "facebookUrl": null,
+                "twitterUrl": null,
+                "linkedinUrl": null
+              }
+            }
+            
++ Response 401 (application/json)
+
+    [1161][]
+    
++ Response 404 (application/json)
+
+    [1011][]
+    
++ Response 401 (application/json)
+
+    [1167][]
+    
+### Update Business [PUT]
+
+Business info on BirdEye platform can be updated using:
+
+#### Request
+
+<center><b>Example CURL request</b></center>:
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X PUT  -d "
+    {
+      "name": "Dieci Lifestyle Spa",
+      "alias": "Dieci Lifestyle Spa - Livingston, NJ",
+      "emailId": "4568@livelovespa.com",
+      "phone": "(973) 716-0101",
+      "fax": "(973) 716-0102",
+      "websiteUrl": "http://www.diecispa.com/",
+      "description": "Specialties\nBridal ServicesMakeup: Makeovers/Lessons/ Faux Lash applicationMassagesFacialsMicrocurrentMicrodermabrasionBody…",
+      "keywords": "Hair Salons,Day Spas,Beauty Salon,Beauty Salons,Salons,Massage Therapists",
+      "services": "Beauty Salon, Hair Spa",
+      "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
+      "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
+      "image1Url": "http://s3-media4.ak.yelpcdn.com/bphoto/EyhdAImviVMTKyBt1RwJEQ/l.jpg",
+      "image2Url": "http://s3-media2.ak.yelpcdn.com/bphoto/La4hj6d8wltisn4xV9iTFA/l.jpg",
+      "image3Url": "http://s3-media2.ak.yelpcdn.com/bphoto/oEpSKfwxR9rFWJ6vZ02sLg/l.jpg",
+      "timezone": "Pacific Standard Time",
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "payment": "Visa, MasterCard, American Express, Debit Cards, Check",
+      "hoursOfOperations": [
+        {
+          "day": "5",
+          "startHour": "7:00",
+          "endHour": "17:30",
+          "isOpen": 1,
+          "comment": ""
+        },
+        {
+          "day": "1",
+          "startHour": "8:00",
+          "endHour": "21:00",
+          "isOpen": 1,
+          "comment": ""
+        },
+        {
+          "day": "4",
+          "startHour": "8:00",
+          "endHour": "21:00",
+          "isOpen": 1,
+          "comment": ""
+        },
+        {
+          "day": "6",
+          "startHour": "9:00",
+          "endHour": "15:00",
+          "isOpen": 1,
+          "comment": ""
+        },
+        {
+          "day": "3",
+          "startHour": "8:00",
+          "endHour": "21:00",
+          "isOpen": 1,
+          "comment": ""
+        },
+        {
+          "day": "2",
+          "startHour": "8:00",
+          "endHour": "21:00",
+          "isOpen": 1,
+          "comment": ""
+        },
+        {
+          "day": "0",
+          "startHour": null,
+          "endHour": null,
+          "isOpen": 0,
+          "comment": "Mon closed"
+        }
+      ],
+      "working24x7": 0,
+      "location": {
+        "address1": "90 W Mount Pleasant Ave",
+        "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+        "city": "Livingston",
+        "state": "NJ",
+        "zip": "07039",
+        "countryCode": "US",
+        "countryName": "United States of America"
+      },
+      "categoryList": [
+        "Hair Salons"
+      ],
+      "socialProfileURLs": {
+        "yelpUrl": "http://www.yelp.com/biz/dieci-lifestyle-spa-livingston",
+        "googleUrl": "https://plus.google.com/103245698313954543671/about?gl=US&hl=en-US",
+        "facebookUrl": null,
+        "twitterUrl": null,
+        "linkedinUrl": null
+      }
+    }" "http://api.birdeye.com:8080/resources/v1/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>name</td>
+            <td>Business name</td>
+        </tr>
+        <tr>
+            <td>alias</td>
+            <td>Alias for business. default: business name followed by city, state</td>
+        </tr>
+        <tr>
+            <td>emailId</td>
+            <td>Email id for business</td>
+        </tr>
+        <tr>
+            <td>phone</td>
+            <td>Business contact number</td>
+        </tr>
+        <tr>
+            <td>fax</td>
+            <td>Business fax number</td>
+        </tr>
+        <tr>
+            <td>websiteUrl</td>
+            <td>Business website URL</td>
+        </tr>
+        <tr>
+            <td>description</td>
+            <td>Description for business</td>
+        </tr>
+        <tr>
+            <td>keywords</td>
+            <td>Keywords about the business. Useful in SEO</td>
+        </tr>
+        <tr>
+            <td>services</td>
+            <td>Services offered by business</td>
+        </tr>
+        <tr>
+            <td>logoUrl</td>
+            <td>Logo image URL for business</td>
+        </tr>
+        <tr>
+            <td>coverImageUrl</td>
+            <td>Cover image URL for business displayed on custom review site.</td>
+        </tr>
+        <tr>
+            <td>image1Url, image2Url, image3Url</td>
+            <td>Images for the business</td>
+        </tr>
+        <tr>
+            <td>timezone</td>
+            <td>Timezone in which business works</td>
+        </tr>
+        <tr>
+            <td>languages</td>
+            <td>Languages in which business deals</td>
+        </tr>
+        <tr>
+            <td>payment</td>
+            <td>Payment methods supported by business</td>
+        </tr>
+        <tr>
+            <td>hoursOfOperations</td>
+            <td>Working hours of business for each day.
+                <br/>day: 0(Monday), 1(Tuesday).
+                <br/>startHour: 9:00 (9 AM)
+                <br/>endHour: 18:00 (6 PM)
+                <br/>isOpen: 0(Business closed today), 1(Business open today)
+                <br/>comment: "By appointment only"
+            </td>
+        </tr>
+        <tr>
+            <td>working24x7</td>
+            <td>Whether business is 24x7 open or not (0-false, 1-true)</td>
+        </tr>
+        <tr>
+            <td>location</td>
+            <td>Business address</td>
+        </tr>
+        <tr>
+            <td>categoryList</td>
+            <td>List of business categories. All other categories will be removed from business leaving only the
+                categories
+                specified in list.
+            </td>
+        </tr>
+        <tr>
+            <td>socialProfileURLs</td>
+            <td>Profile URLs for business on top rated social sites
+                <br/>e.g. Yelp, Google, Facebook, Linkedin, Twitter
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1045</td>
+            <td>Business name cannot be blank.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1047</td>
+            <td>Business name cannot be less than 3 characters.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1046</td>
+            <td>Business name cannot be more than 250 characters.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1048</td>
+            <td>Business email id cannot be blank.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1049</td>
+            <td>Business email id is invalid.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1050</td>
+            <td>Business email id cannot be more than 40 characters.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1055</td>
+            <td>Not a valid US phone number.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1056</td>
+            <td>Not a valid US fax number.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1069</td>
+            <td>Business description cannot be more than 4000 characters.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1070</td>
+            <td>Business keywords cannot be more than 1000 characters.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1190</td>
+            <td>Invalid category</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+    
++ Request (application/json)
+
+    + Body
+            
+            {
+              "name": "Dieci Lifestyle Spa",
+              "alias": "Dieci Lifestyle Spa - Livingston, NJ",
+              "emailId": "4568@livelovespa.com",
+              "phone": "(973) 716-0101",
+              "fax": "(973) 716-0102",
+              "websiteUrl": "http://www.diecispa.com/",
+              "description": "Specialties\nBridal ServicesMakeup: Makeovers/Lessons/ Faux Lash applicationMassagesFacialsMicrocurrentMicrodermabrasionBody…",
+              "keywords": "Hair Salons,Day Spas,Beauty Salon,Beauty Salons,Salons,Massage Therapists",
+              "services": "Beauty Salon, Hair Spa",
+              "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
+              "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
+              "image1Url": "http://s3-media4.ak.yelpcdn.com/bphoto/EyhdAImviVMTKyBt1RwJEQ/l.jpg",
+              "image2Url": "http://s3-media2.ak.yelpcdn.com/bphoto/La4hj6d8wltisn4xV9iTFA/l.jpg",
+              "image3Url": "http://s3-media2.ak.yelpcdn.com/bphoto/oEpSKfwxR9rFWJ6vZ02sLg/l.jpg",
+              "timezone": "Pacific Standard Time",
+              "languages": [
+                "English",
+                "Spanish"
+              ],
+              "payment": "Visa, MasterCard, American Express, Debit Cards, Check",
+              "hoursOfOperations": [
+                {
+                  "day": "5",
+                  "startHour": "7:00",
+                  "endHour": "17:30",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "1",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "4",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "6",
+                  "startHour": "9:00",
+                  "endHour": "15:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "3",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "2",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "0",
+                  "startHour": null,
+                  "endHour": null,
+                  "isOpen": 0,
+                  "comment": "Mon closed"
+                }
+              ],
+              "working24x7": 0,
+              "location": {
+                "address1": "90 W Mount Pleasant Ave",
+                "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+                "city": "Livingston",
+                "state": "NJ",
+                "zip": "07039",
+                "countryCode": "US",
+                "countryName": "United States of America"
+              },
+              "categoryList": [
+                "Hair Salons"
+              ],
+              "socialProfileURLs": {
+                "yelpUrl": "http://www.yelp.com/biz/dieci-lifestyle-spa-livingston",
+                "googleUrl": "https://plus.google.com/103245698313954543671/about?gl=US&hl=en-US",
+                "facebookUrl": null,
+                "twitterUrl": null,
+                "linkedinUrl": null
+              }
+            }
+            
++ Response 200
+
+    + Body
+            
+            {
+              "name": "Dieci Lifestyle Spa",
+              "alias": "Dieci Lifestyle Spa - Livingston, NJ",
+              "emailId": "4568@livelovespa.com",
+              "phone": "(973) 716-0101",
+              "fax": "(973) 716-0102",
+              "websiteUrl": "http://www.diecispa.com/",
+              "description": "Specialties\nBridal ServicesMakeup: Makeovers/Lessons/ Faux Lash applicationMassagesFacialsMicrocurrentMicrodermabrasionBody…",
+              "keywords": "Hair Salons,Day Spas,Beauty Salon,Beauty Salons,Salons,Massage Therapists",
+              "services": "Beauty Salon, Hair Spa",
+              "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
+              "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
+              "image1Url": "http://s3-media4.ak.yelpcdn.com/bphoto/EyhdAImviVMTKyBt1RwJEQ/l.jpg",
+              "image2Url": "http://s3-media2.ak.yelpcdn.com/bphoto/La4hj6d8wltisn4xV9iTFA/l.jpg",
+              "image3Url": "http://s3-media2.ak.yelpcdn.com/bphoto/oEpSKfwxR9rFWJ6vZ02sLg/l.jpg",
+              "timezone": "Pacific Standard Time",
+              "languages": [
+                "English",
+                "Spanish"
+              ],
+              "payment": "Visa, MasterCard, American Express, Debit Cards, Check",
+              "hoursOfOperations": [
+                {
+                  "day": "5",
+                  "startHour": "7:00",
+                  "endHour": "17:30",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "1",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "4",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "6",
+                  "startHour": "9:00",
+                  "endHour": "15:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "3",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "2",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "0",
+                  "startHour": null,
+                  "endHour": null,
+                  "isOpen": 0,
+                  "comment": "Mon closed"
+                }
+              ],
+              "working24x7": 0,
+              "location": {
+                "address1": "90 W Mount Pleasant Ave",
+                "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+                "city": "Livingston",
+                "state": "NJ",
+                "zip": "07039",
+                "countryCode": "US",
+                "countryName": "United States of America"
+              },
+              "categoryList": [
+                "Hair Salons"
+              ],
+              "socialProfileURLs": {
+                "yelpUrl": "http://www.yelp.com/biz/dieci-lifestyle-spa-livingston",
+                "googleUrl": "https://plus.google.com/103245698313954543671/about?gl=US&hl=en-US",
+                "facebookUrl": null,
+                "twitterUrl": null,
+                "linkedinUrl": null
+              }
+            }
+
++ Response 401
+
+    [1161][]
+    
++ Response 401
+
+    [1167][]
+    
++ Response 404
+
+    [1175][]
+
++ Response 400
+
+    [1045][]
+    
++ Response 401
+
+    [1047][]
+    
++ Response 401
+
+    [1046][]
+    
++ Response 401
+
+    [1048][]
+    
++ Response 401
+
+    [1049][]
+    
++ Response 401
+
+    [1050][]
+    
++ Response 401
+
+    [1055][]
+    
++ Response 401
+
+    [1056][]
+    
++ Response 401
+
+    [1069][]
+    
++ Response 401
+
+    [1070][]
+    
++ Response 401
+
+    [1190][]
+    
+### Delete Business [DELETE]
+
+Business/sub-reseller can be deleted using:
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "http://api.birdeye.com:8080/resources/v1/business/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1174</td>
+            <td>Reseller can't be removed as it has child accounts.</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
++ Response 400 (application/json)
+
+    [1174][]
+    
++ Response 401 (application/json)
+
+    [1161][]
+    
++ Response 401 (application/json)
+
+    [1167][]
+    
++ Response 404 (application/json)
+
+    [1175][]
+
+## Status [/business/{business_id}/status{?astatus,api_key}]
+Business status can be updated using:
+
+### Update the status [PUT]
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X PUT "http://api.birdeye.com:8080/resources/v1/business/755009344/status?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&astatus=active" –v
+
+**Notes**
+
+_Business id returned by create business API_
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+        <tr>
+            <td>403 Forbidden</td>
+            <td>1184</td>
+            <td>Status change is not allowed.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1191</td>
+            <td>Invalid status.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Parameters
+
+    + business_id (string, required) ... Business id whose status has to be changed. Returned by create business API
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
+    + status (string, required) ... New status for the business. Valid values are “active/inactive”.
+
++ Request (application/json)
+
++ Response 200 
+
++ Response 401
+    
+    [1161][]
+
++ Response 401
+
+    [1167][]
+    
++ Response 404 
+
+    [1175][]
+    
++ Response 403
+
+    [1184][]
+    
++ Response 400
+
+    [1191][]
+    
+    
+## Child Business [/business/child/all{?api_key}]
+List of child businesses can be retrieved using:
+
+### Get Child Businesses [GET]
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/business/child/all?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+    [
+      {
+        "id": 986031488,
+        "name": "Central Ohio Endodontics",
+        "address": {
+          "address1": "5152 Blazer Memorial Pkwy",
+          "address2": "Ste 102",
+          "city": "Dublin",
+          "state": "OH",
+          "zip": "43017",
+          "countryCode": "US",
+          "countryName": "United States of America"
+        },
+        "phone": "(614) 896-2801",
+        "status": "active",
+        "createdOn": "Dec 04, 2013"
+      },
+      {
+        "id": 768996864,
+        "name": "Environmental Pest Management",
+        "address": {
+          "address1": "200 Hoff Rd",
+          "address2": "Unit P",
+          "city": "Westerville",
+          "state": "OH",
+          "zip": "43082",
+          "countryCode": "US",
+          "countryName": "United States of America"
+        },
+        "phone": "(614) 771-8605",
+        "status": "active",
+        "createdOn": "Dec 05, 2013"
+      }
+    ]
+    
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Parameters 
+
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Body 
+    
+            [
+              {
+                "id": 986031488,
+                "name": "Central Ohio Endodontics",
+                "address": {
+                  "address1": "5152 Blazer Memorial Pkwy",
+                  "address2": "Ste 102",
+                  "city": "Dublin",
+                  "state": "OH",
+                  "zip": "43017",
+                  "countryCode": "US",
+                  "countryName": "United States of America"
+                },
+                "phone": "(614) 896-2801",
+                "status": "active",
+                "createdOn": "Dec 04, 2013"
+              },
+              {
+                "id": 768996864,
+                "name": "Environmental Pest Management",
+                "address": {
+                  "address1": "200 Hoff Rd",
+                  "address2": "Unit P",
+                  "city": "Westerville",
+                  "state": "OH",
+                  "zip": "43082",
+                  "countryCode": "US",
+                  "countryName": "United States of America"
+                },
+                "phone": "(614) 771-8605",
+                "status": "active",
+                "createdOn": "Dec 05, 2013"
+              }
+            ]
+            
++ Response 401 
+
+    [1161][]
+    
++ Response 401
+
+    [1167][]
+
+# Group User
+
+APIs related to user.
+
+## Signup [/user/signup{?bid,api_key}]
+
+Users can be created using:
+
+### Create User [POST]
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"firstName\" : \"Rhonda\", \"lastName\" : \"Spears\", \"userEmailId\" : \"rhonda@reviewmanagement.com\", \"phone\" : \"408-xxx-xxxx\",\"userRole\" : \"owner\",\”userPassword\”:\”xxxxxxx\”,\”sendInvite\”:\”false\”}" "http://api.birdeye.com:8080/resources/v1/user/signup?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>firstName</td>
+            <td>First name of the user (optional)</td>
+        </tr>
+        <tr>
+            <td>lastName</td>
+            <td>Last name of the user (optional)</td>
+        </tr>
+        <tr>
+            <td>userEmailId</td>
+            <td>Email ID of the user that’s being added to this business</td>
+        </tr>
+        <tr>
+            <td>phone</td>
+            <td>Mobile number of the user (optional)</td>
+        </tr>
+        <tr>
+            <td>userRole</td>
+            <td>User role. Valid values are “owner”,”admin”. Default is “owner”.</td>
+        </tr>
+        <tr>
+            <td>userPassword</td>
+            <td>User password</td>
+        </tr>
+        <tr>
+            <td>sendInvite</td>
+            <td>Whether to send invitation to user or not. Valid values are “true”/”false”. Default is “true”.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1033</td>
+            <td>You are not authorized to perform this action</td>
+        </tr>
+        <tr>
+            <td>409 Conflict</td>
+            <td>1160</td>
+            <td>User is already associated with business.</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1052</td>
+            <td>User email id cannot be blank</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1053</td>
+            <td>User email id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1054</td>
+            <td>User email id cannot be more than 40 characters</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1014</td>
+            <td>User role cannot be blank</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1013</td>
+            <td>Unknown user role</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1057</td>
+            <td>First name cannot be more than 50 characters</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1059</td>
+            <td>Last name cannot be more than 50 characters</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+    
+    + Body
+    
+            {
+              "firstName": "Rhonda",
+              "lastName": "Spears",
+              "userEmailId": "rhonda@reviewmanagement.com",
+              "phone": "408-xxx-xxxx",
+              "userRole": "owner",
+              "userPassword": "xxxxxxx",
+              "sendInvite": "false"
+            }
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+    
++ Response 401
+
+    [1033][]
+    
++ Response 409
+
+    [1160][]
+    
++ Response 404
+
+    [1175][]
+    
++ Response 400
+
+    [1052][]
+    
++ Response 400
+
+    [1053][]
+    
++ Response 400
+
+    [1054][]
+    
++ Response 400
+
+    [1014][]
+    
++ Response 400
+
+    [1013][]
+
++ Response 400
+
+    [1057][]
+    
++ Response 400
+
+    [1059][]
+    
+## Remove [/user/remove{?bid,api_key,email}]
+
++ Parameters
+
+    + bid (string, required) ... Business id from which user access has to be revoked
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
+    + email (string, required) ... Email id of the user whose access has to be revoked
+
+
+### Delete a user [DELETE]
+
+
+Users access from a business can be revoked using:
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "http://api.birdeye.com:8080/resources/v1/user/remove?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&email=rhonda@reviewmanagement.com" –v
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1188</td>
+            <td>User is not associated with the business.</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1189</td>
+            <td>User with given email id not found.</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
++ Response 400
+
+    [1059][]
+    
++ Response 401 
+
+    [1161][]
+    
++ Response 401 
+
+    [1167][]
+    
++ Response 404 
+
+    [1188][]
+    
++ Response 404 
+
+    [1189][]
+    
++ Response 404
+
+    [1175][]
+
+## Password [/user/forgotpassword{?api_key,email}]
+
++ Parameters
+
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
+    + email (string, required) ... Email id of the user whose access has to be revoked
+
+
+### Forgot Password [POST]
+
+Forgot password email can be sent using:
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST "http://api.birdeye.com:8080/resources/v1/user/forgotpassword?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&email=rhonda@reviewmanagement.com" –v
+
+### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1177</td>
+            <td>User is not authorized to perform any action on any business</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1189</td>
+            <td>User with given email id not found.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1052</td>
+            <td>User email id cannot be blank</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
++ Response 400 
+
+    [1052][]
+    
++ Response 401
+
+    [1161][]
+    
++ Response 401
+
+    [1167][]
+    
++ Response 401
+
+    [1177][]
+    
++ Response 404
+
+    [1189][]
+    
+# Group Reviews
+
+## Review [/review/businessid/{business_id}{?sindex,count,api_key}]
+
++ Parameters 
+
+    + business_id (string, required) ... the business ID
+    + sindex (integer, required) ... the starting index of the reviews
+    + count (integer, required) ... the number of reviews to query
+    + api_key (string, required) ... the API key
+
+### Get Reviews [GET]
+
+Business review(s) from BirdEye platform can be fetched using:
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/review/businessid/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&fdate=1/1/2014&tdate=6/30/2014" -v
+
+#### Response
+
+<center><b>Example Response</b></center> 
+
+    [
+        {
+            "reviewId": "73748574902",
+            "rating": 5,
+            "comments": "I am a long time customer and love Dieici. I am there at least once a week. I have never been disappointed with any service. I love all the girls. The customer service is beyond a 10. I also love the new addition Wish to the salon! Wish is a woman's clothing boutique. What could be better...beauty and fashion all in one spot!!! Dieci keeps getting better and better!",
+            "title": null,
+            "reviewer": {
+              "firstName": "Jennifer",
+              "lastName": "Bennett",
+              "nickName": null,
+              "thumbnailUrl": "http://s3-media1.ak.yelpcdn.com/photo/ObuBAEOBF4q2TyPGjNLzbg/60s.jpg",
+              "emailId": "jbennett@gmail.com",
+              "facebookId": "638309687",
+              "city": "Cedar Knolls",
+              "state": " NJ"
+            },
+            "reviewURL": "http://www.yelp.com/biz/dieci-lifestyle-spa-livingston",
+            "sourceType": "Yelp",
+            "reviewDate": "Jan 20, 2014",
+            "response": "Thanks",
+            "responseDate": "Feb 18, 2014"
+        }
+    ]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>rating</td>
+            <td>Overall rating for the review</td>
+        </tr>
+        <tr>
+            <td>comments</td>
+            <td>Review comments</td>
+        </tr>
+        <tr>
+            <td>title</td>
+            <td>Review title</td>
+        </tr>
+        <tr>
+            <td>reviewer</td>
+            <td>Reviewer information</td>
+        </tr>
+        <tr>
+            <td>reviewURL</td>
+            <td>Review URL if it is an aggregated review</td>
+        </tr>
+        <tr>
+            <td>sourceType</td>
+            <td>Source of the review if it is an aggregated review</td>
+        </tr>
+        <tr>
+            <td>reviewDate</td>
+            <td>Review date</td>
+        </tr>
+        <tr>
+            <td>response</td>
+            <td>Response to the review submitted by business</td>
+        </tr>
+        <tr>
+            <td>responseDate</td>
+            <td>Response date</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1163</td>
+            <td>Invalid start index value</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1164</td>
+            <td>Invalid result count value</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
++ Response 200 
+
+    + Body
+    
+            [
+                {
+                    "reviewId": "73748574902",
+                    "rating": 5,
+                    "comments": "I am a long time customer and love Dieici. I am there at least once a week. I have never been disappointed with any service. I love all the girls. The customer service is beyond a 10. I also love the new addition Wish to the salon! Wish is a woman's clothing boutique. What could be better...beauty and fashion all in one spot!!! Dieci keeps getting better and better!",
+                    "title": null,
+                    "reviewer": {
+                      "firstName": "Jennifer",
+                      "lastName": "Bennett",
+                      "nickName": null,
+                      "thumbnailUrl": "http://s3-media1.ak.yelpcdn.com/photo/ObuBAEOBF4q2TyPGjNLzbg/60s.jpg",
+                      "emailId": "jbennett@gmail.com",
+                      "facebookId": "638309687",
+                      "city": "Cedar Knolls",
+                      "state": " NJ"
+                    },
+                    "reviewURL": "http://www.yelp.com/biz/dieci-lifestyle-spa-livingston",
+                    "sourceType": "Yelp",
+                    "reviewDate": "Jan 20, 2014",
+                    "response": "Thanks",
+                    "responseDate": "Feb 18, 2014"
+                }
+            ]
+
++ Response 400 
+
+    [1163][]
+    
++ Response 400
+
+    [1164][]
+    
++ Response 401 
+
+    [1167][]
+    
++ Response [401]
+    
+    [1161][]
+
++ Response 404
+
+    [1011][]
+
+## Submit Review [/review/business/{business_id}{?api_key}]
+
++ Parameters
+
+    + business_id (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
+### Post a new review [POST]
+New review on BirdEye platform can be created using:
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST-d "{\"overallRating\" : \"5\", \"comments\" : \"Awesome experience\", \"reviewDate\" : \"2014-04-04T00:00:00\", \"response\" : \"Thanks for the review\", \"responseDate\" : \"2014-04-06T00:00:00\", \"source\": \"website\", \"reviewer\" : {\"nickName\" : \"Sachin G\",\"thumbnailUrl\" : \"http://birdeye.com/reviewer/default.jpd\", \"emailId\":\"saching@gmail.com\", \"location\" : {\"city\" : \"Atlanta\", \"state\" : \"GA\"}}}" "http://api.birdeye.com:8080/resources/v1/review/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+#### Request 
+
+<center><b>Example Payload</b></center>
+
+    {
+      "overallRating": "5",
+      "comments": "Awesome experience",
+      "reviewDate": "2014-04-04T00:00:00",
+      "response": "Thanks for the review",
+      "responseDate": "2014-04-06T00:00:00",
+      "source": "website",
+      "reviewer": {
+        "nickName": "Sachin G",
+        "thumbnailUrl": "http://birdeye.com/reviewer/default.jpd",
+        "emailId": "saching@gmail.com",
+        "location": {
+          "city": "Atlanta",
+          "state": "GA"
+        }
+      }
+    }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>overallRating</td>
+            <td>Review rating</td>
+        </tr>
+        <tr>
+            <td>comments</td>
+            <td>Review comment</td>
+        </tr>
+        <tr>
+            <td>reviewDate (optional)</td>
+            <td>Review date. Default is current date. e.g. “2014-03-16T00:00:00”</td>
+        </tr>
+        <tr>
+            <td>response (optional)</td>
+            <td>Response for the review submitted by business</td>
+        </tr>
+        <tr>
+            <td>responseDate (optional)</td>
+            <td>Response date. Default is current date. e.g. “2014-03-16T00:00:00”</td>
+        </tr>
+        <tr>
+            <td>source (optional)</td>
+            <td>Source from where review was submitted. Allowed values are “website”,”tablet”. Default value is
+                “website”.
+            </td>
+        </tr>
+        <tr>
+            <td>reviewer (optional)</td>
+            <td>Reviewer info. If not specified, the review will be submitted as “Anonymous”.</td>
+        </tr>
+        <tr>
+            <td>reviewer.nickName</td>
+            <td>Reviewer name.</td>
+        </tr>
+        <tr>
+            <td>reviewer.emailId</td>
+            <td>Reviewer email id.</td>
+        </tr>
+        <tr>
+            <td>reviewer.location.city(optional)</td>
+            <td>Reviewer city.</td>
+        </tr>
+        <tr>
+            <td>reviewer.location.state(optional)</td>
+            <td>Reviewer state.</td>
+        </tr>
+        <tr>
+            <td>reviewer.thumbnailUrl (optional)</td>
+            <td>Thumbnail URL for reviewer image. Default is
+                “http://birdeye.com/common/css/images/default-profile.png”
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1082</td>
+            <td>Review rating is missing</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1081</td>
+            <td>Review comment is too long</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
++ Response 200
+
++ Response 400
+
+    [1081][]
+    
++ Response 400
+    
+    [1082][]
+
++ Response 401 
+
+    [1161][]
+    
++ Response 401
+
+    [1167][]
+    
++ Response 404
+
+    [1011][]
+    
+# Group Customer
+
+APIs related to customers
+
+## Check in [/customer/checkin{?bid,api_key}]
+
+Customer checkin can be done using:
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
+### CSave Checkin [POST]
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@xxxx.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1}" "http://api.birdeye.com:8080/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+
+#### Request
+
+<center><b>Example Payload</b></center>
+
+    {
+      "name": "Steve Smith ",
+      "emailId": "steves@xxxx.com",
+      "phone": "408-xxx-xxxx",
+      "smsEnabled": 1
+    }
+
+<div class="paramsTableWrap">
+
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>name</td>
+            <td>Name of the customer</td>
+        </tr>
+        <tr>
+            <td>emailId</td>
+            <td>Email ID of the customer.</td>
+        </tr>
+        <tr>
+            <td>phone</td>
+            <td>Mobile number of the customer (optional)</td>
+        </tr>
+        <tr>
+            <td>smsEnabled</td>
+            <td>Whether customer has opted to receive SMS request or not. Valid values are 0(false), 1(true). Default is
+                0.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1033</td>
+            <td>You are not authorized to perform this action</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1142</td>
+            <td>Customer name cannot be blank</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1086</td>
+            <td>Customer email id cannot be blank.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1087</td>
+            <td>Customer email id is invalid.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1088</td>
+            <td>Customer email id cannot be more than 40 characters.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1055</td>
+            <td>Not a valid US phone number.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1170</td>
+            <td>SMS Alert flag is invalid. Valid values are 0 or 1.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Body
+    
+            {
+              "name": "Steve Smith ",
+              "emailId": "steves@xxxx.com",
+              "phone": "408-xxx-xxxx",
+              "smsEnabled": 1
+            }
+            
++ Response 200 (application/json)
+
++ Response 400
+
+    [1142][]
+    
++ Response 400
+
+    [1086][]
+    
++ Response 400
+
+    [1087][]
+    
+
++ Response 400
+
+    [1088][]
+    
+
++ Response 400
+
+    [1055][]
+    
+
++ Response 400
+
+    [1170][]
+    
++ Response 401
+
+    [1033][]
+        
++ Response 401
+
+    [1161][]
+        
++ Response 401
+
+    [1167][]
+        
++ Response 401
+
+    [1175][]
+    
+# Group Category
+APIs related to categories.
+
+## All categories [/category/all]
+
+### Get all categories [GET]
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/category/all" –v
+
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+    [
+        "Accessories",
+        "Accountants",
+        "Active Life",
+        "Acupuncture",
+        "Adult",
+        "Adult Education",
+        "Adult Entertainment",
+        "Advertising",
+        "Afghan",
+        "African",
+        "Airlines",
+        "Airport Shuttles",
+        "Airports",
+        "Allergists",
+        "Amateur Sports Teams",
+        "American (New)",
+        "American (Traditional)",
+        "Amusement Parks",
+        "Anesthesiologists",
+        "Animal Shelters",
+        "Antiques",
+        "Apartments"
+    ]
+    
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Body
+    
+            [
+                "Accessories",
+                "Accountants",
+                "Active Life",
+                "Acupuncture",
+                "Adult",
+                "Adult Education",
+                "Adult Entertainment",
+                "Advertising",
+                "Afghan",
+                "African",
+                "Airlines",
+                "Airport Shuttles",
+                "Airports",
+                "Allergists",
+                "Amateur Sports Teams",
+                "American (New)",
+                "American (Traditional)",
+                "Amusement Parks",
+                "Anesthesiologists",
+                "Animal Shelters",
+                "Antiques",
+                "Apartments"
+                ]
+
+    
+
+    
