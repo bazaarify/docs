@@ -863,7 +863,8 @@ Business info from BirdEye platform can be fetched using:
         "facebookUrl": null,
         "twitterUrl": null,
         "linkedinUrl": null
-      }
+      },
+      "isSEOEnabled": "false"
     }
     
 <div class="paramsTableWrap">
@@ -971,6 +972,12 @@ Business info from BirdEye platform can be fetched using:
             <td>
                 Profile URLs for business on top rated social sites
                 <br>e.g. Yelp, Google, Facebook, Linkedin, Twitter
+            </td>
+        </tr>
+        <tr>
+            <td>isSEOEnabled</td>
+            <td>Enable/Disbale search engine indexing of business profile
+                <br/> Valid values are “true”,”false”. Default is “true”.
             </td>
         </tr>
         </tbody>
@@ -1219,7 +1226,8 @@ Business info on BirdEye platform can be updated using:
         "facebookUrl": null,
         "twitterUrl": null,
         "linkedinUrl": null
-      }
+      },
+      "isSEOEnabled": "false"
     }" "http://api.birdeye.com:8080/resources/v1/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 
@@ -1324,7 +1332,13 @@ Business info on BirdEye platform can be updated using:
                 <br/>e.g. Yelp, Google, Facebook, Linkedin, Twitter
             </td>
         </tr>
-        </tbody>
+        <tr>
+            <td>isSEOEnabled</td>
+            <td>Enable/Disbale search engine indexing of business profile
+                <br/> Valid values are “true”,”false”. Default is “true”.
+            </td>
+        </tr>
+	</tbody>
     </table>
 </div>
 
