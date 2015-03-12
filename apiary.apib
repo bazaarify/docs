@@ -2327,7 +2327,7 @@ Forgot password email can be sent using:
     
 # Group Reviews
 
-## Review [/review/businessid/{business_id}{?sindex,count,api_key}]
+## Review [/review/businessid/{business_id}{?sindex,count,api_key,fdate,tdate,updateFromdate,updateTodate}]
 
 + Parameters 
 
@@ -2335,6 +2335,10 @@ Forgot password email can be sent using:
     + sindex (integer, required) ... the starting index of the reviews
     + count (integer, required) ... the number of reviews to query
     + api_key (string, required) ... the API key
+    + fdate (string, optional) ... the review from date
+    + tdate (string, optional) ... the review to date
+    + updateFromdate (string, optional) ... the review update from date
+    + updateTodate (string, optional) ... the review update to date
 
 ### Get Reviews [GET]
 
@@ -2342,7 +2346,7 @@ Business review(s) from BirdEye platform can be fetched using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/review/businessid/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&fdate=1/1/2014&tdate=6/30/2014" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/review/businessid/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&fdate=1/1/2014&tdate=6/30/2014&updateFromdate=1/1/2014&updateTodate=6/30/2014" -v
 
 #### Response
 
@@ -2457,6 +2461,26 @@ Business review(s) from BirdEye platform can be fetched using:
             <td>401 Unauthorized</td>
             <td>1167</td>
             <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1186</td>
+            <td>Invalid from date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1187</td>
+            <td>Invalid to date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1227</td>
+            <td>Invalid updated from date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1228</td>
+            <td>Invalid updated to date. Allowed format is "MM/dd/yyyy"</td>
         </tr>
         </tbody>
     </table>
