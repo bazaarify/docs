@@ -2965,3 +2965,319 @@ APIs related to categories.
     
 
     
+# Group Aggregation
+APIs related to aggregation URL
+
+## Get [/aggregation/business/{businessId}{?api_key}]
+List of aggregation source can be fetched using:
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
+### Get all aggregation source [GET]
+
+#### Request
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/aggregation/business/755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+
+#### Response
+<center><b>Example Response</b></center>
+[
+    {
+        "id": "234970154",
+        "sourceAlias": "our_website",
+        "sourceUrl": "http://demo.birdeye.com/trattoria-da-vittorio-943999808/recommendus",
+        "sourceName": "Our Website",
+        "aggregationStatus": 4
+    },
+    {
+        "id": "234950761",
+        "sourceAlias": "yelp",
+        "sourceUrl": "http://www.yelp.com/biz/trattoria-da-vittorio-san-francisco",
+        "sourceName": "Yelp",
+        "aggregationStatus": 4
+    },
+    {
+        "id": "235020762",
+        "sourceAlias": "google",
+        "sourceUrl": "https://plus.google.com/112610500708977805079/about?gl=US&hl=en-US",
+        "sourceName": "Google",
+        "aggregationStatus": 4
+    }
+]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1033</td>
+            <td>You are not authorized to perform this action</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+     +Body
+         {
+             [
+                {
+                    "id": "234970154",
+                    "sourceAlias": "our_website",
+                    "sourceUrl": "http://demo.birdeye.com/trattoria-da-vittorio-943999808/recommendus",
+                    "sourceName": "Our Website",
+                    "aggregationStatus": 4
+                },
+                {
+                    "id": "234950761",
+                    "sourceAlias": "yelp",
+                    "sourceUrl": "http://www.yelp.com/biz/trattoria-da-vittorio-san-francisco",
+                    "sourceName": "Yelp",
+                    "aggregationStatus": 4
+                },
+                {
+                    "id": "235020762",
+                    "sourceAlias": "google",
+                    "sourceUrl": "https://plus.google.com/112610500708977805079/about?gl=US&hl=en-US",
+                    "sourceName": "Google",
+                    "aggregationStatus": 4
+                }
+            ]
+         }
+         
++ Response 401 (application/json)
+
+    [1161][]
+    
++ Response 401 (application/json)
+
+    [1167][]
+    
++ Response 401 (application/json)
+
+    [1033][]
+    
++ Response 404 (application/json)
+
+    [1175][]
+    
+## Add [/aggregation/business/{businessId}{?api_key}]
+Add new aggregation URL using:
+
+### Add aggregation URL [POST]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + sourceAlias (String, required) ... the Aggregation Source Name
+    + url (string, required) ... the aggregation URL
+#### Request
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAlias\" : \"yelp \", \"url\" : \"http://www.yelp.com/biz/maria-da-vittorio-san-francisco\"}" "http://api.birdeye.com:8080/resources/v1/aggregation/business/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+
+#### Response
+{
+    "aggregationStatus": 1,
+    "id": "237030543",
+    "sourceAlias": "yelp",
+    "sourceName": "Yelp",
+    "sourceUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco"
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1030</td>
+            <td>No business found with the given id</td>
+        </tr>
+        
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1030</td>
+            <td>URL cannot be blank</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1067</td>
+            <td>URL is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1031</td>
+            <td>Source id cannot be blank</td>
+        </tr>
+        
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1032</td>
+            <td>Invalid source id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Response 404 (application/json)
+
+    [1011][]
+    
++ Response 401 (application/json)
+
+    [1167][]
+    
++ Response 401 (application/json)
+
+    [1161][]
+    
++ Response 400 (application/json)
+
+    [1030][]
+
++ Response 400 (application/json)
+
+    [1031][]
+    
++ Response 400 (application/json)
+
+    [1032][]
+    
++ Response 400 (application/json)
+
+    [1067][]
+    
+    
+    
+## Delete [/aggregation/business/{businessID}/aggregation/{aggregationID}{?api_key}]
+Delete aggregation URL using:
+
+### Delete aggregation URL [DELETE]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + aggregationId (String, required) ... the Aggregation ID
+	
+#### Request
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "http://api.birdeye.com:8080/resources/v1/aggregation/business/755009344/aggregation/457031001?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1030</td>
+            <td>No business found with the given id</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1039</td>
+            <td>Invalid business aggregation id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Response 200 (application/json)
+
+
++ Response 404 (application/json)
+
+    [1011][]
+    
++ Response 401 (application/json)
+
+    [1167][]
+    
++ Response 401 (application/json)
+
+    [1161][]
+    
++ Response 400 (application/json)
+
+    [1030][]
+
++ Response 400 (application/json)
+
+    [1039][]
