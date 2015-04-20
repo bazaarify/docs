@@ -1956,6 +1956,495 @@ List of child businesses can be retrieved using:
 
     [1167][]
 
+
+
+## Dashboard [/report/smb{?api_key,bid}]
+Dashboard data can be retrieved using:
+
+### Get Data [GET]
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/report/smb?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&bid=943999808" –v
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+{
+    "allTime": {
+        "avgRating": {
+            "percentChange": 0,
+            "rating": 4.3
+        },
+        "benchmark": {
+            "industryRating": 4.1,
+            "industryReviewCount": 75785,
+            "percentChange": 4,
+            "rating": 4.3
+        },
+        "custCommn": {},
+        "reviewCount": {
+            "count": 376,
+            "percentChange": 0
+        },
+        "sentiments": {
+            "negative": 45,
+            "neutral": 36,
+            "positive": 295
+        },
+        "visitors": {}
+    },
+    "last30Days": {
+        "avgRating": {
+            "rating": 0
+        },
+        "benchmark": {
+            "industryRating": 0,
+            "industryReviewCount": 0,
+            "percentChange": 0,
+            "rating": 0
+        },
+        "custCommn": {
+            "reviewRequest": 0,
+            "reviewRequestSms": 0,
+            "shareReview": 0
+        },
+        "reviewCount": {
+            "count": 0,
+            "percentChange": 0
+        },
+        "sentiments": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+        },
+        "visitors": {}
+    },
+    "negativeReviews": [
+        {
+            "comments": "One word...inconsistent. We had high hopes for this place but alas it was not to be. While the servers were polite, they lacked the professionalism normally expected at most dining establishments...you know, simple things like the waiter introducing himself by name or dropping by to see how we liked the food or refilling our drinks. The minestrone soup was pretty good but the fried calamari was bland, rubbery, obviously over cooked, and did I mention bland. The linguini pescatora was also inconsistent. The pasta in the dish was excellent but the calamari was once again over cooked and rubbery, I got a couple of clams that were not cleaned resulting in a few mouthfuls of dirt, and the shrimp was once again over cooked. We also ordered the margherita pizza with mushrooms and that was pretty good. Overall, we cannot recommend this place.",
+            "rating": 1,
+            "response": "",
+            "reviewDate": "Jan 30, 2015",
+            "reviewId": "2335311245464",
+            "reviewUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco?hrid=60fLFX4lRvHnodkhoWC2lw&nb=1",
+            "reviewer": {
+                "city": "Yorba Linda",
+                "nickName": "wendy w.",
+                "state": "CA",
+                "thumbnailUrl": "reviewer/c8e2bfca1dd04bd089939d0c59337ba6.jpeg"
+            },
+            "sourceType": "Yelp"
+        },
+        {
+            "comments": "Veal Scaloppini, mushrooms, marsala wine, seasonal vegetables and potatoes $24.\nFlavor was great but disappointed in portion 2 small thin slice, I had better portion in North Beach...my shoe sole was large than this portion. I'm petite size woman; still left hungry....not a hungry man plate. Don't waste your money on this one, men.",
+            "rating": 2,
+            "response": "",
+            "reviewDate": "Jan 26, 2015",
+            "reviewId": "2335208845791",
+            "reviewUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco?hrid=FKcQE7naP_Wb4D2ylDsLaQ&nb=1",
+            "reviewer": {
+                "city": "San Francisco",
+                "nickName": "Catalina W.",
+                "state": "CA",
+                "thumbnailUrl": "reviewer/5882020b259c4e3e83613ce06f02fcea.jpeg"
+            },
+            "sourceType": "Yelp"
+        },
+        {
+            "comments": "I have to say that this restaurant is very nice but very Loud!:( The bread was old:( The prosciutto appetizer was ridiculous! They only used one slice on six slices of bread:( My husband's main course of the Veal Scallopini was a complete shame! Great sauce but come on! 4 very thin slices of veal w/veggies & red potatoes, he was starving when we got home!:( At $24!!! Ridiculously stingy! My lamb shank & mashed potatoes was superb! No veggies though:( $19 We won't be returning, I was not impressed, I'd rather go to North Beach w/ real Italian dining:) they do have good food but they need to step it up a notch for the prices they charge, I hope they read they're review's so they can change things, Good luck",
+            "rating": 2,
+            "response": "",
+            "reviewDate": "Jan 26, 2015",
+            "reviewId": "2337522245554",
+            "reviewUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco?hrid=Xn9XOjZYNknHQu5eF9MteQ&nb=1",
+            "reviewer": {
+                "city": "San Francisco",
+                "nickName": "Adele R.",
+                "state": "CA"
+            },
+            "sourceType": "Yelp"
+        }
+    ],
+    "positiveReviews": [
+        {
+            "comments": "Service is awesome- everyone is from Italy and are so sweet and low the menu/specials from head to toe. Great wine selection that's pretty reasonable. The Bruschetta varieties are unique and yummy. Sometimes main dishes can be hit or miss-not very consistent but it's a new restaurant that I can see establish itself a few great dishes overtime.",
+            "rating": 4,
+            "response": "",
+            "reviewDate": "Jan 23, 2015",
+            "reviewId": "2334445645625",
+            "reviewUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco?hrid=YYtOE3hvBjp4jYtLgtgBoQ&nb=1",
+            "reviewer": {
+                "city": "San Francisco",
+                "nickName": "Anastasia P.",
+                "state": "CA",
+                "thumbnailUrl": "reviewer/df679dc200784c96901faaab21b75ffa.jpeg"
+            },
+            "sourceType": "Yelp"
+        },
+        {
+            "comments": "I've been here 3 times in the past year, & it's been good every time.",
+            "rating": 4,
+            "response": "",
+            "reviewDate": "Jan 23, 2015",
+            "reviewId": "2333514245697",
+            "reviewUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco?hrid=3kiZtC-tj-FGLO3GPRqNDA&nb=1",
+            "reviewer": {
+                "city": "Daly City",
+                "nickName": "Matt L.",
+                "state": "CA"
+            },
+            "sourceType": "Yelp"
+        },
+        {
+            "comments": "Owner is awesome! ! Came here tonight with my parents and sister's family. .highly recommended! ! I will definitely come back here again!",
+            "rating": 5,
+            "response": "",
+            "reviewDate": "Jan 21, 2015",
+            "reviewId": "2336865297689",
+            "reviewUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco?hrid=U8mRtt5vA93l0n7j2H1J_w&nb=1",
+            "reviewer": {
+                "city": "San Francisco",
+                "nickName": "Johnny C.",
+                "state": "CA",
+                "thumbnailUrl": "reviewer/af6058c347dc4d03bb824be95e121c08.jpeg"
+            },
+            "sourceType": "Yelp"
+        }
+    ],
+    "syndication": {
+        "presenceCount": 0,
+        "reviewDistribution": [
+            {
+                "count": 328,
+                "name": "Yelp"
+            },
+            {
+                "count": 8,
+                "name": "Google"
+            },
+            {
+                "count": 1,
+                "name": "Yellow Pages"
+            },
+            {
+                "count": 16,
+                "name": "Foursquare"
+            },
+            {
+                "count": 23,
+                "name": "Facebook"
+            }
+        ],
+        "reviewListings": [
+            {
+                "name": "revlocal",
+                "url": "http://demo.birdeye.com/maria-da-vittorio-943999808"
+            },
+            {
+                "name": "Yelp",
+                "url": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco"
+            },
+            {
+                "name": "Google",
+                "url": "https://plus.google.com/112610500708977805079/about?gl=US&hl=en-US"
+            },
+            {
+                "name": "Yahoo! Local",
+                "url": "https://local.yahoo.com/info-148859369-maria-da-vittorio-san-francisco"
+            },
+            {
+                "name": "Yellow Pages",
+                "url": "http://www.yellowpages.com/san-francisco-ca/mip/maria-da-vittorio-478366944"
+            },
+            {
+                "name": "Foursquare",
+                "url": "https://foursquare.com/v/maria-da-vittorio/5195394d498e344eeb952b4f"
+            },
+            {
+                "name": "Superpages",
+                "url": "http://www.superpages.com/bp/San-Francisco-CA/maria-Da-Vittorio-L2450131113.htm"
+            },
+            {
+                "name": "Merchant Circle",
+                "url": "http://www.merchantcircle.com/business/maria.Da.Vittorio.415-592-8398"
+            },
+            {
+                "name": "YellowBot",
+                "url": "http://www.yellowbot.com/maria-da-vittorio-san-francisco-ca.html"
+            },
+            {
+                "name": "MapQuest",
+                "url": "http://www.mapquest.com/us/california/italian-restaurants-san-francisco/maria-da-vittorio-284984723"
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/mariadavittorio"
+            }
+        ]
+    }
+}
+    
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Parameters 
+
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Body 
+    
+            {
+    "allTime": {
+        "avgRating": {
+            "percentChange": 0,
+            "rating": 4.3
+        },
+        "benchmark": {
+            "industryRating": 4.1,
+            "industryReviewCount": 75785,
+            "percentChange": 4,
+            "rating": 4.3
+        },
+        "custCommn": {},
+        "reviewCount": {
+            "count": 376,
+            "percentChange": 0
+        },
+        "sentiments": {
+            "negative": 45,
+            "neutral": 36,
+            "positive": 295
+        },
+        "visitors": {}
+    },
+    "last30Days": {
+        "avgRating": {
+            "rating": 0
+        },
+        "benchmark": {
+            "industryRating": 0,
+            "industryReviewCount": 0,
+            "percentChange": 0,
+            "rating": 0
+        },
+        "custCommn": {
+            "reviewRequest": 0,
+            "reviewRequestSms": 0,
+            "shareReview": 0
+        },
+        "reviewCount": {
+            "count": 0,
+            "percentChange": 0
+        },
+        "sentiments": {
+            "negative": 0,
+            "neutral": 0,
+            "positive": 0
+        },
+        "visitors": {}
+    },
+    "negativeReviews": [
+        {
+            "comments": "One word...inconsistent. We had high hopes for this place but alas it was not to be. While the servers were polite, they lacked the professionalism normally expected at most dining establishments...you know, simple things like the waiter introducing himself by name or dropping by to see how we liked the food or refilling our drinks. The minestrone soup was pretty good but the fried calamari was bland, rubbery, obviously over cooked, and did I mention bland. The linguini pescatora was also inconsistent. The pasta in the dish was excellent but the calamari was once again over cooked and rubbery, I got a couple of clams that were not cleaned resulting in a few mouthfuls of dirt, and the shrimp was once again over cooked. We also ordered the margherita pizza with mushrooms and that was pretty good. Overall, we cannot recommend this place.",
+            "rating": 1,
+            "response": "",
+            "reviewDate": "Jan 30, 2015",
+            "reviewId": "2335311245464",
+            "reviewUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco?hrid=60fLFX4lRvHnodkhoWC2lw&nb=1",
+            "reviewer": {
+                "city": "Yorba Linda",
+                "nickName": "wendy w.",
+                "state": "CA",
+                "thumbnailUrl": "reviewer/c8e2bfca1dd04bd089939d0c59337ba6.jpeg"
+            },
+            "sourceType": "Yelp"
+        },
+        {
+            "comments": "Veal Scaloppini, mushrooms, marsala wine, seasonal vegetables and potatoes $24.\nFlavor was great but disappointed in portion 2 small thin slice, I had better portion in North Beach...my shoe sole was large than this portion. I'm petite size woman; still left hungry....not a hungry man plate. Don't waste your money on this one, men.",
+            "rating": 2,
+            "response": "",
+            "reviewDate": "Jan 26, 2015",
+            "reviewId": "2335208845791",
+            "reviewUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco?hrid=FKcQE7naP_Wb4D2ylDsLaQ&nb=1",
+            "reviewer": {
+                "city": "San Francisco",
+                "nickName": "Catalina W.",
+                "state": "CA",
+                "thumbnailUrl": "reviewer/5882020b259c4e3e83613ce06f02fcea.jpeg"
+            },
+            "sourceType": "Yelp"
+        },
+        {
+            "comments": "I have to say that this restaurant is very nice but very Loud!:( The bread was old:( The prosciutto appetizer was ridiculous! They only used one slice on six slices of bread:( My husband's main course of the Veal Scallopini was a complete shame! Great sauce but come on! 4 very thin slices of veal w/veggies & red potatoes, he was starving when we got home!:( At $24!!! Ridiculously stingy! My lamb shank & mashed potatoes was superb! No veggies though:( $19 We won't be returning, I was not impressed, I'd rather go to North Beach w/ real Italian dining:) they do have good food but they need to step it up a notch for the prices they charge, I hope they read they're review's so they can change things, Good luck",
+            "rating": 2,
+            "response": "",
+            "reviewDate": "Jan 26, 2015",
+            "reviewId": "2337522245554",
+            "reviewUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco?hrid=Xn9XOjZYNknHQu5eF9MteQ&nb=1",
+            "reviewer": {
+                "city": "San Francisco",
+                "nickName": "Adele R.",
+                "state": "CA"
+            },
+            "sourceType": "Yelp"
+        }
+    ],
+    "positiveReviews": [
+        {
+            "comments": "Service is awesome- everyone is from Italy and are so sweet and low the menu/specials from head to toe. Great wine selection that's pretty reasonable. The Bruschetta varieties are unique and yummy. Sometimes main dishes can be hit or miss-not very consistent but it's a new restaurant that I can see establish itself a few great dishes overtime.",
+            "rating": 4,
+            "response": "",
+            "reviewDate": "Jan 23, 2015",
+            "reviewId": "2334445645625",
+            "reviewUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco?hrid=YYtOE3hvBjp4jYtLgtgBoQ&nb=1",
+            "reviewer": {
+                "city": "San Francisco",
+                "nickName": "Anastasia P.",
+                "state": "CA",
+                "thumbnailUrl": "reviewer/df679dc200784c96901faaab21b75ffa.jpeg"
+            },
+            "sourceType": "Yelp"
+        },
+        {
+            "comments": "I've been here 3 times in the past year, & it's been good every time.",
+            "rating": 4,
+            "response": "",
+            "reviewDate": "Jan 23, 2015",
+            "reviewId": "2333514245697",
+            "reviewUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco?hrid=3kiZtC-tj-FGLO3GPRqNDA&nb=1",
+            "reviewer": {
+                "city": "Daly City",
+                "nickName": "Matt L.",
+                "state": "CA"
+            },
+            "sourceType": "Yelp"
+        },
+        {
+            "comments": "Owner is awesome! ! Came here tonight with my parents and sister's family. .highly recommended! ! I will definitely come back here again!",
+            "rating": 5,
+            "response": "",
+            "reviewDate": "Jan 21, 2015",
+            "reviewId": "2336865297689",
+            "reviewUrl": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco?hrid=U8mRtt5vA93l0n7j2H1J_w&nb=1",
+            "reviewer": {
+                "city": "San Francisco",
+                "nickName": "Johnny C.",
+                "state": "CA",
+                "thumbnailUrl": "reviewer/af6058c347dc4d03bb824be95e121c08.jpeg"
+            },
+            "sourceType": "Yelp"
+        }
+    ],
+    "syndication": {
+        "presenceCount": 0,
+        "reviewDistribution": [
+            {
+                "count": 328,
+                "name": "Yelp"
+            },
+            {
+                "count": 8,
+                "name": "Google"
+            },
+            {
+                "count": 1,
+                "name": "Yellow Pages"
+            },
+            {
+                "count": 16,
+                "name": "Foursquare"
+            },
+            {
+                "count": 23,
+                "name": "Facebook"
+            }
+        ],
+        "reviewListings": [
+            {
+                "name": "revlocal",
+                "url": "http://demo.birdeye.com/maria-da-vittorio-943999808"
+            },
+            {
+                "name": "Yelp",
+                "url": "http://www.yelp.com/biz/maria-da-vittorio-san-francisco"
+            },
+            {
+                "name": "Google",
+                "url": "https://plus.google.com/112610500708977805079/about?gl=US&hl=en-US"
+            },
+            {
+                "name": "Yahoo! Local",
+                "url": "https://local.yahoo.com/info-148859369-maria-da-vittorio-san-francisco"
+            },
+            {
+                "name": "Yellow Pages",
+                "url": "http://www.yellowpages.com/san-francisco-ca/mip/maria-da-vittorio-478366944"
+            },
+            {
+                "name": "Foursquare",
+                "url": "https://foursquare.com/v/maria-da-vittorio/5195394d498e344eeb952b4f"
+            },
+            {
+                "name": "Superpages",
+                "url": "http://www.superpages.com/bp/San-Francisco-CA/maria-Da-Vittorio-L2450131113.htm"
+            },
+            {
+                "name": "Merchant Circle",
+                "url": "http://www.merchantcircle.com/business/maria.Da.Vittorio.415-592-8398"
+            },
+            {
+                "name": "YellowBot",
+                "url": "http://www.yellowbot.com/maria-da-vittorio-san-francisco-ca.html"
+            },
+            {
+                "name": "MapQuest",
+                "url": "http://www.mapquest.com/us/california/italian-restaurants-san-francisco/maria-da-vittorio-284984723"
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/mariadavittorio"
+            }
+        ]
+    }
+}
+            
++ Response 401 
+
+    [1161][]
+    
++ Response 401
+
+    [1167][]
+
+
 # Group User
 
 APIs related to user.
