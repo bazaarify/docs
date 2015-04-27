@@ -2548,7 +2548,7 @@ New review on BirdEye platform can be created using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST-d "{\"overallRating\" : \"5\", \"comments\" : \"Awesome experience\", \"reviewDate\" : \"2014-04-04T00:00:00\", \"response\" : \"Thanks for the review\", \"responseDate\" : \"2014-04-06T00:00:00\", \"source\": \"website\", \"reviewer\" : {\"nickName\" : \"Sachin G\",\"thumbnailUrl\" : \"http://birdeye.com/reviewer/default.jpd\", \"emailId\":\"saching@gmail.com\", \"location\" : {\"city\" : \"Atlanta\", \"state\" : \"GA\"}}}" "http://api.birdeye.com:8080/resources/v1/review/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST-d "{\"overallRating\" : \"5\", \"comments\" : \"Awesome experience\", \"reviewDate\" : \"2014-04-04T00:00:00\", \"response\" : \"Thanks for the review\", \"responseDate\" : \"2014-04-06T00:00:00\", \"source\": \"website\",\"aggregationSource\": \"yelp\", \"reviewer\" : {\"nickName\" : \"Sachin G\",\"thumbnailUrl\" : \"http://birdeye.com/reviewer/default.jpd\", \"emailId\":\"saching@gmail.com\", \"location\" : {\"city\" : \"Atlanta\", \"state\" : \"GA\"}}}" "http://api.birdeye.com:8080/resources/v1/review/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 #### Request 
 
@@ -2561,6 +2561,7 @@ New review on BirdEye platform can be created using:
       "response": "Thanks for the review",
       "responseDate": "2014-04-06T00:00:00",
       "source": "website",
+      "aggregationSource": "yelp",
       "reviewer": {
         "nickName": "Sachin G",
         "thumbnailUrl": "http://birdeye.com/reviewer/default.jpd",
@@ -2606,6 +2607,11 @@ New review on BirdEye platform can be created using:
             <td>source (optional)</td>
             <td>Source from where review was submitted. Allowed values are “website”,”tablet”. Default value is
                 “website”.
+            </td>
+        </tr>
+        <tr>
+            <td>aggregationSource (optional)</td>
+            <td>AggregationSource where review is originally posted. e.g. "yelp" or "google" 
             </td>
         </tr>
         <tr>
