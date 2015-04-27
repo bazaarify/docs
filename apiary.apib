@@ -44,7 +44,7 @@ User email id cannot be blank
             errorCode: 1151,
             errorMessage: "Business already associated with another reseller"
         }
-        
+
 ## 1045 [/1045]
 
 + Model (application/json)
@@ -78,7 +78,52 @@ User email id cannot be blank
 
         {
             errorCode: 1094,
-            errorMessage: "Postal code cannot be blank"
+            errorMessage: "Postal code cannot be blank."
+        }
+
+## 1030 [/1030]
+
++ Model (application/json)
+
+        {
+            errorCode: 1030,
+            errorMessage: "URL cannot be blank"
+        }
+        
+## 1031 [/1031]
+
++ Model (application/json)
+
+        {
+            errorCode: 1031,
+            errorMessage: "Source id cannot be blank"
+        }
+        
+## 1032 [/1032]
+
++ Model (application/json)
+
+        {
+            errorCode: 1032,
+            errorMessage: "Invalid source id"
+        }
+        
+## 1039 [/1039]
+
++ Model (application/json)
+
+        {
+            errorCode: 1039,
+            errorMessage: "Invalid business aggregation id"
+        }
+        
+## 1067 [/1067]
+
++ Model (application/json)
+
+        {
+            errorCode: 1067,
+            errorMessage: "URL is invalid"
         }
 
 ## 1075 [/1075]
@@ -2528,7 +2573,7 @@ Business review(s) from BirdEye platform can be fetched using:
 
     [1167][]
     
-+ Response [401]
++ Response 401
     
     [1161][]
 
@@ -3070,12 +3115,6 @@ Add new aggregation URL using:
             <td>Invalid API key</td>
         </tr>
         <tr>
-            <td>404 Not Found</td>
-            <td>1030</td>
-            <td>No business found with the given id</td>
-        </tr>
-        
-        <tr>
             <td>400 Bad Request</td>
             <td>1030</td>
             <td>URL cannot be blank</td>
@@ -3090,7 +3129,6 @@ Add new aggregation URL using:
             <td>1031</td>
             <td>Source id cannot be blank</td>
         </tr>
-        
         <tr>
             <td>400 Bad Request</td>
             <td>1032</td>
@@ -3173,11 +3211,6 @@ Delete aggregation URL using:
             <td>Invalid API key</td>
         </tr>
         <tr>
-            <td>404 Not Found</td>
-            <td>1030</td>
-            <td>No business found with the given id</td>
-        </tr>
-        <tr>
             <td>400 Bad Request</td>
             <td>1039</td>
             <td>Invalid business aggregation id</td>
@@ -3201,10 +3234,6 @@ Delete aggregation URL using:
 
     [1161][]
     
-+ Response 400 (application/json)
-
-    [1030][]
-
 + Response 400 (application/json)
 
     [1039][]
