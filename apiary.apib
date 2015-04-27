@@ -44,7 +44,7 @@ User email id cannot be blank
             errorCode: 1151,
             errorMessage: "Business already associated with another reseller"
         }
-        
+
 ## 1045 [/1045]
 
 + Model (application/json)
@@ -78,7 +78,52 @@ User email id cannot be blank
 
         {
             errorCode: 1094,
-            errorMessage: "Postal code cannot be blank"
+            errorMessage: "Postal code cannot be blank."
+        }
+
+## 1030 [/1030]
+
++ Model (application/json)
+
+        {
+            errorCode: 1030,
+            errorMessage: "URL cannot be blank"
+        }
+        
+## 1031 [/1031]
+
++ Model (application/json)
+
+        {
+            errorCode: 1031,
+            errorMessage: "Source id cannot be blank"
+        }
+        
+## 1032 [/1032]
+
++ Model (application/json)
+
+        {
+            errorCode: 1032,
+            errorMessage: "Invalid source id"
+        }
+        
+## 1039 [/1039]
+
++ Model (application/json)
+
+        {
+            errorCode: 1039,
+            errorMessage: "Invalid business aggregation id"
+        }
+        
+## 1067 [/1067]
+
++ Model (application/json)
+
+        {
+            errorCode: 1067,
+            errorMessage: "URL is invalid"
         }
 
 ## 1075 [/1075]
@@ -784,9 +829,9 @@ Business info from BirdEye platform can be fetched using:
       "services": "Beauty Salon, Hair Spa",
       "logoURL": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
       "coverImageURL": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
-      "image1URL": "http://s3-media4.ak.yelpcdn.com/bphoto/EyhdAImviVMTKyBt1RwJEQ/l.jpg",
-      "image2URL": "http://s3-media2.ak.yelpcdn.com/bphoto/La4hj6d8wltisn4xV9iTFA/l.jpg",
-      "image3URL": "http://s3-media2.ak.yelpcdn.com/bphoto/oEpSKfwxR9rFWJ6vZ02sLg/l.jpg",
+      "image1Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
+      "image2Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
+      "image3Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg",
       "timezone": "Pacific Standard Time",
       "languages": [
         "English",
@@ -858,8 +903,8 @@ Business info from BirdEye platform can be fetched using:
       "avgRating": 3.4,
       "category": "Hair Salons,Day Spas,Beauty Salon,Beauty Salons,Salons,Massage Therapists",
       "socialProfileURLs": {
-        "yelpUrl": "http://www.yelp.com/biz/dieci-lifestyle-spa-livingston",
-        "googleUrl": "https://plus.google.com/103245698313954543671/about?gl=US&hl=en-US",
+        "yelpUrl": "null",
+        "googleUrl": "null",
         "facebookUrl": null,
         "twitterUrl": null,
         "linkedinUrl": null
@@ -1032,9 +1077,9 @@ Business info from BirdEye platform can be fetched using:
               "services": "Beauty Salon, Hair Spa",
               "logoURL": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
               "coverImageURL": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
-              "image1URL": "http://s3-media4.ak.yelpcdn.com/bphoto/EyhdAImviVMTKyBt1RwJEQ/l.jpg",
-              "image2URL": "http://s3-media2.ak.yelpcdn.com/bphoto/La4hj6d8wltisn4xV9iTFA/l.jpg",
-              "image3URL": "http://s3-media2.ak.yelpcdn.com/bphoto/oEpSKfwxR9rFWJ6vZ02sLg/l.jpg",
+              "image1Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
+              "image2Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
+              "image3Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg",
               "timezone": "Pacific Standard Time",
               "languages": [
                 "English",
@@ -1106,8 +1151,8 @@ Business info from BirdEye platform can be fetched using:
               "avgRating": 3.4,
               "category": "Hair Salons,Day Spas,Beauty Salon,Beauty Salons,Salons,Massage Therapists",
               "socialProfileURLs": {
-                "yelpUrl": "http://www.yelp.com/biz/dieci-lifestyle-spa-livingston",
-                "googleUrl": "https://plus.google.com/103245698313954543671/about?gl=US&hl=en-US",
+                "yelpUrl": "null",
+                "googleUrl": "null",
                 "facebookUrl": null,
                 "twitterUrl": null,
                 "linkedinUrl": null
@@ -1147,9 +1192,9 @@ Business info on BirdEye platform can be updated using:
       "services": "Beauty Salon, Hair Spa",
       "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
       "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
-      "image1Url": "http://s3-media4.ak.yelpcdn.com/bphoto/EyhdAImviVMTKyBt1RwJEQ/l.jpg",
-      "image2Url": "http://s3-media2.ak.yelpcdn.com/bphoto/La4hj6d8wltisn4xV9iTFA/l.jpg",
-      "image3Url": "http://s3-media2.ak.yelpcdn.com/bphoto/oEpSKfwxR9rFWJ6vZ02sLg/l.jpg",
+      "image1Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
+      "image2Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
+      "image3Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg",
       "timezone": "Pacific Standard Time",
       "languages": [
         "English",
@@ -1221,8 +1266,8 @@ Business info on BirdEye platform can be updated using:
         "Hair Salons"
       ],
       "socialProfileURLs": {
-        "yelpUrl": "http://www.yelp.com/biz/dieci-lifestyle-spa-livingston",
-        "googleUrl": "https://plus.google.com/103245698313954543671/about?gl=US&hl=en-US",
+        "yelpUrl": "null",
+        "googleUrl": "null",
         "facebookUrl": null,
         "twitterUrl": null,
         "linkedinUrl": null
@@ -1444,9 +1489,9 @@ Business info on BirdEye platform can be updated using:
               "services": "Beauty Salon, Hair Spa",
               "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
               "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
-              "image1Url": "http://s3-media4.ak.yelpcdn.com/bphoto/EyhdAImviVMTKyBt1RwJEQ/l.jpg",
-              "image2Url": "http://s3-media2.ak.yelpcdn.com/bphoto/La4hj6d8wltisn4xV9iTFA/l.jpg",
-              "image3Url": "http://s3-media2.ak.yelpcdn.com/bphoto/oEpSKfwxR9rFWJ6vZ02sLg/l.jpg",
+              "image1Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
+              "image2Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
+              "image3Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg",
               "timezone": "Pacific Standard Time",
               "languages": [
                 "English",
@@ -1518,8 +1563,8 @@ Business info on BirdEye platform can be updated using:
                 "Hair Salons"
               ],
               "socialProfileURLs": {
-                "yelpUrl": "http://www.yelp.com/biz/dieci-lifestyle-spa-livingston",
-                "googleUrl": "https://plus.google.com/103245698313954543671/about?gl=US&hl=en-US",
+                "yelpUrl": "null",
+                "googleUrl": "null",
                 "facebookUrl": null,
                 "twitterUrl": null,
                 "linkedinUrl": null
@@ -1542,9 +1587,9 @@ Business info on BirdEye platform can be updated using:
               "services": "Beauty Salon, Hair Spa",
               "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
               "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
-              "image1Url": "http://s3-media4.ak.yelpcdn.com/bphoto/EyhdAImviVMTKyBt1RwJEQ/l.jpg",
-              "image2Url": "http://s3-media2.ak.yelpcdn.com/bphoto/La4hj6d8wltisn4xV9iTFA/l.jpg",
-              "image3Url": "http://s3-media2.ak.yelpcdn.com/bphoto/oEpSKfwxR9rFWJ6vZ02sLg/l.jpg",
+              "image1Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
+              "image2Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
+              "image3Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg",
               "timezone": "Pacific Standard Time",
               "languages": [
                 "English",
@@ -1616,8 +1661,8 @@ Business info on BirdEye platform can be updated using:
                 "Hair Salons"
               ],
               "socialProfileURLs": {
-                "yelpUrl": "http://www.yelp.com/biz/dieci-lifestyle-spa-livingston",
-                "googleUrl": "https://plus.google.com/103245698313954543671/about?gl=US&hl=en-US",
+                "yelpUrl": "null",
+                "googleUrl": "null",
                 "facebookUrl": null,
                 "twitterUrl": null,
                 "linkedinUrl": null
@@ -2787,7 +2832,7 @@ Business review(s) from BirdEye platform can be fetched using:
 
     [1167][]
     
-+ Response [401]
++ Response 401
     
     [1161][]
 
@@ -2807,7 +2852,7 @@ New review on BirdEye platform can be created using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST-d "{\"overallRating\" : \"5\", \"comments\" : \"Awesome experience\", \"reviewDate\" : \"2014-04-04T00:00:00\", \"response\" : \"Thanks for the review\", \"responseDate\" : \"2014-04-06T00:00:00\", \"source\": \"website\", \"reviewer\" : {\"nickName\" : \"Sachin G\",\"thumbnailUrl\" : \"http://birdeye.com/reviewer/default.jpd\", \"emailId\":\"saching@gmail.com\", \"location\" : {\"city\" : \"Atlanta\", \"state\" : \"GA\"}}}" "http://api.birdeye.com:8080/resources/v1/review/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST-d "{\"overallRating\" : \"5\", \"comments\" : \"Awesome experience\", \"reviewDate\" : \"2014-04-04T00:00:00\", \"response\" : \"Thanks for the review\", \"responseDate\" : \"2014-04-06T00:00:00\", \"source\": \"website\",\"aggregationSource\": \"yelp\", \"reviewer\" : {\"nickName\" : \"Sachin G\",\"thumbnailUrl\" : \"http://birdeye.com/reviewer/default.jpd\", \"emailId\":\"saching@gmail.com\", \"location\" : {\"city\" : \"Atlanta\", \"state\" : \"GA\"}}}" "http://api.birdeye.com:8080/resources/v1/review/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 #### Request 
 
@@ -2820,6 +2865,7 @@ New review on BirdEye platform can be created using:
       "response": "Thanks for the review",
       "responseDate": "2014-04-06T00:00:00",
       "source": "website",
+      "aggregationSource": "yelp",
       "reviewer": {
         "nickName": "Sachin G",
         "thumbnailUrl": "http://birdeye.com/reviewer/default.jpd",
@@ -2865,6 +2911,11 @@ New review on BirdEye platform can be created using:
             <td>source (optional)</td>
             <td>Source from where review was submitted. Allowed values are “website”,”tablet”. Default value is
                 “website”.
+            </td>
+        </tr>
+        <tr>
+            <td>aggregationSource (optional)</td>
+            <td>AggregationSource where review is originally posted. e.g. "yelp" or "google" 
             </td>
         </tr>
         <tr>
@@ -3148,82 +3199,7 @@ Customer checkin can be done using:
 + Response 401
 
     [1175][]
-    
-# Group Category
-APIs related to categories.
-
-## All categories [/category/all]
-
-### Get all categories [GET]
-
-<center><b>Example curl request</b></center>
-
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/category/all" –v
-
-
-#### Response
-
-<center><b>Example Response</b></center>
-
-    [
-        "Accessories",
-        "Accountants",
-        "Active Life",
-        "Acupuncture",
-        "Adult",
-        "Adult Education",
-        "Adult Entertainment",
-        "Advertising",
-        "Afghan",
-        "African",
-        "Airlines",
-        "Airport Shuttles",
-        "Airports",
-        "Allergists",
-        "Amateur Sports Teams",
-        "American (New)",
-        "American (Traditional)",
-        "Amusement Parks",
-        "Anesthesiologists",
-        "Animal Shelters",
-        "Antiques",
-        "Apartments"
-    ]
-    
-+ Request (application/json)
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            [
-                "Accessories",
-                "Accountants",
-                "Active Life",
-                "Acupuncture",
-                "Adult",
-                "Adult Education",
-                "Adult Entertainment",
-                "Advertising",
-                "Afghan",
-                "African",
-                "Airlines",
-                "Airport Shuttles",
-                "Airports",
-                "Allergists",
-                "Amateur Sports Teams",
-                "American (New)",
-                "American (Traditional)",
-                "Amusement Parks",
-                "Anesthesiologists",
-                "Animal Shelters",
-                "Antiques",
-                "Apartments"
-                ]
-
-    
-
-    
+        
 # Group Aggregation
 APIs related to aggregation URL
 
@@ -3398,12 +3374,6 @@ Add new aggregation URL using:
             <td>Invalid API key</td>
         </tr>
         <tr>
-            <td>404 Not Found</td>
-            <td>1030</td>
-            <td>No business found with the given id</td>
-        </tr>
-        
-        <tr>
             <td>400 Bad Request</td>
             <td>1030</td>
             <td>URL cannot be blank</td>
@@ -3418,7 +3388,6 @@ Add new aggregation URL using:
             <td>1031</td>
             <td>Source id cannot be blank</td>
         </tr>
-        
         <tr>
             <td>400 Bad Request</td>
             <td>1032</td>
@@ -3501,11 +3470,6 @@ Delete aggregation URL using:
             <td>Invalid API key</td>
         </tr>
         <tr>
-            <td>404 Not Found</td>
-            <td>1030</td>
-            <td>No business found with the given id</td>
-        </tr>
-        <tr>
             <td>400 Bad Request</td>
             <td>1039</td>
             <td>Invalid business aggregation id</td>
@@ -3531,10 +3495,79 @@ Delete aggregation URL using:
     
 + Response 400 (application/json)
 
-    [1030][]
+    [1039][]
 
-+ Response 400 (application/json)
+# Group Category
+APIs related to categories.
 
+## All categories [/category/all]
+
+### Get all categories [GET]
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/category/all" –v
+
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+    [
+        "Accessories",
+        "Accountants",
+        "Active Life",
+        "Acupuncture",
+        "Adult",
+        "Adult Education",
+        "Adult Entertainment",
+        "Advertising",
+        "Afghan",
+        "African",
+        "Airlines",
+        "Airport Shuttles",
+        "Airports",
+        "Allergists",
+        "Amateur Sports Teams",
+        "American (New)",
+        "American (Traditional)",
+        "Amusement Parks",
+        "Anesthesiologists",
+        "Animal Shelters",
+        "Antiques",
+        "Apartments"
+    ]
+    
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Body
+    
+            [
+                "Accessories",
+                "Accountants",
+                "Active Life",
+                "Acupuncture",
+                "Adult",
+                "Adult Education",
+                "Adult Entertainment",
+                "Advertising",
+                "Afghan",
+                "African",
+                "Airlines",
+                "Airport Shuttles",
+                "Airports",
+                "Allergists",
+                "Amateur Sports Teams",
+                "American (New)",
+                "American (Traditional)",
+                "Amusement Parks",
+                "Anesthesiologists",
+                "Animal Shelters",
+                "Antiques",
+                "Apartments"
+                ]
     [1039][]
 
 # Group Report
