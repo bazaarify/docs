@@ -491,6 +491,24 @@ User email id cannot be blank
             errorCode: 1170,
             errorMessage: "SMS Alert flag is invalid. Valid values are 0 or 1."
         }
+
+## 1242 [/1242]
+
++ Model (application/json)
+
+        {
+            errorCode: 1242,
+            errorMessage: "Invalid rating value. Allowed value between 0-5."
+        }
+
+## 1243 [/1243]
+
++ Model (application/json)
+
+        {
+            errorCode: 1243,
+            errorMessage: "Invalid rating value. Allowed value between 1-5."
+        }
         
               
         
@@ -2986,6 +3004,16 @@ New review on BirdEye platform can be created using:
             <td>1167</td>
             <td>API key is missing</td>
         </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1242</td>
+            <td>Invalid rating value. Allowed value between 0-5.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1243</td>
+            <td>Invalid rating value. Allowed value between 1-5.</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -3013,7 +3041,15 @@ New review on BirdEye platform can be created using:
 + Response 404
 
     [1011][]
-    
+
++ Response 400
+
+    [1242][]
+
++ Response 400
+
+    [1243][]
+
 # Group Customer
 
 APIs related to customers
