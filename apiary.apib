@@ -492,6 +492,15 @@ User email id cannot be blank
             errorMessage: "SMS Alert flag is invalid. Valid values are 0 or 1."
         }
         
+## 1244 [/1244]
+
++ Model (application/json)
+
+        {
+            errorCode: 1244,
+            errorMessage: "Maximum 5 keywords can be selected for filter."
+        }
+        
               
         
         
@@ -2840,6 +2849,245 @@ Business review(s) from BirdEye platform can be fetched using:
 
     [1011][]
 
+## Review [/review/businessId/{businessId}{?sindex,count,api_key}]
+
++ Parameters 
+
+    + business_id (string, required) ... the business ID
+    + sindex (integer, required) ... the starting index of the reviews
+    + count (integer, required) ... the number of reviews to query
+    + api_key (string, required) ... the API key
+    
+### Get Reviews [POST]
+
+Business review(s) from BirdEye platform can be fetched using following filter in request payload:
+
+#### Request
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromdate\":\"04/01/2013\", \"updateTodate\":\"05/3/2015\", \"sources\":[\"google\",\"yelp\"], \"ratings\":[1,2,3,4,5,0], \"keywords\":[\"water\"] } 
+    "http://api.birdeye.com:8080/resources/v1/review/businessId/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+<center><b>Example Payload</b></center>
+
+    { 
+      "fromDate":"04/01/2013",
+      "toDate":"05/3/2015",
+      "updateFromdate":"04/01/2013",
+      "updateTodate":"05/3/2015",
+      "sources":["google","yelp"],
+      "ratings":[1,2,3,4,5,0],
+      "keywords":["water"]
+    }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>fromDate</th>
+            <th>Review date (start) e.g. "04/01/2013"</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>toDate</td>
+            <td>Review date (end) e.g. "04/01/2013"</td>
+        </tr>
+        <tr>
+            <td>updateFromdate</td>
+            <td>Review response date (start) e.g. "04/01/2013"</td>
+        </tr>
+        <tr>
+            <td>updateTodate</td>
+            <td>Review response date (end) e.g. "04/01/2013" </td>
+        </tr>
+        <tr>
+            <td>sources</td>
+            <td>Aggregation source name e.g. "google","citysearch" etc </td>
+        </tr>
+        <tr>
+            <td>ratings</td>
+            <td>Review rating e.g. "1","2"</td>
+        </tr>
+        <tr>
+            <td>keywords</td>
+            <td>Keywords in review e.g. "water", "service" etc </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center> 
+
+    [
+    {
+        "reviewId": "3947127516862",
+        "rating": 4,
+        "comments": "Our water polo team stayed there for 4 nights while in for a tournament. It fit our needs perfectly. The rooms were squeaky clean and comfortable. The housekeeping staff was super efficient and k...",
+        "title": null,
+        "reviewer": {
+            "firstName": null,
+            "lastName": null,
+            "nickName": "Jen C.",
+            "thumbnailUrl": "http://d3cnqzq0ivprch.cloudfront.net/demo/css/images/default-profile.png",
+            "emailId": null,
+            "facebookId": null,
+            "city": "Ann Arbor",
+            "state": "MI"
+        },
+        "reviewUrl": "http://www.yelp.com/not_recommended_reviews/Knzq0i-RsFqWRaNKNWOQbw",
+        "sourceType": "citysearch",
+        "reviewDate": "Aug 01, 2014",
+        "response": null,
+        "responseDate": null
+    },
+    {
+        "reviewId": "3947077656849",
+        "rating": 4,
+        "comments": "Was scared when I saw that is was more if a motel the hotel, but for one night we would give it a try. The rooms were clean and the desk help was also good. It was a little noise but I fell aslee...",
+        "title": null,
+        "reviewer": {
+            "firstName": null,
+            "lastName": null,
+            "nickName": "Stella S.",
+            "thumbnailUrl": "http://d2xt3xymj142xp.cloudfront.net/reviewer/4b7339a2c966485ab58ceaf7ae49e91e.jpeg",
+            "emailId": null,
+            "facebookId": null,
+            "city": "Diamond Bar",
+            "state": "CA"
+        },
+        "reviewUrl": "http://www.yelp.com/biz/holiday-inn-express-san-jose-central-city-san-jose?hrid=mJpfRj7QaZzxaaLFRfR48w&nb=1",
+        "sourceType": "citysearch",
+        "reviewDate": "Jul 31, 2014",
+        "response": null,
+        "responseDate": null
+    }
+    ]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1163</td>
+            <td>Invalid start index value</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1164</td>
+            <td>Invalid result count value</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1186</td>
+            <td>Invalid from date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1187</td>
+            <td>Invalid to date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1227</td>
+            <td>Invalid updated from date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1228</td>
+            <td>Invalid updated to date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1244</td>
+            <td>Maximum 5 keywords can be selected for filter.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
++ Response 200 
+
+    + Body
+    
+            [
+                {
+                    "reviewId": "73748574902",
+                    "rating": 5,
+                    "comments": "I am a long time customer and love Dieici. I am there at least once a week. I have never been disappointed with any service. I love all the girls. The customer service is beyond a 10. I also love the new addition Wish to the salon! Wish is a woman's clothing boutique. What could be better...beauty and fashion all in one spot!!! Dieci keeps getting better and better!",
+                    "title": null,
+                    "reviewer": {
+                      "firstName": "Jennifer",
+                      "lastName": "Bennett",
+                      "nickName": null,
+                      "thumbnailUrl": "http://d2xt3xymj142xp.cloudfront.net/reviewer/9a070cf98f014f5d9b06987dcc9c48fe.jpeg",
+                      "emailId": "jbennett@gmail.com",
+                      "facebookId": "638309687",
+                      "city": "Cedar Knolls",
+                      "state": " NJ"
+                    },
+                    "reviewURL": "http://www.citysearch.com/biz/dieci-lifestyle-spa-livingston",
+                    "sourceType": "citysearch",
+                    "reviewDate": "Jan 20, 2014",
+                    "response": "Thanks",
+                    "responseDate": "Feb 18, 2014"
+                }
+            ]
+
++ Response 400 
+
+    [1163][]
+    
++ Response 400
+
+    [1164][]
+    
++ Response 401 
+
+    [1167][]
+    
++ Response 401
+    
+    [1161][]
+
++ Response 404
+
+    [1011][]
+
++ Response 400
+
+    [1244][]
+
+    
 ## Submit Review [/review/business/{business_id}{?api_key}]
 
 + Parameters
