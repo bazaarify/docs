@@ -519,6 +519,14 @@ User email id cannot be blank
             errorMessage: "Maximum 5 keywords can be selected for filter."
         }
         
+## 1246 [/1246]
+
++ Model (application/json)
+
+        {
+            errorCode: 1246,
+            errorMessage: "Customer email or phone number is required."
+        }
               
         
         
@@ -3329,7 +3337,6 @@ Customer checkin can be done using:
     }
 
 <div class="paramsTableWrap">
-
     <table class="paramsTable">
         <caption>Request Payload</caption>
         <thead>
@@ -3345,7 +3352,7 @@ Customer checkin can be done using:
         </tr>
         <tr>
             <td>emailId</td>
-            <td>Email ID of the customer.</td>
+            <td>Email ID of the customer (optional if business has enabled SMS)</td>
         </tr>
         <tr>
             <td>phone</td>
@@ -3423,6 +3430,11 @@ Customer checkin can be done using:
             <td>400 Bad Request</td>
             <td>1170</td>
             <td>SMS Alert flag is invalid. Valid values are 0 or 1.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1246</td>
+            <td>Customer email or phone number is required.</td>
         </tr>
         </tbody>
     </table>
