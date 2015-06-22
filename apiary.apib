@@ -2892,7 +2892,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromdate\":\"04/01/2013\", \"updateTodate\":\"05/3/2015\", \"sources\":[\"google\",\"yelp\"], \"ratings\":[1,2,3,4,5,0], \"keywords\":[\"water\"] } 
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"yelp\"], \"ratings\":[1,2,3,4,5,0], \"keywords\":[\"water\"] } 
     "http://api.birdeye.com:8080/resources/v1/review/businessId/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
@@ -2900,8 +2900,8 @@ Business review(s) from BirdEye platform can be fetched using following filter i
     { 
       "fromDate":"04/01/2013",
       "toDate":"05/3/2015",
-      "updateFromdate":"04/01/2013",
-      "updateTodate":"05/3/2015",
+      "updateFromDate":"04/01/2013",
+      "updateToDate":"05/3/2015",
       "sources":["google","yelp"],
       "ratings":[1,2,3,4,5,0],
       "keywords":["water"]
@@ -2922,11 +2922,11 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             <td>Review date (end) e.g. "04/01/2013"</td>
         </tr>
         <tr>
-            <td>updateFromdate</td>
+            <td>updateFromDate</td>
             <td>Review response date (start) e.g. "04/01/2013"</td>
         </tr>
         <tr>
-            <td>updateTodate</td>
+            <td>updateToDate</td>
             <td>Review response date (end) e.g. "04/01/2013" </td>
         </tr>
         <tr>
