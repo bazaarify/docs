@@ -298,6 +298,24 @@ User email id cannot be blank
             errorMessage: "Business keywords cannot be more than 1000 characters."
         }
         
+## 1089 [/1089]
+
++ Model (application/json)
+
+        {
+            errorCode: 1089,
+            errorMessage: "Customer id is invalid."
+        }
+        
+## 1091 [/1091]
+
++ Model (application/json)
+
+        {
+            errorCode: 1091,
+            errorMessage: "User id not authorized to view this customer."
+        }
+        
 ## 1190 [/1190]
 
 + Model (application/json)
@@ -3507,6 +3525,118 @@ Customer checkin can be done using:
 + Response 401
 
     [1175][]
+    
+    
+## Customer activity history [/customer/history/{customerId}{?businessId,api_key}]
+
+Customer activity history can be fetch using:
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
+### Activity history [GET]
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/customer/history/658753231?businessId=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+
+#### Response
+
+    [
+        {
+            "type": "Share review email",
+            "activityDate": "Jun 25, 2015 08:44 PM",
+            "action": "Sent",
+            "activityTimestamp": 1435290249000
+        },
+        {
+            "type": "Review request email",
+            "activityDate": "Jun 25, 2015 08:43 PM",
+            "action": "Sent",
+            "activityTimestamp": 1435290234000
+        },
+        {
+            "type": "Review request email",
+            "activityDate": "Jun 25, 2015 08:43 PM",
+            "action": "5-star review written on BirdEye",
+            "activityTimestamp": 1435290234000
+        },
+        {
+            "type": "Created",
+            "activityDate": "Jun 25, 2015 08:43 PM",
+            "action": "No Action",
+            "activityTimestamp": 1435290234000
+        }
+    ]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1089</td>
+            <td>Customer id is invalid.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1091</td>
+            <td>User id not authorized to view this customer.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
++ Response 200 (application/json)
+
++ Response 404
+
+    [1011][]
+    
++ Response 401
+
+    [1161][]
+    
++ Response 401
+
+    [1167][]
+    
+
++ Response 400
+
+    [1089][]
+    
+
++ Response 400
+
+    [1091][]
+    
+
         
 # Group Aggregation
 APIs related to aggregation URL
