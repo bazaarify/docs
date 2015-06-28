@@ -527,8 +527,15 @@ User email id cannot be blank
             errorCode: 1246,
             errorMessage: "Customer email or phone number is required."
         }
-              
         
+## 1215 [/1215]
+
++ Model (application/json)
+
+        {
+            errorCode: 1215,
+            errorMessage: "Invalid report month."
+        }
         
         
 # Group Business
@@ -4109,3 +4116,189 @@ Dashboard data can be retrieved using:
             ]
         }
     }
+
+## Review conversion report [/reports/business/analytics/email{?api_key,businessId,fromDate,toDate,days,months}]
+Review conversion report data can be retrieved using:
+
+### Get Data [GET]
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/reports/business/analytics/email?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808&fromDate=02/01/2015&toDate=06/01/2015" –v
+    
++ Parameters
+    + api_key (required, string) ... API key assigned to business.
+    + businessId (required, string) ... BusinessId assigned to business.
+    + fromDate (optional, string) ... Date from result is expected. Format MM/DD/YYYY.
+    + toDate (optional, string) ... Date up to result is expected. Format MM/DD/YYYY.
+    + days (optional, integer) ... Use to get results for last some days.
+    + months (optional, integer) ... Use to get results for last some months.
+    
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+    {
+        "emailSentInfo": {
+            "total": 28,
+            "emailDetails": [
+                {
+                    "reqType": "share_request",
+                    "count": 5
+                },
+                {
+                    "reqType": "share_request_reminder",
+                    "count": 3
+                },
+                {
+                    "reqType": "review_request",
+                    "count": 12
+                },
+                {
+                    "reqType": "review_request_reminder",
+                    "count": 10
+                }
+            ]
+        },
+        "emailOpenInfo": {
+            "total": 26,
+            "pc": 14,
+            "mobile": {
+                "ios": 5,
+                "android": 4,
+                "other": 0
+            },
+            "tablet": {
+                "ios": 3,
+                "android": 0,
+                "other": 0
+            }
+        },
+        "emailClickInfo": {
+            "total": 20,
+            "pc": {
+                "yelp": 4,
+                "google": 6,
+                "birdeye": 4,
+                "otherSites": 0
+            },
+            "mobile": {
+                "yelp": 2,
+                "google": 0,
+                "birdeye": 4,
+                "otherSites": 0
+            }
+        },
+        "reviews": [
+            {
+                "sourceName": "Yelp",
+                "sourceAlias": "yelp",
+                "avgRating": 4.6,
+                "reviewCount": 159
+            },
+            {
+                "sourceName": "Google",
+                "sourceAlias": "google",
+                "avgRating": 4.9,
+                "reviewCount": 8
+            },
+            {
+                "sourceName": "Yellow Pages",
+                "sourceAlias": "yellow_pages",
+                "avgRating": 5,
+                "reviewCount": 1
+            },
+            {
+                "sourceName": "Trip Advisor",
+                "sourceAlias": "trip_advisor",
+                "avgRating": 4.5,
+                "reviewCount": 191
+            },
+            {
+                "sourceName": "Foursquare",
+                "sourceAlias": "foursquare",
+                "avgRating": 0,
+                "reviewCount": 8
+            },
+            {
+                "sourceName": "Facebook",
+                "sourceAlias": "facebook",
+                "avgRating": 5,
+                "reviewCount": 20
+            }
+        ],
+        "smsDetail": {
+            "msgSent": 34,
+            "msgClick": 28,
+            "destination": {
+                "yelp": 12,
+                "google": 6,
+                "birdeye": 10,
+                "otherSites": 0
+            }
+        }
+    }
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1186</td>
+            <td>Invalid from date. Allowed format is "MM/dd/yyyy".</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1187</td>
+            <td>Invalid to date. Allowed format is "MM/dd/yyyy".</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1215</td>
+            <td>Invalid report month.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Response 200 (application/json)
+
+
++ Response 404 (application/json)
+
+    [1011][]
+    
++ Response 401 (application/json)
+
+    [1167][]
+    
++ Response 401 (application/json)
+
+    [1161][]
+    
++ Response 400 (application/json)
+
+    [1039][]
