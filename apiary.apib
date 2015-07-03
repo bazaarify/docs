@@ -18,7 +18,6 @@ All API URLs referenced in this documentation start with the following base part
 
 
 ## 1052 [/1052]
-User email id cannot be blank
 
 + Model (application/json)
 
@@ -553,6 +552,42 @@ User email id cannot be blank
         {
             errorCode: 1215,
             errorMessage: "Invalid report month."
+        }
+        
+## 1251 [/1251]
+
++ Model (application/json)
+
+        {
+            errorCode: 1251,
+            errorMessage: "No review to mark featured/un-featured."
+        }
+        
+## 1042 [/1042]
+
++ Model (application/json)
+
+        {
+            errorCode: 1042,
+            errorMessage: "Invalid review id"
+        }
+        
+## 1252 [/1252]
+
++ Model (application/json)
+
+        {
+            errorCode: 1252,
+            errorMessage: "Review does not belong to the business."
+        }
+        
+## 1248 [/1248]
+
++ Model (application/json)
+
+        {
+            errorCode: 1248,
+            errorMessage: "Allowed limit for featured reviews exceeded."
         }
         
         
@@ -2741,7 +2776,8 @@ Business review(s) from BirdEye platform can be fetched using:
             "sourceType": "citysearch",
             "reviewDate": "Jan 20, 2014",
             "response": "Thanks",
-            "responseDate": "Feb 18, 2014"
+            "responseDate": "Feb 18, 2014",
+            "featured": 0
         }
     ]
 
@@ -2790,6 +2826,10 @@ Business review(s) from BirdEye platform can be fetched using:
         <tr>
             <td>responseDate</td>
             <td>Response date</td>
+        </tr>
+        <tr>
+            <td>featured (x) </td>
+            <td> x = 0 if review not featured, x > 0 stands for review order if featured review.</td>
         </tr>
         </tbody>
     </table>
@@ -2881,7 +2921,8 @@ Business review(s) from BirdEye platform can be fetched using:
                     "sourceType": "citysearch",
                     "reviewDate": "Jan 20, 2014",
                     "response": "Thanks",
-                    "responseDate": "Feb 18, 2014"
+                    "responseDate": "Feb 18, 2014",
+                    "featured": 0
                 }
             ]
 
@@ -2999,7 +3040,8 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         "sourceType": "citysearch",
         "reviewDate": "Aug 01, 2014",
         "response": null,
-        "responseDate": null
+        "responseDate": null,
+        "featured": 1
     },
     {
         "reviewId": "3947077656849",
@@ -3020,7 +3062,8 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         "sourceType": "citysearch",
         "reviewDate": "Jul 31, 2014",
         "response": null,
-        "responseDate": null
+        "responseDate": null,
+        "featured": 0
     }
     ]
 
@@ -3115,7 +3158,8 @@ Business review(s) from BirdEye platform can be fetched using following filter i
                     "sourceType": "citysearch",
                     "reviewDate": "Jan 20, 2014",
                     "response": "Thanks",
-                    "responseDate": "Feb 18, 2014"
+                    "responseDate": "Feb 18, 2014",
+                    "featured": 0
                 }
             ]
 
@@ -3335,6 +3379,145 @@ New review on BirdEye platform can be created using:
 + Response 400
 
     [1243][]
+    
+    
+## Featured Review [/review/featured?{?api_key,businessId}]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
+### Update featured review and its order [POST]
+Featured review and its order can be updated using:
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{"reviewOrders":[{"reviewId":2762525,"order":1}]}" "http://api.birdeye.com:8080/resources/v1/review/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+#### Request 
+
+<center><b>Example Payload</b></center>
+
+    {
+        "reviewOrders":[
+            {
+                "reviewId":3970754409227,
+                "order":1
+            }
+        ]
+    }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>reviewOrders</td>
+            <td>An array</td>
+        </tr>
+        <tr>
+            <td>reviewId</td>
+            <td>Review Id</td>
+        </tr>
+        <tr>
+            <td>order</td>
+            <td>0 to mark review un-featured</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1251</td>
+            <td>No review to mark featured/un-featured.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1042</td>
+            <td>Invalid review id</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1252</td>
+            <td>Review does not belong to the business.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1248</td>
+            <td>Allowed limit for featured reviews exceeded.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
++ Response 200
+
++ Response 404
+
+    [1011][]
+
++ Response 401 
+
+    [1161][]
+    
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [1251][]
+
++ Response 400
+
+    [1252][]
+    
++ Response 400
+
+    [1248][]
+
++ Response 400
+
+    [1042][]
+
 
 # Group Customer
 
@@ -4369,7 +4552,7 @@ Review conversion report data can be retrieved using:
             }
         }
     }
-	
+    
 <div class="paramsTableWrap">
     <table class="paramsTable">
         <caption>Error Codes</caption>
