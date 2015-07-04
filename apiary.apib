@@ -3355,6 +3355,11 @@ Customer checkin can be done using:
 
     curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@xxxx.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1}" "http://api.birdeye.com:8080/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
+> __Notes__
+
+> - _If business has not enabled for sms, then email will be required field._
+> - _If business has enabled for sms, then either email or phone will be required._
+
 #### Request
 
 <center><b>Example Payload</b></center>
@@ -3373,26 +3378,29 @@ Customer checkin can be done using:
         <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>Details</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td>name</td>
             <td>Name of the customer</td>
+            <td>string, optional</td>
         </tr>
         <tr>
             <td>emailId</td>
             <td>Email ID of the customer (optional if business has enabled SMS)</td>
+            <td>string, optional</td>
         </tr>
         <tr>
             <td>phone</td>
             <td>Mobile number of the customer (optional)</td>
+            <td>string, optional</td>
         </tr>
         <tr>
             <td>smsEnabled</td>
-            <td>Whether customer has opted to receive SMS request or not. Valid values are 0(false), 1(true). Default is
-                1.
-            </td>
+            <td>Whether customer has opted to receive SMS request or not. Valid values are 0(false), 1(true). Default is 1.</td>
+            <td>integer, optional</td>
         </tr>
         </tbody>
     </table>
@@ -4369,7 +4377,7 @@ Review conversion report data can be retrieved using:
             }
         }
     }
-	
+    
 <div class="paramsTableWrap">
     <table class="paramsTable">
         <caption>Error Codes</caption>
