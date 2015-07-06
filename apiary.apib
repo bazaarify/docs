@@ -3407,6 +3407,19 @@ Customer checkin can be done using:
 </div>
 
 #### Response
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+            <th>Field</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <td>customerId</td>
+            <td>Customer ID</td>
+        </tbody>
+    </table>
+</div>
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
@@ -3490,6 +3503,12 @@ Customer checkin can be done using:
             }
             
 + Response 200 (application/json)
+
+    + Body 
+        
+            {
+                "customerId":”673356544”
+            }
 
 + Response 400
 
@@ -4377,7 +4396,7 @@ Review conversion report data can be retrieved using:
             }
         }
     }
-    
+
 <div class="paramsTableWrap">
     <table class="paramsTable">
         <caption>Error Codes</caption>
