@@ -3411,7 +3411,7 @@ Featured review and its order can be updated using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{"reviewOrders":[{"reviewId":2762525,"order":1}]}" "http://api.birdeye.com:8080/resources/v1/review/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{"reviewOrders":[{"reviewId":2762525,"order":0}]}" "http://api.birdeye.com:8080/resources/v1/review/featured?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=755009344" -v
 
 #### Request 
 
@@ -3421,7 +3421,7 @@ Featured review and its order can be updated using:
         "reviewOrders":[
             {
                 "reviewId":3970754409227,
-                "order":1
+                "order":0
             }
         ]
     }
@@ -3446,7 +3446,7 @@ Featured review and its order can be updated using:
         </tr>
         <tr>
             <td>order</td>
-            <td>0 to mark review un-featured</td>
+            <td>0 to mark review un-featured, optional otherwise</td>
         </tr>
         </tbody>
     </table>
