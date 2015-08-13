@@ -3537,6 +3537,95 @@ Featured review and its order can be updated using:
     [1042][]
 
 
+## Review Summary [/businessid/{businessId}/summary?{?api_key}]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
+### Get reviews summary [GET]
+Featured review and its order can be updated using:
+
+#### Request
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/review/businessid/755009344/summary?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+
+#### Response
++ Response 200 
+
+    + Body
+    
+        [
+          {
+            "sourceName": "BirdEye",
+            "sourceAlias": "birdeye",
+            "avgRating": 4.6,
+            "reviewCount": 15
+          },
+          {
+            "sourceName": "Citysearch",
+            "sourceAlias": "citysearch",
+            "avgRating": 5,
+            "reviewCount": 3
+          },
+          {
+            "sourceName": "GooglePlay",
+            "sourceAlias": "googleplay",
+            "avgRating": 4.5,
+            "reviewCount": 742
+          }
+        ]
+
+
++ Response 404
+
+    [1011][]
+
++ Response 401 
+
+    [1161][]
+    
++ Response 401
+
+    [1167][]
+
+
+    
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
 # Group Customer
 
 APIs related to customers
