@@ -3545,7 +3545,7 @@ Featured review and its order can be updated using:
     + api_key (string, required) ... the API key
 
 ### Get reviews summary [GET]
-Review source list along with review count and average rating can be fetched using:
+Returns list of review source along with review count and average rating, also returns review count grouped by review rating:
 
 #### Request
 <center><b>Example curl request</b></center>
@@ -3554,32 +3554,109 @@ Review source list along with review count and average rating can be fetched usi
 
 
 #### Response
+<center><b>Example Response Body</b></center>
+
+        {
+          "sources": [
+            {
+              "sourceName": "BirdEye",
+              "sourceAlias": "birdeye",
+              "avgRating": 4.6,
+              "reviewCount": 15
+            },
+            {
+              "sourceName": "Citysearch",
+              "sourceAlias": "citysearch",
+              "avgRating": 5,
+              "reviewCount": 3
+            },
+            {
+              "sourceName": "GooglePlay",
+              "sourceAlias": "googleplay",
+              "avgRating": 4.5,
+              "reviewCount": 742
+            }
+          ]
+          "ratings": [
+            {
+              "rating": 0,
+              "reviewCount": 0,
+            }
+            {
+              "rating": 1,
+              "reviewCount": 4,
+            }
+            {
+              "rating": 2,
+              "reviewCount": 34,
+            }
+            {
+              "rating": 3,
+              "reviewCount": 46,
+            }
+            {
+              "rating": 4,
+              "reviewCount": 103,
+            }
+            {
+              "rating": 5,
+              "reviewCount": 92,
+            }
+          ]
+        }
+
 + Response 200 
 
     + Body
     
-        [
-          {
-            "sourceName": "BirdEye",
-            "sourceAlias": "birdeye",
-            "avgRating": 4.6,
-            "reviewCount": 15
-          },
-          {
-            "sourceName": "Citysearch",
-            "sourceAlias": "citysearch",
-            "avgRating": 5,
-            "reviewCount": 3
-          },
-          {
-            "sourceName": "GooglePlay",
-            "sourceAlias": "googleplay",
-            "avgRating": 4.5,
-            "reviewCount": 742
-          }
-        ]
-
-
+        {
+          "sources": [
+            {
+              "sourceName": "BirdEye",
+              "sourceAlias": "birdeye",
+              "avgRating": 4.6,
+              "reviewCount": 15
+            },
+            {
+              "sourceName": "Citysearch",
+              "sourceAlias": "citysearch",
+              "avgRating": 5,
+              "reviewCount": 3
+            },
+            {
+              "sourceName": "GooglePlay",
+              "sourceAlias": "googleplay",
+              "avgRating": 4.5,
+              "reviewCount": 742
+            }
+          ]
+          "ratings": [
+            {
+              "rating": 0,
+              "reviewCount": 0,
+            }
+            {
+              "rating": 1,
+              "reviewCount": 4,
+            }
+            {
+              "rating": 2,
+              "reviewCount": 34,
+            }
+            {
+              "rating": 3,
+              "reviewCount": 46,
+            }
+            {
+              "rating": 4,
+              "reviewCount": 103,
+            }
+            {
+              "rating": 5,
+              "reviewCount": 92,
+            }
+          ]
+        }
 + Response 404
 
     [1011][]
