@@ -607,6 +607,60 @@ All API URLs referenced in this documentation start with the following base part
             errorCode: 1187,
             errorMessage: "Invalid to date. Allowed format is "MM/dd/yyyy"."
         }
+
+## 1265 [/1265]
+
++ Model (application/json)
+
+        {
+            errorCode: 1265,
+            errorMessage: "Value for showOnFacebook is mandatory."
+        }
+
+## 1266 [/1266]
+
++ Model (application/json)
+
+        {
+            errorCode: 1266,
+            errorMessage: "Value for showOnProfile is mandatory."
+        }
+
+## 1267 [/1267]
+
++ Model (application/json)
+
+        {
+            errorCode: 1267,
+            errorMessage: "Value for showOnWebsite is mandatory."
+        }
+
+## 1268 [/1268]
+
++ Model (application/json)
+
+        {
+            errorCode: 1268,
+            errorMessage: "TabType is mandatory field."
+        }
+
+## 1269 [/1269]
+
++ Model (application/json)
+
+        {
+            errorCode: 1269,
+            errorMessage: "Max length for lable is 30."
+        }
+
+## 1270 [/1270]
+
++ Model (application/json)
+
+        {
+            errorCode: 1270,
+            errorMessage: "Max length for URL is 1000."
+        }
         
         
 # Group Business
@@ -2376,6 +2430,164 @@ List of child businesses can be retrieved using:
 + Response 401
 
     [1167][]
+
+
+
+## Public profile tabs [/business/tabs{?api_key,businessId}]
+Update public profile business can be done using:
+
+### Update public profile of Businesses [POST]
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"profileTabs\":[{  \"tabType\":\"map\",  \"label\":\"map location\",  \"showOnProfile\":0,  \"showOnWebsite\":1,  \"showOnFacebook\":1 },{  \"tabType\":\"Review\",  \"label\":\"My Reviews\",  \"showOnProfile\":0,  \"showOnWebsite\":1,  \"showOnFacebook\":1 }]}" "http://api.birdeye.com:8080/resources/v1/business/tabs?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=755009344" –v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>profileTabs</td>
+            <td>Array contains following fields</td>
+        </tr>
+        <tr>
+            <td>tabType</td>
+            <td>Valid values are "Reviews", "Feedback", "Aboutus", "Map", "Appointment" or "BusinessOwner" (Required)</td>
+        </tr>
+        <tr>
+            <td>label</td>
+            <td>Name on the tab. Max length 30 character.</td>
+        </tr>
+        <tr>
+            <td>showOnProfile</td>
+            <td>Valid values "0" or "1" (required)</td>
+        </tr>
+        <tr>
+            <td>showOnWebsite</td>
+            <td>Valid values "0" or "1" (required)</td>
+        </tr>
+        <tr>
+            <td>showOnFacebook</td>
+            <td>Valid values "0" or "1" (required)</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+    
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Unauthorized</td>
+            <td>1265</td>
+            <td>Value for showOnFacebook is mandatory.</td>
+        </tr>
+        <tr>
+            <td>400 Unauthorized</td>
+            <td>1266</td>
+            <td>Value for showOnProfile is mandatory.</td>
+        </tr>
+        <tr>
+            <td>400 Unauthorized</td>
+            <td>1267</td>
+            <td>Value for showOnWebsite is mandatory.</td>
+        </tr>
+        <tr>
+            <td>400 Unauthorized</td>
+            <td>1268</td>
+            <td>TabType is mandatory field.</td>
+        </tr>
+        <tr>
+            <td>400 Unauthorized</td>
+            <td>1269</td>
+            <td>Max length for lable is 30.</td>
+        </tr>
+        <tr>
+            <td>400 Unauthorized</td>
+            <td>1270</td>
+            <td>Max length for URL is 1000. </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Parameters 
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
++ Request (application/json)
+
++ Response 200 (application/json)
+            
++ Response 401 
+
+    [1161][]
+    
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1011][]
+
++ Response 400
+
+    [1265][]
+
++ Response 400
+
+    [1266][]
+
++ Response 400
+
+    [1267][]
+
++ Response 400
+
+    [1268][]
+
++ Response 400
+
+    [1269][]
+
++ Response 400
+
+    [1270][]
 
 
 # Group User
