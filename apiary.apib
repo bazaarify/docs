@@ -2440,7 +2440,7 @@ Update public profile business can be done using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"profileTabs\":[{  \"tabType\":\"map\",  \"label\":\"map location\",  \"showOnProfile\":0,  \"showOnWebsite\":1,  \"showOnFacebook\":1, \"url\":\"http://www.mapurl.com\"},{  \"tabType\":\"Review\",  \"label\":\"My Reviews\",  \"showOnProfile\":0,  \"showOnWebsite\":1,  \"showOnFacebook\":1, \"url\":\"http://www.reviewurl.com\" }]}" "http://api.birdeye.com:8080/resources/v1/business/tabs?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=755009344" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"profileTabs\":[{  \"tabType\":\"map\",  \"label\":\"map location\",  \"showOnProfile\":0,  \"showOnWebsite\":1,  \"showOnFacebook\":1, \"url\":\"http://www.mapurl.com\"},{  \"tabType\":\"Feedback\",  \"label\":\"Feedback\",  \"showOnProfile\":0,  \"showOnWebsite\":1,  \"showOnFacebook\":1, \"url\":\"http://www.feedback.com\" }]}" "http://api.birdeye.com:8080/resources/v1/business/tabs?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=755009344" –v
 
 #### Request
 
