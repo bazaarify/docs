@@ -675,7 +675,7 @@ A Reseller can create a Business using:
 
 <center><b>Example CURL Request</b></center>
         
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"businessName\" : \"Snapdragon Salon\", \"zip\" : \"85012\",\"type\":\"Business\" }" "http://api.birdeye.com:8080/resources/v1/signup/reseller/subaccount?rid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&email_id=rhonda@reviewmanagement.com" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"businessName\" : \"Snapdragon Salon\", \"zip\" : \"85012\",\"type\":\"Business\",\"phone\":"4032365164" }" "http://api.birdeye.com:8080/resources/v1/signup/reseller/subaccount?rid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&email_id=rhonda@reviewmanagement.com" –v
         
 
 > __Notes__
@@ -707,6 +707,11 @@ A Reseller can create a Business using:
                 <td>type</td>
                 <td>type</td>
                 <td>Business type. Valid values are “Business, Product, Enterprise-Location, Enterprise-Product, Reseller”. Default is “Business”.</td>
+            </tr>
+            <tr>
+                <td>phone</td>
+                <td>optional, string</td>
+                <td>Buiness phone</td>
             </tr>
         </tbody>
     </table>
@@ -755,6 +760,7 @@ A Reseller can create a Business using:
          <tr><td>400 Bad Request</td><td>1094</td><td>Postal code cannot be blank.</td></tr>
          <tr><td>400 Bad Request</td><td></td><td>Business location zip cannot be more than 6 numbers</td></tr>
          <tr><td>400 Bad Request</td><td>1025</td><td>Invalid business type.</td></tr>
+         <tr><td>400 Bad Request</td><td>1055</td><td>Not a valid US phone number.</td></tr>
          </tbody>
     </table>
 </div>
@@ -775,7 +781,8 @@ A Reseller can create a Business using:
             {
                 "businessName": "The Business Name",
                 "zip": 32323,
-                "type": "Business"
+                "type": "Business",
+                "phone": "4032365164"
             }
 
 + Response 200 (application/json)
@@ -845,6 +852,10 @@ A Reseller can create a Business using:
 + Response 400 (applicaton/json)
 
     [1025][]
+
++ Response 400 (applicaton/json)
+
+    [1055][]
     
 ## Search [/business/search{?search_str,loc,sindex,count,sort,api_key,nearby}]
 Business from BirdEye platform can be searched using:
