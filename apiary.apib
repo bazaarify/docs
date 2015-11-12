@@ -2048,15 +2048,32 @@ Business status can be updated using:
     [1191][]
     
     
-## Child Businesses [/business/child/all{?api_key}]
+## Child Businesses [/business/child/all{?api_key, pid}]
 List of child businesses can be retrieved using:
 
 ### Get Child Businesses [GET]
 
 <center><b>Example curl request</b></center>
-    
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/business/child/all?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
-
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/business/child/all?pid=32423422&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Parameter</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </thead>
+        
+        <tbody>
+            <tr>
+                <td>pid</td>
+                <td>required</td>
+                <td>Reseller/Sub-reseller/Enterprise id</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+ 
 #### Response
 
 <center><b>Example Response</b></center>
@@ -2065,6 +2082,7 @@ List of child businesses can be retrieved using:
       {
         "id": 986031488,
         "name": "Central Ohio Endodontics",
+        "alias": "Central Ohio Endodontics - Dublin, OH",
         "address": {
           "address1": "5152 Blazer Memorial Pkwy",
           "address2": "Ste 102",
@@ -2075,31 +2093,14 @@ List of child businesses can be retrieved using:
           "countryName": "United States of America"
         },
         "phone": "(614) 896-2801",
+	"type": "Business",
         "status": "active",
         "createdOn": "Dec 04, 2013",
-	"childBizList": [
-		{
-		"id": 986034528,
-		"name": "Central Neil Endodontics",
-		"address": {
-		  "address1": "6175 Blazer Memorial Pkwy",
-		  "address2": "Cte 106",
-		  "city": "Dublin",
-		  "state": "OH",
-		  "zip": "42097",
-		  "countryCode": "US",
-		  "countryName": "United States of America"
-		},
-		"phone": "(614) 546-2741",
-		"status": "active",
-		"createdOn": "Dec 04, 2013",
-		"childBizList": []
-	      }
-	]
       },
       {
         "id": 768996864,
         "name": "Environmental Pest Management",
+        "alias": "Environmental Pest Management - Westerville, OH",
         "address": {
           "address1": "200 Hoff Rd",
           "address2": "Unit P",
@@ -2110,9 +2111,27 @@ List of child businesses can be retrieved using:
           "countryName": "United States of America"
         },
         "phone": "(614) 771-8605",
+	"type": "Business",
         "status": "active",
         "createdOn": "Dec 05, 2013",
-	"childBizList": []
+      },
+      {
+        "id": 144670708364016,
+        "name": "Sub-reseller",
+        "alias": "Sub-reseller",
+        "status": "active",
+        "createdOn": "Nov 05, 2013",
+        "type": "Reseller",
+        "childCount": 1
+      },
+      {
+        "id": 144670708364322,
+        "name": "Holiday Inn",
+        "alias": "Holiday Inn",
+        "status": "active",
+        "createdOn": "Nov 01, 2013",
+        "type": "Enterprise-Location",
+        "childCount": 2
       }
     ]
     
@@ -2140,6 +2159,53 @@ List of child businesses can be retrieved using:
         </tbody>
     </table>
 </div>
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>Business ID</td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>Business Name</td>
+            </tr>
+            <tr>
+                <td>alias</td>
+                <td>Business alias</td>
+            </tr>
+            <tr>
+                <td>address</td>
+                <td>Business address. note: available only when it is SMB/Enterprise Location</td>
+            </tr>
+            <tr>
+                <td>phone</td>
+                <td>Business phone</td>
+            </tr>
+            <tr>
+                <td>status</td>
+                <td>Payment status</td>
+            </tr>
+            <tr>
+                <td>createdOn</td>
+                <td>Business singup date</td>
+            </tr>
+            <tr>
+                <td>type</td>
+                <td>Type of account. e.g. Reseller (when it is a sub-reseller), Enterprise-Location (location based enterprise), Enterprise-Product (product based enterprise), Business (SMB/Enterprise location), Product (Enterprise product)</td>
+            </tr>
+            <tr>
+                <td>childCount</td>
+                <td>Child account count. note: applicable only for Reseller, Enterprise-Location, Enterprise-Product</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 + Parameters 
 
@@ -2151,41 +2217,63 @@ List of child businesses can be retrieved using:
 
     + Body 
     
-            [
-              {
-                "id": 986031488,
-                "name": "Central Ohio Endodontics",
-                "address": {
-                  "address1": "5152 Blazer Memorial Pkwy",
-                  "address2": "Ste 102",
-                  "city": "Dublin",
-                  "state": "OH",
-                  "zip": "43017",
-                  "countryCode": "US",
-                  "countryName": "United States of America"
-                },
-                "phone": "(614) 896-2801",
-                "status": "active",
-                "createdOn": "Dec 04, 2013"
-              },
-              {
-                "id": 768996864,
-                "name": "Environmental Pest Management",
-                "address": {
-                  "address1": "200 Hoff Rd",
-                  "address2": "Unit P",
-                  "city": "Westerville",
-                  "state": "OH",
-                  "zip": "43082",
-                  "countryCode": "US",
-                  "countryName": "United States of America"
-                },
-                "phone": "(614) 771-8605",
-                "status": "active",
-                "createdOn": "Dec 05, 2013"
-              }
-            ]
-            
+    [
+      {
+        "id": 986031488,
+        "name": "Central Ohio Endodontics",
+        "alias": "Central Ohio Endodontics - Dublin, OH",
+        "address": {
+          "address1": "5152 Blazer Memorial Pkwy",
+          "address2": "Ste 102",
+          "city": "Dublin",
+          "state": "OH",
+          "zip": "43017",
+          "countryCode": "US",
+          "countryName": "United States of America"
+        },
+        "phone": "(614) 896-2801",
+	"type": "Business",
+        "status": "active",
+        "createdOn": "Dec 04, 2013",
+      },
+      {
+        "id": 768996864,
+        "name": "Environmental Pest Management",
+        "alias": "Environmental Pest Management - Westerville, OH",
+        "address": {
+          "address1": "200 Hoff Rd",
+          "address2": "Unit P",
+          "city": "Westerville",
+          "state": "OH",
+          "zip": "43082",
+          "countryCode": "US",
+          "countryName": "United States of America"
+        },
+        "phone": "(614) 771-8605",
+	"type": "Business",
+        "status": "active",
+        "createdOn": "Dec 05, 2013",
+      },
+      {
+        "id": 144670708364016,
+        "name": "Sub-reseller",
+        "alias": "Sub-reseller",
+        "status": "active",
+        "createdOn": "Nov 05, 2013",
+        "type": "Reseller",
+        "childCount": 1
+      },
+      {
+        "id": 144670708364322,
+        "name": "Holiday Inn",
+        "alias": "Holiday Inn",
+        "status": "active",
+        "createdOn": "Nov 01, 2013",
+        "type": "Enterprise-Location",
+        "childCount": 2
+      }
+    ]
+    
 + Response 401 
 
     [1161][]
