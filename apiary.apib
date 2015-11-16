@@ -4929,7 +4929,7 @@ Review and rating over time report data can be retrieved using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/review/analytic/time?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808&sortby=count&sorder=1" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"days\":12}" "https://api.birdeye.com/resources/v1/reports/review/analytic/time?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808&sortby=count&sorder=1" –v
     
 + Parameters
     + api_key (required, string) ... API key assigned to business.
@@ -4946,44 +4946,44 @@ Review and rating over time report data can be retrieved using:
   {
     "rating": 0.0,
     "count": 0,
-    "milestone": "Jan 2011",
-    "timeStamp": 1296584115000
+    "milestone": "8\/19\/15",
+    "timeStamp": 1439942400158
   },
 {
     "rating": 3.9,
     "count": 23,
-    "milestone": "Feb 2011",
-    "timeStamp": 1296584115000
+    "milestone": "8\/20\/15",
+    "timeStamp": 1440028800158
   },
 {
     "rating": 4.9,
     "count": 55,
-    "milestone": "Mar 2011",
-    "timeStamp": 1296584115000
+    "milestone": "8\/21\/15",
+    "timeStamp": 1440115200158
   },
 {
     "rating": 2.9,
     "count": 24,
-    "milestone": "Apr 2011",
-    "timeStamp": 1296584115000
+    "milestone": "8\/22\/15",
+    "timeStamp": 1440201600158
   },
 {
     "rating": 2.6,
     "count": 23,
-    "milestone": "May 2011",
-    "timeStamp": 1296584115000
+    "milestone": "8\/23\/15",
+    "timeStamp": 1440288000158
   },
 {
     "rating": 3.3,
     "count": 45,
-    "milestone": "Jun 2011",
-    "timeStamp": 1296584115000
+    "milestone": "8\/24\/15",
+    "timeStamp": 1440374400158
   },
 {
     "rating": 1.6,
     "count": 28,
-    "milestone": "Jul 2011",
-    "timeStamp": 1296584115000
+    "milestone": "8\/25\/15",
+    "timeStamp": 1440460800158
   }
 ]
 
@@ -5124,7 +5124,7 @@ Sentiment Over time report data can be retrieved using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/sentiment/time?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"groupByDays\":1, \"days\":3}" "https://api.birdeye.com/resources/v1/reports/sentiment/time?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
     
 + Parameters
     + api_key (required, string) ... API key assigned to business.
@@ -5137,24 +5137,24 @@ Sentiment Over time report data can be retrieved using:
     [
   {
     "count": 15,
-    "milestone": "Jul 2011",
-    "timeStamp": 1309544115000,
+    "milestone": "11\/10\/15",
+    "timeStamp": 1447113600981,
     "positiveCount": 5,
     "neutralCount": 3,
     "negativeCount": 7
   },
 {
     "count": 32,
-    "milestone": "Aug 2011",
-    "timeStamp": 1309544115000,
+    "milestone": "11\/11\/15",
+    "timeStamp": 1447200000981,
     "positiveCount": 12,
     "neutralCount": 7,
     "negativeCount": 13
   },
 {
     "count": 22,
-    "milestone": "Sep 2011",
-    "timeStamp": 1309544115000,
+    "milestone": "11\/12\/15",
+    "timeStamp": 1447286400981,
     "positiveCount": 11,
     "neutralCount": 5,
     "negativeCount": 7
