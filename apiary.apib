@@ -4920,3 +4920,557 @@ Review conversion report data can be retrieved using:
 + Response 400 (application/json)
 
     [1039][]
+
+
+## Review and rating over time [/reports/review/analytic/time{?api_key,businessId,sortby,sorder}]
+Review and rating over time report data can be retrieved using:
+
+### POST Data [POST]
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/review/analytic/time?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808&sortby=count&sorder=1" –v
+    
++ Parameters
+    + api_key (required, string) ... API key assigned to business.
+    + businessId (required, string) ... BusinessId assigned to business.
+    + sortby (optional, string) ... Values can be 'count' or 'rating'.
+    + sorder (optional, Integer) ... '0' for ascending and '1' for descending order.
+    
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+    [
+  {
+    "rating": 0.0,
+    "count": 0,
+    "milestone": "Jan 2011",
+    "timeStamp": 1296584115000
+  },
+{
+    "rating": 3.9,
+    "count": 23,
+    "milestone": "Feb 2011",
+    "timeStamp": 1296584115000
+  },
+{
+    "rating": 4.9,
+    "count": 55,
+    "milestone": "Mar 2011",
+    "timeStamp": 1296584115000
+  },
+{
+    "rating": 2.9,
+    "count": 24,
+    "milestone": "Apr 2011",
+    "timeStamp": 1296584115000
+  },
+{
+    "rating": 2.6,
+    "count": 23,
+    "milestone": "May 2011",
+    "timeStamp": 1296584115000
+  },
+{
+    "rating": 3.3,
+    "count": 45,
+    "milestone": "Jun 2011",
+    "timeStamp": 1296584115000
+  },
+{
+    "rating": 1.6,
+    "count": 28,
+    "milestone": "Jul 2011",
+    "timeStamp": 1296584115000
+  }
+]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Response 200 (application/json)
+
+
++ Response 404 (application/json)
+
+    [1011][]
+    
++ Response 401 (application/json)
+
+    [1167][]
+    
++ Response 401 (application/json)
+
+    [1161][]
+
+
+## Reviews & Rating By Location [/reports/rating/location{?api_key,businessId,sortby,sorder}]
+Reviews & Rating By Location report data can be retrieved using:
+
+### POST Data [POST]
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/rating/location?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808&sortby=count&sorder=1" –v
+    
++ Parameters
+    + api_key (required, string) ... API key assigned to business.
+    + businessId (required, string) ... BusinessId assigned to business.
+    + sortby (optional, string) ... Values can be 'count' or 'rating'.
+    + sorder (optional, Integer) ... '0' for ascending and '1' for descending order.
+    
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+    [
+  {
+    "rating": 4.6,
+    "count": 132,
+    "milestone": "Smile dental",
+    "businessId": 943967608,
+    "state": "CA"
+  },
+{
+     "rating": 3.2,
+    "count": 367,
+    "milestone": "Blaze Dental",
+    "businessId": 943589678,
+    "state": "CA"
+  }
+]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Response 200 (application/json)
+
+
++ Response 404 (application/json)
+
+    [1011][]
+    
++ Response 401 (application/json)
+
+    [1167][]
+    
++ Response 401 (application/json)
+
+    [1161][]
+
+
+
+## Sentiment Over time [/reports/sentiment/time{?api_key,businessId}]
+Sentiment Over time report data can be retrieved using:
+
+### POST Data [POST]
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/sentiment/time?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
+    
++ Parameters
+    + api_key (required, string) ... API key assigned to business.
+    + businessId (required, string) ... BusinessId assigned to business.
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+    [
+  {
+    "count": 15,
+    "milestone": "Jul 2011",
+    "timeStamp": 1309544115000,
+    "positiveCount": 5,
+    "neutralCount": 3,
+    "negativeCount": 7
+  },
+{
+    "count": 32,
+    "milestone": "Aug 2011",
+    "timeStamp": 1309544115000,
+    "positiveCount": 12,
+    "neutralCount": 7,
+    "negativeCount": 13
+  },
+{
+    "count": 22,
+    "milestone": "Sep 2011",
+    "timeStamp": 1309544115000,
+    "positiveCount": 11,
+    "neutralCount": 5,
+    "negativeCount": 7
+  }
+]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Response 200 (application/json)
+
+
++ Response 404 (application/json)
+
+    [1011][]
+    
++ Response 401 (application/json)
+
+    [1167][]
+    
++ Response 401 (application/json)
+
+    [1161][]
+
+
+
+## Sentiment By Location [/reports/sentiment/location{?api_key,businessId}]
+Sentiment By Location report data can be retrieved using:
+
+### POST Data [POST]
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/sentiment/location?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
+    
++ Parameters
+    + api_key (required, string) ... API key assigned to business.
+    + businessId (required, string) ... BusinessId assigned to business.
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+    [
+  { 
+    "count": 1132,
+    "milestone": "Smile Dental",
+    "positiveCount": 697,
+    "neutralCount": 120,
+    "negativeCount": 315
+  },
+{ 
+    "count": 1232,
+    "milestone": "Blaze Dental",
+    "positiveCount": 657,
+    "neutralCount": 145,
+    "negativeCount": 340
+  }
+]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Response 200 (application/json)
+
+
++ Response 404 (application/json)
+
+    [1011][]
+    
++ Response 401 (application/json)
+
+    [1167][]
+    
++ Response 401 (application/json)
+
+    [1161][]
+
+
+## Review By Source [/reports/count/reviewsite{?api_key,businessId}]
+Review By Source report data can be retrieved using:
+
+### POST Data [POST]
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/count/reviewsite?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
+    
++ Parameters
+    + api_key (required, string) ... API key assigned to business.
+    + businessId (required, string) ... BusinessId assigned to business.
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+    [
+  {
+    "count": 1132,
+    "milestone": "Smile Dental",
+    "businessId": "943967608",
+    "reviewSites": [
+      {
+        "sourceAlias": "Citysearch",
+        "count": 4
+      },
+      {
+        "sourceAlias": "GooglePlay",
+        "count": 1060
+      },
+      { 
+        "sourceAlias": "bestcreditrepaircompany",
+        "count": 1
+      },
+      { 
+        "sourceAlias": "BirdEye",
+        "count": 67
+      }
+    ]
+  }
+]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Response 200 (application/json)
+
+
++ Response 404 (application/json)
+
+    [1011][]
+    
++ Response 401 (application/json)
+
+    [1167][]
+    
++ Response 401 (application/json)
+
+    [1161][]
+
+
+
+## Review By Visitor [/reports/count/reviewsite{?api_key,businessId}]
+Review By Visitor report data can be retrieved using:
+
+### POST Data [POST]
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/count/reviewsite?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
+    
++ Parameters
+    + api_key (required, string) ... API key assigned to business.
+    + businessId (required, string) ... BusinessId assigned to business.
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+    [
+  {
+    "count": 315,
+    "milestone": "Smile Dental",
+    "businessId": "943967608",
+    "visitors": [
+      {
+        "sourceAlias": "Facebook",
+        "count": 0
+      },
+      {
+        "sourceAlias": "Google",
+        "count": 0
+      },
+      {
+        "sourceAlias": "Twitter",
+        "count": 0
+      },
+      {
+        "sourceAlias": "Review Site",
+        "count": 289
+      },
+      {
+        "sourceAlias": "Website",
+        "count": 26
+      },
+      {
+        "sourceAlias": "Total",
+        "count": 315
+      }
+    ]
+    
+  }
+]
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Response 200 (application/json)
+
+
++ Response 404 (application/json)
+
+    [1011][]
+    
++ Response 401 (application/json)
+
+    [1167][]
+    
++ Response 401 (application/json)
+
+    [1161][]
+
