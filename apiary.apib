@@ -675,7 +675,7 @@ A Reseller can create a Business using:
 
 <center><b>Example CURL Request</b></center>
         
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"businessName\" : \"Snapdragon Salon\", \"zip\" : \"85012\",\"type\":\"Business\",\"phone\":"4032365164" }" "http://api.birdeye.com:8080/resources/v1/signup/reseller/subaccount?rid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&email_id=rhonda@reviewmanagement.com" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"businessName\" : \"Snapdragon Salon\", \"zip\" : \"85012\",\"type\":\"Business\",\"phone\":"4032365164" }" "https://api.birdeye.com/resources/v1/signup/reseller/subaccount?rid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&email_id=rhonda@reviewmanagement.com" –v
         
 
 > __Notes__
@@ -866,7 +866,7 @@ Business from BirdEye platform can be searched using:
 
 <center><b>Example CURL Request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/business/search?search_str=ray%20lord&loc=29063&sindex=20&count=20&sort=rating&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&nearby=1" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/search?search_str=ray%20lord&loc=29063&sindex=20&count=20&sort=rating&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&nearby=1" -v
 
 #### Response
 
@@ -978,7 +978,7 @@ Business info from BirdEye platform can be fetched using:
 
 <center><b>Example CURL Request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
     
 #### Response
 
@@ -1444,7 +1444,7 @@ Business info on BirdEye platform can be updated using:
         "youtubeUrl": null
       },
       "isSEOEnabled": "false"
-    }" "http://api.birdeye.com:8080/resources/v1/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    }" "https://api.birdeye.com/resources/v1/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 
 <div class="paramsTableWrap">
@@ -1908,7 +1908,7 @@ Business/sub-reseller can be deleted using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "http://api.birdeye.com:8080/resources/v1/business/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/business/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
@@ -1973,7 +1973,7 @@ Business status can be updated using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X PUT "http://api.birdeye.com:8080/resources/v1/business/755009344/status?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&astatus=active" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X PUT "https://api.birdeye.com/resources/v1/business/755009344/status?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&astatus=active" –v
 
 #### Response
 
@@ -2054,7 +2054,7 @@ List of child businesses can be retrieved using:
 ### Get Child Businesses [GET]
 
 <center><b>Example curl request</b></center>
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/business/child/all?pid=32423422&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/child/all?pid=32423422&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 <div class="paramsTableWrap">
     <table class="paramsTable">
         <caption>Request Parameter</caption>
@@ -2315,7 +2315,7 @@ Update public profile business can be done using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"profileTabs\":[{  \"tabType\":\"map\",  \"label\":\"map location\",  \"showOnProfile\":0,  \"showOnWebsite\":1,  \"showOnFacebook\":1, \"url\":\"http://www.mapurl.com\"},{  \"tabType\":\"Feedback\",  \"label\":\"Feedback\",  \"showOnProfile\":0,  \"showOnWebsite\":1,  \"showOnFacebook\":1, \"url\":\"http://www.feedback.com\" }]}" "http://api.birdeye.com:8080/resources/v1/business/tabs?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=755009344" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"profileTabs\":[{  \"tabType\":\"map\",  \"label\":\"map location\",  \"showOnProfile\":0,  \"showOnWebsite\":1,  \"showOnFacebook\":1, \"url\":\"http://www.mapurl.com\"},{  \"tabType\":\"Feedback\",  \"label\":\"Feedback\",  \"showOnProfile\":0,  \"showOnWebsite\":1,  \"showOnFacebook\":1, \"url\":\"http://www.feedback.com\" }]}" "https://api.birdeye.com/resources/v1/business/tabs?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=755009344" –v
 
 #### Request
 
@@ -2487,7 +2487,7 @@ Users can be created using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"firstName\" : \"Rhonda\", \"lastName\" : \"Spears\", \"userEmailId\" : \"rhonda@reviewmanagement.com\", \"phone\" : \"408-xxx-xxxx\",\"userRole\" : \"owner\",\”userPassword\”:\”xxxxxxx\”,\”sendInvite\”:\”false\”}" "http://api.birdeye.com:8080/resources/v1/user/signup?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"firstName\" : \"Rhonda\", \"lastName\" : \"Spears\", \"userEmailId\" : \"rhonda@reviewmanagement.com\", \"phone\" : \"408-xxx-xxxx\",\"userRole\" : \"owner\",\”userPassword\”:\”xxxxxxx\”,\”sendInvite\”:\”false\”}" "https://api.birdeye.com/resources/v1/user/signup?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 #### Request
 
@@ -2688,7 +2688,7 @@ Users access from a business can be revoked using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "http://api.birdeye.com:8080/resources/v1/user/remove?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&email=rhonda@reviewmanagement.com" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/user/remove?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&email=rhonda@reviewmanagement.com" –v
 
 #### Response
 
@@ -2773,7 +2773,7 @@ Forgot password email can be sent using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST "http://api.birdeye.com:8080/resources/v1/user/forgotpassword?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&email=rhonda@reviewmanagement.com" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST "https://api.birdeye.com/resources/v1/user/forgotpassword?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&email=rhonda@reviewmanagement.com" –v
 
 ### Response
 
@@ -2862,7 +2862,7 @@ Business review(s) from BirdEye platform can be fetched using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/review/businessid/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&fdate=1/1/2014&tdate=6/30/2014&updateFromdate=1/1/2014&updateTodate=6/30/2014" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/review/businessid/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&fdate=1/1/2014&tdate=6/30/2014&updateFromdate=1/1/2014&updateTodate=6/30/2014" -v
 
 #### Response
 
@@ -3075,7 +3075,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 <center><b>Example curl request</b></center>
 
     curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"yelp\"], \"ratings\":[1,2,3,4,5,0], \"keywords\":[\"water\"] } 
-    "http://api.birdeye.com:8080/resources/v1/review/businessId/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    "https://api.birdeye.com/resources/v1/review/businessId/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
 
@@ -3311,7 +3311,7 @@ New review on BirdEye platform can be created using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST-d "{\"overallRating\" : \"5\", \"comments\" : \"Awesome experience\", \"reviewDate\" : \"2014-04-04T00:00:00\", \"response\" : \"Thanks for the review\", \"responseDate\" : \"2014-04-06T00:00:00\", \"source\": \"website\",\"aggregationSource\": \"citysearch\", \"reviewer\" : {\"nickName\" : \"Sachin G\",\"thumbnailUrl\" : \"http://birdeye.com/reviewer/default.jpd\", \"emailId\":\"saching@gmail.com\", \"location\" : {\"city\" : \"Atlanta\", \"state\" : \"GA\"}}}" "http://api.birdeye.com:8080/resources/v1/review/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST-d "{\"overallRating\" : \"5\", \"comments\" : \"Awesome experience\", \"reviewDate\" : \"2014-04-04T00:00:00\", \"response\" : \"Thanks for the review\", \"responseDate\" : \"2014-04-06T00:00:00\", \"source\": \"website\",\"aggregationSource\": \"citysearch\", \"reviewer\" : {\"nickName\" : \"Sachin G\",\"thumbnailUrl\" : \"http://birdeye.com/reviewer/default.jpd\", \"emailId\":\"saching@gmail.com\", \"location\" : {\"city\" : \"Atlanta\", \"state\" : \"GA\"}}}" "https://api.birdeye.com/resources/v1/review/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 #### Request 
 
@@ -3504,7 +3504,7 @@ Featured review and its order can be updated using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{"reviewOrders":[{"reviewId":2762525,"order":0}]}" "http://api.birdeye.com:8080/resources/v1/review/featured?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=755009344" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{"reviewOrders":[{"reviewId":2762525,"order":0}]}" "https://api.birdeye.com/resources/v1/review/featured?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=755009344" -v
 
 #### Request 
 
@@ -3643,7 +3643,7 @@ Returns list of review source along with review count and average rating, also r
 #### Request
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/review/businessid/755009344/summary?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/review/businessid/755009344/summary?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 
 #### Response
@@ -3813,7 +3813,7 @@ Customer checkin can be done using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@xxxx.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1}" "http://api.birdeye.com:8080/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@xxxx.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1}" "https://api.birdeye.com/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 > __Notes__
 
@@ -4026,7 +4026,7 @@ Customer activity log can be fetched using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/customer/history/658753231?businessId=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/customer/history/658753231?businessId=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 #### Response
 
@@ -4141,7 +4141,7 @@ List of aggregation source can be fetched using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/aggregation/business/755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/aggregation/business/755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 #### Response
 
@@ -4265,7 +4265,7 @@ Add new aggregation URL using:
 #### Request
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAlias\" : \"citysearch \", \"url\" : \"http://www.citysearch.com/biz/maria-da-vittorio-san-francisco\"}" "http://api.birdeye.com:8080/resources/v1/aggregation/business/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAlias\" : \"citysearch \", \"url\" : \"http://www.citysearch.com/biz/maria-da-vittorio-san-francisco\"}" "https://api.birdeye.com/resources/v1/aggregation/business/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 #### Response
 <center><b>Example Response</b></center>
@@ -4371,7 +4371,7 @@ Delete aggregation URL using:
 #### Request
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "http://api.birdeye.com:8080/resources/v1/aggregation/business/755009344/aggregation/457031001?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/aggregation/business/755009344/aggregation/457031001?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
@@ -4438,7 +4438,7 @@ All supported business categoried can be fetched using
 #### Request
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/category/all" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/category/all" –v
 
 
 #### Response
@@ -4513,7 +4513,7 @@ Dashboard data can be retrieved using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/reports/smb?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&bid=943999808" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/reports/smb?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&bid=943999808" –v
 
 #### Response
 
@@ -4741,7 +4741,7 @@ Review conversion report data can be retrieved using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "http://api.birdeye.com:8080/resources/v1/reports/business/analytics/email?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808&fromDate=02/01/2015&toDate=06/01/2015" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/reports/business/analytics/email?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808&fromDate=02/01/2015&toDate=06/01/2015" –v
     
 + Parameters
     + api_key (required, string) ... API key assigned to business.
