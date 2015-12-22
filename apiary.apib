@@ -4012,7 +4012,104 @@ Customer checkin can be done using:
 + Response 401
 
     [1175][]
+
+
+## Customer list [/customer/all{?businessId,api_key}]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
     
+### Customer list [GET]
+Customer list can be fetched using:
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/customer/all?businessId=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+
+#### Response
+
+    [
+        {
+            "number": "673356544",
+            "firstName": "Greg",
+            "middleName": "M",
+            "lastName": "",
+            "emailId": "greg.m@abc.com",
+            "phone": "408-xxx-xxxx"
+        },
+        {
+            "number": "673353442",
+            "firstName": "Simon",
+            "middleName": "",
+            "lastName": "",
+            "emailId": "sam.m@abc.com",
+            "phone": "408-xxx-xxxx"
+        },
+        {
+            "number": "953356544",
+            "firstName": "Derek",
+            "middleName": "",
+            "lastName": "clive",
+            "emailId": "clive@abc.com",
+            "phone": "408-xxx-xxxx"
+        },
+        {
+            "number": "673998544",
+            "firstName": "Oliver",
+            "middleName": "",
+            "lastName": "K",
+            "emailId": "koliver@abc.com",
+            "phone": "408-xxx-xxxx"
+        }
+    ]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
++ Response 200 (application/json)
+
++ Response 404
+
+    [1011][]
+    
++ Response 401
+
+    [1161][]
+    
++ Response 401
+
+    [1167][]
+       
     
 ## Activity log [/customer/history/{customerId}{?businessId,api_key}]
 
