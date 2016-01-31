@@ -1078,7 +1078,6 @@ Business info from BirdEye platform can be fetched using:
       "avgRating": 3.4,
       "category": "Hair Salons,Day Spas,Beauty Salon,Beauty Salons,Salons,Massage Therapists",
       "socialProfileURLs": {
-        "yelpUrl": "null",
         "googleUrl": "null",
         "facebookUrl": null,
         "twitterUrl": null,
@@ -1192,7 +1191,7 @@ Business info from BirdEye platform can be fetched using:
             <td>socialProfileURLs</td>
             <td>
                 Profile URLs for business on top rated social sites
-                <br>e.g. Yelp, Google, Facebook, Linkedin, Twitter, YouTube
+                <br>e.g. Google, Facebook, Linkedin, Twitter, YouTube
             </td>
         </tr>
         <tr>
@@ -1331,7 +1330,6 @@ Business info from BirdEye platform can be fetched using:
               "avgRating": 3.4,
               "category": "Hair Salons,Day Spas,Beauty Salon,Beauty Salons,Salons,Massage Therapists",
               "socialProfileURLs": {
-                "yelpUrl": "null",
                 "googleUrl": "null",
                 "facebookUrl": null,
                 "twitterUrl": null,
@@ -1448,7 +1446,6 @@ Business info on BirdEye platform can be updated using:
         "Hair Salons"
       ],
       "socialProfileURLs": {
-        "yelpUrl": "null",
         "googleUrl": "null",
         "facebookUrl": null,
         "twitterUrl": null,
@@ -1557,7 +1554,7 @@ Business info on BirdEye platform can be updated using:
         <tr>
             <td>socialProfileURLs</td>
             <td>Profile URLs for business on top rated social sites
-                <br/>e.g. Yelp, Google, Facebook, Linkedin, Twitter, YouTube
+                <br/>e.g. Google, Facebook, Linkedin, Twitter, YouTube
             </td>
         </tr>
         <tr>
@@ -1750,7 +1747,6 @@ Business info on BirdEye platform can be updated using:
                 "Hair Salons"
               ],
               "socialProfileURLs": {
-                "yelpUrl": "null",
                 "googleUrl": "null",
                 "facebookUrl": null,
                 "twitterUrl": null,
@@ -1849,7 +1845,6 @@ Business info on BirdEye platform can be updated using:
                 "Hair Salons"
               ],
               "socialProfileURLs": {
-                "yelpUrl": "null",
                 "googleUrl": "null",
                 "facebookUrl": null,
                 "twitterUrl": null,
@@ -3125,7 +3120,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"yelp\"], \"ratings\":[1,2,3,4,5,0], \"keywords\":[\"water\"] } 
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0], \"keywords\":[\"water\"] } 
     "https://api.birdeye.com/resources/v1/review/businessId/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
@@ -3135,7 +3130,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
       "toDate":"05/3/2015",
       "updateFromDate":"04/01/2013",
       "updateToDate":"05/3/2015",
-      "sources":["google","yelp"],
+      "sources":["google","citysearch"],
       "ratings":[1,2,3,4,5,0],
       "keywords":["water"]
     }
@@ -3198,7 +3193,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             "city": "Ann Arbor",
             "state": "MI"
         },
-        "reviewUrl": "http://www.yelp.com/not_recommended_reviews/Knzq0i-RsFqWRaNKNWOQbw",
+        "reviewUrl": "http://www.citysearch.com/not_recommended_reviews/Knzq0i-RsFqWRaNKNWOQbw",
         "sourceType": "citysearch",
         "reviewDate": "Aug 01, 2014",
         "response": null,
@@ -3220,7 +3215,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             "city": "Diamond Bar",
             "state": "CA"
         },
-        "reviewUrl": "http://www.yelp.com/biz/holiday-inn-express-san-jose-central-city-san-jose?hrid=mJpfRj7QaZzxaaLFRfR48w&nb=1",
+        "reviewUrl": "http://www.citysearch.com/biz/holiday-inn-express-san-jose-central-city-san-jose?hrid=mJpfRj7QaZzxaaLFRfR48w&nb=1",
         "sourceType": "citysearch",
         "reviewDate": "Jul 31, 2014",
         "response": null,
@@ -4839,7 +4834,7 @@ Dashboard data can be retrieved using:
             "reviewDistribution": [
                 {
                     "count": 328,
-                    "name": "Yelp"
+                    "name": "citysearch"
                 },
                 {
                     "count": 8,
@@ -4968,13 +4963,13 @@ Review conversion report data can be retrieved using:
         "emailClickInfo": {
             "total": 20,
             "pc": {
-                "yelp": 4,
+                "citysearch": 4,
                 "google": 6,
                 "birdeye": 4,
                 "otherSites": 0
             },
             "mobile": {
-                "yelp": 2,
+                "citysearch": 2,
                 "google": 0,
                 "birdeye": 4,
                 "otherSites": 0
@@ -4982,8 +4977,8 @@ Review conversion report data can be retrieved using:
         },
         "reviews": [
             {
-                "sourceName": "Yelp",
-                "sourceAlias": "yelp",
+                "sourceName": "citysearch",
+                "sourceAlias": "citysearch",
                 "avgRating": 4.6,
                 "reviewCount": 159
             },
@@ -5022,7 +5017,7 @@ Review conversion report data can be retrieved using:
             "msgSent": 34,
             "msgClick": 28,
             "destination": {
-                "yelp": 12,
+                "citysearch": 12,
                 "google": 6,
                 "birdeye": 10,
                 "otherSites": 0
@@ -5102,7 +5097,7 @@ Review and rating over time report data can be retrieved using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"days\":12}" "https://api.birdeye.com/resources/v1/reports/review/analytic/time?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808&sortby=count&sorder=1" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"google\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"days\":12}" "https://api.birdeye.com/resources/v1/reports/review/analytic/time?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808&sortby=count&sorder=1" –v
     
 + Parameters
     + api_key (required, string) ... API key assigned to business.
@@ -5213,7 +5208,7 @@ Reviews & Rating By Location report data can be retrieved using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/rating/location?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808&sortby=count&sorder=1" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"google\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/rating/location?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808&sortby=count&sorder=1" –v
     
 + Parameters
     + api_key (required, string) ... API key assigned to business.
@@ -5297,7 +5292,7 @@ Sentiment Over time report data can be retrieved using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"groupByDays\":1, \"days\":3}" "https://api.birdeye.com/resources/v1/reports/sentiment/time?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"google\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"groupByDays\":1, \"days\":3}" "https://api.birdeye.com/resources/v1/reports/sentiment/time?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
     
 + Parameters
     + api_key (required, string) ... API key assigned to business.
@@ -5388,7 +5383,7 @@ Sentiment By Location report data can be retrieved using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/sentiment/location?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"google\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/sentiment/location?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
     
 + Parameters
     + api_key (required, string) ... API key assigned to business.
@@ -5468,7 +5463,7 @@ Review By Source report data can be retrieved using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/count/reviewsite?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"google\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/count/reviewsite?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
     
 + Parameters
     + api_key (required, string) ... API key assigned to business.
@@ -5558,7 +5553,7 @@ Review By Visitor report data can be retrieved using:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"yelp\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/count/reviewsite?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"google\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/count/reviewsite?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
     
 + Parameters
     + api_key (required, string) ... API key assigned to business.
