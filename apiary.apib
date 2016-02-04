@@ -4296,9 +4296,10 @@ Customer activity log can be fetched using:
 
         
 # Group Aggregation
+
 APIs related to aggregation URL
 
-## Get source list[/aggregation/business/{businessId}{?api_key}]
+## Get source list [/aggregation/business/{businessId} {?api_key}]
 
 + Parameters
 
@@ -4313,6 +4314,8 @@ List of aggregation source can be fetched using:
 <center><b>Example curl request</b></center>
 
     curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/aggregation/business/755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+
+
 
 #### Response
 
@@ -4425,10 +4428,7 @@ List of aggregation source can be fetched using:
 
     [1175][]
     
-## Add [/aggregation/business/{businessId}{?api_key}]
-
-### Add aggregation URL [POST]
-Add new aggregation URL using:
+## Add [/aggregation/business/{businessId} {?api_key}]
 
 + Parameters
 
@@ -4436,13 +4436,19 @@ Add new aggregation URL using:
     + api_key (string, required) ... the API key
     + sourceAlias (String, required) ... the Aggregation Source Name
     + url (string, required) ... the aggregation URL
+
+### Add aggregation URL [POST]
+Add new aggregation URL using:
+
     
 #### Request
+
 <center><b>Example curl request</b></center>
 
     curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAlias\" : \"citysearch \", \"url\" : \"http://www.citysearch.com/biz/maria-da-vittorio-san-francisco\"}" "https://api.birdeye.com/resources/v1/aggregation/business/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 #### Response
+
 <center><b>Example Response</b></center>
 
     {
@@ -4538,10 +4544,7 @@ Add new aggregation URL using:
     
     
     
-## Delete [/aggregation/business/{businessID}/aggregation/{aggregationID}{?api_key}]
-
-### Delete aggregation URL [DELETE]
-Delete aggregation URL using:
+## Delete [/aggregation/business/{businessID}/aggregation/{aggregationID} {?api_key}]
 
 + Parameters
 
@@ -4549,7 +4552,12 @@ Delete aggregation URL using:
     + api_key (string, required) ... the API key
     + aggregationId (String, required) ... the Aggregation ID
 
+### Delete aggregation URL [DELETE]
+Delete aggregation URL using:
+
+
 #### Request
+
 <center><b>Example curl request</b></center>
 
     curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/aggregation/business/755009344/aggregation/457031001?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
