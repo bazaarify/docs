@@ -3871,7 +3871,7 @@ Customer checkin can be done using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@xxxx.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1}" "https://api.birdeye.com/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@abcd.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1}" "https://api.birdeye.com/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 > __Notes__
 
@@ -3884,7 +3884,7 @@ Customer checkin can be done using:
 
     {
       "name": "Steve Smith ",
-      "emailId": "steves@xxxx.com",
+      "emailId": "steves@abcd.com",
       "phone": "408-xxx-xxxx",
       "smsEnabled": 1
     }
@@ -4019,7 +4019,7 @@ Customer checkin can be done using:
     
             {
               "name": "Steve Smith ",
-              "emailId": "steves@xxxx.com",
+              "emailId": "steves@abcd.com",
               "phone": "408-xxx-xxxx",
               "smsEnabled": 1
             }
@@ -4313,7 +4313,7 @@ Customer can be deleted using:
 #### Response
 
     {
-      "emailId": "tom@xxxx.com",
+      "emailId": "tom@abcd.com",
       "firstName": "tom",
       "number": "411504416"
     }
