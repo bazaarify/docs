@@ -3871,7 +3871,7 @@ Customer checkin can be done using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@xxxx.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1}" "https://api.birdeye.com/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@abcd.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1}" "https://api.birdeye.com/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 > __Notes__
 
@@ -3884,7 +3884,7 @@ Customer checkin can be done using:
 
     {
       "name": "Steve Smith ",
-      "emailId": "steves@xxxx.com",
+      "emailId": "steves@abcd.com",
       "phone": "408-xxx-xxxx",
       "smsEnabled": 1
     }
@@ -4019,7 +4019,7 @@ Customer checkin can be done using:
     
             {
               "name": "Steve Smith ",
-              "emailId": "steves@xxxx.com",
+              "emailId": "steves@abcd.com",
               "phone": "408-xxx-xxxx",
               "smsEnabled": 1
             }
@@ -4294,7 +4294,89 @@ Customer activity log can be fetched using:
     [1091][]
     
 
-        
+
+
+## Delete Customer [/customer/id/{customerId}{?api_key}]
+
++ Parameters
+
+    + customerId (string, required) ... the Customer ID
+    + api_key (string, required) ... the API key
+
+### Customer Delete [DELETE]
+Customer can be deleted using:
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/customer/id/411504416?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+
+#### Response
+
+    {
+      "emailId": "tom@abcd.com",
+      "firstName": "tom",
+      "number": "411504416"
+    }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1089</td>
+            <td>Customer id is invalid.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
++ Request (application/json)
+
+    + Headers
+       
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 404
+
+    [1011][]
+    
++ Response 401
+
+    [1161][]
+    
++ Response 401
+
+    [1167][]
+    
+
++ Response 400
+
+    [1089][]
+    
+
+
+ 
 # Group Aggregation
 
 APIs related to aggregation URL
@@ -4427,7 +4509,9 @@ List of aggregation source can be fetched using:
 + Response 404 (application/json)
 
     [1175][]
-    
+ 
+
+   
 ## Add [/aggregation/business/{businessId} {?api_key}]
 
 + Parameters
