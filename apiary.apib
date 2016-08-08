@@ -3140,11 +3140,15 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         <caption>Request Payload</caption>
         <thead>
         <tr>
-            <th>fromDate</th>
-            <th>Review date (start) e.g. "04/01/2013"</th>
+            <th>Name</th>
+            <th>Description</th>
         </tr>
         </thead>
         <tbody>
+        <tr>
+            <td>fromDate</td>
+            <td>Review date (start) e.g. "04/01/2013"</td>
+        </tr>
         <tr>
             <td>toDate</td>
             <td>Review date (end) e.g. "04/01/2013"</td>
@@ -4395,7 +4399,7 @@ List of aggregation source can be fetched using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/aggregation/business/755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/aggregation/business/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 
 
