@@ -2514,68 +2514,66 @@ Get parent/child hierarchy for an enterprise
     curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/143424324234234/hierarchy?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 #### Response
+
 <center><b>Example response</b></center>
-{
-  "id": 147293019691343,
-  "name": "Psychiatry",
-  "alias": null,
-  "address": null,
-  "phone": null,
-  "status": "active",
-  "createdOn": "Sep 03, 2016",
-  "type": "Department",
-  "websiteUrl": null,
-  "child": [
+
+
     {
-      "id": 147293020095434,
-      "name": "Addiction Psychiatry",
-      "alias": null,
-      "address": null,
-      "phone": null,
-      "status": "active",
-      "createdOn": "Sep 03, 2016",
-      "type": "Specialty",
-      "websiteUrl": null,
-      "child": [
+        "id": 147293019691343,
+        "name": "Psychiatry",
+        "alias": null,
+        "address": null,
+        "phone": null,
+        "status": "active",
+        "createdOn": "Sep 03, 2016",
+        "type": "Department",
+        "websiteUrl": null,
+        "child": [
         {
-          "id": 147293022348715,
-          "name": "NYC Center for Treatment and Research",
-          "alias": null,
-          "address": null,
-          "phone": null,
-          "status": "active",
-          "createdOn": "Sep 03, 2016",
-          "type": "Practice",
-          "websiteUrl": null,
-          "child": [
+            "id": 147293020095434,
+            "name": "Addiction Psychiatry",
+            "alias": null,
+            "address": null,
+            "phone": null,
+            "status": "active",
+            "createdOn": "Sep 03, 2016",
+            "type": "Specialty",
+            "websiteUrl": null,
+            "child": [
             {
-              "id": 1467324432430144,
-              "name": "Anna B. B., M.D",
-              "alias": "Anna B. B., M.D",
-              "address": {
-                "address1": "NYC Center for Treatment and Research",
-                "address2": "561 West 35th Street, 11th Floor",
-                "city": "New York",
-                "state": "NY",
-                "zip": "10036",
-                "countryCode": "US",
-                "countryName": "United States of America"
-              },
-              "phone": "646-xxx-xxxx ",
-              "status": "active",
-              "createdOn": "Jun 30, 2016",
-              "type": "Physician",
-              "websiteUrl": "https://google.org/abbnyc",
-              "child": [
-                
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}    
+                "id": 147293022348715,
+                "name": "NYC Center for Treatment and Research",
+                "alias": null,
+                "address": null,
+                "phone": null,
+                "status": "active",
+                "createdOn": "Sep 03, 2016",
+                "type": "Practice",
+                "websiteUrl": null,
+                "child": [
+                {
+                    "id": 1467324432430144,
+                    "name": "Anna B. B., M.D",
+                    "alias": "Anna B. B., M.D",
+                    "address": {
+                        "address1": "NYC Center for Treatment and Research",
+                        "address2": "561 West 35th Street, 11th Floor",
+                        "city": "New York",
+                        "state": "NY",
+                        "zip": "10036",
+                        "countryCode": "US",
+                        "countryName": "United States of America"
+                    },
+                    "phone": "646-xxx-xxxx ",
+                    "status": "active",
+                    "createdOn": "Jun 30, 2016",
+                    "type": "Physician",
+                    "websiteUrl": "https://google.org/abbnyc",
+                    "child": []
+                }]
+            }]
+        }]
+    }    
 <div class="paramsTableWrap">
     <table class="paramsTable">
         <caption>Error Codes</caption>
