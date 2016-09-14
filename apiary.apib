@@ -686,7 +686,7 @@ All API URLs referenced in this documentation start with the following base part
 
         {
             errorCode: 1362,
-            errorMessage: "<Child type> cannot be added under <Parent type>."
+            errorMessage: "{Child type} cannot be added under {Parent type}."
         }
 
 ## 1363 [/1363]
@@ -2554,7 +2554,7 @@ Get parent/child hierarchy for an enterprise
 
 
     {
-        "id": 147293019691343,
+        "id": 143424324234234,
         "name": "Psychiatry",
         "alias": null,
         "address": null,
@@ -2678,7 +2678,7 @@ Add/Remove child in hierarchy
 
 
     {
-        "id": 147293019691343,
+        "id": 143424324234234,
         "name": "Psychiatry",
         "alias": null,
         "address": null,
@@ -2688,6 +2688,18 @@ Add/Remove child in hierarchy
         "type": "Department",
         "websiteUrl": null,
         "child": [
+        {
+            "id": 143656522752665,
+            "name": "Adult Psychiatry",
+            "alias": null,
+            "address": null,
+            "phone": null,
+            "status": "active",
+            "createdOn": "Sep 03, 2016",
+            "type": "Specialty",
+            "websiteUrl": null,
+            "child": []
+        },
         {
             "id": 147293020095434,
             "name": "Addiction Psychiatry",
@@ -2772,7 +2784,7 @@ Add/Remove child in hierarchy
         <tr>
             <td>400 Bad Request</td>
             <td>1362</td>
-            <td><Child type> cannot be added under <Parent type></td>
+            <td>{Child type} cannot be added under {Parent type}</td>
         </tr>
         <tr>
             <td>400 Bad Request</td>
@@ -2837,7 +2849,7 @@ Add/Remove child in hierarchy
 
 
     {
-        "id": 147293019691343,
+        "id": 143424324234234,
         "name": "Psychiatry",
         "alias": null,
         "address": null,
