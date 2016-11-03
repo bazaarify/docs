@@ -2663,14 +2663,47 @@ Get parent/child hierarchy for an enterprise
 
     [1011][]
 
-## Add/Remove Child in Hierarchy [/business/{businessId}/hierachy?{api_key, cid}]
-Add/Remove child in hierarchy
+## Add/Update/Remove Child in Hierarchy [/business/{businessId}/hierachy?{api_key, cid}]
+Add/Update/Remove child in hierarchy
 
 ### Add child in hierarchy [PUT]
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X PUT "https://api.birdeye.com/resources/v1/business/143424324234234/hierarchy?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&cid=143656522752665" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X PUT "https://api.birdeye.com/resources/v1/business/143424324234234/hierarchy?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&cid=143656522752665&merge_reviews=0" –v
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </thead>        
+        <tbody>
+            <tr>
+                <td>merge_reviews</td>
+                <td>optional, integer</td>
+                <td>Whether to include child reviews in parent review set or not. Valid values are 0 or 1. Default value is 0</td>
+            </tr>
+            <tr>
+                <td>zip</td>
+                <td>required, string</td>
+                <td>Postal code of the business location</td>
+            </tr>
+            <tr>
+                <td>type</td>
+                <td>type</td>
+                <td>Business type. Valid values are “Business, Enterprise-Location, Enterprise-Product, Reseller”. Default is “Business”.</td>
+            </tr>
+            <tr>
+                <td>phone</td>
+                <td>optional, string</td>
+                <td>Business phone</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 #### Response
 
@@ -3588,7 +3621,9 @@ Business review(s) from BirdEye platform can be fetched using following filter i
       "ratings":[1,2,3,4,5,0],
       "keywords":["water"]
       "searchStr":"test string",
-      "subBusinessIds":[145308764185002,145308769721320,145308702026610]
+      "subBusinessIds":[145308764185002,145308769721320,145308702026610],
+      "statuses":["published","parked"],
+      "allChild":"true"
     }
 
 <div class="paramsTableWrap">
@@ -3637,6 +3672,14 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             <td>subBusinessIds</td>
             <td>BusinessIds under enterprise account</td>
         </tr>
+        <tr>
+            <td>statuses</td>
+            <td>Review status. Valid values are "published","parked","all". Default is "published" only</td>
+        </tr>
+        <tr>
+            <td>allChild</td>
+            <td>Get review from all child ignoring merge reviews flag configured at parent/child relationship level</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -3668,7 +3711,9 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         "responseDate": null,
         "featured": 1,
         "businessId": "755009344",
-        "uniqueReviewUrl":"https://birdeye.com/websiter-755009344/review/3947127516862"
+        "uniqueReviewUrl":"https://birdeye.com/websiter-755009344/review/3947127516862",
+        "businessName":"Websiter",
+        "businessType":"Location"
     },
     {
         "reviewId": "3947077656849",
@@ -3692,7 +3737,9 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         "responseDate": null,
         "featured": 0,
         "businessId": "755009344",
-        "uniqueReviewUrl":"https://birdeye.com/websiter-755009344/review/3942327516353"
+        "uniqueReviewUrl":"https://birdeye.com/websiter-755009344/review/3942327516353",
+        "businessName":"Websiter",
+        "businessType":"Location"
     }
     ]
 
