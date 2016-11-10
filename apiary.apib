@@ -4207,12 +4207,13 @@ Featured review and its order can be updated using:
     [1042][]
 
 
-## Review Summary [/businessid/{businessId}/summary?{?api_key}]
+## Review Summary [/businessid/{businessId}/summary?{?api_key, statuses}]
 
 + Parameters
 
     + businessId (string, required) ... the Business ID
     + api_key (string, required) ... the API key
+    + statuses (string[], optional) ... review statuses
 
 ### Get reviews summary [GET]
 Returns list of review source along with review count and average rating, also returns review count grouped by review rating:
@@ -4220,9 +4221,25 @@ Returns list of review source along with review count and average rating, also r
 #### Request
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/review/businessid/755009344/summary?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/review/businessid/755009344/summary?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&statuses=published&statuses=parked" -v
 
-
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Parameters</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>statuses</td>
+            <td>Review status. Valid values are "published","parked","all". Default is "published" only</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 #### Response
 <center><b>Example Response Body</b></center>
 
