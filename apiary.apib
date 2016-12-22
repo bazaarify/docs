@@ -661,6 +661,60 @@ All API URLs referenced in this documentation start with the following base part
             errorCode: 1270,
             errorMessage: "Max length for URL is 1000."
         }
+
+## 1306 [/1306]
+
++ Model (application/json)
+
+        {
+            errorCode: 1306,
+            errorMessage: "Review min possible rating cannot be blank"
+        }
+
+## 1307 [/1307]
+
++ Model (application/json)
+
+        {
+            errorCode: 1307,
+            errorMessage: "Review max possible rating cannot be blank"
+        }
+
+## 1308 [/1308]
+
++ Model (application/json)
+
+        {
+            errorCode: 1308,
+            errorMessage: "Review raw rating cannot be blank"
+        }
+
+## 1309 [/1309]
+
++ Model (application/json)
+
+        {
+            errorCode: 1309,
+            errorMessage: "Raw rating must be 0 or greater that 0."
+        }
+
+## 1310 [/1310]
+
++ Model (application/json)
+
+        {
+            errorCode: 1310,
+            errorMessage: "Max possible rating must be greater than 0."
+        }
+
+## 1311 [/1311]
+
++ Model (application/json)
+
+        {
+            errorCode: 1311,
+            errorMessage: "Min possible rating must be greater than 0."
+        }
         
 ## 1360 [/1360]
 
@@ -3905,6 +3959,29 @@ New review on BirdEye platform can be created using:
       }
     }
 
+<center><b>Example Payload for survey</b></center>
+    {
+      "comments": "Awesome experience",
+      "reviewDate": "2014-04-04T00:00:00",
+      "response": "Thanks for the review",
+      "responseDate": "2014-04-06T00:00:00",
+      "source": "website",
+      "aggregationSource": "citysearch",
+      "sourceType":"nps",
+      "rawRating":12,
+      "maxPossibleRating":20,
+      "minPossibleRating":1,
+      "reviewer": {
+        "nickName": "Sachin G",
+        "thumbnailUrl": "http://d2xt3xymj142xp.cloudfront.net/reviewer/9a070cf98f014f5d9b06987dcc9c48fe.jpeg",
+        "emailId": "saching@gmail.com",
+        "location": {
+          "city": "Atlanta",
+          "state": "GA"
+        }
+      }
+    }
+
 <div class="paramsTableWrap">
     <table class="paramsTable">
         <caption>Request Payload</caption>
@@ -3972,6 +4049,22 @@ New review on BirdEye platform can be created using:
                 “http://birdeye.com/common/css/images/default-profile.png”
             </td>
         </tr>
+        <tr>
+            <td>sourceType(optional)</td>
+            <td>"nps" for survey, otherwise optional</td>
+        </tr>
+        <tr>
+            <td>rawRating(optional)</td>
+            <td>rawRating required for survey review, otherwise optional</td>
+        </tr>
+        <tr>
+            <td>maxPossibleRating(optional)</td>
+            <td>maxPossibleRating required for survey, otherwise optional</td>
+        </tr>
+        <tr>
+            <td>minPossibleRating(optional)</td>
+            <td>minPossibleRating required for survey, otherwise optional</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -4024,6 +4117,36 @@ New review on BirdEye platform can be created using:
             <td>1243</td>
             <td>Invalid rating value. Allowed value between 1-5.</td>
         </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1306</td>
+            <td>Review min possible rating cannot be blank</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1307</td>
+            <td>Review max possible rating cannot be blank</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1308</td>
+            <td>Review raw rating cannot be blank</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1309</td>
+            <td>Raw rating must be 0 or greater that 0.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1310</td>
+            <td>Max possible rating must be greater than 0.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1311</td>
+            <td>Min possible rating must be greater than 0.</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -4063,6 +4186,30 @@ New review on BirdEye platform can be created using:
 + Response 400
 
     [1243][]
+
++ Response 400
+
+    [1306][]
+
++ Response 400
+
+    [1307][]
+
++ Response 400
+
+    [1308][]
+
++ Response 400
+
+    [1309][]
+
++ Response 400
+
+    [1310][]
+
++ Response 400
+
+    [1311][]
     
     
 ## Mark/Unmark Featured [/review/featured?{?api_key,businessId}]
