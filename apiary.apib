@@ -698,6 +698,15 @@ All API URLs referenced in this documentation start with the following base part
             errorMessage: "Invalid parent child mapping."
         }
 
+## 1315 [/1315]
+
++ Model (application/json)
+
+        {
+            errorCode: 1315,
+            errorMessage: "Invalid survey."
+        }
+
 # Group Business
 APIs related to business
 
@@ -6308,7 +6317,7 @@ Business survey(s) from BirdEye platform can be fetched using:
     + survey_id (integer, required) ... the survey ID
     + businessId (string, required) ... the business ID
     + api_key (string, required) ... the API key
-    + lang (string, optional) ... teh survey locale, default is english
+    + lang (string, optional) ... the survey locale, default is english
 
 ### Get Survey [GET]
 
@@ -6887,7 +6896,7 @@ Survey response on BirdEye platform can be submitted using:
         <tbody>
         <tr>
             <td>SurveyId</td>
-            <td>surveyId for which the response is submitted</td>
+            <td>survey Id for which the response is submitted</td>
         </tr>
         <tr>
             <td>Pages</td>
@@ -6895,7 +6904,7 @@ Survey response on BirdEye platform can be submitted using:
         </tr>
         <tr>
             <td>Questions</td>
-            <td>List questions available on the survey page</td>
+            <td>List of questions available on the survey page</td>
         </tr>
         <tr>
             <td>type</td>
@@ -6982,111 +6991,120 @@ Survey response on BirdEye platform can be submitted using:
 
   [1011][]
 
-  ### Get All Surveys [GET]
+## Get All [/survey/business/{business_id}/all{?api_key,sortby,sorder,searchStr}]
+Fetch all active surveys for a business
 
-  #### Request
++ Parameters
 
-  <center><b>Example curl request</b></center>
+    + sortby (string, optional) ... Sort results by lastModified[modified], Created[created], Response Count[response]
+    + sorder (string, optional) ... Sort order ascending(0) and descending (1)
+    + searchStr(string, optional) ... Search survey by name or business location
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
 
-      curl -H "content-type: application/json" -H "accept:application/json" -X GET -d "https://api.birdeye.com/resources/v1/survey/business/145301531829695/all?sortby=modified&sorder=1&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+### Get All Surveys [GET]
 
-  #### Response
+#### Request
 
-  <center><b>Example Response</b></center>
+<center><b>Example curl request</b></center>
 
-                  [
-                      {
-                          "surveyId": 9,
-                          "name": "JetBlue Customer Satisfaction Survey",
-                          "status": "new",
-                          "created": 1458844108000,
-                          "lastModified": 1482174350000,
-                          "responses": 97,
-                          "questionCount": 13
-                      },
-                      {
-                          "surveyId": 10,
-                          "name": "JetBlue Membership Survey",
-                          "status": "active",
-                          "created": 1481554022000,
-                          "lastModified": 1484867564000,
-                          "responses": 20,
-                          "questionCount": 18
-                      }
-                  ]
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET -d "https://api.birdeye.com/resources/v1/survey/business/145301531829695/all?sortby=modified&sorder=1&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+                [
+                    {
+                        "surveyId": 9,
+                        "name": "JetBlue Customer Satisfaction Survey",
+                        "status": "new",
+                        "created": 1458844108000,
+                        "lastModified": 1482174350000,
+                        "responses": 97,
+                        "questionCount": 13
+                    },
+                    {
+                        "surveyId": 10,
+                        "name": "JetBlue Membership Survey",
+                        "status": "active",
+                        "created": 1481554022000,
+                        "lastModified": 1484867564000,
+                        "responses": 20,
+                        "questionCount": 18
+                    }
+                ]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Body
+
+          [
+              {
+                  "surveyId": 9,
+                  "name": "JetBlue Customer Satisfaction Survey",
+                  "status": "new",
+                  "created": 1458844108000,
+                  "lastModified": 1482174350000,
+                  "responses": 97,
+                  "questionCount": 13
+              },
+              {
+                  "surveyId": 10,
+                  "name": "JetBlue Membership Survey",
+                  "status": "active",
+                  "created": 1481554022000,
+                  "lastModified": 1484867564000,
+                  "responses": 20,
+                  "questionCount": 18
+              }
+          ]
 
 
-  <div class="paramsTableWrap">
-      <table class="paramsTable">
-          <caption>Error Codes</caption>
-          <thead>
-          <tr>
-              <th>HTTP Status</th>
-              <th>BirdEye error code</th>
-              <th>Description</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-              <td>401 Unauthorized</td>
-              <td>1161</td>
-              <td>Invalid API key</td>
-          </tr>
-          <tr>
-              <td>401 Unauthorized</td>
-              <td>1167</td>
-              <td>API key is missing</td>
-          </tr>
-          <tr>
-              <td>404 Not Found</td>
-              <td>1011</td>
-              <td>Business id is invalid</td>
-          </tr>
-          </tbody>
-      </table>
-  </div>
++ Response 404
 
-  + Request (application/json)
+    [1011][]
 
-      + Headers
++ Response 401
 
-              Accept: application/json
+    [1167][]
 
-  + Response 200
++ Response 400
 
-      + Body
-
-            [
-                {
-                    "surveyId": 9,
-                    "name": "JetBlue Customer Satisfaction Survey",
-                    "status": "new",
-                    "created": 1458844108000,
-                    "lastModified": 1482174350000,
-                    "responses": 97,
-                    "questionCount": 13
-                },
-                {
-                    "surveyId": 10,
-                    "name": "JetBlue Membership Survey",
-                    "status": "active",
-                    "created": 1481554022000,
-                    "lastModified": 1484867564000,
-                    "responses": 20,
-                    "questionCount": 18
-                }
-            ]
-
-
-
-  + Response 404
-
-      [1011][]
-
-  + Response 401
-
-      [1167][]
-
-  + Response 400
-
-      [1161][]
+    [1161][]
