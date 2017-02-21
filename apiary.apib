@@ -4416,7 +4416,7 @@ Customer checkin can be done using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@abcd.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1}" "https://api.birdeye.com/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@abcd.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1, \"employees\" : [{\"emailId\" : \"sshikha@abcd.com\"}]}" "https://api.birdeye.com/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 > __Notes__
 
@@ -4431,7 +4431,10 @@ Customer checkin can be done using:
       "name": "Steve Smith ",
       "emailId": "steves@abcd.com",
       "phone": "408-xxx-xxxx",
-      "smsEnabled": 1
+      "smsEnabled": 1,
+	  "employees":[{
+					"emailId" : "sshikha@abcd.com"
+				  }]
     }
 
 <div class="paramsTableWrap">
@@ -4465,6 +4468,14 @@ Customer checkin can be done using:
             <td>Whether customer has opted to receive SMS request or not. Valid values are 0(false), 1(true). Default is 1.</td>
             <td>integer, optional</td>
         </tr>
+		<tr>
+			<td>employees</td>
+			<td>An Array</td>
+		</tr>
+		<tr>
+			<td>emailId</td>
+			<td>Email Id of Employee</td>
+		</tr>		
         </tbody>
     </table>
 </div>
@@ -4571,6 +4582,9 @@ Customer checkin can be done using:
               "emailId": "steves@abcd.com",
               "phone": "408-xxx-xxxx",
               "smsEnabled": 1
+			  "employees":[{
+							"emailId" : "sshikha@abcd.com"
+						  }]
             }
 
 + Response 200 (application/json)
