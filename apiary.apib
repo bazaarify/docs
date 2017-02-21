@@ -3379,6 +3379,98 @@ Forgot password email can be sent using:
 
     [1189][]
 
+## Get [/user/details{?api_key,email}]
+User details can be retrieved using:
+
++ Parameters
+
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
+    + email (string, required) ... Email id of the user whose details to be retrieved
+
+### Get details of a user [GET]
+
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/user/details?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&email=147476560554272@birdeye.com" –v
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+    {
+        "emailId": "147476560554272@birdeye.com",
+        "firstName": null,
+        "lastName": null,
+        "phone": null,
+        "businessList": [
+                            {
+                              "businessId": 147476560554272,
+                              "businessName": "single-location-test-6",
+                              "businessAlias": "single-location-test-6"
+                            }
+                        ]
+    }
+
+    <div class="paramsTableWrap">
+        <table class="paramsTable">
+            <caption>Error Codes</caption>
+            <thead>
+            <tr>
+                <th>HTTP Status</th>
+                <th>BirdEye error code</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>401 Unauthorized</td>
+                <td>1161</td>
+                <td>Invalid API key</td>
+            </tr>
+            <tr>
+                <td>404 Not Found</td>
+                <td>1188</td>
+                <td>User is not associated with the business.</td>
+            </tr>
+            <tr>
+                <td>404 Not Found</td>
+                <td>1189</td>
+                <td>User with given email id not found.</td>
+            </tr>
+            <tr>
+                <td>404 Not Found</td>
+                <td>1010</td>
+                <td>No user found with the given id</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 404
+
+    [1188][]
+
++ Response 404
+
+    [1189][]
+
++ Response 404
+
+    [1010][]
+
 # Group Reviews
 
 ## Get (Deprecated) [/review/businessid/{business_id}{?sindex,count,api_key,fdate,tdate,updateFromdate,updateTodate}]
@@ -4432,9 +4524,9 @@ Customer checkin can be done using:
       "emailId": "steves@abcd.com",
       "phone": "408-xxx-xxxx",
       "smsEnabled": 1,
-	  "employees":[{
-					"emailId" : "sshikha@abcd.com"
-				  }]
+      "employees":[{
+                     "emailId" : "sshikha@abcd.com"
+                  }]
     }
 
 <div class="paramsTableWrap">
@@ -4468,14 +4560,14 @@ Customer checkin can be done using:
             <td>Whether customer has opted to receive SMS request or not. Valid values are 0(false), 1(true). Default is 1.</td>
             <td>integer, optional</td>
         </tr>
-		<tr>
-			<td>employees</td>
-			<td>An Array</td>
-		</tr>
-		<tr>
-			<td>emailId</td>
-			<td>Email Id of Employee</td>
-		</tr>		
+        <tr>
+            <td>employees</td>
+            <td>An Array</td>
+        </tr>
+        <tr>
+            <td>emailId</td>
+            <td>Email Id of Employee</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -4582,9 +4674,9 @@ Customer checkin can be done using:
               "emailId": "steves@abcd.com",
               "phone": "408-xxx-xxxx",
               "smsEnabled": 1
-			  "employees":[{
-							"emailId" : "sshikha@abcd.com"
-						  }]
+              "employees":[{
+                             "emailId" : "sshikha@abcd.com"
+                          }]
             }
 
 + Response 200 (application/json)
