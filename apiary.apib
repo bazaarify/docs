@@ -7214,3 +7214,463 @@ Fetch all active surveys for a business
 + Response 400
 
     [1161][]
+
+
+# Group Tag
+APIs related to Tags
+
+## Tag reviews [tag/add/review{?bid,api_key,tag}]
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (list, required) ... list of tags
+
+### Tag reviews with review Ids [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"reviewIds\":[813291,813292,813293]}" "https://api.birdeye.com/resources/v1/tag/add/review?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=bird&tag=birdeye"
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>reviewIds</td>
+            <td>List of review Id's to add tags with</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>List of tags to be added to above review's list</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+### Tag reviews with filters [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{ "fromDate":"04/01/2013", "toDate":"05/3/2015", "updateFromDate":"04/01/2013", "updateToDate":"05/3/2015", "sources":["google","citysearch"], "ratings":[1,2,3,4,5,0], "keywords":["water"],"searchStr":"Awesome","subBusinessIds":[134387654345,134387654346,13438765437]}" "https://api.birdeye.com/resources/v1/tag/add/review?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=awesome&tag=positive" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>fromDate</td>
+            <td>Review's start date</td>
+        </tr>
+        <tr>
+            <td>toDate</td>
+            <td>Review's end date</td>
+        </tr>
+        <tr>
+            <td>updateFromDate</td>
+            <td>Review's response start date</td>
+        </tr>
+        <tr>
+            <td>updateToDate</td>
+            <td>Review's response end date</td>
+        </tr>
+        <tr>
+            <td>sources</td>
+            <td>Review source</td>
+        </tr>
+        <tr>
+            <td>ratings</td>
+            <td>List of user rating (0 to 5)</td>
+        </tr>
+        <tr>
+            <td>keywords</td>
+            <td>Keywords in review</td>
+        </tr>
+        <tr>
+            <td>searchStr</td>
+            <td>String that is contained by review</td>
+        </tr>
+        <tr>
+            <td>subBusinessIds</td>
+            <td>BusinessIds under enterprise account</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>List of tags to be added to above review's list</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+## Untag reviews [tag/review/{review_id}{?bid, api_key,tag}]
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (list, required) ... list of tags
+    + review_id (string, required) .. the review id
+
+### Untag single review [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/tag/review/813291?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=awesome&tag=positive" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>review_id</td>
+            <td>Review Id to remove tag from</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>List of tags to be added to above review's list</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1042</td>
+            <td>Invalid Review Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+### Untag review's with reviews Ids [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{"reviewIds":["3901784402334","3901744402337","3902344402875"]}" "https://api.birdeye.com/resources/v1/tag/remove/review?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=awesome&tag=positive" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>reviewIds</td>
+            <td>Review Id's to remove tag from</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>List of tags to be removed from above review's list</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+### Untag review's with filters [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{ "fromDate":"04/01/2013", "toDate":"05/3/2015", "updateFromDate":"04/01/2013", "updateToDate":"05/3/2015", "sources":["google","citysearch"], "ratings":[1,2,3,4,5,0], "keywords":["water"],"searchStr":"Awesome","subBusinessIds":[145308764185002,145308769721320,145308702026610]}" "https://api.birdeye.com/resources/v1/tag/remove/review?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=awesome&tag=positive" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>fromDate</td>
+            <td>Review's start date</td>
+        </tr>
+        <tr>
+            <td>toDate</td>
+            <td>Review's end date</td>
+        </tr>
+        <tr>
+            <td>updateFromDate</td>
+            <td>Review's response start date</td>
+        </tr>
+        <tr>
+            <td>updateToDate</td>
+            <td>Review's response end date</td>
+        </tr>
+        <tr>
+            <td>sources</td>
+            <td>Review source</td>
+        </tr>
+        <tr>
+            <td>ratings</td>
+            <td>List of user rating (0 to 5)</td>
+        </tr>
+        <tr>
+            <td>keywords</td>
+            <td>Keywords in review</td>
+        </tr>
+        <tr>
+            <td>searchStr</td>
+            <td>String that is contained by review</td>
+        </tr>
+        <tr>
+            <td>subBusinessIds</td>
+            <td>BusinessIds under enterprise account</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>List of tags to be removed from above review's list</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+### Remove tags from all reviews [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{"tags":["happy","good","smile"]}" "https://api.birdeye.com/resources/v1/tag/remove/all/reviews?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>tags</td>
+            <td>List of tags to be removed from all reviews</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
