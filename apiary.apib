@@ -7214,3 +7214,99 @@ Fetch all active surveys for a business
 + Response 400
 
     [1161][]
+
+
+# Group User
+APIs related to employee
+
+## Get [/{businessId} {?api_key}]
+Employee info from BirdEye platform can be fetched using:
+
++ Parameters
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
+
+### Get details of Employees [GET]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/employee/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451 –v
+
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+[
+  {
+    "firstName": "sachin",
+    "lastName": "birdeye",
+    "emailId": "sachin@birdeye.com",
+    "phone": "",
+    "imageUrl": ""
+  },
+  {
+    "firstName": "Kailash",
+    "lastName": "Yadav",
+    "emailId": "kailash12121@gmail.com",
+    "phone": "(989) 898-9898",
+    "imageUrl": "employees/574549fb79cff9.54677638.jpg"
+  },
+  {
+    "firstName": "Kailash",
+    "lastName": "Yadav",
+    "emailId": "1213@gmail.com",
+    "phone": "(989) 898-9898",
+    "imageUrl": "http://d2xt3xymj142xp.cloudfront.net/169830616/573db5844e0e66.08202399.png"
+  }
+]
+
+
+    <div class="paramsTableWrap">
+        <table class="paramsTable">
+            <caption>Error Codes</caption>
+            <thead>
+            <tr>
+                <th>HTTP Status</th>
+                <th>BirdEye error code</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>401 Unauthorized</td>
+                <td>1161</td>
+                <td>Invalid API key</td>
+            </tr>
+            <tr>
+                <td>401 Unauthorized</td>
+                <td>1167</td>
+                <td>API key is null</td>
+            </tr>
+            <tr>
+                <td>404 Not Found</td>
+                <td>1011</td>
+                <td>Invalid Business Id</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
