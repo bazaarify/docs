@@ -7415,7 +7415,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     [1011][]
 
 
-## Delete Tags [/tag/{tagname}/{?businessId,api_key}]
+## Delete Tag [/tag/{tagname}/{?businessId,api_key}]
 
 Remove undesired tags for a business.
 
@@ -7429,7 +7429,7 @@ Remove undesired tags for a business.
 
 <center><b>Example CURL Request</b></center>
 
-curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/tag/dental?businessId=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/tag/{tagname}?businessId=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 #### Request
 
@@ -7594,7 +7594,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
     + api_key (string, required) ... the API key
     + tag (list, required) ... list of tags
 
-### Assign tags to review ids [POST]
+### Assign tags to reviews [POST]
 
 <center><b>Example CURL Request</b></center>
 
@@ -7820,7 +7820,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 
 <center><b>Example CURL Request</b></center>
 
-curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/tag/review/813291?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=awesome&tag=positive" -v
+curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/tag/review/{review_id}?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=awesome&tag=positive" -v
 
 #### Request
 
@@ -8497,7 +8497,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
 
 <center><b>Example CURL Request</b></center>
 
-curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/tag/business/doctor?businessId=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/tag/business/{tag}?businessId=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 #### Request
 
