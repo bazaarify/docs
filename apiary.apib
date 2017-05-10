@@ -3708,7 +3708,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0], \"keywords\":[\"water\"],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610] }
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0], \"keywords\":[\"water\"],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610],\"tags\":[\"tag_1\",\"tag_2\"] }
     "https://api.birdeye.com/resources/v1/review/businessId/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
@@ -3724,7 +3724,8 @@ Business review(s) from BirdEye platform can be fetched using following filter i
       "searchStr":"test string",
       "subBusinessIds":[145308764185002,145308769721320,145308702026610],
       "statuses":["published","parked"],
-      "allChild":"true"
+      "allChild":"true",
+      "tags":["tag_1","tag_2"]
     }
 
 <div class="paramsTableWrap">
@@ -3780,6 +3781,10 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         <tr>
             <td>allChild</td>
             <td>Get review from all child ignoring merge reviews flag configured at parent/child relationship level</td>
+        </tr>
+        <tr>
+            <td>tags</td>
+            <td>Reviews with assigned tags</td>
         </tr>
         </tbody>
     </table>
@@ -7215,14 +7220,14 @@ Fetch all active surveys for a business
 
     [1161][]
 
-
 # Group Employee
 APIs related to employee
 
-## Get [/{businessId} {?api_key}]
+## Get [/employee/{businessId}/{?api_key}]
 Employee info from BirdEye platform can be fetched using:
 
 + Parameters
+    + businessId (string, required) ... Business Id for the business
     + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
 
 ### Get details of Employees [GET]
@@ -7310,3 +7315,1276 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
 + Response 404
 
     [1011][]
+
+# Group Tag
+
+APIs related to Tag Managment.
+
+## Create Tags [/tag/{?businessId,api_key}]
+
+Add tags to business.
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
+### Create tags [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{"tags":["dentist","ortho"]}" "https://api.birdeye.com/resources/v1/tag?businessId=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>businessId</td>
+            <td>Business Id for the business</td>
+        </tr>
+        <tr>
+            <td>tags</td>
+            <td>List of tags to be added in above business</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body
+           { "tags" : ["tag_1", "tag_2"] }
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+
+## Delete Tag [/tag/{tagname}/{?businessId,api_key}]
+
+Remove undesired tags for a business.
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tagname (string, required) ... tag to be removed
+    
+### Delete a tag [DELETE]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/tag/{tagname}?businessId=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>businessId</td>
+            <td>Business Id for the business</td>
+        </tr>
+        <tr>
+            <td>tagname</td>
+            <td>Tag to be removed for the particular business</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+## Fetch Tags [/tag/all/{?businessId,api_key}]
+
+Get tags for a business.
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    
+### Get all tags [GET]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/tag/all?businessId=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>businessId</td>
+            <td>Business Id for the business</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response Body</b></center>
+
+[
+  "dental",
+  "dentist",
+  "doctor",
+  "artho"
+]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+    [
+       "dental",
+       "dentist",
+       "doctor",
+       "ortho"
+    ]
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+
+## Manage Review Tags
+
+   Assign or remove tags to reviews.
+
+## Assign tag to reviews [/tag/add/review{?bid,api_key,tag}]
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (list, required) ... list of tags
+
+### Assign tags to reviews [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"reviewIds\":["3901784402334","3901744402337","3902344402875"]}" "https://api.birdeye.com/resources/v1/tag/add/review?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=bird&tag=birdeye"
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>reviewIds</td>
+            <td>List of review Id's to add tags with</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>List of tags to be added to above review's list</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body 
+           
+            {\"reviewIds\":["3901784402334","3901744402337","3902344402875"]}
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+
+## Search reviews and assign tags [/tag/add/review{?bid,api_key,tag}]
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (list, required) ... list of tags
+
+### Assign tags to filtered reviews [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{ "fromDate":"04/01/2013", "toDate":"05/3/2015", "updateFromDate":"04/01/2013", "updateToDate":"05/3/2015", "sources":["google","citysearch"], "ratings":[1,2,3,4,5,0], "keywords":["water"],"searchStr":"Awesome","subBusinessIds":[134387654345,134387654346,13438765437]}" "https://api.birdeye.com/resources/v1/tag/add/review?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=awesome&tag=positive" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>fromDate</td>
+            <td>Review's start date</td>
+        </tr>
+        <tr>
+            <td>toDate</td>
+            <td>Review's end date</td>
+        </tr>
+        <tr>
+            <td>updateFromDate</td>
+            <td>Review's response start date</td>
+        </tr>
+        <tr>
+            <td>updateToDate</td>
+            <td>Review's response end date</td>
+        </tr>
+        <tr>
+            <td>sources</td>
+            <td>Review source</td>
+        </tr>
+        <tr>
+            <td>ratings</td>
+            <td>List of user rating (0 to 5)</td>
+        </tr>
+        <tr>
+            <td>keywords</td>
+            <td>Keywords in review</td>
+        </tr>
+        <tr>
+            <td>searchStr</td>
+            <td>String that is contained by review</td>
+        </tr>
+        <tr>
+            <td>subBusinessIds</td>
+            <td>BusinessIds under enterprise account</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>List of tags to be added to above review's list</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body 
+           
+            { "fromDate":"04/01/2013", "toDate":"05/3/2015", "updateFromDate":"04/01/2013", "updateToDate":"05/3/2015", "sources":["google","citysearch"], "ratings":[1,2,3,4,5,0], "keywords":["water"],"searchStr":"Awesome","subBusinessIds":[134387654345,134387654346,13438765437]}
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+## Remove tags from a review [/tag/review/{review_id}/{?bid, api_key,tag}]
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (list, required) ... list of tags
+    + review_id (string, required) .. the review id
+
+### Remove tag from a single review [DELETE]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/tag/review/{review_id}?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=awesome&tag=positive" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>review_id</td>
+            <td>Review Id to remove tag from</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>List of tags to be added to above review's list</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1042</td>
+            <td>Invalid Review Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+
+## Remove tags from reviews [/tag/remove/review/{?bid, api_key,tag}]
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (list, required) ... list of tags
+
+### Remove tags from multiple reviews [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{"reviewIds":["3901784402334","3901744402337","3902344402875"]}" "https://api.birdeye.com/resources/v1/tag/remove/review?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=awesome&tag=positive" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>reviewIds</td>
+            <td>Review Id's to remove tag from</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>List of tags to be removed from above review's list</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body
+       
+           {"reviewIds":["3901784402334","3901744402337","3902344402875"]}
+    
+            
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+    
+    
+## Search reviews and remove tags [/tag/remove/review/{?bid, api_key,tag}]
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (list, required) ... list of tags
+    
+### Remove tags from filtered reviews [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{ "fromDate":"04/01/2013", "toDate":"05/3/2015", "updateFromDate":"04/01/2013", "updateToDate":"05/3/2015", "sources":["google","citysearch"], "ratings":[1,2,3,4,5,0], "keywords":["water"],"searchStr":"Awesome","subBusinessIds":[145308764185002,145308769721320,145308702026610]}" "https://api.birdeye.com/resources/v1/tag/remove/review?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=awesome&tag=positive" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>fromDate</td>
+            <td>Review's start date</td>
+        </tr>
+        <tr>
+            <td>toDate</td>
+            <td>Review's end date</td>
+        </tr>
+        <tr>
+            <td>updateFromDate</td>
+            <td>Review's response start date</td>
+        </tr>
+        <tr>
+            <td>updateToDate</td>
+            <td>Review's response end date</td>
+        </tr>
+        <tr>
+            <td>sources</td>
+            <td>Review source</td>
+        </tr>
+        <tr>
+            <td>ratings</td>
+            <td>List of user rating (0 to 5)</td>
+        </tr>
+        <tr>
+            <td>keywords</td>
+            <td>Keywords in review</td>
+        </tr>
+        <tr>
+            <td>searchStr</td>
+            <td>String that is contained by review</td>
+        </tr>
+        <tr>
+            <td>subBusinessIds</td>
+            <td>BusinessIds under enterprise account</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>List of tags to be removed from above review's list</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body
+       
+           { "fromDate":"04/01/2013", "toDate":"05/3/2015", "updateFromDate":"04/01/2013", "updateToDate":"05/3/2015", "sources":["google","citysearch"], "ratings":[1,2,3,4,5,0], "keywords":["water"],"searchStr":"Awesome","subBusinessIds":[145308764185002,145308769721320,145308702026610]}
+    
+            
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+## Remove tags from all reviews [/tag/remove/all/review/{?bid, api_key}]
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    
+### Remove particular tags from all reviews [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{"tags":["happy","good","smile"]}" "https://api.birdeye.com/resources/v1/tag/remove/all/reviews?bid=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>tags</td>
+            <td>List of tags to be removed from all reviews</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is null</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Invalid Business Id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body
+       
+           {"tags":["happy","good","smile"]}
+    
+            
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+   
+## Manage Business Tags
+
+    Associate or remove tags from businesses.
+    
+## Assign tag to business entity [/tag/business/{?businessId,api_key}]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
+
+### Assign tag a business id [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{"tags":["dentist"]}" "https://api.birdeye.com/resources/v1/tag/business?businessId=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>businessId</td>
+            <td>Business Id for the business</td>
+        </tr>
+        <tr>
+            <td>tags</td>
+            <td>List to tags to be assigned to this business</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response Body</b></center>
+
+{
+  "businessId": 134387654345,
+  "tags": [
+        "doctor",
+        "dentist"
+  ]
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Feilds</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>businessId</td>
+            <td>Business Id same as in request</td>
+        </tr>
+        <tr>
+            <td>tags</td>
+            <td>List of tags associated with above business</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body
+       
+           {"tags":["dentist"]}
+    
+            
++ Response 200 (application/json)
+
+    + Body
+    
+    {
+       "businessId": 134387654345,
+       "tags": [
+            "doctor",
+            "dentist"
+       ]
+    }
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+## Business lookup with tags [business/{business_id}/hierarchy{?businessId,api_key}]
+
++ Parameters
+
+    + business_id (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (string, required) ... list of tags
+
+
+### Business hierarchy having tag(s) [GET]
+
+List business having a tag.
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/134387654345/hierarchy?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&tag=dentist&tag=doctor" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>businessId</td>
+            <td>Business Id for the business</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>Tag to be searched for this business</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+#### Response
+
+<center><b>Example Response Body</b></center>
+
+[
+  {
+        "id": 134387654345,
+        "name": "Dr. John",
+        "address": null,
+        "phone": null,
+        "status": "active",
+        "createdOn": "Jan 11, 2017",
+        "type": "Practice",
+        "websiteUrl": null,
+        "tags": [
+            "doctor",
+            "prior"
+            ]
+  },
+  {
+        "id": 134387654347,
+        "name": "Dr. Kaye",
+        "address": null,
+        "phone": null,
+        "status": "active",
+        "createdOn": "Jan 11, 2017",
+        "type": "Specialty",
+        "websiteUrl": null,
+        "tags": [
+            "dentist",
+            "red"
+            ]
+  }
+]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Feilds</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>name</td>
+            <td>Name of the business</td>
+        </tr>
+        <tr>
+            <td>address, phone</td>
+            <td>Contact Details for the business</td>
+        </tr>
+        <tr>
+            <td>tags</td>
+            <td>Tags associated to the business / business children</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
++ Response 200 (application/json)
+
+    + Body
+    
+    [
+  {
+        "id": 134387654345,
+        "name": "Dr. John",
+        "address": null,
+        "phone": null,
+        "status": "active",
+        "createdOn": "Jan 11, 2017",
+        "type": "Practice",
+        "websiteUrl": null,
+        "tags": [
+            "doctor",
+            "prior"
+            ]
+  },
+  {
+        "id": 134387654347,
+        "name": "Dr. Kaye",
+        "address": null,
+        "phone": null,
+        "status": "active",
+        "createdOn": "Jan 11, 2017",
+        "type": "Specialty",
+        "websiteUrl": null,
+        "tags": [
+            "dentist",
+            "red"
+            ]
+  }
+]
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+## Remove tags from business entity [/tag/business/{tag}/{?businessId,api_key}]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (string, required) ... the tag to be removed
+
+
+### Remove tag from business [DELETE]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X DELETE "https://api.birdeye.com/resources/v1/tag/business/{tag}?businessId=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>businessId</td>
+            <td>Business Id for the business</td>
+        </tr>
+        <tr>
+            <td>tag</td>
+            <td>Tag to be removed from this business</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+#### Response
+
+<center><b>Example Response Body</b></center>
+
+{
+  "businessId": 134387654345,
+  "tags": [
+        "dental",
+        "dentist"  
+        ]
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Feilds</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>businessId</td>
+            <td>Business Id same as in request</td>
+        </tr>
+        <tr>
+            <td>tags</td>
+            <td>Remaining tags associated with a business, after removing above tag.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
++ Response 200 (application/json)
+
+    + Body
+    
+    {
+        "businessId": 134387654345,
+        "tags": [
+            "dental",
+            "dentist"  
+        ]
+    }
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
