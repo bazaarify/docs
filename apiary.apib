@@ -3708,7 +3708,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0], \"keywords\":[\"water\"],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610] }
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0], \"keywords\":[\"water\"],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610],\"tags\":[\"tag_1\",\"tag_2\"] }
     "https://api.birdeye.com/resources/v1/review/businessId/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
@@ -3724,7 +3724,8 @@ Business review(s) from BirdEye platform can be fetched using following filter i
       "searchStr":"test string",
       "subBusinessIds":[145308764185002,145308769721320,145308702026610],
       "statuses":["published","parked"],
-      "allChild":"true"
+      "allChild":"true",
+      "tags":["tag_1","tag_2"]
     }
 
 <div class="paramsTableWrap">
@@ -3780,6 +3781,10 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         <tr>
             <td>allChild</td>
             <td>Get review from all child ignoring merge reviews flag configured at parent/child relationship level</td>
+        </tr>
+        <tr>
+            <td>tags</td>
+            <td>Reviews with assigned tags</td>
         </tr>
         </tbody>
     </table>
@@ -7218,10 +7223,11 @@ Fetch all active surveys for a business
 # Group Employee
 APIs related to employee
 
-## Get [/{businessId} {?api_key}]
+## Get [/employee/{businessId}/{?api_key}]
 Employee info from BirdEye platform can be fetched using:
 
 + Parameters
+    + businessId (string, required) ... Business Id for the business
     + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
 
 ### Get details of Employees [GET]
@@ -7311,18 +7317,19 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
     [1011][]
 
 # Group Tag
+
 APIs related to Tag Managment.
 
-## Manage Tags [/tag/{tagname}/{?businessId,api_key}]
+## Create Tags [/tag/{?businessId,api_key}]
+
+Add tags to business.
 
 + Parameters
 
     + businessId (string, required) ... the Business ID
     + api_key (string, required) ... the API key
-    + tagname (string, required) ... tag to be added
 
-
-### Create tag [POST]
+### Create tags [POST]
 
 <center><b>Example CURL Request</b></center>
 
@@ -7384,7 +7391,41 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     </table>
 </div>
 
-### Delete tag [DELETE]
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body
+           { "tags" : ["tag_1", "tag_2"] }
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+
+## Delete Tags [/tag/{tagname}/{?businessId,api_key}]
+
+Remove undesired tags for a business.
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tagname (string, required) ... tag to be removed
+    
+### Delete a tag [DELETE]
 
 <center><b>Example CURL Request</b></center>
 
@@ -7407,7 +7448,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
             <td>Business Id for the business</td>
         </tr>
         <tr>
-            <td>tag</td>
+            <td>tagname</td>
             <td>Tag to be removed for the particular business</td>
         </tr>
         </tbody>
@@ -7446,6 +7487,35 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
     </table>
 </div>
 
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+## Fetch Tags [/tag/all/{?businessId,api_key}]
+
+Get tags for a business.
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    
 ### Get all tags [GET]
 
 <center><b>Example CURL Request</b></center>
@@ -7483,8 +7553,40 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
   "artho"
 ]
 
++ Request (application/json)
 
-## Tag Reviews [/tag/add/review{?bid,api_key,tag}]
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+    [
+       "dental",
+       "dentist",
+       "doctor",
+       "ortho"
+    ]
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+
+## Manage Review Tags
+
+   Assign or remove tags to reviews.
+
+## Assign tag to reviews [/tag/add/review{?bid,api_key,tag}]
 
 + Parameters
 
@@ -7492,7 +7594,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
     + api_key (string, required) ... the API key
     + tag (list, required) ... list of tags
 
-### Assign tag to reviews [POST]
+### Assign tags to review ids [POST]
 
 <center><b>Example CURL Request</b></center>
 
@@ -7554,8 +7656,40 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     </table>
 </div>
 
++ Request (application/json)
 
-### Search reviews and assign tags [POST]
+    + Headers
+
+            Accept: application/json
+            
+    + Body 
+           
+            {\"reviewIds\":["3901784402334","3901744402337","3902344402875"]}
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+
+## Search reviews and assign tags [/tag/add/review{?bid,api_key,tag}]
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (list, required) ... list of tags
+
+### Assign tags to filtered reviews [POST]
 
 <center><b>Example CURL Request</b></center>
 
@@ -7649,7 +7783,31 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     </table>
 </div>
 
-## Remove Tags From Reviews [/tag/review/{review_id}{?bid, api_key,tag}]
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body 
+           
+            { "fromDate":"04/01/2013", "toDate":"05/3/2015", "updateFromDate":"04/01/2013", "updateToDate":"05/3/2015", "sources":["google","citysearch"], "ratings":[1,2,3,4,5,0], "keywords":["water"],"searchStr":"Awesome","subBusinessIds":[134387654345,134387654346,13438765437]}
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+## Remove tags from a review [/tag/review/{review_id}/{?bid, api_key,tag}]
 
 + Parameters
 
@@ -7658,7 +7816,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     + tag (list, required) ... list of tags
     + review_id (string, required) .. the review id
 
-### Remove tag from a review [DELETE]
+### Remove tag from a single review [DELETE]
 
 <center><b>Example CURL Request</b></center>
 
@@ -7725,6 +7883,35 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
     </table>
 </div>
 
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+
+## Remove tags from reviews [/tag/remove/review/{?bid, api_key,tag}]
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (list, required) ... list of tags
+
 ### Remove tags from multiple reviews [POST]
 
 <center><b>Example CURL Request</b></center>
@@ -7787,7 +7974,41 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     </table>
 </div>
 
-### Search reviews and remove tags [POST]
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body
+       
+           {"reviewIds":["3901784402334","3901744402337","3902344402875"]}
+    
+            
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+    
+    
+## Search reviews and remove tags [/tag/remove/review/{?bid, api_key,tag}]
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (list, required) ... list of tags
+    
+### Remove tags from filtered reviews [POST]
 
 <center><b>Example CURL Request</b></center>
 
@@ -7881,7 +8102,39 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     </table>
 </div>
 
-### Remove tags from all reviews [POST]
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body
+       
+           { "fromDate":"04/01/2013", "toDate":"05/3/2015", "updateFromDate":"04/01/2013", "updateToDate":"05/3/2015", "sources":["google","citysearch"], "ratings":[1,2,3,4,5,0], "keywords":["water"],"searchStr":"Awesome","subBusinessIds":[145308764185002,145308769721320,145308702026610]}
+    
+            
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+## Remove tags from all reviews [/tag/remove/all/review/{?bid, api_key}]
+
++ Parameters
+
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    
+### Remove particular tags from all reviews [POST]
 
 <center><b>Example CURL Request</b></center>
 
@@ -7939,8 +8192,36 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     </table>
 </div>
 
++ Request (application/json)
 
-## Tag Business Entity [/tag/business/{?businessId,api_key}]
+    + Headers
+
+            Accept: application/json
+            
+    + Body
+       
+           {"tags":["happy","good","smile"]}
+    
+            
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+   
+## Manage Business Tags
+
+    Associate or remove tags from businesses.
+    
+## Assign tag to business entity [/tag/business/{?businessId,api_key}]
 
 + Parameters
 
@@ -7948,7 +8229,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     + api_key (string, required) ... the API key
 
 
-### Assign tag to business [POST]
+### Assign tag a business id [POST]
 
 <center><b>Example CURL Request</b></center>
 
@@ -8012,7 +8293,51 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     </table>
 </div>
 
-### Business lookup with tags [GET]
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body
+       
+           {"tags":["dentist"]}
+    
+            
++ Response 200 (application/json)
+
+    + Body
+    
+    {
+       "businessId": 134387654345,
+       "tags": [
+            "doctor",
+            "dentist"
+       ]
+    }
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+## Business lookup with tags [business/{business_id}/hierarchy{?businessId,api_key}]
+
++ Parameters
+
+    + business_id (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    + tag (string, required) ... list of tags
+
+
+### Business hierarchy having tag(s) [GET]
 
 List business having a tag.
 
@@ -8106,13 +8431,66 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
     </table>
 </div>
 
++ Request (application/json)
 
-## Remove Tags From Business Entity [/tag/business/{?businessId,api_key}]
+    + Headers
+
+            Accept: application/json
+            
++ Response 200 (application/json)
+
+    + Body
+    
+    [
+  {
+        "id": 134387654345,
+        "name": "Dr. John",
+        "address": null,
+        "phone": null,
+        "status": "active",
+        "createdOn": "Jan 11, 2017",
+        "type": "Practice",
+        "websiteUrl": null,
+        "tags": [
+            "doctor",
+            "prior"
+            ]
+  },
+  {
+        "id": 134387654347,
+        "name": "Dr. Kaye",
+        "address": null,
+        "phone": null,
+        "status": "active",
+        "createdOn": "Jan 11, 2017",
+        "type": "Specialty",
+        "websiteUrl": null,
+        "tags": [
+            "dentist",
+            "red"
+            ]
+  }
+]
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
+## Remove tags from business entity [/tag/business/{tag}/{?businessId,api_key}]
 
 + Parameters
 
     + businessId (string, required) ... the Business ID
     + api_key (string, required) ... the API key
+    + tag (string, required) ... the tag to be removed
 
 
 ### Remove tag from business [DELETE]
@@ -8179,4 +8557,34 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
         </tbody>
     </table>
 </div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
++ Response 200 (application/json)
+
+    + Body
+    
+    {
+        "businessId": 134387654345,
+        "tags": [
+            "dental",
+            "dentist"  
+        ]
+    }
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
 
