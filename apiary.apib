@@ -16,6 +16,14 @@ All API URLs referenced in this documentation start with the following base part
 
 ## Base URL [https://api.birdeye.com/resources/v1]
 
+## 1023 [/1023]
+
++ Model (application/json)
+
+        {
+            errorCode: 1023,
+            errorMessage: "No email addresses specified"
+        }
 
 ## 1052 [/1052]
 
@@ -904,6 +912,269 @@ A Reseller can create a Business using:
 + Response 400 (applicaton/json)
 
     [1055][]
+
+
+## Create business in bulk [/business/{businessId}/bulkcreate/{type}?{api_key, user_email}]
+Create business in bulk
+
+### Bulk Create [POST]
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "[ {"name":"Drs. Chalker and Peterson, A Dental Partnership", "alias":"Drs. Chalker", "email":"admin@xyz.com", "categories":"Dentist,Dental,Doctor", "address1":"7405 Morro Rd", "address2":"Suite 102", "city":"Atascadero", "state":"CA", "countryCode":"US", "zip":"93422", "phone":"(805) 466-1243", "fax":"(805) 466-1248", "websiteUrl":"www.dentistinatascadero.com", "description":"*State of the Art Equipment *Serving North County Since 1976 *Gentle Care *Knowledgeable Staff", "services":"Other Dental Specialties, Orthodontists, Dentistry", "keywords":"Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA", "logoUrl":"http://bzimages-prod.s3.amazonaws.com/669029760/Logo%20180%20X%20121.png", "coverImageUrl":"http://bzimages-prod.s3.amazonaws.com/669029760/California%20Foothills%20951%20X%20351.jpg", "timezone":"Pacific Standard Time", "languages":"English,Spanish", "payment":"Paypal, Visa, Master Card", "facebookUrl":",http://www.facebook.com/ChalkerandPetersonDental", "twitterUrl":"https://twitter.com/DrsChaAndPet", "linkedInUrl":"https://linkedin.com/DrsChaAndPet", "googleUrl":"https://plus.google.com/103957250846354895095/about?gl=US&hl=en-US", "youtubeUrl":"https://www.youtube.com/channel/UCDNP0M75ySA5qt0So2F8Xxw", "firstName":"tim", "lastName":"cook", "userEmailId":"tim.cook@xyz.com", "userPhone":"(805) 466-1243", "userRole":"owner" } ]" "https://api.birdeye.com/resources/v1/business/143424324234234/bulkcreate/business?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&user_email=tim.coook@xyz.com" –v
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name</td>
+                <td>Required, String</td>
+                <td>Business/Product Name (Max 1000 character long)</td>
+            </tr>
+            <tr>
+                <td>alias</td>
+                <td>Optional, string</td>
+                <td>Alias (Your internal way of identifying this location)</td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td>Required, String</td>
+                <td>Business Email ID </td>
+            </tr>
+            <tr>
+                <td>phone</td>
+                <td>Required, string</td>
+                <td>Business Phone (Required) Format is (xxx) xxx-xxxx</td>
+            </tr>
+            <tr>
+                <td>categories</td>
+                <td>Optional, String</td>
+                <td>Category (Mapped to Google Category)</td>
+            </tr>
+            <tr>
+                <td>address1</td>
+                <td>Optional, string</td>
+                <td>Business Address</td>
+            </tr>
+            <tr>
+                <td>address1</td>
+                <td>Optional, String</td>
+                <td>Business Address</td>
+            </tr>
+            <tr>
+                <td>city</td>
+                <td>Optional, string</td>
+                <td>City (Max 1000 character long)</td>
+            </tr>
+            <tr>
+                <td>state</td>
+                <td>Optional, String</td>
+                <td>State (2 character state code)</td>
+            </tr>
+            <tr>
+                <td>countryCode</td>
+                <td>Optional, string</td>
+                <td>Country Code (2 character country code)</td>
+            </tr>
+            <tr>
+                <td>zip</td>
+                <td>Required, String</td>
+                <td>Zip Code</td>
+            </tr>
+            <tr>
+                <td>fax</td>
+                <td>Optional, String</td>
+                <td>Fax number Format is (xxx) xxx-xxxx</td>
+            </tr>
+            <tr>
+                <td>websiteUrl</td>
+                <td>Optional, String</td>
+                <td>Business Email ID</td>
+            </tr>
+            <tr>
+                <td>description</td>
+                <td>Optional, string</td>
+                <td>Description (10 to 4000 character long)</td>
+            </tr>
+            <tr>
+                <td>services</td>
+                <td>Optional, String</td>
+                <td>Services (Comma separated list of services offered; used for SEO)</td>
+            </tr>
+            <tr>
+                <td>keywords</td>
+                <td>Optional, string</td>
+                <td>Keywords (Comma separated list of keywords; Max 10 keywords; used for SEO)</td>
+            </tr>
+            <tr>
+                <td>logoUrl</td>
+                <td>Optional, String</td>
+                <td>Logo Image (Dimension should be 60 x 60 px)</td>
+            </tr>
+            <tr>
+                <td>coverImageUrl</td>
+                <td>Optional, string</td>
+                <td>Cover Image (Optional) (Dimension should be 995 x 316 px)</td>
+            </tr>
+            <tr>
+                <td>timezone</td>
+                <td>Optional, String</td>
+                <td>Timezone  ('EST',  'CST', 'MST', 'PST', 'AKST', 'HST' are valid timezones )</td>
+            </tr>
+            <tr>
+                <td>languages</td>
+                <td>Optional, string</td>
+                <td>Language </td>
+            </tr>
+            <tr>
+                <td>payment</td>
+                <td>Optional, String</td>
+                <td>Payment Type (Max 250 character long)</td>
+            </tr>
+            <tr>
+                <td>facebookUrl</td>
+                <td>Optional, string</td>
+                <td>Facebook URL (Optional)</td>
+            </tr>
+            <tr>
+                <td>twitterUrl</td>
+                <td>Optional, String</td>
+                <td>Business Twitter URL</td>
+            </tr>
+            <tr>
+                <td>linkedInUrl</td>
+                <td>Optional, string</td>
+                <td>Business LinkedId URL</td>
+            </tr>
+            <tr>
+                <td>googleUrl</td>
+                <td>Optional, String</td>
+                <td>Business Google URL</td>
+            </tr>
+            <tr>
+                <td>youtubeUrl</td>
+                <td>Optional, string</td>
+                <td>Business Youtube URL</td>
+            </tr>
+            <tr>
+                <td>firstName</td>
+                <td>Optional, String</td>
+                <td>Location General Manager - First Name </td>
+            </tr>
+            <tr>
+                <td>lastName</td>
+                <td>Optional, String</td>
+                <td>Location General Manager - Last Name </td>
+            </tr>
+            <tr>
+                <td>userEmailId</td>
+                <td>Optional, String</td>
+                <td>Location General Manager - Email </td>
+            </tr>
+            <tr>
+                <td>userPhone</td>
+                <td>Optional, string</td>
+                <td>Location General Manager - Mobile Phone</td>
+            </tr>
+            <tr>
+                <td>userRole</td>
+                <td>Optional, String</td>
+                <td>LocationGeneral Manager - Role (They can be 'owner' or 'admin')</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1023</td>
+            <td>No email addresses specified</td>
+        </tr>
+        <tr>
+            <td>400 Unauthorized</td>
+            <td>1177</td>
+            <td>User is not authorized to perform any action on any business</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1188</td>
+            <td>User is not associated with the business.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Parameters
+    + businessId (string, required) ... the Parent ID
+    + api_key (string, required) ... the API key
+    + type (string, required) ... Business type (Business/Product)
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1011][]
+
++ Response 400
+
+    [1023][]
+
++ Response 400
+
+    [1177][]
+
++ Response 400
+
+    [1188][]
+
+
 
 ## Search [/business/search{?search_str,loc,sindex,count,sort,api_key,nearby}]
 Business from BirdEye platform can be searched using:
