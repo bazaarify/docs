@@ -763,7 +763,12 @@ A Reseller can create a Business using:
             <tr>
                 <td>type</td>
                 <td>optional, string</td>
-                <td>Business type. Valid values are “Business, Enterprise-Location, Enterprise-Product, Reseller”. Default is “Business”.</td>
+                <td>Business type. Valid values are “Business, Enterprise-Location, Enterprise-Product, Reseller or a existing custom hierarchy type”. Default is “Business”.</td>
+            </tr>
+            <tr>
+                <td>aggrOptions</td>
+                <td>optional, Integer</td>
+                <td>Aggregation Options to enable/disable aggregations. Valid values are 0 for disable all aggregations, 1 for disable fetch business Info ,enable review aggregation and search business , 3 for enabled search business, disable fetch business and disable review aggregation, 4 for enable all aggregations. If not aggrOptions is supplied, then all aggregations are enabled.</td>
             </tr>
         </tbody>
     </table>
@@ -835,7 +840,8 @@ A Reseller can create a Business using:
                 "businessName": "The Business Name",
                 "zip": 32323,
                 "type": "Business",
-                "phone": "4032365164"
+                "phone": "4032365164",
+                "aggrOptions" : 3
             }
 
 + Response 200 (application/json)
@@ -2968,8 +2974,8 @@ Get parent/child hierarchy for an enterprise
 
     [1011][]
 
-## Add/Update/Remove Child in Hierarchy [/business/{businessId}/hierachy?{api_key, cid}]
-Add/Update/Remove child in hierarchy
+## Add/Remove Child in Hierarchy [/business/{businessId}/hierachy?{api_key, cid}]
+Add/Remove child in hierarchy
 
 ### Add child in hierarchy [PUT]
 
