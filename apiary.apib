@@ -2401,6 +2401,454 @@ Business status can be updated using:
     [1191][]
 
 
+## Competitor of Enterprise Business [/business/{EnterpriseBusinessNumber}/child{?api_key,isCompetitor}]
+List of all Enterprise Competitor Business can be retrieved using: 
+
+### Get Competitor Business [GET]
+<center><b>Example Curl Request</b></center>
+     curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/104563456/child?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&isCompetitor=true" –v
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Parameter</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>api_key</td>
+                <td>required</td>
+                <td>Reseller/Sub-reseller/Enterprise id</td>
+            </tr>
+            <tr>
+                <td>isCompetitor</td>
+                <td>required</td>
+                <td>true/false</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+####Response
+<center><b>Example Response</b></center>
+[
+      {
+      "id": 147867723257477,
+      "name": "Pizza hut",
+      "alias": "Pizza hut"
+   },
+      {
+      "id": 147867726142270,
+      "name": "Mcdonalds",
+      "alias": "Mcdonalds"
+   },
+      {
+      "id": 147867727574772,
+      "name": "KFC",
+      "alias": "KFC"
+   },
+      {
+      "id": 149540962791726,
+      "name": "Burger king",
+      "alias": "Burger king"
+   },
+      {
+      "id": 149540965060398,
+      "name": "Subway",
+      "alias": "Subway"
+   }
+]
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>Enterprise Competitor Business ID</td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>Enterprise Competitor Business Name</td>
+            </tr>
+            <tr>
+                <td>alias</td>
+                <td>Enterprise Competitor Business alias</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
++ Parameters
+
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
+    + isCompetitor (boolean, required) ... true for get competitor business of Enterprise Business and False for get Child Business of Enterprise Business .
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+
++ Response 200 (application/json)
+
+    + Body
+
+    [
+      {
+        "id": 768996864,
+        "name": "Environmental Pest Management",
+        "alias": "Environmental Pest Management - Westerville, OH"
+      },
+      {
+        "id": 144670708364016,
+        "name": "Sub-reseller",
+        "alias": "Sub-reseller"
+      },
+      {
+        "id": 144670708364322,
+        "name": "Holiday Inn",
+        "alias": "Holiday Inn"
+      }
+    ]
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+## Child Business of Competitor [/business/{EnterpriseCompetitorBusinessId}/child{?api_key,isCompetitor}]
+List of all Child Business of Competitor can be retrieved using: 
+
+### Get Competitor Child Business [GET]
+<center><b>Example Curl Request</b></center>
+     curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/104563456/child?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&isCompetitor=true" –v
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Parameter</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>api_key</td>
+                <td>required</td>
+                <td>Reseller/Sub-reseller/Enterprise id</td>
+            </tr>
+            <tr>
+                <td>isCompetitor</td>
+                <td>required</td>
+                <td>true/false</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+####Response
+<center><b>Example Response</b></center>
+[
+      {
+        "id": 986031488,
+        "name": "Central Ohio Endodontics",
+        "alias": "Central Ohio Endodontics - Dublin, OH",
+        "address": {
+          "address1": "5152 Blazer Memorial Pkwy",
+          "address2": "Ste 102",
+          "city": "Dublin",
+          "state": "OH",
+          "zip": "43017",
+          "countryCode": "US",
+          "countryName": "United States of America"
+        },
+        "phone": "(614) 896-2801",
+        "type": "Business",
+        "status": "active",
+        "createdOn": "Dec 04, 2013",
+      },
+      {
+        "id": 768996864,
+        "name": "Environmental Pest Management",
+        "alias": "Environmental Pest Management - Westerville, OH",
+        "address": {
+          "address1": "200 Hoff Rd",
+          "address2": "Unit P",
+          "city": "Westerville",
+          "state": "OH",
+          "zip": "43082",
+          "countryCode": "US",
+          "countryName": "United States of America"
+        },
+        "phone": "(614) 771-8605",
+        "type": "Business",
+        "status": "active",
+        "createdOn": "Dec 05, 2013",
+      },
+      {
+        "id": 144670708364016,
+        "name": "Sub-reseller",
+        "alias": "Sub-reseller",
+        "status": "active",
+        "createdOn": "Nov 05, 2013",
+        "type": "Reseller",
+        "childCount": 1
+      },
+      {
+        "id": 144670708364322,
+        "name": "Holiday Inn",
+        "alias": "Holiday Inn",
+        "status": "active",
+        "createdOn": "Nov 01, 2013",
+        "type": "Enterprise-Location",
+        "childCount": 2
+      }
+    ]
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>Business ID</td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>Business Name</td>
+            </tr>
+            <tr>
+                <td>alias</td>
+                <td>Business alias</td>
+            </tr>
+            <tr>
+                <td>address</td>
+                <td>Business address. note: available only when it is SMB/Enterprise Location</td>
+            </tr>
+            <tr>
+                <td>phone</td>
+                <td>Business phone</td>
+            </tr>
+            <tr>
+                <td>status</td>
+                <td>Payment status</td>
+            </tr>
+            <tr>
+                <td>createdOn</td>
+                <td>Business singup date</td>
+            </tr>
+            <tr>
+                <td>type</td>
+                <td>Type of account. e.g. Reseller (when it is a sub-reseller), Enterprise-Location (location based enterprise), Enterprise-Product (product based enterprise), Business (SMB/Enterprise location), Product (Enterprise product)</td>
+            </tr>
+            <tr>
+                <td>childCount</td>
+                <td>Child account count. note: applicable only for Reseller, Enterprise-Location, Enterprise-Product</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
++ Parameters
+
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
+    + isCompetitor (boolean, required) ... true for get child business of Enterprise competitor business.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+
++ Response 200 (application/json)
+
+    + Body
+
+    [
+      {
+        "id": 986031488,
+        "name": "Central Ohio Endodontics",
+        "alias": "Central Ohio Endodontics - Dublin, OH",
+        "address": {
+          "address1": "5152 Blazer Memorial Pkwy",
+          "address2": "Ste 102",
+          "city": "Dublin",
+          "state": "OH",
+          "zip": "43017",
+          "countryCode": "US",
+          "countryName": "United States of America"
+        },
+        "phone": "(614) 896-2801",
+        "type": "Business",
+        "status": "active",
+        "createdOn": "Dec 04, 2013",
+      },
+      {
+        "id": 768996864,
+        "name": "Environmental Pest Management",
+        "alias": "Environmental Pest Management - Westerville, OH",
+        "address": {
+          "address1": "200 Hoff Rd",
+          "address2": "Unit P",
+          "city": "Westerville",
+          "state": "OH",
+          "zip": "43082",
+          "countryCode": "US",
+          "countryName": "United States of America"
+        },
+        "phone": "(614) 771-8605",
+        "type": "Business",
+        "status": "active",
+        "createdOn": "Dec 05, 2013",
+      },
+      {
+        "id": 144670708364016,
+        "name": "Sub-reseller",
+        "alias": "Sub-reseller",
+        "status": "active",
+        "createdOn": "Nov 05, 2013",
+        "type": "Reseller",
+        "childCount": 1
+      },
+      {
+        "id": 144670708364322,
+        "name": "Holiday Inn",
+        "alias": "Holiday Inn",
+        "status": "active",
+        "createdOn": "Nov 01, 2013",
+        "type": "Enterprise-Location",
+        "childCount": 2
+      }
+    ]
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 ## Child Businesses [/business/child/all{?api_key, pid}]
 List of child businesses can be retrieved using:
 
@@ -4274,6 +4722,278 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 + Response 400
 
     [1244][]
+
+## Get Competitor Review [/review/businessId/{CompetitorEnterpriseBusinessId}{?sindex,count,api_key,isCompetitor}]
+Get Competitor Business review(s) from BirdEye platform can be fetched using following filter in request payload:
+
++ Parameters
+
+    + sindex (integer, required) ... the starting index of the reviews
+    + count (integer, required) ... the number of reviews to query
+    + api_key (string, required) ... the API key
+    + isCompetitor(boolean,required)...True for Competitor Review
+
+### Get Competitor Reviews [POST]
+
+#### Request
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0], \"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610] }
+    "https://api.birdeye.com/resources/v1/review/businessId/755009344?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&isCompetitor=true" -v
+
+<center><b>Example Payload</b></center>
+
+    {
+      "fromDate":"04/01/2013",
+      "toDate":"05/3/2015",
+      "updateFromDate":"04/01/2013",
+      "updateToDate":"05/3/2015",
+      "sources":["google","citysearch"],
+      "ratings":[1,2,3,4,5,0],
+      "searchStr":"test string",
+      "subBusinessIds":[145308764185002,145308769721320,145308702026610],
+      "statuses":["published","parked"]
+    }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Constraint</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>fromDate</td>
+            <td>Review date (start) e.g. "04/01/2013"</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>toDate</td>
+            <td>Review date (end) e.g. "04/01/2013"</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>updateFromDate</td>
+            <td>Review response date (start) e.g. "04/01/2013"</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>updateToDate</td>
+            <td>Review response date (end) e.g. "04/01/2013" </td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>sources</td>
+            <td>Aggregation source name e.g. "google","citysearch" etc. Note: use "our_website" to filter reviews on BirdEye platform </td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>ratings</td>
+            <td>Review rating e.g. "1","2"</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>searchStr</td>
+            <td>String that is contained by review</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>subBusinessIds</td>
+            <td>Competitor BusinessIds under enterprise competitor account</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>statuses</td>
+            <td>Review status. Valid values are "published","parked","all". Default is "published" only</td>
+            <td>Optional</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+    [
+    {
+        "reviewId": "3947127516862",
+        "rating": 4,
+        "comments": "Our water polo team stayed there for 4 nights while in for a tournament. It fit our needs perfectly. The rooms were squeaky clean and comfortable. The housekeeping staff was super efficient and k...",
+        "title": null,
+        "reviewer": {
+            "firstName": null,
+            "lastName": null,
+            "nickName": "Jen C.",
+            "thumbnailUrl": "http://d3cnqzq0ivprch.cloudfront.net/demo/css/images/default-profile.png",
+            "emailId": null,
+            "facebookId": null,
+            "city": "Ann Arbor",
+            "state": "MI"
+        },
+        "reviewUrl": "http://www.citysearch.com/not_recommended_reviews/Knzq0i-RsFqWRaNKNWOQbw",
+        "sourceType": "citysearch",
+        "reviewDate": "Aug 01, 2014",
+        "response": null,
+        "responseDate": null,
+        "featured": 1,
+        "businessId": "755009344",
+        "uniqueReviewUrl":"https://birdeye.com/websiter-755009344/review/3947127516862",
+        "businessName":"Websiter",
+        "businessType":"Location"
+    },
+    {
+        "reviewId": "3947077656849",
+        "rating": 4,
+        "comments": "Was scared when I saw that is was more if a motel the hotel, but for one night we would give it a try. The rooms were clean and the desk help was also good. It was a little noise but I fell aslee...",
+        "title": null,
+        "reviewer": {
+            "firstName": null,
+            "lastName": null,
+            "nickName": "Stella S.",
+            "thumbnailUrl": "http://d2xt3xymj142xp.cloudfront.net/reviewer/4b7339a2c966485ab58ceaf7ae49e91e.jpeg",
+            "emailId": null,
+            "facebookId": null,
+            "city": "Diamond Bar",
+            "state": "CA"
+        },
+        "reviewUrl": "http://www.citysearch.com/biz/holiday-inn-express-san-jose-central-city-san-jose?hrid=mJpfRj7QaZzxaaLFRfR48w&nb=1",
+        "sourceType": "citysearch",
+        "reviewDate": "Jul 31, 2014",
+        "response": null,
+        "responseDate": null,
+        "featured": 0,
+        "businessId": "755009344",
+        "uniqueReviewUrl":"https://birdeye.com/websiter-755009344/review/3942327516353",
+        "businessName":"Websiter",
+        "businessType":"Location"
+    }
+    ]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1163</td>
+            <td>Invalid start index value</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1164</td>
+            <td>Invalid result count value</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1186</td>
+            <td>Invalid from date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1187</td>
+            <td>Invalid to date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1227</td>
+            <td>Invalid updated from date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1228</td>
+            <td>Invalid updated to date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Body
+
+            [
+                {
+                    "reviewId": "73748574902",
+                    "rating": 5,
+                    "comments": "I am a long time customer and love Dieici. I am there at least once a week. I have never been disappointed with any service. I love all the girls. The customer service is beyond a 10. I also love the new addition Wish to the salon! Wish is a woman's clothing boutique. What could be better...beauty and fashion all in one spot!!! Dieci keeps getting better and better!",
+                    "title": null,
+                    "reviewer": {
+                      "firstName": "Jennifer",
+                      "lastName": "Bennett",
+                      "nickName": null,
+                      "thumbnailUrl": "http://d2xt3xymj142xp.cloudfront.net/reviewer/9a070cf98f014f5d9b06987dcc9c48fe.jpeg",
+                      "emailId": "jbennett@gmail.com",
+                      "facebookId": "638309687",
+                      "city": "Cedar Knolls",
+                      "state": " NJ"
+                    },
+                    "reviewURL": "http://www.citysearch.com/biz/dieci-lifestyle-spa-livingston",
+                    "sourceType": "citysearch",
+                    "reviewDate": "Jan 20, 2014",
+                    "response": "Thanks",
+                    "responseDate": "Feb 18, 2014",
+                    "featured": 0
+                }
+            ]
+
++ Response 400
+
+    [1163][]
+
++ Response 400
+
+    [1164][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1161][]
+
++ Response 404
+
+    [1011][]
+
++ Response 400
+
+    [1244][]
+    
 
 
 ## Create [/review/business/{business_id}{?api_key}]
