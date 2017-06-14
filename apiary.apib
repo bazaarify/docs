@@ -4823,6 +4823,25 @@ Returns list of review source along with review count and average rating, also r
 
     curl -X POST 'https://api.birdeye.com/resources/v1/review/upload/business/755009344/source/google?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451' -H 'content-type: multipart/form-data' -F file=@Sample_review_upload.xlsx
 
+> __Notes__
+
+> - xlsx file format is listed below. 
+> - Column-1 : Review Comment
+> - Column-2 : Rating ( 0 | 1 | 2 | 3 | 4 | 5) 
+> - Column-3 : Review Date (Format- MM/DD/YYYY)
+> - Coumn-4 : Recommended (Yes | No)
+> - Column-5 : Reviewer First name
+> - Column-6 : Reviewer Last name
+> - Column-7 : Reviewer nick name
+> - Column-8 : Reviewer city
+> - Column-9 : Reviewer state
+> - Column-10 : Reviewer email
+> - Column-11 : Reviewer image URL
+> - Column-12 : Review URL
+> - Column-13 : Review response
+> - Column-14 : Response date (Format- MM/DD/YYYY)
+
+
 + Response 200 
 
     + Body
