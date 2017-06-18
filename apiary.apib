@@ -3761,6 +3761,193 @@ Add/Remove child in hierarchy
 
     [1011][]
 
+
+## Get Competitors [/business/{businessId}/competitors {?api_key}]
+Business competitors can be fetched using:
+
+### Get Business Competitors [GET]
+
+#### Request
+
+<center><b>Example CURL Request</b></center>
+
+    curl -H "Content-Type: application/json" -H "Accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/755009344_1/competitors?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451"
+
+#### Response
+
+<center><b>Example Response Body</b></center>
+
+    [
+        {
+                "enterpriseId": 144679606934805,
+                "enterpriseName": "taj",
+                "businessCompetitors": [{
+                        "businessId": 144681844334495,
+                        "name": "texas",
+                        "location":{
+                                "address1": "44/5", 
+                                "address2": "II-street", 
+                                "city": "San Jose", 
+                                "state": "CA", 
+                                "zip": "102634", 
+                                "countryCode": "US", 
+                                "countryName": null, 
+                                "lat": null, 
+                                "lng": null 
+                        }
+                }]
+        },
+        {
+                "enterpriseId": 144679577771476,
+                "enterpriseName": "pullman",
+                "businessCompetitors": [{
+                        "businessId": 144974367274032,
+                        "name": "paris",
+                        "location":{ 
+                                "address1": "b/t 24th St", 
+                                "address2": "Mission", 
+                                "city": "San Francisco", 
+                                "state": "CA", 
+                                "zip": "90011", 
+                                "countryCode": null, 
+                                "countryName": null, 
+                                "lat": null, 
+                                "lng": null 
+                        }
+
+                }]
+        }
+]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>enterpriseId</td>
+            <td>Enterprise Competitor Id</td>
+        </tr>
+        <tr>
+            <td>enterpriseName</td>
+            <td>Enterprise Competitor Name</td>
+        </tr>
+        <tr>
+            <td>businessId</td>
+            <td>Competitor Id</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>Competitor Name</td>
+        </tr>
+        <tr>
+            <td>location</td>
+            <td>Competitor Address</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404  Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+
+            [
+                {
+                        "enterpriseId": 144679606934805,
+                        "enterpriseName": "taj",
+                        "businessCompetitors": [{
+                                "businessId": 144681844334495,
+                                "name": "texas",
+                                "location":{
+                                        "address1": "44/5", 
+                                        "address2": "II-street", 
+                                        "city": "San Jose", 
+                                        "state": "CA", 
+                                        "zip": "102634", 
+                                        "countryCode": "US", 
+                                        "countryName": null, 
+                                        "lat": null, 
+                                        "lng": null 
+                                }
+                        }]
+                },
+                {
+                        "enterpriseId": 144679577771476,
+                        "enterpriseName": "pullman",
+                        "businessCompetitors": [{
+                                "businessId": 144974367274032,
+                                "name": "paris",
+                                "location":{ 
+                                        "address1": "b/t 24th St", 
+                                        "address2": "Mission", 
+                                        "city": "San Francisco", 
+                                        "state": "CA", 
+                                        "zip": "90011", 
+                                        "countryCode": null, 
+                                        "countryName": null, 
+                                        "lat": null, 
+                                        "lng": null 
+                                }
+
+                        }]
+                }
+        ]
+
++ Response 401 (application/json)
+
+    [1161][]
+
++ Response 404 (application/json)
+
+    [1011][]
+
++ Response 401 (application/json)
+
+    [1167][]
+
+
 # Group User
 
 APIs related to user.
