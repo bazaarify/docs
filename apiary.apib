@@ -6161,38 +6161,40 @@ Customer list can be fetched using:
 
     + businessId (string, required) ... the Business ID
     + api_key (string, required) ... the API key
+    + startDate(string, optional) ... the start date format should be MM/dd/yyyy. if start date is not set, then we will use the date customer was created.
+    + endDate(string,optional) ... the end date format should be MM/dd/yyyy. if end date is not set, then we will use the current date.
 
 ### Customer activity log [GET]
 Customer activity log can be fetched using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/customer/history/658753231?businessId=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/customer/history/658753231?businessId=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&startDate=03/10/2018&endDate=03/15/2018" –v
 
 #### Response
 
     [
         {
             "type": "Share review email",
-            "activityDate": "Jun 25, 2015 08:44 PM",
+            "activityDate": "Mar 11, 2018 08:44 PM",
             "action": "Sent",
             "activityTimestamp": 1435290249000
         },
         {
             "type": "Review request email",
-            "activityDate": "Jun 25, 2015 08:43 PM",
+            "activityDate": "Mar 12, 2018 08:43 PM",
             "action": "Sent",
             "activityTimestamp": 1435290234000
         },
         {
             "type": "Review request email",
-            "activityDate": "Jun 25, 2015 08:43 PM",
+            "activityDate": "Mar 13, 2018 08:43 PM",
             "action": "5-star review written on BirdEye",
             "activityTimestamp": 1435290234000
         },
         {
             "type": "Created",
-            "activityDate": "Jun 25, 2015 08:43 PM",
+            "activityDate": "Mar 13, 2018 08:43 PM",
             "action": "No Action",
             "activityTimestamp": 1435290234000
         }
@@ -6234,6 +6236,16 @@ Customer activity log can be fetched using:
             <td>1091</td>
             <td>User id not authorized to view this customer.</td>
         </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1523</td>
+            <td>The correct date format should be "mm/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1524</td>
+            <td>Date entered is invalid.</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -6269,6 +6281,15 @@ Customer activity log can be fetched using:
 
     [1091][]
 
+
++ Response 400
+
+    [1523][]
+
+
++ Response 400
+
+    [1524][]
 
 
 
