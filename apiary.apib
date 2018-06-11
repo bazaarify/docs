@@ -6175,6 +6175,143 @@ Customer list can be fetched using:
     [1167][]
 
 
+### Get Customer in Date Range.[POST]
+
+This api is used to fetch all customer details in date range.
+
+
+#### Request
+<center><b>Example curl request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"startDate\":\"04/10/2015\",\"endDate\":\"04/30/2018\"}"  "https://api.birdeye.com/resources/v1/customer/all?apiKey=7ty67ghio&businessId=892323"  
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>startDate</td>
+                <td>04/10/2015</td>
+                <td>Start Date format should be mm/dd/yyyy</td>
+            </tr>
+            <tr>
+                <td>endDate</td>
+                <td>04/30/2018</td>
+                <td> End Date format should be mm/dd/yyyy</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+#### Response
+
+    <center><b>Example response</b></center>
+
+    
+    
+        {
+            "id": 1234,
+            "number": "1234",
+            "firstName": "sindy",
+            "middleName": null,
+            "lastName": "M.",
+            "emailId": "sundy.dumm1@dummy.com",
+            "phone": null,
+            "location": {
+                "id": 87612,
+                "city": "Oakland",
+                "state": "CA"
+            },
+            "requestReview": null,
+            "lastActivityDate": "APR 12, 2015 09:24 AM (PST)",
+            "name": null,
+            "smsEnabled": 0,
+            "driveName": null,
+            "landlinePhone": null,
+            "optOutCommunication": 0,
+            "employeeEmailIds": null,
+            "assistedBy": null,
+            "checkinSource": null,
+            "extraParam": null,
+            "skipUpdate": null,
+            "smsUnsubscribedReason": null,
+            "stagingCustomerId": null
+        },
+        {
+            "id": 123213,
+            "number": "4563",
+            "firstName": "Jill",
+            "middleName": null,
+            "lastName": "H.",
+            "emailId": "jill@dotnet.net",
+            "phone": null,
+            "location": {
+                "id": 987,
+                "city": "Walnut Creek",
+                "state": "CA"
+            },
+            "requestReview": null,
+            "lastActivityDate": "Jan 03, 2018 01:27 PM (PST)",
+            "name": null,
+            "smsEnabled": 0,
+            "driveName": null,
+            "landlinePhone": null,
+            "optOutCommunication": 0,
+            "employeeEmailIds": null,
+            "assistedBy": null,
+            "checkinSource": null,
+            "extraParam": null,
+            "skipUpdate": null,
+            "smsUnsubscribedReason": null,
+            "stagingCustomerId": null
+        }
+    
+
+> __Notes__
+
+> - _If startDate is not provided ,then the default start  date will be set to 01/02/1970_
+> - _If end Date is not provided ,then today's date will be treated as end Date._
+> - A payload either empty { } or with body consisting of  startDate or endDate or both is expected as part of the curl command.
+
+ <div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1380</td>
+            <td>Api key or session token missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1532</td>
+            <td>Business id is missing or invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
 ## Activity log [/customer/history/{customerId}{?businessId,api_key}]
 
 + Parameters
