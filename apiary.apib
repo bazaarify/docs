@@ -8459,6 +8459,368 @@ Survey response on BirdEye platform can be submitted using:
 
   [1011][]
 
+## List Responses [/survey/ext/list/responses/{survey_id}{?api_key,businessNumber,page,size,sortby,sorder}]
+Survey responses for a given survey can be fetched using:
+
++ Parameters
+
+    + survey_id (integer, required) ... the Survey ID
+    + businessNumber (string, required) ... the Business Number of Enterprise (for associated api key)
+    + api_key (string, required) ... the API key
+
+### List Responses for a Survey [POST]
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{}"  "https://api.birdeye.com/resources/v1/survey/list/responses/1891?page=0&size=3&sortby=date&sorder=1&api_key=56eSPYy0zNxKWltvTziIJiebx0yU9pVT&businessNumber=146611277075427" -v
+
+#### Request
+
+<center><b>Example Payload</b></center>
+
+          {
+            "businessIds" : [12345, 12342], // optional
+            "startDate" : "07/02/2018 06:30:00", // optional
+            "endDate" : "07/03/2018 06:45:00" // optional
+          }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>businessIds</td>
+            <td>If filtering on locations is required, when not provided all location responses are returned </td>
+        </tr>
+        <tr>
+            <td>startDate</td>
+            <td>Date filter, startDate to be used with endDate. timezone - PST, format supported : MM/dd/yyyy HH:mm:ss</td>
+        </tr>
+        <tr>
+            <td>startDate</td>
+            <td>Date filter, endDate to be used with startDate. timezone - PST, format supported : MM/dd/yyyy HH:mm:ss</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center><br/>
+
+{
+   "responseList":[
+      {
+         "responseId":16971,
+         "requestDate":"07/11/2018",
+         "responseDate":"07/11/2018",
+         "completed":true,
+         "questionCount":10,
+         "locale":"en",
+         "surveyId":2065,
+         "surveyName":"Test Edit Test Edit 2(2)",
+         "businessId":20879,
+         "locationName":"BMW",
+         "customerId":230190,
+         "customerName":"Anonymous",
+         "ticketed":false,
+         "answers":[
+            {
+               "questionTitle":"We are interested in receiving your feedback. \nabout the care provided at our facility. \n\nPlease take a few minutes to rate your satisfaction with each of the following\n\nPlease describe ur properties.",
+               "questionType":"label",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true
+            },
+            {
+               "questionTitle":"Single CHoice",
+               "questionType":"radio",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "answer":"A"
+            },
+            {
+               "questionTitle":"Multiple choice q",
+               "questionType":"checkbox",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "answer":"A"
+            },
+            {
+               "questionTitle":"Multiple Text Entry edited",
+               "questionType":"textarea",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "answer":"qwsad"
+            },
+            {
+               "questionTitle":"Single TExt Entry edited",
+               "questionType":"text",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "answer":"fasdf"
+            },
+            {
+               "questionTitle":"Drop Down edited",
+               "questionType":"dropdown",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "answer":"Select1"
+            },
+            {
+               "questionTitle":"Please rate us based on your experience Rating Question edited",
+               "questionType":"rating",
+               "visible":true,
+               "conditional":true,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":10,
+               "minValue":1,
+               "showTime":true,
+               "showDate":true,
+               "answer":"6"
+            },
+            {
+               "questionTitle":"Please rate us for the below mentioned services Matrix Drop Down edited",
+               "questionType":"matrixdropdown",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "childAnswers":[
+                  {
+                     "questionTitle":"Click to write statement 1",
+                     "questionType":"dropdown",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice 1"
+                  },
+                  {
+                     "questionTitle":"Click to write statement 2",
+                     "questionType":"dropdown",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice 1"
+                  },
+                  {
+                     "questionTitle":"Click to write statement 3",
+                     "questionType":"dropdown",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice 1"
+                  },
+                  {
+                     "questionTitle":"Click to write statement 4",
+                     "questionType":"dropdown",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice 2"
+                  },
+                  {
+                     "questionTitle":"Click to write statement 5",
+                     "questionType":"dropdown",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice 2"
+                  },
+                  {
+                     "questionTitle":"Click to write statement",
+                     "questionType":"dropdown",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice 2"
+                  }
+               ]
+            },
+            {
+               "questionTitle":"How likely are you to recommend us to your family and friends NPS edited?",
+               "questionType":"nps",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":10,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "answer":"7"
+            },
+            {
+               "questionTitle":"Matrix Radio Choice editedf",
+               "questionType":"matrixradio",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "childAnswers":[
+                  {
+                     "questionTitle":"Click to write statement A",
+                     "questionType":"radio",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice D"
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "totalResponses":2,
+   "pageNo":0,
+   "pageSize":1,
+   "hasNext":true
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1315</td>
+            <td>Invalid Survey</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+  + Headers
+          Content-Type: application/json
+          Accept: application/json
+
++ Response 200
+
++ Response 400
+
+  [1315][]
+
++ Response 401
+
+  [1161][]
+
++ Response 401
+
+  [1167][]
+
++ Response 404
+
+  [1011][]
+
 ## Get All [/survey/business/{business_id}/all{?api_key,sortby,sorder,searchStr}]
 Fetch all active surveys for a business
 
