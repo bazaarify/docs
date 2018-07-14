@@ -8763,6 +8763,100 @@ Survey responses for a given survey can be fetched using:
 }
 
 <div class="paramsTableWrap">
+    <table class="responseFields">
+        <caption>Response Fields</caption>
+        <thead>
+        <tr>
+            <th>Field Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>responseId</td>
+            <td>Unique Id associated with a customer response</td>
+        </tr>
+        <tr>
+            <td>requestDate</td>
+            <td>Date on which a survey request was sent to the customer</td>
+        </tr>
+        <tr>
+            <td>responseDate</td>
+            <td>Date on which the survey was taken by the customer</td>
+        </tr>
+        <tr>
+            <td>completed</td>
+            <td>Is the response complete or partial</td>
+        </tr>
+        <tr>
+            <td>questionCount</td>
+            <td>Total no of questions in the survey</td>
+        </tr>
+        <tr>
+            <td>locale</td>
+            <td>Locale of the the survey which was taken</td>
+        </tr>
+        <tr>
+            <td>surveyId</td>
+            <td>Unique Id of the survey</td>
+        </tr>
+        <tr>
+            <td>surveyName</td>
+            <td>Survey Title</td>
+        </tr>
+        <tr>
+            <td>businessId</td>
+            <td>Location Id at which the response was recorded - Small businessId, businessNumber is different!</td>
+        </tr>
+        <tr>
+            <td>locationName</td>
+            <td>Name of the response location (alias when present, name otherwise)</td>
+        </tr>
+         <tr>
+            <td>customerId</td>
+            <td>Unique Id associated with customer who has responded</td>
+        </tr>
+        <tr>
+            <td>customerName</td>
+            <td>Name of the customer</td>
+        </tr>
+        <tr>
+            <td>ticketed</td>
+            <td>Is the response tickted or not</td>
+        </tr>
+        <tr>
+            <td>answers</td>
+            <td>List of answers to individual questions</td>
+        </tr>
+         <tr>
+            <td>questionTitle</td>
+            <td>Question Text</td>
+        </tr>
+        <tr>
+            <td>questionType</td>
+            <td>Type of the question</td>
+        </tr>
+        <tr>
+            <td>conditional</td>
+            <td>Is Skip or Display logic present on the question</td>
+        </tr>
+         <tr>
+            <td>shownToCustomer</td>
+            <td>Was the question displayed to the customer. false when question wasn't show due to skip/display logic</td>
+        </tr>
+        <tr>
+            <td>answer</td>
+            <td>actual answer given by the customer</td>
+        </tr>
+        <tr>
+            <td>childAnswers</td>
+            <td>list of answers for a parent-child type question</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
     <table class="paramsTable">
         <caption>Error Codes</caption>
         <thead>
