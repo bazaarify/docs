@@ -8479,7 +8479,6 @@ Survey responses for a given survey can be fetched using:
 <center><b>Example Payload</b></center>
 
           {
-            "businessIds" : [12345, 12342], // optional
             "startDate" : "07/02/2018 06:30:00", // optional
             "endDate" : "07/03/2018 06:45:00" // optional
           }
@@ -8495,15 +8494,11 @@ Survey responses for a given survey can be fetched using:
         </thead>
         <tbody>
         <tr>
-            <td>businessIds</td>
-            <td>If filtering on locations is required, when not provided all location responses are returned </td>
-        </tr>
-        <tr>
             <td>startDate</td>
             <td>Date filter, startDate to be used with endDate. timezone - PST, format supported : MM/dd/yyyy HH:mm:ss</td>
         </tr>
         <tr>
-            <td>startDate</td>
+            <td>endDate</td>
             <td>Date filter, endDate to be used with startDate. timezone - PST, format supported : MM/dd/yyyy HH:mm:ss</td>
         </tr>
         </tbody>
@@ -8525,7 +8520,6 @@ Survey responses for a given survey can be fetched using:
          "locale":"en",
          "surveyId":1000,
          "surveyName":"Test Edit Test Edit 2(2)",
-         "businessId":2345,
          "locationName":"BMW",
          "customerId":123456,
          "customerName":"Anonymous",
@@ -8803,10 +8797,6 @@ Survey responses for a given survey can be fetched using:
         <tr>
             <td>surveyName</td>
             <td>Survey Title</td>
-        </tr>
-        <tr>
-            <td>businessId</td>
-            <td>Location Id at which the response was recorded - Small businessId, businessNumber is different!</td>
         </tr>
         <tr>
             <td>locationName</td>
