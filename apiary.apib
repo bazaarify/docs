@@ -8472,7 +8472,7 @@ Survey responses for a given survey can be fetched using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{}"  "https://api.birdeye.com/resources/v1/survey/list/responses/1891?page=0&size=3&sortby=date&sorder=1&api_key=56eSPYy0zNxKWltvTziIJiebx0yU9pVT&businessNumber=146611277075427" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{}"  "https://api.birdeye.com/resources/v1/survey/list/responses/1000?page=0&size=3&sortby=date&sorder=1&api_key=your_api_key&businessNumber=123456432112341" -v
 
 #### Request
 
@@ -8517,17 +8517,17 @@ Survey responses for a given survey can be fetched using:
 {
    "responseList":[
       {
-         "responseId":16971,
+         "responseId":12345,
          "requestDate":"07/11/2018",
          "responseDate":"07/11/2018",
          "completed":true,
          "questionCount":10,
          "locale":"en",
-         "surveyId":2065,
+         "surveyId":1000,
          "surveyName":"Test Edit Test Edit 2(2)",
-         "businessId":20879,
+         "businessId":2345,
          "locationName":"BMW",
-         "customerId":230190,
+         "customerId":123456,
          "customerName":"Anonymous",
          "ticketed":false,
          "answers":[
