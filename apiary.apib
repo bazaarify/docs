@@ -8459,6 +8459,452 @@ Survey response on BirdEye platform can be submitted using:
 
   [1011][]
 
+## List Responses [/survey/ext/list/responses/{survey_id}{?api_key,businessNumber,page,size,sortby,sorder}]
+Survey responses for a given survey can be fetched using:
+
++ Parameters
+
+    + survey_id (integer, required) ... the Survey ID
+    + businessNumber (string, required) ... the Business Number of Enterprise (for associated api key)
+    + api_key (string, required) ... the API key
+
+### List Responses for a Survey [POST]
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{}"  "https://api.birdeye.com/resources/v1/survey/list/responses/1000?page=0&size=3&sortby=date&sorder=1&api_key=your_api_key&businessNumber=123456432112341" -v
+
+#### Request
+
+<center><b>Example Payload</b></center>
+
+          {
+            "startDate" : "07/02/2018 06:30:00", // optional
+            "endDate" : "07/03/2018 06:45:00" // optional
+          }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>startDate</td>
+            <td>Date filter, startDate to be used with endDate. timezone - PST, format supported : MM/dd/yyyy HH:mm:ss</td>
+        </tr>
+        <tr>
+            <td>endDate</td>
+            <td>Date filter, endDate to be used with startDate. timezone - PST, format supported : MM/dd/yyyy HH:mm:ss</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center><br/>
+
+{
+   "responseList":[
+      {
+         "responseId":12345,
+         "requestDate":"07/11/2018",
+         "responseDate":"07/11/2018",
+         "completed":true,
+         "questionCount":10,
+         "locale":"en",
+         "surveyId":1000,
+         "surveyName":"Test Edit Test Edit 2(2)",
+         "locationName":"BMW",
+         "customerId":123456,
+         "customerName":"Anonymous",
+         "ticketed":false,
+         "answers":[
+            {
+               "questionTitle":"We are interested in receiving your feedback. \nabout the care provided at our facility. \n\nPlease take a few minutes to rate your satisfaction with each of the following\n\nPlease describe ur properties.",
+               "questionType":"label",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true
+            },
+            {
+               "questionTitle":"Single CHoice",
+               "questionType":"radio",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "answer":"A"
+            },
+            {
+               "questionTitle":"Multiple choice q",
+               "questionType":"checkbox",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "answer":"A"
+            },
+            {
+               "questionTitle":"Multiple Text Entry edited",
+               "questionType":"textarea",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "answer":"qwsad"
+            },
+            {
+               "questionTitle":"Single TExt Entry edited",
+               "questionType":"text",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "answer":"fasdf"
+            },
+            {
+               "questionTitle":"Drop Down edited",
+               "questionType":"dropdown",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "answer":"Select1"
+            },
+            {
+               "questionTitle":"Please rate us based on your experience Rating Question edited",
+               "questionType":"rating",
+               "visible":true,
+               "conditional":true,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":10,
+               "minValue":1,
+               "showTime":true,
+               "showDate":true,
+               "answer":"6"
+            },
+            {
+               "questionTitle":"Please rate us for the below mentioned services Matrix Drop Down edited",
+               "questionType":"matrixdropdown",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "childAnswers":[
+                  {
+                     "questionTitle":"Click to write statement 1",
+                     "questionType":"dropdown",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice 1"
+                  },
+                  {
+                     "questionTitle":"Click to write statement 2",
+                     "questionType":"dropdown",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice 1"
+                  },
+                  {
+                     "questionTitle":"Click to write statement 3",
+                     "questionType":"dropdown",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice 1"
+                  },
+                  {
+                     "questionTitle":"Click to write statement 4",
+                     "questionType":"dropdown",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice 2"
+                  },
+                  {
+                     "questionTitle":"Click to write statement 5",
+                     "questionType":"dropdown",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice 2"
+                  },
+                  {
+                     "questionTitle":"Click to write statement",
+                     "questionType":"dropdown",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice 2"
+                  }
+               ]
+            },
+            {
+               "questionTitle":"How likely are you to recommend us to your family and friends NPS edited?",
+               "questionType":"nps",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":10,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "answer":"7"
+            },
+            {
+               "questionTitle":"Matrix Radio Choice editedf",
+               "questionType":"matrixradio",
+               "visible":true,
+               "conditional":false,
+               "shownToCustomer":true,
+               "hidden":false,
+               "maxValue":0,
+               "minValue":0,
+               "showTime":true,
+               "showDate":true,
+               "childAnswers":[
+                  {
+                     "questionTitle":"Click to write statement A",
+                     "questionType":"radio",
+                     "visible":true,
+                     "conditional":false,
+                     "shownToCustomer":true,
+                     "hidden":false,
+                     "maxValue":0,
+                     "minValue":0,
+                     "showTime":true,
+                     "showDate":true,
+                     "answer":"Choice D"
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "totalResponses":2,
+   "pageNo":0,
+   "pageSize":1,
+   "hasNext":true
+}
+
+<div class="paramsTableWrap">
+    <table class="responseFields">
+        <caption>Response Fields</caption>
+        <thead>
+        <tr>
+            <th>Field Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>responseId</td>
+            <td>Unique Id associated with a customer response</td>
+        </tr>
+        <tr>
+            <td>requestDate</td>
+            <td>Date on which a survey request was sent to the customer</td>
+        </tr>
+        <tr>
+            <td>responseDate</td>
+            <td>Date on which the survey was taken by the customer</td>
+        </tr>
+        <tr>
+            <td>completed</td>
+            <td>Is the response complete or partial</td>
+        </tr>
+        <tr>
+            <td>questionCount</td>
+            <td>Total no of questions in the survey</td>
+        </tr>
+        <tr>
+            <td>locale</td>
+            <td>Locale of the the survey which was taken</td>
+        </tr>
+        <tr>
+            <td>surveyId</td>
+            <td>Unique Id of the survey</td>
+        </tr>
+        <tr>
+            <td>surveyName</td>
+            <td>Survey Title</td>
+        </tr>
+        <tr>
+            <td>locationName</td>
+            <td>Name of the response location (alias when present, name otherwise)</td>
+        </tr>
+         <tr>
+            <td>customerId</td>
+            <td>Unique Id associated with customer who has responded</td>
+        </tr>
+        <tr>
+            <td>customerName</td>
+            <td>Name of the customer</td>
+        </tr>
+        <tr>
+            <td>ticketed</td>
+            <td>Is the response tickted or not</td>
+        </tr>
+        <tr>
+            <td>answers</td>
+            <td>List of answers to individual questions</td>
+        </tr>
+         <tr>
+            <td>questionTitle</td>
+            <td>Question Text</td>
+        </tr>
+        <tr>
+            <td>questionType</td>
+            <td>Type of the question</td>
+        </tr>
+        <tr>
+            <td>conditional</td>
+            <td>Is Skip or Display logic present on the question</td>
+        </tr>
+         <tr>
+            <td>shownToCustomer</td>
+            <td>Was the question displayed to the customer. false when question wasn't show due to skip/display logic</td>
+        </tr>
+        <tr>
+            <td>answer</td>
+            <td>actual answer given by the customer</td>
+        </tr>
+        <tr>
+            <td>childAnswers</td>
+            <td>list of answers for a parent-child type question</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1315</td>
+            <td>Invalid Survey</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+  + Headers
+          Content-Type: application/json
+          Accept: application/json
+
++ Response 200
+
++ Response 400
+
+  [1315][]
+
++ Response 401
+
+  [1161][]
+
++ Response 401
+
+  [1167][]
+
++ Response 404
+
+  [1011][]
+
 ## Get All [/survey/business/{business_id}/all{?api_key,sortby,sorder,searchStr}]
 Fetch all active surveys for a business
 
