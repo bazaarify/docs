@@ -10391,3 +10391,418 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
 
     [1011][]
 
+
+## Post [/reports/usage/{?reportType,sindex,count,businessId,api_key}]
+Business review(s) from BirdEye platform can be fetched using following filter in request payload:
+
++ Parameters
+
+    + business_id (string, required) ... the business ID
+    + sindex (integer, required) ... the starting index of the reviews
+    + count (integer, required) ... the number of reviews to query
+    + api_key (string, required) ... the API key
+    + reportType (string, required) ...the type of Report(Summary or Tabular)
+
+### Usage data for Reports  [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"startDate\":\"04/01/2013\", \"endDate\":\"05/3/2015\",\"reviewSites\":["2","110","1","100","3","303","6","84","33","202","25","21","4","5","63"], \"days\":7, \"groupByDays\":1,\"reviewSiteAllFlag\":true } "https://api.birdeye.com/resources/v1/reports/usage?reportType=Summary&sindex=0&count=25&businessId=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+
+<center><b>Example Payload</b></center>
+
+    {
+      "startDate":"04/01/2013",
+      "endDate":"05/3/2015",
+      "reviewSites":["2","110","1","100","3","303","6","84","33","202","25","21","4","5","63"],
+      "ratings":[1,2,3,4,5,0],
+      "days":7
+      "groupByDays":1,
+      "reviewSiteAllFlag":true
+    }
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>reportType</td>
+            <td>Type of Report(Summary or Tabular)</td>
+        </tr>
+        <tr>
+            <td>sindex</td>
+            <td>the starting index of the reviews</td>
+        </tr>
+        <tr>
+            <td>count</td>
+            <td>the number of reviews to query</td>
+        </tr>
+        <tr>
+            <td>businessId</td>
+            <td>Business Id for the business</td>
+        </tr>
+        <tr>
+            <td>api_key</td>The Api Key</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+#### Response
+
+<center><b>Example Response Body</b></center>
+
+[
+    {
+        "name": "Total",
+        "alias1": "Total",
+        "emailSentInfo": {
+            "total": 15990,
+            "percent": 0,
+            "reqCount": 15990,
+            "reqReminderCount": 37034,
+            "shareReqCount": 0,
+            "shareReqReminderCount": 0
+        },
+        "emailOpenInfo": {
+            "total": 10316,
+            "percent": 64.5,
+            "reqCount": 10316,
+            "reqReminderCount": 0,
+            "shareReqCount": 0,
+            "shareReqReminderCount": 0
+        },
+        "emailClickInfo": {
+            "total": 1370,
+            "percent": 8.6,
+            "rcmdCount": [
+                {
+                    "name": "Google",
+                    "count": 683,
+                    "percent": 49.9,
+                    "sourceId": 2
+                },
+                {
+                    "name": "Facebook",
+                    "count": 263,
+                    "percent": 19.2,
+                    "sourceId": 110
+                },
+                {
+                    "name": "BirdEye",
+                    "count": 4,
+                    "percent": 0.3,
+                    "sourceId": 100
+                }
+            ],
+            "nonRcmdCount": [
+                {
+                    "name": "BirdEye",
+                    "count": 420,
+                    "percent": 30.7,
+                    "sourceId": 100
+                }
+            ]
+        },
+        "rcmdReviewsCount": [
+            {
+                "sourceId": 2,
+                "sourceName": "Google",
+                "sourceAlias": "Google",
+                "avgRating": null,
+                "reviewCount": 1297
+            },
+            {
+                "sourceId": 110,
+                "sourceName": "Facebook",
+                "sourceAlias": "Facebook",
+                "avgRating": null,
+                "reviewCount": 517
+            },
+            {
+                "sourceId": 100,
+                "sourceName": "BirdEye",
+                "sourceAlias": "birdeye",
+                "avgRating": null,
+                "reviewCount": 176
+            },
+            {
+                "sourceId": 1,
+                "sourceName": "Yelp",
+                "sourceAlias": "Yelp",
+                "avgRating": null,
+                "reviewCount": 171
+            },
+            {
+                "sourceId": 25,
+                "sourceName": "The Knot",
+                "sourceAlias": "The Knot",
+                "avgRating": null,
+                "reviewCount": 6
+            },
+            {
+                "sourceId": 21,
+                "sourceName": "Wedding Wire",
+                "sourceAlias": "Wedding Wire",
+                "avgRating": null,
+                "reviewCount": 1
+            }
+        ],
+        "nonRcmdReviewsCount": [
+            {
+                "sourceId": 100,
+                "sourceName": "BirdEye",
+                "sourceAlias": "birdeye",
+                "avgRating": null,
+                "reviewCount": 516
+            }
+        ],
+        "smsSentInfo": {
+            "total": 39980,
+            "percent": 0,
+            "reqCount": 39980,
+            "reqReminderCount": 0,
+            "shareReqCount": 0,
+            "shareReqReminderCount": 0
+        },
+        "smsOpenInfo": {
+            "total": 2340,
+            "percent": 5.9,
+            "reqCount": 2340,
+            "reqReminderCount": 0,
+            "shareReqCount": 0,
+            "shareReqReminderCount": 0
+        },
+        "smsClickInfo": {
+            "total": 1558,
+            "percent": 3.9,
+            "rcmdCount": [
+                {
+                    "name": "Google",
+                    "count": 850,
+                    "percent": 54.6,
+                    "sourceId": 2
+                },
+                {
+                    "name": "Facebook",
+                    "count": 425,
+                    "percent": 27.3,
+                    "sourceId": 110
+                },
+                {
+                    "name": "BirdEye",
+                    "count": 2,
+                    "percent": 0.1,
+                    "sourceId": 100
+                }
+            ],
+            "nonRcmdCount": [
+                {
+                    "name": "BirdEye",
+                    "count": 281,
+                    "percent": 18,
+                    "sourceId": 100
+                }
+            ]
+        },
+        "totalReviewsCount": 2684
+    }
+]
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
++ Response 200 (application/json)
+
+    + Body
+    
+    [
+    {
+        "name": "Total",
+        "alias1": "Total",
+        "emailSentInfo": {
+            "total": 15990,
+            "percent": 0,
+            "reqCount": 15990,
+            "reqReminderCount": 37034,
+            "shareReqCount": 0,
+            "shareReqReminderCount": 0
+        },
+        "emailOpenInfo": {
+            "total": 10316,
+            "percent": 64.5,
+            "reqCount": 10316,
+            "reqReminderCount": 0,
+            "shareReqCount": 0,
+            "shareReqReminderCount": 0
+        },
+        "emailClickInfo": {
+            "total": 1370,
+            "percent": 8.6,
+            "rcmdCount": [
+                {
+                    "name": "Google",
+                    "count": 683,
+                    "percent": 49.9,
+                    "sourceId": 2
+                },
+                {
+                    "name": "Facebook",
+                    "count": 263,
+                    "percent": 19.2,
+                    "sourceId": 110
+                },
+                {
+                    "name": "BirdEye",
+                    "count": 4,
+                    "percent": 0.3,
+                    "sourceId": 100
+                }
+            ],
+            "nonRcmdCount": [
+                {
+                    "name": "BirdEye",
+                    "count": 420,
+                    "percent": 30.7,
+                    "sourceId": 100
+                }
+            ]
+        },
+        "rcmdReviewsCount": [
+            {
+                "sourceId": 2,
+                "sourceName": "Google",
+                "sourceAlias": "Google",
+                "avgRating": null,
+                "reviewCount": 1297
+            },
+            {
+                "sourceId": 110,
+                "sourceName": "Facebook",
+                "sourceAlias": "Facebook",
+                "avgRating": null,
+                "reviewCount": 517
+            },
+            {
+                "sourceId": 100,
+                "sourceName": "BirdEye",
+                "sourceAlias": "birdeye",
+                "avgRating": null,
+                "reviewCount": 176
+            },
+            {
+                "sourceId": 1,
+                "sourceName": "Yelp",
+                "sourceAlias": "Yelp",
+                "avgRating": null,
+                "reviewCount": 171
+            },
+            {
+                "sourceId": 25,
+                "sourceName": "The Knot",
+                "sourceAlias": "The Knot",
+                "avgRating": null,
+                "reviewCount": 6
+            },
+            {
+                "sourceId": 21,
+                "sourceName": "Wedding Wire",
+                "sourceAlias": "Wedding Wire",
+                "avgRating": null,
+                "reviewCount": 1
+            }
+        ],
+        "nonRcmdReviewsCount": [
+            {
+                "sourceId": 100,
+                "sourceName": "BirdEye",
+                "sourceAlias": "birdeye",
+                "avgRating": null,
+                "reviewCount": 516
+            }
+        ],
+        "smsSentInfo": {
+            "total": 39980,
+            "percent": 0,
+            "reqCount": 39980,
+            "reqReminderCount": 0,
+            "shareReqCount": 0,
+            "shareReqReminderCount": 0
+        },
+        "smsOpenInfo": {
+            "total": 2340,
+            "percent": 5.9,
+            "reqCount": 2340,
+            "reqReminderCount": 0,
+            "shareReqCount": 0,
+            "shareReqReminderCount": 0
+        },
+        "smsClickInfo": {
+            "total": 1558,
+            "percent": 3.9,
+            "rcmdCount": [
+                {
+                    "name": "Google",
+                    "count": 850,
+                    "percent": 54.6,
+                    "sourceId": 2
+                },
+                {
+                    "name": "Facebook",
+                    "count": 425,
+                    "percent": 27.3,
+                    "sourceId": 110
+                },
+                {
+                    "name": "BirdEye",
+                    "count": 2,
+                    "percent": 0.1,
+                    "sourceId": 100
+                }
+            ],
+            "nonRcmdCount": [
+                {
+                    "name": "BirdEye",
+                    "count": 281,
+                    "percent": 18,
+                    "sourceId": 100
+                }
+            ]
+        },
+        "totalReviewsCount": 2684
+       }
+    ]
+
++ Response 400
+
+    [1163][]
+
++ Response 400
+
+    [1164][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1161][]
+
++ Response 404
+
+    [1011][]
