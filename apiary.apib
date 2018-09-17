@@ -5849,7 +5849,7 @@ Customer checkin can be done using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@abcd.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1, \"employees\" : [{\"emailId\" : \"sshikha@abcd.com\"}]}" "https://api.birdeye.com/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@abcd.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1,\"checkinConfig\" :{\"reviewEmailTemplateId\": 9906,\"reviewSmsTemplateId\" :202,\"surveySmsTemplateId\":35,\"surveyEmailTemplateId\":8227}, \"employees\" : [{\"firstName\" : \"Steve \",\"lastName\" : \"Smith \",\"emailId\" : \"sshikha@abcd.com\"}]}" "https://api.birdeye.com/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 > __Notes__
 
@@ -5865,6 +5865,12 @@ Customer checkin can be done using:
       "emailId": "steves@abcd.com",
       "phone": "408-xxx-xxxx",
       "smsEnabled": 1,
+      "checkinConfig" :{
+         "reviewEmailTemplateId": 9906,
+         "reviewSmsTemplateId" :202,
+         "surveySmsTemplateId":35,
+         "surveyEmailTemplateId":8227
+    },
       "employees":[{
                      "emailId" : "sshikha@abcd.com"
                   }]
@@ -5900,6 +5906,31 @@ Customer checkin can be done using:
             <td>smsEnabled</td>
             <td>Whether customer has opted to receive SMS request or not. Valid values are 0(false), 1(true). Default is 1.</td>
             <td>integer, optional</td>
+        </tr>
+        <tr>
+            <td>checkinConfig</td>
+            <td>Configure Email/Sms Template for communication with the customer.</td>
+            <td>Object, optional</td>
+        </tr>
+        <tr>
+            <td>reviewEmailTemplateId</td>
+            <td>Select review email template</td>
+            <td>Integer, optional</td>
+        </tr>
+        <tr>
+            <td>reviewSmsTemplateId</td>
+            <td>Select review sms template</td>
+            <td>Integer, optional</td>
+        </tr>
+        <tr>
+            <td>surveySmsTemplateId</td>
+            <td>Select survey sms template</td>
+            <td>Integer, optional</td>
+        </tr>
+        <tr>
+            <td>surveyEmailTemplateId</td>
+            <td>Select survey email template</td>
+            <td>Integer, optional</td>
         </tr>
         <tr>
             <td>employees</td>
@@ -7774,7 +7805,7 @@ Visitor report data can be retrieved using:
     [1161][]
 
 
-## Usage report [/reports/usage/{?reportType,sindex,count,businessId,api_key}]
+## Usage report [/reports/usage/{?reportType,sindex,count,business_id,api_key}]
 Usage report data can be retrieved using:
 
 + Parameters
@@ -7789,7 +7820,7 @@ Usage report data can be retrieved using:
 
 <center><b>Example CURL Request</b></center>
 
-curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"startDate\":\"04/01/2013\", \"endDate\":\"05/3/2015\",\"reviewSites\":["2","110","1","100","3","303","6","84","33","202","25","21","4","5","63"], \"days\":7, \"groupByDays\":1,\"reviewSiteAllFlag\":true } "https://api.birdeye.com/resources/v1/reports/usage?reportType=Summary&sindex=0&count=25&businessId=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"startDate\":\"04/01/2013\", \"endDate\":\"05/3/2015\",\"reviewSites\":["2","110","1","100","3","303","6","84","33","202","25","21","4","5","63"], \"days\":7, \"groupByDays\":1,\"reviewSiteAllFlag\":true } "https://api.birdeye.com/resources/v1/reports/usage?reportType=Summary&sindex=0&count=25&business_id=134387654345&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
 
