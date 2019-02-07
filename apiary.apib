@@ -160,6 +160,7 @@ All API URLs referenced in this documentation start with the following base part
             errorMessage: "Invalid API key"
         }
 
+
 ## 1167 [/1167]
 
 + Model (application/json)
@@ -167,6 +168,14 @@ All API URLs referenced in this documentation start with the following base part
         {
             errorCode: 1167,
             errorMessage: "API key is missing"
+        }
+
+## 89 [/89]
++ Model (application/json)
+
+        {
+            errorCode: 89,
+            errorMessage: "Rate limit exceeded"
         }
 
 ## 1033 [/1033]
@@ -829,6 +838,7 @@ A Reseller can create a Business using:
         <tbody>
          <tr><td>401 Unauthorized</td><td>1161</td><td>Invalid API key</td></tr>
          <tr><td>401 Unauthorized</td><td>1167</td><td>API key is missing</td></tr>
+         <tr><td>429 Too Many Requests</td><td>89</td><td>Rate limit exceeded</td></tr>
          <tr><td>401 Unauthorized</td><td>1033</td><td>You are not authorized to perform this action</td></tr>
          <tr><td>404 Not Found</td><td>1175</td><td>No business found with the given id</td></tr>
          <tr><td>404 Not Found</td><td>1010</td><td>No user found with the given id</td></tr>
@@ -887,6 +897,10 @@ A Reseller can create a Business using:
 + Response 401 (application/json)
 
     [1167][]
+
++ Response 429
+
+    [89][]
 
 + Response 401 (application/json)
 
@@ -1145,6 +1159,11 @@ Create business in bulk
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>401 Unauthorized</td>
             <td>1011</td>
             <td>Business id is invalid</td>
@@ -1188,6 +1207,10 @@ Create business in bulk
 + Response 401
 
     [1167][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -1257,6 +1280,7 @@ Business from BirdEye platform can be searched using:
          <tr><td>400 Bad Request</td><td>1163</td><td>Invalid start index value</td></tr>
          <tr><td>400 Bad Request</td><td>1164</td><td>Invalid result count value</td></tr>
          <tr><td>401 Unauthorized</td><td>1167</td><td>API key is missing</td></tr>
+         <tr><td>429 Too Many Requests</td><td>89</td><td>Rate limit exceeded</td></tr>
     </tbody>
  </table>
 </div>
@@ -1304,6 +1328,10 @@ Business from BirdEye platform can be searched using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 400 (application/json)
 
@@ -1577,6 +1605,11 @@ Business info from BirdEye platform can be fetched using:
             <td>Invalid API key</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404  Not Found</td>
             <td>1011</td>
             <td>Business id is invalid</td>
@@ -1705,6 +1738,10 @@ Business info from BirdEye platform can be fetched using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 404 (application/json)
 
@@ -1946,6 +1983,11 @@ Business info on BirdEye platform can be updated using:
             <td>401 Unauthorized</td>
             <td>1161</td>
             <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
         </tr>
         <tr>
             <td>401 Unauthorized</td>
@@ -2221,6 +2263,10 @@ Business info on BirdEye platform can be updated using:
 
     [1161][]
 
++ Response 429
+
+    [89][]
+
 + Response 401
 
     [1167][]
@@ -2302,6 +2348,11 @@ Business/sub-reseller can be deleted using:
             <td>Invalid API key</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>401 Unauthorized</td>
             <td>1167</td>
             <td>API key is missing</td>
@@ -2338,6 +2389,10 @@ Business/sub-reseller can be deleted using:
 
     [1161][]
 
++ Response 429
+
+    [89][]
+
 + Response 401 (application/json)
 
     [1167][]
@@ -2372,6 +2427,11 @@ Business status can be updated using:
             <td>401 Unauthorized</td>
             <td>1161</td>
             <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
         </tr>
         <tr>
             <td>401 Unauthorized</td>
@@ -2416,6 +2476,10 @@ Business status can be updated using:
 
     [1161][]
 
++ Response 429
+
+    [89][]
+
 + Response 401
 
     [1167][]
@@ -2434,7 +2498,7 @@ Business status can be updated using:
 
 
 ## Competitor of Enterprise Business [/business/{EnterpriseBusinessNumber}/child{?api_key,isCompetitor}]
-List of all Enterprise Competitor Business can be retrieved using: 
+List of all Enterprise Competitor Business can be retrieved using:
 
 ### Get Competitor Business [GET]
 <center><b>Example Curl Request</b></center>
@@ -2511,6 +2575,11 @@ List of all Enterprise Competitor Business can be retrieved using:
             <td>Invalid API key</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>401 Unauthorized</td>
             <td>1167</td>
             <td>API key is missing</td>
@@ -2581,6 +2650,10 @@ List of all Enterprise Competitor Business can be retrieved using:
 
     [1161][]
 
++ Response 429
+
+    [89][]
+
 + Response 401
 
     [1167][]
@@ -2603,6 +2676,11 @@ List of all Enterprise Competitor Business can be retrieved using:
             <td>Invalid API key</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>401 Unauthorized</td>
             <td>1167</td>
             <td>API key is missing</td>
@@ -2612,7 +2690,7 @@ List of all Enterprise Competitor Business can be retrieved using:
 </div>
 
 ## Child Business of Competitor [/business/{EnterpriseCompetitorBusinessId}/child{?api_key,isCompetitor}]
-List of all Child Business of Competitor can be retrieved using: 
+List of all Child Business of Competitor can be retrieved using:
 
 ### Get Competitor Child Business [GET]
 <center><b>Example Curl Request</b></center>
@@ -2721,6 +2799,11 @@ List of all Child Business of Competitor can be retrieved using:
             <td>401 Unauthorized</td>
             <td>1167</td>
             <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
         </tr>
         </tbody>
     </table>
@@ -2851,6 +2934,10 @@ List of all Child Business of Competitor can be retrieved using:
 
     [1161][]
 
++ Response 429
+
+    [89][]
+
 + Response 401
 
     [1167][]
@@ -2876,6 +2963,11 @@ List of all Child Business of Competitor can be retrieved using:
             <td>401 Unauthorized</td>
             <td>1167</td>
             <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
         </tr>
         </tbody>
     </table>
@@ -2987,6 +3079,11 @@ List of child businesses can be retrieved using:
             <td>401 Unauthorized</td>
             <td>1167</td>
             <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
         </tr>
         </tbody>
     </table>
@@ -3115,6 +3212,10 @@ List of child businesses can be retrieved using:
 
     [1161][]
 
++ Response 429
+
+    [89][]
+
 + Response 401
 
     [1167][]
@@ -3140,6 +3241,11 @@ List of child businesses can be retrieved using:
             <td>401 Unauthorized</td>
             <td>1167</td>
             <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
         </tr>
         </tbody>
     </table>
@@ -3228,6 +3334,11 @@ Update public profile business can be done using:
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>401 Unauthorized</td>
             <td>1011</td>
             <td>Business id is invalid</td>
@@ -3282,6 +3393,10 @@ Update public profile business can be done using:
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -3422,6 +3537,11 @@ Get parent/child hierarchy for an enterprise
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>401 Unauthorized</td>
             <td>1011</td>
             <td>Business id is invalid</td>
@@ -3445,6 +3565,10 @@ Get parent/child hierarchy for an enterprise
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -3591,6 +3715,11 @@ Add/Remove child in hierarchy
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>401 Unauthorized</td>
             <td>1011</td>
             <td>Business id is invalid</td>
@@ -3635,6 +3764,10 @@ Add/Remove child in hierarchy
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -3750,6 +3883,11 @@ Add/Remove child in hierarchy
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>401 Unauthorized</td>
             <td>1011</td>
             <td>Business id is invalid</td>
@@ -3774,6 +3912,10 @@ Add/Remove child in hierarchy
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -3807,15 +3949,15 @@ Business competitors can be fetched using:
                         "businessId": 144681844334495,
                         "name": "texas",
                         "location":{
-                                "address1": "44/5", 
-                                "address2": "II-street", 
-                                "city": "San Jose", 
-                                "state": "CA", 
-                                "zip": "102634", 
-                                "countryCode": "US", 
-                                "countryName": null, 
-                                "lat": null, 
-                                "lng": null 
+                                "address1": "44/5",
+                                "address2": "II-street",
+                                "city": "San Jose",
+                                "state": "CA",
+                                "zip": "102634",
+                                "countryCode": "US",
+                                "countryName": null,
+                                "lat": null,
+                                "lng": null
                         }
                 }]
         },
@@ -3825,16 +3967,16 @@ Business competitors can be fetched using:
                 "businessCompetitors": [{
                         "businessId": 144974367274032,
                         "name": "paris",
-                        "location":{ 
-                                "address1": "b/t 24th St", 
-                                "address2": "Mission", 
-                                "city": "San Francisco", 
-                                "state": "CA", 
-                                "zip": "90011", 
-                                "countryCode": null, 
-                                "countryName": null, 
-                                "lat": null, 
-                                "lng": null 
+                        "location":{
+                                "address1": "b/t 24th St",
+                                "address2": "Mission",
+                                "city": "San Francisco",
+                                "state": "CA",
+                                "zip": "90011",
+                                "countryCode": null,
+                                "countryName": null,
+                                "lat": null,
+                                "lng": null
                         }
 
                 }]
@@ -3901,6 +4043,11 @@ Business competitors can be fetched using:
             <td>1167</td>
             <td>API key is missing</td>
         </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -3923,15 +4070,15 @@ Business competitors can be fetched using:
                                 "businessId": 144681844334495,
                                 "name": "texas",
                                 "location":{
-                                        "address1": "44/5", 
-                                        "address2": "II-street", 
-                                        "city": "San Jose", 
-                                        "state": "CA", 
-                                        "zip": "102634", 
-                                        "countryCode": "US", 
-                                        "countryName": null, 
-                                        "lat": null, 
-                                        "lng": null 
+                                        "address1": "44/5",
+                                        "address2": "II-street",
+                                        "city": "San Jose",
+                                        "state": "CA",
+                                        "zip": "102634",
+                                        "countryCode": "US",
+                                        "countryName": null,
+                                        "lat": null,
+                                        "lng": null
                                 }
                         }]
                 },
@@ -3941,16 +4088,16 @@ Business competitors can be fetched using:
                         "businessCompetitors": [{
                                 "businessId": 144974367274032,
                                 "name": "paris",
-                                "location":{ 
-                                        "address1": "b/t 24th St", 
-                                        "address2": "Mission", 
-                                        "city": "San Francisco", 
-                                        "state": "CA", 
-                                        "zip": "90011", 
-                                        "countryCode": null, 
-                                        "countryName": null, 
-                                        "lat": null, 
-                                        "lng": null 
+                                "location":{
+                                        "address1": "b/t 24th St",
+                                        "address2": "Mission",
+                                        "city": "San Francisco",
+                                        "state": "CA",
+                                        "zip": "90011",
+                                        "countryCode": null,
+                                        "countryName": null,
+                                        "lat": null,
+                                        "lng": null
                                 }
 
                         }]
@@ -3960,6 +4107,10 @@ Business competitors can be fetched using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 404 (application/json)
 
@@ -4052,6 +4203,11 @@ Users can be created using:
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>401 Unauthorized</td>
             <td>1033</td>
             <td>You are not authorized to perform this action</td>
@@ -4128,6 +4284,10 @@ Users can be created using:
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -4213,6 +4373,11 @@ Users access from a business can be revoked using:
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1188</td>
             <td>User is not associated with the business.</td>
@@ -4246,6 +4411,10 @@ Users access from a business can be revoked using:
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -4302,6 +4471,11 @@ Forgot password email can be sent using:
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>401 Unauthorized</td>
             <td>1177</td>
             <td>User is not authorized to perform any action on any business</td>
@@ -4335,6 +4509,10 @@ Forgot password email can be sent using:
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -4398,6 +4576,11 @@ User details can be retrieved using:
                 <td>Invalid API key</td>
             </tr>
             <tr>
+                <td>429 Too Many Requests</td>
+                <td>89</td>
+                <td>Rate limit exceeded</td>
+            </tr>
+            <tr>
                 <td>404 Not Found</td>
                 <td>1188</td>
                 <td>User is not associated with the business.</td>
@@ -4427,6 +4610,10 @@ User details can be retrieved using:
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 404
 
@@ -4563,6 +4750,11 @@ Business review(s) from BirdEye platform can be fetched using:
             <td>Invalid API key</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Business id is invalid</td>
@@ -4656,6 +4848,10 @@ Business review(s) from BirdEye platform can be fetched using:
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 404
 
@@ -4837,6 +5033,11 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             <td>Invalid API key</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Business id is invalid</td>
@@ -4935,6 +5136,10 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 404
 
@@ -5113,6 +5318,11 @@ Get Competitor Business review(s) from BirdEye platform can be fetched using fol
             <td>Invalid API key</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Business id is invalid</td>
@@ -5207,6 +5417,10 @@ Get Competitor Business review(s) from BirdEye platform can be fetched using fol
 
     [1161][]
 
++ Response 429
+
+    [89][]
+
 + Response 404
 
     [1011][]
@@ -5214,7 +5428,7 @@ Get Competitor Business review(s) from BirdEye platform can be fetched using fol
 + Response 400
 
     [1244][]
-    
+
 
 
 ## Create [/review/business/{business_id}{?api_key}]
@@ -5344,6 +5558,11 @@ New review on BirdEye platform can be created using:
             <td>Invalid API key</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Business id is invalid</td>
@@ -5396,6 +5615,10 @@ New review on BirdEye platform can be created using:
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -5496,6 +5719,11 @@ Featured review and its order can be updated using:
                 <td>API key is missing</td>
             </tr>
             <tr>
+                <td>429 Too Many Requests</td>
+                <td>89</td>
+                <td>Rate limit exceeded</td>
+            </tr>
+            <tr>
                 <td>400 Bad Request</td>
                 <td>1251</td>
                 <td>No review to mark featured/un-featured.</td>
@@ -5534,6 +5762,10 @@ Featured review and its order can be updated using:
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -5701,6 +5933,10 @@ Returns list of review source along with review count and average rating, also r
 
     [1161][]
 
++ Response 429
+
+    [89][]
+
 + Response 401
 
     [1167][]
@@ -5732,6 +5968,11 @@ Returns list of review source along with review count and average rating, also r
             <td>401 Unauthorized</td>
             <td>1167</td>
             <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
         </tr>
         </tbody>
     </table>
@@ -5756,9 +5997,9 @@ Returns list of review source along with review count and average rating, also r
 
 > __Notes__
 
-> - xlsx file format is listed below. 
+> - xlsx file format is listed below.
 > - Column-1 : Review Comment
-> - Column-2 : Rating ( 0 | 1 | 2 | 3 | 4 | 5) 
+> - Column-2 : Rating ( 0 | 1 | 2 | 3 | 4 | 5)
 > - Column-3 : Review Date (Format- MM/DD/YYYY)
 > - Coumn-4 : Recommended (Yes | No)
 > - Column-5 : Reviewer First name
@@ -5773,10 +6014,10 @@ Returns list of review source along with review count and average rating, also r
 > - Column-14 : Response date (Format- MM/DD/YYYY)
 
 
-+ Response 200 
++ Response 200
 
     + Body
-    
+
         {
           "token": "15 review's uploaded successfully."
         }
@@ -5785,10 +6026,14 @@ Returns list of review source along with review count and average rating, also r
 
     [1011][]
 
-+ Response 401 
++ Response 401
 
     [1161][]
-    
+
++ Response 429
+
+    [89][]
+
 + Response 401
 
     [1167][]
@@ -5798,7 +6043,7 @@ Returns list of review source along with review count and average rating, also r
     [1029][]
 
 
-    
+
 <div class="paramsTableWrap">
     <table class="paramsTable">
         <caption>Error Codes</caption>
@@ -5824,6 +6069,11 @@ Returns list of review source along with review count and average rating, also r
             <td>401 Unauthorized</td>
             <td>1167</td>
             <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
         </tr>
         <tr>
             <td>401 Unauthorized</td>
@@ -5989,6 +6239,11 @@ Customer checkin can be done using:
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>401 Unauthorized</td>
             <td>1033</td>
             <td>You are not authorized to perform this action</td>
@@ -6098,6 +6353,10 @@ Customer checkin can be done using:
 
     [1161][]
 
++ Response 429
+
+    [89][]
+
 + Response 401
 
     [1167][]
@@ -6184,6 +6443,11 @@ Customer list can be fetched using:
             <td>1167</td>
             <td>API key is missing</td>
         </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -6204,6 +6468,10 @@ Customer list can be fetched using:
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -6282,6 +6550,11 @@ Customer activity log can be fetched using:
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>400 Bad Request</td>
             <td>1089</td>
             <td>Customer id is invalid.</td>
@@ -6321,6 +6594,10 @@ Customer activity log can be fetched using:
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -6392,6 +6669,11 @@ Customer can be deleted using:
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>400 Bad Request</td>
             <td>1089</td>
             <td>Customer id is invalid.</td>
@@ -6416,6 +6698,10 @@ Customer can be deleted using:
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -6501,6 +6787,11 @@ List of aggregation source can be fetched using:
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>401 Unauthorized</td>
             <td>1033</td>
             <td>You are not authorized to perform this action</td>
@@ -6549,6 +6840,10 @@ List of aggregation source can be fetched using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401 (application/json)
 
@@ -6621,6 +6916,11 @@ Add new aggregation URL using:
             <td>Invalid API key</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>400 Bad Request</td>
             <td>1030</td>
             <td>URL cannot be blank</td>
@@ -6661,6 +6961,10 @@ Add new aggregation URL using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 400 (application/json)
 
@@ -6725,6 +7029,11 @@ Delete aggregation URL using:
             <td>Invalid API key</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>400 Bad Request</td>
             <td>1039</td>
             <td>Invalid business aggregation id</td>
@@ -6747,6 +7056,10 @@ Delete aggregation URL using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 400 (application/json)
 
@@ -7220,6 +7533,11 @@ Review conversion report data can be retrieved using:
             <td>Invalid API key</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>400 Bad Request</td>
             <td>1186</td>
             <td>Invalid from date. Allowed format is "MM/dd/yyyy".</td>
@@ -7252,6 +7570,10 @@ Review conversion report data can be retrieved using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 400 (application/json)
 
@@ -7349,6 +7671,11 @@ Review and rating over time report data can be retrieved using:
             <td>1161</td>
             <td>Invalid API key</td>
         </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -7367,6 +7694,10 @@ Review and rating over time report data can be retrieved using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 
 ## Reviews & Rating By Location [/reports/rating/location{?api_key,businessId,sortby,sorder}]
@@ -7432,6 +7763,11 @@ Reviews & Rating By Location report data can be retrieved using:
             <td>1161</td>
             <td>Invalid API key</td>
         </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -7450,6 +7786,10 @@ Reviews & Rating By Location report data can be retrieved using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 
 
@@ -7523,6 +7863,11 @@ Sentiment Over time report data can be retrieved using:
             <td>1161</td>
             <td>Invalid API key</td>
         </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -7541,6 +7886,10 @@ Sentiment Over time report data can be retrieved using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 
 
@@ -7604,6 +7953,11 @@ Sentiment By Location report data can be retrieved using:
             <td>1161</td>
             <td>Invalid API key</td>
         </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -7622,6 +7976,10 @@ Sentiment By Location report data can be retrieved using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 
 ## Review By Source [/reports/count/reviewsite{?api_key,businessId}]
@@ -7693,6 +8051,11 @@ Review By Source report data can be retrieved using:
             <td>1161</td>
             <td>Invalid API key</td>
         </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -7711,6 +8074,10 @@ Review By Source report data can be retrieved using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 
 ## Visitor report [/reports/count/reviewsite{?api_key,businessId}]
@@ -7790,6 +8157,11 @@ Visitor report data can be retrieved using:
                     <td>1161</td>
                     <td>Invalid API key</td>
                 </tr>
+                <tr>
+                    <td>429 Too Many Requests</td>
+                    <td>89</td>
+                    <td>Rate limit exceeded</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -7807,6 +8179,10 @@ Visitor report data can be retrieved using:
 + Response 401 (application/json)
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 
 ## Usage report [/reports/usage/{?reportType,sindex,count,business_id,api_key}]
@@ -8041,11 +8417,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     + Headers
 
             Accept: application/json
-            
+
 + Response 200 (application/json)
 
     + Body
-    
+
     [
     {
         "name": "Total",
@@ -8218,6 +8594,10 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 404
 
@@ -8446,6 +8826,11 @@ Business survey(s) from BirdEye platform can be fetched using:
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Business id is invalid</td>
@@ -8651,6 +9036,10 @@ Business survey(s) from BirdEye platform can be fetched using:
 + Response 400
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 
 ## Submit [/survey/{survey_id}/submit{?api_key,businessId}]
@@ -8879,6 +9268,11 @@ Survey response on BirdEye platform can be submitted using:
             <td>1167</td>
             <td>API key is missing</td>
         </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -8898,6 +9292,10 @@ Survey response on BirdEye platform can be submitted using:
 + Response 401
 
   [1161][]
+
++ Response 429
+
+  [89][]
 
 + Response 401
 
@@ -9325,6 +9723,11 @@ Survey responses for a given survey can be fetched using:
             <td>1167</td>
             <td>API key is missing</td>
         </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -9344,6 +9747,10 @@ Survey responses for a given survey can be fetched using:
 + Response 401
 
   [1161][]
+
++ Response 429
+
+  [89][]
 
 + Response 401
 
@@ -9419,6 +9826,11 @@ Fetch all active surveys for a business
             <td>API key is missing</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Business id is invalid</td>
@@ -9470,6 +9882,10 @@ Fetch all active surveys for a business
 + Response 400
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 # Group Employee
 APIs related to employee
@@ -9539,6 +9955,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
                 <td>API key is null</td>
             </tr>
             <tr>
+                <td>429 Too Many Requests</td>
+                <td>89</td>
+                <td>Rate limit exceeded</td>
+            </tr>
+            <tr>
                 <td>404 Not Found</td>
                 <td>1011</td>
                 <td>Invalid Business Id</td>
@@ -9558,6 +9979,10 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -9634,6 +10059,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
             <td>API key is null</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Invalid Business Id</td>
@@ -9647,7 +10077,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     + Headers
 
             Accept: application/json
-            
+
     + Body
            { "tags" : ["tag_1", "tag_2"] }
 
@@ -9656,6 +10086,10 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -9675,7 +10109,7 @@ Remove undesired tags for a business.
     + businessId (string, required) ... the Business ID
     + api_key (string, required) ... the API key
     + tagname (string, required) ... tag to be removed
-    
+
 ### Delete a tag [DELETE]
 
 <center><b>Example CURL Request</b></center>
@@ -9730,6 +10164,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
             <td>API key is null</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Invalid Business Id</td>
@@ -9750,6 +10189,10 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
 
     [1161][]
 
++ Response 429
+
+    [89][]
+
 + Response 401
 
     [1167][]
@@ -9766,7 +10209,7 @@ Get tags for a business.
 
     + businessId (string, required) ... the Business ID
     + api_key (string, required) ... the API key
-    
+
 ### Get all tags [GET]
 
 <center><b>Example CURL Request</b></center>
@@ -9823,6 +10266,10 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -9899,6 +10346,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
             <td>API key is null</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Invalid Business Id</td>
@@ -9912,9 +10364,9 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     + Headers
 
             Accept: application/json
-            
-    + Body 
-           
+
+    + Body
+
             {\"reviewIds\":["3901784402334","3901744402337","3902344402875"]}
 
 + Response 200 (application/json)
@@ -9922,6 +10374,10 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -10026,6 +10482,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
             <td>API key is null</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Invalid Business Id</td>
@@ -10039,9 +10500,9 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     + Headers
 
             Accept: application/json
-            
-    + Body 
-           
+
+    + Body
+
             { "fromDate":"04/01/2013", "toDate":"05/3/2015", "updateFromDate":"04/01/2013", "updateToDate":"05/3/2015", "sources":["google","citysearch"], "ratings":[1,2,3,4,5,0], "keywords":["water"],"searchStr":"Awesome","subBusinessIds":[134387654345,134387654346,13438765437]}
 
 + Response 200 (application/json)
@@ -10049,6 +10510,10 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -10121,6 +10586,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
             <td>API key is null</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Invalid Business Id</td>
@@ -10139,12 +10609,16 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
     + Headers
 
             Accept: application/json
-            
+
 + Response 200 (application/json)
 
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -10217,6 +10691,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
             <td>API key is null</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Invalid Business Id</td>
@@ -10230,17 +10709,21 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     + Headers
 
             Accept: application/json
-            
+
     + Body
-       
+
            {"reviewIds":["3901784402334","3901744402337","3902344402875"]}
-    
-            
+
+
 + Response 200 (application/json)
 
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -10249,8 +10732,8 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 + Response 404
 
     [1011][]
-    
-    
+
+
 ## Search reviews and remove tags [/tag/remove/review/{?bid, api_key,tag}]
 
 + Parameters
@@ -10258,7 +10741,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     + bid (string, required) ... the Business ID
     + api_key (string, required) ... the API key
     + tag (list, required) ... list of tags
-    
+
 ### Remove tags from filtered reviews [POST]
 
 <center><b>Example CURL Request</b></center>
@@ -10345,6 +10828,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
             <td>API key is null</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Invalid Business Id</td>
@@ -10358,17 +10846,21 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     + Headers
 
             Accept: application/json
-            
+
     + Body
-       
+
            { "fromDate":"04/01/2013", "toDate":"05/3/2015", "updateFromDate":"04/01/2013", "updateToDate":"05/3/2015", "sources":["google","citysearch"], "ratings":[1,2,3,4,5,0], "keywords":["water"],"searchStr":"Awesome","subBusinessIds":[145308764185002,145308769721320,145308702026610]}
-    
-            
+
+
 + Response 200 (application/json)
 
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -10384,7 +10876,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 
     + bid (string, required) ... the Business ID
     + api_key (string, required) ... the API key
-    
+
 ### Remove particular tags from all reviews [POST]
 
 <center><b>Example CURL Request</b></center>
@@ -10435,6 +10927,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
             <td>API key is null</td>
         </tr>
         <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Invalid Business Id</td>
@@ -10448,17 +10945,21 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     + Headers
 
             Accept: application/json
-            
+
     + Body
-       
+
            {"tags":["happy","good","smile"]}
-    
-            
+
+
 + Response 200 (application/json)
 
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -10467,11 +10968,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 + Response 404
 
     [1011][]
-   
+
 ## Manage Business Tags
 
     Associate or remove tags from businesses.
-    
+
 ## Assign tag to business entity [/tag/business/{?businessId,api_key}]
 
 + Parameters
@@ -10549,16 +11050,16 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     + Headers
 
             Accept: application/json
-            
+
     + Body
-       
+
            {"tags":["dentist"]}
-    
-            
+
+
 + Response 200 (application/json)
 
     + Body
-    
+
     {
        "businessId": 134387654345,
        "tags": [
@@ -10570,6 +11071,10 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -10687,11 +11192,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
     + Headers
 
             Accept: application/json
-            
+
 + Response 200 (application/json)
 
     + Body
-    
+
     [
   {
         "id": 134387654345,
@@ -10726,6 +11231,10 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
 + Response 401
 
     [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -10783,7 +11292,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
   "businessId": 134387654345,
   "tags": [
         "dental",
-        "dentist"  
+        "dentist"
         ]
 }
 
@@ -10814,20 +11323,24 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
     + Headers
 
             Accept: application/json
-            
+
 + Response 200 (application/json)
 
     + Body
-    
+
     {
         "businessId": 134387654345,
         "tags": [
             "dental",
-            "dentist"  
+            "dentist"
         ]
     }
 
 + Response 401
+
+    [1161][]
+
++ Response 429
 
     [1161][]
 
