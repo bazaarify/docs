@@ -7793,14 +7793,14 @@ Reviews & Rating By Location report data can be retrieved using:
 
 
 
-## Sentiment Over time [/reports/sentiment/time{?api_key,businessId}]
-Sentiment Over time report data can be retrieved using:
+## NPS Over time [/reports/nps/time/elst{?api_key,businessId}]
+NPS Over time report data can be retrieved using:
 
 ### POST Data [POST]
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"google\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"groupByDays\":1, \"days\":3}" "https://api.birdeye.com/resources/v1/reports/sentiment/time?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"businessNumbers\" : [\"9489676910876\", \"9434065498803\"], "reviewSites" : [1,2], "startDate" : "03/01/2019", "endDate" : "03/01/2019"}" "https://api.birdeye.com/resources/v1/reports/nps/time/elst?api_key=92bcd6e0-c102-8a67-1a7be5258451&businessId=943999808" –v
 
 + Parameters
     + api_key (required, string) ... API key assigned to business.
@@ -7810,32 +7810,32 @@ Sentiment Over time report data can be retrieved using:
 
 <center><b>Example Response</b></center>
 
-    [
-  {
-    "count": 15,
-    "milestone": "11\/10\/15",
-    "timeStamp": 1447113600981,
-    "positiveCount": 5,
-    "neutralCount": 3,
-    "negativeCount": 7
-  },
 {
-    "count": 32,
-    "milestone": "11\/11\/15",
-    "timeStamp": 1447200000981,
-    "positiveCount": 12,
-    "neutralCount": 7,
-    "negativeCount": 13
-  },
-{
-    "count": 22,
-    "milestone": "11\/12\/15",
-    "timeStamp": 1447286400981,
-    "positiveCount": 11,
-    "neutralCount": 5,
-    "negativeCount": 7
-  }
-]
+    "totalCount": 190322,
+    "avgNpsScore": "48.6",
+    "promoters": "63.1",
+    "passives": "22.4",
+    "detractors": "14.5",
+    "dataPoints": [
+        {
+            "nodeId": null,
+            "label": "Jul 2009 - Sep 2009",
+            "shortLabel": "Q3 2009",
+            "startDate": "07/21/2009",
+            "endDate": "09/30/2009",
+            "totalCount": 1,
+            "detractorPercentile": 100,
+            "passivePercentile": 0,
+            "promoterPercentile": 0,
+            "npsScore": -100,
+            "positiveCount": 0,
+            "negativeCount": 1,
+            "neutralCount": 0
+        }
+    ],
+    "groupByType": "quarter",
+    "dateDiff": 3526
+}
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
@@ -7893,15 +7893,15 @@ Sentiment Over time report data can be retrieved using:
 
 
 
-## Sentiment By Location [/reports/sentiment/location{?api_key,businessId}]
-Sentiment By Location report data can be retrieved using:
+## NPS By Location [/reports/nps/location/elst{?api_key,businessId}]
+NPS By Location report data can be retrieved using:
 
 ### POST Data [POST]
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"sourceAliases\" : [\"citysearch \", \"google\"], \"businessNumbers\" : [\"943967608\", \"943476803\"], \"months\":12}" "https://api.birdeye.com/resources/v1/reports/sentiment/location?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&businessId=943999808" –v
-
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"businessNumbers\" : [\"9489676910876\", \"9434065498803\"], "reviewSites" : [1,2], "startDate" : "03/01/2019", "endDate" : "03/01/2019"}" "https://api.birdeye.com/resources/v1/reports/nps/location/elst?api_key=92bcd6e0-c102-8a67-1a7be5258451&businessId=943999808" –v
+    
 + Parameters
     + api_key (required, string) ... API key assigned to business.
     + businessId (required, string) ... BusinessId assigned to business.
@@ -7910,22 +7910,34 @@ Sentiment By Location report data can be retrieved using:
 
 <center><b>Example Response</b></center>
 
-    [
-  {
-    "count": 1132,
-    "milestone": "Smile Dental",
-    "positiveCount": 697,
-    "neutralCount": 120,
-    "negativeCount": 315
-  },
 {
-    "count": 1232,
-    "milestone": "Blaze Dental",
-    "positiveCount": 657,
-    "neutralCount": 145,
-    "negativeCount": 340
-  }
-]
+    "page": 0,
+    "size": 333,
+    "totalPages": 1,
+    "totalCount": 190322,
+    "avgNpsScore": "48.6",
+    "promoters": "63.1",
+    "passives": "22.4",
+    "detractors": "14.5",
+    "dataPoints": [
+        {
+            "nodeId": 53978949,
+            "label": "1356 - Business, ON - Business Mall",
+            "shortLabel": null,
+            "startDate": null,
+            "endDate": null,
+            "totalCount": 19,
+            "detractorPercentile": 5.3,
+            "passivePercentile": 0,
+            "promoterPercentile": 94.7,
+            "npsScore": 89.4,
+            "positiveCount": 18,
+            "negativeCount": 1,
+            "neutralCount": 0
+        }
+    ],
+    "dateDiff": 9223372036854775807
+}
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
