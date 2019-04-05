@@ -7791,7 +7791,97 @@ Reviews & Rating By Location report data can be retrieved using:
 
     [89][]
 
+## Insights Category Report by location [/keywords/opmetric/location{?api_key,businessId}]
+Insights Category Report by location can be retrieved using:
 
++ Parameters
+    + api_key (required, string) ... API key assigned to business.
+    + businessId (required, string) ... BusinessId assigned to business.
+
+### Usage report [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"businessNumbers\" : [\"948968776910876\", \"9434065498803\"], "reviewSites" : [1,2], "startDate" : "03/01/2019", "endDate" : "03/01/2019"}" "https://api.birdeye.com/resources/v1/keywords/opmetric/location?api_key=92bcd6e0-c102-8a67-1a7be5258451&businessId=943999808" –v
+
+<center><b>Example Payload</b></center>
+
+    {
+      "startDate":"04/01/2013",
+      "endDate":"05/3/2015",
+      "reviewSites":["2","110","1","100","3","303","6","84","33","202","25","21","4","5","63"],
+      "businessNumbers":["948968776910876"]
+    }
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response Body</b></center>
+
+[
+    {
+        "alias": "7653 - Xrtrm - Balltown Rd",
+        "avgScore": 4,
+        "grade": "A",
+        "totalCount": 1679,
+        "metricForLocn": {
+            "Beverages": {
+                "category": "Beverages",
+                "avgScore": 3.8,
+                "count": 5,
+                "grade": "B+"
+            },
+            "Assortment (Beverages)": {
+                "category": "Assortment",
+                "parentCategory": "Beverages",
+                "avgScore": 5,
+                "count": 1,
+                "grade": "A+"
+            },
+            "Utensils": {
+                "category": "Utensils",
+                "avgScore": 0,
+                "count": 0
+            }
+        }
+    }
+]
 
 ## NPS Over time [/reports/nps/time/elst{?api_key,businessId}]
 NPS Over time report data can be retrieved using:
