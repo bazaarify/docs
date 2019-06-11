@@ -1539,7 +1539,7 @@ Business info from BirdEye platform can be fetched using:
             <br>day: 0(Monday), 1(Tuesday).
             <br>startHour: 9:00 (9 AM)
             <br>endHour: 18:00 (6 PM)
-            <br>isOpen:  0(Business closed today),
+            <br>isOpen:  0(Business closed today),
             <br>1(Business open today)
             <br>comment: “By appointment only”</td>
         </tr>
@@ -1610,7 +1610,7 @@ Business info from BirdEye platform can be fetched using:
             <td>Rate limit exceeded</td>
         </tr>
         <tr>
-            <td>404  Not Found</td>
+            <td>404  Not Found</td>
             <td>1011</td>
             <td>Business id is invalid</td>
         </tr>
@@ -4034,7 +4034,7 @@ Business competitors can be fetched using:
             <td>Invalid API key</td>
         </tr>
         <tr>
-            <td>404  Not Found</td>
+            <td>404  Not Found</td>
             <td>1011</td>
             <td>Business id is invalid</td>
         </tr>
@@ -4804,7 +4804,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         </tr>
          <tr>
             <td>recommended</td>
-            <td>If facebook recommended its value will be 1, in case of non recommended value will be 0</td>
+            <td>For Facebook recommendations, value will be 1, Non recommended review will have value set as 0</td>
         </tr>
         <tr>
             <td>comments</td>
@@ -4824,7 +4824,8 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         </tr>
         <tr>
             <td>sourceType</td>
-            <td>Source of the review if it is an aggregated review, in case of direct feedback value will be Direct Feedback</td>
+            <td>Source of the review if it is an aggregated review.
+            "Direct Feedback" would indicate the review is a Direct Feedback.</td>
         </tr>
         <tr>
             <td>reviewDate</td>
@@ -4845,6 +4846,14 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         </tbody>
     </table>
 </div>
+
+For facebook sourcetype, following table can be used to check Recommendations.
+
+| Recommended                              | Overall Rating | What does it mean                     |
+|------------------------------------------|----------------|---------------------------------------|
+| 1                                        | 0              | Recommended Facebook review           |
+| 0                                        | 0              | Non Recommended Facebook review       |
+| Does not have  any value (Null or Blank) | 1-5            | Facebook review with non-zero rating. |
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
@@ -7840,7 +7849,7 @@ NPS By Location report data can be retrieved using:
 <center><b>Example curl request</b></center>
 
     curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"businessNumbers\" : [\"9489676910876\", \"9434065498803\"], "reviewSites" : [1,2], "startDate" : "03/01/2019", "endDate" : "03/01/2019"}" "https://api.birdeye.com/resources/v1/reports/nps/location/elst?api_key=92bcd6e0-c102-8a67-1a7be5258451&businessId=943999808" –v
-    
+
 + Parameters
     + api_key (required, string) ... API key assigned to business.
     + businessId (required, string) ... BusinessId assigned to business.
