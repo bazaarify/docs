@@ -4790,6 +4790,64 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>rating</td>
+            <td>Overall rating for the review, in case of direct feedback and facebook recommendations it will be 0</td>
+        </tr>
+         <tr>
+            <td>recommended</td>
+            <td>If facebook recommended its value will be 1, in case of non recommended value will be 0</td>
+        </tr>
+        <tr>
+            <td>comments</td>
+            <td>Review comments</td>
+        </tr>
+        <tr>
+            <td>title</td>
+            <td>Review title</td>
+        </tr>
+        <tr>
+            <td>reviewer</td>
+            <td>Reviewer information</td>
+        </tr>
+        <tr>
+            <td>reviewURL</td>
+            <td>Review URL if it is an aggregated review</td>
+        </tr>
+        <tr>
+            <td>sourceType</td>
+            <td>Source of the review if it is an aggregated review, in case of direct feedback value will be Direct Feedback</td>
+        </tr>
+        <tr>
+            <td>reviewDate</td>
+            <td>Review date</td>
+        </tr>
+        <tr>
+            <td>response</td>
+            <td>Response to the review submitted by business</td>
+        </tr>
+        <tr>
+            <td>responseDate</td>
+            <td>Response date</td>
+        </tr>
+        <tr>
+            <td>featured (x) </td>
+            <td> x = 0 if review not featured, x > 0 stands for review order if featured review.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
         <caption>Error Codes</caption>
         <thead>
         <tr>
