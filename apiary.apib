@@ -5949,7 +5949,7 @@ New Direct feedback on BirdEye platform can be created using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST-d "{ \"comments\" : \"Awesome experience\", \"source\": \"website\", \"reviewer\" : {\"nickName\" : \"Sachin G\",\"thumbnailUrl\" : \"http://birdeye.com/reviewer/default.jpd\", \"emailId\":\"saching@gmail.com\"}}" "https://api.birdeye.com/resources/v1/review/feedback/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{ \"comments\" : \"Awesome experience\", \"source\": \"website\", \"reviewer\" : {\"nickName\" : \"Sachin G\",\"thumbnailUrl\" : \"http://birdeye.com/reviewer/default.jpd\", \"emailId\":\"saching@gmail.com\"}}" "https://api.birdeye.com/resources/v1/review/feedback/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 #### Request
 
@@ -5961,7 +5961,7 @@ New Direct feedback on BirdEye platform can be created using:
       "reviewer": {
         "nickName": "Sachin G",
         "thumbnailUrl": "http://d2xt3xymj142xp.cloudfront.net/reviewer/9a070cf98f014f5d9b06987dcc9c48fe.jpeg",
-        "emailId": "saching@gmail.com",
+        "emailId": "saching@gmail.com"
       }
     }
 
