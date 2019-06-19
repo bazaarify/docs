@@ -4645,7 +4645,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0], \"keywords\":[\"water\"],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610],\"tags\":[\"tag_1\",\"tag_2\"] }
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610],\"tags\":[\"tag_1\",\"tag_2\"] }
     "https://api.birdeye.com/resources/v1/review/businessId/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
@@ -4657,7 +4657,6 @@ Business review(s) from BirdEye platform can be fetched using following filter i
       "updateToDate":"05/3/2015",
       "sources":["google","citysearch"],
       "ratings":[1,2,3,4,5,0],
-      "keywords":["water"]
       "searchStr":"test string",
       "subBusinessIds":[145308764185002,145308769721320,145308702026610],
       "statuses":["published","parked"],
@@ -4698,10 +4697,6 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         <tr>
             <td>ratings</td>
             <td>Review rating e.g. "1","2"</td>
-        </tr>
-        <tr>
-            <td>keywords</td>
-            <td>Keywords in review e.g. "water", "service" etc </td>
         </tr>
         <tr>
             <td>searchStr</td>
@@ -5941,6 +5936,159 @@ Returns list of review source along with review count and average rating, also r
         </tbody>
     </table>
 </div>
+
+## Create Direct Feedback [/review/feedback/{businessId}{?api_key}]
+New Direct feedback on BirdEye platform can be created using:
+
++ Parameters
+
+    + business_id (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
+### Post a new direct feedback [POST]
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST-d "{ \"comments\" : \"Awesome experience\", \"source\": \"website\", \"reviewer\" : {\"nickName\" : \"Sachin G\",\"thumbnailUrl\" : \"http://birdeye.com/reviewer/default.jpd\", \"emailId\":\"saching@gmail.com\"}}" "https://api.birdeye.com/resources/v1/review/feedback/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+#### Request
+
+<center><b>Example Payload</b></center>
+
+    {
+      "overallRating": "5",
+      "comments": "Awesome experience",
+      "source": "website",
+      "reviewer": {
+        "nickName": "Sachin G",
+        "thumbnailUrl": "http://d2xt3xymj142xp.cloudfront.net/reviewer/9a070cf98f014f5d9b06987dcc9c48fe.jpeg",
+        "emailId": "saching@gmail.com",
+      }
+    }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>comments</td>
+            <td>Review comment</td>
+        </tr>
+        <tr>
+            <td>source (optional)</td>
+            <td>Source from where review was submitted. Allowed values are “website”,”tablet”. Default value is
+                “website”.
+            </td>
+        </tr>
+        <tr>
+            <td>reviewer (optional)</td>
+            <td>Reviewer info. If not specified, the review will be submitted as “Anonymous”.</td>
+        </tr>
+        <tr>
+            <td>reviewer.nickName</td>
+            <td>Reviewer name.</td>
+        </tr>
+        <tr>
+            <td>reviewer.emailId</td>
+            <td>Reviewer email id.</td>
+        </tr>
+        <tr>
+            <td>reviewer.thumbnailUrl (optional)</td>
+            <td>Thumbnail URL for reviewer image. Default is
+                “http://birdeye.com/common/css/images/default-profile.png”
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1081</td>
+            <td>Review comment is too long</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
++ Response 400
+
+    [1081][]
+
++ Response 400
+
+    [1082][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
++ Response 400
+
+    [1242][]
+
++ Response 400
+
+    [1243][]
 
 
 
