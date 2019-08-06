@@ -4645,7 +4645,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610],\"tags\":[\"tag_1\",\"tag_2\"],\"includeNonAggregatedReviews\":false }
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610],\"tags\":[\"tag_1\",\"tag_2\"],\"includeNonAggregatedReviews\":true }
     "https://api.birdeye.com/resources/v1/review/businessId/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
@@ -4662,7 +4662,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
       "statuses":["published","parked"],
       "allChild":"true",
       "tags":["tag_1","tag_2"],
-      "includeNonAggregatedReviews":false
+      "includeNonAggregatedReviews":true
     }
 
 <div class="paramsTableWrap">
@@ -5660,7 +5660,7 @@ Returns list of review source along with review count and average rating, also r
 #### Request
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/review/businessid/755009344/summary?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&statuses=published&statuses=parked&includeNonAggregatedReviews=false" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/review/businessid/755009344/summary?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&statuses=published&statuses=parked&includeNonAggregatedReviews=true" -v
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
