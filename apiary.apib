@@ -6530,6 +6530,89 @@ Customer can be deleted using:
 
 
 
+# Group Contacts
+
+APIs related to Contacts
+
+## Get Contacts list [v1/customer-v2/list{?bid,api_key}]]
+
+#### Request
+
+<center><b>Example curl request</b></center>
+
+   curl -X POST \
+  'https://api.birdeye.com/resources/v2/customer/list?page=0&size=25&order=desc&sortby=lastActivityOn&businessId=****&apiKey=*****' \
+  -H 'accept: application/json' \
+  -H 'content-type: application/json' \
+  -d '{"startDate":"07/01/2019","endDate":"07/19/2019"}'
+
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+
+[
+    {
+        "page": 0,
+        "size": 25,
+        "totalPages": 68,
+        "totalCount": 1679,
+        "customers": [
+            {
+                "customerId": 1234567,
+                "name": "Dummy1",
+                "email": "dummy1@gmail.com",
+                "phone": null,
+                "lastActivityWithTime": "19 Jul 2019 11:33 PM PDT"
+            },
+            {
+                "customerId": 1234568,
+                "name": "Dummy2",
+                "email": "dummy2@gmail.com",
+                "phone": null,
+                "lastActivityWithTime": "19 Jul 2019 11:19 PM PDT"
+            }
+         ]
+    }
+]
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1033</td>
+            <td>You are not authorized to perform this action</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 
 # Group Aggregation
 
