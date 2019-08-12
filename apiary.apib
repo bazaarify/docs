@@ -14,7 +14,7 @@ The BirdEye API is built on HTTP. Our API is RESTful and it:
 # Group Base
 All API URLs referenced in this documentation start with the following base part
 
-## Base URL [https://api.birdeye.com/resources/v1]
+## Base URL [https://api.birdeye.com/resources]
 
 ## 1023 [/1023]
 
@@ -755,7 +755,7 @@ All API URLs referenced in this documentation start with the following base part
 # Group Business
 APIs related to business
 
-## Create [/signup/reseller/subaccount{?rid,api_key,email_id}]
+## Create [/v1/signup/reseller/subaccount{?rid,api_key,email_id}]
 A Reseller can create a Business using:
 
 ### Create a business [POST]
@@ -959,7 +959,7 @@ A Reseller can create a Business using:
     [1055][]
 
 
-## Create business in bulk [/business/{businessId}/bulkcreate/{type}?{api_key, user_email}]
+## Create business in bulk [/v1/business/{businessId}/bulkcreate/{type}?{api_key, user_email}]
 Create business in bulk
 
 ### Bulk Create [POST]
@@ -1230,7 +1230,7 @@ Create business in bulk
 
 
 
-## Search [/business/search{?search_str,loc,sindex,count,sort,api_key,nearby}]
+## Search [/v1/business/search{?search_str,loc,sindex,count,sort,api_key,nearby}]
 Business from BirdEye platform can be searched using:
 
 ### Search Business [GET]
@@ -1350,7 +1350,7 @@ Business from BirdEye platform can be searched using:
     [1167][]
 
 
-## Get [/business/{businessNumber}{?api_key}]
+## Get [/v1/business/{businessNumber}{?api_key}]
 Business info from BirdEye platform can be fetched using:
 
 ### Get Business [GET]
@@ -1751,7 +1751,7 @@ Business info from BirdEye platform can be fetched using:
 
     [1167][]
 
-## Update [/business/{businessId}?api_key={?api_key}]
+## Update [/v1/business/{businessId}?api_key={?api_key}]
 Business info on BirdEye platform can be updated using:
 
 ### Update Business [PUT]
@@ -2320,7 +2320,7 @@ Business info on BirdEye platform can be updated using:
     [1190][]
 
 
-## Delete [/business/{business_id} {apikey}]
+## Delete [/v1/business/{business_id} {apikey}]
 Business/sub-reseller can be deleted using:
 
 ### Delete Business [DELETE]
@@ -2401,7 +2401,7 @@ Business/sub-reseller can be deleted using:
 
     [1175][]
 
-## Status Update [/business/{business_id}/status{?astatus,api_key}]
+## Status Update [/v1/business/{business_id}/status{?astatus,api_key}]
 Business status can be updated using:
 
 ### Update the status [PUT]
@@ -2497,7 +2497,7 @@ Business status can be updated using:
     [1191][]
 
 
-## Competitor of Enterprise Business [/business/{EnterpriseBusinessNumber}/child{?api_key,isCompetitor}]
+## Competitor of Enterprise Business [/v1/business/{EnterpriseBusinessNumber}/child{?api_key,isCompetitor}]
 List of all Enterprise Competitor Business can be retrieved using:
 
 ### Get Competitor Business [GET]
@@ -2689,7 +2689,7 @@ List of all Enterprise Competitor Business can be retrieved using:
     </table>
 </div>
 
-## Child Business of Competitor [/business/{EnterpriseCompetitorBusinessId}/child{?api_key,isCompetitor}]
+## Child Business of Competitor [/v1/business/{EnterpriseCompetitorBusinessId}/child{?api_key,isCompetitor}]
 List of all Child Business of Competitor can be retrieved using:
 
 ### Get Competitor Child Business [GET]
@@ -2973,7 +2973,7 @@ List of all Child Business of Competitor can be retrieved using:
     </table>
 </div>
 
-## Child Businesses [/business/child/all{?api_key, pid}]
+## Child Businesses [/v1/business/child/all{?api_key, pid}]
 List of child businesses can be retrieved using:
 
 ### Get Child Businesses [GET]
@@ -3251,7 +3251,7 @@ List of child businesses can be retrieved using:
     </table>
 </div>
 
-## Public profile tabs [/business/tabs{?api_key,businessId}]
+## Public profile tabs [/v1/business/tabs{?api_key,businessId}]
 Update public profile business can be done using:
 
 ### Update public profile of Businesses [POST]
@@ -3430,7 +3430,7 @@ Update public profile business can be done using:
 
     [1270][]
 
-## Get Hierarchy [/business/{businessId}/hierachy?api_key]
+## Get Hierarchy [/v1/business/{businessId}/hierachy?api_key]
 Get parent/child hierarchy for an enterprise
 
 ### Get hierarchy for an enterprise [GET]
@@ -3578,7 +3578,7 @@ Get parent/child hierarchy for an enterprise
 
     [1011][]
 
-## Add/Remove Child in Hierarchy [/business/{businessId}/hierachy?{api_key, cid}]
+## Add/Remove Child in Hierarchy [/v1/business/{businessId}/hierachy?{api_key, cid}]
 Add/Remove child in hierarchy
 
 ### Add child in hierarchy [PUT]
@@ -3926,7 +3926,7 @@ Add/Remove child in hierarchy
     [1011][]
 
 
-## Get Competitors [/business/{businessId}/competitors {?api_key}]
+## Get Competitors [/v1/business/{businessId}/competitors {?api_key}]
 Business competitors can be fetched using:
 
 ### Get Business Competitors [GET]
@@ -4125,7 +4125,7 @@ Business competitors can be fetched using:
 
 APIs related to user.
 
-## Signup [/user/signup{?bid,api_key}]
+## Signup [/v1/user/signup{?bid,api_key}]
 
 Users can be created using:
 
@@ -4333,7 +4333,7 @@ Users can be created using:
 
     [1059][]
 
-## Delete [/user/remove{?bid,api_key,email}]
+## Delete [/v1/user/remove{?bid,api_key,email}]
 Users access from a business can be revoked using:
 
 + Parameters
@@ -4432,7 +4432,7 @@ Users access from a business can be revoked using:
 
     [1175][]
 
-## Password [/user/forgotpassword{?api_key,email}]
+## Password [/v1/user/forgotpassword{?api_key,email}]
 Forgot password email can be sent using:
 
 + Parameters
@@ -4526,7 +4526,7 @@ Forgot password email can be sent using:
 
     [1189][]
 
-## Get [/user/details{?api_key,email}]
+## Get [/v1/user/details{?api_key,email}]
 User details can be retrieved using:
 
 + Parameters
@@ -4629,7 +4629,7 @@ User details can be retrieved using:
 
 # Group Reviews
 
-## Get [/review/businessId/{businessId}{?sindex,count,api_key}]
+## Get [/v1/review/businessId/{businessId}{?sindex,count,api_key}]
 Business review(s) from BirdEye platform can be fetched using following filter in request payload:
 
 + Parameters
@@ -5006,7 +5006,7 @@ For facebook sourcetype, following table can be used to check recommendations.
 
     [1244][]
 
-## Get Competitor Review [/review/businessId/{CompetitorEnterpriseBusinessId}{?sindex,count,api_key,isCompetitor}]
+## Get Competitor Review [/v1/review/businessId/{CompetitorEnterpriseBusinessId}{?sindex,count,api_key,isCompetitor}]
 Get Competitor Business review(s) from BirdEye platform can be fetched using following filter in request payload:
 
 + Parameters
@@ -5288,7 +5288,7 @@ Get Competitor Business review(s) from BirdEye platform can be fetched using fol
 
 
 
-## Create [/review/business/{business_id}{?api_key}]
+## Create [/v1/review/business/{business_id}{?api_key}]
 New review on BirdEye platform can be created using:
 
 + Parameters
@@ -5494,7 +5494,7 @@ New review on BirdEye platform can be created using:
     [1243][]
 
 
-## Mark/Unmark Featured [/review/featured?{?api_key,businessId}]
+## Mark/Unmark Featured [/v1/review/featured?{?api_key,businessId}]
 Featured review and its order can be updated using:
 
 + Parameters
@@ -5645,7 +5645,7 @@ Featured review and its order can be updated using:
     [1042][]
 
 
-## Review Summary [/businessid/{businessId}/summary?{?api_key, statuses}]
+## Review Summary [/v1/businessid/{businessId}/summary?{?api_key, statuses}]
 
 + Parameters
 
@@ -5852,7 +5852,7 @@ Returns list of review source along with review count and average rating, also r
 </div>
 
 
-## Bulk Review Upload [/review/upload/business/{businessId}/source/{source_name}?{?api_key,aggregation_url}]
+## Bulk Review Upload [/v1/review/upload/business/{businessId}/source/{source_name}?{?api_key,aggregation_url}]
 
 + Parameters
 
@@ -5957,7 +5957,7 @@ Returns list of review source along with review count and average rating, also r
     </table>
 </div>
 
-## Create Direct Feedback [/review/feedback/{business_id}{?api_key}]
+## Create Direct Feedback [/v1/review/feedback/{business_id}{?api_key}]
 New Direct feedback on BirdEye platform can be created using:
 
 + Parameters
@@ -6115,7 +6115,7 @@ New Direct feedback on BirdEye platform can be created using:
 
 APIs related to customers
 
-## Check in [/customer/checkin{?bid,api_key}]
+## Check in [/v1/customer/checkin{?bid,api_key}]
 
 + Parameters
 
@@ -6391,7 +6391,7 @@ Customer checkin can be done using:
     [1175][]
 
 
-## Customer list [/customer/all{?businessId,api_key}]
+## Customer list [/v1/customer/all{?businessId,api_key}]
 
 + Parameters
 
@@ -6503,7 +6503,7 @@ Customer list can be fetched using:
     [1167][]
 
 
-## Activity log [/customer/history/{customerId}{?businessId,api_key}]
+## Activity log [/v1/customer/history/{customerId}{?businessId,api_key}]
 
 + Parameters
 
@@ -6650,7 +6650,7 @@ Customer activity log can be fetched using:
 
 
 
-## Delete Customer [/customer/id/{customerId}{?api_key}]
+## Delete Customer [/v1/customer/id/{customerId}{?api_key}]
 
 + Parameters
 
@@ -6742,53 +6742,79 @@ Customer can be deleted using:
 
 APIs related to Contacts
 
-## Get Contacts list [v1/customer-v2/list{?bid,api_key}]]
+## Get Contacts list [/v2/customer/checkin{?bid,api_key,page,size,order,sortby}]
 
-#### Request
++ Parameters
 
-<center><b>Example curl Request </b></center>
+    + bid (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
 
-   curl -X POST \
-  'https://api.birdeye.com/resources/v2/customer/list?page=0&size=25&order=desc&sortby=lastActivityOn&businessId=****&apiKey=*****' \
+### Contact  [POST]
+
+<center><b>Example curl request</b></center>
+
+curl -X POST \
+  'https://api.birdeye.com/resources/v2/customer/list?page=0&size=25&order=desc&sortby=lastActivityOn&businessId=151979948435007&apiKey=7sbOnTFhyPnrqgRNwFQQLCKNzhrtJ6v4' 
   -H 'accept: application/json' \
   -H 'content-type: application/json' \
   -d '{"startDate":"07/01/2019","endDate":"07/19/2019"}'
 
-
-#### Response
-
-<center><b>Example Response</b></center>
-
-
-[
-    {
-        "page": 0,
-        "size": 25,
-        "totalPages": 68,
-        "totalCount": 1679,
-        "customers": [
-            {
-                "customerId": 1234567,
-                "name": "Dummy1",
-                "email": "dummy1@gmail.com",
-                "phone": null,
-                "lastActivityWithTime": "19 Jul 2019 11:33 PM PDT"
-            },
-            {
-                "customerId": 1234568,
-                "name": "Dummy2",
-                "email": "dummy2@gmail.com",
-                "phone": null,
-                "lastActivityWithTime": "19 Jul 2019 11:19 PM PDT"
-            }
-         ]
-    }
-]
-
+#### Request
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
-        <caption>Error Codes</caption>
+        <caption>Request Payload</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>startDate</td>
+                <td>mm/dd/yyyy</td>
+                <td>string, optional</td>
+            </tr>
+            <tr>
+                <td>endDate</td>
+                <td>mm/dd/yyyy</td>
+                <td>string, optional</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+
+    {
+    "page": 0,
+    "size": 25,
+    "totalPages": 68,
+    "totalCount": 1679,
+    "customers": [
+                {
+            "customerId": 12345,
+            "name": "Dummy1",
+            "email": "dummy1@gmail.com",
+            "phone": "812-456-9082",
+            "lastActivityWithTime": "12 Aug 2019 02:05 PM PDT"
+        },
+        {
+            "customerId": 54321,
+            "name": "Summy2",
+            "email": "dummy2@gmail.com",
+            "phone": "8123609082",
+            "lastActivityWithTime": "12 Aug 2019 02:05 PM PDT"
+        }
+      ]
+   }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
         <thead>
         <tr>
             <th>HTTP Status</th>
@@ -6807,25 +6833,16 @@ APIs related to Contacts
             <td>1167</td>
             <td>API key is missing</td>
         </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1033</td>
-            <td>You are not authorized to perform this action</td>
-        </tr>
-        <tr>
-            <td>404 Not Found</td>
-            <td>1175</td>
-            <td>No business found with the given id</td>
-        </tr>
         </tbody>
     </table>
 </div>
+
 
 # Group Aggregation
 
 APIs related to aggregation URL
 
-## Get source list [/aggregation/business/{businessId} {?api_key}]
+## Get source list [/v1/aggregation/business/{businessId} {?api_key}]
 
 + Parameters
 
@@ -6965,7 +6982,7 @@ List of aggregation source can be fetched using:
 
 
 
-## Add Aggregation Link [/aggregation/business/{business_id} {?api_key}]
+## Add Aggregation Link [/v1/aggregation/business/{business_id} {?api_key}]
 
 + Parameters
 
@@ -7090,7 +7107,7 @@ Add new aggregation URL using:
 
 
 
-## Delete [/aggregation/business/{businessID}/aggregation/{aggregationID} {?api_key}]
+## Delete [/v1/aggregation/business/{businessID}/aggregation/{aggregationID} {?api_key}]
 
 + Parameters
 
@@ -7174,7 +7191,7 @@ Delete aggregation URL using:
 # Group Category
 APIs related to categories.
 
-## All categories [/category/all]
+## All categories [/v1/category/all]
 
 ### Get all categories [GET]
 All supported business categoried can be fetched using
@@ -7255,7 +7272,7 @@ All supported business categoried can be fetched using
 # Group Report
 APIs related to report
 
-## Dashboard [/reports/smb{?api_key,bid}]
+## Dashboard [/v1/reports/smb{?api_key,bid}]
 
 ### Get Dashboard data [GET]
 Dashboard data can be retrieved using:
@@ -7489,7 +7506,7 @@ Dashboard data can be retrieved using:
         }
     }
 
-## Review conversion report [/reports/business/analytics/email{?api_key,businessId,fromDate,toDate,days,months}]
+## Review conversion report [/v1/reports/business/analytics/email{?api_key,businessId,fromDate,toDate,days,months}]
 Review conversion report data can be retrieved using:
 
 ### Get Data [GET]
@@ -7686,7 +7703,7 @@ Review conversion report data can be retrieved using:
     [1039][]
 
 
-## Review and rating over time [/reports/review/analytic/time{?api_key,businessId,sortby,sorder}]
+## Review and rating over time [/v1/reports/review/analytic/time{?api_key,businessId,sortby,sorder}]
 Review and rating over time report data can be retrieved using:
 
 ### POST Data [POST]
@@ -7806,7 +7823,7 @@ Review and rating over time report data can be retrieved using:
     [89][]
 
 
-## Reviews & Rating By Location [/reports/rating/location{?api_key,businessId,sortby,sorder}]
+## Reviews & Rating By Location [/v1/reports/rating/location{?api_key,businessId,sortby,sorder}]
 Reviews & Rating By Location report data can be retrieved using:
 
 ### POST Data [POST]
@@ -7897,7 +7914,7 @@ Reviews & Rating By Location report data can be retrieved using:
 
     [89][]
 
-## Insights Category Report by location [/keywords/opmetric/location{?api_key,businessId}]
+## Insights Category Report by location [/v1/keywords/opmetric/location{?api_key,businessId}]
 Insights Category Report by location can be retrieved using:
 
 + Parameters
@@ -7989,7 +8006,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     }
 ]
 
-## NPS Over time [/reports/nps/time/elst{?api_key,businessId}]
+## NPS Over time [/v1/reports/nps/time/elst{?api_key,businessId}]
 NPS Over time report data can be retrieved using:
 
 ### POST Data [POST]
@@ -8089,7 +8106,7 @@ NPS Over time report data can be retrieved using:
 
 
 
-## NPS By Location [/reports/nps/location/elst{?api_key,businessId}]
+## NPS By Location [/v1/reports/nps/location/elst{?api_key,businessId}]
 NPS By Location report data can be retrieved using:
 
 ### POST Data [POST]
@@ -8190,7 +8207,7 @@ NPS By Location report data can be retrieved using:
     [89][]
 
 
-## Review By Source [/reports/count/reviewsite{?api_key,businessId}]
+## Review By Source [/v1/reports/count/reviewsite{?api_key,businessId}]
 Review By Source report data can be retrieved using:
 
 ### POST Data [POST]
@@ -8288,7 +8305,7 @@ Review By Source report data can be retrieved using:
     [89][]
 
 
-## Visitor report [/reports/count/reviewsite{?api_key,businessId}]
+## Visitor report [/v1/reports/count/reviewsite{?api_key,businessId}]
 Visitor report data can be retrieved using:
 
 ### POST Data [POST]
@@ -8393,7 +8410,7 @@ Visitor report data can be retrieved using:
     [89][]
 
 
-## Usage report [/reports/usage/{?reportType,sindex,count,business_id,api_key}]
+## Usage report [/v1/reports/usage/{?reportType,sindex,count,business_id,api_key}]
 Usage report data can be retrieved using:
 
 + Parameters
@@ -8813,7 +8830,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 
 # Group Survey
 
-## Get [/survey/{survey_id}{?api_key,businessId,lang}]
+## Get [/v1/survey/{survey_id}{?api_key,businessId,lang}]
 Business survey(s) from BirdEye platform can be fetched using:
 
 + Parameters
@@ -9250,7 +9267,7 @@ Business survey(s) from BirdEye platform can be fetched using:
     [89][]
 
 
-## Submit [/survey/{survey_id}/submit{?api_key,businessId}]
+## Submit [/v1/survey/{survey_id}/submit{?api_key,businessId}]
 Survey response on BirdEye platform can be submitted using:
 
 + Parameters
@@ -9513,7 +9530,7 @@ Survey response on BirdEye platform can be submitted using:
 
   [1011][]
 
-## List Responses [/survey/ext/list/responses/{survey_id}{?api_key,businessNumber,page,size,sortby,sorder}]
+## List Responses [/v1/survey/ext/list/responses/{survey_id}{?api_key,businessNumber,page,size,sortby,sorder}]
 Survey responses for a given survey can be fetched using:
 
 + Parameters
@@ -9968,7 +9985,7 @@ Survey responses for a given survey can be fetched using:
 
   [1011][]
 
-## Get All [/survey/business/{business_id}/all{?api_key,sortby,sorder,searchStr}]
+## Get All [/v1/survey/business/{business_id}/all{?api_key,sortby,sorder,searchStr}]
 Fetch all active surveys for a business
 
 + Parameters
@@ -10098,7 +10115,7 @@ Fetch all active surveys for a business
 # Group Employee
 APIs related to employee
 
-## Get [/employee/{businessId}/{?api_key}]
+## Get [/v1/employee/{businessId}/{?api_key}]
 Employee info from BirdEye platform can be fetched using:
 
 + Parameters
@@ -10204,7 +10221,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
 
 APIs related to Tag Managment.
 
-## Create Tags [/tag/{?businessId,api_key}]
+## Create Tags [/v1/tag/{?businessId,api_key}]
 
 Add tags to business.
 
@@ -10308,7 +10325,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     [1011][]
 
 
-## Delete Tag [/tag/{tagname}/{?businessId,api_key}]
+## Delete Tag [/v1/tag/{tagname}/{?businessId,api_key}]
 
 Remove undesired tags for a business.
 
@@ -10409,7 +10426,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
 
     [1011][]
 
-## Fetch Tags [/tag/all/{?businessId,api_key}]
+## Fetch Tags [/v1/tag/all/{?businessId,api_key}]
 
 Get tags for a business.
 
@@ -10492,7 +10509,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
 
    Assign or remove tags to reviews.
 
-## Assign tag to reviews [/tag/add/review{?bid,api_key,tag}]
+## Assign tag to reviews [/v1/tag/add/review{?bid,api_key,tag}]
 
 + Parameters
 
@@ -10596,7 +10613,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     [1011][]
 
 
-## Search reviews and assign tags [/tag/add/review{?bid,api_key,tag}]
+## Search reviews and assign tags [/v1/tag/add/review{?bid,api_key,tag}]
 
 + Parameters
 
@@ -10731,7 +10748,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 
     [1011][]
 
-## Remove tags from a review [/tag/review/{review_id}/{?bid, api_key,tag}]
+## Remove tags from a review [/v1/tag/review/{review_id}/{?bid, api_key,tag}]
 
 + Parameters
 
@@ -10837,7 +10854,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X DELETE 
     [1011][]
 
 
-## Remove tags from reviews [/tag/remove/review/{?bid, api_key,tag}]
+## Remove tags from reviews [/v1/tag/remove/review/{?bid, api_key,tag}]
 
 + Parameters
 
@@ -10942,7 +10959,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     [1011][]
 
 
-## Search reviews and remove tags [/tag/remove/review/{?bid, api_key,tag}]
+## Search reviews and remove tags [/v1/tag/remove/review/{?bid, api_key,tag}]
 
 + Parameters
 
@@ -11078,7 +11095,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 
     [1011][]
 
-## Remove tags from all reviews [/tag/remove/all/review/{?bid, api_key}]
+## Remove tags from all reviews [/v1/tag/remove/all/review/{?bid, api_key}]
 
 + Parameters
 
@@ -11181,7 +11198,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 
     Associate or remove tags from businesses.
 
-## Assign tag to business entity [/tag/business/{?businessId,api_key}]
+## Assign tag to business entity [/v1/tag/business/{?businessId,api_key}]
 
 + Parameters
 
@@ -11452,7 +11469,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
 
     [1011][]
 
-## Remove tags from business entity [/tag/business/{tag}/{?businessId,api_key}]
+## Remove tags from business entity [/v1/tag/business/{tag}/{?businessId,api_key}]
 
 + Parameters
 
