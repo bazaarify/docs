@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://api.birdeye.com/resources/v1
+HOST: https://api.birdeye.com/resources
 
 # BirdEye
 The BirdEye API is built on HTTP. Our API is RESTful and it:
@@ -6742,11 +6742,10 @@ Customer can be deleted using:
 
 APIs related to Contacts
 
-## Get Contacts list [/v2/customer/checkin{?bid,api_key,page,size,order,sortby}]
+## POST Contacts list [/v2/customer/checkin{?bid,api_key,page,size,order,sortby}]
 
 + Parameters
 
-    + bid (string, required) ... the Business ID
     + api_key (string, required) ... the API key
 
 ### Contact  [POST]
@@ -6754,7 +6753,7 @@ APIs related to Contacts
 <center><b>Example curl request</b></center>
 
 curl -X POST \
-  'https://api.birdeye.com/resources/v2/customer/list?page=0&size=25&order=desc&sortby=lastActivityOn&businessId=151979948435007&apiKey=7sbOnTFhyPnrqgRNwFQQLCKNzhrtJ6v4' 
+  'https://api.birdeye.com/resources/v2/customer/list?page=0&size=25&order=desc&sortby=lastActivityOn&businessId=123456789&apiKey=*****' \
   -H 'accept: application/json' \
   -H 'content-type: application/json' \
   -d '{"startDate":"07/01/2019","endDate":"07/19/2019"}'
