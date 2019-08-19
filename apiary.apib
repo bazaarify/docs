@@ -8827,7 +8827,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 
     [1011][]
 
-# Group Survey
+# Group Surveys
 
 ## Get [/v1/survey/{survey_id}{?api_key,businessId,lang}]
 Business survey(s) from BirdEye platform can be fetched using:
@@ -9594,6 +9594,14 @@ Survey responses for a given survey can be fetched using:
          "customerId":123456,
          "customerName":"Anonymous",
          "ticketed":false,
+         "customParam":{
+                "orderid":"12345abc",
+                "ordertype":"C"
+         },
+         "extraParams":{
+                "cardtype":"premium",
+                "membership":"black"
+         },
          "answers":[
             {
                "questionTitle":"We are interested in receiving your feedback. \nabout the care provided at our facility. \n\nPlease take a few minutes to rate your satisfaction with each of the following\n\nPlease describe ur properties.",
