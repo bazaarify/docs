@@ -8006,6 +8006,99 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     }
 ]
 
+## Competitive Ranking Report [/v2/competitive/ranking{?api_key,businessId}]
+Competitive Ranking Report can be retrieved using:
+
++ Parameters
+    + api_key (required, string) ... API key assigned to business.
+    + businessId (required, string) ... BusinessId assigned to business.
+
+### POST Data [POST]
+
+<center><b>Example CURL Request</b></center>
+
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"reviewSites" : ["2","110"], "startDate" : "10/08/2019", "endDate" : "001/15/2020"}' "https://api.birdeye.com/resources/v2/competitive/ranking?api_key=92bcd6e0-c102-8a67-1a7be5258451&businessId=943999808" –v
+
+<center><b>Example Payload</b></center>
+
+    {
+      "startDate":"10/08/2019",
+      "endDate":"01/15/2020",
+      "reviewSites":["2","110"]
+    }
+
+#### Response
+
+<center><b>Example Response Body</b></center>
+
+{
+    "positiveCount" : 218305,
+    "neutralCount" : 18600,
+    "negativeCount" : 22794,
+    "positivePercent" : 84.0,
+    "neutralPercent" : 7.0,
+    "negativePercent" : 9.0,
+    "name" : "Pizza Palace",
+    "count" : 259699,
+    "rating" : 4.339487006543244,
+    "competitors" : [ {
+        "positiveCount" : 249953,
+        "neutralCount" : 21827,
+        "negativeCount" : 16876,
+        "positivePercent" : 87.0,
+        "neutralPercent" : 8.0,
+        "negativePercent" : 6.0,
+        "name" : "Family Pizza",
+        "count" : 288656,
+        "rating" : 4.457812929751687
+        }, {
+        "positiveCount" : 13148,
+        "neutralCount" : 2239,
+        "negativeCount" : 2051,
+        "positivePercent" : 75.0,
+        "neutralPercent" : 13.0,
+        "negativePercent" : 12.0,
+        "name" : "Veggie Pizza and Grill",
+        "count" : 17438,
+        "rating" : 4.126577756608716
+    } ]
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
 ## NPS Over time [/v1/reports/nps/time/elst{?api_key,businessId}]
 NPS Over time report data can be retrieved using:
 
