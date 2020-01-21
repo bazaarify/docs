@@ -7936,43 +7936,6 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
       "businessNumbers":["948968776910876"]
     }
 
-#### Request
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Error Codes</caption>
-        <thead>
-        <tr>
-            <th>HTTP Status</th>
-            <th>BirdEye error code</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>404 Not Found</td>
-            <td>1011</td>
-            <td>Business id is invalid</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1167</td>
-            <td>API key is missing</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1161</td>
-            <td>Invalid API key</td>
-        </tr>
-        <tr>
-            <td>429 Too Many Requests</td>
-            <td>89</td>
-            <td>Rate limit exceeded</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
 #### Response
 
 <center><b>Example Response Body</b></center>
@@ -8027,43 +7990,6 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
       "reviewSites":["2","110","1","100","3","303","6","84","33","202","25","21","4","5","63"]
     }
 
-#### Request
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Error Codes</caption>
-        <thead>
-        <tr>
-            <th>HTTP Status</th>
-            <th>BirdEye error code</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>404 Not Found</td>
-            <td>1011</td>
-            <td>Business id is invalid</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1167</td>
-            <td>API key is missing</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1161</td>
-            <td>Invalid API key</td>
-        </tr>
-        <tr>
-            <td>429 Too Many Requests</td>
-            <td>89</td>
-            <td>Rate limit exceeded</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
 #### Response
 
 <center><b>Example Response Body</b></center>
@@ -8100,6 +8026,41 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
         "rating" : 4.126577756608716
     } ]
 }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 ## NPS Over time [/v1/reports/nps/time/elst{?api_key,businessId}]
 NPS Over time report data can be retrieved using:
