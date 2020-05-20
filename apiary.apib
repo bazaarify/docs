@@ -6129,12 +6129,13 @@ Customer checkin can be done using:
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@abcd.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1,\"checkinConfig\" :{\"reviewEmailTemplateId\": 9906,\"reviewSmsTemplateId\" :202,\"surveySmsTemplateId\":35,\"surveyEmailTemplateId\":8227}, \"employees\" : [{\"firstName\" : \"Steve \",\"lastName\" : \"Smith \",\"emailId\" : \"sshikha@abcd.com\"}]}" "https://api.birdeye.com/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{\"name\" : \"Steve Smith \", \"emailId\" : \"steves@abcd.com\", \"phone\" : \"408-xxx-xxxx\",\"smsEnabled\" : 1,\"additionalParams\" :{\"Tag Group Name 1\": \"Tag Name 1\",\"Tag Group Name 2\" :\"Tag Name 2\", \"location\" :\"New York\"}, \"employees\" : [{\"firstName\" : \"Steve \",\"lastName\" : \"Smith \",\"emailId\" : \"sshikha@abcd.com\"}]}" "https://api.birdeye.com/resources/v1/customer/checkin?bid=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
 > __Notes__
 
 > - _If business has not enabled for sms, then email will be required field._
 > - _If business has enabled for sms, then either email or phone will be required._
+> - _Customer Tag keys and values given in additionalParams must be whitelisted to be parsed as tags._
 
 #### Request
 
@@ -6145,12 +6146,11 @@ Customer checkin can be done using:
       "emailId": "steves@abcd.com",
       "phone": "408-xxx-xxxx",
       "smsEnabled": 1,
-      "checkinConfig" :{
-         "reviewEmailTemplateId": 9906,
-         "reviewSmsTemplateId" :202,
-         "surveySmsTemplateId":35,
-         "surveyEmailTemplateId":8227
-    },
+      "additionalParams": {
+        "Tag Group Name 1": "Tag Name 1",
+        "Tag Group Name 2": "Tag Name 2",
+        "location": "New York"
+      },
       "employees":[{
                      "emailId" : "sshikha@abcd.com"
                   }]
@@ -6188,29 +6188,9 @@ Customer checkin can be done using:
             <td>integer, optional</td>
         </tr>
         <tr>
-            <td>checkinConfig</td>
-            <td>Configure Email/Sms Template for communication with the customer.</td>
-            <td>Object, optional</td>
-        </tr>
-        <tr>
-            <td>reviewEmailTemplateId</td>
-            <td>Select review email template</td>
-            <td>Integer, optional</td>
-        </tr>
-        <tr>
-            <td>reviewSmsTemplateId</td>
-            <td>Select review sms template</td>
-            <td>Integer, optional</td>
-        </tr>
-        <tr>
-            <td>surveySmsTemplateId</td>
-            <td>Select survey sms template</td>
-            <td>Integer, optional</td>
-        </tr>
-        <tr>
-            <td>surveyEmailTemplateId</td>
-            <td>Select survey email template</td>
-            <td>Integer, optional</td>
+            <td>additionalParams</td>
+            <td>Configure extra checkin params/Templates for communication with the customer, with tag group name as key and tag name as value in the additionalParams map</td>
+            <td>Map<String, String>, optional</td>
         </tr>
         <tr>
             <td>employees</td>
