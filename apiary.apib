@@ -6386,6 +6386,12 @@ Customer list can be fetched using:
 
     curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/customer/all?businessId=755009344&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" –v
 
+> __Notes__
+
+> - _Possible values of emailUnsubType: null, dropped, bounce, unsubscribe, spamreport, optout._
+> - _Possible values of smsUnsubType: null, Invalid, Opted out, Unsubscribed._
+> - _Any non null value implies that communication for the given channel will not go out._
+
 #### Response
 
     [
@@ -6395,7 +6401,9 @@ Customer list can be fetched using:
             "middleName": "M",
             "lastName": "",
             "emailId": "greg.m@abc.com",
-            "phone": "408-xxx-xxxx"
+            "phone": "408-xxx-xxxx",
+            "emailUnsubType": null,
+            "smsUnsubType": null
         },
         {
             "number": "673353442",
@@ -6403,7 +6411,9 @@ Customer list can be fetched using:
             "middleName": "",
             "lastName": "",
             "emailId": "sam.m@abc.com",
-            "phone": "408-xxx-xxxx"
+            "phone": "408-xxx-xxxx",
+            "emailUnsubType": "optout",
+            "smsUnsubType": "Opted out"
         },
         {
             "number": "953356544",
@@ -6411,7 +6421,9 @@ Customer list can be fetched using:
             "middleName": "",
             "lastName": "clive",
             "emailId": "clive@abc.com",
-            "phone": "408-xxx-xxxx"
+            "phone": "408-xxx-xxxx",
+            "emailUnsubType": "dropped",
+            "smsUnsubType": "Invalid"
         },
         {
             "number": "673998544",
@@ -6419,7 +6431,9 @@ Customer list can be fetched using:
             "middleName": "",
             "lastName": "K",
             "emailId": "koliver@abc.com",
-            "phone": "408-xxx-xxxx"
+            "phone": "408-xxx-xxxx",
+            "emailUnsubType": "unsubscribe",
+            "smsUnsubType": "Unsubscribed"
         }
     ]
 
