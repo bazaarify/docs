@@ -6733,6 +6733,145 @@ Customer can be deleted using:
     [1089][]
 
 
+
+## Subscribe/Unsubscribe Customer [/v1/customer-v2/change-permission{?api_key}]
+
++ Parameters
+
+    + api_key (string, required) ... the API key
+
+### Subscribe/Unsubscribe Customer [POST]
+Customer can be subscribe/unsubscribe using:
+
+<center><b>Example curl request</b></center>
+     curl -X POST "https://api.birdeye.com/resources/v1/customer-v2/change-permission?apiKey=92bcd6e0-c102-43fd-8a67-1a7be5258451"
+     -H "accept: application/json" -H "content-type: application/json" -d '{"permission" : "both-unsubscribed","email": ["test1@mail.in"],
+        "phone": ["2345654326"],"accountNumber":123456789876543}' -v
+
+#### Request
+
+<center><b>Example Payload</b></center>
+
+    {
+      "permission" : "both-unsubscribed",
+      "email": ["test1@mail.in"],
+      "phone": ["2345654326"],
+      "accountNumber":123456789876543
+    }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>permission</td>
+            <td>Action to be taken</td>
+            <td>Valid values are both-subscribed, both-unsubscribed, sms-subscribed, and email-subscribed, Required</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>List of email ids</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>phone</td>
+            <td>List of phone nos</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>accountNumber</td>
+            <td>Location id</td>
+            <td>number, Required</td>
+        </tr>
+        <tr>
+            <td>additionalParams</td>
+            <td>Configure extra checkin params/Templates for communication with the customer, with tag group name as key and tag name as value in the additionalParams map</td>
+            <td>Map<String, String>, optional</td>
+        </tr>
+        <tr>
+            <td>employees</td>
+            <td>An Array</td>
+        </tr>
+        <tr>
+            <td>emailId</td>
+            <td>Email Id of Employee</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+    true or false
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
+
++ Response 400
+
+    [1089][]
+	
+
 # Group Contacts
 
 APIs related to Contacts
