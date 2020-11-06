@@ -752,6 +752,60 @@ All API URLs referenced in this documentation start with the following base part
             errorMessage: "Date entered is invalid."
         }
 
+## 21101 [/21101]
+
++ Model (application/json)
+
+        {
+            errorCode: 21101,
+            errorMessage: "Google page is not integrated. Kindly integrate it first."
+        }
+
+## 21103 [/21103]
+
++ Model (application/json)
+
+        {
+            errorCode: 21103,
+            errorMessage: "Your review response could not be submitted due to a temporary error on Google."
+        }
+
+## 21113 [/21113]
+
++ Model (application/json)
+
+        {
+            errorCode: 21113,
+            errorMessage: "Facebook page is not integrated. Kindly integrate it first."
+        }
+
+## 21112 [/21112]
+
++ Model (application/json)
+
+        {
+            errorCode: 21112,
+            errorMessage: "Your review response could not be submitted due to a temporary error on Facebook."
+        }
+
+## 2222 [/2222]
+
++ Model (application/json)
+
+        {
+            errorCode: 2222,
+            errorMessage: "Oops! Something is off on our side. We are working on it. Please check later."
+        }
+
+## 1541 [/1541]
+
++ Model (application/json)
+
+        {
+            errorCode: 1541,
+            errorMessage: "Rate Limit of API has been exceeded."
+        }
+
 # Group Business
 APIs related to business
 
@@ -4757,7 +4811,8 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         "uniqueReviewUrl":"https://birdeye.com/websiter-755009344/review/3947127516862",
         "businessName":"Websiter",
         "businessType":"Location",
-        "status":"Published"
+        "status":"Published",
+        "enableReply":true
     },
     {
         "reviewId": "3947077656849",
@@ -4783,7 +4838,8 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         "uniqueReviewUrl":"https://birdeye.com/websiter-755009344/review/3942327516353",
         "businessName":"Websiter",
         "businessType":"Location",
-        "status":"Parked"
+        "status":"Parked",
+        "enableReply":false
     }
     ]
 
@@ -4841,6 +4897,10 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         <tr>
             <td>featured (x) </td>
             <td> x = 0 if review not featured, x > 0 stands for review order if featured review.</td>
+        </tr>
+        <tr>
+            <td>enableReply</td>
+            <td>boolean flag to represent whether review can be replied or not.</td>
         </tr>
         </tbody>
     </table>
@@ -6110,7 +6170,237 @@ New Direct feedback on BirdEye platform can be created using:
 
     [1243][]
 
+## Review Reply [/v1/review/reply/business/{businessNumber}/review/{reviewId}{?api_key}]
+Review can be replied from Birdeye platform using following request payload:
 
++ Parameters
+
+    + api_key (string, required) ... the API key
+
+### Post Review Reply [PUT]
+
+<center><b>Example curl request</b></center>
+
+curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/business/156396268833198/review/4221289384685133835?api_key=zzGfN0KDKGJN2mFRpzChm8CWc0dW2JL7' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "response": "Thanks for reviewing us.",
+    "isPrivateResponse": true
+}'
+
+#### Request
+
+<center><b>Example Payload</b></center>
+
+    {
+        "response": "Thanks for reviewing us.",
+        "isPrivateResponse": true
+    }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>response</td>
+            <td>review reply text to be posted</td>
+        </tr>
+        <tr>
+            <td>isPrivateResponse</td>
+            <td>flag to post reply privately to reviewer</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center>
+{
+    "response":"Thanks for reviewing us.",
+    "responseBy":"sysadmin",
+    "isAutoResponse":false,
+    "responseDate": 12534173514
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>response</td>
+            <td>review reply text that is posted</td>
+        </tr>
+         <tr>
+            <td>responseBy</td>
+            <td>name of user who responded</td>
+        </tr>
+        <tr>
+            <td>isAutoResponse</td>
+            <td>AutoPosted or manually</td>
+        </tr>
+        <tr>
+            <td>responseDate</td>
+            <td>reply posted date</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1042</td>
+            <td>Invalid review id</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>21101</td>
+            <td>Google page is not integrated. Kindly integrate it first.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>21103</td>
+            <td>Your review response could not be submitted due to a temporary error on Google.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>21113</td>
+            <td>Facebook page is not integrated. Kindly integrate it first.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>21112</td>
+            <td>Your review response could not be submitted due to a temporary error on Facebook.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2222</td>
+            <td>Oops! Something is off on our side. We are working on it. Please check later.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1541</td>
+            <td>Rate Limit of API has been exceeded.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
+    + Body
+    
+            {
+                "response":"Enter Reply here",
+                "isPrivateResponse":false
+            }
+
++ Response 200
+
+    + Headers
+
+            Content-type: application/json
+
+    + Body
+
+            {
+                "response":"Thanks for reviewing us.",
+                "responseBy":"sysadmin",
+                "isAutoResponse":false,
+                "responseDate": 12323121214
+            }
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1161][]
+
++ Response 400
+
+    [1011][]
+
++ Response 404
+
+    [1175][]
+
++ Response 400
+
+    [1042][]
+
++ Response 400
+
+    [21101][]
+
++ Response 400
+
+    [21103][]
+
++ Response 400
+
+    [21113][]
+
++ Response 400
+
+    [21112][]
+
++ Response 400
+
+    [2222][]
+
++ Response 400
+
+    [1541][]
 
 # Group Customer
 
