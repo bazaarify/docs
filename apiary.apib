@@ -770,6 +770,15 @@ All API URLs referenced in this documentation start with the following base part
             errorMessage: "Your review response could not be submitted due to a temporary error on Google."
         }
 
+## 21104 [/21104]
+
++ Model (application/json)
+
+        {
+            errorCode: 21104,
+            errorMessage: "Sorry, We could not find this review on Google. Please go to your Google Business page and reply to this review. Thank you."
+        }
+
 ## 21113 [/21113]
 
 + Model (application/json)
@@ -777,6 +786,15 @@ All API URLs referenced in this documentation start with the following base part
         {
             errorCode: 21113,
             errorMessage: "Facebook page is not integrated. Kindly integrate it first."
+        }
+
+## 21114 [/21114]
+
++ Model (application/json)
+
+        {
+            errorCode: 21114,
+            errorMessage: "Sorry, We could not find this review on Facebook. Please go to your Facebook page and reply to this review. Thank you."
         }
 
 ## 21112 [/21112]
@@ -6308,8 +6326,18 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
         </tr>
         <tr>
             <td>400 Bad Request</td>
+            <td>21104</td>
+            <td>Sorry, We could not find this review on Google. Please go to your Google Business page and reply to this review. Thank you.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
             <td>21113</td>
             <td>Facebook page is not integrated. Kindly integrate it first.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>21114</td>
+            <td>Sorry, We could not find this review on Facebook. Please go to your Facebook page and reply to this review. Thank you.</td>
         </tr>
         <tr>
             <td>400 Bad Request</td>
@@ -6388,7 +6416,15 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
 
 + Response 400
 
+    [21104][]
+
++ Response 400
+
     [21113][]
+
++ Response 400
+
+    [21114][]
 
 + Response 400
 
