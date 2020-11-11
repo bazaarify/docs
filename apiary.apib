@@ -752,6 +752,15 @@ All API URLs referenced in this documentation start with the following base part
             errorMessage: "Date entered is invalid."
         }
 
+## 2110 [/2110]
+
++ Model (application/json)
+
+        {
+            errorCode: 2110,
+            errorMessage: "Your review response could not be submitted due to a temporary error on Google. Please try after some time."
+        }
+
 ## 21101 [/21101]
 
 + Model (application/json)
@@ -777,6 +786,15 @@ All API URLs referenced in this documentation start with the following base part
         {
             errorCode: 21104,
             errorMessage: "Sorry, We could not find this review on Google. Please go to your Google Business page and reply to this review. Thank you."
+        }
+
+## 2111 [/2111]
+
++ Model (application/json)
+
+        {
+            errorCode: 2111,
+            errorMessage: "Your review response could not be submitted due to a temporary error on Facebook. Please try after some time."
         }
 
 ## 21113 [/21113]
@@ -813,6 +831,33 @@ All API URLs referenced in this documentation start with the following base part
         {
             errorCode: 2222,
             errorMessage: "Oops! Something is off on our side. We are working on it. Please check later."
+        }
+
+## 2075 [/2075]
+
++ Model (application/json)
+
+        {
+            errorCode: 2075,
+            errorMessage: "Error while claiming a provider for Care Dash"
+        }
+
+## 20706 [/20706]
+
++ Model (application/json)
+
+        {
+            errorCode: 20706,
+            errorMessage: "Error while posting a reply to Care Dash"
+        }
+
+## 2078 [/2078]
+
++ Model (application/json)
+
+        {
+            errorCode: 2078,
+            errorMessage: "Error while posting a reply to Rent"
         }
 
 ## 1541 [/1541]
@@ -4918,7 +4963,11 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         </tr>
         <tr>
             <td>enableReply</td>
-            <td>boolean flag to represent whether review can be replied or not.</td>
+            <td>Whether a review reply is supported via Birdeye API or not.
+            <br>
+            <b>True :</b> For source Google, Facebook, Rent.com, Aparmentguide, Caredash, Birdeye, DirectFeedback or if Managed service is enabled
+            <br>
+            <b>False :</b> Default value or if it does not satisfy 'True' condition</td>
         </tr>
         </tbody>
     </table>
@@ -6199,13 +6248,7 @@ Review can be replied from Birdeye platform using following request payload:
 
 <center><b>Example curl request</b></center>
 
-curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/business/156396268833198/review/4221289384685133835?api_key=zzGfN0KDKGJN2mFRpzChm8CWc0dW2JL7' \
---header 'Accept: application/json' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "response": "Thanks for reviewing us.",
-    "isPrivateResponse": true
-}'
+curl -H "content-type: application/json" -H "accept:application/json" -X PUT -d '{ "response": "Thanks for reviewing us.","isPrivateResponse": false }' "http://api.birdeye.com/resources/v1/review/reply/business/156396268833198/review/4221289384685133835?api_key=zzGfN0KDKGJN2mFRpzChm8CWc0dW2JL7" -v
 
 #### Request
 
@@ -6213,7 +6256,7 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
 
     {
         "response": "Thanks for reviewing us.",
-        "isPrivateResponse": true
+        "isPrivateResponse": false
     }
 
 <div class="paramsTableWrap">
@@ -6232,7 +6275,7 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
         </tr>
         <tr>
             <td>isPrivateResponse</td>
-            <td>flag to post reply privately to reviewer</td>
+            <td>flag to post reply privately to reviewer (Only in case of Managed Service)</td>
         </tr>
         </tbody>
     </table>
@@ -6243,9 +6286,8 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
 <center><b>Example Response</b></center>
 {
     "response":"Thanks for reviewing us.",
-    "responseBy":"sysadmin",
-    "isAutoResponse":false,
-    "responseDate": 12534173514
+    "responseBy":"Default user",
+    "responseDate": 1604926421189
 }
 
 <div class="paramsTableWrap">
@@ -6264,15 +6306,11 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
         </tr>
          <tr>
             <td>responseBy</td>
-            <td>name of user who responded</td>
-        </tr>
-        <tr>
-            <td>isAutoResponse</td>
-            <td>AutoPosted or manually</td>
+            <td>Default user (static value)</td>
         </tr>
         <tr>
             <td>responseDate</td>
-            <td>reply posted date</td>
+            <td>reply posted date (epoch millis)</td>
         </tr>
         </tbody>
     </table>
@@ -6316,6 +6354,11 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
         </tr>
         <tr>
             <td>400 Bad Request</td>
+            <td>2110</td>
+            <td>Your review response could not be submitted due to a temporary error on Google. Please try after some time.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
             <td>21101</td>
             <td>Google page is not integrated. Kindly integrate it first.</td>
         </tr>
@@ -6328,6 +6371,11 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
             <td>400 Bad Request</td>
             <td>21104</td>
             <td>Sorry, We could not find this review on Google. Please go to your Google Business page and reply to this review. Thank you.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2111</td>
+            <td>Your review response could not be submitted due to a temporary error on Facebook. Please try after some time.</td>
         </tr>
         <tr>
             <td>400 Bad Request</td>
@@ -6348,6 +6396,21 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
             <td>400 Bad Request</td>
             <td>2222</td>
             <td>Oops! Something is off on our side. We are working on it. Please check later.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2075</td>
+            <td>Error while claiming a provider for Care Dash</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>20706</td>
+            <td>Error while posting a reply to Care Dash</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2078</td>
+            <td>Error while posting a reply to Rent</td>
         </tr>
         <tr>
             <td>400 Bad Request</td>
@@ -6381,9 +6444,8 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
 
             {
                 "response":"Thanks for reviewing us.",
-                "responseBy":"sysadmin",
-                "isAutoResponse":false,
-                "responseDate": 12323121214
+                "responseBy":"Default user",
+                "responseDate": 1604926421189
             }
 
 + Response 401
@@ -6408,6 +6470,10 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
 
 + Response 400
 
+    [2110][]
+
++ Response 400
+
     [21101][]
 
 + Response 400
@@ -6417,6 +6483,10 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
 + Response 400
 
     [21104][]
+
++ Response 400
+
+    [2111][]
 
 + Response 400
 
@@ -6437,6 +6507,18 @@ curl --location --request PUT 'http://api.birdeye.com/resources/v1/review/reply/
 + Response 400
 
     [1541][]
+
++ Response 400
+
+    [2075][]
+
++ Response 400
+
+    [20706][]
+
++ Response 400
+
+    [2078][]
 
 # Group Customer
 
