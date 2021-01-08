@@ -7371,7 +7371,6 @@ curl -X POST
 
 
 ## Customer or Lead list [/v1/contact/details {?api_key}]
-Customer or Lead List on BirdEye platform can be fetched using:
 
 + Parameters
 
@@ -7382,7 +7381,7 @@ Contact/Lead details could be fetched using:
 
 <center><b>Example curl request</b></center>
 
-curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?apiKey=*****' -H 'accept: application/json' -H 'content-type: application/json'  -d '{ "sources": [ "api", "dashboard", "facebook", "integration", "sftp", "bulkupload", "webchat", "crmimport", "other", "referral" ], "startDate": "19/11/2020", "endDate": "10/01/2021","contactType": "customer", "businessId": 158629168202762, "page" : 0, "size" : 100 }'
+curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?apiKey=*****' -H 'accept: application/json' -H 'content-type: application/json'  -d '{ "sources": [ "api", "dashboard", "facebook", "integration", "sftp", "bulkupload", "webchat", "crmimport", "other", "referral" ], "startDate": "19/11/2020", "endDate": "10/01/2021","contactType": "customer", "businessId": 158629168202762, "page" : 0, "size" : 100 }' -v
 
 #### Request
 
