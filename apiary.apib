@@ -7365,6 +7365,159 @@ curl -X POST \
     </table>
 </div>
 
+## Contact(Customer/Lead) list [v1/contact/details?{?api_key}]
+
++ Parameters
+
+    + api_key (string, required) ... the API key
+
+### Contact(Customer/Lead) list  [POST]
+
+<center><b>Example curl request</b></center>
+
+curl -X POST \
+  'https://api.birdeye.com/resources/v1/contact/details?apiKey=*****' \
+  -H 'accept: application/json' \
+  -H 'content-type: application/json' \
+  -d '{ "sources": [ "api", "dashboard", "facebook", "integration", "sftp", "bulkupload", "webchat", 
+  "crmimport", "other", "referral" ], "startDate": "19/11/2020", "endDate": "10/01/2021",
+  "contactType": "customer", "businessId": 158629168202762, "page" : 0, "size" : 100 }'
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+             <tr>
+                <td>sources</td>
+                <td>Source of the customer/lead.Possible values are api,dashboard.facebook,integration,sftp,
+                bulkupload,webchat,crmimport,other,referral</td>
+                <td>array of string,optional.If blank then contacts of all sources are returned</td>
+            </tr>
+             <tr>
+                <td>startDate</td>
+                <td>dd/mm/yyyy</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>startDate</td>
+                <td>dd/mm/yyyy</td>
+                <td>string</td>
+            </tr>
+            <tr>
+                <td>contactType</td>
+                <td>Type of contact.Possible values are lead,customer</td>
+                <td>string,optional.If blank then all contact types are returned</td>
+            </tr>
+            <tr>
+                <td>businessId</td>
+                <td>Business Number</td>
+                <td>long</td>
+            </tr>
+            <tr>
+                <td>page</td>
+                <td>Default 0. Start of the page</td>
+                <td>number</td>
+            </tr>
+            <tr>
+                <td>size</td>
+                <td>Number of records per page</td>
+                <td>number</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+{
+    "page": 0,
+    "size": 100,
+    "totalPages": 310,
+    "totalCount": 30983,
+    "contacts": [
+        {
+            "id": 12345,
+            "firstName": "Dummy1F",
+            "lastName": "Dummy1L",
+            "email": "sam@gmail.com",
+            "phone": "xxx-xxx-xxxx",
+            "created": "2021-01-06T22:25:12.000+0000",
+            "contactType": "customer",
+            "source": "facebook",
+            "locations": [
+                56776
+            ],
+            "facebookId" :"67676271677"
+        },
+        {
+            "id": 54321,
+            "firstName": "Dummy2F",
+            "lastName": "Dummy2L",
+            "email": "samuel@gmail.com",
+            "phone": "",
+            "created": "2021-01-06T22:06:41.000+0000",
+            "contactType": "lead",
+            "source": "webchat",
+            "locations": [
+                714570
+            ]
+        }
+    ]
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+         <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>Api key or session token missing</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>21121</td>
+            <td>Invalid contact source provided in the request.</td>
+        </tr>
+         <tr>
+            <td>400 Bad Request</td>
+            <td>21120</td>
+            <td>Invalid contact type provided in the request. Valid contact types are lead or customer</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>21122</td>
+            <td>Reseller business is not supported in this request</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 # Group Aggregation
 
