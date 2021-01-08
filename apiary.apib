@@ -7281,10 +7281,10 @@ APIs related to Contacts
 
 <center><b>Example curl request</b></center>
 
-curl -X POST \
-  'https://api.birdeye.com/resources/v2/customer/list?page=0&size=25&order=desc&sortby=lastActivityOn&businessId=123456789&apiKey=*****' \
-  -H 'accept: application/json' \
-  -H 'content-type: application/json' \
+curl -X POST 
+  'https://api.birdeye.com/resources/v2/customer/list?page=0&size=25&order=desc&sortby=lastActivityOn&businessId=123456789&apiKey=*****'
+  -H 'accept: application/json' 
+  -H 'content-type: application/json' 
   -d '{"startDate":"07/01/2019","endDate":"07/19/2019"}'
 
 #### Request
@@ -7382,10 +7382,10 @@ Customer or Lead List on BirdEye platform can be fetched using:
 
 <center><b>Example curl request</b></center>
 
-curl -X POST \
-  'https://api.birdeye.com/resources/v1/contact/details?apiKey=*****' \
-  -H 'accept: application/json' \
-  -H 'content-type: application/json' \
+curl -X POST 
+  'https://api.birdeye.com/resources/v1/contact/details?apiKey=*****' 
+  -H 'accept: application/json' 
+  -H 'content-type: application/json' 
   -d '{ "sources": [ "api", "dashboard", "facebook", "integration", "sftp", "bulkupload", "webchat", 
   "crmimport", "other", "referral" ], "startDate": "19/11/2020", "endDate": "10/01/2021",
   "contactType": "customer", "businessId": 158629168202762, "page" : 0, "size" : 100 }'
