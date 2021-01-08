@@ -7271,7 +7271,7 @@ Customer can be subscribe/unsubscribe using:
 
 APIs related to Contacts
 
-## Contacts list [/v2/customer/checkin{?bid,api_key,page,size,order,sortby}]
+## Contacts list [/v2/customer/list{?bid,api_key,page,size,order,sortby}]
 
 + Parameters
 
@@ -7369,7 +7369,7 @@ curl -X POST \
 
 
 
-## Contacts(Customer/Lead) list [v1/contact/details {?api_key}]
+## Contacts(Customer or Lead) list [v1/contact/details {?api_key}]
 
 
 + Parameters
@@ -7383,7 +7383,7 @@ curl -X POST \
     + page (number,required) ... the page number
     + size (number,optional) ... the page size
 
-### Contacts (Customer/Lead) list  [POST]
+### Contacts (Customer or Lead) list  [POST]
 
 <center><b>Example curl request</b></center>
 
@@ -7482,9 +7482,8 @@ curl -X POST \
             "locations": [
                 714570
             ]
-        }
-    ]
 }
+
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
