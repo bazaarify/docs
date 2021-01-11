@@ -12804,3 +12804,1028 @@ Create a webhook subcription for a business
                     "conversation.created"
                 ]
             }
+
+# Group Competitor
+
+## Get Competitor Insight Category Score[/v1/competitor/competitive-insight/categories/{businessNumber}{?api_key}]
+Competitor category(s) from BirdEye platform can be fetched using following filter in request payload:
+
++ Parameters
+
+    + business_number (string, required) ... the business ID
+    + api_key (string, required) ... the API key
+
+### Get Competitor Insight Category Score [POST]
+
+#### Request
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d { "sourceType":"review","reviewSites":["2","110",,"392"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426]},{"competitorId":535009,"compAccountIds":[234589]}] }
+    "https://api.birdeye.com/resources/v1/competitor/competitive-insight/categories/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+<center><b>Example Payload</b></center>
+
+{
+    "sourceType": "review",
+    "reviewSites": ["2","110","392"],
+    "startDate":"11/02/2020",
+    "endDate":"01/06/2021",
+    "competitors": [
+        {
+            "competitorId": 530846,
+            "compAccountIds": [162426]
+        },
+        {
+            "competitorId": 535009,
+            "compAccountIds": [234589]
+        }
+    ]
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>sourceType</td>
+            <td>Type of source e.g. "review"</td>
+        </tr>
+        <tr>
+            <td>reviewSites</td>
+            <td>Aggregation source ids</td>
+        </tr>
+        <tr>
+            <td>timePeriodSelected</td>
+            <td>For all time : all</td>
+        </tr>
+        <tr>
+            <td>startDate</td>
+            <td>Date from which data has to be fetched</td>
+        </tr>
+        <tr>
+            <td>endDate</td>
+            <td>Date until which data has to be fetched</td>
+        </tr>
+        <tr>
+            <td>competitorId</td>
+            <td>Enterprise Locataions linked with account</td>
+        </tr>
+        <tr>
+            <td>compAccountIds</td>
+            <td>Competitor Account Ids </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+{
+  "cats": [
+    {
+      "catId": 16643,
+      "catName": "ambience",
+      "catStats": [
+        {
+          "entId": 398331,
+          "entName": "Social Stress",
+          "competitor": false,
+          "grade": "A",
+          "colorCode": "#32661d",
+          "avgScr": 4.4,
+          "ct": 3146
+        }
+      ],
+      "subCats": [
+        {
+          "catId": 16644,
+          "catName": "xyx",
+          "catStats": [
+            {
+              "entId": 398331,
+              "entName": "Social Stress",
+              "competitor": false,
+              "grade": "A",
+              "colorCode": "#32661d",
+              "avgScr": 4.1,
+              "ct": 1173
+            },
+            {
+              "entId": 720717,
+              "entName": "hello comp",
+              "competitor": true,
+              "avgScr": 0.0,
+              "ct": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catId": 15299,
+      "catName": "test1",
+      "catStats": [
+        {
+          "entId": 398331,
+          "entName": "Social Stress",
+          "competitor": false,
+          "grade": "B+",
+          "colorCode": "#a0cfa2",
+          "avgScr": 3.7,
+          "ct": 2249
+        }
+      ]
+    }
+  ]
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Category Id</th>
+            <th>Id of the category</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Category Name</td>
+            <td>Name of Category</td>
+        </tr>
+         <tr>
+            <td>entId</td>
+            <td>Enterprise Id</td>
+        </tr>
+        <tr>
+            <td>entName</td>
+            <td>Enterprise Name</td>
+        </tr>
+        <tr>
+            <td>competitor</td>
+            <td>Review title</td>
+        </tr>
+        <tr>
+            <td>grade</td>
+            <td>Grade according to category</td>
+        </tr>
+        <tr>
+            <td>colorCode</td>
+            <td>Color code</td>
+        </tr>
+        <tr>
+            <td>avgScr</td>
+            <td>Average Score</td>
+        </tr>
+        <tr>
+            <td>ct</td>
+            <td>Total count/score</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Body
+
+            {
+  "cats": [
+    {
+      "catId": 16643,
+      "catName": "ambience",
+      "catStats": [
+        {
+          "entId": 398331,
+          "entName": "Social Stress",
+          "competitor": false,
+          "grade": "A",
+          "colorCode": "#32661d",
+          "avgScr": 4.4,
+          "ct": 3146
+        }
+      ],
+      "subCats": [
+        {
+          "catId": 16644,
+          "catName": "xyx",
+          "catStats": [
+            {
+              "entId": 398331,
+              "entName": "Social Stress",
+              "competitor": false,
+              "grade": "A",
+              "colorCode": "#32661d",
+              "avgScr": 4.1,
+              "ct": 1173
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "catId": 15299,
+      "catName": "test1",
+      "catStats": [
+        {
+          "entId": 398331,
+          "entName": "Social Stress",
+          "competitor": false,
+          "grade": "B+",
+          "colorCode": "#a0cfa2",
+          "avgScr": 3.7,
+          "ct": 2249
+        }
+      ]
+    }
+  ]
+}
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
+## Get Competitor Insight Themes[/v1/competitor/competitive-insight/themes/{businessNumber}{?api_key}]
+Competitor theme(s) from BirdEye platform can be fetched using following filter in request payload:
+
++ Parameters
+
+    + business_number (string, required) ... the business ID
+    + api_key (string, required) ... the API key
+
+### Get Competitor Insight Themes [POST]
+
+#### Request
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {"sourceType":"review","reviewSites":["2","110","392"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426,144352]}],"reviewSiteAllFlag":true,"topThm":25,"orderBy":"occurrence","sentiment":-1}
+    "https://api.birdeye.com/resources/v1/competitor/competitive-insight/themes/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+<center><b>Example Payload</b></center>
+
+{
+  "sourceType": "review",
+  "reviewSites": [
+    "2",
+    "110",
+    "392"
+  ],
+  "startDate":"11/02/2020",
+  "endDate":"01/06/2021",
+  "competitors": [
+    {
+      "competitorId": 530846,
+      "compAccountIds": [
+        162426,
+        144352
+      ]
+    },
+    {
+      "competitorId": 720708,
+      "compAccountIds": [
+        165432
+      ]
+    }
+  ],
+  "topThm": 25,
+  "orderBy": "occurrence",
+  "sentiment": -1
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>sourceType</td>
+            <td>Type of source e.g. "review"</td>
+        </tr>
+        <tr>
+            <td>reviewSites</td>
+            <td>Aggregation source ids</td>
+        </tr>
+        <tr>
+            <td>timePeriodSelected</td>
+            <td>For all time : all</td>
+        </tr>
+        <tr>
+            <td>startDate</td>
+            <td>Date from which data has to be fetched</td>
+        </tr>
+        <tr>
+            <td>endDate</td>
+            <td>Date until which data has to be fetched</td>
+        </tr>
+        <tr>
+            <td>competitorId</td>
+            <td>Enterprise Locataions linked with account</td>
+        </tr>
+        <tr>
+            <td>compAccountIds</td>
+            <td>Competitor Account Ids </td>
+        </tr>
+        <tr>
+            <td>topThm</td>
+            <td>Count of top Themes to be fetched </td>
+        </tr>
+        <tr>
+            <td>orderBy</td>
+            <td>Order of the result : occurrence/ztoa/atoz </td>
+        </tr>
+        <tr>
+            <td>sentiment</td>
+            <td> -1 = negative sentiment
+                 1 = positive sentiment
+                 0 = neutral sentiment</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+{
+  "id": 398331,
+  "name": "Social Stress",
+  "themes": [
+    "your money"
+  ],
+  "occr": 3,
+  "avgScore": 1.0,
+  "pPrct": 0.0,
+  "nPrct": 0.047169812,
+  "prct": 0.0063035805,
+  "pCt": 30707,
+  "nCt": 6360,
+  "ct": 47592,
+  "themeStats": [
+    {
+      "theme": "your money",
+      "adj": "your",
+      "kw": "money",
+      "pCt": 0,
+      "nCt": 3,
+      "ct": 3,
+      "score": 3,
+      "scr": 1.0
+    },
+    {
+      "theme": "wrong vehicle",
+      "adj": "wrong",
+      "kw": "vehicle",
+      "pCt": 4,
+      "nCt": 4,
+      "ct": 14,
+      "score": 4,
+      "scr": 1.0
+    }
+  ],
+  "competitors": [
+    {
+      "id": 530846,
+      "name": "Social 1",
+      "themes": [
+        "your money"
+      ],
+      "occr": 0,
+      "avgScore": 0.0,
+      "pPrct": 0.0,
+      "nPrct": 0.0,
+      "prct": 0.0,
+      "pCt": 41,
+      "nCt": 67,
+      "ct": 132,
+      "themeStats": [
+        {
+          "theme": "young lady",
+          "adj": "young",
+          "kw": "lady",
+          "pCt": 0,
+          "nCt": 1,
+          "ct": 2,
+          "score": 1,
+          "scr": 1.0
+        }
+      ]
+    }
+  ]
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>   
+        <tr>
+            <th>id</th>
+            <th>Business Id</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>name</td>
+            <td>Name of Enterprise</td>
+        </tr>
+         <tr>
+            <td>themes</td>
+            <td>List of Themes</td>
+        </tr>
+        <tr>
+            <td>occr</td>
+            <td>Occurence</td>
+        </tr>
+        <tr>
+            <td>avgScore</td>
+            <td>Average Score</td>
+        </tr>
+        <tr>
+            <td>pPrct</td>
+            <td>Positive Percentage</td>
+        </tr>
+        <tr>
+            <td>nPrct</td>
+            <td>Negative Percentage</td>
+        </tr>
+        <tr>
+            <td>pCt</td>
+            <td>Positive Count</td>
+        </tr>
+        <tr>
+            <td>nCt</td>
+            <td>Negative Count</td>
+        </tr>
+        <tr>
+            <td>adj</td>
+            <td>Adjective</td>
+        </tr>
+        <tr>
+            <td>prct</td>
+            <td>Percentage</td>
+        </tr>
+        <tr>
+            <td>kw</td>
+            <td>Keyword</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Body
+
+{
+  "id": 398331,
+  "name": "Social Stress",
+  "themes": [
+    "your money"
+  ],
+  "occr": 3,
+  "avgScore": 1.0,
+  "pPrct": 0.0,
+  "nPrct": 0.047169812,
+  "prct": 0.0063035805,
+  "pCt": 30707,
+  "nCt": 6360,
+  "ct": 47592,
+  "themeStats": [
+    {
+      "theme": "your money",
+      "adj": "your",
+      "kw": "money",
+      "pCt": 0,
+      "nCt": 3,
+      "ct": 3,
+      "score": 3,
+      "scr": 1.0
+    },
+    {
+      "theme": "wrong vehicle",
+      "adj": "wrong",
+      "kw": "vehicle",
+      "pCt": 4,
+      "nCt": 4,
+      "ct": 14,
+      "score": 4,
+      "scr": 1.0
+    }
+  ],
+  "competitors": [
+    {
+      "id": 530846,
+      "name": "Social 1",
+      "themes": [
+        "your money"
+      ],
+      "occr": 0,
+      "avgScore": 0.0,
+      "pPrct": 0.0,
+      "nPrct": 0.0,
+      "prct": 0.0,
+      "pCt": 41,
+      "nCt": 67,
+      "ct": 132,
+      "themeStats": [
+        {
+          "theme": "young lady",
+          "adj": "young",
+          "kw": "lady",
+          "pCt": 0,
+          "nCt": 1,
+          "ct": 2,
+          "score": 1,
+          "scr": 1.0
+        }
+      ]
+    }
+  ]
+}
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
+## Get Competitor Insight Themes[/v1/competitor/competitive-insight/keywords/{businessNumber}{?api_key}]
+Competitor theme(s) from BirdEye platform can be fetched using following filter in request payload:
+
++ Parameters
+
+    + business_number (string, required) ... the business ID
+    + api_key (string, required) ... the API key
+
+### Get Competitor Insight Themes [POST]
+
+#### Request
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {{"sourceType":"review","reviewSites":["2","110","392"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426,144352]},{"competitorId":720708,"compAccountIds":[165432]}],"reviewSiteAllFlag":true,"topKW":25,"topAd":10,"orderBy":"ztoa","sentiment":-1}}
+    "https://api.birdeye.com/resources/v1/competitor/competitive-insight/keywords/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+<center><b>Example Payload</b></center>
+
+{
+  "sourceType": "review",
+  "reviewSites": [
+    "2",
+    "110",
+    "392"
+  ],
+  "startDate":"11/02/2020",
+  "endDate":"01/06/2021",
+  "competitors": [
+    {
+      "competitorId": 530846,
+      "compAccountIds": [
+        162426,
+        144352
+      ]
+    },
+    {
+      "competitorId": 720708,
+      "compAccountIds": [
+        165432
+      ]
+    }
+  ],
+  "topKW": 25,
+  "topAd": 10,
+  "orderBy": "ztoa",
+  "sentiment": -1
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>sourceType</td>
+            <td>Type of source e.g. "review"</td>
+        </tr>
+        <tr>
+            <td>reviewSites</td>
+            <td>Aggregation source ids</td>
+        </tr>
+        <tr>
+            <td>timePeriodSelected</td>
+            <td>For all time : all</td>
+        </tr>
+        <tr>
+            <td>startDate</td>
+            <td>Date from which data has to be fetched</td>
+        </tr>
+        <tr>
+            <td>endDate</td>
+            <td>Date until which data has to be fetched</td>
+        </tr>
+        <tr>
+            <td>competitorId</td>
+            <td>Enterprise Locataions linked with account</td>
+        </tr>
+        <tr>
+            <td>compAccountIds</td>
+            <td>Competitor Account Ids </td>
+        </tr>
+        <tr>
+            <td>topKW</td>
+            <td>Count of top Keywords to be fetched </td>
+        </tr><tr>
+            <td>topAd</td>
+            <td>Count of top Adjectives to be fetched </td>
+        </tr>
+        <tr>
+            <td>orderBy</td>
+            <td>Order of the result : occurrence/ztoa/atoz </td>
+        </tr>
+        <tr>
+            <td>sentiment</td>
+            <td> -1 = negative sentiment
+                 1 = positive sentiment
+                 0 = neutral sentiment</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+{
+  "id": 398331,
+  "name": "Social Stress",
+  "keywords": [
+    "yesterday"
+  ],
+  "ct": 2,
+  "avgScr": 1.0,
+  "keywordStats": [
+    {
+      "keyword": "yesterday",
+      "occurences": 2,
+      "score": 1.0,
+      "scr": 2
+    },
+    {
+      "keyword": "voor klacht",
+      "occurences": 2,
+      "score": 1.0,
+      "scr": 2
+    }
+  ],
+  "negKWAdjectives": [
+    {
+      "adjective": "small",
+      "occurences": 1,
+      "avgScore": 1.0,
+      "prcnt": 50.0
+    }
+  ],
+  "competitors": [
+    {
+      "id": 530846,
+      "name": "Social 1",
+      "keywords": [
+        "yesterday"
+      ],
+      "ct": 0,
+      "avgScr": 0.0,
+      "keywordStats": [
+        {
+          "keyword": "worker",
+          "occurences": 1,
+          "score": 1.0,
+          "scr": 1
+        },
+        {
+          "keyword": "manager",
+          "occurences": 1,
+          "score": 1.0,
+          "scr": 1
+        }
+      ]
+    },
+    {
+      "id": 720717,
+      "name": "hello comp",
+      "keywords": [
+        "yesterday"
+      ],
+      "ct": 0,
+      "avgScr": 0.0,
+      "keywordStats": [
+        
+      ]
+    }
+  ]
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>  
+        <tr>
+            <th>id</th>
+            <th>Business Id</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>name</td>
+            <td>Name of Enterprise</td>
+        </tr>
+         <tr>
+            <td>keywords</td>
+            <td>List of keywords</td>
+        </tr>
+        <tr>
+            <td>ct</td>
+            <td>Count</td>
+        </tr>
+        <tr>
+            <td>avgScore</td>
+            <td>Average Score</td>
+        </tr>
+        <tr>
+            <td>occurences</td>
+            <td>Occurences</td>
+        </tr>
+        <tr>
+            <td>prcnt</td>
+            <td>Percentage</td>
+        </tr>
+        <tr>
+            <td>adjectives</td>
+            <td>Adjective</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Body
+
+{
+  "id": 398331,
+  "name": "Social Stress",
+  "keywords": [
+    "yesterday"
+  ],
+  "ct": 2,
+  "avgScr": 1.0,
+  "keywordStats": [
+    {
+      "keyword": "yesterday",
+      "occurences": 2,
+      "score": 1.0,
+      "scr": 2
+    },
+    {
+      "keyword": "voor klacht",
+      "occurences": 2,
+      "score": 1.0,
+      "scr": 2
+    }
+  ],
+  "negKWAdjectives": [
+    {
+      "adjective": "small",
+      "occurences": 1,
+      "avgScore": 1.0,
+      "prcnt": 50.0
+    }
+  ],
+  "competitors": [
+    {
+      "id": 530846,
+      "name": "Social 1",
+      "keywords": [
+        "yesterday"
+      ],
+      "ct": 0,
+      "avgScr": 0.0,
+      "keywordStats": [
+        {
+          "keyword": "worker",
+          "occurences": 1,
+          "score": 1.0,
+          "scr": 1
+        },
+        {
+          "keyword": "manager",
+          "occurences": 1,
+          "score": 1.0,
+          "scr": 1
+        }
+      ]
+    },
+    {
+      "id": 720717,
+      "name": "hello comp",
+      "keywords": [
+        "yesterday"
+      ],
+      "ct": 0,
+      "avgScr": 0.0,
+      "keywordStats": [
+        
+      ]
+    }
+  ]
+}
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
