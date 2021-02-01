@@ -12806,8 +12806,9 @@ Create a webhook subcription for a business
             }
 
 # Group Competitor
+APIs related to Competitors
 
-## Get Competitor Insight Category Score[/v1/competitor/competitive-insight/categories/{businessNumber}{?api_key}]
+## Competitive Insight Category [/v1/competitor/competitive-insight/categories/{businessNumber}{?api_key}]
 Competitor category(s) from BirdEye platform can be fetched using following filter in request payload:
 
 + Parameters
@@ -12815,14 +12816,13 @@ Competitor category(s) from BirdEye platform can be fetched using following filt
     + business_number (string, required) ... the business ID
     + api_key (string, required) ... the API key
 
-### Get Competitor Insight Category Score [POST]
-
-#### Request
+### Get Score [POST]
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d { "sourceType":"review","reviewSites":["2","110",,"392"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426]},{"competitorId":535009,"compAccountIds":[234589]}] }
-    "https://api.birdeye.com/resources/v1/competitor/competitive-insight/categories/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{ "sourceType":"review","reviewSites":["2","110","392"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426]},{"competitorId":535009,"compAccountIds":[234589]}] }' "https://api.birdeye.com/resources/v1/competitor/competitive-insight/categories/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+#### Request
 
 <center><b>Example Payload</b></center>
 
@@ -12875,7 +12875,7 @@ Competitor category(s) from BirdEye platform can be fetched using following filt
         </tr>
         <tr>
             <td>competitorId</td>
-            <td>Enterprise Locataions linked with account</td>
+            <td>Competitor Id</td>
         </tr>
         <tr>
             <td>compAccountIds</td>
@@ -13039,7 +13039,7 @@ Competitor category(s) from BirdEye platform can be fetched using following filt
 
     + Body
 
-            {
+{
   "cats": [
     {
       "catId": 16643,
@@ -13093,10 +13093,6 @@ Competitor category(s) from BirdEye platform can be fetched using following filt
 
 + Response 401
 
-    [1167][]
-
-+ Response 401
-
     [1161][]
 
 + Response 429
@@ -13107,7 +13103,12 @@ Competitor category(s) from BirdEye platform can be fetched using following filt
 
     [1011][]
 
-## Get Competitor Insight Themes[/v1/competitor/competitive-insight/themes/{businessNumber}{?api_key}]
++ Response 401
+
+    [1167][]
+
+
+## Competitive Insight Themes [/v1/competitor/competitive-insight/themes/{businessNumber}{?api_key}]
 Competitor theme(s) from BirdEye platform can be fetched using following filter in request payload:
 
 + Parameters
@@ -13115,14 +13116,13 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
     + business_number (string, required) ... the business ID
     + api_key (string, required) ... the API key
 
-### Get Competitor Insight Themes [POST]
+### Get statistics [POST]
 
 #### Request
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {"sourceType":"review","reviewSites":["2","110","392"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426,144352]}],"reviewSiteAllFlag":true,"topThm":25,"orderBy":"occurrence","sentiment":-1}
-    "https://api.birdeye.com/resources/v1/competitor/competitive-insight/themes/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"sourceType":"review","reviewSites":["2","110","392"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426,144352]}],"reviewSiteAllFlag":true,"topThm":25,"orderBy":"occurrence","sentiment":-1}' "https://api.birdeye.com/resources/v1/competitor/competitive-insight/themes/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
 
@@ -13458,10 +13458,6 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
 
 + Response 401
 
-    [1167][]
-
-+ Response 401
-
     [1161][]
 
 + Response 429
@@ -13472,21 +13468,25 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
 
     [1011][]
 
-## Get Competitor Insight Themes[/v1/competitor/competitive-insight/keywords/{businessNumber}{?api_key}]
-Competitor theme(s) from BirdEye platform can be fetched using following filter in request payload:
++ Response 401
+
+    [1167][]
+
+## Competitive Insight Keywords [/v1/competitor/competitive-insight/keywords/{businessNumber}{?api_key}]
+Competitor keywords(s) from BirdEye platform can be fetched using following filter in request payload:
 
 + Parameters
 
     + business_number (string, required) ... the business ID
     + api_key (string, required) ... the API key
 
-### Get Competitor Insight Themes [POST]
+### Get Statistics [POST]
 
 #### Request
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {{"sourceType":"review","reviewSites":["2","110","392"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426,144352]},{"competitorId":720708,"compAccountIds":[165432]}],"reviewSiteAllFlag":true,"topKW":25,"topAd":10,"orderBy":"ztoa","sentiment":-1}}
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"sourceType":"review","reviewSites":["2","110","392"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426,144352]},{"competitorId":720708,"compAccountIds":[165432]}],"reviewSiteAllFlag":true,"topKW":25,"topAd":10,"orderBy":"ztoa","sentiment":-1}'
     "https://api.birdeye.com/resources/v1/competitor/competitive-insight/keywords/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
@@ -13815,10 +13815,6 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
 
 + Response 401
 
-    [1167][]
-
-+ Response 401
-
     [1161][]
 
 + Response 429
@@ -13828,4 +13824,8 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
 + Response 404
 
     [1011][]
+
++ Response 401
+
+    [1167][]
 
