@@ -12855,7 +12855,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
         <tbody>
         <tr>
             <td>sourceType</td>
-            <td>Type of source e.g. "review"</td>
+            <td>Type of source e.g. "review" or "social"</td>
         </tr>
         <tr>
             <td>reviewSites</td>
@@ -12953,11 +12953,15 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
         <caption>Response Body</caption>
         <thead>
         <tr>
-            <th>Category Id</th>
-            <th>Id of the category</th>
+            <th>Name</th>
+            <th>Description</th>
         </tr>
         </thead>
         <tbody>
+            <tr>
+            <td>Category Id</td>
+            <td>Id of the category</td>
+        </tr>
         <tr>
             <td>Category Name</td>
             <td>Name of Category</td>
@@ -13167,7 +13171,7 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
         <tbody>
         <tr>
             <td>sourceType</td>
-            <td>Type of source e.g. "review"</td>
+            <td>Type of source e.g. "review" or "social"</td>
         </tr>
         <tr>
             <td>reviewSites</td>
@@ -13187,7 +13191,7 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
         </tr>
         <tr>
             <td>competitorId</td>
-            <td>Enterprise Locataions linked with account</td>
+            <td>Enterprise Competitors linked with account</td>
         </tr>
         <tr>
             <td>compAccountIds</td>
@@ -13199,13 +13203,13 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
         </tr>
         <tr>
             <td>orderBy</td>
-            <td>Order of the result : occurrence/ztoa/atoz </td>
+            <td>Order of the result e.g.: "occurrence" or "ztoa" or "atoz" </td>
         </tr>
         <tr>
             <td>sentiment</td>
             <td> -1 = negative sentiment
                  1 = positive sentiment
-                 0 = neutral sentiment</td>
+                 0 = all sentiments</td>
         </tr>
         </tbody>
     </table>
@@ -13289,13 +13293,13 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
         <tr>
             <th>Name</th>
             <th>Description</th>
-        </tr>   
-        <tr>
-            <th>id</th>
-            <th>Business Id</th>
         </tr>
         </thead>
         <tbody>
+            <tr>
+            <td>id</td>
+            <td>Business Id</td>
+        </tr>
         <tr>
             <td>name</td>
             <td>Name of Enterprise</td>
@@ -13533,7 +13537,7 @@ Competitor keywords(s) from BirdEye platform can be fetched using following filt
         <tbody>
         <tr>
             <td>sourceType</td>
-            <td>Type of source e.g. "review"</td>
+            <td>Type of source e.g. "review" or "social</td>
         </tr>
         <tr>
             <td>reviewSites</td>
@@ -13553,7 +13557,7 @@ Competitor keywords(s) from BirdEye platform can be fetched using following filt
         </tr>
         <tr>
             <td>competitorId</td>
-            <td>Enterprise Locataions linked with account</td>
+            <td>Enterprise Locations linked with account</td>
         </tr>
         <tr>
             <td>compAccountIds</td>
@@ -13568,13 +13572,13 @@ Competitor keywords(s) from BirdEye platform can be fetched using following filt
         </tr>
         <tr>
             <td>orderBy</td>
-            <td>Order of the result : occurrence/ztoa/atoz </td>
+            <td>Order of the result e.g.: "occurrence" or "ztoa" or "atoz" </td>
         </tr>
         <tr>
             <td>sentiment</td>
             <td> -1 = negative sentiment
                  1 = positive sentiment
-                 0 = neutral sentiment</td>
+                 0 = all sentiments</td>
         </tr>
         </tbody>
     </table>
@@ -13647,7 +13651,6 @@ Competitor keywords(s) from BirdEye platform can be fetched using following filt
       "ct": 0,
       "avgScr": 0.0,
       "keywordStats": [
-        
       ]
     }
   ]
@@ -13660,13 +13663,13 @@ Competitor keywords(s) from BirdEye platform can be fetched using following filt
         <tr>
             <th>Name</th>
             <th>Description</th>
-        </tr>  
-        <tr>
-            <th>id</th>
-            <th>Business Id</th>
         </tr>
         </thead>
         <tbody>
+        <tr>
+            <td>id</td>
+            <td>Business Id</td>
+        </tr> 
         <tr>
             <td>name</td>
             <td>Name of Enterprise</td>
