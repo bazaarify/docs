@@ -7394,7 +7394,7 @@ Contact/Lead details could be fetched using:
 
 <center><b>Example curl request</b></center>
 
-curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?apiKey=*****' -H 'accept: application/json' -H 'content-type: application/json'  -d '{ "sources": [ "api", "dashboard", "facebook", "integration", "sftp", "bulkupload", "webchat", "crmimport", "other", "referral" ], "startDate": "19/11/2020", "endDate": "10/01/2021","contactType": "customer", "businessId": 158629168202762, "page" : 0, "size" : 100 }' -v
+curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****' -H 'accept: application/json' -H 'content-type: application/json'  -d '{ "sources": [ "api", "dashboard", "facebook", "integration", "sftp", "bulkupload", "webchat", "crmimport", "other", "referral" ], "startDate": "19/11/2020", "endDate": "10/01/2021","contactType": "customer", "businessId": 158629168202762, "page" : 0, "size" : 100 }' -v
 
 #### Request
 
@@ -7469,6 +7469,16 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?apiKey=*****'
          "locations":[
             56776
          ],
+         "mappings" : [
+             {
+                "businessId" : 123456789909,
+                "customerId" : 2341
+             },
+             {
+                "businessId" : 123456789910,
+                "customerId" : 2342
+             }
+         ],
          "facebookId":"67676271677"
       },
       {
@@ -7482,6 +7492,12 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?apiKey=*****'
          "source":"webchat",
          "locations":[
             714570
+         ],
+         "mappings" : [
+             {
+                "businessId" : 123456789909,
+                "customerId" : 2341
+             }
          ]
       }
    ]
