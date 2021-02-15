@@ -11745,7 +11745,7 @@ Retrieves conversations for a business using:
       "endDate": "05/30/2020",
       "offset": "0",
       "size": "50",
-      "Contact": {
+      "contact": {
         "phone" : "(650)492-3456",
         "email" : "tushar.garg@birdeye.com"
       }
@@ -11777,29 +11777,29 @@ Retrieves conversations for a business using:
             <tr>
                 <td>startDate</td>
                 <td>String</td>
-                <td>required</td>
-                <td>start fetching messages from this date. In MM/DD/YYYY format</td>
+                <td>Optional (recommended)</td>
+                <td>start fetching messages from this date (optional but recommended). In MM/DD/YYYY format</td>
             </tr>
             <tr>
                 <td>endDate</td>
                 <td>String</td>
-                <td>required</td>
-                <td>fetch messages till this date. In MM/DD/YYYY format</td>
+                <td>Optional (recommended)</td>
+                <td>fetch messages till this date (optional but recommended). In MM/DD/YYYY format</td>
             </tr>
             <tr>
                 <td>offset</td>
                 <td>Integer</td>
                 <td>Optional</td>
-                <td>The number of objects to skip from the first. Dafault is 0</td>
+                <td>The number of objects to skip from the first. Default is 0</td>
             </tr>
             <tr>
                 <td>size</td>
                 <td>Integer</td>
                 <td>Optional</td>
-                <td>The number of maximum objects to return in each request. Deafult is 100. Maximum allowed is 100.</td>
+                <td>The number of maximum objects to return in each request. Default is 100. Maximum allowed is 100.</td>
             </tr>
             <tr>
-                <td>Contact</td>
+                <td>contact</td>
                 <td>Object</td>
                 <td>Optional</td>
                 <td>if passed, fetch data for the contact. Either email or phone is required.</td>
@@ -11833,8 +11833,8 @@ Retrieves conversations for a business using:
         </tbody>
         <tbody>
                 <td>hasMore</td>
-                <td>String</td>
-                <td>Indicates if there are more conversations within the defined date range</td>
+                <td>boolean</td>
+                <td>Indicates if there are more conversations</td>
         </tbody>
     </table>
 </div>
