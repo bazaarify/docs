@@ -14016,7 +14016,7 @@ Competitor keywords(s) from BirdEye platform can be fetched using following filt
 
     [1167][]
  
-## Create Competitor [/v1/signup/competitor/{businessNumber}{?api_key}]
+## Create Competitor Enterprise [/v1/signup/competitor/{businessNumber}{?api_key}]
 New Competitor can be created:
 
 + Parameters
@@ -14024,19 +14024,18 @@ New Competitor can be created:
     + businessNumber (string, required) ... the business ID
     + api_key (string, required) ... the API key
 
-### Create New Competitor [POST]
+### Create New Competitor Enterprise [POST]
 
 #### Request
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"businessName": "smb_comp","apiKey":"92bcd6e0-c102-43fd-8a67-1a7be5258451","userEmailId": "rhonda@reviewmanagement.com"}' "https://api.birdeye.com/resources/v1/signup/competitor/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"businessName": "smb_comp","userEmailId": "rhonda@reviewmanagement.com"}' "https://api.birdeye.com/resources/v1/signup/competitor/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
 
 {
     "businessName": "CompE",
-    "apiKey":"xsNtPcKnavRn5yU4flBEasqXIGPIysgd",
     "userEmailId": "rhonda@reviewmanagement.com"
 }
 
@@ -14052,11 +14051,7 @@ New Competitor can be created:
         <tbody>
         <tr>
             <td>businessName</td>
-            <td>Competitor Enterprise Name</td>
-        </tr>
-        <tr>
-            <td>apiKey</td>
-            <td>The API Key</td>
+            <td>Name of the Competitor Enterprise that needs to be added</td>
         </tr>
         <tr>
             <td>userEmailId</td>
@@ -14091,14 +14086,13 @@ New Competitor can be created:
         </tr>
         </thead>
         <tbody>
-            
         <tr>
             <td>competitorId</td>
             <td>Enterprise Competitor Business ID</td>
         </tr>
         <tr>
             <td>templateid</td>
-            <td>Templateid</td>
+            <td>Template Id</td>
         </tr>
         <tr>
             <td>isAggregationRequired</td>
@@ -14110,7 +14104,7 @@ New Competitor can be created:
         </tr>
         <tr>
             <td>businessNumber</td>
-            <td>Enterprise Competitor Business Numbe</td>
+            <td>Enterprise Competitor Business Number</td>
         </tr>
         <tr>
             <td>businessAlreadyPresent</td>
@@ -14200,27 +14194,26 @@ New Competitor can be created:
 
     [1167][]    
     
-## Create Child Location [/v1/signup/competitor/{business_number}{?api_key}]
-New Competitor location can be created :
+## Create Child Business [/v1/signup/competitor/{business_number}{?api_key}]
+New child business can be created in competitor enterprise:
 
 + Parameters
 
     + business_number (string, required) ... the business ID
     + api_key (string, required) ... the API key
 
-### Create New Competitor Location [POST]
+### Create New Child Business in Competitor Enterprise [POST]
 
 #### Request
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"businessName":"Location_compca","apiKey":"92bcd6e0-c102-43fd-8a67-1a7be5258451","userEmailId":"rhonda@reviewmanagement.com","countryCode":"CA","phone":"408-xxx-xxxx","zip":"95035","competitorId":100037693,"type":"Product"}' 
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"businessName":"Location_compca","userEmailId":"rhonda@reviewmanagement.com","countryCode":"CA","phone":"408-xxx-xxxx","zip":"95035","competitorId":100037693,"type":"Product"}' 
     "https://api.birdeye.com/resources/v1/signup/competitor/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
 
     {"businessName": "Location_compca",
-    "apiKey": "92bcd6e0-c102-43fd-8a67-1a7be5258451",
     "userEmailId": "rhonda@reviewmanagement.com",
     "countryCode": "CA",
     "phone": "408-xxx-xxxx",
@@ -14240,11 +14233,7 @@ New Competitor location can be created :
         <tbody>
         <tr>
             <td>businessName</td>
-            <td>Competitor Enterprise Name</td>
-        </tr>
-        <tr>
-            <td>apiKey</td>
-            <td>The API Key</td>
+            <td>Name of the Business that needs to be added</td>
         </tr>
         <tr>
             <td>userEmailId</td>
@@ -14252,19 +14241,19 @@ New Competitor location can be created :
         </tr>
         <tr>
             <td>countryCode</td>
-            <td>countryCode</td>
+            <td>country Code of business location</td>
         </tr>
         <tr>
             <td>phone</td>
-            <td>phone</td>
+            <td>Business phone</td>
         </tr>
         <tr>
             <td>zip</td>
-            <td>zip</td>
+            <td>Postal code of the business location</td>
         </tr>
         <tr>
             <td>competitorId</td>
-            <td>Enterprise Competitor Business ID</td>
+            <td>Enterprise Competitor Id(competitorId in Competitor of Enterprise Business API)</td>
         </tr>
         <tr>
             <td>type</td>
@@ -14300,13 +14289,9 @@ New Competitor location can be created :
         </tr>
         </thead>
         <tbody>
-            <tr>
-            <td>businessId</td>
-            <td>Business Id</td>
-        </tr>
         <tr>
             <td>competitorId</td>
-            <td>Enterprise Competitor Location Business ID</td>
+            <td>Business ID</td>
         </tr>
          <tr>
             <td>userId</td>
@@ -14318,7 +14303,7 @@ New Competitor location can be created :
         </tr>
         <tr>
             <td>templateid</td>
-            <td>templateid</td>
+            <td>Template Id</td>
         </tr>
         <tr>
             <td>isAggregationRequired</td>
@@ -14326,11 +14311,11 @@ New Competitor location can be created :
         </tr>
         <tr>
             <td>businessNumber</td>
-            <td>Enterprise Competitor Location Business Number</td>
+            <td>Business Number</td>
         </tr>
         <tr>
             <td>compAccountId</td>
-            <td>Competitor Account Id</td>
+            <td>Locations Ids of competitor account(compAccountIds in Child Business of Competitor API)</td>
         </tr>
         <tr>
             <td>businessAlreadyPresent</td>
@@ -14421,28 +14406,27 @@ New Competitor location can be created :
 
     [1167][]
      
-## Create Aggregation [/v1/aggregation/competitor/{compAccountId}/{businessNumber}{?api_key}]
-New Competitor Aggregation can be created :
+## Add Aggregation Link [/v1/aggregation/competitor/{compAccountId}/{businessNumber}{?api_key}]
+New Competitor Aggregation can be added :
 
 + Parameters
-    + compAccountId (string, required) ... the competitor Account ID
+    + compAccountId (string, required) ... locations Id of competitor account(compAccountIds in Child Business of Competitor API)
     + businessNumber (string, required) ... the business ID
     + api_key (string, required) ... the API key
 
-### Create New Competitor aggregation [POST]
+### Add new Competitor Aggregation URL [POST]
 
 #### Request
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"source":"google","apiKey":"92bcd6e0-c102-43fd-8a67-1a7be5258451","url":"https://www.google.com/maps/place/Rama+Sai+Medical+Store/@28.4390976,76.9596497,11z/data=!4m8!1m2!2m1!1sreviews+google!3m4!1s0x390d04b550d23f2d:0x7e948cb85612d0!8m2!3d28.61074!4d77.0798476"}' 
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"source":"google","url":"https://www.google.com/maps/place/Rama+Sai+Medical+Store/@28.4390976,76.9596497,11z/data=!4m8!1m2!2m1!1sreviews+google!3m4!1s0x390d04b550d23f2d:0x7e948cb85612d0!8m2!3d28.61074!4d77.0798476"}' 
     "https://api.birdeye.com/resources/v1/aggregation/competitor/1765/159135019006567?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
 
 { 
   "source": "google",
-  "apiKey":"92bcd6e0-c102-43fd-8a67-1a7be5258451",
   "url": "https://www.google.com/maps/place/Rama+Sai+Medical+Store/@28.4390976,76.9596497,11z/data=!4m8!1m2!2m1!1sreviews+google!3m4!1s0x390d04b550d23f2d:0x7e948cb85612d0!8m2!3d28.61074!4d77.0798476"
 }
 
@@ -14458,11 +14442,7 @@ New Competitor Aggregation can be created :
         <tbody>
         <tr>
             <td>source</td>
-            <td>Source Name</td>
-        </tr>
-        <tr>
-            <td>apiKey</td>
-            <td>The API Key</td>
+            <td>Aggregation Source Name</td>
         </tr>
         <tr>
             <td>url</td>
@@ -14523,7 +14503,7 @@ New Competitor Aggregation can be created :
         </tr>
         <tr>
             <td>sourceName</td>
-            <td>Source Name</td>
+            <td>Aggregation Source Name</td>
         </tr>
         <tr>
             <td>thumbnailUrl</td>
@@ -14651,5 +14631,4 @@ New Competitor Aggregation can be created :
 
 + Response 401
 
-    [1167][]     
-     
+    [1167][] 
