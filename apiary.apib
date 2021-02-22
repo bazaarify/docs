@@ -14030,13 +14030,13 @@ New Competitor can be created:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"businessName": "smb_comp","userEmailId": "rhonda@reviewmanagement.com"}' "https://api.birdeye.com/resources/v1/signup/competitor/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"businessName": "smb_comp","userEmailId": "varun.gupta@birdeye.com.com"}' "https://api.birdeye.com/resources/v1/signup/competitor/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
 
 {
     "businessName": "CompE",
-    "userEmailId": "rhonda@reviewmanagement.com"
+    "userEmailId": "varun.gupta@@birdeye.com"
 }
 
 <div class="paramsTableWrap">
@@ -14071,9 +14071,7 @@ New Competitor can be created:
     "isAggregationRequired": 1,
     "type": "Enterprise-Location-Competitor",
     "businessNumber": 161295237142347,
-    "businessAlreadyPresent": false,
-    "sfdcAccountId": null,
-    "sfdcOpportunityId": null
+    "businessAlreadyPresent": false
 }
 
 <div class="paramsTableWrap">
@@ -14109,14 +14107,6 @@ New Competitor can be created:
         <tr>
             <td>businessAlreadyPresent</td>
             <td>businessAlreadyPresent</td>
-        </tr>
-        <tr>
-            <td>sfdcAccountId</td>
-            <td>sfdcAccountId</td>
-        </tr>
-         <tr>
-            <td>sfdcOpportunityId</td>
-            <td>sfdcOpportunityId</td>
         </tr>
         </tbody>
     </table>
@@ -14173,9 +14163,7 @@ New Competitor can be created:
     "isAggregationRequired": 1,
     "type": "Enterprise-Location-Competitor",
     "businessNumber": 161295237142347,
-    "businessAlreadyPresent": false,
-    "sfdcAccountId": null,
-    "sfdcOpportunityId": null
+    "businessAlreadyPresent": false
 }
 
 + Response 401
@@ -14208,15 +14196,15 @@ New child business can be created in competitor enterprise:
 
 <center><b>Example curl request</b></center>
     
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"businessName":"Location_compca","userEmailId":"rhonda@reviewmanagement.com","countryCode":"CA","phone":"408-xxx-xxxx","zip":"95035","competitorId":100037693,"type":"Product"}' 
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"businessName":"Location_compca","userEmailId":"varun.gupta@birdeye.com","countryCode":"CA","phone":"408-234-5272","zip":"95035","competitorId":100037693,"type":"Product"}' 
     "https://api.birdeye.com/resources/v1/signup/competitor/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
 
     {"businessName": "Location_compca",
-    "userEmailId": "rhonda@reviewmanagement.com",
+    "userEmailId": "varu.gupta@birdeye.com",
     "countryCode": "CA",
-    "phone": "408-xxx-xxxx",
+    "phone": "408-234-5272",
     "zip": "95035",
     "competitorId": 100037693,
     "type": "Product"}
@@ -14274,9 +14262,7 @@ New child business can be created in competitor enterprise:
     "type": "Product",
     "businessNumber": 161278371646396,
     "compAccountId": 1795,
-    "businessAlreadyPresent": true,
-    "sfdcAccountId": null,
-    "sfdcOpportunityId": null
+    "businessAlreadyPresent": true
 }
 
 <div class="paramsTableWrap">
@@ -14320,14 +14306,6 @@ New child business can be created in competitor enterprise:
         <tr>
             <td>businessAlreadyPresent</td>
             <td>businessAlreadyPresent</td>
-        </tr>
-        <tr>
-            <td>sfdcAccountId</td>
-            <td>sfdcAccountId</td>
-        </tr>
-         <tr>
-            <td>sfdcOpportunityId</td>
-            <td>sfdcOpportunityId</td>
         </tr>
         </tbody>
     </table>
@@ -14385,9 +14363,7 @@ New child business can be created in competitor enterprise:
     "type": "Product",
     "businessNumber": 161278371646396,
     "compAccountId": 1795,
-    "businessAlreadyPresent": true,
-    "sfdcAccountId": null,
-    "sfdcOpportunityId": null
+    "businessAlreadyPresent": true
 }
 
 + Response 401
