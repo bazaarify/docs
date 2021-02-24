@@ -2614,482 +2614,6 @@ Business status can be updated using:
     [1191][]
 
 
-## Competitor of Enterprise Business [/v1/business/{EnterpriseBusinessNumber}/child{?api_key,isCompetitor}]
-List of all Enterprise Competitor Business can be retrieved using:
-
-### Get Competitor Business [GET]
-<center><b>Example Curl Request</b></center>
-     curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/104563456/child?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&isCompetitor=true" –v
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Request Parameter</caption>
-        <thead>
-            <th>Fields</th>
-            <th>Constraints</th>
-            <th>Description</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>api_key</td>
-                <td>required</td>
-                <td>Reseller/Sub-reseller/Enterprise id</td>
-            </tr>
-            <tr>
-                <td>isCompetitor</td>
-                <td>required</td>
-                <td>true/false</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-####Response
-<center><b>Example Response</b></center>
-[
-      {
-      "id": 147867723257477,
-      "name": "Pizza hut",
-      "alias": "Pizza hut"
-   },
-      {
-      "id": 147867726142270,
-      "name": "Mcdonalds",
-      "alias": "Mcdonalds"
-   },
-      {
-      "id": 147867727574772,
-      "name": "KFC",
-      "alias": "KFC"
-   },
-      {
-      "id": 149540962791726,
-      "name": "Burger king",
-      "alias": "Burger king"
-   },
-      {
-      "id": 149540965060398,
-      "name": "Subway",
-      "alias": "Subway"
-   }
-]
-
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Error Codes</caption>
-        <thead>
-        <tr>
-            <th>HTTP Status</th>
-            <th>BirdEye error code</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1161</td>
-            <td>Invalid API key</td>
-        </tr>
-        <tr>
-            <td>429 Too Many Requests</td>
-            <td>89</td>
-            <td>Rate limit exceeded</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1167</td>
-            <td>API key is missing</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Response Body</caption>
-        <thead>
-            <th>Fields</th>
-            <th>Description</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>Enterprise Competitor Business ID</td>
-            </tr>
-            <tr>
-                <td>name</td>
-                <td>Enterprise Competitor Business Name</td>
-            </tr>
-            <tr>
-                <td>alias</td>
-                <td>Enterprise Competitor Business alias</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-+ Parameters
-
-    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
-    + isCompetitor (boolean, required) ... true for get competitor business of Enterprise Business and False for get Child Business of Enterprise Business .
-
-+ Request (application/json)
-
-    + Headers
-
-            Accept: application/json
-
-
-+ Response 200 (application/json)
-
-    + Body
-
-    [
-      {
-        "id": 768996864,
-        "name": "Environmental Pest Management",
-        "alias": "Environmental Pest Management - Westerville, OH"
-      },
-      {
-        "id": 144670708364016,
-        "name": "Sub-reseller",
-        "alias": "Sub-reseller"
-      },
-      {
-        "id": 144670708364322,
-        "name": "Holiday Inn",
-        "alias": "Holiday Inn"
-      }
-    ]
-
-+ Response 401
-
-    [1161][]
-
-+ Response 429
-
-    [89][]
-
-+ Response 401
-
-    [1167][]
-
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Error Codes</caption>
-        <thead>
-        <tr>
-            <th>HTTP Status</th>
-            <th>BirdEye error code</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1161</td>
-            <td>Invalid API key</td>
-        </tr>
-        <tr>
-            <td>429 Too Many Requests</td>
-            <td>89</td>
-            <td>Rate limit exceeded</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1167</td>
-            <td>API key is missing</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-## Child Business of Competitor [/v1/business/{EnterpriseCompetitorBusinessId}/child{?api_key,isCompetitor}]
-List of all Child Business of Competitor can be retrieved using:
-
-### Get Competitor Child Business [GET]
-<center><b>Example Curl Request</b></center>
-     curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/104563456/child?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&isCompetitor=true" –v
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Request Parameter</caption>
-        <thead>
-            <th>Fields</th>
-            <th>Constraints</th>
-            <th>Description</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>api_key</td>
-                <td>required</td>
-                <td>Reseller/Sub-reseller/Enterprise id</td>
-            </tr>
-            <tr>
-                <td>isCompetitor</td>
-                <td>required</td>
-                <td>true/false</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-####Response
-<center><b>Example Response</b></center>
-[
-      {
-        "id": 986031488,
-        "name": "Central Ohio Endodontics",
-        "alias": "Central Ohio Endodontics - Dublin, OH",
-        "address": {
-          "address1": "5152 Blazer Memorial Pkwy",
-          "address2": "Ste 102",
-          "city": "Dublin",
-          "state": "OH",
-          "zip": "43017",
-          "countryCode": "US",
-          "countryName": "United States of America"
-        },
-        "phone": "(614) 896-2801",
-        "type": "Business",
-        "status": "active",
-        "createdOn": "Dec 04, 2013",
-      },
-      {
-        "id": 768996864,
-        "name": "Environmental Pest Management",
-        "alias": "Environmental Pest Management - Westerville, OH",
-        "address": {
-          "address1": "200 Hoff Rd",
-          "address2": "Unit P",
-          "city": "Westerville",
-          "state": "OH",
-          "zip": "43082",
-          "countryCode": "US",
-          "countryName": "United States of America"
-        },
-        "phone": "(614) 771-8605",
-        "type": "Business",
-        "status": "active",
-        "createdOn": "Dec 05, 2013",
-      },
-      {
-        "id": 144670708364016,
-        "name": "Sub-reseller",
-        "alias": "Sub-reseller",
-        "status": "active",
-        "createdOn": "Nov 05, 2013",
-        "type": "Reseller",
-        "childCount": 1
-      },
-      {
-        "id": 144670708364322,
-        "name": "Holiday Inn",
-        "alias": "Holiday Inn",
-        "status": "active",
-        "createdOn": "Nov 01, 2013",
-        "type": "Enterprise-Location",
-        "childCount": 2
-      }
-    ]
-
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Error Codes</caption>
-        <thead>
-        <tr>
-            <th>HTTP Status</th>
-            <th>BirdEye error code</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1161</td>
-            <td>Invalid API key</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1167</td>
-            <td>API key is missing</td>
-        </tr>
-        <tr>
-            <td>429 Too Many Requests</td>
-            <td>89</td>
-            <td>Rate limit exceeded</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Response Body</caption>
-        <thead>
-            <th>Fields</th>
-            <th>Description</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>id</td>
-                <td>Business ID</td>
-            </tr>
-            <tr>
-                <td>name</td>
-                <td>Business Name</td>
-            </tr>
-            <tr>
-                <td>alias</td>
-                <td>Business alias</td>
-            </tr>
-            <tr>
-                <td>address</td>
-                <td>Business address. note: available only when it is SMB/Enterprise Location</td>
-            </tr>
-            <tr>
-                <td>phone</td>
-                <td>Business phone</td>
-            </tr>
-            <tr>
-                <td>status</td>
-                <td>Payment status</td>
-            </tr>
-            <tr>
-                <td>createdOn</td>
-                <td>Business singup date</td>
-            </tr>
-            <tr>
-                <td>type</td>
-                <td>Type of account. e.g. Reseller (when it is a sub-reseller), Enterprise-Location (location based enterprise), Enterprise-Product (product based enterprise), Business (SMB/Enterprise location), Product (Enterprise product)</td>
-            </tr>
-            <tr>
-                <td>childCount</td>
-                <td>Child account count. note: applicable only for Reseller, Enterprise-Location, Enterprise-Product</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-+ Parameters
-
-    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
-    + isCompetitor (boolean, required) ... true for get child business of Enterprise competitor business.
-
-+ Request (application/json)
-
-    + Headers
-
-            Accept: application/json
-
-
-+ Response 200 (application/json)
-
-    + Body
-
-    [
-      {
-        "id": 986031488,
-        "name": "Central Ohio Endodontics",
-        "alias": "Central Ohio Endodontics - Dublin, OH",
-        "address": {
-          "address1": "5152 Blazer Memorial Pkwy",
-          "address2": "Ste 102",
-          "city": "Dublin",
-          "state": "OH",
-          "zip": "43017",
-          "countryCode": "US",
-          "countryName": "United States of America"
-        },
-        "phone": "(614) 896-2801",
-        "type": "Business",
-        "status": "active",
-        "createdOn": "Dec 04, 2013",
-      },
-      {
-        "id": 768996864,
-        "name": "Environmental Pest Management",
-        "alias": "Environmental Pest Management - Westerville, OH",
-        "address": {
-          "address1": "200 Hoff Rd",
-          "address2": "Unit P",
-          "city": "Westerville",
-          "state": "OH",
-          "zip": "43082",
-          "countryCode": "US",
-          "countryName": "United States of America"
-        },
-        "phone": "(614) 771-8605",
-        "type": "Business",
-        "status": "active",
-        "createdOn": "Dec 05, 2013",
-      },
-      {
-        "id": 144670708364016,
-        "name": "Sub-reseller",
-        "alias": "Sub-reseller",
-        "status": "active",
-        "createdOn": "Nov 05, 2013",
-        "type": "Reseller",
-        "childCount": 1
-      },
-      {
-        "id": 144670708364322,
-        "name": "Holiday Inn",
-        "alias": "Holiday Inn",
-        "status": "active",
-        "createdOn": "Nov 01, 2013",
-        "type": "Enterprise-Location",
-        "childCount": 2
-      }
-    ]
-
-+ Response 401
-
-    [1161][]
-
-+ Response 429
-
-    [89][]
-
-+ Response 401
-
-    [1167][]
-
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Error Codes</caption>
-        <thead>
-        <tr>
-            <th>HTTP Status</th>
-            <th>BirdEye error code</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1161</td>
-            <td>Invalid API key</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1167</td>
-            <td>API key is missing</td>
-        </tr>
-        <tr>
-            <td>429 Too Many Requests</td>
-            <td>89</td>
-            <td>Rate limit exceeded</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
 ## Child Businesses [/v1/business/child/all{?api_key, pid}]
 List of child businesses can be retrieved using:
 
@@ -4041,201 +3565,6 @@ Add/Remove child in hierarchy
 + Response 401
 
     [1011][]
-
-
-## Get Competitors [/v1/business/{businessId}/competitors {?api_key}]
-Business competitors can be fetched using:
-
-### Get Business Competitors [GET]
-
-#### Request
-
-<center><b>Example CURL Request</b></center>
-
-    curl -H "Content-Type: application/json" -H "Accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/755009344_1/competitors?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451"
-
-#### Response
-
-<center><b>Example Response Body</b></center>
-
-    [
-        {
-                "enterpriseId": 144679606934805,
-                "enterpriseName": "taj",
-                "businessCompetitors": [{
-                        "businessId": 144681844334495,
-                        "name": "texas",
-                        "location":{
-                                "address1": "44/5",
-                                "address2": "II-street",
-                                "city": "San Jose",
-                                "state": "CA",
-                                "zip": "102634",
-                                "countryCode": "US",
-                                "countryName": null,
-                                "lat": null,
-                                "lng": null
-                        }
-                }]
-        },
-        {
-                "enterpriseId": 144679577771476,
-                "enterpriseName": "pullman",
-                "businessCompetitors": [{
-                        "businessId": 144974367274032,
-                        "name": "paris",
-                        "location":{
-                                "address1": "b/t 24th St",
-                                "address2": "Mission",
-                                "city": "San Francisco",
-                                "state": "CA",
-                                "zip": "90011",
-                                "countryCode": null,
-                                "countryName": null,
-                                "lat": null,
-                                "lng": null
-                        }
-
-                }]
-        }
-]
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Response Body</caption>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>enterpriseId</td>
-            <td>Enterprise Competitor Id</td>
-        </tr>
-        <tr>
-            <td>enterpriseName</td>
-            <td>Enterprise Competitor Name</td>
-        </tr>
-        <tr>
-            <td>businessId</td>
-            <td>Competitor Id</td>
-        </tr>
-        <tr>
-            <td>name</td>
-            <td>Competitor Name</td>
-        </tr>
-        <tr>
-            <td>location</td>
-            <td>Competitor Address</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Error Codes</caption>
-        <thead>
-        <tr>
-            <th>HTTP Status</th>
-            <th>BirdEye error code</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1161</td>
-            <td>Invalid API key</td>
-        </tr>
-        <tr>
-            <td>404  Not Found</td>
-            <td>1011</td>
-            <td>Business id is invalid</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1167</td>
-            <td>API key is missing</td>
-        </tr>
-        <tr>
-            <td>429 Too Many Requests</td>
-            <td>89</td>
-            <td>Rate limit exceeded</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-+ Request (application/json)
-
-    + Headers
-
-            Accept: application/json
-
-+ Response 200 (application/json)
-
-    + Body
-
-            [
-                {
-                        "enterpriseId": 144679606934805,
-                        "enterpriseName": "taj",
-                        "businessCompetitors": [{
-                                "businessId": 144681844334495,
-                                "name": "texas",
-                                "location":{
-                                        "address1": "44/5",
-                                        "address2": "II-street",
-                                        "city": "San Jose",
-                                        "state": "CA",
-                                        "zip": "102634",
-                                        "countryCode": "US",
-                                        "countryName": null,
-                                        "lat": null,
-                                        "lng": null
-                                }
-                        }]
-                },
-                {
-                        "enterpriseId": 144679577771476,
-                        "enterpriseName": "pullman",
-                        "businessCompetitors": [{
-                                "businessId": 144974367274032,
-                                "name": "paris",
-                                "location":{
-                                        "address1": "b/t 24th St",
-                                        "address2": "Mission",
-                                        "city": "San Francisco",
-                                        "state": "CA",
-                                        "zip": "90011",
-                                        "countryCode": null,
-                                        "countryName": null,
-                                        "lat": null,
-                                        "lng": null
-                                }
-
-                        }]
-                }
-        ]
-
-+ Response 401 (application/json)
-
-    [1161][]
-
-+ Response 429
-
-    [89][]
-
-+ Response 404 (application/json)
-
-    [1011][]
-
-+ Response 401 (application/json)
-
-    [1167][]
 
 
 # Group User
@@ -9284,7 +8613,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
             </tr>
             <tr>
                 <td>api_key</td>
-                <td>The Api Key</td>
+                <td>Partner specific API key provided by BirdEye for data exchange</td>
             </tr>
         </tbody>
     </table>
@@ -13002,7 +12331,698 @@ Create a webhook subcription for a business
 # Group Competitor
 APIs related to Competitors
 
-## Competitive Insight Category [/v1/competitor/competitive-insight/categories/{businessNumber}{?api_key}]
+## Competitor of Enterprise Business [/v1/business/{EnterpriseBusinessNumber}/child{?api_key,isCompetitor}]
+List of all Enterprise Competitor Business can be retrieved using:
+
+### Get Competitor Business [GET]
+<center><b>Example Curl Request</b></center>
+     curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/104563456/child?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&isCompetitor=true" –v
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Parameter</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>api_key</td>
+                <td>required</td>
+                <td>Partner specific API key provided by BirdEye for data exchange</td>
+            </tr>
+            <tr>
+                <td>isCompetitor</td>
+                <td>required</td>
+                <td>true/false</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+####Response
+<center><b>Example Response</b></center>
+[
+      {
+      "id": 147867723257477,
+      "name": "Pizza hut",
+      "competitorId" : 2346567,
+      "alias": "Pizza hut"
+   },
+      {
+      "id": 147867726142270,
+      "name": "Mcdonalds",
+      "competitorId" : 2398456,
+      "alias": "Mcdonalds"
+   },
+      {
+      "id": 147867727574772,
+      "name": "KFC",
+      "competitorId" : 8976734,
+      "alias": "KFC"
+   },
+      {
+      "id": 149540962791726,
+      "name": "Burger king",
+      "competitorId" : 7835744,
+      "alias": "Burger king"
+   },
+      {
+      "id": 149540965060398,
+      "name": "Subway",
+      "competitorId" : 6969854,
+      "alias": "Subway"
+   }
+]
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>Enterprise Competitor Business Number</td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>Enterprise Competitor Business Name</td>
+            </tr>
+            <tr>
+                <td>competitorId</td>
+                <td>Enterprise Competitor Business ID(only applicable if isCompetior is set to true in request)</td>
+            </tr>
+            <tr>
+                <td>alias</td>
+                <td>Enterprise Competitor Business alias</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
++ Parameters
+
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
+    + isCompetitor (boolean, required) ... true for get competitor business of Enterprise Business and False for get Child Business of Enterprise Business .
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+
++ Response 200 (application/json)
+
+    + Body
+
+    [
+      {
+        "id": 768996864,
+        "name": "Environmental Pest Management",
+        "competitorId" : 2398456,
+        "alias": "Environmental Pest Management - Westerville, OH"
+      },
+      {
+        "id": 144670708364016,
+        "name": "Sub-reseller",
+        "competitorId" : 4598762,
+        "alias": "Sub-reseller"
+      },
+      {
+        "id": 144670708364322,
+        "name": "Holiday Inn",
+        "competitorId" : 9876567,
+        "alias": "Holiday Inn"
+      }
+    ]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+## Child Business of Competitor [/v1/business/{EnterpriseCompetitorBusinessId}/child{?api_key,isCompetitor}]
+List of all Child Business of Competitor can be retrieved using:
+
+### Get Competitor Child Business [GET]
+<center><b>Example Curl Request</b></center>
+     curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/104563456/child?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&isCompetitor=true" –v
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Parameter</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>api_key</td>
+                <td>required</td>
+                <td>Partner specific API key provided by BirdEye for data exchange</td>
+            </tr>
+            <tr>
+                <td>isCompetitor</td>
+                <td>required</td>
+                <td>true/false</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+####Response
+<center><b>Example Response</b></center>
+[
+      {
+        "id": 986031488,
+        "name": "Central Ohio Endodontics",
+        "alias": "Central Ohio Endodontics - Dublin, OH",
+        "address": {
+          "address1": "5152 Blazer Memorial Pkwy",
+          "address2": "Ste 102",
+          "city": "Dublin",
+          "state": "OH",
+          "zip": "43017",
+          "countryCode": "US",
+          "countryName": "United States of America"
+        },
+        "phone": "(614) 896-2801",
+        "type": "Business",
+        "status": "active",
+        "createdOn": "Dec 04, 2013",
+        "compAccountId": 2345670
+      },
+      {
+        "id": 768996864,
+        "name": "Environmental Pest Management",
+        "alias": "Environmental Pest Management - Westerville, OH",
+        "address": {
+          "address1": "200 Hoff Rd",
+          "address2": "Unit P",
+          "city": "Westerville",
+          "state": "OH",
+          "zip": "43082",
+          "countryCode": "US",
+          "countryName": "United States of America"
+        },
+        "phone": "(614) 771-8605",
+        "type": "Business",
+        "status": "active",
+        "createdOn": "Dec 05, 2013",
+        "compAccountId": "9878678"
+      },
+      {
+        "id": 144670708364016,
+        "name": "Sub-reseller",
+        "alias": "Sub-reseller",
+        "status": "active",
+        "createdOn": "Nov 05, 2013",
+        "type": "Reseller",
+        "childCount": 1
+      },
+      {
+        "id": 144670708364322,
+        "name": "Holiday Inn",
+        "alias": "Holiday Inn",
+        "status": "active",
+        "createdOn": "Nov 01, 2013",
+        "type": "Enterprise-Location",
+        "childCount": 2
+      }
+    ]
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>id</td>
+                <td>Business ID</td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td>Business Name</td>
+            </tr>
+            <tr>
+                <td>alias</td>
+                <td>Business alias</td>
+            </tr>
+            <tr>
+                <td>address</td>
+                <td>Business address(available only when it is SMB/Enterprise Location)</td>
+            </tr>
+            <tr>
+                <td>phone</td>
+                <td>Business phone</td>
+            </tr>
+            <tr>
+                <td>status</td>
+                <td>Payment status</td>
+            </tr>
+            <tr>
+                <td>createdOn</td>
+                <td>Business singup date</td>
+            </tr>
+            <tr>
+                <td>type</td>
+                <td>Type of account. e.g. Reseller (when it is a sub-reseller), Enterprise-Location (location based enterprise), Enterprise-Product (product based enterprise), Business (SMB/Enterprise location), Product (Enterprise product)</td>
+            </tr>
+            <tr>
+                <td>childCount</td>
+                <td>Child account count(applicable only for Reseller, Enterprise-Location, Enterprise-Product)</td>
+            </tr>
+            <tr>
+                <td>compAccountId</td>
+                <td>Competitor Location Ids(applicable only if isCompetitor is set true in request)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
++ Parameters
+
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
+    + isCompetitor (boolean, required) ... true for get child business of Enterprise competitor business.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+
++ Response 200 (application/json)
+
+    + Body
+
+    [
+      {
+        "id": 986031488,
+        "name": "Central Ohio Endodontics",
+        "alias": "Central Ohio Endodontics - Dublin, OH",
+        "address": {
+          "address1": "5152 Blazer Memorial Pkwy",
+          "address2": "Ste 102",
+          "city": "Dublin",
+          "state": "OH",
+          "zip": "43017",
+          "countryCode": "US",
+          "countryName": "United States of America"
+        },
+        "phone": "(614) 896-2801",
+        "type": "Business",
+        "status": "active",
+        "createdOn": "Dec 04, 2013",
+        "compAccountId":7876807
+      },
+      {
+        "id": 768996864,
+        "name": "Environmental Pest Management",
+        "alias": "Environmental Pest Management - Westerville, OH",
+        "address": {
+          "address1": "200 Hoff Rd",
+          "address2": "Unit P",
+          "city": "Westerville",
+          "state": "OH",
+          "zip": "43082",
+          "countryCode": "US",
+          "countryName": "United States of America"
+        },
+        "phone": "(614) 771-8605",
+        "type": "Business",
+        "status": "active",
+        "createdOn": "Dec 05, 2013",
+        "compAccountId":4567893
+      },
+      {
+        "id": 144670708364016,
+        "name": "Sub-reseller",
+        "alias": "Sub-reseller",
+        "status": "active",
+        "createdOn": "Nov 05, 2013",
+        "type": "Reseller",
+        "childCount": 1
+      },
+      {
+        "id": 144670708364322,
+        "name": "Holiday Inn",
+        "alias": "Holiday Inn",
+        "status": "active",
+        "createdOn": "Nov 01, 2013",
+        "type": "Enterprise-Location",
+        "childCount": 2
+      }
+    ]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+## Get Competitors [/v1/business/{businessId}/competitors {?api_key}]
+Business competitors can be fetched using:
+
+### Get Business Competitors [GET]
+
+#### Request
+
+<center><b>Example CURL Request</b></center>
+
+    curl -H "Content-Type: application/json" -H "Accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/755009344_1/competitors?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451"
+
+#### Response
+
+<center><b>Example Response Body</b></center>
+
+    [
+        {
+                "enterpriseId": 144679606934805,
+                "enterpriseName": "taj",
+                "businessCompetitors": [{
+                        "businessId": 144681844334495,
+                        "name": "texas",
+                        "location":{
+                                "address1": "44/5",
+                                "address2": "II-street",
+                                "city": "San Jose",
+                                "state": "CA",
+                                "zip": "102634",
+                                "countryCode": "US",
+                                "countryName": null,
+                                "lat": null,
+                                "lng": null
+                        }
+                }]
+        },
+        {
+                "enterpriseId": 144679577771476,
+                "enterpriseName": "pullman",
+                "businessCompetitors": [{
+                        "businessId": 144974367274032,
+                        "name": "paris",
+                        "location":{
+                                "address1": "b/t 24th St",
+                                "address2": "Mission",
+                                "city": "San Francisco",
+                                "state": "CA",
+                                "zip": "90011",
+                                "countryCode": null,
+                                "countryName": null,
+                                "lat": null,
+                                "lng": null
+                        }
+
+                }]
+        }
+]
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>enterpriseId</td>
+            <td>Enterprise Competitor Id</td>
+        </tr>
+        <tr>
+            <td>enterpriseName</td>
+            <td>Enterprise Competitor Name</td>
+        </tr>
+        <tr>
+            <td>businessId</td>
+            <td>Competitor Id</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>Competitor Name</td>
+        </tr>
+        <tr>
+            <td>location</td>
+            <td>Competitor Address</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404  Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+
+            [
+                {
+                        "enterpriseId": 144679606934805,
+                        "enterpriseName": "taj",
+                        "businessCompetitors": [{
+                                "businessId": 144681844334495,
+                                "name": "texas",
+                                "location":{
+                                        "address1": "44/5",
+                                        "address2": "II-street",
+                                        "city": "San Jose",
+                                        "state": "CA",
+                                        "zip": "102634",
+                                        "countryCode": "US",
+                                        "countryName": null,
+                                        "lat": null,
+                                        "lng": null
+                                }
+                        }]
+                },
+                {
+                        "enterpriseId": 144679577771476,
+                        "enterpriseName": "pullman",
+                        "businessCompetitors": [{
+                                "businessId": 144974367274032,
+                                "name": "paris",
+                                "location":{
+                                        "address1": "b/t 24th St",
+                                        "address2": "Mission",
+                                        "city": "San Francisco",
+                                        "state": "CA",
+                                        "zip": "90011",
+                                        "countryCode": null,
+                                        "countryName": null,
+                                        "lat": null,
+                                        "lng": null
+                                }
+
+                        }]
+                }
+        ]
+
++ Response 401 (application/json)
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404 (application/json)
+
+    [1011][]
+
++ Response 401 (application/json)
+
+    [1167][]
+
+
+## Competitive Insight Category [/v1/competitors/competitive-insight/categories/{businessNumber}{?api_key}]
 Competitor category(s) from BirdEye platform can be fetched using following filter in request payload:
 
 + Parameters
@@ -13014,7 +13034,7 @@ Competitor category(s) from BirdEye platform can be fetched using following filt
 
 <center><b>Example curl request</b></center>
 
-curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{ "sourceType":"review","reviewSites":["2","110","392"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426]},{"competitorId":535009,"compAccountIds":[234589]}] }' "https://api.birdeye.com/resources/v1/competitor/competitive-insight/categories/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{ "sourceType":"review","sources":["google","citysearch"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426]},{"competitorId":535009,"compAccountIds":[234589]}] }' "https://api.birdeye.com/resources/v1/competitors/competitive-insight/categories/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 #### Request
 
@@ -13022,7 +13042,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
 
 {
     "sourceType": "review",
-    "reviewSites": ["2","110","392"],
+    "sources": ["google","citysearch"]
     "startDate":"11/02/2020",
     "endDate":"01/06/2021",
     "competitors": [
@@ -13049,11 +13069,11 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
         <tbody>
         <tr>
             <td>sourceType</td>
-            <td>Type of source e.g. "review" or "social"</td>
+            <td>Type of source e.g. "review"[default] or "social"</td>
         </tr>
         <tr>
-            <td>reviewSites</td>
-            <td>Aggregation source ids</td>
+            <td>sources</td>
+            <td>Aggregation sources</td>
         </tr>
         <tr>
             <td>timePeriodSelected</td>
@@ -13061,19 +13081,19 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
         </tr>
         <tr>
             <td>startDate</td>
-            <td>Date from which data has to be fetched</td>
+            <td>Date from which data has to be fetched[MM/DD/YYYY]</td>
         </tr>
         <tr>
             <td>endDate</td>
-            <td>Date until which data has to be fetched</td>
+            <td>Date until which data has to be fetched[MM/DD/YYYY]</td>
         </tr>
         <tr>
             <td>competitorId</td>
-            <td>Competitor Id</td>
+            <td>Enterprise Competitor Ids(competitorId in Competitor of Enterprise Business API)</td>
         </tr>
         <tr>
             <td>compAccountIds</td>
-            <td>Competitor Account Ids </td>
+            <td>Locations Ids of competitor account(compAccountIds in Child Business of Competitor API)</td>
         </tr>
         </tbody>
     </table>
@@ -13306,7 +13326,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X POST -d
     [1167][]
 
 
-## Competitive Insight Themes [/v1/competitor/competitive-insight/themes/{businessNumber}{?api_key}]
+## Competitive Insight Themes [/v1/competitors/competitive-insight/themes/{businessNumber}{?api_key}]
 Competitor theme(s) from BirdEye platform can be fetched using following filter in request payload:
 
 + Parameters
@@ -13314,23 +13334,19 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
     + business_number (string, required) ... the business ID
     + api_key (string, required) ... the API key
 
-### Get statistics [POST]
+### Get Theme Statistics [POST]
 
 #### Request
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"sourceType":"review","reviewSites":["2","110","392"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426,144352]}],"reviewSiteAllFlag":true,"topThm":25,"orderBy":"occurrence","sentiment":-1}' "https://api.birdeye.com/resources/v1/competitor/competitive-insight/themes/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"sourceType":"review","sources":["google","citysearch"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426,144352]}],"reviewSiteAllFlag":true,"topThm":25,"orderBy":"occurrence","sentiment":-1}' "https://api.birdeye.com/resources/v1/competitors/competitive-insight/themes/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
 
 {
   "sourceType": "review",
-  "reviewSites": [
-    "2",
-    "110",
-    "392"
-  ],
+  "sources": ["google","citysearch"],
   "startDate":"11/02/2020",
   "endDate":"01/06/2021",
   "competitors": [
@@ -13365,11 +13381,11 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
         <tbody>
         <tr>
             <td>sourceType</td>
-            <td>Type of source e.g. "review" or "social"</td>
+            <td>Type of source e.g. "review"[default] or "social"</td>
         </tr>
         <tr>
-            <td>reviewSites</td>
-            <td>Aggregation source ids</td>
+            <td>sources</td>
+            <td>Aggregation sources</td>
         </tr>
         <tr>
             <td>timePeriodSelected</td>
@@ -13377,19 +13393,19 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
         </tr>
         <tr>
             <td>startDate</td>
-            <td>Date from which data has to be fetched</td>
+            <td>Date from which data has to be fetched[MM/DD/YYYY]</td>
         </tr>
         <tr>
             <td>endDate</td>
-            <td>Date until which data has to be fetched</td>
+            <td>Date until which data has to be fetched[MM/DD/YYYY]</td>
         </tr>
         <tr>
             <td>competitorId</td>
-            <td>Enterprise Competitors linked with account</td>
+            <td>Enterprise Competitor Ids(competitorId in Competitor of Enterprise Business API)</td>
         </tr>
         <tr>
             <td>compAccountIds</td>
-            <td>Competitor Account Ids </td>
+            <td>Locations Ids of competitor account(compAccountIds in Child Business of Competitor API)</td>
         </tr>
         <tr>
             <td>topThm</td>
@@ -13397,13 +13413,13 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
         </tr>
         <tr>
             <td>orderBy</td>
-            <td>Order of the result e.g.: "occurrence" or "ztoa" or "atoz" </td>
+            <td>Order of the result e.g.: "occurrence"[default] or "ztoa" or "atoz" </td>
         </tr>
         <tr>
             <td>sentiment</td>
             <td> -1 = negative sentiment,
                  1 = positive sentiment,
-                 0 = all sentiments</td>
+                 0 = all sentiments[default]</td>
         </tr>
         </tbody>
     </table>
@@ -13670,7 +13686,7 @@ Competitor theme(s) from BirdEye platform can be fetched using following filter 
 
     [1167][]
 
-## Competitive Insight Keywords [/v1/competitor/competitive-insight/keywords/{businessNumber}{?api_key}]
+## Competitive Insight Keywords [/v1/competitors/competitive-insight/keywords/{businessNumber}{?api_key}]
 Competitor keywords(s) from BirdEye platform can be fetched using following filter in request payload:
 
 + Parameters
@@ -13678,24 +13694,20 @@ Competitor keywords(s) from BirdEye platform can be fetched using following filt
     + business_number (string, required) ... the business ID
     + api_key (string, required) ... the API key
 
-### Get Statistics [POST]
+### Get Keyword Statistics [POST]
 
 #### Request
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"sourceType":"review","reviewSites":["2","110","392"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426,144352]},{"competitorId":720708,"compAccountIds":[165432]}],"reviewSiteAllFlag":true,"topKW":25,"topAd":10,"orderBy":"ztoa","sentiment":-1}'
-    "https://api.birdeye.com/resources/v1/competitor/competitive-insight/keywords/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"sourceType":"review","sources":["google","citysearch"],"startDate":"11/02/2020","endDate":"01/06/2021","competitors":[{"competitorId":530846,"compAccountIds":[162426,144352]},{"competitorId":720708,"compAccountIds":[165432]}],"reviewSiteAllFlag":true,"topKW":25,"topAd":10,"orderBy":"ztoa","sentiment":-1}'
+    "https://api.birdeye.com/resources/v1/competitors/competitive-insight/keywords/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
 
 {
   "sourceType": "review",
-  "reviewSites": [
-    "2",
-    "110",
-    "392"
-  ],
+  "sources": ["google","citysearch"],
   "startDate":"11/02/2020",
   "endDate":"01/06/2021",
   "competitors": [
@@ -13731,7 +13743,7 @@ Competitor keywords(s) from BirdEye platform can be fetched using following filt
         <tbody>
         <tr>
             <td>sourceType</td>
-            <td>Type of source e.g. "review" or "social</td>
+            <td>Type of source e.g. "review"[default] or "social</td>
         </tr>
         <tr>
             <td>reviewSites</td>
@@ -13743,19 +13755,19 @@ Competitor keywords(s) from BirdEye platform can be fetched using following filt
         </tr>
         <tr>
             <td>startDate</td>
-            <td>Date from which data has to be fetched</td>
+            <td>Date from which data has to be fetched[MM/DD/YYYY]</td>
         </tr>
         <tr>
             <td>endDate</td>
-            <td>Date until which data has to be fetched</td>
+            <td>Date until which data has to be fetched[MM/DD/YYYY]</td>
         </tr>
         <tr>
             <td>competitorId</td>
-            <td>Enterprise Locations linked with account</td>
+            <td>Enterprise Competitor Ids(competitorId in Competitor of Enterprise Business API)</td>
         </tr>
         <tr>
             <td>compAccountIds</td>
-            <td>Competitor Account Ids </td>
+            <td>Locations Ids of competitor account(compAccountIds in Child Business of Competitor API)</td>
         </tr>
         <tr>
             <td>topKW</td>
@@ -13766,13 +13778,13 @@ Competitor keywords(s) from BirdEye platform can be fetched using following filt
         </tr>
         <tr>
             <td>orderBy</td>
-            <td>Order of the result e.g.: "occurrence" or "ztoa" or "atoz" </td>
+            <td>Order of the result e.g.: "occurrence"[default] or "ztoa" or "atoz" </td>
         </tr>
         <tr>
             <td>sentiment</td>
             <td> -1 = negative sentiment,
                  1 = positive sentiment,
-                 0 = all sentiments</td>
+                 0 = all sentiments[default]</td>
         </tr>
         </tbody>
     </table>
