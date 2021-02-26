@@ -1868,7 +1868,7 @@ Business info from BirdEye platform can be fetched using:
 
     [1167][]
 
-## Update [/v1/business/{businessId}?api_key={?api_key}]
+## Update [/v1/business/{businessId}{?api_key}]
 Business info on BirdEye platform can be updated using:
 
 ### Update Business [PUT]
@@ -2417,6 +2417,10 @@ Business info on BirdEye platform can be updated using:
     </table>
 </div>
 
+
++ Parameters
+    + businessId (string, required) ... the Business Number
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
 
 + Request (application/json)
 
