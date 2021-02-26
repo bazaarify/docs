@@ -14027,3 +14027,596 @@ Competitor keywords(s) from BirdEye platform can be fetched using following filt
 + Response 401
 
     [1167][]
+ 
+## Create Competitor Enterprise [/v1/signup/competitor/{businessNumber}{?api_key}]
+New Competitor can be created:
+
++ Parameters
+
+    + businessNumber (string, required) ... the business ID
+    + api_key (string, required) ... the API key
+
+### Create New Competitor Enterprise [POST]
+
+#### Request
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"businessName": "smb_comp","userEmailId": "varun.gupta@birdeye.com.com"}' "https://api.birdeye.com/resources/v1/signup/competitor/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+<center><b>Example Payload</b></center>
+
+{
+    "businessName": "CompE",
+    "userEmailId": "varun.gupta@@birdeye.com"
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>businessName</td>
+            <td>Name of the Competitor Enterprise that needs to be added</td>
+        </tr>
+        <tr>
+            <td>userEmailId</td>
+            <td>User Email</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+{
+    "competitorId": 100037739,
+    "templateid": 0,
+    "isAggregationRequired": 1,
+    "type": "Enterprise-Location-Competitor",
+    "businessNumber": 161295237142347,
+    "businessAlreadyPresent": false
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>competitorId</td>
+            <td>Enterprise Competitor Business ID</td>
+        </tr>
+        <tr>
+            <td>templateid</td>
+            <td>Template Id</td>
+        </tr>
+        <tr>
+            <td>isAggregationRequired</td>
+            <td>isAggregationRequired</td>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td>Type</td>
+        </tr>
+        <tr>
+            <td>businessNumber</td>
+            <td>Enterprise Competitor Business Number</td>
+        </tr>
+        <tr>
+            <td>businessAlreadyPresent</td>
+            <td>businessAlreadyPresent</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Body
+
+{
+    "competitorId": 100037739,
+    "templateid": 0,
+    "isAggregationRequired": 1,
+    "type": "Enterprise-Location-Competitor",
+    "businessNumber": 161295237142347,
+    "businessAlreadyPresent": false
+}
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]    
+    
+## Create Child Business [/v1/signup/competitor/{business_number}{?api_key}]
+New child business can be created in competitor enterprise:
+
++ Parameters
+
+    + business_number (string, required) ... the business ID
+    + api_key (string, required) ... the API key
+
+### Create New Child Business in Competitor Enterprise [POST]
+
+#### Request
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"businessName":"Location_compca","userEmailId":"varun.gupta@birdeye.com","countryCode":"CA","phone":"408-234-5272","zip":"95035","competitorId":100037693,"type":"Product"}' 
+    "https://api.birdeye.com/resources/v1/signup/competitor/151134205012586?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+<center><b>Example Payload</b></center>
+
+    {"businessName": "Location_compca",
+    "userEmailId": "varu.gupta@birdeye.com",
+    "countryCode": "CA",
+    "phone": "408-234-5272",
+    "zip": "95035",
+    "competitorId": 100037693,
+    "type": "Product"}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>businessName</td>
+            <td>Name of the Business that needs to be added</td>
+        </tr>
+        <tr>
+            <td>userEmailId</td>
+            <td>User Email</td>
+        </tr>
+        <tr>
+            <td>countryCode</td>
+            <td>country Code of business location</td>
+        </tr>
+        <tr>
+            <td>phone</td>
+            <td>Business phone</td>
+        </tr>
+        <tr>
+            <td>zip</td>
+            <td>Postal code of the business location</td>
+        </tr>
+        <tr>
+            <td>competitorId</td>
+            <td>Enterprise Competitor Id(competitorId in Competitor of Enterprise Business API)</td>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td>type</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+{
+    "competitorId": 100037701,
+    "templateid": 0,
+    "isAggregationRequired": 0,
+    "type": "Product",
+    "businessNumber": 161278371646396,
+    "compAccountId": 1795,
+    "businessAlreadyPresent": true
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>competitorId</td>
+            <td>Business ID</td>
+        </tr>
+         <tr>
+            <td>userId</td>
+            <td>UserId</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>Name</td>
+        </tr>
+        <tr>
+            <td>templateid</td>
+            <td>Template Id</td>
+        </tr>
+        <tr>
+            <td>isAggregationRequired</td>
+            <td>isAggregationRequired</td>
+        </tr>
+        <tr>
+            <td>businessNumber</td>
+            <td>Business Number</td>
+        </tr>
+        <tr>
+            <td>compAccountId</td>
+            <td>Location Id of competitor account(entry in compAccountIds in Child Business of Competitor API)</td>
+        </tr>
+        <tr>
+            <td>businessAlreadyPresent</td>
+            <td>businessAlreadyPresent</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Body
+
+{
+    "competitorId": 100037701,
+    "templateid": 0,
+    "isAggregationRequired": 0,
+    "type": "Product",
+    "businessNumber": 161278371646396,
+    "compAccountId": 1795,
+    "businessAlreadyPresent": true
+}
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+     
+## Add Aggregation Link [/v1/aggregation/competitor/{compAccountId}/{businessNumber}{?api_key}]
+New Competitor Aggregation can be added :
+
++ Parameters
+    + compAccountId (string, required) ... locations Id of competitor account(compAccountIds in Child Business of Competitor API)
+    + businessNumber (string, required) ... the business ID
+    + api_key (string, required) ... the API key
+
+### Add new Competitor Aggregation URL [POST]
+
+#### Request
+
+<center><b>Example curl request</b></center>
+    
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"source":"google","url":"https://www.google.com/maps/place/Rama+Sai+Medical+Store/@28.4390976,76.9596497,11z/data=!4m8!1m2!2m1!1sreviews+google!3m4!1s0x390d04b550d23f2d:0x7e948cb85612d0!8m2!3d28.61074!4d77.0798476"}' 
+    "https://api.birdeye.com/resources/v1/aggregation/competitor/1765/159135019006567?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+
+<center><b>Example Payload</b></center>
+
+{ 
+  "source": "google",
+  "url": "https://www.google.com/maps/place/Rama+Sai+Medical+Store/@28.4390976,76.9596497,11z/data=!4m8!1m2!2m1!1sreviews+google!3m4!1s0x390d04b550d23f2d:0x7e948cb85612d0!8m2!3d28.61074!4d77.0798476"
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>source</td>
+            <td>Source Name</td>
+        </tr>
+        <tr>
+            <td>url</td>
+            <td>Source Url</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+{
+    "id": 140179308,
+    "sourceId": 2,
+    "compAccountId": 1765,
+    "sourceUrl": "https://www.google.com/maps/place/Rama+Sai+Medical+Store/@28.4390976,76.9596497,11z/data=!4m8!1m2!2m1!1sreviews+google!3m4!1s0x390d04b550d23f2d:0x7e948cb85612d0!8m2!3d28.61074!4d77.0798476",
+    "sourceName": "Google",
+    "thumbnailUrl": "source/icons/2.png",
+    "backGroundColor": "#dd4b39",
+    "textColor": "#ffffff",
+    "userName": null,
+    "password": null,
+    "profileId": null,
+    "reviewFormUrl": "https://www.google.com/maps/place/Rama+Sai+Medical+Store/@28.4390976,76.9596497,11z/data=!4m8!1m2!2m1!1sreviews+google!3m4!1s0x390d04b550d23f2d:0x7e948cb85612d0!8m2!3d28.61074!4d77.0798476",
+    "aggregationStatus": 3,
+    "sourceAlias": "google",
+    "disabledAggregation": null,
+    "disabledAggregationReason": null
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>id</td>
+            <td>id</td>
+        </tr>
+        <tr>
+            <td>sourceId</td>
+            <td>Source Id</td>
+        </tr>
+         <tr>
+            <td>compAccountId</td>
+            <td>Location Id of competitor account(entry in compAccountIds in Child Business of Competitor API)</td>
+        </tr>
+        <tr>
+            <td>sourceUrl</td>
+            <td>Source Url</td>
+        </tr>
+        <tr>
+            <td>sourceName</td>
+            <td>Source Name</td>
+        </tr>
+        <tr>
+            <td>thumbnailUrl</td>
+            <td>Thumbnail Url</td>
+        </tr>
+        <tr>
+            <td>backGroundColor</td>
+            <td>BackGround Color</td>
+        </tr>
+        <tr>
+            <td>textColor</td>
+            <td>TextColor</td>
+        </tr>
+        <tr>
+            <td>userName</td>
+            <td>User Name</td>
+        </tr>
+         <tr>
+            <td>password</td>
+            <td>Password</td>
+        </tr>
+         <tr>
+            <td>profileId</td>
+            <td>Profile ID</td>
+        </tr>
+         <tr>
+            <td>reviewFormUrl</td>
+            <td>ReviewFormUrl</td>
+        </tr>
+         <tr>
+            <td>aggregationStatus</td>
+            <td>Aggregation Status</td>
+        </tr>
+         <tr>
+            <td>sourceAlias</td>
+            <td>SourceAlias</td>
+        </tr>
+        <tr>
+            <td>disabledAggregation</td>
+            <td>disabledAggregation</td>
+        </tr>
+        <tr>
+            <td>disabledAggregationReason</td>
+            <td>disabledAggregationReason</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Body
+
+{
+    "id": 140179308,
+    "sourceId": 2,
+    "compAccountId": 1765,
+    "sourceUrl": "https://www.google.com/maps/place/Rama+Sai+Medical+Store/@28.4390976,76.9596497,11z/data=!4m8!1m2!2m1!1sreviews+google!3m4!1s0x390d04b550d23f2d:0x7e948cb85612d0!8m2!3d28.61074!4d77.0798476",
+    "sourceName": "Google",
+    "thumbnailUrl": "source/icons/2.png",
+    "backGroundColor": "#dd4b39",
+    "textColor": "#ffffff",
+    "userName": null,
+    "password": null,
+    "profileId": null,
+    "reviewFormUrl": "https://www.google.com/maps/place/Rama+Sai+Medical+Store/@28.4390976,76.9596497,11z/data=!4m8!1m2!2m1!1sreviews+google!3m4!1s0x390d04b550d23f2d:0x7e948cb85612d0!8m2!3d28.61074!4d77.0798476",
+    "aggregationStatus": 3,
+    "sourceAlias": "google",
+    "disabledAggregation": null,
+    "disabledAggregationReason": null
+}
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][] 
