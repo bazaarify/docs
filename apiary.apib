@@ -1476,7 +1476,7 @@ Business info from BirdEye platform can be fetched using:
 
 <center><b>Example CURL Request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/business/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 #### Response
 
@@ -1875,7 +1875,7 @@ Business info on BirdEye platform can be updated using:
 
 #### Request
 
-<center><b>Example CURL request</b></center>:
+<center><b>Example CURL request</b></center>
 
     curl -H "content-type: application/json" -H "accept:application/json" -X PUT  -d "
     {
@@ -1987,16 +1987,16 @@ Business info on BirdEye platform can be updated using:
       "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
       "gmbLogoOptOut": 1,
       "fbLogoOptOut" : 1,
-      "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
       "gmbCoverOptOut" : 1,
       "fbCoverOptOut" : 1,
+      "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
+      "coverBusinessInfoLayout" : "In grid cover image, business info overlay",
       "galleryPhotos" : [
         "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
         "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
         "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg"
       ],
       "videoUrl" : "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.mp4",
-      "businessInfoLayout" : 1,
       "covidInfo" : {
         "postDescription" : "",
         "covid19SupportLink" : "",
@@ -2015,13 +2015,12 @@ Business info on BirdEye platform can be updated using:
         "subcategory1" : "",
         "subcategory2" : "",
         "subcategory3" : "",
-        "displayCategory" : "",
+        "displayCategory" : ""
       },
       "facebookListing" : {
         "category1Fb" : "",
         "category2Fb" : "",
         "category3Fb" : "",
-        "facebookUrl" : "",
         "facebookDescription" : ""
       },
       "gmbListing" : {
@@ -2040,14 +2039,14 @@ Business info on BirdEye platform can be updated using:
                 {
                     "attributeId": "welcomes_families",
                     "attributeName": "Family-friendly",
-                    "value": true,
+                    "value": true
                 }
             ],
             "Accessibility" : [
                 {
                     "attributeId": "has_wheelchair_accessible_elevator",
                     "attributeName": "Wheelchair accessible elevator",
-                    "value": false,
+                    "value": false
                 }
             ]
         }
@@ -2069,8 +2068,9 @@ Business info on BirdEye platform can be updated using:
         "lendingtreeUrl" : null,
         "bbbUrl" : null
       },
-      "isSEOEnabled": "false"
-    }" "https://api.birdeye.com/resources/v1/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
+      "isSEOEnabled": "false",
+      "externalReferenceId" : ""
+    }" "https://api.birdeye.com/resources/v1/business/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 
 <div class="paramsTableWrap">
@@ -2143,7 +2143,7 @@ Business info on BirdEye platform can be updated using:
         </tr>
         <tr>
             <td>specialHours</td>
-            <td>special hours of business.
+            <td>Special hours of business.
                 <br/>specialDate: It should be "MM/dd/yyyy".
                 <br/>startHour: 9:00 (9 AM)
                 <br/>endHour: 18:00 (6 PM)
@@ -2152,11 +2152,15 @@ Business info on BirdEye platform can be updated using:
         </tr>
         <tr>
             <td>businessStatus</td>
-            <td>Business status: Open,Temporarily closed,Permanently closed. If business will choose "Temporarily closed" then Reopen date should be mandatry</td>
+            <td>Business status: It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date should be mandatry
+                <br/>Open
+                <br/>Temporarily closed
+                <br/>Permanently closed
+            </td>
         </tr>
         <tr>
             <td>reopenDate</td>
-            <td>Business will reopen after specific date. It should be "MM/dd/yyyy" </td>
+            <td>Reopen date is applicable only when the status is "temporarily closed". It should be "MM/dd/yyyy" format. </td>
         </tr>
         <tr>
             <td>services</td>
@@ -2208,7 +2212,7 @@ Business info on BirdEye platform can be updated using:
         </tr>
         <tr>
             <td>iosAppURL</td>
-            <td>Ios app url</td>
+            <td>ios app url</td>
         </tr>
         <tr>
             <td>logoUrl</td>
@@ -2223,26 +2227,26 @@ Business info on BirdEye platform can be updated using:
             <td>Update profile photo on your facebook profile. (1-false,0-true)</td>
         </tr>
         <tr>
-            <td>coverImageUrl</td>
-            <td>Cover image URL for business displayed on custom review site. Format: JPG, JPEG, PNG. Minimum 1110 x 374px</td>
-        </tr>
-        <tr>
-            <td>businessInfoLayout</td>
-            <td>show on your Birdeye profile. 
-                <br/>1 : In grid cover image, business info overlay
-                <br/>2 : In grid cover image, business info below
-                <br/>4 : Full width cover image, business info overlay
-                <br/>5 : Full width cover image, business info below
-                <br/>6 : Google map view, business info overlay
-            </td>
-        </tr>
-        <tr>
             <td>gmbCoverOptOut</td>
             <td>Update cover photo on your google my business page. (1-false,0-true)</td>
         </tr>
         <tr>
             <td>fbCoverOptOut</td>
             <td>Update cover photo on your facebook profile. (1-false,0-true)</td>
+        </tr>
+        <tr>
+            <td>coverImageUrl</td>
+            <td>Cover image URL for business displayed on custom review site. Format: JPG, JPEG, PNG. Minimum 1110 x 374px</td>
+        </tr>
+        <tr>
+            <td>coverBusinessInfoLayout</td>
+            <td>Show on your Birdeye profile. Possible value will be
+                <br/><i>In grid cover image, business info overlay</i>
+                <br/><i>In grid cover image, business info below</i>
+                <br/><i>Full width cover image, business info overlay</i>
+                <br/><i>Full width cover image, business info below</i>
+                <br/><i>Google map view, business info overlay</i>
+            </td>
         </tr>
         <tr>
             <td>galleryPhotos</td>
@@ -2314,6 +2318,10 @@ Business info on BirdEye platform can be updated using:
             <td>Enable/Disbale search engine indexing of business profile
                 <br/> Valid values are “true”,”false”. Default is “true”.
             </td>
+        </tr>
+        <tr>
+            <td>externalReferenceId</td>
+            <td>It should be a unique value for location identifier</td>
         </tr>
         </tbody>
     </table>
@@ -2527,16 +2535,16 @@ Business info on BirdEye platform can be updated using:
               "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
               "gmbLogoOptOut": 1,
               "fbLogoOptOut": 1,
-              "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
               "gmbCoverOptOut": 1,
               "fbCoverOptOut": 1,
+              "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
+              "coverBusinessInfoLayout": "In grid cover image, business info overlay",
               "galleryPhotos": [
                 "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
                 "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
                 "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg"
               ],
               "videoUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.mp4",
-              "businessInfoLayout": 1,
               "covidInfo": {
                 "postDescription": "",
                 "covid19SupportLink": "",
@@ -2555,14 +2563,13 @@ Business info on BirdEye platform can be updated using:
                 "subcategory1": "",
                 "subcategory2": "",
                 "subcategory3": "",
-                "displayCategory": "",
+                "displayCategory": ""
                 
               },
               "facebookListing": {
                 "category1Fb": "",
                 "category2Fb": "",
                 "category3Fb": "",
-                "facebookUrl": "",
                 "facebookDescription": ""
               },
               "gmbListing": {
@@ -2581,7 +2588,7 @@ Business info on BirdEye platform can be updated using:
                     {
                       "attributeId": "welcomes_families",
                       "attributeName": "Family-friendly",
-                      "value": true,
+                      "value": true
                       
                     }
                   ],
@@ -2589,7 +2596,7 @@ Business info on BirdEye platform can be updated using:
                     {
                       "attributeId": "has_wheelchair_accessible_elevator",
                       "attributeName": "Wheelchair accessible elevator",
-                      "value": false,
+                      "value": false
                       
                     }
                   ]
@@ -2612,7 +2619,8 @@ Business info on BirdEye platform can be updated using:
                 "lendingtreeUrl": null,
                 "bbbUrl": null
               },
-              "isSEOEnabled": "false"
+              "isSEOEnabled": "false",
+              "externalReferenceId" : ""
             }
 
 + Response 200
