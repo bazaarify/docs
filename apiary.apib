@@ -7072,7 +7072,7 @@ Contact/Lead details could be fetched using:
 
 <center><b>Example curl request</b></center>
 
-curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****' -H 'accept: application/json' -H 'content-type: application/json'  -d '{ "sources": [ "api", "dashboard", "facebook", "integration", "sftp", "bulkupload", "webchat", "crmimport", "other", "referral" ], "startDate": "19/11/2020", "endDate": "10/01/2021","contactType": "customer", "businessId": 158629168202762, "page" : 0, "size" : 100 }' -v
+curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****' -H 'accept: application/json' -H 'content-type: application/json'  -d '{ "sources": [ "api", "dashboard", "facebook", "integration", "sftp", "bulkupload", "webchat", "crmimport", "other", "referral" , "voicecall", "text" , "email" , "google" ], "startDate": "19/11/2020", "endDate": "10/01/2021","contactType": "customer", "businessId": 158629168202762, "page" : 0, "size" : 100 }' -v
 
 #### Request
 
@@ -7089,8 +7089,8 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****
         <tbody>
              <tr>
                 <td>sources</td>
-                <td>Source of the customer/lead.Possible values are api,dashboard.facebook,integration,sftp,
-                bulkupload,webchat,crmimport,other,referral</td>
+                <td>Source of the customer/lead.Possible values are api,dashboard,facebook,integration,sftp,
+                bulkupload,webchat,crmimport,other,referral,voicecall,text,email,google</td>
                 <td>array of string,optional.If blank then contacts of all sources are returned</td>
             </tr>
              <tr>
@@ -7157,6 +7157,9 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****
                 "customerId" : 2342
              }
          ],
+         "bidToCid": {
+                "727229": 140776036
+            },        
          "facebookId":"67676271677"
       },
       {
@@ -7176,7 +7179,10 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****
                 "businessId" : 123456789909,
                 "customerId" : 2343
              }
-         ]
+         ],
+         "bidToCid": {
+                "727229": 140776036
+            }
       }
    ]
 }
