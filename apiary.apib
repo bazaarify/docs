@@ -7061,18 +7061,20 @@ curl -X POST
 
 
 
-## Customer or Lead list [/v1/contact/details{?api_key}]
+## Customer or Lead list [/v1/contact/details{?api_key,tags,customfields}]
 
 + Parameters
 
     + api_key (string, required) ... the API key
+    + tags (boolean, optional) ... if tag data is required send true, default is false
+    + customfields (boolean, optional) ... if custom fields data is required send true, default is false
 
 ### Customer or Lead list [POST]
 Contact/Lead details could be fetched using:
 
 <center><b>Example curl request</b></center>
 
-curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****' -H 'accept: application/json' -H 'content-type: application/json'  -d '{ "sources": [ "api", "dashboard", "facebook", "integration", "sftp", "bulkupload", "webchat", "crmimport", "other", "referral" , "voicecall", "text" , "email" , "google" ], "startDate": "19/11/2020", "endDate": "10/01/2021","contactType": "customer", "businessId": 158629168202762, "page" : 0, "size" : 100 }' -v
+curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****?tags=true&customfields=true' -H 'accept: application/json' -H 'content-type: application/json'  -d '{ "sources": [ "api", "dashboard", "facebook", "integration", "sftp", "bulkupload", "webchat", "crmimport", "other", "referral" , "voicecall", "text" , "email" , "google" ], "startDateUtc": "10/01/2020", "endDateUtc": "11/01/2021","contactType": "customer", "businessId": 158629168202762, "page" : 0, "size" : 100 }' -v
 
 #### Request
 
@@ -7094,33 +7096,35 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****
                 <td>array of string,optional.If blank then contacts of all sources are returned</td>
             </tr>
              <tr>
-                <td>startDate</td>
-                <td>dd/mm/yyyy</td>
+                <td>startDateUtc</td>
+                <td>mm/dd/yyyy (mandatory)</td>
                 <td>string</td>
             </tr>
             <tr>
-                <td>startDate</td>
-                <td>dd/mm/yyyy</td>
+                <td>endDateUtc</td>
+                <td>mm/dd/yyyy (mandatory)</td>
                 <td>string</td>
             </tr>
             <tr>
                 <td>contactType</td>
-                <td>Type of contact.Possible values are lead,customer</td>
-                <td>string,optional.If blank then all contact types are returned</td>
+                <td>optional, Possible values are {"lead", "customer"},
+                    if blank then all contact types are returned</td>
+                <td>string</td>
             </tr>
             <tr>
                 <td>businessId</td>
-                <td>Business Number</td>
+                <td>Business Number - mandatory, business number of the location,
+                 when enterprise number is provided, then fetch data for all locations</td>
                 <td>long</td>
             </tr>
             <tr>
                 <td>page</td>
-                <td>Default 0. Start of the page</td>
+                <td>Default 0. Start of the page, default is 0</td>
                 <td>number</td>
             </tr>
             <tr>
                 <td>size</td>
-                <td>Number of records per page</td>
+                <td>Number of records per page, default is 25, max is 5000</td>
                 <td>number</td>
             </tr>
         </tbody>
@@ -7136,7 +7140,6 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****
    "totalCount":30983,
    "contacts":[
       {
-         "id":12345,
          "firstName":"Dummy1F",
          "lastName":"Dummy1L",
          "email":"sam@gmail.com",
@@ -7144,10 +7147,7 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****
          "created":"2021-01-06T22:25:12.000+0000",
          "contactType":"customer",
          "source":"facebook",
-         "locations":[
-            56776
-         ],
-         "mappings" : [
+         "mappings" : [ // locations customer/lead is associated with
              {
                 "businessId" : 123456789909,
                 "customerId" : 2341
@@ -7156,14 +7156,9 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****
                 "businessId" : 123456789910,
                 "customerId" : 2342
              }
-         ],
-         "bidToCid": {
-                "727229": 140776036
-            },        
-         "facebookId":"67676271677"
+         ]
       },
       {
-         "id":54321,
          "firstName":"Dummy2F",
          "lastName":"Dummy2L",
          "email":"samuel@gmail.com",
@@ -7171,18 +7166,12 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****
          "created":"2021-01-06T22:06:41.000+0000",
          "contactType":"lead",
          "source":"webchat",
-         "locations":[
-            714570
-         ],
          "mappings" : [
              {
                 "businessId" : 123456789909,
                 "customerId" : 2343
              }
-         ],
-         "bidToCid": {
-                "727229": 140776036
-            }
+         ]
       }
    ]
 }
@@ -7228,6 +7217,16 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****
             <td>400 Bad Request</td>
             <td>21122</td>
             <td>Reseller business is not supported in this request</td>
+        </tr>
+         <tr>
+            <td>400 Bad Request</td>
+            <td>2347</td>
+            <td>Max page size allowed is 5000</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2348</td>
+            <td>Max window size allowed is 60000 for a filter selection</td>
         </tr>
         </tbody>
     </table>
