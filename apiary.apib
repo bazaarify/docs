@@ -6199,7 +6199,504 @@ curl -H "content-type: application/json" -H "accept:application/json" -X PUT -d 
 + Response 400
 
     [2078][]
+    
+## Get review count & rating [/v1/review/report/count-by-rating/{BusinessId}{?api_key}]
+Business review(s) from BirdEye platform can be fetched using following filter in request payload:
 
++ Parameters
+
+    + BusinessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
+### Get review by count [POST]
+
+#### Request
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"businessNumbers": [145308764185002,145308769721320],"sourceAlias": ["google","citysearch"],"fromDate": "04/01/2013","toDate": "05/3/2015"}' 'https://api.birdeye.com/resources/v1/review/report/count-by-rating/145308769721320?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451'
+
+<center><b>Example Payload</b></center>
+
+    {
+     "businessNumbers": [
+         145308764185002,
+         145308769721320
+      ],
+     "sourceAlias": ["google","citysearch"],
+     "fromDate": "04/01/2013",
+     "toDate": "05/3/2015"
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>fromDate</td>
+            <td>Review date (start) e.g. "04/01/2013"</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>toDate</td>
+            <td>Review date (end) e.g. "04/01/2013"</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>sourceAlias</td>
+            <td>Aggregation source name e.g. "google","citysearch" etc. Note: use "our_website" to filter reviews posted on Birdeye platform or use "direct_feedback" for direct feedback. </td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>businessNumbers</td>
+            <td>businessNumbers under enterprise account.</td>
+            <td>long, optional</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+  {
+  "reviewCount": 112,
+  "countByRating": [
+    {
+      "rating": 0,
+      "count": 0
+    },
+    {
+      "rating": 1,
+      "count": 3
+    },
+    {
+      "rating": 2,
+      "count": 5
+    },
+    {
+      "rating": 3,
+      "count": 7
+    },
+    {
+      "rating": 4,
+      "count": 8
+    },
+    {
+      "rating": 5,
+      "count": 89
+    }
+  ]
+}
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+             <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>reviewCount</td>
+            <td>Total number of reviews</td>
+        </tr>
+         <tr>
+            <td>countByRating</td>
+            <td>Review count against each possible review rating</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+For facebook sourceAlias, following table can be used to check recommendations.
+
+| Recommended                              | Overall Rating | What does it mean                     |
+|------------------------------------------|----------------|---------------------------------------|
+| 1                                        | 0              | Recommended Facebook review           |
+| 0                                        | 0              | Non Recommended Facebook review       |
+| Does not have  any value (Null or Blank) | 1-5            | Facebook review with non-zero rating. |
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1163</td>
+            <td>Invalid start index value</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1164</td>
+            <td>Invalid result count value</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1186</td>
+            <td>Invalid from date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1187</td>
+            <td>Invalid to date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1227</td>
+            <td>Invalid updated from date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1228</td>
+            <td>Invalid updated to date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Body
+
+            {
+                "reviewCount": 108,
+                "countByRating": [
+                    {
+                        "rating": 0,
+                        "count": 17
+                    },
+                    {
+                        "rating": 1,
+                        "count": 19
+                    },
+                    {
+                        "rating": 2,
+                        "count": 3
+                    },
+                    {
+                        "rating": 3,
+                        "count": 14
+                    },
+                    {
+                        "rating": 4,
+                        "count": 11
+                    },
+                    {
+                        "rating": 5,
+                        "count": 44
+                    }
+                ]
+            }
+
+## Get review count and rating by employee [/v1/review/report/count-by-rating/employee/{BusinessId}{?api_key}]
+Business review(s) from BirdEye platform can be fetched using following filter in request payload:
+
++ Parameters
+
+    + BusinessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
+### Get Reviews Count By Driver [POST]
+
+#### Request
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d '{"businessNumbers": [145308764185002,145308769721320],"sourceAlias": ["google","citysearch"],"employees": [{"firstName": "David","lastName": "wood","phone": "4424242424"}],"fromDate": "04/01/2013","toDate": "05/3/2015"}' 'https://api.birdeye.com/resources/v1/review/report/count-by-rating/employee/145308769721320?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451'
+
+<center><b>Example Payload</b></center>
+
+    {
+     "businessNumbers": [
+       145308764185002,
+       145308769721320
+      ],
+     "sourceAlias": [
+     "google","citysearch"
+     ],
+     "employees": [
+       {
+      "firstName": "David",
+      "lastName": "Wood",
+      "phone": "4424242424"
+       }
+     ],
+     "fromDate": "04/01/2013",
+     "toDate": "05/3/2015"
+   }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>fromDate</td>
+            <td>Review date (start) e.g. "04/01/2013"</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>toDate</td>
+            <td>Review date (end) e.g. "04/01/2013"</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>sourceAlias</td>
+            <td>Aggregation source name e.g. "google","citysearch" etc. Note: use "our_website" to filter reviews posted on Birdeye platform or use "direct_feedback" for direct feedback. </td>
+            <td>string, optional</td>
+        </tr>
+         <tr>
+            <td>employees</td>
+            <td>Employee details eg. FirstName,LastName and phone.</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>businessNumbers</td>
+            <td>businessNumbers under enterprise account.</td>
+            <td>long, optional</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<center><b>Example Response</b></center>
+
+  {
+  "employees": [
+    {
+      "employee": {
+        "firstName": "David",
+        "lastName": "wood",
+        "phone": "4424242424"
+      },
+      "countByRating": [
+        {
+          "rating": 0,
+          "count": 34
+        },
+        {
+          "rating": 1,
+          "count": 22
+        },
+        {
+          "rating": 2,
+          "count": 33
+        },
+        {
+          "rating": 3,
+          "count": 44
+        },
+        {
+          "rating": 4,
+          "count": 44
+        },
+        {
+          "rating": 5,
+          "count": 56
+        }
+      ]
+    }
+  ]
+}
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Response Body</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>employee</td>
+            <td>Employee details eg. FirstName,LastName and phone.</td>
+        </tr>
+         <tr>
+            <td>countByRating</td>
+            <td>Review's count against the rating</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+For facebook sourceAlias, following table can be used to check recommendations.
+
+| Recommended                              | Overall Rating | What does it mean                     |
+|------------------------------------------|----------------|---------------------------------------|
+| 1                                        | 0              | Recommended Facebook review           |
+| 0                                        | 0              | Non Recommended Facebook review       |
+| Does not have  any value (Null or Blank) | 1-5            | Facebook review with non-zero rating. |
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1163</td>
+            <td>Invalid start index value</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1164</td>
+            <td>Invalid result count value</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1186</td>
+            <td>Invalid from date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1187</td>
+            <td>Invalid to date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1227</td>
+            <td>Invalid updated from date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1228</td>
+            <td>Invalid updated to date. Allowed format is "MM/dd/yyyy"</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Body
+
+            {
+              "employees": [
+                {
+                  "employee": {
+                    "firstName": "David",
+                    "lastName": "Wood",
+                    "phone": "4424242424"
+                  },
+                  "countByRating": [
+                    {
+                      "rating": 0,
+                      "count": 0
+                    },
+                    {
+                      "rating": 1,
+                      "count": 1
+                    },
+                    {
+                      "rating": 2,
+                      "count": 0
+                    },
+                    {
+                      "rating": 3,
+                      "count": 0
+                    },
+                    {
+                      "rating": 4,
+                      "count": 2
+                    },
+                    {
+                      "rating": 5,
+                      "count": 1
+                    }
+                  ]
+                }
+              ]
+            }
+    
 # Group Customer
 
 APIs related to customers
