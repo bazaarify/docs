@@ -15472,4 +15472,109 @@ New Competitor Aggregation can be added :
 
 + Response 401
 
-    [1167][] 
+    [1167][]
+
+# Group Listing
+APIs related to Listing
+
+## Fix Listing [/v1/listing/fix{?api_key,b_id}]
+Listing can be fixed using:
+
+### Fix Listing [POST]
+
+<center><b>Example curl request</b></center>
+
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST "http://api.birdeye.com:8080/resources/v1/listing/fix?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451&b_id=755009344" –d '{"categoryIds" : [12]}' -v
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Constraints</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>categoryIds</td>
+                <td>required, array</td>
+                <td>It will be optional for birdeye vendor</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Parameters
+
+    + api_key (string, required) ... Partner specific API key provided by BirdEye for data exchange.
+    + b_id (string, required) ... Business id whose listing has to be fixed.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {
+                "categoryIds" : [12]
+            }
+
+
++ Response 200
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
