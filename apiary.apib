@@ -10428,6 +10428,10 @@ Survey responses for a given survey can be fetched using:
     + survey_id (integer, required) ... the Survey ID
     + businessNumber (string, required) ... the Business Number of Enterprise (for associated api key)
     + api_key (string, required) ... the API key
+    + page (integer, optional) ... the page number
+    + size (integer, optional) ... the size of the page
+    + sortby (string, optional) ... the sort by parameter
+    + sorder (string, optional) ... the sort order parameter
 
 ### List Responses for a Survey [POST]
 
@@ -10849,9 +10853,14 @@ Survey responses for a given survey can be fetched using:
 
 + Request (application/json)
 
-  + Headers
-          Content-Type: application/json
-          Accept: application/json
+    + Headers
+
+            Content-Type: application/json
+            Accept: application/json
+
+    + Body
+
+            {}
 
 + Response 200
 
