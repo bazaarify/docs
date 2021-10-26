@@ -869,6 +869,33 @@ All API URLs referenced in this documentation start with the following base part
             errorMessage: "Rate Limit of API has been exceeded."
         }
 
+## 1532 [/1532]
+
++ Model (application/json)
+
+        {
+            errorCode: 1532,
+            errorMessage: "Business id is missing or invalid."
+        }
+
+## 5008 [/5008]
+
++ Model (application/json)
+
+        {
+            errorCode: 5008,
+            errorMessage: "RequestBody not found"
+        }
+        
+## 5043 [/5043]
+
++ Model (application/json)
+
+        {
+            errorCode: 5043,
+            errorMessage: "Contact not found for the given request"
+        }
+
 # Group Business
 APIs related to business
 
@@ -5093,6 +5120,7 @@ Get Competitor Business review(s) from BirdEye platform can be fetched using fol
 
     [1244][]
 
+
 ## Mark/Unmark Featured [/v1/review/featured?{?api_key,businessId}]
 Featured review and its order can be updated using:
 
@@ -6385,6 +6413,508 @@ For facebook sourceAlias, following table can be used to check recommendations.
 # Group Customer
 
 APIs related to customers
+
+## Create or Update Contact [/v1/customer-v2/external/saveCustomer{?businessId,api_key}]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    
+
+### Create or Update Contact [POST]
+
+Customer can be created/updated using:
+
+<center><b>Example curl request</b></center>
+<pre><code>
+curl --location --request POST 'https://api.birdeye.com/resources/v1/customer-v2/external/saveCustomer?businessId=161322675307514&api_key=uaz9WymF7BbRUISTcqD1ALeyfYSNAfy4' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '{
+ "firstName": "Michael",
+ "lastName": "Scarn",
+ "email": "michael.scott112@dm.com",
+ "phone": null,
+ "emailOptin":true,
+ "smsOptin":true,
+ "blocked": false,
+ "businessIds": [161322675307514, 161322681923726],
+ "tags": ["Tag One","Tag Two"],
+ "customFields": [
+   {
+     "fieldName": "Company",
+     "type": "text",
+     "fieldValue": "Dunder Mifflin"
+   },
+   {
+     "fieldName": "Product",
+     "type": "text",
+     "fieldValue": "Paper"
+   },
+   {
+     "fieldName": "Rating",
+     "type": "number",
+     "fieldValue": "5"
+   }
+ ]
+}'
+</code></pre>
+
+> __Notes__
+> - _BusinessIds mandatory while creating a new contact._
+> - _Only upsert on tags. Custom field values can be updated._
+> - _While updating, if no businessIds are provided, keep the same mappings. Mappings at different locations cannot be removed from this API._ 
+> - _Response will return ecid of the created/updated customer._
+> - _We currently support 4 types of customfields: text, number, currency, date (in formats - “MM/dd/yyyy” and "MM-dd-yyyy" only), and yesno (1:”yes”, 0:”no”)_
+
+#### Request
+
+<center><b>Example Payload</b></center>
+<pre><code>
+    {
+        "id": 115339282,
+        "firstName": "Michael",
+        "lastName": "Scott",
+        "email": "michael@test.com",
+        "phone": "(212) xxx-xxxx",
+        "emailOptin": true,
+        "smsOptin": true,
+        "blocked": false,
+        "businessIds": [161458406365307,161072537475129],
+        "tags": ["Tag One","Tag Two"],
+        "customFields": [
+            {
+                "fieldName": "Company",
+                "type": "text",
+                "fieldValue": "Dunder Mifflin"
+            },
+            {
+                "fieldName": "Product",
+                "type": "text",
+                "fieldValue": "Paper"
+            }
+        ]
+    }
+</code></pre>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>id</td>
+            <td>Id of enterprise customer</td>
+            <td>integer, optional</td>
+        </tr>
+        <tr>
+            <td>firstName</td>
+            <td>First name of the customer</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>lastName</td>
+            <td>Last name of the customer</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>Email of customer</td>
+            <td>string, optional(if phone is provided)</td>
+        </tr>
+        <tr>
+            <td>phone</td>
+            <td>Phone of customer</td>
+            <td>string, optional(if email is provided)</td>
+        </tr>
+        <tr>
+            <td>smsOptin</td>
+            <td>SMS Opting flag</td>
+            <td>boolean, optional</td>
+        </tr>
+        <tr>
+            <td>emailOptin</td>
+            <td>Email Opting flag</td>
+            <td>boolean, optional</td>
+        </tr>
+        <tr>
+            <td>blocked</td>
+            <td>Contact block flag</td>
+            <td>boolean, optional</td>
+        </tr>
+        <tr>
+            <td>businessIds</td>
+            <td>List of business Ids</td>
+            <td>long, required</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>List of email ids</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>tags</td>
+            <td>List of tags</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>customFields</td>
+            <td>List of Custom fields</td>
+            <td>string, optional</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+<pre><code>
+{
+  "id": 115339282
+}
+</code></pre>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1532</td>
+            <td>Business id is missing or invalid.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>5008</td>
+            <td>RequestBody not found</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>5043</td>
+            <td>Contact not found for the given request</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 404
+
+    [1532][]
+
++ Response 400
+
+    [5008][]
+    
++ Response 400
+
+    [5043][]
+
+
+## Get Contact [/v1/customer-v2/external/getCustomer{?businessId,api_key}]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    
+
+### Get Contact [POST]
+
+Customer can be get using:
+
+<center><b>Example curl request</b></center>
+<pre><code>
+curl --location --request POST 'https://api.birdeye.com/resources/v1/customer-v2/external/getCustomer?businessId=158866430972490&apikey=uaz9WymF7BbRUISTcqD1ALeyfYSNAfy4' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '{
+   "emailId": "test.user@test.com"
+}'
+</code></pre>
+> __Notes__
+> - _Request body contains email, phone, and ecid field. Mandatory to give any one of the fields._
+> - _Enterprise id and user id are not required._
+
+#### Request
+
+<center><b>Example Payload</b></center>
+<pre><code>
+{
+  "id": 115339282,
+  "email": "test.user@test.com",
+  "phone": (212) xxx-xxxx
+}
+</code></pre>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>id</td>
+            <td>Id of enterprise customer</td>
+            <td>integer, optional</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>Email of customer</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>phone</td>
+            <td>Phone of customer</td>
+            <td>string, optional</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+<pre><code>
+{
+  "id": 115339282,
+  "firstName": "Michael",
+  "lastName": "Scott",
+  "email": "test.user@test.com",
+  "phone": "(212) xxx-xxxx",
+  "blocked": false,
+  "emailOtin": true,
+  "smsOptin": true,
+  "source": "api",
+  "created": "January 12, 2021",
+  "mappings": [
+    {
+      "cid": 1234451,
+      "location": "new horizon",
+      "bid": 710687,
+      "businessNumber": 161458406365307
+    },
+    {
+      "cid": 1235452,
+      "location": "North Carolina",
+      "bid": 714169,
+      "businessNumber": 161072537475129
+    }
+  ],
+  "tags": ["Tag One","Tag Two"],
+  "customFields": [
+    {
+      "fieldName": "Company",
+      "type": "text",
+      "fieldValue": "Dunder Mifflin"
+    },
+    {
+      "fieldName": "Product",
+      "type": "text",
+      "fieldValue": "Paper"
+    }
+  ]
+}
+</code></pre>
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1532</td>
+            <td>Business id is missing or invalid.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>5043</td>
+            <td>Contact not found for the given request</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 404
+
+    [1532][]
+    
++ Response 400
+
+    [5043][]
+
+## Delete Contact [/v1/customer-v2/external/deleteCustomer{?businessId,api_key}]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    
+
+### Delete Contact [POST]
+
+Customer can be deleted using:
+
+<center><b>Example curl request</b></center>
+<pre><code>
+curl --location --request POST 'https://api.birdeye.com/resources/v1/customer-v2/external/deleteCustomer?businessId=161322675307514&apikey=uaz9WymF7BbRUISTcqD1ALeyfYSNAfy4' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '{
+ "id": 310535,
+ "businessIds": [161322681923726]
+}'
+</code></pre>
+> __Notes__
+> - _Mandatory to provide id (ecid)._
+> - _If businessIds are provided, mappings would be deleted from those locations only._
+> - _If no businessIds are provided, the customer would be deleted from all the locations._
+
+
+#### Request
+
+<center><b>Example Payload</b></center>
+<pre><code>
+{
+  "id": 115339282,
+  "businessIds": [161322681923726, 161322681923727]
+}
+</code></pre>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>id</td>
+            <td>Id of enterprise customer</td>
+            <td>integer, required</td>
+        </tr>
+        <tr>
+            <td>businessIds</td>
+            <td>List of business Ids</td>
+            <td>long, optional</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1532</td>
+            <td>Business id is missing or invalid.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>5043</td>
+            <td>Contact not found for the given request</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 404
+
+    [1532][]
+    
++ Response 400
+
+    [5043][]
 
 ## Check in [/v1/customer/checkin{?bid,api_key}]
 
@@ -10220,6 +10750,10 @@ Survey responses for a given survey can be fetched using:
     + survey_id (integer, required) ... the Survey ID
     + businessNumber (string, required) ... the Business Number of Enterprise (for associated api key)
     + api_key (string, required) ... the API key
+    + page (integer, optional) ... the page number
+    + size (integer, optional) ... the size of the page
+    + sortby (string, optional) ... the sort by parameter
+    + sorder (string, optional) ... the sort order parameter
 
 ### List Responses for a Survey [POST]
 
@@ -10641,9 +11175,14 @@ Survey responses for a given survey can be fetched using:
 
 + Request (application/json)
 
-  + Headers
-          Content-Type: application/json
-          Accept: application/json
+    + Headers
+
+            Content-Type: application/json
+            Accept: application/json
+
+    + Body
+
+            {}
 
 + Response 200
 
