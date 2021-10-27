@@ -13066,7 +13066,7 @@ Retrieves conversations for a business using:
 * A webhook can be configured with a URL and a list of events that should be subscribed to for notifications.
 * It's possible to create multiple webhooks with different URLs to listen to one or more events each.
             
-## List webkook events [/messenger/v1/webhook/event]
+## List webhook events [/v1/messenger/webhook/event]
 Get all the webhook events that are supported by Birdeye
 
 ### Get events [GET]
@@ -13075,7 +13075,7 @@ Get all the webhook events that are supported by Birdeye
 
 <center><b>Example CURL Request</b></center>
     
-curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/messenger/v1/webhook/event" -v
+curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/messenger/webhook/event" -v
 
 
 #### Response
