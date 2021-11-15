@@ -13148,17 +13148,17 @@ Create a webhook subcription for a business
 #### Request
 
 <center><b>Example CURL Request</b></center>
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST  -d "
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST "https://api.birdeye.com/resources/v1/messenger/subscribe/webhook/event"  -d '
     {
         "businessNumber": "755009344",
+        "apiKey": "92bcd6e0-c102-43fd-8a67-1a7be5258451",
         "events": [
             "conversation.created",
             "conversation.updated",
             "message.added"
-            ]
-        "endpoint":"https://webhook.site/0c27e14d-f833-4589-b201-86b41a651464"
-    }"
-    "https://api.birdeye.com/resources/v1/messenger/subscribe/webhook/event" –v
+            ], 
+        "endpoint": "https://webhook.site/0c27e14d-f833-4589-b201-86b41a651464"
+    }'
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
@@ -13175,6 +13175,12 @@ Create a webhook subcription for a business
                 <td>Long</td>
                 <td>required</td>
                 <td>The business number for which events to be subscribed. Should always be the account business number (not location business number.)</td>
+            </tr>
+            <tr>
+                <td>apiKey</td>
+                <td>String</td>
+                <td>required</td>
+                <td>The api key of the business</td>
             </tr>
             <tr>
                 <td>events</td>
