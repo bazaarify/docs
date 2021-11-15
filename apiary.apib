@@ -13245,6 +13245,19 @@ Create a webhook subcription for a business
     + Headers
 
             Accept: application/json
+            
+    + Body
+
+        {
+            "businessNumber": "755009344",
+            "apiKey": "92bcd6e0-c102-43fd-8a67-1a7be5258451",
+            "events": [
+                "conversation.created",
+                "conversation.updated",
+                "message.added"
+                ], 
+            "endpoint": "https://webhook.site/0c27e14d-f833-4589-b201-86b41a651464"
+        }
 
 + Response 200 (application/json)
 
