@@ -4453,7 +4453,7 @@ User details can be retrieved using:
 
 # Group Reviews
 
-## Get [/v1/review/businessId/{businessId}{?sindex,count,api_key}]
+## Get [/v1/review/businessId/{businessId}{?sindex,count,api_key,includeNonAggregatedReviews}]
 Business review(s) from BirdEye platform can be fetched using following filter in request payload:
 
 + Parameters
@@ -4462,6 +4462,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
     + sindex (integer, required) ... the starting index of the reviews
     + count (integer, required) ... the number of reviews to query
     + api_key (string, required) ... the API key
+    + includeNonAggregatedReviews (boolean, optional) ... Include Reviews whose auto-crawling is blocked e.g. PressGaney
 
 ### Get Reviews [POST]
 
@@ -4469,7 +4470,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610],\"tags\":[\"tag_1\",\"tag_2\"],\"includeNonAggregatedReviews\":true }
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610],\"tags\":[\"tag_1\",\"tag_2\"],\"fetchExtraParams\":false }
     "https://api.birdeye.com/resources/v1/review/businessId/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
@@ -4486,7 +4487,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
       "statuses":["published","parked"],
       "allChild":"true",
       "tags":["tag_1","tag_2"],
-      "includeNonAggregatedReviews":true
+      "fetchExtraParams":false
     }
 
 <div class="paramsTableWrap">
@@ -4543,9 +4544,9 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             <td>tags</td>
             <td>Reviews with assigned tags</td>
         </tr>
-         <tr>
-            <td>includeNonAggregatedReviews</td>
-            <td>Include Reviews whose auto-crawling is blocked e.g. PressGaney</td>
+        <tr>
+            <td>fetchExtraParams</td>
+            <td>To fetch custom field(s) associated with the customer attributed to the review (if any). Possible values - true or false</td>
         </tr>
         </tbody>
     </table>
@@ -4582,7 +4583,13 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         "businessName":"Websiter",
         "businessType":"Location",
         "status":"Published",
-        "enableReply":true
+        "enableReply":true,
+        "customerId": 78654321,
+        "extraParams":{
+            "key1": "value1",
+            "key2": "value2",
+            "key3": "value3"
+        }
     },
     {
         "reviewId": "3947077656849",
@@ -4675,6 +4682,14 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             <b>True :</b> For source Google, Facebook, Rent.com, Aparmentguide, Caredash, Birdeye, DirectFeedback or if Managed service is enabled
             <br>
             <b>False :</b> Default value or if it does not satisfy 'True' condition</td>
+        </tr>
+        <tr>
+            <td>customerId</td>
+            <td>Customer's Id attributed with this review (if any)</td>
+        </tr>
+        <tr>
+            <td>extraParams</td>
+            <td>Key value pair of custom field(s) associated with the customer attributed to the review (if any)</td>
         </tr>
         </tbody>
     </table>
@@ -4808,7 +4823,13 @@ For facebook sourcetype, following table can be used to check recommendations.
                     "reviewDate": "Jan 20, 2019",
                     "response": "Thanks",
                     "responseDate": "Feb 18, 2019",
-                    "featured": 0
+                    "featured": 0,
+                    "customerId": 7432167,
+                    "extraParams":{
+                        "key1": "value1",
+                        "key2": "value2",
+                        "key3": "value3"
+                    }
                 }
             ]
 
