@@ -6525,7 +6525,7 @@ Customer can be get using:
 
 <center><b>Example curl request</b></center>
 <pre><code>
-curl --location --request POST 'https://api.birdeye.com/resources/v1/customer-v2/external/getCustomer?businessId=158866430972490&apikey=uaz9WymF7BbRUISTcqD1ALeyfYSNAfy4' \
+curl --location --request POST 'https://api.birdeye.com/resources/v1/customer-v2/external/getCustomer?businessId=158866430972490&api_key=uaz9WymF7BbRUISTcqD1ALeyfYSNAfy4' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --data-raw '{
@@ -6686,7 +6686,7 @@ Customer can be deleted using:
 
 <center><b>Example curl request</b></center>
 <pre><code>
-curl --location --request POST 'https://api.birdeye.com/resources/v1/customer-v2/external/deleteCustomer?businessId=161322675307514&apikey=uaz9WymF7BbRUISTcqD1ALeyfYSNAfy4' \
+curl --location --request POST 'https://api.birdeye.com/resources/v1/customer-v2/external/deleteCustomer?businessId=161322675307514&api_key=uaz9WymF7BbRUISTcqD1ALeyfYSNAfy4' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --data-raw '{
@@ -7414,7 +7414,7 @@ Customer can be deleted using:
 Customer can be subscribe/unsubscribe using:
 
 <center><b>Example curl request</b></center>
-     curl -X POST "https://api.birdeye.com/resources/v1/customer-v2/change-permission?apiKey=92bcd6e0-c102-43fd-8a67-1a7be5258451"
+     curl -X POST "https://api.birdeye.com/resources/v1/customer-v2/change-permission?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451"
      -H "accept: application/json" -H "content-type: application/json" -d '{"permission" : "both-unsubscribed","email": ["test1@mail.in"],
         "phone": ["2345654326"],"accountNumber":123456789876543}' -v
 
