@@ -869,6 +869,33 @@ All API URLs referenced in this documentation start with the following base part
             errorMessage: "Rate Limit of API has been exceeded."
         }
 
+## 1532 [/1532]
+
++ Model (application/json)
+
+        {
+            errorCode: 1532,
+            errorMessage: "Business id is missing or invalid."
+        }
+
+## 5008 [/5008]
+
++ Model (application/json)
+
+        {
+            errorCode: 5008,
+            errorMessage: "RequestBody not found"
+        }
+        
+## 5043 [/5043]
+
++ Model (application/json)
+
+        {
+            errorCode: 5043,
+            errorMessage: "Contact not found for the given request"
+        }
+
 # Group Business
 APIs related to business
 
@@ -4426,15 +4453,16 @@ User details can be retrieved using:
 
 # Group Reviews
 
-## Get [/v1/review/businessId/{businessId}{?sindex,count,api_key}]
+## Get [/v1/review/businessId/{businessId}{?sindex,count,api_key,includeNonAggregatedReviews}]
 Business review(s) from BirdEye platform can be fetched using following filter in request payload:
 
 + Parameters
 
-    + business_id (string, required) ... the business ID
+    + businessId (string, required) ... the business ID
     + sindex (integer, required) ... the starting index of the reviews
     + count (integer, required) ... the number of reviews to query
     + api_key (string, required) ... the API key
+    + includeNonAggregatedReviews (boolean, optional) ... Include Reviews whose auto-crawling is blocked e.g. PressGaney
 
 ### Get Reviews [POST]
 
@@ -4442,7 +4470,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610],\"tags\":[\"tag_1\",\"tag_2\"],\"includeNonAggregatedReviews\":true }
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610],\"tags\":[\"tag_1\",\"tag_2\"],\"fetchExtraParams\":false,\"needCustomerInfo\":false }
     "https://api.birdeye.com/resources/v1/review/businessId/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
@@ -4459,7 +4487,8 @@ Business review(s) from BirdEye platform can be fetched using following filter i
       "statuses":["published","parked"],
       "allChild":"true",
       "tags":["tag_1","tag_2"],
-      "includeNonAggregatedReviews":true
+      "fetchExtraParams":false,
+      "needCustomerInfo":false
     }
 
 <div class="paramsTableWrap">
@@ -4516,9 +4545,13 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             <td>tags</td>
             <td>Reviews with assigned tags</td>
         </tr>
-         <tr>
-            <td>includeNonAggregatedReviews</td>
-            <td>Include Reviews whose auto-crawling is blocked e.g. PressGaney</td>
+        <tr>
+            <td>fetchExtraParams</td>
+            <td>To fetch custom field(s) associated with the customer attributed to the review (if any). Possible values - true or false</td>
+        </tr>
+        <tr>
+            <td>needCustomerInfo</td>
+            <td>To fetch information associated with the customer, if review is attributed to any customer. Possible values - true or false</td>
         </tr>
         </tbody>
     </table>
@@ -4540,9 +4573,11 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             "nickName": "Jen C.",
             "thumbnailUrl": "http://d3cnqzq0ivprch.cloudfront.net/demo/css/images/default-profile.png",
             "emailId": null,
+            "phone":null,
             "facebookId": null,
             "city": "Ann Arbor",
-            "state": "MI"
+            "state": "MI",
+            "customerId": 78654321
         },
         "reviewUrl": "http://www.citysearch.com/not_recommended_reviews/Knzq0i-RsFqWRaNKNWOQbw",
         "sourceType": "citysearch",
@@ -4555,7 +4590,13 @@ Business review(s) from BirdEye platform can be fetched using following filter i
         "businessName":"Websiter",
         "businessType":"Location",
         "status":"Published",
-        "enableReply":true
+        "enableReply":true,
+        "customerId": 78654321,
+        "extraParams":{
+            "key1": "value1",
+            "key2": "value2",
+            "key3": "value3"
+        }
     },
     {
         "reviewId": "3947077656849",
@@ -4568,6 +4609,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             "nickName": "Stella S.",
             "thumbnailUrl": "http://d2xt3xymj142xp.cloudfront.net/reviewer/4b7339a2c966485ab58ceaf7ae49e91e.jpeg",
             "emailId": null,
+            "phone":null,
             "facebookId": null,
             "city": "Diamond Bar",
             "state": "CA"
@@ -4648,6 +4690,14 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             <b>True :</b> For source Google, Facebook, Rent.com, Aparmentguide, Caredash, Birdeye, DirectFeedback or if Managed service is enabled
             <br>
             <b>False :</b> Default value or if it does not satisfy 'True' condition</td>
+        </tr>
+        <tr>
+            <td>customerId</td>
+            <td>Customer's Id attributed with this review (if any)</td>
+        </tr>
+        <tr>
+            <td>extraParams</td>
+            <td>Key value pair of custom field(s) associated with the customer attributed to the review (if any)</td>
         </tr>
         </tbody>
     </table>
@@ -4781,7 +4831,13 @@ For facebook sourcetype, following table can be used to check recommendations.
                     "reviewDate": "Jan 20, 2019",
                     "response": "Thanks",
                     "responseDate": "Feb 18, 2019",
-                    "featured": 0
+                    "featured": 0,
+                    "customerId": 7432167,
+                    "extraParams":{
+                        "key1": "value1",
+                        "key2": "value2",
+                        "key3": "value3"
+                    }
                 }
             ]
 
@@ -5094,213 +5150,6 @@ Get Competitor Business review(s) from BirdEye platform can be fetched using fol
     [1244][]
 
 
-
-## Create [/v1/review/business/{business_id}{?api_key}]
-New review on BirdEye platform can be created using:
-
-+ Parameters
-
-    + business_id (string, required) ... the Business ID
-    + api_key (string, required) ... the API key
-
-### Post a new review [POST]
-
-<center><b>Example curl request</b></center>
-
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST-d "{\"overallRating\" : \"5\", \"comments\" : \"Awesome experience\", \"reviewDate\" : \"2014-04-04T00:00:00\", \"response\" : \"Thanks for the review\", \"responseDate\" : \"2014-04-06T00:00:00\", \"source\": \"website\",\"aggregationSource\": \"citysearch\", \"reviewer\" : {\"nickName\" : \"Sachin G\",\"thumbnailUrl\" : \"http://birdeye.com/reviewer/default.jpd\", \"emailId\":\"saching@gmail.com\", \"location\" : {\"city\" : \"Atlanta\", \"state\" : \"GA\"}}}" "https://api.birdeye.com/resources/v1/review/business/755009344_1?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
-
-#### Request
-
-<center><b>Example Payload</b></center>
-
-    {
-      "overallRating": "5",
-      "comments": "Awesome experience",
-      "reviewDate": "2014-04-04T00:00:00",
-      "response": "Thanks for the review",
-      "responseDate": "2014-04-06T00:00:00",
-      "source": "website",
-      "aggregationSource": "citysearch",
-      "reviewer": {
-        "nickName": "Sachin G",
-        "thumbnailUrl": "http://d2xt3xymj142xp.cloudfront.net/reviewer/9a070cf98f014f5d9b06987dcc9c48fe.jpeg",
-        "emailId": "saching@gmail.com",
-        "location": {
-          "city": "Atlanta",
-          "state": "GA"
-        }
-      }
-    }
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Request Payload</caption>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>overallRating</td>
-            <td>Review rating</td>
-        </tr>
-        <tr>
-            <td>comments</td>
-            <td>Review comment</td>
-        </tr>
-        <tr>
-            <td>reviewDate (optional)</td>
-            <td>Review date. Default is current date. e.g. “2014-03-16T00:00:00”</td>
-        </tr>
-        <tr>
-            <td>response (optional)</td>
-            <td>Response for the review submitted by business</td>
-        </tr>
-        <tr>
-            <td>responseDate (optional)</td>
-            <td>Response date. Default is current date. e.g. “2014-03-16T00:00:00”</td>
-        </tr>
-        <tr>
-            <td>source (optional)</td>
-            <td>Source from where review was submitted. Allowed values are “website”,”tablet”. Default value is
-                “website”.
-            </td>
-        </tr>
-        <tr>
-            <td>aggregationSource (optional)</td>
-            <td>AggregationSource where review is originally posted. e.g. "citysearch" or "google"
-            </td>
-        </tr>
-        <tr>
-            <td>reviewer (optional)</td>
-            <td>Reviewer info. If not specified, the review will be submitted as “Anonymous”.</td>
-        </tr>
-        <tr>
-            <td>reviewer.nickName</td>
-            <td>Reviewer name.</td>
-        </tr>
-        <tr>
-            <td>reviewer.emailId</td>
-            <td>Reviewer email id.</td>
-        </tr>
-        <tr>
-            <td>reviewer.location.city(optional)</td>
-            <td>Reviewer city.</td>
-        </tr>
-        <tr>
-            <td>reviewer.location.state(optional)</td>
-            <td>Reviewer state.</td>
-        </tr>
-        <tr>
-            <td>reviewer.thumbnailUrl (optional)</td>
-            <td>Thumbnail URL for reviewer image. Default is
-                “http://birdeye.com/common/css/images/default-profile.png”
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-#### Response
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Error Codes</caption>
-        <thead>
-        <tr>
-            <th>HTTP Status</th>
-            <th>BirdEye error code</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1161</td>
-            <td>Invalid API key</td>
-        </tr>
-        <tr>
-            <td>429 Too Many Requests</td>
-            <td>89</td>
-            <td>Rate limit exceeded</td>
-        </tr>
-        <tr>
-            <td>404 Not Found</td>
-            <td>1011</td>
-            <td>Business id is invalid</td>
-        </tr>
-        <tr>
-            <td>400 Bad Request</td>
-            <td>1082</td>
-            <td>Review rating is missing</td>
-        </tr>
-        <tr>
-            <td>400 Bad Request</td>
-            <td>1081</td>
-            <td>Review comment is too long</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1167</td>
-            <td>API key is missing</td>
-        </tr>
-        <tr>
-            <td>400 Bad Request</td>
-            <td>1242</td>
-            <td>Invalid rating value. Allowed value between 0-5.</td>
-        </tr>
-        <tr>
-            <td>400 Bad Request</td>
-            <td>1243</td>
-            <td>Invalid rating value. Allowed value between 1-5.</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-+ Request (application/json)
-
-    + Headers
-
-            Accept: application/json
-
-+ Response 200
-
-+ Response 400
-
-    [1081][]
-
-+ Response 400
-
-    [1082][]
-
-+ Response 401
-
-    [1161][]
-
-+ Response 429
-
-    [89][]
-
-+ Response 401
-
-    [1167][]
-
-+ Response 404
-
-    [1011][]
-
-+ Response 400
-
-    [1242][]
-
-+ Response 400
-
-    [1243][]
-
-
 ## Mark/Unmark Featured [/v1/review/featured?{?api_key,businessId}]
 Featured review and its order can be updated using:
 
@@ -5452,7 +5301,7 @@ Featured review and its order can be updated using:
     [1042][]
 
 
-## Review Summary [/v1/businessid/{businessId}/summary?{?api_key, statuses}]
+## Review Summary [/v1/review/businessid/{businessId}/summary{?api_key,statuses}]
 
 + Parameters
 
@@ -5658,264 +5507,6 @@ Returns list of review source along with review count and average rating, also r
     </table>
 </div>
 
-
-## Bulk Review Upload [/v1/review/upload/business/{businessId}/source/{source_name}?{?api_key,aggregation_url}]
-
-+ Parameters
-
-    + businessId (string, required) ... the Business ID
-    + api_key (string, required) ... the API key
-    + source_name (String, required) ... review source
-    + aggregation_url (String, optional) ... review source url
-
-### Review Upload [POST]
-
-#### Request
-<center><b>Example curl request</b></center>
-
-    curl -X POST 'https://api.birdeye.com/resources/v1/review/upload/business/755009344/source/google?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451' -H 'content-type: multipart/form-data' -F file=@Sample_review_upload.xlsx
-
-> __Notes__
-
-> - xlsx file format is listed below.
-> - Column-1 : Review Comment
-> - Column-2 : Rating ( 0 | 1 | 2 | 3 | 4 | 5)
-> - Column-3 : Review Date (Format- MM/DD/YYYY)
-> - Coumn-4 : Recommended (Yes | No)
-> - Column-5 : Reviewer First name
-> - Column-6 : Reviewer Last name
-> - Column-7 : Reviewer nick name
-> - Column-8 : Reviewer city
-> - Column-9 : Reviewer state
-> - Column-10 : Reviewer email
-> - Column-11 : Reviewer image URL
-> - Column-12 : Review URL
-> - Column-13 : Review response
-> - Column-14 : Response date (Format- MM/DD/YYYY)
-> - Column-15 : Review Tag(s) (Format - alphanumeric characters, hyphens, underscore and spaces. For multiple tags, enter comma separated values.)
-
-
-+ Response 200
-
-    + Body
-
-        {
-          "token": "15 review's uploaded successfully."
-        }
-
-+ Response 404
-
-    [1011][]
-
-+ Response 401
-
-    [1161][]
-
-+ Response 429
-
-    [89][]
-
-+ Response 401
-
-    [1167][]
-
-+ Response 401
-
-    [1029][]
-
-
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Error Codes</caption>
-        <thead>
-        <tr>
-            <th>HTTP Status</th>
-            <th>BirdEye error code</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>404 Not Found</td>
-            <td>1011</td>
-            <td>Business id is invalid</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1161</td>
-            <td>Invalid API key</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1167</td>
-            <td>API key is missing</td>
-        </tr>
-        <tr>
-            <td>429 Too Many Requests</td>
-            <td>89</td>
-            <td>Rate limit exceeded</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1029</td>
-            <td>Aggregation source not found</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-## Create Direct Feedback [/v1/review/feedback/{business_id}{?api_key}]
-New Direct feedback on BirdEye platform can be created using:
-
-+ Parameters
-
-    + business_id (string, required) ... the Business ID
-    + api_key (string, required) ... the API key
-
-### Post a new direct feedback [POST]
-
-<center><b>Example curl request</b></center>
-
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{ \"comments\" : \"Awesome experience\", \"source\": \"website\", \"reviewer\" : {\"nickName\" : \"Sachin G\",\"thumbnailUrl\" : \"http://birdeye.com/reviewer/default.jpd\", \"emailId\":\"saching@gmail.com\"}}" "https://api.birdeye.com/resources/v1/review/feedback/755009344?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
-
-#### Request
-
-<center><b>Example Payload</b></center>
-
-    {
-      "comments": "Awesome experience",
-      "source": "website",
-      "reviewer": {
-        "nickName": "Sachin G",
-        "thumbnailUrl": "http://d2xt3xymj142xp.cloudfront.net/reviewer/9a070cf98f014f5d9b06987dcc9c48fe.jpeg",
-        "emailId": "saching@gmail.com"
-      }
-    }
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Request Payload</caption>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>comments</td>
-            <td>Review comment</td>
-        </tr>
-        <tr>
-            <td>source (optional)</td>
-            <td>Source from where review was submitted. Allowed values are “website”,”tablet”. Default value is
-                “website”.
-            </td>
-        </tr>
-        <tr>
-            <td>reviewer (optional)</td>
-            <td>Reviewer info. If not specified, the review will be submitted as “Anonymous”.</td>
-        </tr>
-        <tr>
-            <td>reviewer.nickName</td>
-            <td>Reviewer name.</td>
-        </tr>
-        <tr>
-            <td>reviewer.emailId</td>
-            <td>Reviewer email id.</td>
-        </tr>
-        <tr>
-            <td>reviewer.thumbnailUrl (optional)</td>
-            <td>Thumbnail URL for reviewer image. Default is
-                “http://birdeye.com/common/css/images/default-profile.png”
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-#### Response
-
-<div class="paramsTableWrap">
-    <table class="paramsTable">
-        <caption>Error Codes</caption>
-        <thead>
-        <tr>
-            <th>HTTP Status</th>
-            <th>BirdEye error code</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1161</td>
-            <td>Invalid API key</td>
-        </tr>
-        <tr>
-            <td>429 Too Many Requests</td>
-            <td>89</td>
-            <td>Rate limit exceeded</td>
-        </tr>
-        <tr>
-            <td>404 Not Found</td>
-            <td>1011</td>
-            <td>Business id is invalid</td>
-        </tr>
-        <tr>
-            <td>400 Bad Request</td>
-            <td>1081</td>
-            <td>Review comment is too long</td>
-        </tr>
-        <tr>
-            <td>401 Unauthorized</td>
-            <td>1167</td>
-            <td>API key is missing</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-+ Request (application/json)
-
-    + Headers
-
-            Accept: application/json
-
-+ Response 200
-
-+ Response 400
-
-    [1081][]
-
-+ Response 400
-
-    [1082][]
-
-+ Response 401
-
-    [1161][]
-
-+ Response 429
-
-    [89][]
-
-+ Response 401
-
-    [1167][]
-
-+ Response 404
-
-    [1011][]
-
-+ Response 400
-
-    [1242][]
-
-+ Response 400
-
-    [1243][]
 
 ## Review Reply [/v1/review/reply/business/{businessNumber}/review/{reviewId}{?api_key}]
 Review can be replied from Birdeye platform using following request payload:
@@ -6701,6 +6292,508 @@ For facebook sourceAlias, following table can be used to check recommendations.
 
 APIs related to customers
 
+## Create or Update Contact [/v1/customer-v2/external/saveCustomer{?businessId,api_key}]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    
+
+### Create or Update Contact [POST]
+
+Customer can be created/updated using:
+
+<center><b>Example curl request</b></center>
+<pre><code>
+curl --location --request POST 'https://api.birdeye.com/resources/v1/customer-v2/external/saveCustomer?businessId=161322675307514&api_key=uaz9WymF7BbRUISTcqD1ALeyfYSNAfy4' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '{
+ "firstName": "Michael",
+ "lastName": "Scarn",
+ "email": "michael.scott112@dm.com",
+ "phone": null,
+ "emailOptin":true,
+ "smsOptin":true,
+ "blocked": false,
+ "businessIds": [161322675307514, 161322681923726],
+ "tags": ["Tag One","Tag Two"],
+ "customFields": [
+   {
+     "fieldName": "Company",
+     "type": "text",
+     "fieldValue": "Dunder Mifflin"
+   },
+   {
+     "fieldName": "Product",
+     "type": "text",
+     "fieldValue": "Paper"
+   },
+   {
+     "fieldName": "Rating",
+     "type": "number",
+     "fieldValue": "5"
+   }
+ ]
+}'
+</code></pre>
+
+> __Notes__
+> - _BusinessIds mandatory while creating a new contact._
+> - _Only upsert on tags. Custom field values can be updated._
+> - _While updating, if no businessIds are provided, keep the same mappings. Mappings at different locations cannot be removed from this API._ 
+> - _Response will return ecid of the created/updated customer._
+> - _We currently support 4 types of customfields: text, number, currency, date (in formats - “MM/dd/yyyy” and "MM-dd-yyyy" only), and yesno (1:”yes”, 0:”no”)_
+
+#### Request
+
+<center><b>Example Payload</b></center>
+<pre><code>
+    {
+        "id": 115339282,
+        "firstName": "Michael",
+        "lastName": "Scott",
+        "email": "michael@test.com",
+        "phone": "(212) xxx-xxxx",
+        "emailOptin": true,
+        "smsOptin": true,
+        "blocked": false,
+        "businessIds": [161458406365307,161072537475129],
+        "tags": ["Tag One","Tag Two"],
+        "customFields": [
+            {
+                "fieldName": "Company",
+                "type": "text",
+                "fieldValue": "Dunder Mifflin"
+            },
+            {
+                "fieldName": "Product",
+                "type": "text",
+                "fieldValue": "Paper"
+            }
+        ]
+    }
+</code></pre>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>id</td>
+            <td>Id of enterprise customer</td>
+            <td>integer, optional</td>
+        </tr>
+        <tr>
+            <td>firstName</td>
+            <td>First name of the customer</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>lastName</td>
+            <td>Last name of the customer</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>Email of customer</td>
+            <td>string, optional(if phone is provided)</td>
+        </tr>
+        <tr>
+            <td>phone</td>
+            <td>Phone of customer</td>
+            <td>string, optional(if email is provided)</td>
+        </tr>
+        <tr>
+            <td>smsOptin</td>
+            <td>SMS Opting flag</td>
+            <td>boolean, optional</td>
+        </tr>
+        <tr>
+            <td>emailOptin</td>
+            <td>Email Opting flag</td>
+            <td>boolean, optional</td>
+        </tr>
+        <tr>
+            <td>blocked</td>
+            <td>Contact block flag</td>
+            <td>boolean, optional</td>
+        </tr>
+        <tr>
+            <td>businessIds</td>
+            <td>List of business Ids</td>
+            <td>long, required</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>List of email ids</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>tags</td>
+            <td>List of tags</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>customFields</td>
+            <td>List of Custom fields</td>
+            <td>string, optional</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+<pre><code>
+{
+  "id": 115339282
+}
+</code></pre>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1532</td>
+            <td>Business id is missing or invalid.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>5008</td>
+            <td>RequestBody not found</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>5043</td>
+            <td>Contact not found for the given request</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 404
+
+    [1532][]
+
++ Response 400
+
+    [5008][]
+    
++ Response 400
+
+    [5043][]
+
+
+## Get Contact [/v1/customer-v2/external/getCustomer{?businessId,api_key}]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    
+
+### Get Contact [POST]
+
+Customer can be get using:
+
+<center><b>Example curl request</b></center>
+<pre><code>
+curl --location --request POST 'https://api.birdeye.com/resources/v1/customer-v2/external/getCustomer?businessId=158866430972490&api_key=uaz9WymF7BbRUISTcqD1ALeyfYSNAfy4' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '{
+   "emailId": "test.user@test.com"
+}'
+</code></pre>
+> __Notes__
+> - _Request body contains email, phone, and ecid field. Mandatory to give any one of the fields._
+> - _Enterprise id and user id are not required._
+
+#### Request
+
+<center><b>Example Payload</b></center>
+<pre><code>
+{
+  "id": 115339282,
+  "email": "test.user@test.com",
+  "phone": (212) xxx-xxxx
+}
+</code></pre>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>id</td>
+            <td>Id of enterprise customer</td>
+            <td>integer, optional</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>Email of customer</td>
+            <td>string, optional</td>
+        </tr>
+        <tr>
+            <td>phone</td>
+            <td>Phone of customer</td>
+            <td>string, optional</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+<pre><code>
+{
+  "id": 115339282,
+  "firstName": "Michael",
+  "lastName": "Scott",
+  "email": "test.user@test.com",
+  "phone": "(212) xxx-xxxx",
+  "blocked": false,
+  "emailOtin": true,
+  "smsOptin": true,
+  "source": "api",
+  "created": "January 12, 2021",
+  "mappings": [
+    {
+      "cid": 1234451,
+      "location": "new horizon",
+      "bid": 710687,
+      "businessNumber": 161458406365307
+    },
+    {
+      "cid": 1235452,
+      "location": "North Carolina",
+      "bid": 714169,
+      "businessNumber": 161072537475129
+    }
+  ],
+  "tags": ["Tag One","Tag Two"],
+  "customFields": [
+    {
+      "fieldName": "Company",
+      "type": "text",
+      "fieldValue": "Dunder Mifflin"
+    },
+    {
+      "fieldName": "Product",
+      "type": "text",
+      "fieldValue": "Paper"
+    }
+  ]
+}
+</code></pre>
+
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1532</td>
+            <td>Business id is missing or invalid.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>5043</td>
+            <td>Contact not found for the given request</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 404
+
+    [1532][]
+    
++ Response 400
+
+    [5043][]
+
+## Delete Contact [/v1/customer-v2/external/deleteCustomer{?businessId,api_key}]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+    
+
+### Delete Contact [POST]
+
+Customer can be deleted using:
+
+<center><b>Example curl request</b></center>
+<pre><code>
+curl --location --request POST 'https://api.birdeye.com/resources/v1/customer-v2/external/deleteCustomer?businessId=161322675307514&api_key=uaz9WymF7BbRUISTcqD1ALeyfYSNAfy4' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '{
+ "id": 310535,
+ "businessIds": [161322681923726]
+}'
+</code></pre>
+> __Notes__
+> - _Mandatory to provide id (ecid)._
+> - _If businessIds are provided, mappings would be deleted from those locations only._
+> - _If no businessIds are provided, the customer would be deleted from all the locations._
+
+
+#### Request
+
+<center><b>Example Payload</b></center>
+<pre><code>
+{
+  "id": 115339282,
+  "businessIds": [161322681923726, 161322681923727]
+}
+</code></pre>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>id</td>
+            <td>Id of enterprise customer</td>
+            <td>integer, required</td>
+        </tr>
+        <tr>
+            <td>businessIds</td>
+            <td>List of business Ids</td>
+            <td>long, optional</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1532</td>
+            <td>Business id is missing or invalid.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>5043</td>
+            <td>Contact not found for the given request</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 404
+
+    [1532][]
+    
++ Response 400
+
+    [5043][]
+
 ## Check in [/v1/customer/checkin{?bid,api_key}]
 
 + Parameters
@@ -7329,7 +7422,7 @@ Customer can be deleted using:
 Customer can be subscribe/unsubscribe using:
 
 <center><b>Example curl request</b></center>
-     curl -X POST "https://api.birdeye.com/resources/v1/customer-v2/change-permission?apiKey=92bcd6e0-c102-43fd-8a67-1a7be5258451"
+     curl -X POST "https://api.birdeye.com/resources/v1/customer-v2/change-permission?api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451"
      -H "accept: application/json" -H "content-type: application/json" -d '{"permission" : "both-unsubscribed","email": ["test1@mail.in"],
         "phone": ["2345654326"],"accountNumber":123456789876543}' -v
 
@@ -10535,12 +10628,16 @@ Survey responses for a given survey can be fetched using:
     + survey_id (integer, required) ... the Survey ID
     + businessNumber (string, required) ... the Business Number of Enterprise (for associated api key)
     + api_key (string, required) ... the API key
+    + page (integer, optional) ... the page number
+    + size (integer, optional) ... the size of the page
+    + sortby (string, optional) ... the sort by parameter
+    + sorder (string, optional) ... the sort order parameter
 
 ### List Responses for a Survey [POST]
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{}"  "https://api.birdeye.com/resources/v1/survey/ext/list/responses/1000?page=0&size=3&sortby=date&sorder=1&api_key=your_api_key&businessNumber=123456432112341" -v
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d "{}"  "https://api.birdeye.com/resources/v1/survey/ext/list/responses/1000?page=0&size=3&sortby=date&sorder=asc&api_key=your_api_key&businessNumber=123456432112341" -v
 
 #### Request
 
@@ -10568,6 +10665,10 @@ Survey responses for a given survey can be fetched using:
         <tr>
             <td>endDate</td>
             <td>Date filter, endDate to be used with startDate. timezone - PST, format supported : MM/dd/yyyy HH:mm:ss</td>
+        </tr>
+        <tr>
+            <td>sorder</td>
+            <td>asc for ascending, desc for descending</td>
         </tr>
         </tbody>
     </table>
@@ -10956,9 +11057,14 @@ Survey responses for a given survey can be fetched using:
 
 + Request (application/json)
 
-  + Headers
-          Content-Type: application/json
-          Accept: application/json
+    + Headers
+
+            Content-Type: application/json
+            Accept: application/json
+
+    + Body
+
+            {}
 
 + Response 200
 
@@ -12600,8 +12706,9 @@ Retrieves conversations for a business using:
       "size": "50",
       "contact": {
         "phone" : "(650)492-3456",
-        "email" : "tushar.garg@birdeye.com"
-      }
+        "emailId" : "tushar.garg@birdeye.com"
+      },
+      "excludeCampaignMessages": "1"
     }"
     "https://api.birdeye.com/resources/v1/messenger/export" –v
  
@@ -12656,6 +12763,12 @@ Retrieves conversations for a business using:
                 <td>Object</td>
                 <td>Optional</td>
                 <td>if passed, fetch data for the contact. Either email or phone is required.</td>
+            </tr>
+            <tr>
+                <td>excludeCampaignMessages</td>
+                <td>Integer</td>
+                <td>Optional</td>
+                <td>if passed with value 1, It will exclude campaign messages from API response.</td>
             </tr>
         </tbody>
     </table>
@@ -12993,7 +13106,7 @@ Retrieves conversations for a business using:
 * A webhook can be configured with a URL and a list of events that should be subscribed to for notifications.
 * It's possible to create multiple webhooks with different URLs to listen to one or more events each.
             
-## List webkook events [/messenger/v1/webhook/event]
+## List webhook events [/v1/messenger/webhook/event]
 Get all the webhook events that are supported by Birdeye
 
 ### Get events [GET]
@@ -13002,7 +13115,7 @@ Get all the webhook events that are supported by Birdeye
 
 <center><b>Example CURL Request</b></center>
     
-curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/messenger/v1/webhook/event" -v
+curl -H "content-type: application/json" -H "accept:application/json" -X GET "https://api.birdeye.com/resources/v1/messenger/webhook/event" -v
 
 
 #### Response
@@ -13066,7 +13179,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
             
 
 
-## Create webhook subscription [/messenger/v1/webhook]
+## Create webhook subscription [/v1/messenger/subscribe/webhook/event]
 Create a webhook subcription for a business
 
 ### Create webhook subscription[POST]
@@ -13075,17 +13188,17 @@ Create a webhook subcription for a business
 #### Request
 
 <center><b>Example CURL Request</b></center>
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST  -d "
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST "https://api.birdeye.com/resources/v1/messenger/subscribe/webhook/event"  -d '
     {
         "businessNumber": "755009344",
+        "apiKey": "92bcd6e0-c102-43fd-8a67-1a7be5258451",
         "events": [
             "conversation.created",
             "conversation.updated",
             "message.added"
-            ]
-        "endpoint":"https://webhook.site/0c27e14d-f833-4589-b201-86b41a651464"
-    }"
-    "https://api.birdeye.com/resources/messenger/v1/webhook" –v
+            ], 
+        "endpoint": "https://webhook.site/0c27e14d-f833-4589-b201-86b41a651464"
+    }'
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
@@ -13102,6 +13215,12 @@ Create a webhook subcription for a business
                 <td>Long</td>
                 <td>required</td>
                 <td>The business number for which events to be subscribed. Should always be the account business number (not location business number.)</td>
+            </tr>
+            <tr>
+                <td>apiKey</td>
+                <td>String</td>
+                <td>required</td>
+                <td>The api key of the business</td>
             </tr>
             <tr>
                 <td>events</td>
@@ -13166,6 +13285,19 @@ Create a webhook subcription for a business
     + Headers
 
             Accept: application/json
+            
+    + Body
+
+        {
+            "businessNumber": "755009344",
+            "apiKey": "92bcd6e0-c102-43fd-8a67-1a7be5258451",
+            "events": [
+                "conversation.created",
+                "conversation.updated",
+                "message.added"
+                ], 
+            "endpoint": "https://webhook.site/0c27e14d-f833-4589-b201-86b41a651464"
+        }
 
 + Response 200 (application/json)
 
