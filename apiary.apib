@@ -4470,7 +4470,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
 
 <center><b>Example curl request</b></center>
 
-    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610],\"tags\":[\"tag_1\",\"tag_2\"],\"fetchExtraParams\":false }
+    curl -H "content-type: application/json" -H "accept:application/json" -X POST -d {  \"fromDate\":\"04/01/2013\", \"toDate\":\"05/3/2015\", \"updateFromDate\":\"04/01/2013\", \"updateToDate\":\"05/3/2015\", \"sources\":[\"google\",\"citysearch\"], \"ratings\":[1,2,3,4,5,0],\"searchStr\":\"Awesome\",\"subBusinessIds\":[145308764185002,145308769721320,145308702026610],\"tags\":[\"tag_1\",\"tag_2\"],\"fetchExtraParams\":false,\"needCustomerInfo\":false }
     "https://api.birdeye.com/resources/v1/review/businessId/755009344_1?sindex=0&count=25&api_key=92bcd6e0-c102-43fd-8a67-1a7be5258451" -v
 
 <center><b>Example Payload</b></center>
@@ -4487,7 +4487,8 @@ Business review(s) from BirdEye platform can be fetched using following filter i
       "statuses":["published","parked"],
       "allChild":"true",
       "tags":["tag_1","tag_2"],
-      "fetchExtraParams":false
+      "fetchExtraParams":false,
+      "needCustomerInfo":false
     }
 
 <div class="paramsTableWrap">
@@ -4548,6 +4549,10 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             <td>fetchExtraParams</td>
             <td>To fetch custom field(s) associated with the customer attributed to the review (if any). Possible values - true or false</td>
         </tr>
+        <tr>
+            <td>needCustomerInfo</td>
+            <td>To fetch customer information associated with the reviewer (if attributed). Possible values - true or false</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -4568,6 +4573,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             "nickName": "Jen C.",
             "thumbnailUrl": "http://d3cnqzq0ivprch.cloudfront.net/demo/css/images/default-profile.png",
             "emailId": null,
+            "phone":null,
             "facebookId": null,
             "city": "Ann Arbor",
             "state": "MI"
@@ -4602,6 +4608,7 @@ Business review(s) from BirdEye platform can be fetched using following filter i
             "nickName": "Stella S.",
             "thumbnailUrl": "http://d2xt3xymj142xp.cloudfront.net/reviewer/4b7339a2c966485ab58ceaf7ae49e91e.jpeg",
             "emailId": null,
+            "phone":null,
             "facebookId": null,
             "city": "Diamond Bar",
             "state": "CA"
