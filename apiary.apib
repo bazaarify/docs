@@ -13124,15 +13124,19 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
 [
     {
         "eventId": 1,
-        "eventName": "conversation.updated"
+        "eventName": "conversation.created"
     },
     {
         "eventId": 2,
-        "eventName": "message.added"
+        "eventName": "conversation.updated"
     },
     {
         "eventId": 3,
-        "eventName": "conversation.created"
+        "eventName": "message.added"
+    },
+	{
+        "eventId": 4,
+        "eventName": "conversation.closed"
     }
 ]
 
@@ -13147,6 +13151,7 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
             <tr><td>conversation.created</td><td>A new conversation started.</td></tr>
             <tr><td>conversation.updated</td><td>A conversation has been updated with a new status or assigned/unassigned</td></tr>
             <tr><td>message.added</td><td>A new message has been created. Triggered for both sent and received messages</td></tr>
+			<tr><td>conversation.closed</td><td>Conversation is closed.</td></tr>
         </tbody>
     </table>
 </div>
@@ -13164,15 +13169,19 @@ curl -H "content-type: application/json" -H "accept:application/json" -X GET "ht
             [
                 {
                     "eventId": 1,
-                    "eventName": "conversation.updated"
+                    "eventName": "conversation.created"
                 },
                 {
                     "eventId": 2,
-                    "eventName": "message.added"
+                    "eventName": "conversation.updated"
                 },
                 {
                     "eventId": 3,
-                    "eventName": "conversation.created"
+                    "eventName": "message.added"
+                },
+				{
+                    "eventId": 4,
+                    "eventName": "conversation.closed"
                 }
             ]
             
@@ -13194,7 +13203,8 @@ Create a webhook subcription for a business
         "events": [
             "conversation.created",
             "conversation.updated",
-            "message.added"
+            "message.added",
+			"conversation.closed"
             ], 
         "endpoint": "https://webhook.site/0c27e14d-f833-4589-b201-86b41a651464"
     }'
@@ -13245,9 +13255,10 @@ Create a webhook subcription for a business
     "subscriptionId": 2,
     "businessId": 755009344,
     "events": [
+        "conversation.created",
         "conversation.updated",
         "message.added",
-        "conversation.created"
+		"conversation.closed"
     ]
 }
 
@@ -13293,7 +13304,8 @@ Create a webhook subcription for a business
             "events": [
                 "conversation.created",
                 "conversation.updated",
-                "message.added"
+                "message.added",
+				"conversation.closed"
                 ], 
             "endpoint": "https://webhook.site/0c27e14d-f833-4589-b201-86b41a651464"
         }
@@ -13306,9 +13318,10 @@ Create a webhook subcription for a business
                 "subscriptionId": 2,
                 "businessId": 755009344,
                 "events": [
+                    "conversation.created",
                     "conversation.updated",
                     "message.added",
-                    "conversation.created"
+					"conversation.closed"
                 ]
             }
 
