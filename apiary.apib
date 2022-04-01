@@ -7843,9 +7843,12 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****
 ### Contact Us Request [POST]
 Contact Us form can be filled using:
 
+#### Request
+
 <center><b>Example curl request</b></center>
 <pre><code>
 curl --location --request POST 'https://api.birdeye.com/resources/v1/contactUs/161322675307514?api_key=********' --header 'Content-Type: application/json' --header 'Accept: application/json' --data-raw '{"customerComment": "What all services do you offer?", "customer": {"name":"Dummy Name", "email":"sam@gmail.com", "phone":"4424242424"}, "additionalParams": {"channel": "Web", "utm_campiagn": "New Year"} }'
+
 </code></pre>
 > __Notes__
 
@@ -7853,9 +7856,6 @@ curl --location --request POST 'https://api.birdeye.com/resources/v1/contactUs/1
 > - _customerComment can be passed which is optional._
 > - _additionalParams contains (key,value) pair which can be used to track the customers._
 > - _additionalParams function as the custom fields with key as the name of the field._
-
-
-#### Request
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
@@ -7902,6 +7902,7 @@ curl --location --request POST 'https://api.birdeye.com/resources/v1/contactUs/1
 #### Response
 <pre><code>
 {"customerId":1234567}
+
 </code></pre>
 
 <div class="paramsTableWrap">
@@ -7995,61 +7996,8 @@ curl --location --request POST 'https://api.birdeye.com/resources/v1/contactUs/1
     + Headers
 
             Accept: application/json
-            
+
 + Response 200 (application/json)
-	
-	+Body
-		{
-			"customerId":123456
-		}
-
-+ Response 401 (application/json)
-
-    [1161][]
-    
-+ Response 404 (application/json)
-
-    [1175][]
-
-+ Response 401 (application/json)
-
-    [1167][]
-
-+ Response 400 (application/json)
-
-    [5046][]
-    
-+ Response 400 (application/json)
-
-    [1001][]
-
-+ Response 400 (application/json)
-
-    [1002][]
-
-+ Response 400 (application/json)
-
-    [1011][]
-
-+ Response 400 (application/json)
-
-    [1021][]
-
-+ Response 400 (application/json)
-
-    [1087][]
-
-+ Response 400 (application/json)
-
-    [1088][]
-
-+ Response 400 (application/json)
-
-    [1089][]
-
-+ Response 400 (application/json)
-
-    [1142][]
 
 
 
