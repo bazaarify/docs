@@ -7845,21 +7845,7 @@ Contact Us form can be filled using:
 
 <center><b>Example curl request</b></center>
 <pre><code>
-curl --location --request POST 'https://api.birdeye.com/resources/v1/contactUs/161322675307514?api_key=********' \
---header 'Content-Type: application/json' \
---header 'Accept: application/json' \
---data-raw '{
-    "customerComment": "What all services do you offer?",
-    "customer": {
-        "name":"Dummy Name",
-        "email":"sam@gmail.com",
-        "phone":"4424242424"
-    },
-    "additionalParams": {
-        "channel": "Web",
-        "utm_campiagn": "New Year"
-    }
-}'
+curl --location --request POST 'https://api.birdeye.com/resources/v1/contactUs/161322675307514?api_key=********' --header 'Content-Type: application/json' --header 'Accept: application/json' --data-raw '{"customerComment": "What all services do you offer?", "customer": {"name":"Dummy Name", "email":"sam@gmail.com", "phone":"4424242424"}, "additionalParams": {"channel": "Web", "utm_campiagn": "New Year"} }'
 </code></pre>
 > __Notes__
 
