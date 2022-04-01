@@ -6536,7 +6536,7 @@ curl --location --request POST 'https://api.birdeye.com/resources/v1/customer-v2
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --data-raw '{
-   "emailId": "test.user@test.com"
+   "email": "test.user@test.com"
 }'
 </code></pre>
 > __Notes__
@@ -7831,6 +7831,239 @@ curl -X POST 'https://api.birdeye.com/resources/v1/contact/details?api_key=*****
             Accept: application/json
 
 + Response 200 (application/json)
+
+
+
+## Contact Us [/v1/contactUs/{businessId}{?api_key}]
+
++ Parameters
+
+    + api_key (string, required) ... the API key
+
+### Contact Us Request [POST]
+Contact Us form can be filled using:
+
+<center><b>Example curl request</b></center>
+<pre><code>
+curl --location --request POST 'https://api.birdeye.com/resources/v1/contactUs/161322675307514?api_key=********' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--data-raw '{
+    "customerComment": "What all services do you offer?",
+    "customer": {
+        "name":"Dummy Name",
+        "email":"sam@gmail.com",
+        "phone":"4424242424"
+    },
+    "additionalParams": {
+        "channel": "Web",
+        "utm_campiagn": "New Year"
+    }
+}'
+</code></pre>
+> __Notes__
+
+> - _Mandatory to provide name, email and phone which are used to create the customer as a lead._
+> - _customerComment can be passed which is optional._
+> - _additionalParams contains (key,value) pair which can be used to track the customers._
+> - _additionalParams function as the custom fields with key as the name of the field._
+
+
+#### Request
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+             <tr>
+                <td>name</td>
+                <td>Name of the Customer</td>
+                <td>String (Mandatory)</td>
+            </tr>
+             <tr>
+                <td>email</td>
+                <td>Email Id of the Customer</td>
+                <td>String (Mandatory)</td>
+            </tr>
+            <tr>
+                <td>phone</td>
+                <td>Phone No of the Customer</td>
+                <td>String (Mandatory)</td>
+            </tr>
+            <tr>
+                <td>customerComment</td>
+                <td>Any comment or query by the customer</td>
+                <td>String (Optional)</td>
+            </tr>
+            <tr>
+                <td>additionalParams</td>
+                <td>Configure additionalParams which will function
+                as custom fields with field lable as key and field 
+                value of customer as value in the map.</td>
+                <td>Map (Optional)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response
+<pre><code>
+{"customerId":1234567}
+</code></pre>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+    <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+         <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>Api key or session token missing</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1001</td>
+            <td>Name of the contact is too long.</td>
+        </tr>
+         <tr>
+            <td>400 Bad Request</td>
+            <td>1001</td>
+            <td>First Name of the contact is too long</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1001</td>
+            <td>Middle Name of the contact is too long</td>
+        </tr>
+         <tr>
+            <td>400 Bad Request</td>
+            <td>1002</td>
+            <td>Last Name of the contact is too long</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1011</td>
+            <td>BusinessId doesnot correspond to the given API Key</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1021</td>
+            <td>Invalid Phone Number</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1087</td>
+            <td>Invalid Email Id</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1088</td>
+            <td>Email Id is not present</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1089</td>
+            <td>Phone Number is not present</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1142</td>
+            <td>Customer Name is not present</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>5046</td>
+            <td>The customer is blocked</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            
++ Response 200 (application/json)
+	
+	+Body
+		{
+			"customerId":123456
+		}
+
++ Response 401 (application/json)
+
+    [1161][]
+    
++ Response 404 (application/json)
+
+    [1175][]
+
++ Response 401 (application/json)
+
+    [1167][]
+
++ Response 400 (application/json)
+
+    [5046][]
+    
++ Response 400 (application/json)
+
+    [1001][]
+
++ Response 400 (application/json)
+
+    [1002][]
+
++ Response 400 (application/json)
+
+    [1011][]
+
++ Response 400 (application/json)
+
+    [1021][]
+
++ Response 400 (application/json)
+
+    [1087][]
+
++ Response 400 (application/json)
+
+    [1088][]
+
++ Response 400 (application/json)
+
+    [1089][]
+
++ Response 400 (application/json)
+
+    [1142][]
 
 
 
