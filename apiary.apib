@@ -11381,6 +11381,229 @@ Fetch all active surveys for a business
 
     [89][]
 
+## Create Survey [/v1/survey/external/create/{businessId}{?api_key}]
+Create a new survey
+
++ Parameters
+
+    + businessId (string, required) ... long ID of enterprise/SMB
+    + api_key (string, required) ... API key
+
+### Create Survey [POST]
+
+#### Request
+
+<center><b>Example cURL request</b></center>
+
+   curl --location --request POST 'http://app.birdeye.com/resources/v1/survey/external/create/123456789012345?api_key=********' \
+--header 'Content-Type: application/json' \
+--data-raw '{"surveyName":"Experience Survey","thankYouMessage":"Thank you for taking the survey!","surveyType":"traditional","ownerUserId":12345,"pages":[{"questions":[{"title":"Text1","type":"text"},{"title":"Text345","type":"textarea"}]},{"title":"Page 1 - optional","questions":[{"title":"Question number 1","type":"checkbox","required":true, "choices":["Choice 1","Choice 2","Choice 3"]},{"title":"Q2","type":"dropdown", "choices":["Dropdown 1","Dropdown 2","Dropdown 3"]},{"title":"Q2","type":"rating", "minLabel":"Strongly Disagree","maxLabel":"Strongly Agree", "maxValue":15}]}, {"questions":[{"title":"P2-Q1 - Radio","type":"radio","choices":["radio 1","radio 2","radio 3"]},{"title":"test nps","type":"nps" ,"minLabel":""}]} ,{"questions":[{"title":"Datetime question" ,"type":"datetime", "required":true, "showTime":true,"showDate":true,"interval":60,"minValue":"12","maxValue":"36"},{"title":"Please enter your contact information","type":"contact","required":true ,"contactRows":[{"required":true,"title":"First name","type":"text"},{"required":true, "title":"Email","type":"email"},{"required":true,"title":"Phone","type":"phone"}]}]},{"title":"Page 4","questions":[{"title":"P4-Q1","type":"matrixrating", "minLabel":"Strongly Disagree min label","maxLabel":"Strongly Agree max label","maxValue":5,"rows":["Row label 1","Row label 2"]},{"title":"P4-Q2","type":"matrixradio","required":true, "choices":["c1","c2","c3"],"rows":["Row 1","Row2"]}, {"title":"p4-Q3", "type":"matrixdropdown","required":true,"choices":["c1","c2","c3"],"rows":["Row label 1","Row label 2"]},{"title":"Label type ques","type":"label"}]}, {"questions":[{"title":"please review us on one of these sites","type":"review" ,"required":true,"contactUsMessage":"ContactUs test message", "reviewSources":[“abcdef”,”ghijkl”,”mnopqr”]}]}]}'
+
+#### Response
+
+<center><b>Example Response</b></center>
+                
+                    {
+                        "surveyId": 1234
+                    }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Body
+
+              {
+                  "surveyId": 1234
+              }
+
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
+## Update Settings [/v1/survey/{surveyId}/settings/update{?api_key,businessId}]
+Update the settings of an existing survey - appearance, access control, auto-reply
+
++ Parameters
+
+    + api_key (string, required) ... API key
+    + businessId (string, required) ... long ID of enterprise/SMB
+
+### Update Survey Settings [POST]
+
+#### Request
+
+<center><b>Example cURL request</b></center>
+
+   curl --location --request POST 'https://api.birdeye.com/resources/v1/survey/1234/settings/update?api_key=abCdEFgHi1jKLmNOp2QRsTUVwXYZA34b&businessId=123456789012345' \
+--header 'accountId: 123456789' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "surveySettings": {
+    "showSurveyTitle": false,
+    "showQuestionNumber": false,
+    "showProgressBar": false,
+    "progressbarPosition": null,
+    "hideBirdeyeLogo": false,
+    "defaultLocale": "en",
+    "showLogo": "CUSTOM",
+    "logoUrl": "https://abcde1fgh23ij.cloudfront.net/123456/fileUpload/123456_7890123456789_ABC.jpg",
+    "showTitle": "LOCATION",
+    "customTitle": "Welcome to Tennessee!",
+    "themeColor": "#1976d2",
+    "themeTextColor": "#ffffff",
+    "subject": "Thank you for taking the survey",
+    "message": "Hi , \nThank you for taking the time to give your inputs on the survey.",
+    "signature": "Sincerely, \nBMW_Survey \n",
+    "enableThankyouEmail": true
+  },
+  "accessControl": {
+    "userAccessList": [
+      {
+        "userId": 74318,
+        "role": "viewer"
+      },
+      {
+        "userId": 19440,
+        "delete" : true
+      }
+    ],
+  "surveyAccess": {
+            "role": "editor"
+        }
+    }
+}'
+
+#### Response
+
+<center><b>Example Response</b></center>
+                
+                    {
+                        "surveyId": 1234,
+                        "surveySettingId": 12345
+                    }
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200
+
+    + Body
+
+              {
+                  "surveyId": 1234,
+                  "suveySettingId" : 12345
+              }
+
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
 # Group Employee
 APIs related to employee
 
