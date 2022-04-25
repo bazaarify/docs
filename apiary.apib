@@ -250,6 +250,15 @@ All API URLs referenced in this documentation start with the following base part
             errorMessage: "Business id is invalid"
         }
 
+## 1380 [/1380]
+
++ Model (application/json)
+
+        {
+            errorCode: 1380,
+            errorMessage: "Api key or session token missing"
+        }
+
 ## 1048 [/1048]
 
 + Model (application/json)
@@ -894,6 +903,78 @@ All API URLs referenced in this documentation start with the following base part
         {
             errorCode: 5043,
             errorMessage: "Contact not found for the given request"
+        }
+
+## 2038 [/2038]
+
++ Model (application/json)
+
+        {
+            errorCode: 2038,
+            errorMessage: "Invalid value of role, expected editor, viewer or no-access"
+        }
+        
+## 2041 [/2041]
+
++ Model (application/json)
+
+        {
+            errorCode: 2041,
+            errorMessage: "Can't modify owner or existing owner's access!"
+        }
+
+## 2039 [/2039]
+
++ Model (application/json)
+
+        {
+            errorCode: 2039,
+            errorMessage: "UserId is missing in user access request!"
+        }
+        
+## 2043 [/2043]
+
++ Model (application/json)
+
+        {
+            errorCode: 2043,
+            errorMessage: "Invalid value of showTitle, accepted values are CUSTOM, LOCATION, OFF"
+        }
+
+## 2090 [/2090]
+
++ Model (application/json)
+
+        {
+            errorCode: 2090,
+            errorMessage: "Invalid value of showLogo, accepted values are ON, OFF"
+        }
+
+## 2040 [/2040]
+
++ Model (application/json)
+
+        {
+            errorCode: 2040,
+            errorMessage: "Invalid value of progress bar position, expected Bottom or Top"
+        }
+
+## 2042 [/2042]
+
++ Model (application/json)
+
+        {
+            errorCode: 2042,
+            errorMessage: "Received no valid inputs in request body!"
+        }
+        
+## 2037 [/2037]
+
++ Model (application/json)
+
+        {
+            errorCode: 2037,
+            errorMessage: "The survey doesn't belong to the account."
         }
 
 # Group Business
@@ -11488,8 +11569,7 @@ Update the settings of an existing survey - appearance, access control, auto-rep
 
 <center><b>Example cURL request</b></center>
 
-   curl --location --request POST 'https://api.birdeye.com/resources/v1/survey/1234/settings/update?api_key=abCdEFgHi1jKLmNOp2QRsTUVwXYZA34b&businessId=123456789012345' \
---header 'accountId: 123456789' \
+   curl --location --request POST 'https://api.birdeye.com/resources/v1/survey/1234/settings/update?api_key=*****************&businessId=1234567890' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "surveySettings": {
@@ -11497,11 +11577,8 @@ Update the settings of an existing survey - appearance, access control, auto-rep
     "showQuestionNumber": false,
     "showProgressBar": false,
     "progressbarPosition": null,
-    "hideBirdeyeLogo": false,
-    "defaultLocale": "en",
-    "showLogo": "CUSTOM",
-    "logoUrl": "https://abcde1fgh23ij.cloudfront.net/123456/fileUpload/123456_7890123456789_ABC.jpg",
-    "showTitle": "LOCATION",
+    "showLogo": "ON",
+    "showTitle": "CUSTOM",
     "customTitle": "Welcome to Tennessee!",
     "themeColor": "#1976d2",
     "themeTextColor": "#ffffff",
@@ -11513,11 +11590,11 @@ Update the settings of an existing survey - appearance, access control, auto-rep
   "accessControl": {
     "userAccessList": [
       {
-        "userId": 74318,
+        "userId": 12345,
         "role": "viewer"
       },
       {
-        "userId": 19440,
+        "userId": 67890,
         "delete" : true
       }
     ],
@@ -11549,13 +11626,13 @@ Update the settings of an existing survey - appearance, access control, auto-rep
         <tbody>
         <tr>
             <td>401 Unauthorized</td>
-            <td>1161</td>
-            <td>Invalid API key</td>
+            <td>1380</td>
+            <td>Api key or session token missing</td>
         </tr>
         <tr>
             <td>401 Unauthorized</td>
-            <td>1167</td>
-            <td>API key is missing</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
         </tr>
         <tr>
             <td>429 Too Many Requests</td>
@@ -11566,6 +11643,66 @@ Update the settings of an existing survey - appearance, access control, auto-rep
             <td>404 Not Found</td>
             <td>1011</td>
             <td>Business id is invalid</td>
+        </tr>
+                <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1315</td>
+            <td>Invalid Survey</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2037</td>
+            <td>The survey doesn't belong to the account.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2042</td>
+            <td>Received no valid inputs in request body!</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2040</td>
+            <td>Invalid value of progress bar position, expected Bottom or Top</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2090</td>
+            <td>Invalid value of showLogo, accepted values are ON, OFF</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2043</td>
+            <td>Invalid value of showTitle, accepted values are CUSTOM, LOCATION, OFF</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1188</td>
+            <td>User is not associated with the business. user ID: XXXX</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2039</td>
+            <td>UserId is missing in user access request!</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2038</td>
+            <td>Invalid value of role, expected editor, viewer or no-access for user Id: XXXX</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2041</td>
+            <td>Can't modify owner or existing owner's access!</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2038</td>
+            <td>Invalid value of role, expected editor, viewer or no-access for survey default access</td>
         </tr>
         </tbody>
     </table>
@@ -11587,21 +11724,65 @@ Update the settings of an existing survey - appearance, access control, auto-rep
               }
 
 
-+ Response 404
-
-    [1011][]
-
 + Response 401
 
-    [1167][]
+    [1380][]
 
-+ Response 400
++ Response 404
 
     [1161][]
 
-+ Response 429
++ Response 401
 
     [89][]
+
++ Response 400
+
+    [1011][]
+
++ Response 404
+
+    [1175][]
+    
++ Response 400
+
+    [1315][]
+    
++ Response 400
+
+    [2037][]
+        
++ Response 400
+
+    [2042][]
+        
++ Response 400
+
+    [2040][]
+        
++ Response 400
+
+    [2090][]
+        
++ Response 400
+
+    [2043][]
+        
++ Response 400
+
+    [1188][]
+        
++ Response 400
+
+    [2039][]
+        
++ Response 400
+
+    [2038][]
+        
++ Response 400
+
+    [2041][]
 
 
 # Group Employee
