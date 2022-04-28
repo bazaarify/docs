@@ -929,7 +929,7 @@ All API URLs referenced in this documentation start with the following base part
 
         {
             errorCode: 2039,
-            errorMessage: "UserId is missing in user access request!"
+            errorMessage: "User email is missing in user access request!"
         }
         
 ## 2043 [/2043]
@@ -983,7 +983,7 @@ All API URLs referenced in this documentation start with the following base part
 
         {
             errorCode: 2044,
-            errorMessage: "Survey Field Type passed is unknown"
+            errorMessage: "Survey already completed"
         }
 
 ## 2093 [/2093]
@@ -1235,7 +1235,7 @@ All API URLs referenced in this documentation start with the following base part
 
         {
             errorCode: 2071,
-            errorMessage: "Invalid ownerUserId"
+            errorMessage: "Invalid ownerEmailId"
         }
 
 ## 2072 [/2072]
@@ -1391,13 +1391,31 @@ All API URLs referenced in this documentation start with the following base part
             errorMessage: "Review Source already present"
         }
 
-## 2089 [/2089]
+## 2094 [/2094]
 
 + Model (application/json)
 
         {
-            errorCode: 2089,
+            errorCode: 2094,
             errorMessage: "ReviewSources passed are invalid"
+        }
+        
+## 2095 [/2095]
+
++ Model (application/json)
+
+        {
+            errorCode: 2095,
+            errorMessage: "ownerEmailId cannot be null"
+        }
+        
+## 2096 [/2096]
+
++ Model (application/json)
+
+        {
+            errorCode: 2096,
+            errorMessage: "Detected conflicting user-access request!"
         }
 
 # Group Business
@@ -11899,14 +11917,11 @@ Create a new survey
 
 <center><b>Example cURL request</b></center>
 
-   curl --location --request POST 'http://app.birdeye.com/resources/v1/survey/external/create/123456789012345?api_key=********' \
+curl --location --request POST 'https://api.birdeye.com/resources/v1/survey/external/create/123456789012345?api_key=********' \
 --header 'Content-Type: application/json' \
---data-raw '{"surveyName":"Experience Survey","thankYouMessage":"Thank you for taking the survey!","surveyType":"traditional","ownerUserId":12345,"pages":[{"questions":[{"title":"Text1","type":"text"},{"title":"Text345","type":"textarea"}]},{"title":"Page 1 - optional","questions":[{"title":"Question number 1","type":"checkbox","required":true, "choices":["Choice 1","Choice 2","Choice 3"]},{"title":"Q2","type":"dropdown", "choices":["Dropdown 1","Dropdown 2","Dropdown 3"]},{"title":"Q2","type":"rating", "minLabel":"Strongly Disagree","maxLabel":"Strongly Agree", "maxValue":15}]}, {"questions":[{"title":"P2-Q1 - Radio","type":"radio","choices":["radio 1","radio 2","radio 3"]},{"title":"test nps","type":"nps" ,"minLabel":""}]} ,{"questions":[{"title":"Datetime question" ,"type":"datetime", "required":true, "showTime":true,"showDate":true,"interval":60,"minValue":"12","maxValue":"36"},{"title":"Please enter your contact information","type":"contact","required":true ,"contactRows":[{"required":true,"title":"First name","type":"text"},{"required":true, "title":"Email","type":"email"},{"required":true,"title":"Phone","type":"phone"}]}]},{"title":"Page 4","questions":[{"title":"P4-Q1","type":"matrixrating", "minLabel":"Strongly Disagree min label","maxLabel":"Strongly Agree max label","maxValue":5,"rows":["Row label 1","Row label 2"]},{"title":"P4-Q2","type":"matrixradio","required":true, "choices":["c1","c2","c3"],"rows":["Row 1","Row2"]}, {"title":"p4-Q3", "type":"matrixdropdown","required":true,"choices":["c1","c2","c3"],"rows":["Row label 1","Row label 2"]},{"title":"Label type ques","type":"label"}]}, {"questions":[{"title":"please review us on one of these sites","type":"review" ,"required":true,"contactUsMessage":"ContactUs test message", "reviewSources":[“abcdef”,”ghijkl”,”mnopqr”]}]}]}'
+--data-raw '{"surveyName":"Experience Survey","thankYouMessage":"Thank you for taking the survey!","surveyType":"traditional","ownerEmailId":"testmail@gmail.com","pages":[{"questions":[{"title":"Text1","type":"text"},{"title":"Text345","type":"textarea"}]},{"title":"Page 1-optional","questions":[{"title":"Question number1","type":"checkbox","required":true, "choices":["Choice 1","Choice 2","Choice 3"]},{"title":"Q2","type":"dropdown", "choices":["Dropdown 1","Dropdown 2","Dropdown 3"]},{"title":"Q2","type":"rating", "minLabel":"Strongly Disagree","maxLabel":"Strongly Agree", "maxValue":15}]}, {"questions":[{"title":"P2-Q1 - Radio","type":"radio","choices":["radio 1","radio 2","radio 3"]},{"title":"test nps","type":"nps" ,"minLabel":""}]} ,{"questions":[{"title":"Datetime question" ,"type":"datetime", "required":true, "showTime":true,"showDate":true,"interval":60,"minValue":"12","maxValue":"36"},{"title":"Please enter your contact information","type":"contact","required":true ,"contactRows":[{"required":true,"title":"First name","type":"text"},{"required":true, "title":"Email","type":"email"},{"required":true,"title":"Phone","type":"phone"}]}]},{"title":"Page 4","questions":[{"title":"P4-Q1","type":"matrixrating", "minLabel":"Strongly Disagree min label","maxLabel":"Strongly Agree max label","maxValue":5,"rows":["Row label 1","Row label 2"]},{"title":"P4-Q2","type":"matrixradio","required":true, "choices":["c1","c2","c3"],"rows":["Row 1","Row2"]}, {"title":"p4-Q3", "type":"matrixdropdown","required":true,"choices":["c1","c2","c3"],"rows":["Row label 1","Row label 2"]},{"title":"Label type ques","type":"label"}]}, {"questions":[{"title":"please review us on one of these sites","type":"review" ,"required":true,"contactUsMessage":"ContactUs test message", "reviewSources":[“abcdef”,”ghijkl”,”mnopqr”]}]}]}'
 
-#### Response
-
-<center><b>Example Response</b></center>
-                
+#### Response                
                     {
                         "surveyId": 1234
                     }
@@ -12085,7 +12100,7 @@ Create a new survey
         <tr>
             <td>400 Bad Request</td>
             <td>2071</td>
-            <td>Invalid ownerUserId</td>
+            <td>Invalid ownerEmailId</td>
         </tr>
         <tr>
             <td>400 Bad Request</td>
@@ -12398,7 +12413,11 @@ Create a new survey
     
 + Response 400
 
-    [2089][]
+    [2094][]
+
++ Response 400
+
+	[2095][]
 
 
 ## Update Settings [/v1/survey/{surveyId}/settings/update{?api_key,businessId}]
@@ -12436,11 +12455,11 @@ Update the settings of an existing survey - appearance, access control, auto-rep
   "accessControl": {
     "userAccessList": [
       {
-        "userId": 12345,
+        "userEmail": "naveen.gupta@birdeye.com",
         "role": "viewer"
       },
       {
-        "userId": 67890,
+        "userEmail": "neeraj.gupta@birdeye.com",
         "delete" : true
       }
     ],
@@ -12450,10 +12469,7 @@ Update the settings of an existing survey - appearance, access control, auto-rep
     }
 }'
 
-#### Response
-
-<center><b>Example Response</b></center>
-                
+#### Response                
                     {
                         "surveyId": 1234,
                         "surveySettingId": 12345
@@ -12527,18 +12543,13 @@ Update the settings of an existing survey - appearance, access control, auto-rep
         </tr>
         <tr>
             <td>400 Bad Request</td>
-            <td>1188</td>
-            <td>User is not associated with the business. user ID: XXXX</td>
-        </tr>
-        <tr>
-            <td>400 Bad Request</td>
             <td>2039</td>
-            <td>UserId is missing in user access request!</td>
+            <td>User email is missing in user access request!</td>
         </tr>
         <tr>
             <td>400 Bad Request</td>
             <td>2038</td>
-            <td>Invalid value of role, expected editor, viewer or no-access for user Id: XXXX</td>
+            <td>Invalid value of role, expected editor, viewer or no-access for user : XXXX</td>
         </tr>
         <tr>
             <td>400 Bad Request</td>
@@ -12549,6 +12560,11 @@ Update the settings of an existing survey - appearance, access control, auto-rep
             <td>400 Bad Request</td>
             <td>2038</td>
             <td>Invalid value of role, expected editor, viewer or no-access for survey default access</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2096</td>
+            <td>Detected conflicting user-access request!</td>
         </tr>
         </tbody>
     </table>
@@ -12616,10 +12632,6 @@ Update the settings of an existing survey - appearance, access control, auto-rep
         
 + Response 400
 
-    [1188][]
-        
-+ Response 400
-
     [2039][]
         
 + Response 400
@@ -12630,6 +12642,9 @@ Update the settings of an existing survey - appearance, access control, auto-rep
 
     [2041][]
 
++ Response 400
+
+	[2096][]
 
 # Group Employee
 APIs related to employee
