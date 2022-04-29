@@ -11916,10 +11916,175 @@ Create a new survey
 #### Request
 
 <center><b>Example cURL request</b></center>
-
+<pre><code>
 curl --location --request POST 'https://api.birdeye.com/resources/v1/survey/external/create/123456789012345?api_key=********' \
 --header 'Content-Type: application/json' \
---data-raw '{"surveyName":"Experience Survey","thankYouMessage":"Thank you for taking the survey!","surveyType":"traditional","ownerEmailId":"testmail@gmail.com","pages":[{"questions":[{"title":"Text1","type":"text"},{"title":"Text345","type":"textarea"}]},{"title":"Page 1-optional","questions":[{"title":"Question number1","type":"checkbox","required":true, "choices":["Choice 1","Choice 2","Choice 3"]},{"title":"Q2","type":"dropdown", "choices":["Dropdown 1","Dropdown 2","Dropdown 3"]},{"title":"Q2","type":"rating", "minLabel":"Strongly Disagree","maxLabel":"Strongly Agree", "maxValue":15}]}, {"questions":[{"title":"P2-Q1 - Radio","type":"radio","choices":["radio 1","radio 2","radio 3"]},{"title":"test nps","type":"nps" ,"minLabel":""}]} ,{"questions":[{"title":"Datetime question" ,"type":"datetime", "required":true, "showTime":true,"showDate":true,"interval":60,"minValue":"12","maxValue":"36"},{"title":"Please enter your contact information","type":"contact","required":true ,"contactRows":[{"required":true,"title":"First name","type":"text"},{"required":true, "title":"Email","type":"email"},{"required":true,"title":"Phone","type":"phone"}]}]},{"title":"Page 4","questions":[{"title":"P4-Q1","type":"matrixrating", "minLabel":"Strongly Disagree min label","maxLabel":"Strongly Agree max label","maxValue":5,"rows":["Row label 1","Row label 2"]},{"title":"P4-Q2","type":"matrixradio","required":true, "choices":["c1","c2","c3"],"rows":["Row 1","Row2"]}, {"title":"p4-Q3", "type":"matrixdropdown","required":true,"choices":["c1","c2","c3"],"rows":["Row label 1","Row label 2"]},{"title":"Label type ques","type":"label"}]}, {"questions":[{"title":"please review us on one of these sites","type":"review" ,"required":true,"contactUsMessage":"ContactUs test message", "reviewSources":[“abcdef”,”ghijkl”,”mnopqr”]}]}]}'
+--data-raw '{
+    "surveyName": "Experience Survey",
+    "thankYouMessage": "Thank you for taking the survey!",
+    "surveyType": "traditional",
+    "ownerEmailId": "testmail@gmail.com",
+    "pages": [
+        {
+            "questions": [
+                {
+                    "title": "Text1",
+                    "type": "text"
+                },
+                {
+                    "title": "Paragraph",
+                    "type": "textarea"
+                }
+            ]
+        },
+        {
+            "title": "Page 2-optional",
+            "questions": [
+                {
+                    "title": "Questionnumber1",
+                    "type": "checkbox",
+                    "required": true,
+                    "choices": [
+                        "Choice 1",
+                        "Choice 2",
+                        "Choice 3"
+                    ]
+                },
+                {
+                    "title": "Q2",
+                    "type": "dropdown",
+                    "choices": [
+                        "Dropdown 1",
+                        "Dropdown 2",
+                        "Dropdown 3"
+                    ]
+                },
+                {
+                    "title": "ratingQn",
+                    "type": "rating",
+                    "minLabel": "Strongly Disagree",
+                    "maxLabel": "Strongly Agree",
+                    "maxValue": 10
+                }
+            ]
+        },
+        {
+            "questions": [
+                {
+                    "title": "P3-Q1-Radio",
+                    "type": "radio",
+                    "choices": [
+                        "radio 1",
+                        "radio 2",
+                        "radio 3"
+                    ]
+                },
+                {
+                    "title": "npsQn",
+                    "type": "nps",
+                    "minLabel": "Strongly Disagree"
+                }
+            ]
+        },
+        {
+            "questions": [
+                {
+                    "title": "Datetime question",
+                    "type": "datetime",
+                    "required": true,
+                    "showTime": true,
+                    "showDate": true,
+                    "interval": 60,
+                    "minValue": "12",
+                    "maxValue": "36"
+                },
+                {
+                    "title": "Please enter your contact information",
+                    "type": "contact",
+                    "required": true,
+                    "contactRows": [
+                        {
+                            "required": true,
+                            "title": "First name",
+                            "type": "text"
+                        },
+                        {
+                            "required": true,
+                            "title": "Email",
+                            "type": "email"
+                        },
+                        {
+                            "required": true,
+                            "title": "Phone",
+                            "type": "phone"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Page 4",
+            "questions": [
+                {
+                    "title": "P4-Q1",
+                    "type": "matrixrating",
+                    "minLabel": "Strongly Disagree",
+                    "maxLabel": "Strongly Agree",
+                    "maxValue": 5,
+                    "rows": [
+                        "Row label 1",
+                        "Row label 2"
+                    ]
+                },
+                {
+                    "title": "P4-Q2",
+                    "type": "matrixradio",
+                    "required": true,
+                    "choices": [
+                        "c1",
+                        "c2",
+                        "c3"
+                    ],
+                    "rows": [
+                        "Row 1",
+                        "Row2"
+                    ]
+                },
+                {
+                    "title": "p4-Q3",
+                    "type": "matrixdropdown",
+                    "required": true,
+                    "choices": [
+                        "c1",
+                        "c2",
+                        "c3"
+                    ],
+                    "rows": [
+                        "Row label 1",
+                        "Row label 2"
+                    ]
+                },
+                {
+                    "title": "Label type ques",
+                    "type": "label"
+                }
+            ]
+        },
+        {
+            "questions": [
+                {
+                    "title": "please review us on one of these sites",
+                    "type": "review",
+                    "required": true,
+                    "contactUsMessage": "ContactUs test message",
+                    "reviewSources": ["Google","Facebook","CitySearch"
+                    ]
+                }
+            ]
+        }
+    ]
+}'
+</code></pre>
 
 #### Response                
                     {
