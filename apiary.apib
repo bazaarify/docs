@@ -12604,6 +12604,7 @@ Update the settings of an existing survey - appearance, access control, auto-rep
 
 <center><b>Example cURL request</b></center>
 
+<pre><code>
    curl --location --request POST 'https://api.birdeye.com/resources/v1/survey/1234/settings/update?api_key=*****************&businessId=1234567890' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -12611,7 +12612,7 @@ Update the settings of an existing survey - appearance, access control, auto-rep
     "showSurveyTitle": false,
     "showQuestionNumber": false,
     "showProgressBar": false,
-    "progressbarPosition": null,
+    "progressbarPosition": Bottom,
     "showLogo": "ON",
     "showTitle": "CUSTOM",
     "customTitle": "Welcome to Tennessee!",
@@ -12638,6 +12639,124 @@ Update the settings of an existing survey - appearance, access control, auto-rep
         }
     }
 }'
+</code></pre>
+
+<center><b>Request Payload</b></center>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <thead>
+        <tr>
+            <th>Field</th>
+            <th>Description, Constraints</th>
+            <th>Default Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>surveySettings</td>
+            <td>to modify appearance and auto-reply settings</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>showSurveyTitle</td>
+            <td>boolean, to toggle survey title visibility</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>showQuestionNumber</td>
+            <td>boolean, to toggle question numbers’ visibility</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>showProgressBar</td>
+            <td>boolean, to toggle progress bar visibility</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>progressbarPosition</td>
+            <td>String, to customize the progress bar position, accepted values: ‘Top’, ‘Bottom’</td>
+            <td>Bottom</td>
+        </tr>
+        <tr>
+            <td>showLogo</td>
+            <td>string, to set location logo visibility and customization, Accepted values: OFF, ON (to use location’s logo)</td>
+            <td>OFF</td>
+        </tr>
+        <tr>
+            <td>showTitle</td>
+            <td>String, to set location title visibility and customization, Accepted values: OFF, CUSTOM, LOCATION (to use location’s name as title)</td>
+            <td>OFF</td>
+        </tr>
+        <tr>
+            <td>customTitle</td>
+            <td>String, to provide custom title if showTitle is set to ‘CUSTOM’</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>themeColor</td>
+            <td>String, to set survey theme color (affects buttons and progress bar, should be a valid hex number starting with ‘#’</td>
+            <td>#1976d2</td>
+        </tr>
+        <tr>
+            <td>themeTextColor</td>
+            <td>String, to set survey theme text color (affects button text and progress indicator text), should be a valid hex number starting with ‘#’</td>
+            <td>#ffffff</td>
+        </tr>
+        <tr>
+            <td>enableThankyouEmail</td>
+            <td>boolean, to enable survey auto-reply email</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>subject</td>
+            <td>String, to set email subject for auto-reply</td>
+            <td>Thanks for being a valued customer!</td>
+        </tr>
+        <tr>
+            <td>message</td>
+            <td>boolean, to set email body for auto-reply</td>
+            <td>Thank you for taking the time to help us improve our service. We value your feedback.</td>
+        </tr>
+        <tr>
+            <td>signature</td>
+            <td>String, to set email signature for auto-reply</td>
+            <td>Have a great day,\n[Business Name]\n[Business Phone]</td>
+        </tr>
+        <tr>
+            <td>accessControl</td>
+            <td>to control who the survey is accessible to</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>userAccessList</td>
+            <td>to add/update/delete access for individual users</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>surveyAccess</td>
+            <td>to update/delete access at account level</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>userEmail</td>
+            <td>String, to specify user to add/update/delete access, mandatory to add/update/delete user-access</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>role</td>
+            <td>String, to specify role while adding/updating access, accepted values: editor, viewer, no-access, mandatory for create/update-access calls</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>delete</td>
+            <td>boolean, to specify whether to delete user access, mandatory for delete-user-access requests</td>
+            <td>false</td>
+        </tr>
+        
+        </tbody>
+    </table>
+</div>
 
 #### Response                
                     {
