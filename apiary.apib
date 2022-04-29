@@ -12643,6 +12643,9 @@ Update the settings of an existing survey - appearance, access control, auto-rep
 }'
 </code></pre>
 
+<b>Note</b>
+<br><li>In user-access request, if multiple entries are detected for a user, they will be assigned the highest role among all the different roles specified. If the entries are conflicting (e.g. delete + update), the API will return with exception</li></br>
+
 <center><b>Request Payload</b></center>
 
 <div class="paramsTableWrap">
