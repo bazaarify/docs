@@ -52,6 +52,15 @@ All API URLs referenced in this documentation start with the following base part
             errorMessage: "Business already associated with another reseller"
         }
 
+## 1040 [/1040]
+
++ Model (application/json)
+
+        {
+            errorCode: 1040,
+            errorMessage: "Invalid temmplate id."
+        }
+
 ## 1045 [/1045]
 
 + Model (application/json)
@@ -8521,6 +8530,179 @@ curl --location --request POST 'https://api.birdeye.com/resources/v1/contactUs/1
 
 + Response 200 (application/json)
 
+
+# Group Campaign
+
+APIs related to campaigns
+
+## Fetch Request URL [/v1/campaign/external/campaign-request-url{?api_key}]
+
++ Parameters
+
+    + api_key (string, required) ... the API key
+    
+
+### Fetch Request URL [POST]
+
+Request URL can be fetched using:
+
+<center><b>Example curl request</b></center>
+<pre><code>
+curl --location --request POST 'http://api.birdeye.com/resources/v1/campaign/external/get-review-request-shorten-url?api_key=4u7CDZNcY280eiuPgWruvfewoUNt' \
+--header 'Connection: keep-alive' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+   "businessId": “100018055”,
+    "customerId": 39870987,
+    "surveyId":6102,
+    "templateId": 1133204,
+    "checkinId": null
+    }'
+</code></pre>
+
+> __Notes__
+> - _BusinessId and customerId are mandatory while fetching request url._
+> - _TemplateId is mandatory for all request types except Survey._
+> - _For Survey requests, surveyId is a mandatory field._ 
+
+#### Request
+
+<center><b>Example Payload</b></center>
+<pre><code>
+    {
+   "businessId": “100018055”,
+    "customerId": 39870987,
+    "surveyId":6102,
+    "templateId": 1133204,
+    "checkinId": null
+    }
+</code></pre>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>businessId</td>
+            <td>Unique Id of a business(Long)</td>
+            <td>integer, required</td>
+        </tr>
+        <tr>
+            <td>customerId</td>
+            <td>Unique Id of a customer</td>
+            <td>integer, required</td>
+        </tr>
+        <tr>
+            <td>surveyId</td>
+            <td>Survey Id</td>
+            <td>integer, required (only for survey requests)</td>
+        </tr>
+        <tr>
+            <td>templateId</td>
+            <td>Id of Text template</td>
+            <td>integer, required (except for survey request)</td>
+        </tr>
+        <tr>
+            <td>checkinId</td>
+            <td>Checkin id of customer</td>
+            <td>integer, optional</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Response Structure
+<pre><code>
+{
+    "externalUId" : Long,
+    "url" : String
+}
+</code></pre>
+
+#### Response Example
+<pre><code>
+{
+    "externalUId" : 12459909733,
+    "url" : "https://birdeye.cx/a1swor"
+}
+</code></pre>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1011</td>
+            <td>Business id is invalid</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1089</td>
+            <td>Customer id is invalid.</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1040</td>
+            <td>Invalid template field id</td>
+        </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>1315</td>
+            <td>Invalid Survey id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1011][]
+
++ Response 400
+
+    [1089][]
+    
++ Response 400
+
+    [1040][]
+    
++ Response 400
+
+    [1315][]
 
 
 # Group Aggregation
