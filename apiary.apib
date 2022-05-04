@@ -8848,6 +8848,117 @@ List of aggregation source can be fetched using:
     [1175][]
 
 
+## Get Source List-lite [/v1/survey/reviewsites-alias {?api_key,businessId}]
+
++ Parameters
+
+    + businessId (string, required) ... the Business ID
+    + api_key (string, required) ... the API key
+
+### Get all aggregation source [GET]
+List of aggregation source can be fetched using:
+
+#### Request
+
+<center><b>Example curl request</b></center>
+<pre><code>
+curl --location --request GET 'http://api.birdeye.com/resources/v1/survey/reviewsites-alias?api_key=************&businessId=123456789012345' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json'
+
+</code></pre>
+
+#### Response
+
+<center><b>Example Response</b></center>
+{
+    "aliases": [
+       "Google",
+       "Citysearch",
+       "Yahoo! Local",
+       "Yellow Pages",
+       "Insider Pages",
+       "Superpages",
+       "Amazon",
+       "Birdeye",
+       "Facebook",
+       "Realself",
+       "ConsumersAdvocate",
+       "Vrbo",
+       "Tell Management",
+       "Rehabs.com"
+   ]
+}
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+        <tr>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1161</td>
+            <td>Invalid API key</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1167</td>
+            <td>API key is missing</td>
+        </tr>
+        <tr>
+            <td>429 Too Many Requests</td>
+            <td>89</td>
+            <td>Rate limit exceeded</td>
+        </tr>
+        <tr>
+            <td>401 Unauthorized</td>
+            <td>1033</td>
+            <td>You are not authorized to perform this action</td>
+        </tr>
+        <tr>
+            <td>404 Not Found</td>
+            <td>1175</td>
+            <td>No business found with the given id</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
+     +Body
+        {
+            "aliases": [
+                "Google",
+                "Citysearch",
+                "Yahoo! Local",
+                "Yellow Pages",
+                "Insider Pages",
+                "Superpages",
+                "Amazon",
+                "Birdeye",
+                "Facebook",
+                "Realself",
+                "ConsumersAdvocate",
+                "Vrbo",
+                "Tell Management",
+                "Rehabs.com"
+            ]
+    }
+
+
 
 ## Add Aggregation Link [/v1/aggregation/business/{business_id} {?api_key}]
 
