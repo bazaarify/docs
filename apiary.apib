@@ -8704,6 +8704,80 @@ curl --location --request POST 'http://api.birdeye.com/resources/v1/campaign/ext
 
     [1315][]
 
+## Set Defaullt Review Sources [/v1/campaign/external/default-review-sources{?api_key}]
+
++ Parameters
+
+    + api_key (string, required) ... the API key
+    
+
+### Set Defaullt Review Sources [POST]
+
+API to update default templates of businesses under a reseller with default review sources (i.e. Google/Facebook).
+
+<center><b>Example curl request</b></center>
+<pre><code>
+curl --location --request POST 'http://api.birdeye.com/resources/v1/campaign/external/default-review-sources?api_key=uu7qrdki2HkQ7H7yf3d92dkQ6uy7Hdjj' \
+--header 'Connection: keep-alive' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "resellerId": 157189662556139,
+    "businessIds": [
+        155911947195757,
+        155290409184734
+    ]
+    }'
+</code></pre>
+
+> __Notes__
+> - _If either of Google/Facebook or both are present as aggregated review sources, then Google/Facebook or both will be set as selected review sources for default templates, otherwise no changes will be made to default templates._
+> - _This API runs for a maximum of 500 business ids in 1 request. If more than 500 ids are provided, the request will be rejected and throw an error._
+
+#### Request
+
+<center><b>Sample Payload</b></center>
+<pre><code>
+    {
+        "resellerId": “157189662556139”,
+        "businessIds": [ 155911947195757, 155290409184734 ]
+    }
+
+</code></pre>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>resellerId</td>
+            <td>Business Id of reseller(Long)</td>
+            <td>long, required</td>
+        </tr>
+        <tr>
+            <td>businessIds</td>
+            <td>List of business ids under a reseller</td>
+            <td>long, required</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
++ Response 200 (application/json)
+
 
 # Group Aggregation
 
