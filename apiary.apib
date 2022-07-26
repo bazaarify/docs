@@ -1427,6 +1427,15 @@ All API URLs referenced in this documentation start with the following base part
             errorMessage: "Detected conflicting user-access request!"
         }
 
+## 2347 [/2347]
+
++ Model (application/json)
+
+        {
+            errorCode: 2347,
+            errorMessage: "Max page size allowed is 1,000"
+        }
+
 # Group Business
 APIs related to business
 
@@ -7580,12 +7589,14 @@ Customer checkin can be done using:
     [1175][]
 
 
-## Customer list [/v1/customer/all{?businessId,api_key}]
+## Customer list [/v1/customer/all{?businessId,api_key,sindex,count}]
 
 + Parameters
 
     + businessId (string, required) ... the Business ID
     + api_key (string, required) ... the API key
+    + sindex (integer, optional) ... the starting index of the customer list, default value is 0
+    + count (integer, optional) ... the number of customers to query, default value is 100 and maximum value can be 1000
 
 ### Customer list [GET]
 Customer list can be fetched using:
@@ -7676,6 +7687,11 @@ Customer list can be fetched using:
             <td>89</td>
             <td>Rate limit exceeded</td>
         </tr>
+        <tr>
+            <td>400 Bad Request</td>
+            <td>2347</td>
+            <td>Max page size allowed is 1,000</td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -7704,6 +7720,10 @@ Customer list can be fetched using:
 + Response 401
 
     [1167][]
+
++ Response 400
+
+    [2347][]
 
 
 ## Activity log [/v1/customer/history/{customerId}{?businessId,api_key}]
