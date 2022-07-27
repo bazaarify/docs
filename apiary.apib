@@ -7589,7 +7589,7 @@ Customer checkin can be done using:
     [1175][]
 
 
-## Customer list [/v1/customer/all{?businessId,api_key,sindex,count}]
+## Customer list {deprecated} [/v1/customer/all{?businessId,api_key,sindex,count}]
 
 + Parameters
 
@@ -7599,6 +7599,7 @@ Customer checkin can be done using:
     + count (integer, optional) ... the number of customers to query, default value is 100 and maximum value can be 1000
 
 ### Customer list [GET]
+__Note__ : Support for this API will be removed soon. Use <a href="https://developers.birdeye.com/#/reference/contacts/customer-or-lead-list/customer-list?console=1">contact details</a> API instead.<br><br>
 Customer list can be fetched using:
 
 <center><b>Example curl request</b></center>
