@@ -760,7 +760,16 @@ All API URLs referenced in this documentation start with the following base part
             errorCode: 1523,
             errorMessage: "The correct date format should be mm/dd/yyyy."
         }
+        
+## 1422 [/1422]
 
++ Model (application/json)
+
+        {
+            errorCode: 1422,
+            errorMessage: "Api call failed"
+        }
+        
 ## 1524 [/1524]
 
 + Model (application/json)
@@ -17816,3 +17825,116 @@ Listing can be fixed using:
 + Response 404
 
     [1175][]
+    
+# Group Integration
+APIs related to integration
+
+## Add Business Integration Mapping [/v1/integrations/add/businessintegrationmapping{?api_key}]
+Adding locations to integrations and set them active:
+
+### Add locations [PUT]
+
+#### Request
+
+<center><b>Example CURL Request</b></center>
+curl --location --request PUT 'https://api.birdeye.com/resources/v1/integrations/add/businessintegrationmapping?api_key=********************' \--header 'Content-Type: application/json' \--header 'Cache-Control: no-cache' \--header 'Postman-Token: 5c364774-c207-438e-a4d3-6a2622090f50' \--data-raw '{ "businessNumber":1234567789123455, "active": true, "integrationGroupId": 12345, "integrationProperties": [{ "propertyKey": "property_key", "propertyValue": "property_value" }]}'
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Request Payload</caption>
+        <thead>
+            <th>Fields</th>
+            <th>Constraints</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>businessNumber</td>
+                <td>required, Long</td>
+            </tr>
+            <tr>
+                <td>GroupId</td>
+                <td>required, Long</td>
+            </tr>
+            <tr>
+                <td>active</td>
+                <td>required, Boolean</td>
+            </tr>
+            <tr>
+                <td>integrationProperties</td>
+                <td>required, Object</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="paramsTableWrap">
+    <table class="paramsTable">
+        <caption>Error Codes</caption>
+        <thead>
+            <th>HTTP Status</th>
+            <th>BirdEye error code</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+         <tr><td>401 Unauthorized</td><td>1161</td><td>Invalid API key</td></tr>
+         <tr><td>401 Unauthorized</td><td>1167</td><td>API key is missing</td></tr>
+         <tr><td>429 Too Many Requests</td><td>89</td><td>Rate limit exceeded</td></tr>
+         <tr><td>401 Unauthorized</td><td>1033</td><td>You are not authorized to perform this action</td></tr>
+         <tr><td>404 Not Found</td><td>1175</td><td>No business found with the given id</td></tr>
+         <tr><td>400 Bad Request</td><td>1422</td><td>Invalid API Request</td></tr>
+         </tbody>
+    </table>
+</div>
+
+
+
++ Parameters
+
+    + api_key (required, string) ... the API key
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+
+            {
+    "businessNumber": 166015909542313,
+    "integrationGroupId": 12345,
+    "active": true,
+    "integrationProperties": [
+        {
+            "propertyKey": "property_key",
+            "propertyValue": "1234567"
+        }
+      ]
+     }
+
++ Response 200 (application/json)
+
++ Response 401 (application/json)
+
+    [1161][]
+
++ Response 401 (application/json)
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 401 (application/json)
+
+    [1033][]
+
++ Response 404 (application/json)
+
+    [1175][]
+
++ Response 400 (application/json)
+
+    [1422][]
