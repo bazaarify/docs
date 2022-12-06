@@ -1444,6 +1444,8 @@ All API URLs referenced in this documentation start with the following base part
             errorCode: 2347,
             errorMessage: "Max page size allowed is 1,000"
         }
+        
+
 
 # Group Business
 APIs related to business
@@ -17837,7 +17839,8 @@ Adding locations to integrations and set them active:
 #### Request
 
 <center><b>Example CURL Request</b></center>
-curl --location --request PUT 'https://api.birdeye.com/resources/v1/integrations/add/businessintegrationmapping?api_key=********************' \--header 'Content-Type: application/json' \--header 'Cache-Control: no-cache' \--header 'Postman-Token: 5c364774-c207-438e-a4d3-6a2622090f50' \--data-raw '{ "businessNumber":1234567789123455, "active": true, "integrationGroupId": 12345, "integrationProperties": [{ "propertyKey": "property_key", "propertyValue": "property_value" }]}'
+
+curl --location --request PUT 'https://api.birdeye.com/resources/v1/integrations/add/businessintegrationmapping?api_key=********************' --header 'Content-Type: application/json' --data-raw '{ "businessNumber":1234567789123455, "active": true, "integrationGroupId": 12345, "integrationProperties": [{ "propertyKey": "property_key", "propertyValue": "property_value" }]}'
 
 <div class="paramsTableWrap">
     <table class="paramsTable">
@@ -17913,13 +17916,13 @@ curl --location --request PUT 'https://api.birdeye.com/resources/v1/integrations
       ]
      }
 
-+ Response 200 (application/json)
++ Response 200 
 
-+ Response 401 (application/json)
++ Response 401 
 
     [1161][]
 
-+ Response 401 (application/json)
++ Response 401 
 
     [1167][]
 
@@ -17927,14 +17930,14 @@ curl --location --request PUT 'https://api.birdeye.com/resources/v1/integrations
 
     [89][]
 
-+ Response 401 (application/json)
++ Response 401 
 
     [1033][]
 
-+ Response 404 (application/json)
++ Response 404 
 
     [1175][]
 
-+ Response 400 (application/json)
++ Response 400 
 
     [1422][]
