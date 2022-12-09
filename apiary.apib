@@ -1,25 +1,22 @@
 FORMAT: 1A
-HOST: https://localhost:8080/resources
+HOST: https://api.birdeye.com/resources
 
 # Birdeye
 Birdeye helps businesses grow through happy customers. Over 80,000 businesses use Birdeye everyday to attract new leads with Listings, Reviews and Referrals, convert them into customers with Webchat, Appointments, and Payments, and delight those customers with Surveys, Ticketing, and Insights - all in one place.
 
-* The Birdeye API is built on HTTP.                                                                                                                                                                          Our API is RESTful, and it:
+The Birdeye APIs are built on HTTP and are RESTful APIs.
+
 * Uses resource-oriented URLs.
 * Uses built-in HTTP capabilities for passing parameters and authentication.
 * Responds with standard HTTP response codes to indicate errors.
 * Requests and responses payload attached with all the mentioned APIs, you may choose your preferred language per the integration requirement.
 
 
-### Host
-To get the host URL, please connect with support team support@birdeye.com.
-
-
 ### Authentication and Rate limiting
 
 To call a Birdeye API, you need a valid API key. It can be fetched via the Birdeye dashboard and is a confidential key.
 
-There is a limit to calling APIs with each API key [connect with a support team to get the current limit]. If you made too many requests are made within the threshold timeframe, an error will be returned in the response.
+There is a limit to calling APIs with each API key [connect with the support team to get the current limit]. If too many requests are made within the threshold timeframe, an error will be returned in the response.
 
 ### Pagination
 
@@ -27,8 +24,12 @@ Multiple API supporting pagination. These APIs have two parameters sindex and co
 
 * <b>sindex:</b> is the start index
 * <b>count:</b> No. of records, you want to fetch.
-E.g., Suppose you have to fetch 20 records,
-API call 1 -> sindex=0, count 10 -> sindex -> 10, count 10.
+
+For e.g.: Suppose you have to fetch 20 records,
+<pre><code>
+API call 1 -> sindex=0, count 10
+call 2 -> sindex -> 10, count 10.
+</pre></code>
 
 ### HTTP Status Codes
 Every API response will have an HTTP status code.
@@ -37,8 +38,8 @@ Every API response will have an HTTP status code.
 * 202 - Accepted: The API request has been accepted for processing.
 * 400 - Bad Request: The API request was unacceptable, often due to a missing or invalid parameter.
 * 404 - Not Found: The requested resource does not exist.
-* 500 - Internal Server Error: Something went wrong on our end. Please get in touch with support.
 * 429 - Rate Limited: You have made too many requests within the threshold timeframe.
+* 500 - Internal Server Error: Something went wrong on our end. Please get in touch with support.
 
 ### Errors
 
@@ -1570,16 +1571,16 @@ For e.g.:
 # Group Business
 Create and maintain your business on Birdeye.
 
-## Create Business [/v1/signup/reseller/subaccount{?rid,api_key,email_id}]
+## Create Business [/v1/signup/reseller/subaccount{?api_key,rid,email_id}]
 Create a business API creates a new business under a reseller.
 
 ### Create a business [POST]
 
 + Parameters
 
-    + rid:123 (required, number) - Reseller id
-    + api_key:abcdefgh (required, string) - API key of the business
-    + email_id:sample@birdeye.com (required, string) - Business Email ID
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + rid: 123 (required, number) - Id of the Reseller.
+    + email_id: sample@birdeye.com (required, string) - Business Email id.
 
 + Request (application/json)
 
@@ -1587,24 +1588,6 @@ Create a business API creates a new business under a reseller.
     + Headers
 
             Accept: application/json
-
-    + Attributes
-
-        + businessName:Test Business (required,string)- Name of the Business that needs to be added
-
-        + zip: 32323 (required,string)- Postal code of the business location
-        + type:Business (string)- Business type. Valid values are "Business, Enterprise-Location, Enterprise-Product, Reseller or a existing custom hierarchy type". Default is:
-        + phone: 4032365164 (required,number)- Business phone.
-        + aggrOptions:4 (number)- Aggregation Options to enable/disable aggregations. Possible values are [0,1,3,4]
-            0 to Disable all aggregations
-
-            1 to Disable Fetch Business Info, Enable Review Aggregation and Search Business,
-
-            3 to Enable Search Business, Disable Fetch Business and Disable Review Aggregation,
-
-            4 to Enable all Aggregations.
-
-            If aggrOptions is not provided, then all aggregations are enabled.
 
 
     + Body
@@ -1616,6 +1599,26 @@ Create a business API creates a new business under a reseller.
                 "phone": "4032365164",
                 "aggrOptions" : 3
             }
+
+    + Attributes
+
+        + businessName: Test Business (required,string)- Name of the Business that needs to be added
+        + zip: 32323 (required,string)- Postal code of the business location
+        + type: Business (string)- Type of the Business. Valid values are
+                Business,
+                Enterprise-Location,
+                Enterprise-Product,
+                Reseller
+                or a existing custom hierarchy type. Default is: Business.
+        + phone: 4032365164 (required,number)- Phone number of the Business.
+        + aggrOptions:4 (number)- Aggregation Options to enable/disable aggregations. Possible values are [0,1,3,4]
+                0 to Disable all aggregations
+                1 to Disable Fetch Business Info, Enable Review Aggregation and Search Business,
+                3 to Enable Search Business, Disable Fetch Business and Disable Review Aggregation,
+                4 to Enable all Aggregations.
+
+            If aggrOptions is not provided, then all aggregations are enabled.
+
 
 + Response 200 (application/json)
 
@@ -1704,9 +1707,9 @@ Create business in bulk API creates multiple new businesses using an excel file.
 ### Bulk Create [POST]
 
 + Parameters
-    + businessId:653356544 (string, required) - Id of the Business.
-    + api_key:abcdefgh (string, required) - API key of the business.
-    + type:Business (string, required) - Business type (Business/Product)
+    + businessId: 653356544 (string, required) - Id of the Business.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + type: Business (string, required) - Type of the Business. [Business/Product]
 
 + Request (application/json)
 
@@ -1718,11 +1721,11 @@ Create business in bulk API creates multiple new businesses using an excel file.
 
         + name: Drs. Chalker and Peterson, A Dental Partnership (string,required) - Name of the Business/Product (Max 1000 character long).
         + alias: Drs. Chalker (string) - Alias, Your internal way of identifying this location.
-        + email: Business (required,string) - Business Email ID.
-        + categories: Dentist,Dental,Doctor (string) - Category (Mapped to Google Category).
-        + phone (required,string) - Business Phone (Required) Format is (xxx) xxx-xxxx.
-        + address1: 7405 Morro Rd (string) - Address of the business.
-        + address2: Suite 102 (string) - Address of the business.
+        + email: Business (required,string) - Email Id of the Business.
+        + categories: Dentist,Dental,Doctor (string) - Categories of the Business (Mapped to Google Category).
+        + phone (required,string) - Phone number of the Business (Required) Format is (xxx) xxx-xxxx.
+        + address1: 7405 Morro Rd (string) - Address of the Business.
+        + address2: Suite 102 (string) - Address Line2 of the Business.
         + city: Atascadero (string) - City (Max 1000 character long).
         + state: CA (string) - State (2 character state code).
         + countryCode: US (string) - Country Code (2 character country code).
@@ -1818,19 +1821,19 @@ Create business in bulk API creates multiple new businesses using an excel file.
     [1188][]
 
 
-## Search [/v1/business/search{?search_str,loc,sindex,count,sort,api_key,nearby}]
+## Search [/v1/business/search{?api_key,search_str,loc,sindex,count,sort,nearby}]
 Search Business API searches a business using a name. Partial name matching is also supported by API.
 
 
 ### Search Business [GET]
 
 + Parameters
+    + api_key: abcdefgh (required, string) - Partner specific API key provided by Birdeye for data exchange.
     + search_str: ray lord (required, string) - Search criteria for business. This could be business name or category
     + loc: 29063 (required, string) - Location of the business. This could be “City,State” or zip code.
-    + sindex: 2 (required, string) - Starting point for search results. Default value is 0. e.g. 0:start from 1st result, 25: start from 26th result
-    + count: 20 (required, integer) - Specifies the number of results to be returned. Default is 500. e.g. 50:return 50 results
+    + sindex: 2 (required, string) - Starting point for search results. Default value is 0. e.g. 0:start from 1st result, 25: start from 26th result.
+    + count: 20 (required, integer) - Specifies the number of results to be returned. Default is 500.
     + sort: rating (required, string) - Results can be sorted by relevance, rating. By default it is relevance.
-    + api_key: abcdefgh (required, string) - Partner specific API key provided by Birdeye for data exchange.
     + nearby: 1 (required, string) - Flag to search business in neay by locations. Default is 1 e.g. 0: don’t search in near by cities, 1: search in near by cities
 
 + Request (application/json)
@@ -1844,8 +1847,8 @@ Search Business API searches a business using a name. Partial name matching is a
 
     + Attributes
 
-        + name:Ray A. Lord (string)- Name of the business.
-        + category:Lawyers (string)- Category of the business.
+        + name: Ray A. Lord (string)- Name of the business.
+        + category: Lawyers (string)- Category of the business.
         + address (object) - Business Address.
             + address1: 7436 Broad River Rd (string) - Address of the business.
             + address2: Suite 102 (string)- Address of the business.
@@ -1911,14 +1914,14 @@ Search Business API searches a business using a name. Partial name matching is a
     [1167][]
 
 
-## Get [/v1/business/{businessNumber}{?api_key}]
+## Get [/v1/business/{business_id}{?api_key}]
 Get Business API gets business information, including product features opted and profile information.
 
 
 ### Get Business [GET]
 
 + Parameters
-    + businessNumber: 12345678 (string, required) - The Business Number
+    + business_id: 12345678 (string, required) - Id of the Business.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
@@ -2571,7 +2574,7 @@ Delete Business API deletes an account or sub-reseller under a reseller.
 
 
 + Parameters
-    + business_Id: 12345678 (string, required) - The Business Number
+    + business_Id: 12345678 (string, required) - Id of the Business.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
@@ -2605,7 +2608,7 @@ Delete Business API deletes an account or sub-reseller under a reseller.
 
 
 
-## Status Update [/v1/business/{business_id}/status{?astatus,api_key}]
+## Status Update [/v1/business/{business_id}/status{?api_key,astatus}]
 Status Update Business API updates the activation status of a business. Activation status signifies whether an account is active or inactive.
 
 ### Update the status [PUT]
@@ -2659,7 +2662,7 @@ Child Businesses API gets all the businesses under an account.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + pid:  12345678 (number, required) - Reseller/Sub-reseller/Enterprise id.
+    + pid:  12345678 (number, required) - Reseller/Sub-reseller/Enterprise Id.
 
 + Request (application/json)
 
@@ -2748,15 +2751,16 @@ Child Businesses API gets all the businesses under an account.
 
 
 
+
 ## Public profile tabs [/v1/business/tabs{?api_key,businessId}]
 Public profile tabs API saves information on business profile tabs.
 
 ### Update public profile of Businesses [POST]
 
-+ Parameters
 
-    + businessId: 12345678 (string, required) - Id of the Business.
++ Parameters
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (string, required) - Id of the Business.
 
 + Request (application/json)
 
@@ -2934,7 +2938,7 @@ Add/Remove Child in Hierarchy API adds or removes a child in a hierarchy.
 ### Add child in hierarchy [PUT]
 
 + Parameters
-    + businessId (string, required) - ID of Parent business.
+    + businessId (string, required) - Id of Parent business.
     + api_key (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + cid (string, required) - ID of Child business.
 
@@ -3039,9 +3043,9 @@ Add/Remove Child in Hierarchy API adds or removes a child in a hierarchy.
 ### Remove child from hierarchy [DELETE]
 
 + Parameters
-    + businessId (string, required) - ID of Parent business.
+    + businessId (string, required) - Id of Parent business.
     + api_key (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + cid (string, required) - ID of Child business.
+    + cid (string, required) - Id of Child business.
 
 + Request (application/json)
 
@@ -3144,7 +3148,7 @@ Create User API creates a new user for a business.
 
         + firstName: Rhonda (string) - First name of the user.
         + lastName: Spears (string) - Last name of the user.
-        + userEmailId: rhonda@test.com (string, required) - Email ID of the user that’s being added to this business.
+        + userEmailId: rhonda@test.com (string, required) - Email Id of the user that’s being added to this business.
         + phone: 123-456-7890 (string) - Mobile number of the user.
         + userRole: admin (string, required) - User role. Valid values are "owner","admin". Default is "owner".
         + userPassword (string, required) - User's password
@@ -3217,15 +3221,14 @@ Create User API creates a new user for a business.
     [1059][]
 
 
-## Delete [/v1/user/remove{?bid,api_key,email}]
+## Delete [/v1/user/remove{?api_key,bid,email}]
 Delete User API removes user access from a business.
 
 ### Delete a user [DELETE]
 
 + Parameters
-
-    + bid: 123 (string, required) - Business id from which user access has to be revoked
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + bid: 123 (string, required) - Business Id from which user access has to be revoked
     + email: abc@test.com (string, required) - Email id of the user whose access has to be revoked
 
 
@@ -3274,7 +3277,7 @@ Forgot Password API generates forgot password mail to reset the password.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + email: abc@test.com  (string, required) - Email id of the user whose access has to be revoked
+    + email: abc@test.com  (string, required) - Email Id of the user whose access has to be revoked
 
 + Request (application/json)
 
@@ -3317,7 +3320,7 @@ Get User API gets details of a user.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + email: abc@test.com (string, required) - Email id of the user whose details to be retrieved
+    + email: abc@test.com (string, required) - Email Id of the user whose details to be retrieved
 
 + Request (application/json)
 
@@ -3387,7 +3390,7 @@ Get Reviews returns the list of reviews for an account with all its details.
 
 + Parameters
 
-    + businessId: 12345678 (string, required) - ID of the Business.
+    + businessId: 12345678 (number, required) - Id of the Business.
     + sindex: 10 (integer, required) - Start index of the reviews.
     + count: 30 (integer, required) - Number of reviews to query.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
@@ -3401,10 +3404,10 @@ Get Reviews returns the list of reviews for an account with all its details.
             Accept: application/json
 
     + Attributes
-        + fromDate: 04/01/2013 (string) - Review date (start) in UTC format.
-        + toDate: 04/01/2013 (string) - Review date (end) in UTC format.
-        + updateFromDate: 04/01/2013 (string) - Review response date (start) in UTC format.
-        + updateToDate: 04/01/2013 (string) - Review response date (end) in UTC format.
+        + fromDate: 04/01/2013 (string) - Review date start in UTC format.
+        + toDate: 04/01/2013 (string) - Review date end in UTC format.
+        + updateFromDate: 04/01/2013 (string) - Review response date start in UTC format.
+        + updateToDate: 04/01/2013 (string) - Review response date end in UTC format.
         + sources: google (string) - Aggregation source name Note: use "our_website" to filter reviews posted on Birdeye platform or use "direct_feedback" for direct feedback.
         + ratings: 4,5 (array) - Review rating Possible values 0,1,2,3,4,5.
         + searchStr: Great service (string) - String that is contained by review.
@@ -3412,8 +3415,8 @@ Get Reviews returns the list of reviews for an account with all its details.
         + statuses: published,parked (array) - Review status. Valid values are "published","parked","all". Default is "published" only.
         + allChild: true (boolean) - Get review from all child ignoring merge reviews flag configured at parent/child relationship level.
         + tags: ["top reviews", "need action"] (array) - Reviews with assigned tags
-        + fetchExtraParams: false (boolean) - To fetch custom field(s) associated with the customer attributed to the review (if any).
-        + needCustomerInfo: false (boolean) - To fetch customer information associated with the reviewer (if attributed).
+        + fetchExtraParams: false (boolean) - To fetch custom field(s) associated with the customer attributed to the review [if any].
+        + needCustomerInfo: false (boolean) - To fetch customer information associated with the reviewer [if attributed].
 
 
     + Body
@@ -3426,10 +3429,10 @@ Get Reviews returns the list of reviews for an account with all its details.
                 "sources":["google","citysearch"],
                 "ratings":[1,2,3,4,5,0],
                 "searchStr":"test string",
-                "subBusinessIds":[145308764185002,145308769721320,145308702026610],
+                "subBusinessIds":[12345678,1232111,1231231321],
                 "statuses":["published","parked"],
                 "allChild":"true",
-                "tags":["tag_1","tag_2"],
+                "tags":["positive","negative"],
                 "fetchExtraParams":false,
                 "needCustomerInfo":false
             }
@@ -3680,7 +3683,7 @@ Eligible reviews can be replied to from the Birdeye platform using Review Reply 
 
     + Attributes
         + response: Thanks for reviewing us (string) - Review Reply text to be posted.
-        + isPrivateResponse: Default user (string) - Flag to post reply privately to reviewer (Only in case of Managed Service).
+        + isPrivateResponse: Default user (string) - Flag to post reply privately to reviewer [Only in case of Managed Service].
 
     + Body
 
@@ -3779,14 +3782,14 @@ Eligible reviews can be replied to from the Birdeye platform using Review Reply 
 
 
 ## Create Tags [/v1/tag/{?businessId,api_key}]
-Create Tags creates a new tag in the account.
+Create Tags creates new tag(s) in the account.
 
 ### Create tags [POST]
 
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessId: 12345678 (string, required) - Business ID.
+    + businessId: 12345678 (string, required) - Id of the Business.
 
 
 + Request (application/json)
@@ -3915,7 +3918,7 @@ Assign tag to reviews assigns the list of tags to the list of reviews of an acco
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessId: 12345678 (string, required) - Business Number.
+    + businessId: 12345678 (string, required) - Id of the Business.
     + tags: positive2022&negative2022 (string, required) - List of tags.
 
 
@@ -3965,7 +3968,7 @@ Assign the list of tags to the reviews on the basis of review filter.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + bId: 12345678 (string, required) - Business Number.
+    + bId: 12345678 (string, required) - Id of the Business.
     + tags: positive2022&negative2022 (string, required) - List of tags.
 
 
@@ -4030,7 +4033,7 @@ Remove tags from a review removes the list of tags from a single review.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + bId: 12345678 (string, required) - Business Number.
+    + bId: 12345678 (string, required) - Id of the Business.
     + tags: positive2022&negative2022 (string, required) - List of tags.
 
 
@@ -4080,7 +4083,7 @@ Search reviews and remove tags removes the list of tags from reviews on the basi
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + bId: 12345678 (string, required) - Business Number.
+    + bId: 12345678 (string, required) - Id of the Business.
     + tagList: positive2022&negative2022 (string, required) - List of tags to be removed from reviews.
 
 
@@ -4144,7 +4147,7 @@ Remove particular tags from all reviews removes the list of tags from all the re
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + bId: 12345678 (string, required) - Business Number.
+    + bId: 12345678 (string, required) - Id of the Business.
 
 
 + Request (application/json)
@@ -4194,14 +4197,6 @@ Customers can be created & updated using Create or Update Contact API.
 
 ### Create or Update Contact [POST]
 
-> __Notes__
-> - _BusinessIds mandatory while creating a new contact._
-> - _Only upsert on tags. Custom field values can be updated._
-> - _While updating, if no businessIds are provided, keep the same mappings. Mappings at different locations cannot be removed from this API._
-> - _Response will return ecid of the created/updated customer._
-> - _We currently support 4 types of customfields: text, number, currency, date (in formats - “MM/dd/yyyy” and "MM-dd-yyyy" only), and yesno (1:”yes”, 0:”no”)_
-
-
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the business.
@@ -4223,12 +4218,12 @@ Customers can be created & updated using Create or Update Contact API.
         + lastName: Spector (string) - Last name of the customer.
         + email: ron@test.con (string) - Email of customer, optional (if phone is provided).
         + phone: 123 456 7890 (string) - Phone of customer optional (if email is provided).
-        + smsOptin: false (boolean) - SMS Opting flag.
-        + emailOptin: false (boolean) - Email Opting flag.
+        + smsOptin: false (boolean) - SMS Opt flag.
+        + emailOptin: false (boolean) - Email Opt flag.
         + blocked: false (boolean) - Contact block flag.
         + businessIds: 145308764185002,145308769721320 (array) - Business Ids under enterprise account. The Business Ids field is mandatory while creating a new contact. While updating, if no business Ids are provided, the same location mappings are retained.
         + tags: Tag One, Tag Two (string) - List of tags.
-        + customFields (array) - List of Custom fields.
+        + customFields (array) - List of Custom fields. We currently support 4 types of customfields - text, number, currency, date (in formats - “MM/dd/yyyy” and "MM-dd-yyyy" only), and yes or no (1:"yes", 0:"no").
             + (object)
                 + fieldName: Company (string) - Field name.
                 + type: text (string) - Field type.
@@ -4301,16 +4296,15 @@ Customers can be created & updated using Create or Update Contact API.
 
 
 
-## Get Contact [/v1/customer-v2/external/getCustomer{?businessId,api_key}]
+## Get Contact [/v1/customer-v2/external/getCustomer{?api_key,businessId}]
 Get Contact fetches Customer details.
 
 ### Get Contact [POST]
 
 
 + Parameters
-
-    + businessId: 12345678 (string, required) - Id of the business.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (string, required) - Id of the business.
 
 
 + Request (application/json)
@@ -4427,12 +4421,6 @@ Customers can be deleted using Delete Contact API.
 
 ### Delete Contact [POST]
 
-> __Notes__
-> - _Mandatory to provide id (ecid)._
-> - _If businessIds are provided, mappings would be deleted from those locations only._
-> - _If no businessIds are provided, the customer would be deleted from all the locations._
-
-
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the business.
@@ -4479,12 +4467,6 @@ Customer check-in can be done using Check in API.
 
 ### Customer Checkin [POST]
 
-> __Notes__
-> - _If business has not enabled for sms, then email will be required field._
-> - _If business has enabled for sms, then either email or phone will be required._
-> - _Customer Tag keys and values given in additionalParams must be whitelisted to be parsed as tags._
-
-
 + Parameters
 
     + bid: 12345678 (string, required) - Id of the business.
@@ -4499,8 +4481,8 @@ Customer check-in can be done using Check in API.
 
     + Attributes
         + name: Steve Smith  (string) - Name of the customer.
-        + emailId: steves@abcd.com (string) - Email ID of the customer (optional if business has enabled SMS).
-        + phone: 408-123-1234 (string) - Phone number of the customer (optional).
+        + emailId: steves@abcd.com (string) - Email ID of the customer (optional If business has enabled for sms, then either email or phone will be required).
+        + phone: 408-123-1234 (string) - Phone number of the customer (optional If business has enabled for sms, then either email or phone will be required).
         + smsEnabled: 0 (number) - Whether customer has opted to receive SMS request or not. Valid values are 0(false), 1(true). Default is 1.
         + employees (array)
             + (object)
@@ -4689,7 +4671,7 @@ Customer can be deleted using this API.
 + Response 200 (application/json)
 
     + Attributes
-        + email: ron@test.com (string) - Email of the customer.
+        + email: ron@test.com (string) - Email Id of the customer.
         + firstName: Ron Smith (string) - First name of the customer.
         + number: 411504416 (string) -  Phone number of the customer.
 
@@ -4795,7 +4777,7 @@ Contact list API fetches contact list for a business.
 
 + Parameters
 
-    + bid: 12345678 (string, required) - ID of the Business.
+    + bid: 12345678 (string, required) - Id of the Business.
     + page: 0 (number, required) - The page number.
     + size: 30 (number, required) - Maximum number of contacts return in response.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
@@ -5138,7 +5120,7 @@ Fetch Request URL gets the short link of the requested URL for the customer.
             Accept: application/json
 
     + Attributes
-        + businessId: 100018055 (number, required) - Unique Number of a business (Long).
+        + businessId: 100018055 (number, required) - Id of a business (Long).
         + customerId (number,required) - Id of the Customer.
         + surveyId: 6102 (number) - Survey Id, required only for survey requests.
         + templateId: 1133204 (number) - Id of Text template, required except for survey requests.
@@ -5200,9 +5182,6 @@ Fetch Request URL gets the short link of the requested URL for the customer.
 Set Default Review Sources API updates default templates of businesses under a reseller with default review sources (i.e., Google/Facebook).
 
 ### Set Defaullt Review Sources [POST]
-> __Notes__
-> - _If either Google/Facebook or both are present as aggregated review sources, then Google/Facebook or both will be set as selected review sources for default templates; otherwise, no changes will be made to default templates._
-> - _This API runs for a maximum of 500 business IDs in 1 request. If more than 500 IDs are provided, the request will be rejected and throw an error._
 
 
 + Parameters
@@ -5216,7 +5195,7 @@ Set Default Review Sources API updates default templates of businesses under a r
             Accept: application/json
 
     + Attributes
-        + businessId: 157189662556139 (number, required) - Business Number of reseller (Long).
+        + businessId: 157189662556139 (number, required) - Id of reseller (Long).
         + customerId: 155911947195757, 155290409184734 (array,required) - List of business ids under a reseller.
 
 
@@ -5254,7 +5233,7 @@ Get source list API returns the list of aggregations associated with the locatio
 
 + Parameters
 
-    + businessId: 12345678 (string, required) - Id of the business.
+    + businessId: 12345678 (string, required) - Id of the Business.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
@@ -5557,8 +5536,8 @@ Get Dashboard Data API gives you an overview of business data with data points l
 
 + Parameters
 
-    + bid: 12345678 (string, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + bid: 12345678 (string, required) - Id of the Business.
 
 
 + Request (application/json)
@@ -5816,8 +5795,8 @@ Review conversion report API gives you the detail overview of the review request
 ### Get Review conversion report [GET]
 
 + Parameters
-    + businessId: 12345678 (number, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (number, required) - Id of the Business.
     + fromDate: 01/13/2021 (string, optional) - Date from result is expected. Format MM/DD/YYYY.
     + toDate: 01/21/2021 (string, optional) - Date up to result is expected. Format MM/DD/YYYY.
     + days: 120 (number, optional) - Use to get results for last some days.
@@ -5989,8 +5968,8 @@ Review and rating over time API gives you the number of reviews and average rati
 
 
 + Parameters
-    + businessId: 12345678 (number, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (number, required) - Id of the Business.
     + sortby: rating (string, optional) - Values can be 'count' or 'rating'.
     + sorder: 0 (number, optional) - '0' for ascending and '1' for descending order.
 
@@ -6097,8 +6076,8 @@ Reviews & Rating By Location gives an overall view of how many reviews, and the 
 
 
 + Parameters
-    + businessId: 12345678 (number, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (number, required) - Id of the Business.
     + sortby: rating (string, optional) - Values can be 'count' or 'rating'.
     + sorder: 0 (number, optional) - '0' for ascending and '1' for descending order.
 
@@ -6391,8 +6370,8 @@ Insights Category Report by location provides the location-wise insights categor
 ### Insights Category Report by location report [POST]
 
 + Parameters
-    + businessId: 12345678 (number, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (number, required) - Id of the Business.
 
 
 + Request (application/json)
@@ -6488,8 +6467,9 @@ Competitive Ranking Report provides the competitors ranking & rating data in the
 ### Competitive Ranking Report [POST]
 
 + Parameters
-    + businessId: 12345678 (number, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (number, required) - Id of the Business.
+
 
 
 + Request (application/json)
@@ -6598,8 +6578,8 @@ NPS Over time gives you the NPS score for a selected period of time for all loca
 ### NPS Over time Report [POST]
 
 + Parameters
-    + businessId: 12345678 (number, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (number, required) - Id of the Business.
 
 
 + Request (application/json)
@@ -6703,8 +6683,9 @@ NPS By Location gives you the NPS score for each location and the count of promo
 ### NPS By Location Report [POST]
 
 + Parameters
-    + businessId: 12345678 (number, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (number, required) - Id of the Business.
+
 
 
 + Request (application/json)
@@ -6816,8 +6797,8 @@ Review By Source  API groups the number of reviews and average ratings in an acc
 
 
 + Parameters
-    + businessId: 12345678 (number, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (number, required) - Id of the Business.
 
 
 + Request (application/json)
@@ -6904,8 +6885,8 @@ Visitor report groups the data according to source.
 
 
 + Parameters
-    + businessId: 12345678 (number, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (number, required) - Id of the Business.
 
 
 + Request (application/json)
@@ -6998,15 +6979,15 @@ Visitor report groups the data according to source.
 
 
 
-## Usage report [/v1/reports/usage/{?reportType,sindex,count,business_id,api_key}]
+## Usage report [/v1/reports/usage/{?api_key,reportType,sindex,count,business_id}]
 Usage report gives the usage details for the review requests, and the number of requests sent, opened and clicked.
 
 
 ### Usage report [POST]
 
 + Parameters
-    + business_id: 12345678 (number, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + business_id: 12345678 (number, required) - Id of the Business.
     + reportType: rating (string, required) - The type of Report - Summary or Tabular.
     + sindex: 0 (number, required) - The starting index of the reviews
     + count: rating (string, required) - The number of reviews to query
@@ -7229,10 +7210,9 @@ Get Survey fetches the survey designer page details for a particular survey. It 
 ### Get Survey [GET]
 
 + Parameters
-
     + survey_id: 123 (integer, required) - Id of the Survey.
-    + businessId: 12345678 (string, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (number, required) - Id of the Business.
     + lang: english (string, optional) - The survey locale, default is english
 
 
@@ -7448,10 +7428,9 @@ Post a survey response API submits the survey response for a particular survey u
 ### Post a survey response [POST]
 
 + Parameters
-
-    + survey_id: 123 (integer, required) - Id of the Survey.
-    + businessId: 12345678 (string, required) - Business number.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + survey_id: 123 (integer, required) - Id of the Survey.
+    + businessId: 12345678 (string, required) - Id of the Business.
 
 
 
@@ -7622,10 +7601,9 @@ List Responses for a Survey API fetches all the responses available for a partic
 ### List Responses for a Survey [POST]
 
 + Parameters
-
     + survey_id: 123 (integer, required) - Id of the Survey.
-    + businessNumber: 1232131 (string, required) - The Business Number of Enterprise
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessNumber: 1232131 (string, required) - The Business Number of Enterprise
     + page: 1 (integer, optional) - The page number.
     + size: 30 (integer, optional) - The size of the page.
     + sortby: date (string, optional) - The sort by parameter.
@@ -8011,7 +7989,7 @@ Create Survey API helps create a new survey for the required question structure 
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessId: 12345678 (string, required) - Business ID.
+    + businessId: 12345678 (string, required) -Id of the Business.
 
 
 
@@ -8423,7 +8401,7 @@ Update Survey Settings helps update the survey page appearance settings like Log
 
     + surveyId: 123 (integer, required) - Survey ID
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessId: 12345678 (string, required) - Business ID.
+    + businessId: 12345678 (string, required) - Id of the Business.
 
 
 
@@ -8577,7 +8555,7 @@ Get details of Employees is a lite version API that retrieves a sorted list of a
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessId: 12345678 (string, required) - Business ID.
+    + businessId: 12345678 (string, required) - Id of the Business.
 
 
 
@@ -10184,7 +10162,7 @@ Fix Listing publishes information on online listing sources. We post presence in
 
 
 # Group Integration
-Add and Manage your integrations with Birdeye.
+Birdeye integrates with various software or tools you use.
 
 ## Add Business Integration Mapping [/v1/integrations/add/businessintegrationmapping{?api_key}]
 Add Business Integration Mapping adds locations to integrations and set them active.
@@ -10253,6 +10231,6 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
-* 12/12/2022 - Restructure the Birdeye's developer page.
+* 12/15/2022 - Restructured the Birdeye's developer page.
 
 
