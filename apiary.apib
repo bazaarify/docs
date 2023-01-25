@@ -4485,8 +4485,9 @@ Customer check-in can be done using Check in API.
     + Attributes
         + name: Steve Smith  (string) - Name of the customer.
         + emailId: steves@abcd.com (string) - Email ID of the customer (optional If business has enabled for sms, then either email or phone will be required).
-        + phone: 408-123-1234 (string) - Phone number of the customer (optional If business has enabled for sms, then either email or phone will be required).
+        + phone: 4081231234 (string) - Phone number of the customer (optional If business has enabled for sms, then either email or phone will be required).
         + smsEnabled: 0 (number) - Whether customer has opted to receive SMS request or not. Valid values are 0(false), 1(true). Default is 1.
+        + additionalParams (object) - Custom tags can be added as key value pair.
         + employees (array)
             + (object)
                 + emailId: sshikha@abcd.com (string) - Email Id of assisted Employee.
@@ -4498,6 +4499,12 @@ Customer check-in can be done using Check in API.
               "emailId": "steves@abcd.com",
               "phone": "408-xxx-xxxx",
               "smsEnabled": 1,
+              "additionalParams" :
+               {
+                    "Tag Group Name 1": "Tag Name 1",
+                    "Tag Group Name 2" :"Tag Name 2",
+                    "location" :"New York"
+               },
               "employees":[{
                              "emailId" : "sshikha@abcd.com"
                           }]
