@@ -3389,6 +3389,15 @@ Consistently generate more reviews and higher ratings.
 ## Get [/v1/review/businessId/{businessId}{?sindex,count,api_key,includeNonAggregatedReviews}]
 Get Reviews returns the list of reviews for an account with all its details.
 
+Deep Pagination with record window greater than 100k is not supported. Either reduce the sindex + count to be less than equal to 100k or use appropriate filters to narrow down your result set.
+
+
+For example:
+
+sindex = 99000 and count = 1000 will just work fine as sindex + count = 100000 which is less than 100,000.
+
+However, if you try with sindex = 99000 and count = 1001, sindex + count = 100001 which is greater than 100,000. Thus, you'll receive an error in response.
+
 ### Get Reviews [POST]
 
 + Parameters
@@ -3398,7 +3407,6 @@ Get Reviews returns the list of reviews for an account with all its details.
     + count: 30 (integer, required) - Number of reviews to query.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + includeNonAggregatedReviews: false (boolean, optional) - Include Reviews whose auto-crawling is blocked e.g. PressGaney
-
 
 + Request (application/json)
 
