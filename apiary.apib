@@ -4221,6 +4221,7 @@ Customers can be created & updated using Create or Update Contact API.
         + lastName: Spector (string) - Last name of the customer.
         + email: ron@test.con (string) - Email of customer, optional (if phone is provided).
         + phone: 123 456 7890 (string) - Phone of customer optional (if email is provided).
+        + countryCode: US (string, optional) - Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
         + smsOptin: false (boolean) - SMS Opt flag.
         + emailOptin: false (boolean) - Email Opt flag.
         + blocked: false (boolean) - Contact block flag.
@@ -4240,6 +4241,7 @@ Customers can be created & updated using Create or Update Contact API.
                 "lastName": "Scott",
                 "email": "michael@test.com",
                 "phone": "(212) xxx-xxxx",
+                "countryCode": "US",
                 "emailOptin": true,
                 "smsOptin": true,
                 "blocked": false,
@@ -4341,6 +4343,7 @@ Get Contact fetches Customer details.
         + lastName: Spector (string) - Last name of the customer.
         + email: ron@test.con (string) - Email of customer, optional (if phone is provided).
         + phone: 123 456 7890 (string) - Phone of customer optional (if email is provided).
+        + countryCode: US (string) - Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
         + smsOptin: false (boolean) - SMS Opting flag.
         + mappings (array) - List of locations where customer is mapped.
             + (object)
@@ -4364,6 +4367,7 @@ Get Contact fetches Customer details.
                 "lastName": "Scott",
                 "email": "test.user@test.com",
                 "phone": "(212) xxx-xxxx",
+                "countryCode": "US",
                 "blocked": false,
                 "emailOtin": true,
                 "smsOptin": true,
@@ -10241,5 +10245,6 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>02/10/2023</b> - Country code support added in Contact APIs  Create or Update Contact [external/saveCustomer] & Get Contact [external/getCustomer]
 * <b>01/20/2023</b> - Restructured the Birdeye's developer page.
 * <b>12/06/2022</b> - Added new API under Integration module i.e, Add Business Integration Mapping
