@@ -3132,6 +3132,85 @@ Add/Remove Child in Hierarchy API adds or removes a child in a hierarchy.
     [1011][]
 
 
+## Get Custom card details [/resources/v1/business/{businessNumber}/profile/customcard]
+Get Customer card API returns the detail of customer card of the location
+
+### Get Custom card details [GET]
+
++ Parameters
+    + businessNumber (number, required) - Id of a business (Long).
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+
++ Response 200 (application/json)
+
+
+    + Attributes
+        + customCardDetails (array)
+            + (object)
+                + cardId: 123456 (number) - Id of the Card
+                + title: Steve Smith (string) - Name of the card.
+                + description: Business Information (string) - Information of the business on the card.
+                + imageURL: https://d2xt3xymj142xp.cloudfront.net/63936/fileUpload/936_16768607_FRetIc.jpeg (string) - Image URL
+                + imagePosition: 2 (string) - Image position value. Possible values are:
+                        1 - image is placed at top,
+                        2 - image is placed at left,
+                        3 - image is placed at right
+                + isVisible: 1 (number) - Visibility status of card on the microsite. Possible values are:
+                        0 - card will not be visible on the microsite,
+                        1 - card will be visible on the microsite
+                + clickURL: https://www.abcdef.com (string) - Redirect link for a particular website.
+
+    + Body
+
+            {
+                "customCardDetails": [
+                    {
+                        "cardId": 5531,
+                        "title": "Mathew",
+                        "description": "Card description",
+                        "imageURL": "https://d2xt3xymj142xp.cloudfront.net/63936/fileUpload/936_16768607_FRetIc.jpeg",
+                        "imagePosition": "2",
+                        "isVisible": 1,
+                        "clickURL": "https://www.abcdef.com"
+                    },
+                    {
+                        "cardId": 5533,
+                        "title": "Steve Smith",
+                        "description": "Card description",
+                        "imageURL": "https://d2xt3xymj142xp.cloudfront.net/63936/fileUpload/63676550205863_FRetIc.jpeg",
+                        "imagePosition": "1",
+                        "isVisible": 0,
+                        "clickURL": "http://www.abcdef.com"
+                    }
+                ]
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1011][]
+
+
 # Group User
 Add, delete and manage user profiles and permissions easily.
 
@@ -3784,7 +3863,7 @@ Eligible reviews can be replied to from the Birdeye platform using Review Reply 
     [2078][]
 
 
-## Create Tags [/v1/tag/{?businessId,api_key}]
+## Create Tags [/v1/tag{?businessId,api_key}]
 Create Tags creates new tag(s) in the account.
 
 ### Create tags [POST]
@@ -3831,7 +3910,7 @@ Create Tags creates new tag(s) in the account.
 
 
 
-## Delete Tag [/v1/tag/{tagname}/{?businessId,api_key}]
+## Delete Tag [/v1/tag/{tagname}{?businessId,api_key}]
 Delete Tag deletes any tag from the account.
 
 ### Delete a tag [DELETE]
@@ -3869,7 +3948,7 @@ Delete Tag deletes any tag from the account.
 
 
 
-## Fetch Tags [/v1/tag/all/{?businessId,api_key}]
+## Fetch Tags [/v1/tag/all{?businessId,api_key}]
 Fetch Tags returns the list of tags associated with the account.
 
 ### Get all tags [GET]
@@ -4028,7 +4107,7 @@ Assign the list of tags to the reviews on the basis of review filter.
 
 
 
-## Remove tags from reviews [/v1/tag/remove/review/{?bId,api_key,tags}]
+## Remove tags from reviews [/v1/tag/remove/review{?bId,api_key,tags}]
 Remove tags from a review removes the list of tags from a single review.
 
 ### Remove tags from multiple reviews  [POST]
@@ -4077,7 +4156,7 @@ Remove tags from a review removes the list of tags from a single review.
     [1011][]
 
 
-## Search reviews and remove tags [/v1/tag/remove/review/{?bId,api_key,tagList}]
+## Search reviews and remove tags [/v1/tag/remove/review{?bId,api_key,tagList}]
 Search reviews and remove tags removes the list of tags from reviews on the basis of review filter.
 
 ### Remove tags from filtered reviews [POST]
@@ -4142,7 +4221,7 @@ Search reviews and remove tags removes the list of tags from reviews on the basi
     [1011][]
 
 
-## Remove tags from all reviews [/v1/tag/remove/all/review/{?bId,api_key}]
+## Remove tags from all reviews [/v1/tag/remove/all/review{?bId,api_key}]
 Remove particular tags from all reviews removes the list of tags from all the reviews of an account.
 
 ### Remove particular tags from all reviews [POST]
@@ -6993,7 +7072,7 @@ Visitor report groups the data according to source.
 
 
 
-## Usage report [/v1/reports/usage/{?api_key,reportType,sindex,count,business_id}]
+## Usage report [/v1/reports/usage{?api_key,reportType,sindex,count,business_id}]
 Usage report gives the usage details for the review requests, and the number of requests sent, opened and clicked.
 
 
@@ -8560,7 +8639,7 @@ Update Survey Settings helps update the survey page appearance settings like Log
 # Group Employee
 
 
-## Get [/v1/employee/{businessId}/{?api_key}]
+## Get [/v1/employee/{businessId}{?api_key}]
 Get details of Employees is a lite version API that retrieves a sorted list of all active employees for an account.
 
 
@@ -10245,6 +10324,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>02/17/2023</b> - Added new API under Business module i.e, Get Customer card details.
 * <b>02/10/2023</b> - Country code support added in Contact APIs  Create or Update Contact [external/saveCustomer] & Get Contact [external/getCustomer]
 * <b>01/20/2023</b> - Restructured the Birdeye's developer page.
-* <b>12/06/2022</b> - Added new API under Integration module i.e, Add Business Integration Mapping
+* <b>12/06/2022</b> - Added new API under Integration module i.e, Add Business Integration Mapping.
