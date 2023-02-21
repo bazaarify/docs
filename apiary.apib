@@ -31,6 +31,15 @@ API call 1 -> sindex=0, count 10
 call 2 -> sindex -> 10, count 10.
 </pre></code>
 
+> __Note__
+> - _Deep Pagination with record window greater than 100k is not supported. Either reduce the sindex + count to be less than equal to 100k or use appropriate filters to narrow down your result set._
+
+For example:
+
+sindex = 99000 and count = 1000 will just work fine as sindex + count = 100000 which is less than 100,000.
+
+However, if you try with sindex = 99000 and count = 1001, sindex + count = 100001 which is greater than 100,000. Thus, you'll receive an error in response.
+
 ### HTTP Status Codes
 Every API response will have an HTTP status code.
 
@@ -3471,22 +3480,16 @@ Consistently generate more reviews and higher ratings.
 ## Get [/v1/review/businessId/{businessId}{?sindex,count,api_key,includeNonAggregatedReviews}]
 Get Reviews returns the list of reviews for an account with all its details.
 
-Deep Pagination with record window greater than 100k is not supported. Either reduce the sindex + count to be less than equal to 100k or use appropriate filters to narrow down your result set.
-
-
-For example:
-
-sindex = 99000 and count = 1000 will just work fine as sindex + count = 100000 which is less than 100,000.
-
-However, if you try with sindex = 99000 and count = 1001, sindex + count = 100001 which is greater than 100,000. Thus, you'll receive an error in response.
+> __Note__
+> - _Deep Pagination with record window greater than 100k is not supported. Either reduce the sindex + count to be less than equal to 100k or use appropriate filters to narrow down your result set._
 
 ### Get Reviews [POST]
 
 + Parameters
 
     + businessId: 12345678 (number, required) - Id of the Business.
-    + sindex: 10 (integer, required) - Start index of the reviews.
-    + count: 30 (integer, required) - Number of reviews to query.
+    + sindex: 10 (integer, required) - Start index of the reviews. Refer API note for max permissible value.
+    + count: 30 (integer, required) - Number of reviews to query. Refer API note for max permissible value.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + includeNonAggregatedReviews: false (boolean, optional) - Include Reviews whose auto-crawling is blocked e.g. PressGaney
 
