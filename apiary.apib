@@ -22,23 +22,35 @@ There is a limit to calling APIs with each API key [connect with the support tea
 
 Multiple API supporting pagination. These APIs have two parameters sindex and count.
 
+
 * <b>sindex:</b> is the start index
 * <b>count:</b> No. of records, you want to fetch.
 
-For example : Suppose you have to fetch 20 records,
-<pre><code>
-API call 1 -> sindex=0, count 10
-call 2 -> sindex -> 10, count 10.
-</pre></code>
 
 > __Note__
 > - _Deep Pagination with record window greater than 100k is not supported. Either reduce the sindex + count to be less than equal to 100k or use appropriate filters to narrow down your result set._
 
-For example:
 
-sindex = 99000 and count = 1000 will just work fine as sindex + count = 100000 which is less than 100,000.
 
-However, if you try with sindex = 99000 and count = 1001, sindex + count = 100001 which is greater than 100,000. Thus, you'll receive an error in response.
+<b>For example :</b>
+
+* Suppose you have to fetch 20 records:
+<pre><code>
+API call 1 -> sindex=0, count 10
+API call 2 -> sindex -> 10, count 10.
+</pre></code>
+
+* To fetch 100kth record:
+<pre><code>
+sindex = 99000 and count = 1000
+will just work fine as sindex + count = 100000 which is less than 100,000.
+</pre></code>
+
+* If you fetch more than 100kth records:
+<pre><code>
+sindex = 99000 and count = 1001, sindex + count = 100001
+which is greater than 100,000. Thus, you'll receive an error in response.
+</pre></code>
 
 ### HTTP Status Codes
 Every API response will have an HTTP status code.
