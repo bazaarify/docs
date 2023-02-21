@@ -1939,6 +1939,7 @@ Get Business API gets business information, including product features opted and
 
     + Attributes
 
+        + businessId: 12345678 (number) - Id of the Business (Long).
         + name: Drs. Chalker and Peterson, A Dental Partnership (string) - Name of the Business/Product (Max 1000 character long).
         + alias: Drs. Chalker (string) - Alias, Your internal way of identifying this location.
         + emailId: Business (string) - Business Email ID.
@@ -1987,6 +1988,7 @@ Get Business API gets business information, including product features opted and
     + Body
 
             {
+                "businessId": 12345678,
               "name": "Dieci Lifestyle Spa",
               "alias": "Dieci Lifestyle Spa - Livingston, NJ",
               "emailId": "4568@livelovespa.com",
@@ -3132,6 +3134,86 @@ Add/Remove Child in Hierarchy API adds or removes a child in a hierarchy.
     [1011][]
 
 
+## Get Custom card details [/v1/business/{businessNumber}/profile/customcard]
+Get Customer card API returns the detail of customer card of the location
+
+### Get Custom card details [GET]
+
++ Parameters
+    + businessNumber (number, required) - Id of a business (Long).
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+
++ Response 200 (application/json)
+
+
+    + Attributes
+        + customCardDetails (array)
+            + (object)
+                + cardId: 123456 (number) - Id of the Card
+                + title: Steve Smith (string) - Name of the card.
+                + description: Business Information (string) - Information of the business on the card.
+                + imageURL: https://d2xt3xymj142xp.cloudfront.net/63936/fileUpload/936_16768607_FRetIc.jpeg (string) - Image URL
+                + imagePosition: 2 (string) - Image position value. Possible values are:
+                        1 - image is placed at top,
+                        2 - image is placed at left,
+                        3 - image is placed at right
+                + isVisible: 1 (number) - Visibility status of card on the microsite. Possible values are:
+                        0 - card will not be visible on the microsite,
+                        1 - card will be visible on the microsite
+                + clickURL: https://www.abcdef.com (string) - Redirect link for a particular website.
+
+    + Body
+
+            {
+                "customCardDetails": [
+                    {
+                        "cardId": 5531,
+                        "title": "Mathew",
+                        "description": "Card description",
+                        "imageURL": "https://d2xt3xymj142xp.cloudfront.net/63936/fileUpload/936_16768607_FRetIc.jpeg",
+                        "imagePosition": "2",
+                        "isVisible": 1,
+                        "clickURL": "https://www.abcdef.com"
+                    },
+                    {
+                        "cardId": 5533,
+                        "title": "Steve Smith",
+                        "description": "Card description",
+                        "imageURL": "https://d2xt3xymj142xp.cloudfront.net/63936/fileUpload/63676550205863_FRetIc.jpeg",
+                        "imagePosition": "1",
+                        "isVisible": 0,
+                        "clickURL": "http://www.abcdef.com"
+                    }
+                ]
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1011][]
+
+
+
 # Group User
 Add, delete and manage user profiles and permissions easily.
 
@@ -4229,6 +4311,7 @@ Customers can be created & updated using Create or Update Contact API.
         + lastName: Spector (string) - Last name of the customer.
         + email: ron@test.con (string) - Email of customer, optional (if phone is provided).
         + phone: 123 456 7890 (string) - Phone of customer optional (if email is provided).
+        + countryCode: US (string, optional) - Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
         + smsOptin: false (boolean) - SMS Opt flag.
         + emailOptin: false (boolean) - Email Opt flag.
         + blocked: false (boolean) - Contact block flag.
@@ -4248,6 +4331,7 @@ Customers can be created & updated using Create or Update Contact API.
                 "lastName": "Scott",
                 "email": "michael@test.com",
                 "phone": "(212) xxx-xxxx",
+                "countryCode": "US",
                 "emailOptin": true,
                 "smsOptin": true,
                 "blocked": false,
@@ -4349,6 +4433,7 @@ Get Contact fetches Customer details.
         + lastName: Spector (string) - Last name of the customer.
         + email: ron@test.con (string) - Email of customer, optional (if phone is provided).
         + phone: 123 456 7890 (string) - Phone of customer optional (if email is provided).
+        + countryCode: US (string) - Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
         + smsOptin: false (boolean) - SMS Opting flag.
         + mappings (array) - List of locations where customer is mapped.
             + (object)
@@ -4372,6 +4457,7 @@ Get Contact fetches Customer details.
                 "lastName": "Scott",
                 "email": "test.user@test.com",
                 "phone": "(212) xxx-xxxx",
+                "countryCode": "US",
                 "blocked": false,
                 "emailOtin": true,
                 "smsOptin": true,
@@ -10249,5 +10335,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>02/17/2023</b> - Added new API under Business module i.e, Get Customer card details.
+* <b>02/10/2023</b> - Country code support added in Contact APIs  Create or Update Contact [external/saveCustomer] & Get Contact [external/getCustomer]
 * <b>01/20/2023</b> - Restructured the Birdeye's developer page.
 * <b>12/06/2022</b> - Added new API under Integration module i.e, Add Business Integration Mapping
