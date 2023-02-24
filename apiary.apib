@@ -3889,7 +3889,7 @@ Eligible reviews can be replied to from the Birdeye platform using Review Reply 
     [2078][]
 
 
-## Create Tags [/v1/tag/{?businessId,api_key}]
+## Create Tags [/v1/tag{?businessId,api_key}]
 Create Tags creates new tag(s) in the account.
 
 ### Create tags [POST]
@@ -3936,7 +3936,7 @@ Create Tags creates new tag(s) in the account.
 
 
 
-## Delete Tag [/v1/tag/{tagname}/{?businessId,api_key}]
+## Delete Tag [/v1/tag/{tagname}{?businessId,api_key}]
 Delete Tag deletes any tag from the account.
 
 ### Delete a tag [DELETE]
@@ -3974,7 +3974,7 @@ Delete Tag deletes any tag from the account.
 
 
 
-## Fetch Tags [/v1/tag/all/{?businessId,api_key}]
+## Fetch Tags [/v1/tag/all{?businessId,api_key}]
 Fetch Tags returns the list of tags associated with the account.
 
 ### Get all tags [GET]
@@ -4017,56 +4017,6 @@ Fetch Tags returns the list of tags associated with the account.
 
 
 
-## Assign tag to reviews [/v1/tag/add/review{?businessId,api_key,tags}]
-Assign tag to reviews assigns the list of tags to the list of reviews of an account.
-
-### Assign tags to reviews [POST]
-
-
-+ Parameters
-
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessId: 12345678 (string, required) - Id of the Business.
-    + tags: positive2022&negative2022 (string, required) - List of tags.
-
-
-+ Request (application/json)
-
-    + Headers
-
-            Accept: application/json
-
-    + Attributes
-        + reviewIds: 3901784402334,3901744402337 (array) - List of reviewIds.
-
-    + Body
-
-            {
-                "reviewIds":["3901784402334","3901744402337","3902344402875"]
-
-            }
-
-+ Response 200 (application/json)
-
-+ Response 401
-
-    [1161][]
-
-+ Response 429
-
-    [89][]
-
-+ Response 401
-
-    [1167][]
-
-+ Response 404
-
-    [1011][]
-
-
-
-
 ## Search reviews and assign tags [/v1/tag/add/review{?bId,api_key,tags}]
 Assign the list of tags to the reviews on the basis of review filter.
 
@@ -4087,6 +4037,7 @@ Assign the list of tags to the reviews on the basis of review filter.
             Accept: application/json
 
     + Attributes
+            + reviewIds: 3901784402334,3901744402337 (array) - List of reviewIds.
             + fromDate: 04/01/2021 (string) - Review Start date format MM/dd/YYYY.
             + toDate: 05/03/2022 (string) - Review End date format MM/dd/YYYY.
             + updateFromDate: 04/01/2021 (string) - Review update from date format MM/dd/YYYY.
@@ -4101,6 +4052,7 @@ Assign the list of tags to the reviews on the basis of review filter.
     + Body
 
             {
+                "reviewIds":["3901784402334","3901744402337","3902344402875"],
                 "fromDate":"04/01/2013",
                 "toDate":"05/3/2015",
                 "updateFromDate":"04/01/2013",
@@ -4133,56 +4085,8 @@ Assign the list of tags to the reviews on the basis of review filter.
 
 
 
-## Remove tags from reviews [/v1/tag/remove/review/{?bId,api_key,tags}]
-Remove tags from a review removes the list of tags from a single review.
 
-### Remove tags from multiple reviews  [POST]
-
-+ Parameters
-
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + bId: 12345678 (string, required) - Id of the Business.
-    + tags: positive2022&negative2022 (string, required) - List of tags.
-
-
-
-+ Request (application/json)
-
-    + Headers
-
-            Accept: application/json
-
-    + Attributes
-        + reviewIds: 3901784402334,3901744402337 (array) - List of reviewIds.
-
-    + Body
-
-            {
-                "reviewIds":["3901784402334","3901744402337","3902344402875"]
-
-            }
-
-
-+ Response 200 (application/json)
-
-+ Response 401
-
-    [1161][]
-
-+ Response 429
-
-    [89][]
-
-+ Response 401
-
-    [1167][]
-
-+ Response 404
-
-    [1011][]
-
-
-## Search reviews and remove tags [/v1/tag/remove/review/{?bId,api_key,tagList}]
+## Search reviews and remove tags [/v1/tag/remove/review{?bId,api_key,tag}]
 Search reviews and remove tags removes the list of tags from reviews on the basis of review filter.
 
 ### Remove tags from filtered reviews [POST]
@@ -4192,7 +4096,7 @@ Search reviews and remove tags removes the list of tags from reviews on the basi
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bId: 12345678 (string, required) - Id of the Business.
-    + tagList: positive2022&negative2022 (string, required) - List of tags to be removed from reviews.
+    + tag: positive2022&negative2022 (string, required) - List of tags to be removed from reviews.
 
 
 + Request (application/json)
@@ -4202,6 +4106,7 @@ Search reviews and remove tags removes the list of tags from reviews on the basi
             Accept: application/json
 
     + Attributes
+            + reviewIds: 3901784402334,3901744402337 (array) - List of reviewIds.
             + fromDate: 04/01/2021 (string) - Review Start date format MM/dd/YYYY.
             + toDate: 05/03/2022 (string) - Review End date format MM/dd/YYYY.
             + updateFromDate: 04/01/2021 (string) - Review update from date format MM/dd/YYYY.
@@ -4216,6 +4121,7 @@ Search reviews and remove tags removes the list of tags from reviews on the basi
     + Body
 
             {
+                "reviewIds": [3901784402334,3901744402337],
                 "fromDate":"04/01/2013",
                 "toDate":"05/3/2015",
                 "updateFromDate":"04/01/2013",
@@ -4247,7 +4153,7 @@ Search reviews and remove tags removes the list of tags from reviews on the basi
     [1011][]
 
 
-## Remove tags from all reviews [/v1/tag/remove/all/review/{?bId,api_key}]
+## Remove tags from all reviews [/v1/tag/remove/all/review{?bId,api_key}]
 Remove particular tags from all reviews removes the list of tags from all the reviews of an account.
 
 ### Remove particular tags from all reviews [POST]
@@ -7098,7 +7004,7 @@ Visitor report groups the data according to source.
 
 
 
-## Usage report [/v1/reports/usage/{?api_key,reportType,sindex,count,business_id}]
+## Usage report [/v1/reports/usage{?api_key,reportType,sindex,count,business_id}]
 Usage report gives the usage details for the review requests, and the number of requests sent, opened and clicked.
 
 
@@ -8665,7 +8571,7 @@ Update Survey Settings helps update the survey page appearance settings like Log
 # Group Employee
 
 
-## Get [/v1/employee/{businessId}/{?api_key}]
+## Get [/v1/employee/{businessId}{?api_key}]
 Get details of Employees is a lite version API that retrieves a sorted list of all active employees for an account.
 
 
