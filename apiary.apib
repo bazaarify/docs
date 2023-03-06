@@ -2964,9 +2964,9 @@ Add/Remove Child in Hierarchy API adds or removes a child in a hierarchy.
 ### Add child in hierarchy [PUT]
 
 + Parameters
-    + businessId (string, required) - Id of Parent business.
-    + api_key (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + cid (string, required) - ID of Child business.
+    + businessId: 12345678 (string, required) - Id of Parent business.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + cid: 987654321 (string, required) - ID of Child business.
 
 + Request (application/json)
 
@@ -3069,9 +3069,9 @@ Add/Remove Child in Hierarchy API adds or removes a child in a hierarchy.
 ### Remove child from hierarchy [DELETE]
 
 + Parameters
-    + businessId (string, required) - Id of Parent business.
-    + api_key (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + cid (string, required) - Id of Child business.
+    + businessId: 12345678 (string, required) - Id of Parent business.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + cid: 987654321 (string, required) - Id of Child business.
 
 + Request (application/json)
 
@@ -3240,6 +3240,10 @@ Add, delete and manage user profiles and permissions easily.
 
 ## Signup [/v1/user/signup{?bid,api_key}]
 Create User API creates a new user for a business.
+
++ Parameters
+    + api_key: abcdefg (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + bid: 12345678 (string, required) - Id of the Business.
 
 ### Create User [POST]
 
@@ -3676,7 +3680,7 @@ It also returns the list of review sources and review ratings.
 
     + businessId: 12345678 (string, required) - Id of the business.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + statuses: ad (string, optional) -  review statuses
+    + statuses: published,parked (string[], optional) -  List of review status.
 
 
 + Request (application/json)
@@ -3781,6 +3785,8 @@ Eligible reviews can be replied to from the Birdeye platform using Review Reply 
 
 + Parameters
 
+    + businessNumber: 123456789 (string, required) - Id of the business.
+    + reviewId: 88778877 (string, required) - Review Id.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
@@ -4205,7 +4211,7 @@ Remove particular tags from all reviews removes the list of tags from all the re
 
 Manage contacts across locations effortlessly with a robust Contact Management System.
 
-## Create or Update Contact [/v1/customer-v2/external/saveCustomer{?businessId,api_key}]
+## Create or Update Contact [/v1/customer-v2/external/saveCustomer{?api_key,businessId}]
 Customers can be created & updated using Create or Update Contact API.
 
 
@@ -4213,8 +4219,8 @@ Customers can be created & updated using Create or Update Contact API.
 
 + Parameters
 
-    + businessId: 12345678 (string, required) - Id of the business.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (string, required) - Id of the business.
 
 
 + Request (application/json)
@@ -4341,7 +4347,7 @@ Get Contact fetches Customer details.
             {
                 "id": 115339282,
                 "email": "test.user@test.com",
-                "phone": (212) xxx-xxxx
+                "phone": "(212) xxx-xxxx"
             }
 
 + Response 200 (application/json)
@@ -4433,7 +4439,7 @@ Get Contact fetches Customer details.
 
 
 
-## Delete Contact [/v1/customer-v2/external/deleteCustomer{?businessId,api_key}]
+## Delete Contact [/v1/customer-v2/external/deleteCustomer{?api_key,businessId}]
 Customers can be deleted using Delete Contact API.
 
 
@@ -4441,8 +4447,8 @@ Customers can be deleted using Delete Contact API.
 
 + Parameters
 
-    + businessId: 12345678 (string, required) - Id of the business.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 12345678 (string, required) - Id of the business.
 
 
 + Request (application/json)
@@ -4479,7 +4485,7 @@ Customers can be deleted using Delete Contact API.
 
 
 
-## Check in [/v1/customer/checkin{?bid,api_key}]
+## Check in [/v1/customer/checkin{?api_key,bid}]
 Customer check-in can be done using Check in API.
 
 
@@ -4487,8 +4493,8 @@ Customer check-in can be done using Check in API.
 
 + Parameters
 
-    + bid: 12345678 (string, required) - Id of the business.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + bid: 12345678 (string, required) - Id of the business.
 
 
 + Request (application/json)
@@ -4608,7 +4614,7 @@ You can retrieve the customer history or customer activity log using the Custome
 
 + Response 200 (application/json)
 
-    + Attribution (array)
+    + Attributes (array)
         + (object)
             + type: Review request email (string) - Activity Type.
             + activityDate: Review request email (string) - Activity Type.
@@ -5035,6 +5041,7 @@ Contact Us form can be integrated with Birdeye Inbox using Contact Us API.
 
 + Parameters
 
+    + businessId: 12345678 (string, required) - Id of the business.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
@@ -5343,11 +5350,12 @@ Get Source List-lite returns a list of aggregation aliases associated with the l
 
 + Response 200 (application/json)
 
-    + Attributes
+
+    + Attributes (object)
         + aliases: Google,Citysearch,Yellow Pages (array) - List of source aliases.
 
 
-     + Body
+    + Body
 
             {
                 "aliases": [
@@ -8953,6 +8961,7 @@ Competitor of Enterprise Business retrieves list of all competitor businesses fo
 
 + Parameters
 
+    + EnterpriseBusinessNumber: 231123123 (string, required) - Enterprise Business id.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + isCompetitor: true (boolean, required) - True for get competitor business of Enterprise Business and False for get Child Business of Enterprise Business.
 
