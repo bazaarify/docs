@@ -10194,6 +10194,80 @@ Fix Listing publishes information on online listing sources. We post presence in
 
     [1175][]
 
+## Get Location Status [/v1/listing/{businessNumber}/location/status]
+Get Location Status retrieves status for each sources for a given business.
+
+### Get Location Status [GET]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Id of the business.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200
+
+    + Attributes
+        + listingStatus (object) - List of location status.
+            + sourceName: Google (string) - Name of listing source.
+            + status: Action Required (string) -  Status of the location on that source. Possible values are :
+                        Sync Initiated,
+                        In Progress,
+                        Opted out,
+                        Submitted,
+                        Live,
+                        Action Required,
+                        Connect,
+                        Reconnect,
+                        Unavailable.
+            + liveLink: https://maps.google.com/maps?cid=151047735163 (string) - Location source link.
+            + name: Utah Dental Center (string) - Name of the location.
+            + phone (string) - Phone number Format is (xxx) xxx-xxxx.
+            + address: 420 E S Temple St #220 (string) - Address of the business.
+
+    + Body
+
+            {
+                "listingStatus": [{
+                    "sourceName": "Navmii",
+                    "status": "Action Required",
+                    "liveLink": "http://livepoi.navmii.com/p/view/4d6c-ace0-0a2483b47182",
+                    "name": "Richard L. Blackhurst/Utah Dental Center",
+                    "phone": "(123) 456-7890",
+                    "address": "420 E S Temple St #220"
+                    },
+                    {
+                        "sourceName": "Where To?",
+                        "status": "In Progress",
+                        "liveLink": "https://wheretoapp.com/search?poi=86183685562887",
+                        "name": "Richard L. Blackhurst/Utah Dental Center",
+                        "phone": "(123) 456-0987",
+                        "address": "420 E S Temple St #220"
+                    }]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
+
 
 # Group Integration
 Birdeye integrates with various software or tools you use.
@@ -10265,6 +10339,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>03/15/2023</b> - Added new API under Listing module i.e, Get Location Status.
 * <b>02/17/2023</b> - Added new API under Business module i.e, Get Customer card details.
 * <b>02/10/2023</b> - Country code support added in Contact APIs  Create or Update Contact [external/saveCustomer] & Get Contact [external/getCustomer]
 * <b>01/20/2023</b> - Restructured the Birdeye's developer page.
