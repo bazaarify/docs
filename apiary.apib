@@ -1592,6 +1592,26 @@ For example :
         }
 
 
+## 5556 [/5556]
+
++ Model (application/json)
+
+        {
+            code: 5556,
+            message: "One or few BusinessIds are Invalid"
+        }
+
+
+## 5557 [/5557]
+
++ Model (application/json)
+
+        {
+            code: 5557,
+            message: "Requested Business Ids are empty."
+        }
+
+
 # Group Business
 Create and maintain your business on Birdeye.
 
@@ -8575,6 +8595,213 @@ Update Survey Settings helps update the survey page appearance settings like Log
     [2096][]
 
 
+# Group Social
+Create and track Social posting for all channels.
+
+## Post Social Schedule [/resources/v1/social/{accountNumber}/schedule]
+Schedule or immediately post content on  Social sites.
+
+### Post Social Schedule [POST]
+
++ Parameters
+
+    + accountNumber: 12345678 (number, required) - Id of the Account.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + text: Check out the latest collection (string, required) - Input text that will be added in the post. Limits of characters across various Social Sites
+                            Google Business Profile: 1500
+                            Facebook: 5000
+                            Instagram: 5000
+                            LinkedIn: 3000
+                            Twitter: 240
+        + accountNumber: 1234567890 (string, required) - Id of the business.
+        + socialSite: GOOGLE (string, required) - Social Sites. Possible values are
+                                            INSTAGRAM,
+                                            FACEBOOK,
+                                            GOOGLEMYBUSINESS,
+                                            LINKEDIN,
+                                            TWITTER
+        + subBusinessNumbers: 123456780,123456781 (array) - List of Location Ids. Optional for SMB.
+        + scheduleTimestamp: 1677759962528 (number) - Epoch time in milliseconds.
+        + media (object) - Media details.
+            + type: IMAGE (string) - Type of Media. IMAGE or VIDEO
+            + mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png (string) - Media Link.
+        + additionalMetaData (object) - Applicable only for GOOGLE, learn more link.
+            + callToActionType: LEARN_MORE (string) - Type of data.
+            + callToActionUrl: https://app.birdeye.com (string) - Link of the additional data.
+
+
+
+    + Body
+
+            {
+                "text": "Check out the latest collection",
+                "socialSite" : "GOOGLE" ,
+                "subBusinessNumbers": [123456780,123456781],
+                "scheduleTimestamp": 1677759962528,
+                "media": [{
+                    "type": "IMAGE",
+                    "mediaUrl": "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png" ,
+                },
+                {
+                    "type": "IMAGE",
+                    "mediaUrl": "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png" ,
+                }],
+                "additionalMetaData": {
+                "callToActionType":"LEARN_MORE",
+                "callToActionUrl": "https://app.birdeye.com/"
+                }
+            }
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
++ Response 400
+
+    [5556][]
+
++ Response 400
+
+    [5557][]
+
+
+
+
+## Track Social Post [/resources/v1/social/{accountNumber}/post/track/{trackingId}]
+Track the status of scheduled or published post.
+
+### Track Social Post [GET]
+
++ Parameters
+
+    + accountNumber: 12345678 (number, required) - Id of the Account.
+    + trackingId: abcdefdhs (string, required) - Id to track the post status.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200 (application/json)
+
+    + Attributes
+        + trackingId: BvgqPRWtObg4jWTKG2wHBg (string) -  Track Id.
+        + accountNumber: 124356718987 (string) -  Account Id.
+        + socialSite: GOOGLE (string) - Social Sites. Possible values are
+                                            INSTAGRAM,
+                                            FACEBOOK,
+                                            GOOGLEMYBUSINESS,
+                                            LINKEDIN,
+                                            TWITTER
+        + subBusinessNumbers: 123456780,123456781 (array) - List of Location Ids. Optional for SMB.
+        + socialPostDetails (array) - Post details.
+            + (object)
+                + locationName: Chalker and Peterson (string) - Name of the location.
+                + locationNumber: 12345678909 (string) - Location Id.
+                + status (object) - Post status details.
+                    + status: POST_SUCCEEDED (string) - Post status. Possible values:
+                                                                POST_SCHEDULED,
+                                                                POST_SUCCEEDED,
+                                                                POST_PROCESSING,
+                                                                POST_FAILED,
+                                                                REJECTED_BY_APPROVER
+                    + failureReason: Your session has expired. Please log back into your Facebook account to continue. (string) - Failure reason if any.
+                + publishedTimestamp: 43412413412 (number) - Published timestamp in milliseconds.
+                + socialSitePostId: 847803613041846_899791936843015 (string) - Social site post id.
+                + socialSitePostUrl: http://www.facebook.com/847803613041846_899791936843015 (string) - Social site post link.
+
+
+
+    + Body
+
+            {
+                    "trackingId": "BvgqPRWtObg4jWTKG2wHBg",
+                    "accountNumber": 124356718987,
+                    "socialSite" : "FACEBOOK"
+                    "subBusinessNumbers": [123456780,123456781],
+                    "socialPostDetails": [
+                    {
+                        "locationName": "Chalker and Peterson",
+                        "locationNumber": 12345678909 ,
+                        "status":{
+                            "status": POST_SCHEDULED
+                        },
+                        "publishedTimestamp":  1679888791000
+                    },
+                    {
+                        "locationName": "Prince George, BC",
+                        "locationNumber": 2234561212 ,
+                        "status":{
+                            "status": POST_FAILED,
+                            "failureReason": "Your session has expired. Please log back into your Facebook account to continue."
+                        },
+                        "publishedTimestamp": 43412413412
+                    },
+                    {
+                        "locationName": "New York, NY",
+                        "locationNumber": 323456121 ,
+                        "status":{
+                            "status": POST_SUCCEEDED
+                        },
+                        "publishedTimestamp": 43412413412,
+                        "socialSitePostId": 847803613041846_899791936843015
+                        "socialSitePostUrl": "http://www.facebook.com/847803613041846_899791936843015"
+                    }]
+                }
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
++ Response 400
+
+    [5556][]
+
++ Response 400
+
+    [5557][]
+
+
 
 # Group Employee
 
@@ -10339,8 +10566,8 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>04/03/2023</b> - Added two new APIs under Social module, Post Social Schedule and Track Social Post.
 * <b>03/15/2023</b> - Added new API under Listing module i.e, Get Location Status.
 * <b>02/17/2023</b> - Added new API under Business module i.e, Get Customer card details.
 * <b>02/10/2023</b> - Country code support added in Contact APIs  Create or Update Contact [external/saveCustomer] & Get Contact [external/getCustomer]
 * <b>01/20/2023</b> - Restructured the Birdeye's developer page.
-* <b>12/06/2022</b> - Added new API under Integration module i.e, Add Business Integration Mapping
