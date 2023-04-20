@@ -10176,10 +10176,12 @@ Insights/Analytics of Social Pages i.e Google, Facebook & Bing of a given busine
 
             Accept: application/json
 
+
     + Attributes
-            + businessNumbers: Google (string) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
-            + startDate: 2010-02-01 (string) - Start Date, Format: yyyy-MM-dd.
-            + endDate: 2022-02-01 (string) - End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen.
+
+        + businessNumbers: 23456788,1231313 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+        + startDate (string) - Start Date, Format: yyyy-MM-dd.
+        + endDate (string) - End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen.
 
 
     + Body
@@ -10195,15 +10197,16 @@ Insights/Analytics of Social Pages i.e Google, Facebook & Bing of a given busine
 + Response 200
 
     + Attributes
-            + mapViewTotalCount: 2868 (number) - Business impressions on Google Maps on Desktop and mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression.
-            + searchViewTotalCount: 2868 (number) - Business impressions on Google Search on Desktop and mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression.
-            + websiteVisitsTotalCount: 2868 (number) - The number of times the business profile website was clicked.
-            + getDirectionsTotalCount: 0 (number) - The number of times a direction request was requested to the business location.
-            + callsTotalCount: 2868 (number) - The number of times the business profile call button was clicked.
-            + usersReachedTotalCount: 0 (number) - The number of times your business appeared in search results and other services in Bing.
-            + impressionCountTotalCount: 0 (number) - The number of users who saw the activity from your page including posts, check-ins, and ads.
-            + liveCount: 10 (number) - Total no of synched sites for a business.
-            + entityCount: 1 (number) - Total businesses count.
+
+        + mapViewTotalCount: 2868 (number) - Business impressions on Google Maps on Desktop and mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression.
+        + searchViewTotalCount: 2868 (number) - Business impressions on Google Search on Desktop and mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression.
+        + websiteVisitsTotalCount: 2868 (number) - The number of times the business profile website was clicked.
+        + getDirectionsTotalCount: 0 (number) - The number of times a direction request was requested to the business location.
+        + callsTotalCount: 2868 (number) - The number of times the business profile call button was clicked.
+        + usersReachedTotalCount: 0 (number) - The number of times your business appeared in search results and other services in Bing.
+        + impressionCountTotalCount: 0 (number) - The number of users who saw the activity from your page including posts, check-ins, and ads.
+        + liveCount: 10 (number) - Total no of synched sites for a business.
+        + entityCount: 1 (number) - Total businesses count.
 
     + Body
 
@@ -10257,10 +10260,10 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
             Accept: application/json
 
     + Attributes
-            + businessNumbers: Google (string) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
-            + startDate: 2010-02-01 (string) - Start Date, Format: yyyy-MM-dd.
-            + endDate: 2022-02-01 (string) - End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen with groupByType as the day.
-            + groupByType: year (string) - Group the data accordingly. The default value will be the week. Possible values are
+        + businessNumbers: 23456788,1231313 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+        + startDate (string) - Start Date, Format: yyyy-MM-dd.
+        + endDate (string) - End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen with groupByType as the day.
+        + groupByType: year (string) - Group the data accordingly. The default value will be the week. Possible values are
                                                         day,
                                                         week,
                                                         month,
@@ -10282,10 +10285,10 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
 + Response 200
 
     + Attributes
-            + label: 02/01/2020 (string) - The business counts data on a particular date.
-            + wsiteVisitsCount: 670 (number) - The number of times the business profile website was clicked.
-            + directionsCount: 670 (number) - The number of times a direction request was requested to the business location.
-            + callsCount: 670 (number) - The number of times the business profile call button was clicked.
+        + label: 02/01/2020 (string) - The business counts data on a particular date.
+        + wsiteVisitsCount: 670 (number) - The number of times the business profile website was clicked.
+        + directionsCount: 670 (number) - The number of times a direction request was requested to the business location.
+        + callsCount: 670 (number) - The number of times the business profile call button was clicked.
 
     + Body
 
