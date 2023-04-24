@@ -8270,7 +8270,7 @@ Update Survey Settings helps update the survey page appearance settings like Log
 # Group Social
 Create and track Social posting for all channels.
 
-## Schedule Social Post [/resources/v1/social/{accountNumber}/schedule]
+## Schedule Social Post [/v1/social/{accountNumber}/schedule]
 Schedule or immediately post content on  Social sites.
 
 ### Schedule Social Post [POST]
@@ -8294,8 +8294,7 @@ Schedule or immediately post content on  Social sites.
                             Instagram: 5000
                             LinkedIn: 3000
                             Twitter: 240
-        + accountNumber: 1234567890 (string, required) - Id of the business.
-        + socialSite: GOOGLE (string, required) - Social Sites. Possible values are
+        + socialSite: GOOGLEMYBUSINESS (string, required) - Social Sites. Possible values are
                                             INSTAGRAM,
                                             FACEBOOK,
                                             GOOGLEMYBUSINESS,
@@ -8306,7 +8305,7 @@ Schedule or immediately post content on  Social sites.
         + media (object) - Media details.
             + type: IMAGE (string) - Type of Media. IMAGE or VIDEO
             + mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png (string) - Media Link.
-        + additionalMetaData (object) - Applicable only for GOOGLE, learn more link.
+        + additionalMetaData (object) - Applicable only for GOOGLEMYBUSINESS, learn more link.
             + callToActionType: LEARN_MORE (string) - Type of data.
             + callToActionUrl: https://app.birdeye.com (string) - Link of the additional data.
 
@@ -8316,7 +8315,7 @@ Schedule or immediately post content on  Social sites.
 
             {
                 "text": "Check out the latest collection",
-                "socialSite" : "GOOGLE" ,
+                "socialSite" : "GOOGLEMYBUSINESS" ,
                 "subBusinessNumbers": [123456780,123456781],
                 "scheduleTimestamp": 1677759962528,
                 "media": [{
@@ -8362,7 +8361,7 @@ Schedule or immediately post content on  Social sites.
 
 
 
-## Track Social Post [/resources/v1/social/{accountNumber}/post/track/{trackingId}]
+## Track Social Post [/v1/social/{accountNumber}/post/track/{trackingId}]
 Track the status of scheduled or published post.
 
 ### Track Social Post [GET]
@@ -8385,7 +8384,7 @@ Track the status of scheduled or published post.
     + Attributes
         + trackingId: BvgqPRWtObg4jWTKG2wHBg (string) -  Track Id.
         + accountNumber: 124356718987 (string) -  Account Id.
-        + socialSite: GOOGLE (string) - Social Sites. Possible values are
+        + socialSite: GOOGLEMYBUSINESS (string) - Social Sites. Possible values are
                                             INSTAGRAM,
                                             FACEBOOK,
                                             GOOGLEMYBUSINESS,
