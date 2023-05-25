@@ -4493,14 +4493,14 @@ Customer can be subscribe/unsubscribe from Email & SMS using this API.
 
 
 
-## Contacts list [/v2/customer/list{?bid,api_key,page,size,order,sortby}]
+## Contacts list [/v2/customer/list{?businessId,api_key,page,size,order,sortby}]
 Contact list API fetches contact list for a business.
 
 ### Contact [POST]
 
 + Parameters
 
-    + bid: 12345678 (string, required) - Id of the Business.
+    + businessId: 12345678 (string, required) - Id of the Business.
     + page: 0 (number, required) - The page number.
     + size: 30 (number, required) - Maximum number of contacts return in response.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
