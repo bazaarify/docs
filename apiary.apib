@@ -1876,14 +1876,23 @@ Get Business API gets business information, including product features opted and
         + image2URL: http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg (string) - Images for the business.
         + image3URL: http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg (string) - Images for the business.
         + timezone: Pacific Standard Time (string)- Timezone of the business.
-        + languages: English,Spanish (string)- Language.
+        + languages: English,Spanish (array)- Language.
+        + isServiceAreaProvider: Yes (string) - To select whether the business is Service Area Business Type. Default value is : No. Possible values are:
+                                    Yes
+                                    No
+        + serviceAreas (array) - Service Area information.
+            + (object)
+                + description: New York, NY, USA (string)  - Description about the Service Area.
         + payment: Paypal, Visa, Master Card (string) - Payment Type (Max 250 character long).
-        + hoursOfOperations (object) - Working hours of business for each day.
-            + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
-            + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
-            + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
-            + isOpen: 1 (number) - 0(Business closed today), 1 (open)
-            + comment: By appointment only (string) - Add the special instruction.
+        + hoursOfOperations (array) - Working hours of business for each day.
+            + (object)
+                + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
+                + workingHours (array) - Working hours of the business
+                    + (object)
+                        + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
+                        + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
+                + isOpen: 1 (number) - 0 (Business closed today), 1 (open)
+                + comment: By appointment only (string) - Add the special instruction.
         + working24x7: 0 (number) - Whether business is 24x7 open or not (0-false, 1-true).
         + location (object) - Business address
             + address1: 7405 Morro Rd (string) - Address of the business.
@@ -1925,6 +1934,14 @@ Get Business API gets business information, including product features opted and
               "image2Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
               "image3Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg",
               "timezone": "Pacific Standard Time",
+              "isServiceAreaProvider": "Yes",
+                "serviceAreas": [
+                {
+                    "description": "Avondale, AZ, USA"
+                },
+                {
+                    "description": "New York, NY, USA"
+                }],
               "languages": [
                 "English",
                 "Spanish"
@@ -1932,53 +1949,98 @@ Get Business API gets business information, including product features opted and
               "payment": "Visa, MasterCard, American Express, Debit Cards, Check",
               "hoursOfOperations": [
                 {
-                  "day": "5",
-                  "startHour": "7:00",
-                  "endHour": "17:30",
+                  "day": "0",
                   "isOpen": 1,
+                  "workingHours": [
+                    {
+                      "startHour": "09:00",
+                      "endHour": "13:30"
+                    },
+                    {
+                      "startHour": "14:30",
+                      "endHour": "19:00"
+                    }
+                  ],
                   "comment": ""
                 },
                 {
                   "day": "1",
-                  "startHour": "8:00",
-                  "endHour": "21:00",
                   "isOpen": 1,
-                  "comment": ""
-                },
-                {
-                  "day": "4",
-                  "startHour": "8:00",
-                  "endHour": "21:00",
-                  "isOpen": 1,
-                  "comment": ""
-                },
-                {
-                  "day": "6",
-                  "startHour": "9:00",
-                  "endHour": "15:00",
-                  "isOpen": 1,
-                  "comment": ""
-                },
-                {
-                  "day": "3",
-                  "startHour": "8:00",
-                  "endHour": "21:00",
-                  "isOpen": 1,
+                  "workingHours": [
+                    {
+                      "startHour": "09:00",
+                      "endHour": "13:30"
+                    },
+                    {
+                      "startHour": "14:30",
+                      "endHour": "19:00"
+                    }
+                  ],
                   "comment": ""
                 },
                 {
                   "day": "2",
-                  "startHour": "8:00",
-                  "endHour": "21:00",
                   "isOpen": 1,
+                  "workingHours": [
+                    {
+                      "startHour": "09:00",
+                      "endHour": "13:30"
+                    },
+                    {
+                      "startHour": "14:30",
+                      "endHour": "19:00"
+                    }
+                  ],
                   "comment": ""
                 },
                 {
-                  "day": "0",
-                  "startHour": null,
-                  "endHour": null,
-                  "isOpen": 0,
-                  "comment": "Mon closed"
+                  "day": "3",
+                  "isOpen": 1,
+                  "workingHours": [
+                    {
+                      "startHour": "09:00",
+                      "endHour": "13:30"
+                    },
+                    {
+                      "startHour": "14:30",
+                      "endHour": "19:00"
+                    }
+                  ],
+                  "comment": ""
+                },
+                {
+                  "day": "4",
+                  "isOpen": 1,
+                  "workingHours": [
+                    {
+                      "startHour": "09:00",
+                      "endHour": "13:30"
+                    },
+                    {
+                      "startHour": "14:30",
+                      "endHour": "19:00"
+                    }
+                  ],
+                  "comment": ""
+                },
+                {
+                  "day": "5",
+                  "isOpen": 1,
+                  "workingHours": [
+                    {
+                      "startHour": "09:00",
+                      "endHour": "13:30"
+                    },
+                    {
+                      "startHour": "14:30",
+                      "endHour": "19:00"
+                    }
+                  ],
+                  "comment": ""
+                },
+                {
+                  "day": "6",
+                  "isOpen": 0
                 }
               ],
               "working24x7": 0,
@@ -2057,19 +2119,30 @@ Update Business API updates business information.
         + websiteUrl: www.dentistinatascadero.com (string)- Business website url.
         + establishedYear: 2012 (number) - Year established
         + timezone: Pacific Standard Time (string)- Timezone of the business.
-        + languages: English,Spanish (string)- Language.
+        + languages: English,Spanish (array)- Language.
+        + isServiceAreaProvider: Yes (string) - To select whether the business is Service Area Business Type. Default value is : No.
+                          Possible values are:
+                                        Yes
+                                        No
+        + serviceAreas (array) - Service Area information. You can enter upto 10 service area addresses in one request
+            + (object)
+                + description: New York, NY, USA (string)  - Description about the Service Area.
         + working24x7: 0 (number) - Whether business is 24x7 open or not (0-false, 1-true).
-        + hoursOfOperations (object) - Working hours of business for each day.
-            + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
-            + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
-            + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
-            + isOpen: 1 (number) - 0(Business closed today), 1 (open)
-            + comment: By appointment only (string) - Add the special instruction.
-        + specialHours (object) - Special hours of business.
-            + specialDate: 10/20/2023 (string) - It should be "MM/dd/yyyy".
-            + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
-            + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
-            + isOpen: 1 (number) - 0(Business closed today), 1 (open)
+        + hoursOfOperations (array) - Working hours of business for each day.
+            + (object)
+                + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
+                + workingHours (array) - Working hours of the business
+                    + (object)
+                        + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
+                        + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
+                + isOpen: 1 (number) - 0 (Business closed today), 1 (open)
+                + comment: By appointment only (string) - Add the special instruction.
+        + specialHours (array) - Special hours of business.
+            + (object)
+                + specialDate: 10/20/2023 (string) - It should be "MM/dd/yyyy".
+                + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
+                + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
+                + isOpen: 1 (number) - 0(Business closed today), 1 (open)
         + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
         + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/dd/yyyy" format.
         + services: Other Dental Specialties, Orthodontists, Dentistry (required,string)- Services (Comma separated list of services offered; used for SEO).
@@ -2161,56 +2234,109 @@ Update Business API updates business information.
                 "English",
                 "Spanish"
               ],
+                "isServiceAreaProvider": "Yes",
+                "serviceAreas": [
+                {
+                    "description": "Avondale, AZ, USA"
+                },
+                {
+                    "description": "New York, NY, USA"
+                }],
               "working24x7": 0,
               "hoursOfOperations": [
                 {
-                  "day": "5",
-                  "startHour": "7:00",
-                  "endHour": "17:30",
+                  "day": "0",
                   "isOpen": 1,
+                  "workingHours": [
+                    {
+                      "startHour": "09:00",
+                      "endHour": "13:30"
+                    },
+                    {
+                      "startHour": "14:30",
+                      "endHour": "19:00"
+                    }
+                  ],
                   "comment": ""
                 },
                 {
                   "day": "1",
-                  "startHour": "8:00",
-                  "endHour": "21:00",
                   "isOpen": 1,
-                  "comment": ""
-                },
-                {
-                  "day": "4",
-                  "startHour": "8:00",
-                  "endHour": "21:00",
-                  "isOpen": 1,
-                  "comment": ""
-                },
-                {
-                  "day": "6",
-                  "startHour": "9:00",
-                  "endHour": "15:00",
-                  "isOpen": 1,
-                  "comment": ""
-                },
-                {
-                  "day": "3",
-                  "startHour": "8:00",
-                  "endHour": "21:00",
-                  "isOpen": 1,
+                  "workingHours": [
+                    {
+                      "startHour": "09:00",
+                      "endHour": "13:30"
+                    },
+                    {
+                      "startHour": "14:30",
+                      "endHour": "19:00"
+                    }
+                  ],
                   "comment": ""
                 },
                 {
                   "day": "2",
-                  "startHour": "8:00",
-                  "endHour": "21:00",
                   "isOpen": 1,
+                  "workingHours": [
+                    {
+                      "startHour": "09:00",
+                      "endHour": "13:30"
+                    },
+                    {
+                      "startHour": "14:30",
+                      "endHour": "19:00"
+                    }
+                  ],
                   "comment": ""
                 },
                 {
-                  "day": "0",
-                  "startHour": null,
-                  "endHour": null,
-                  "isOpen": 0,
-                  "comment": "Mon closed"
+                  "day": "3",
+                  "isOpen": 1,
+                  "workingHours": [
+                    {
+                      "startHour": "09:00",
+                      "endHour": "13:30"
+                    },
+                    {
+                      "startHour": "14:30",
+                      "endHour": "19:00"
+                    }
+                  ],
+                  "comment": ""
+                },
+                {
+                  "day": "4",
+                  "isOpen": 1,
+                  "workingHours": [
+                    {
+                      "startHour": "09:00",
+                      "endHour": "13:30"
+                    },
+                    {
+                      "startHour": "14:30",
+                      "endHour": "19:00"
+                    }
+                  ],
+                  "comment": ""
+                },
+                {
+                  "day": "5",
+                  "isOpen": 1,
+                  "workingHours": [
+                    {
+                      "startHour": "09:00",
+                      "endHour": "13:30"
+                    },
+                    {
+                      "startHour": "14:30",
+                      "endHour": "19:00"
+                    }
+                  ],
+                  "comment": ""
+                },
+                {
+                  "day": "6",
+                  "isOpen": 0
                 }
               ],
               "specialHours": [
@@ -10398,9 +10524,9 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>06/30/2023</b> - Added support for service area based information in Get Business API and Update Business API.
 * <b>04/20/2023</b> - Added two new API under Listing module, Get Listings Insights and Get Listings Insights Datapoints.
 * <b>04/03/2023</b> - Added two new APIs under Social module, Post Social Schedule and Track Social Post.
 * <b>03/15/2023</b> - Added new API under Listing module i.e, Get Location Status.
 * <b>02/17/2023</b> - Added new API under Business module i.e, Get Customer card details.
 * <b>02/10/2023</b> - Country code support added in Contact APIs  Create or Update Contact [external/saveCustomer] & Get Contact [external/getCustomer]
-* <b>01/20/2023</b> - Restructured the Birdeye's developer page.
