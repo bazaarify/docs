@@ -1612,6 +1612,33 @@ For example :
         }
 
 
+## 2180 [/2180]
+
++ Model (application/json)
+
+        {
+            code: 2180,
+            message: "The recommended Image size for Google media image is 250 pixels wide and 250 pixels tall."
+        }
+
+## 2181 [/2181]
+
++ Model (application/json)
+
+        {
+            code: 2181,
+            message: "Supported video format is MP4 and OGG"
+        }
+
+## 2174 [/2174]
+
++ Model (application/json)
+
+        {
+            code: 2174,
+            message: "Unsupported media format"
+        }
+
 # Group Business
 Create and maintain your business on Birdeye.
 
@@ -1872,9 +1899,6 @@ Get Business API gets business information, including product features opted and
         + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords (Comma separated list of keywords; Max 10 keywords; used for SEO).
         + logoUrl: http://bzimages-prod.s3.amazonaws.com/669029760/Logo 180 X 121.png (string) - Logo Image (Dimension should be 60 x 60 px).
         + coverImageUrl: http://bzimages-prod.s3.amazonaws.com/669029760/California Foothills 951 X 351.jpg (string)- Cover Image (Dimension should be 995 x 316 px).
-        + image1URL: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - Images for the business.
-        + image2URL: http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg (string) - Images for the business.
-        + image3URL: http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg (string) - Images for the business.
         + timezone: Pacific Standard Time (string)- Timezone of the business.
         + languages: English,Spanish (array)- Language.
         + isServiceAreaProvider: Yes (string) - To select whether the business is Service Area Business Type. Default value is : No. Possible values are:
@@ -1931,9 +1955,6 @@ Get Business API gets business information, including product features opted and
               "services": "Beauty Salon, Hair Spa",
               "logoURL": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
               "coverImageURL": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
-              "image1Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-              "image2Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
-              "image3Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg",
               "timezone": "Pacific Standard Time",
               "isServiceAreaProvider": "Yes",
                 "serviceAreas": [
@@ -2481,9 +2502,6 @@ Update Business API updates business information.
               "services": "Beauty Salon, Hair Spa",
               "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
               "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
-              "image1Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-              "image2Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
-              "image3Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg",
               "timezone": "Pacific Standard Time",
               "languages": [
                 "English",
@@ -8452,6 +8470,304 @@ Update Survey Settings helps update the survey page appearance settings like Log
 + Response 400
 
     [2096][]
+
+# Group Business Media
+Add, delete and manage business media.
+
+> __Supported Media Size__
+> - _Photo: JPG or PNG. 720 x 720px. 10KB min._
+> - _Video: 30 sec long. 720p or more upto 75MB._
+
+
+## Add Media [/resources/v1/business/{businessNumber}/upload/media]
+API to upload the Business Media.
+
+
+### Add Media [POST]
+
++ Parameters
+
+    + businessNumber: 123456789 (string, required) - Location Number of the business, in case of SMB it will be Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + media (required, array) - List of media items to be uploaded.
+            + (object)
+                + url: https://images.pexels.com/photos/12128533/pexelsphoto12128533.jpeg (string, required) - Url of the media item.
+                + mediaCategory: PROFILE (string, required) - Category for the media item. Possible values are:
+                                        CATEGORY_UNSPECIFIED (PHOTO)
+                                        EXTERIOR (PHOTO, VIDEO)
+                                        INTERIOR (PHOTO, VIDEO)
+                                        PRODUCT (PHOTO)
+                                        AT_WORK (PHOTO)
+                                        FOOD_AND_DRINK (PHOTO, VIDEO)
+                                        MENU (PHOTO, VIDEO)
+                                        COMMON_AREA (PHOTO)
+                                        ROOMS (PHOTO)
+                                        TEAMS (PHOTO, VIDEO)
+                                        ADDITIONAL (PHOTO, VIDEO)
+                + description: Profile photo (string, required) - Description of the media.
+                + mediaFormat: PHOTO (string, required) - Format of the Media. Possible values are:
+                                                    PHOTO
+                                                    VIDEO
+
+
+
+    + Body
+
+            {
+                "media": [
+                {
+                    "url": "https://images.pexels.com/photos/12128533/pexels-photo-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "PROFILE",
+                    "description": "Profile photo",
+                    "mediaFormat": "PHOTO"
+                },
+                {
+                    "url": "https://images.pexels.com/photos/123123/pexels-photo-123123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "ADDITIONAL",
+                    "description": "Additional photo",
+                    "mediaFormat": "PHOTO"
+                }
+                ]
+            }
+
++ Response 200
+
+
+    + Attributes
+        + media (required, array) - List of media items.
+            + (object)
+                + mediaId: 987654321123 (string) - Id of the media.
+                + url: https://images.pexels.com/photos/12128533/pexelsphoto12128533.jpeg (string) - Url of the media item.
+                + mediaCategory: PROFILE (string) - Category for the media item.
+                + description: Profile photo (string) - Description of the media.
+                + mediaFormat: PHOTO (string) - Format of the Media.
+
+
+    + Body
+
+            {
+                "media": [
+                {
+                    "mediaId": "987654321123",
+                    "url": "https://images.pexels.com/photos/12128533/pexels-photo-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "PROFILE",
+                    "description": "Profile photo",
+                    "mediaFormat": "PHOTO"
+                },
+                {
+                    "mediaId": "7654321123",
+                    "url": "https://images.pexels.com/photos/123123/pexels-photo-123123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "ADDITIONAL",
+                    "description": "Additional photo",
+                    "mediaFormat": "PHOTO"
+                }
+                ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [2174][]
+
++ Response 400
+
+    [2180][]
+
++ Response 400
+
+    [2181][]
+
+
+
+## Get Media [/resources/v1/business/{businessNumber}/media/get]
+API to get the Business Media details.
+
+### Get Media [GET]
+
++ Parameters
+
+    + businessNumber: 123456789 (string, required) - Location Number of the business, in case of SMB it will be Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200
+
+
+    + Attributes
+        + media (array) - List of media items of the business.
+            + (object)
+                + mediaId: 987654321123 (string) - Id of the media.
+                + url: https://images.pexels.com/photos/12128533/pexelsphoto12128533.jpeg (string) - Url of the media item.
+                + mediaCategory: TEAMS (string) - Category for the media item.
+                + description: Team photo (string) - Description of the media.
+                + mediaFormat: PHOTO (string) - Format of the Media.
+
+
+    + Body
+
+            {
+                "media": [
+                {
+                    "mediaId": "987654321123",
+                    "url": "https://video.test.com/video/12128533/pexels-video-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "TEAMS",
+                    "description": "Team video",
+                    "mediaFormat": "VIDEO"
+                },
+                {
+                    "mediaId": "7654321122",
+                    "url": "https://images.pexels.com/photos/123123/pexels-photo-123123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "ADDITIONAL",
+                    "description": "Additional photo",
+                    "mediaFormat": "PHOTO"
+                }
+                ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
+
+## Update Media [/resources/v1/business/{businessNumber}/update/media/{mediaId}]
+API to update the Business Media.
+
+### Update Media [PUT]
+
++ Parameters
+
+    + businessNumber: 123456789 (string, required) - Location Number of the business, in case of SMB it will be Business Number.
+    + mediaId: 62185029212 (string, required) - Id of the media item.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + mediaCategory: PROFILE (string, required) - Category for the media item. Possible values are:
+                                                        CATEGORY_UNSPECIFIED
+                                                        EXTERIOR
+                                                        INTERIOR
+                                                        PRODUCT
+                                                        AT_WORK
+                                                        FOOD_AND_DRINK
+                                                        MENU
+                                                        COMMON_AREA
+                                                        ROOMS
+                                                        TEAMS
+                                                        ADDITIONAL
+
+
+
+    + Body
+
+            {
+                "mediaCategory": "FOOD_AND_DRINK"
+            }
+
++ Response 200
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [2174][]
+
+
+## Delete Media [/resources/v1/business/{businessNumber}/media/delete]
+API to delete the Business Medias.
+
+### Delete Media [POST]
+
++ Parameters
+
+    + businessNumber: 123456789 (string, required) - Location Number of the business, in case of SMB it will be Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + mediaIds: 123456,654321 (array, required) - List of Media Ids to be deleted.
+
+
+    + Body
+
+            {
+                "mediaIds": ["987654321123","7654321123"]
+            }
+
++ Response 200
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
 
 
 # Group Social
