@@ -1611,6 +1611,34 @@ For example :
             message: "Requested Business Ids are empty."
         }
 
+## 2180 [/2180]
+
++ Model (application/json)
+
+        {
+            code: 2180,
+            message: "The recommended Image size for Google media image is 250 pixels wide and 250 pixels tall."
+        }
+
+## 2181 [/2181]
+
++ Model (application/json)
+
+        {
+            code: 2181,
+            message: "Supported video format is MP4 and OGG"
+        }
+
+## 2174 [/2174]
+
++ Model (application/json)
+
+        {
+            code: 2174,
+            message: "Unsupported media format"
+        }
+
+
 
 # Group Business
 Create and maintain your business on Birdeye.
@@ -1872,28 +1900,15 @@ Get Business API gets business information, including product features opted and
         + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords (Comma separated list of keywords; Max 10 keywords; used for SEO).
         + logoUrl: http://bzimages-prod.s3.amazonaws.com/669029760/Logo 180 X 121.png (string) - Logo Image (Dimension should be 60 x 60 px).
         + coverImageUrl: http://bzimages-prod.s3.amazonaws.com/669029760/California Foothills 951 X 351.jpg (string)- Cover Image (Dimension should be 995 x 316 px).
-        + image1URL: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - Images for the business.
-        + image2URL: http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg (string) - Images for the business.
-        + image3URL: http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg (string) - Images for the business.
         + timezone: Pacific Standard Time (string)- Timezone of the business.
-        + languages: English,Spanish (array)- Language.
-        + isServiceAreaProvider: Yes (string) - To select whether the business is Service Area Business Type. Default value is : No. Possible values are:
-                                    Yes
-                                    No
-        + serviceAreas (array) - Service Area information.
-            + (object)
-                + description: New York, NY, USA (string)  - Description about the Service Area.
-                + placeId: ChIJ9YahAOasdwRSt7QSj (string)  - Place Id.
+        + languages: English,Spanish (string)- Language.
         + payment: Paypal, Visa, Master Card (string) - Payment Type (Max 250 character long).
-        + hoursOfOperations (array) - Working hours of business for each day.
-            + (object)
-                + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
-                + workingHours (array) - Working hours of the business
-                    + (object)
-                        + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
-                        + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
-                + isOpen: 1 (number) - 0 (Business closed today), 1 (open)
-                + comment: By appointment only (string) - Add the special instruction.
+        + hoursOfOperations (object) - Working hours of business for each day.
+            + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
+            + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
+            + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
+            + isOpen: 1 (number) - 0(Business closed today), 1 (open)
+            + comment: By appointment only (string) - Add the special instruction.
         + working24x7: 0 (number) - Whether business is 24x7 open or not (0-false, 1-true).
         + location (object) - Business address
             + address1: 7405 Morro Rd (string) - Address of the business.
@@ -1931,20 +1946,7 @@ Get Business API gets business information, including product features opted and
               "services": "Beauty Salon, Hair Spa",
               "logoURL": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
               "coverImageURL": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
-              "image1Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-              "image2Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
-              "image3Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg",
               "timezone": "Pacific Standard Time",
-              "isServiceAreaProvider": "Yes",
-                "serviceAreas": [
-                {
-                    "description": "2390 Boston Street, Seattle, WA, 98109",
-                    "placeId": "ChIJ9YasdSKZs0wRSt--7QSjsd3"
-                },
-                {
-                    "description": "400 Boston Street, Seattle, WA, 98109",
-                    "placeId": "ChIJ9aasdAOKZasdaSt--7QsdLja4"
-                }],
               "languages": [
                 "English",
                 "Spanish"
@@ -1952,98 +1954,53 @@ Get Business API gets business information, including product features opted and
               "payment": "Visa, MasterCard, American Express, Debit Cards, Check",
               "hoursOfOperations": [
                 {
-                  "day": "0",
+                  "day": "5",
+                  "startHour": "7:00",
+                  "endHour": "17:30",
                   "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
                   "comment": ""
                 },
                 {
                   "day": "1",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
                   "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
-                  "comment": ""
-                },
-                {
-                  "day": "2",
-                  "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
-                  "comment": ""
-                },
-                {
-                  "day": "3",
-                  "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
                   "comment": ""
                 },
                 {
                   "day": "4",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
                   "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
-                  "comment": ""
-                },
-                {
-                  "day": "5",
-                  "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
                   "comment": ""
                 },
                 {
                   "day": "6",
-                  "isOpen": 0
+                  "startHour": "9:00",
+                  "endHour": "15:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "3",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "2",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "0",
+                  "startHour": null,
+                  "endHour": null,
+                  "isOpen": 0,
+                  "comment": "Mon closed"
                 }
               ],
               "working24x7": 0,
@@ -2122,33 +2079,20 @@ Update Business API updates business information.
         + websiteUrl: www.dentistinatascadero.com (string)- Business website url.
         + establishedYear: 2012 (number) - Year established
         + timezone: Pacific Standard Time (string)- Timezone of the business.
-        + languages: English,Spanish (array)- Language.
-        + isServiceAreaProvider: Yes (string) - To select whether the business is Service Area Business Type. Default value is : No.
-                          Possible values are:
-                                        Yes
-                                        No
-        + serviceAreas (array) - Service Area information. You can enter upto 10 service area addresses in one request
-            + (object)
-                + description: 400 Boston Street, Seattle, WA, 98109 (string)  - For supported service areas, Possible formats:
-                                    1. Apartment Name/ Suite Name, Street Name/ Locality, City, State, ZIP
-                                    2. Street Name/ Locality, City, State, ZIP
-
+        + languages: English,Spanish (string)- Language.
         + working24x7: 0 (number) - Whether business is 24x7 open or not (0-false, 1-true).
         + hoursOfOperations (array) - Working hours of business for each day.
             + (object)
                 + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
-                + workingHours (array) - Working hours of the business
-                    + (object)
-                        + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
-                        + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
-                + isOpen: 1 (number) - 0 (Business closed today), 1 (open)
-                + comment: By appointment only (string) - Add the special instruction.
-        + specialHours (array) - Special hours of business.
-            + (object)
-                + specialDate: 10/20/2023 (string) - It should be "MM/dd/yyyy".
                 + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                 + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                 + isOpen: 1 (number) - 0(Business closed today), 1 (open)
+                + comment: By appointment only (string) - Add the special instruction.
+        + specialHours (object) - Special hours of business.
+            + specialDate: 10/20/2023 (string) - It should be "MM/dd/yyyy".
+            + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
+            + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
+            + isOpen: 1 (number) - 0(Business closed today), 1 (open)
         + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
         + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/dd/yyyy" format.
         + services: Other Dental Specialties, Orthodontists, Dentistry (required,string)- Services (Comma separated list of services offered; used for SEO).
@@ -2175,8 +2119,6 @@ Update Business API updates business information.
                 Full width cover image, business info overlay
                 Full width cover image, business info below
                 Google map view, business info overlay
-        + galleryPhotos: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - Images for the business.
-        + videoUrl: http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg (string) - Video URL for business. Format: MP4, OGG, OGV. Size: Maximum 100MB.
         + covidInfo (object) - Provide covid related update in.
             + postDescription (string) - Post will be update on gmb & FB
             + covid19SupportLink (string) - Should be a valid covid19 support url
@@ -2240,109 +2182,56 @@ Update Business API updates business information.
                 "English",
                 "Spanish"
               ],
-                "isServiceAreaProvider": "Yes",
-                "serviceAreas": [
-                {
-                    "description": "400 Boston Street, Seattle, WA, 98109"
-                },
-                {
-                    "description": "2390 Boston Street, Seattle, WA, 98109"
-                }],
               "working24x7": 0,
               "hoursOfOperations": [
                 {
-                  "day": "0",
+                  "day": "5",
+                  "startHour": "7:00",
+                  "endHour": "17:30",
                   "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
                   "comment": ""
                 },
                 {
                   "day": "1",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
                   "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
-                  "comment": ""
-                },
-                {
-                  "day": "2",
-                  "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
-                  "comment": ""
-                },
-                {
-                  "day": "3",
-                  "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
                   "comment": ""
                 },
                 {
                   "day": "4",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
                   "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
-                  "comment": ""
-                },
-                {
-                  "day": "5",
-                  "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
                   "comment": ""
                 },
                 {
                   "day": "6",
-                  "isOpen": 0
+                  "startHour": "9:00",
+                  "endHour": "15:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "3",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "2",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "0",
+                  "startHour": null,
+                  "endHour": null,
+                  "isOpen": 0,
+                  "comment": "Mon closed"
                 }
               ],
               "specialHours": [
@@ -2381,12 +2270,6 @@ Update Business API updates business information.
               "fbCoverOptOut": 1,
               "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
               "coverBusinessInfoLayout": "In grid cover image, business info overlay",
-              "galleryPhotos": [
-                "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-                "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
-                "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg"
-              ],
-              "videoUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.mp4",
               "covidInfo": {
                 "postDescription": "",
                 "covid19SupportLink": "",
@@ -2481,119 +2364,61 @@ Update Business API updates business information.
               "services": "Beauty Salon, Hair Spa",
               "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
               "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
-              "image1Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-              "image2Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
-              "image3Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg",
               "timezone": "Pacific Standard Time",
               "languages": [
                 "English",
                 "Spanish"
               ],
-              "isServiceAreaProvider": "Yes",
-                "serviceAreas": [
-                {
-                    "description": "2390 Boston Street, Seattle, WA, 98109",
-                    "placeId": "ChIJ9YasdSKZs0wRSt--7QSjsd3"
-                },
-                {
-                    "description": "400 Boston Street, Seattle, WA, 98109",
-                    "placeId": "ChIJ9aasdAOKZasdaSt--7QsdLja4"
-                }],
               "payment": "Visa, MasterCard, American Express, Debit Cards, Check",
               "hoursOfOperations": [
                 {
-                  "day": "0",
+                  "day": "5",
+                  "startHour": "7:00",
+                  "endHour": "17:30",
                   "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
                   "comment": ""
                 },
                 {
                   "day": "1",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
                   "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
-                  "comment": ""
-                },
-                {
-                  "day": "2",
-                  "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
-                  "comment": ""
-                },
-                {
-                  "day": "3",
-                  "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
                   "comment": ""
                 },
                 {
                   "day": "4",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
                   "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
-                  "comment": ""
-                },
-                {
-                  "day": "5",
-                  "isOpen": 1,
-                  "workingHours": [
-                    {
-                      "startHour": "09:00",
-                      "endHour": "13:30"
-                    },
-                    {
-                      "startHour": "14:30",
-                      "endHour": "19:00"
-                    }
-                  ],
                   "comment": ""
                 },
                 {
                   "day": "6",
-                  "isOpen": 0
+                  "startHour": "9:00",
+                  "endHour": "15:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "3",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "2",
+                  "startHour": "8:00",
+                  "endHour": "21:00",
+                  "isOpen": 1,
+                  "comment": ""
+                },
+                {
+                  "day": "0",
+                  "startHour": null,
+                  "endHour": null,
+                  "isOpen": 0,
+                  "comment": "Mon closed"
                 }
               ],
               "working24x7": 0,
@@ -8454,6 +8279,306 @@ Update Survey Settings helps update the survey page appearance settings like Log
     [2096][]
 
 
+# Group Business Media
+Add, delete and manage business media.
+
+> __Supported Media Size__
+> - _Photo: JPG or PNG. 720 x 720px. 10KB min._
+> - _Video: 30 sec long. 720p or more upto 75MB._
+
+
+## Add Media [/resources/v1/business/{businessNumber}/upload/media]
+API to upload the Business Media.
+
+
+### Add Media [POST]
+
++ Parameters
+
+    + businessNumber: 123456789 (string, required) - Location Number of the business, in case of SMB it will be Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + media (required, array) - List of media items to be uploaded.
+            + (object)
+                + url: https://images.pexels.com/photos/12128533/pexelsphoto12128533.jpeg (string, required) - Url of the media item.
+                + mediaCategory: PROFILE (string, required) - Category for the media item. Possible values are:
+                                        CATEGORY_UNSPECIFIED (PHOTO)
+                                        EXTERIOR (PHOTO, VIDEO)
+                                        INTERIOR (PHOTO, VIDEO)
+                                        PRODUCT (PHOTO)
+                                        AT_WORK (PHOTO)
+                                        FOOD_AND_DRINK (PHOTO, VIDEO)
+                                        MENU (PHOTO, VIDEO)
+                                        COMMON_AREA (PHOTO)
+                                        ROOMS (PHOTO)
+                                        TEAMS (PHOTO, VIDEO)
+                                        ADDITIONAL (PHOTO, VIDEO)
+                + description: Profile photo (string, required) - Description of the media.
+                + mediaFormat: PHOTO (string, required) - Format of the Media. Possible values are:
+                                                    PHOTO
+                                                    VIDEO
+
+
+
+    + Body
+
+            {
+                "media": [
+                {
+                    "url": "https://images.pexels.com/photos/12128533/pexels-photo-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "PROFILE",
+                    "description": "Profile photo",
+                    "mediaFormat": "PHOTO"
+                },
+                {
+                    "url": "https://images.pexels.com/photos/123123/pexels-photo-123123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "ADDITIONAL",
+                    "description": "Additional photo",
+                    "mediaFormat": "PHOTO"
+                }
+                ]
+            }
+
++ Response 200
+
+
+    + Attributes
+        + media (required, array) - List of media items.
+            + (object)
+                + mediaId: 987654321123 (string) - Id of the media.
+                + url: https://images.pexels.com/photos/12128533/pexelsphoto12128533.jpeg (string) - Url of the media item.
+                + mediaCategory: PROFILE (string) - Category for the media item.
+                + description: Profile photo (string) - Description of the media.
+                + mediaFormat: PHOTO (string) - Format of the Media.
+
+
+    + Body
+
+            {
+                "media": [
+                {
+                    "mediaId": "987654321123",
+                    "url": "https://images.pexels.com/photos/12128533/pexels-photo-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "PROFILE",
+                    "description": "Profile photo",
+                    "mediaFormat": "PHOTO"
+                },
+                {
+                    "mediaId": "7654321123",
+                    "url": "https://images.pexels.com/photos/123123/pexels-photo-123123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "ADDITIONAL",
+                    "description": "Additional photo",
+                    "mediaFormat": "PHOTO"
+                }
+                ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [2174][]
+
++ Response 400
+
+    [2180][]
+
++ Response 400
+
+    [2181][]
+
+
+
+## Get Media [/resources/v1/business/{businessNumber}/media/get]
+API to get the Business Media details.
+
+### Get Media [GET]
+
++ Parameters
+
+    + businessNumber: 123456789 (string, required) - Location Number of the business, in case of SMB it will be Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200
+
+
+    + Attributes
+        + media (array) - List of media items of the business.
+            + (object)
+                + mediaId: 987654321123 (string) - Id of the media.
+                + url: https://images.pexels.com/photos/12128533/pexelsphoto12128533.jpeg (string) - Url of the media item.
+                + mediaCategory: TEAMS (string) - Category for the media item.
+                + description: Team photo (string) - Description of the media.
+                + mediaFormat: PHOTO (string) - Format of the Media.
+
+
+    + Body
+
+            {
+                "media": [
+                {
+                    "mediaId": "987654321123",
+                    "url": "https://video.test.com/video/12128533/pexels-video-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "TEAMS",
+                    "description": "Team video",
+                    "mediaFormat": "VIDEO"
+                },
+                {
+                    "mediaId": "7654321122",
+                    "url": "https://images.pexels.com/photos/123123/pexels-photo-123123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "ADDITIONAL",
+                    "description": "Additional photo",
+                    "mediaFormat": "PHOTO"
+                }
+                ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
+
+## Update Media [/resources/v1/business/{businessNumber}/update/media/{mediaId}]
+API to update the Business Media.
+
+### Update Media [PUT]
+
++ Parameters
+
+    + businessNumber: 123456789 (string, required) - Location Number of the business, in case of SMB it will be Business Number.
+    + mediaId: 62185029212 (string, required) - Id of the media item.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + mediaCategory: PROFILE (string, required) - Category for the media item. Possible values are:
+                                                        CATEGORY_UNSPECIFIED
+                                                        EXTERIOR
+                                                        INTERIOR
+                                                        PRODUCT
+                                                        AT_WORK
+                                                        FOOD_AND_DRINK
+                                                        MENU
+                                                        COMMON_AREA
+                                                        ROOMS
+                                                        TEAMS
+                                                        ADDITIONAL
+
+
+
+    + Body
+
+            {
+                "mediaCategory": "FOOD_AND_DRINK"
+            }
+
++ Response 200
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [2174][]
+
+
+## Delete Media [/resources/v1/business/{businessNumber}/media/delete]
+API to delete the Business Medias.
+
+### Delete Media [POST]
+
++ Parameters
+
+    + businessNumber: 123456789 (string, required) - Location Number of the business, in case of SMB it will be Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + mediaIds: 123456,654321 (array, required) - List of Media Ids to be deleted.
+
+
+    + Body
+
+            {
+                "mediaIds": ["987654321123","7654321123"]
+            }
+
++ Response 200
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
+
+
 # Group Social
 Create and track Social posting for all channels.
 
@@ -10498,6 +10623,7 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
             }]
 
 
+
 + Response 401
 
     [1161][]
@@ -10585,9 +10711,9 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
-* <b>06/30/2023</b> - Added support for service area based information in Get Business API and Update Business API.
 * <b>04/20/2023</b> - Added two new API under Listing module, Get Listings Insights and Get Listings Insights Datapoints.
 * <b>04/03/2023</b> - Added two new APIs under Social module, Post Social Schedule and Track Social Post.
 * <b>03/15/2023</b> - Added new API under Listing module i.e, Get Location Status.
 * <b>02/17/2023</b> - Added new API under Business module i.e, Get Customer card details.
 * <b>02/10/2023</b> - Country code support added in Contact APIs  Create or Update Contact [external/saveCustomer] & Get Contact [external/getCustomer]
+* <b>01/20/2023</b> - Restructured the Birdeye's developer page.
