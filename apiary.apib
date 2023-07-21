@@ -1611,6 +1611,16 @@ For example :
             message: "Requested Business Ids are empty."
         }
 
+## 400 [/400]
+
++ Model (application/json)
+
+        {
+            "code": 400,
+            "message": "Page size must not be less than one!"
+        }
+
+
 
 # Group Business
 Create and maintain your business on Birdeye.
@@ -1745,73 +1755,99 @@ Create a business API creates a new business under a reseller.
     [1055][]
 
 
-## Search [/v1/business/search{?api_key,search_str,loc,sindex,count,sort,nearby}]
-Search Business API searches a business using a name. Partial name matching is also supported by API.
+## Search [/v1/business/{businessNumber}/search]
+
+Search Business API searches a business using a name or number. Partial name matching is also supported by API.
 
 
-### Search Business [GET]
+### Search Business [POST]
 
 + Parameters
-    + api_key: abcdefgh (required, string) - Partner specific API key provided by Birdeye for data exchange.
-    + search_str: ray lord (required, string) - Search criteria for business. This could be business name or category
-    + loc: 29063 (required, string) - Location of the business. This could be “City,State” or zip code.
-    + sindex: 2 (required, string) - Starting point for search results. Default value is 0. e.g. 0:start from 1st result, 25: start from 26th result.
-    + count: 20 (required, integer) - Specifies the number of results to be returned. Default is 500.
-    + sort: rating (required, string) - Results can be sorted by relevance, rating. By default it is relevance.
-    + nearby: 1 (required, string) - Flag to search business in neay by locations. Default is 1 e.g. 0: don’t search in near by cities, 1: search in near by cities
+
+    + businessNumber: 12345678 (required, number) - Long id of the business, under which user wants to search for.
+
+
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+    + Body
+
+            {
+                "pageSize": 25,
+                "searchStr": "Thurston Rosenlund",
+                "sortBy": "createdAt",
+                "sortOrder": "ASC",
+                "startIndex": 0
+            }
+
+
+    + Attributes
+
+        + searchStr: Thurston Rosenlund (string)- Search criteria for business. This could be business name or number.
+        + sortBy: createdAt (string)- Results can be sorted by name, createdAt, and createdBy. By default is createdAt.
+            name : The business name
+
+            createdAt: The date on which a business/location was created.
+
+            createdBy: The full name of the user that created the business.
+        + sortOrder: ASC (string)- The SORT order, Possible values "ASC" or "DESC". By default is "DESC".
+        + startIndex: 0 (number)- Once sorted, it defines starting from which index a page (number of specified search results) is to be created.
+        + pageSize: 25 (number)- Determines the number of search results in the response. Users can set a desired value to limit results, e.g., pageSize=25 shows the top 25 business listings. The Default value is 25.
+
+
 
 
 + Response 200 (application/json)
 
     + Attributes
 
-        + name: Ray A. Lord (string)- Name of the business.
-        + category: Lawyers (string)- Category of the business.
-        + address (object) - Business Address.
-            + address1: 7436 Broad River Rd (string) - Address of the business.
-            + address2: Suite 102 (string)- Address of the business.
-            + city: Irmo (string)- Business City.
-            + state: South Carolina (string)- Business State.
-            + zip: 29063 (number)- Business Zip.
-            + countryCode: US (string)- County Code of Business.
-            + countryName: United States of America (string)-Country name.
-        + reviewCount: 105 (number)- Total review count of the business.
-        + avgRating: 4.9 (number)- Average rating of the business.
-        + coverImageURL: http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/profile/lawyer.jpg (string)- Cover Image URL.
-        + profileURL: http://reviews2.getlegal.com/ray-a-lord-755009344 (string)- Profile URL.
-        + logoURL (string)- Logo URL.
-        + phone (string)- Business Phone Number.
-        + businessId: 755009344 (string)- Id of the business
+        + totalCount: 101 (number) - The total number of search matches.
+        + accounts (array) - Search results
+            + (object)
+                + name : Thurston Rosenlund (string) - The business name
+                + status : active (string) - The business status - active, demo, paid, suspended etc.
+                + createdAt: May 01, 2013 (string) - The date of business (or location) creation.
+                + createdBy: Sam Bilings (string) - Full name of the user who created the business (or location).
+                + businessNumber: ASC (string)- Unique number associated with every business (or location).
+                + type: SMB (string)- Returned in case of resellers, specifies whether account is SMB, enterprise, or reseller
+
+
 
 
     + Body
 
             {
-                "name": "Ray A. Lord",
-                "category": "Lawyers",
-                "address": {
-                    "address1": "7436 Broad River Rd Suite 110",
-                    "address2": null,
-                    "city": "Irmo",
-                    "state": "South Carolina",
-                    "zip": "29063",
-                    "countryCode": "US",
-                    "countryName": "United States of America"
+                "accounts": [
+                {
+                    "name": "Thurston Rosenlund",
+                    "status": "suspended",
+                    "createdAt": "May 01, 2013",
+                    "createdBy": "Sam Bilings",
+                    "businessNumber": 396982176121,
+                    "type": "Business"
                 },
-                "reviewCount": 105,
-                "avgRating": 4.9,
-                "coverImageURL": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/profile/lawyer.jpg",
-                "profileURL": "http://reviews2.getlegal.com/ray-a-lord-755009344",
-                "logoURL": null,
-                "phone": "(803) 610-4056",
-                "businessId": "755009344"
+                {
+                    "name": "Aspen Springs Dental",
+                    "status": "paid",
+                    "createdAt": "May 20, 2013",
+                    "businessNumber": 106026111239,
+                    "type": "Business"
+                },
+                {
+                    "name": "Cherry Creek Family Dental",
+                    "status": "paid",
+                    "createdAt": "May 20, 2013",
+                    "businessNumber": 379451236128,
+                    "type": "Business"
+                }],
+                "totalCount": 44
             }
+
 
 + Response 401
 
@@ -1823,19 +1859,8 @@ Search Business API searches a business using a name. Partial name matching is a
 
 + Response 400
 
-    [1162][]
+    [400][]
 
-+ Response 401
-
-    [1163][]
-
-+ Response 401
-
-    [1164][]
-
-+ Response 401
-
-    [1167][]
 
 
 ## Get [/v1/business/{business_id}{?api_key}]
@@ -2774,23 +2799,23 @@ Child Businesses API gets all the businesses under an account.
 
 + Response 200 (application/json)
 
-    + Attributes
-
-        + id: 123456 (number) - Id of the Business
-        + name: Drs. Chalker and Peterson, A Dental Partnership (string) - Name of the Business/Product (Max 1000 character long).
-        + alias: Drs. Chalker (string) - Alias, Your internal way of identifying this location.
-        + phone (string) - Business Phone (Required) Format is (xxx) xxx-xxxx.
-        + address (object) - Business address
-            + address1: 7405 Morro Rd (string) - Address of the business.
-            + address2: Suite 102 (string) - Address of the business.
-            + city: Atascadero (string) - City (Max 1000 character long).
-            + state: CA (string) - State (2 character state code).
-            + countryCode: US (string) - Country Code (2 character country code).
-            + zip: 93422 (required,string) - Zip Code.
-        + status: demo (string) - Business status. Valid values are demo, active, inactive. Default is
-        + type:Business (string)- Business type. Valid values are "Business, Enterprise-Location, Enterprise-Product, Reseller or a existing custom hierarchy type". Default is:
-        + createdOn: Dec 05, 2013 (string) - Business singup date.
-        + childCount: 3 (number) - Child account count. note: applicable only for Reseller, Enterprise-Location, Enterprise-Product.
+    + Attributes (array)
+        + (object)
+            + id: 123456 (number) - Id of the Business
+            + name: Drs. Chalker and Peterson, A Dental Partnership (string) - Name of the Business/Product (Max 1000 character long).
+            + alias: Drs. Chalker (string) - Alias, Your internal way of identifying this location.
+            + phone (string) - Business Phone (Required) Format is (xxx) xxx-xxxx.
+            + address (object) - Business address
+                + address1: 7405 Morro Rd (string) - Address of the business.
+                + address2: Suite 102 (string) - Address of the business.
+                + city: Atascadero (string) - City (Max 1000 character long).
+                + state: CA (string) - State (2 character state code).
+                + countryCode: US (string) - Country Code (2 character country code).
+                + zip: 93422 (required,string) - Zip Code.
+            + status: demo (string) - Business status. Valid values are demo, active, inactive. Default is
+            + type:Business (string)- Business type. Valid values are "Business, Enterprise-Location, Enterprise-Product, Reseller or a existing custom hierarchy type". Default is:
+            + createdOn: Dec 05, 2013 (string) - Business singup date.
+            + childCount: 3 (number) - Child account count. note: applicable only for Reseller, Enterprise-Location, Enterprise-Product.
 
 
     + Body
@@ -5156,11 +5181,12 @@ Get source list API returns the list of aggregations associated with the locatio
 
 + Response 200 (application/json)
 
-    + Attributes
-        + id: 234950761 (number) - Id of aggregation.
-        + sourceAlias: citysearch (string) - Source alias.
-        + sourceUrl: http://www.citysearch.com/biz/trattoria-da-vittorio-san-francisco (string) - Source url.
-        + sourceName: Citysearch (string) - Source name.
+    + Attributes (array)
+        + (object)
+            + id: 234950761 (number) - Id of aggregation.
+            + sourceAlias: citysearch (string) - Source alias.
+            + sourceUrl: http://www.citysearch.com/biz/trattoria-da-vittorio-san-francisco (string) - Source url.
+            + sourceName: Citysearch (string) - Source name.
 
 
 
@@ -5907,12 +5933,12 @@ Review and rating over time API gives you the number of reviews and average rati
 
 + Response 200 (application/json)
 
-    + Attributes
-
-        + rating: 2.0 (number) - Average Rating for the particular day.
-        + count: 10 (number) - Number of reviews for the particular day.
-        + milestone: 8/20/15 (string) - Date.
-        + timeStamp: 1439942400158 (number) - Epoc time.
+    + Attributes (array)
+        + (object)
+            + rating: 2.0 (number) - Average Rating for the particular day.
+            + count: 10 (number) - Number of reviews for the particular day.
+            + milestone: 8/20/15 (string) - Date.
+            + timeStamp: 1439942400158 (number) - Epoc time.
 
 
     + Body
@@ -6735,15 +6761,15 @@ Review By Source  API groups the number of reviews and average ratings in an acc
 
 + Response 200 (application/json)
 
-    + Attributes
-
-        + count: 10 (number) - Number of reviews for the particular location.
-        + milestone: Smile dental (string) - Name of the Location.
-        + businessId: 943967608 (number) - Business number of the location.
-        + reviewSites (array) - List of source Alias.
-            + (object)
-                + sourceAlias: Citysearch (string) - Source alias.
-                + count: 5 (number) - Number of reviews in sources.
+    + Attributes (array)
+        + (object)
+            + count: 10 (number) - Number of reviews for the particular location.
+            + milestone: Smile dental (string) - Name of the Location.
+            + businessId: 943967608 (number) - Business number of the location.
+            + reviewSites (array) - List of source Alias.
+                + (object)
+                    + sourceAlias: Citysearch (string) - Source alias.
+                    + count: 5 (number) - Number of reviews in sources.
 
 
     + Body
@@ -10470,11 +10496,12 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
 
 + Response 200
 
-    + Attributes
-        + label: 02/01/2020 (string) - The business counts data on a particular date.
-        + wsiteVisitsCount: 670 (number) - The number of times the business profile website was clicked.
-        + directionsCount: 670 (number) - The number of times a direction request was requested to the business location.
-        + callsCount: 670 (number) - The number of times the business profile call button was clicked.
+    + Attributes (array)
+        + (object)
+            + label: 02/01/2020 (string) - The business counts data on a particular date.
+            + wsiteVisitsCount: 670 (number) - The number of times the business profile website was clicked.
+            + directionsCount: 670 (number) - The number of times a direction request was requested to the business location.
+            + callsCount: 670 (number) - The number of times the business profile call button was clicked.
 
     + Body
 
@@ -10585,9 +10612,9 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>07/21/2023</b> - Added new API under Business module i.e, Business Search API.
 * <b>06/30/2023</b> - Added support for service area based information in Get Business API and Update Business API.
 * <b>04/20/2023</b> - Added two new API under Listing module, Get Listings Insights and Get Listings Insights Datapoints.
 * <b>04/03/2023</b> - Added two new APIs under Social module, Post Social Schedule and Track Social Post.
 * <b>03/15/2023</b> - Added new API under Listing module i.e, Get Location Status.
 * <b>02/17/2023</b> - Added new API under Business module i.e, Get Customer card details.
-* <b>02/10/2023</b> - Country code support added in Contact APIs  Create or Update Contact [external/saveCustomer] & Get Contact [external/getCustomer]
