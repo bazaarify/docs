@@ -1611,6 +1611,16 @@ For example :
             message: "Requested Business Ids are empty."
         }
 
+## 400 [/400]
+
++ Model (application/json)
+
+        {
+            "code": 400,
+            "message": "Page size must not be less than one!"
+        }
+
+
 
 ## 2180 [/2180]
 
@@ -1772,73 +1782,99 @@ Create a business API creates a new business under a reseller.
     [1055][]
 
 
-## Search [/v1/business/search{?api_key,search_str,loc,sindex,count,sort,nearby}]
-Search Business API searches a business using a name. Partial name matching is also supported by API.
+## Search [/v1/business/{businessNumber}/search]
+
+Search Business API searches a business using a name or number. Partial name matching is also supported by API.
 
 
-### Search Business [GET]
+### Search Business [POST]
 
 + Parameters
-    + api_key: abcdefgh (required, string) - Partner specific API key provided by Birdeye for data exchange.
-    + search_str: ray lord (required, string) - Search criteria for business. This could be business name or category
-    + loc: 29063 (required, string) - Location of the business. This could be “City,State” or zip code.
-    + sindex: 2 (required, string) - Starting point for search results. Default value is 0. e.g. 0:start from 1st result, 25: start from 26th result.
-    + count: 20 (required, integer) - Specifies the number of results to be returned. Default is 500.
-    + sort: rating (required, string) - Results can be sorted by relevance, rating. By default it is relevance.
-    + nearby: 1 (required, string) - Flag to search business in neay by locations. Default is 1 e.g. 0: don’t search in near by cities, 1: search in near by cities
+
+    + businessNumber: 12345678 (required, number) - Long id of the business, under which user wants to search for.
+
+
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+    + Body
+
+            {
+                "pageSize": 25,
+                "searchStr": "Thurston Rosenlund",
+                "sortBy": "createdAt",
+                "sortOrder": "ASC",
+                "startIndex": 0
+            }
+
+
+    + Attributes
+
+        + searchStr: Thurston Rosenlund (string)- Search criteria for business. This could be business name or number.
+        + sortBy: createdAt (string)- Results can be sorted by name, createdAt, and createdBy. By default is createdAt.
+            name : The business name
+
+            createdAt: The date on which a business/location was created.
+
+            createdBy: The full name of the user that created the business.
+        + sortOrder: ASC (string)- The SORT order, Possible values "ASC" or "DESC". By default is "DESC".
+        + startIndex: 0 (number)- Once sorted, it defines starting from which index a page (number of specified search results) is to be created.
+        + pageSize: 25 (number)- Determines the number of search results in the response. Users can set a desired value to limit results, e.g., pageSize=25 shows the top 25 business listings. The Default value is 25.
+
+
 
 
 + Response 200 (application/json)
 
     + Attributes
 
-        + name: Ray A. Lord (string)- Name of the business.
-        + category: Lawyers (string)- Category of the business.
-        + address (object) - Business Address.
-            + address1: 7436 Broad River Rd (string) - Address of the business.
-            + address2: Suite 102 (string)- Address of the business.
-            + city: Irmo (string)- Business City.
-            + state: South Carolina (string)- Business State.
-            + zip: 29063 (number)- Business Zip.
-            + countryCode: US (string)- County Code of Business.
-            + countryName: United States of America (string)-Country name.
-        + reviewCount: 105 (number)- Total review count of the business.
-        + avgRating: 4.9 (number)- Average rating of the business.
-        + coverImageURL: http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/profile/lawyer.jpg (string)- Cover Image URL.
-        + profileURL: http://reviews2.getlegal.com/ray-a-lord-755009344 (string)- Profile URL.
-        + logoURL (string)- Logo URL.
-        + phone (string)- Business Phone Number.
-        + businessId: 755009344 (string)- Id of the business
+        + totalCount: 101 (number) - The total number of search matches.
+        + accounts (array) - Search results
+            + (object)
+                + name : Thurston Rosenlund (string) - The business name
+                + status : active (string) - The business status - active, demo, paid, suspended etc.
+                + createdAt: May 01, 2013 (string) - The date of business (or location) creation.
+                + createdBy: Sam Bilings (string) - Full name of the user who created the business (or location).
+                + businessNumber: ASC (string)- Unique number associated with every business (or location).
+                + type: SMB (string)- Returned in case of resellers, specifies whether account is SMB, enterprise, or reseller
+
+
 
 
     + Body
 
             {
-                "name": "Ray A. Lord",
-                "category": "Lawyers",
-                "address": {
-                    "address1": "7436 Broad River Rd Suite 110",
-                    "address2": null,
-                    "city": "Irmo",
-                    "state": "South Carolina",
-                    "zip": "29063",
-                    "countryCode": "US",
-                    "countryName": "United States of America"
+                "accounts": [
+                {
+                    "name": "Thurston Rosenlund",
+                    "status": "suspended",
+                    "createdAt": "May 01, 2013",
+                    "createdBy": "Sam Bilings",
+                    "businessNumber": 396982176121,
+                    "type": "Business"
                 },
-                "reviewCount": 105,
-                "avgRating": 4.9,
-                "coverImageURL": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/profile/lawyer.jpg",
-                "profileURL": "http://reviews2.getlegal.com/ray-a-lord-755009344",
-                "logoURL": null,
-                "phone": "(803) 610-4056",
-                "businessId": "755009344"
+                {
+                    "name": "Aspen Springs Dental",
+                    "status": "paid",
+                    "createdAt": "May 20, 2013",
+                    "businessNumber": 106026111239,
+                    "type": "Business"
+                },
+                {
+                    "name": "Cherry Creek Family Dental",
+                    "status": "paid",
+                    "createdAt": "May 20, 2013",
+                    "businessNumber": 379451236128,
+                    "type": "Business"
+                }],
+                "totalCount": 44
             }
+
 
 + Response 401
 
@@ -1850,19 +1886,8 @@ Search Business API searches a business using a name. Partial name matching is a
 
 + Response 400
 
-    [1162][]
+    [400][]
 
-+ Response 401
-
-    [1163][]
-
-+ Response 401
-
-    [1164][]
-
-+ Response 401
-
-    [1167][]
 
 
 ## Get [/v1/business/{business_id}{?api_key}]
@@ -1899,6 +1924,8 @@ Get Business API gets business information, including product features opted and
         + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords (Comma separated list of keywords; Max 10 keywords; used for SEO).
         + logoUrl: http://bzimages-prod.s3.amazonaws.com/669029760/Logo 180 X 121.png (string) - Logo Image (Dimension should be 60 x 60 px).
         + coverImageUrl: http://bzimages-prod.s3.amazonaws.com/669029760/California Foothills 951 X 351.jpg (string)- Cover Image (Dimension should be 995 x 316 px).
+        + gmbCover: http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg (string) - Google Cover Image Url.
+        + facebookCover: http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg (string) - Facebook Cover Image Url.
         + timezone: Pacific Standard Time (string)- Timezone of the business.
         + languages: English,Spanish (array)- Language.
         + isServiceAreaProvider: Yes (string) - To select whether the business is Service Area Business Type. Default value is : No. Possible values are:
@@ -1955,6 +1982,8 @@ Get Business API gets business information, including product features opted and
               "services": "Beauty Salon, Hair Spa",
               "logoURL": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
               "coverImageURL": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
+              "gmbCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg",
+              "facebookCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg",
               "timezone": "Pacific Standard Time",
               "isServiceAreaProvider": "Yes",
                 "serviceAreas": [
@@ -2190,6 +2219,8 @@ Update Business API updates business information.
         + gmbCoverOptOut (number) - Update cover photo on your google my business page. (1-false,0-true).
         + fbCoverOptOut (number) - Update cover photo on your facebook profile. (1-false,0-true).
         + coverImageUrl: http://bzimages-prod.s3.amazonaws.com/669029760/California Foothills 951 X 351.jpg (string)- Cover image URL for business displayed on custom review site. Format: JPG, JPEG, PNG. Minimum 1110 x 374px.
+        + gmbCover: http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg (string) - Google Cover Image Url.
+        + facebookCover: http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg (string) - Facebook Cover Image Url.
         + coverBusinessInfoLayout: In grid cover image, business info overlay (string) - Show on your Birdeye profile. Possible value will be
                 In grid cover image, business info overlay
                 In grid cover image, business info below
@@ -2219,7 +2250,6 @@ Update Business API updates business information.
             + primaryCategoryGmb (string) - Primary category of google.
             + additionalCategory (string) - You can add up to 5 subcategories.
             + googleDescription (string) - Google description cannot be more than 750 characters.
-            + googleTeamPhoto (string) - Google team photo url, Format: JPG, JPEG, PNG.Minimum 250 X 250px. Size: 10KB to 5MB.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
         + socialProfileURLs (object) - Profile URLs for business on top rated social sites
@@ -2399,6 +2429,8 @@ Update Business API updates business information.
               "gmbCoverOptOut": 1,
               "fbCoverOptOut": 1,
               "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
+              "gmbCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg",
+              "facebookCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg",
               "coverBusinessInfoLayout": "In grid cover image, business info overlay",
               "covidInfo": {
                 "postDescription": "",
@@ -2437,7 +2469,6 @@ Update Business API updates business information.
                 "additionalCategory4Gmb": "",
                 "additionalCategory5Gmb": "",
                 "googleDescription": "",
-                "googleTeamPhoto": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
                 "attributes": {
                   "Crowd": [
                     {
@@ -2494,6 +2525,8 @@ Update Business API updates business information.
               "services": "Beauty Salon, Hair Spa",
               "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
               "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
+              "gmbCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg",
+              "facebookCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg",
               "timezone": "Pacific Standard Time",
               "languages": [
                 "English",
@@ -2784,23 +2817,23 @@ Child Businesses API gets all the businesses under an account.
 
 + Response 200 (application/json)
 
-    + Attributes
-
-        + id: 123456 (number) - Id of the Business
-        + name: Drs. Chalker and Peterson, A Dental Partnership (string) - Name of the Business/Product (Max 1000 character long).
-        + alias: Drs. Chalker (string) - Alias, Your internal way of identifying this location.
-        + phone (string) - Business Phone (Required) Format is (xxx) xxx-xxxx.
-        + address (object) - Business address
-            + address1: 7405 Morro Rd (string) - Address of the business.
-            + address2: Suite 102 (string) - Address of the business.
-            + city: Atascadero (string) - City (Max 1000 character long).
-            + state: CA (string) - State (2 character state code).
-            + countryCode: US (string) - Country Code (2 character country code).
-            + zip: 93422 (required,string) - Zip Code.
-        + status: demo (string) - Business status. Valid values are demo, active, inactive. Default is
-        + type:Business (string)- Business type. Valid values are "Business, Enterprise-Location, Enterprise-Product, Reseller or a existing custom hierarchy type". Default is:
-        + createdOn: Dec 05, 2013 (string) - Business singup date.
-        + childCount: 3 (number) - Child account count. note: applicable only for Reseller, Enterprise-Location, Enterprise-Product.
+    + Attributes (array)
+        + (object)
+            + id: 123456 (number) - Id of the Business
+            + name: Drs. Chalker and Peterson, A Dental Partnership (string) - Name of the Business/Product (Max 1000 character long).
+            + alias: Drs. Chalker (string) - Alias, Your internal way of identifying this location.
+            + phone (string) - Business Phone (Required) Format is (xxx) xxx-xxxx.
+            + address (object) - Business address
+                + address1: 7405 Morro Rd (string) - Address of the business.
+                + address2: Suite 102 (string) - Address of the business.
+                + city: Atascadero (string) - City (Max 1000 character long).
+                + state: CA (string) - State (2 character state code).
+                + countryCode: US (string) - Country Code (2 character country code).
+                + zip: 93422 (required,string) - Zip Code.
+            + status: demo (string) - Business status. Valid values are demo, active, inactive. Default is
+            + type:Business (string)- Business type. Valid values are "Business, Enterprise-Location, Enterprise-Product, Reseller or a existing custom hierarchy type". Default is:
+            + createdOn: Dec 05, 2013 (string) - Business singup date.
+            + childCount: 3 (number) - Child account count. note: applicable only for Reseller, Enterprise-Location, Enterprise-Product.
 
 
     + Body
@@ -5166,11 +5199,12 @@ Get source list API returns the list of aggregations associated with the locatio
 
 + Response 200 (application/json)
 
-    + Attributes
-        + id: 234950761 (number) - Id of aggregation.
-        + sourceAlias: citysearch (string) - Source alias.
-        + sourceUrl: http://www.citysearch.com/biz/trattoria-da-vittorio-san-francisco (string) - Source url.
-        + sourceName: Citysearch (string) - Source name.
+    + Attributes (array)
+        + (object)
+            + id: 234950761 (number) - Id of aggregation.
+            + sourceAlias: citysearch (string) - Source alias.
+            + sourceUrl: http://www.citysearch.com/biz/trattoria-da-vittorio-san-francisco (string) - Source url.
+            + sourceName: Citysearch (string) - Source name.
 
 
 
@@ -5917,12 +5951,12 @@ Review and rating over time API gives you the number of reviews and average rati
 
 + Response 200 (application/json)
 
-    + Attributes
-
-        + rating: 2.0 (number) - Average Rating for the particular day.
-        + count: 10 (number) - Number of reviews for the particular day.
-        + milestone: 8/20/15 (string) - Date.
-        + timeStamp: 1439942400158 (number) - Epoc time.
+    + Attributes (array)
+        + (object)
+            + rating: 2.0 (number) - Average Rating for the particular day.
+            + count: 10 (number) - Number of reviews for the particular day.
+            + milestone: 8/20/15 (string) - Date.
+            + timeStamp: 1439942400158 (number) - Epoc time.
 
 
     + Body
@@ -6745,15 +6779,15 @@ Review By Source  API groups the number of reviews and average ratings in an acc
 
 + Response 200 (application/json)
 
-    + Attributes
-
-        + count: 10 (number) - Number of reviews for the particular location.
-        + milestone: Smile dental (string) - Name of the Location.
-        + businessId: 943967608 (number) - Business number of the location.
-        + reviewSites (array) - List of source Alias.
-            + (object)
-                + sourceAlias: Citysearch (string) - Source alias.
-                + count: 5 (number) - Number of reviews in sources.
+    + Attributes (array)
+        + (object)
+            + count: 10 (number) - Number of reviews for the particular location.
+            + milestone: Smile dental (string) - Name of the Location.
+            + businessId: 943967608 (number) - Business number of the location.
+            + reviewSites (array) - List of source Alias.
+                + (object)
+                    + sourceAlias: Citysearch (string) - Source alias.
+                    + count: 5 (number) - Number of reviews in sources.
 
 
     + Body
@@ -8470,6 +8504,9 @@ Add, delete and manage business media.
 > - _Photo: JPG or PNG. 720 x 720px. 10KB min._
 > - _Video: 30 sec long. 720p or more upto 75MB._
 
+> __Note__
+> - _Uploaded media will be pushed to your google business profile (if connected) and other long tail directories only._
+
 
 ## Add Media [/resources/v1/business/{businessNumber}/upload/media]
 API to upload the Business Media.
@@ -8494,19 +8531,12 @@ API to upload the Business Media.
         + media (required, array) - List of media items to be uploaded.
             + (object)
                 + url: https://images.pexels.com/photos/12128533/pexelsphoto12128533.jpeg (string, required) - Url of the media item.
-                + mediaCategory: PROFILE (string, required) - Category for the media item. Possible values are:
-                                        CATEGORY_UNSPECIFIED (PHOTO)
+                + mediaCategory: TEAMS (string, required) - Category for the media item. Possible values are:
                                         EXTERIOR (PHOTO, VIDEO)
                                         INTERIOR (PHOTO, VIDEO)
-                                        PRODUCT (PHOTO)
-                                        AT_WORK (PHOTO)
-                                        FOOD_AND_DRINK (PHOTO, VIDEO)
-                                        MENU (PHOTO, VIDEO)
-                                        COMMON_AREA (PHOTO)
-                                        ROOMS (PHOTO)
                                         TEAMS (PHOTO, VIDEO)
                                         ADDITIONAL (PHOTO, VIDEO)
-                + description: Profile photo (string, required) - Description of the media.
+                + description: Teams photo (string, required) - Description of the media.
                 + mediaFormat: PHOTO (string, required) - Format of the Media. Possible values are:
                                                     PHOTO
                                                     VIDEO
@@ -8519,15 +8549,15 @@ API to upload the Business Media.
                 "media": [
                 {
                     "url": "https://images.pexels.com/photos/12128533/pexels-photo-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-                    "mediaCategory": "PROFILE",
-                    "description": "Profile photo",
+                    "mediaCategory": "TEAMS",
+                    "description": "Teams photo",
                     "mediaFormat": "PHOTO"
                 },
                 {
-                    "url": "https://images.pexels.com/photos/123123/pexels-photo-123123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "url": "https://videos.pexels.com/video/123123/pexelsvideo-12323.mp4",
                     "mediaCategory": "ADDITIONAL",
                     "description": "Additional photo",
-                    "mediaFormat": "PHOTO"
+                    "mediaFormat": "VIDEO"
                 }
                 ]
             }
@@ -8540,8 +8570,8 @@ API to upload the Business Media.
             + (object)
                 + mediaId: 987654321123 (string) - Id of the media.
                 + url: https://images.pexels.com/photos/12128533/pexelsphoto12128533.jpeg (string) - Url of the media item.
-                + mediaCategory: PROFILE (string) - Category for the media item.
-                + description: Profile photo (string) - Description of the media.
+                + mediaCategory: TEAMS (string) - Category for the media item.
+                + description: Teams photo (string) - Description of the media.
                 + mediaFormat: PHOTO (string) - Format of the Media.
 
 
@@ -8552,16 +8582,16 @@ API to upload the Business Media.
                 {
                     "mediaId": "987654321123",
                     "url": "https://images.pexels.com/photos/12128533/pexels-photo-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-                    "mediaCategory": "PROFILE",
-                    "description": "Profile photo",
+                    "mediaCategory": "TEAMS",
+                    "description": "Teams photo",
                     "mediaFormat": "PHOTO"
                 },
                 {
                     "mediaId": "7654321123",
-                    "url": "https://images.pexels.com/photos/123123/pexels-photo-123123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "url": "https://videos.pexels.com/video/123123/pexelsvideo-12323.mp4",
                     "mediaCategory": "ADDITIONAL",
                     "description": "Additional photo",
-                    "mediaFormat": "PHOTO"
+                    "mediaFormat": "VIDEO"
                 }
                 ]
             }
@@ -8629,17 +8659,17 @@ API to get the Business Media details.
                 "media": [
                 {
                     "mediaId": "987654321123",
-                    "url": "https://video.test.com/video/12128533/pexels-video-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "url": "https://images.pexels.com/photos/12128533/pexels-photo-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
                     "mediaCategory": "TEAMS",
-                    "description": "Team video",
-                    "mediaFormat": "VIDEO"
+                    "description": "Teams photo",
+                    "mediaFormat": "PHOTO"
                 },
                 {
                     "mediaId": "7654321122",
-                    "url": "https://images.pexels.com/photos/123123/pexels-photo-123123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "url": "https://videos.pexels.com/video/123123/pexelsvideo-12323.mp4",
                     "mediaCategory": "ADDITIONAL",
                     "description": "Additional photo",
-                    "mediaFormat": "PHOTO"
+                    "mediaFormat": "VIDEO"
                 }
                 ]
             }
@@ -8677,16 +8707,9 @@ API to update the Business Media.
 
 
     + Attributes
-        + mediaCategory: FOOD_AND_DRINK (string, required) - Category for the media item. Possible values are:
-                                                                CATEGORY_UNSPECIFIED
+        + mediaCategory: INTERIOR (string, required) - Category for the media item. Possible values are:
                                                                 EXTERIOR
                                                                 INTERIOR
-                                                                PRODUCT
-                                                                AT_WORK
-                                                                FOOD_AND_DRINK
-                                                                MENU
-                                                                COMMON_AREA
-                                                                ROOMS
                                                                 TEAMS
                                                                 ADDITIONAL
 
@@ -8695,7 +8718,7 @@ API to update the Business Media.
     + Body
 
             {
-                "mediaCategory": "FOOD_AND_DRINK"
+                "mediaCategory": "INTERIOR"
             }
 
 + Response 200
@@ -10778,11 +10801,12 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
 
 + Response 200
 
-    + Attributes
-        + label: 02/01/2020 (string) - The business counts data on a particular date.
-        + wsiteVisitsCount: 670 (number) - The number of times the business profile website was clicked.
-        + directionsCount: 670 (number) - The number of times a direction request was requested to the business location.
-        + callsCount: 670 (number) - The number of times the business profile call button was clicked.
+    + Attributes (array)
+        + (object)
+            + label: 02/01/2020 (string) - The business counts data on a particular date.
+            + wsiteVisitsCount: 670 (number) - The number of times the business profile website was clicked.
+            + directionsCount: 670 (number) - The number of times a direction request was requested to the business location.
+            + callsCount: 670 (number) - The number of times the business profile call button was clicked.
 
     + Body
 
@@ -10893,10 +10917,10 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
-* <b>07/07/2023</b> - Added CRUD APIs for Business Media.
+* <b>07/30/2023</b> - Added CRUD APIs for Business Media.
+* <b>07/21/2023</b> - Added new API under Business module i.e, Business Search API.
 * <b>06/30/2023</b> - Added support for service area based information in Get Business API and Update Business API.
 * <b>04/20/2023</b> - Added two new API under Listing module, Get Listings Insights and Get Listings Insights Datapoints.
 * <b>04/03/2023</b> - Added two new APIs under Social module, Post Social Schedule and Track Social Post.
 * <b>03/15/2023</b> - Added new API under Listing module i.e, Get Location Status.
 * <b>02/17/2023</b> - Added new API under Business module i.e, Get Customer card details.
-* <b>02/10/2023</b> - Country code support added in Contact APIs  Create or Update Contact [external/saveCustomer] & Get Contact [external/getCustomer]
