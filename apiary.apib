@@ -1622,6 +1622,33 @@ For example :
 
 
 
+## 2180 [/2180]
+
++ Model (application/json)
+
+        {
+            code: 2180,
+            message: "The recommended Image size for Google media image is 250 pixels wide and 250 pixels tall."
+        }
+
+## 2181 [/2181]
+
++ Model (application/json)
+
+        {
+            code: 2181,
+            message: "Supported video format is MP4."
+        }
+
+## 2174 [/2174]
+
++ Model (application/json)
+
+        {
+            code: 2174,
+            message: "Unsupported media format"
+        }
+
 # Group Business
 Create and maintain your business on Birdeye.
 
@@ -1897,9 +1924,8 @@ Get Business API gets business information, including product features opted and
         + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords (Comma separated list of keywords; Max 10 keywords; used for SEO).
         + logoUrl: http://bzimages-prod.s3.amazonaws.com/669029760/Logo 180 X 121.png (string) - Logo Image (Dimension should be 60 x 60 px).
         + coverImageUrl: http://bzimages-prod.s3.amazonaws.com/669029760/California Foothills 951 X 351.jpg (string)- Cover Image (Dimension should be 995 x 316 px).
-        + image1URL: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - Images for the business.
-        + image2URL: http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg (string) - Images for the business.
-        + image3URL: http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg (string) - Images for the business.
+        + gmbCover: http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg (string) - Google Cover Image Url.
+        + facebookCover: http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg (string) - Facebook Cover Image Url.
         + timezone: Pacific Standard Time (string)- Timezone of the business.
         + languages: English,Spanish (array)- Language.
         + isServiceAreaProvider: Yes (string) - To select whether the business is Service Area Business Type. Default value is : No. Possible values are:
@@ -1956,9 +1982,8 @@ Get Business API gets business information, including product features opted and
               "services": "Beauty Salon, Hair Spa",
               "logoURL": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
               "coverImageURL": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
-              "image1Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-              "image2Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
-              "image3Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg",
+              "gmbCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg",
+              "facebookCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg",
               "timezone": "Pacific Standard Time",
               "isServiceAreaProvider": "Yes",
                 "serviceAreas": [
@@ -2194,14 +2219,14 @@ Update Business API updates business information.
         + gmbCoverOptOut (number) - Update cover photo on your google my business page. (1-false,0-true).
         + fbCoverOptOut (number) - Update cover photo on your facebook profile. (1-false,0-true).
         + coverImageUrl: http://bzimages-prod.s3.amazonaws.com/669029760/California Foothills 951 X 351.jpg (string)- Cover image URL for business displayed on custom review site. Format: JPG, JPEG, PNG. Minimum 1110 x 374px.
+        + gmbCover: http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg (string) - Google Cover Image Url.
+        + facebookCover: http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg (string) - Facebook Cover Image Url.
         + coverBusinessInfoLayout: In grid cover image, business info overlay (string) - Show on your Birdeye profile. Possible value will be
                 In grid cover image, business info overlay
                 In grid cover image, business info below
                 Full width cover image, business info overlay
                 Full width cover image, business info below
                 Google map view, business info overlay
-        + galleryPhotos: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - Images for the business.
-        + videoUrl: http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg (string) - Video URL for business. Format: MP4, OGG, OGV. Size: Maximum 100MB.
         + covidInfo (object) - Provide covid related update in.
             + postDescription (string) - Post will be update on gmb & FB
             + covid19SupportLink (string) - Should be a valid covid19 support url
@@ -2225,7 +2250,6 @@ Update Business API updates business information.
             + primaryCategoryGmb (string) - Primary category of google.
             + additionalCategory (string) - You can add up to 5 subcategories.
             + googleDescription (string) - Google description cannot be more than 750 characters.
-            + googleTeamPhoto (string) - Google team photo url, Format: JPG, JPEG, PNG.Minimum 250 X 250px. Size: 10KB to 5MB.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
         + socialProfileURLs (object) - Profile URLs for business on top rated social sites
@@ -2405,13 +2429,9 @@ Update Business API updates business information.
               "gmbCoverOptOut": 1,
               "fbCoverOptOut": 1,
               "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
+              "gmbCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg",
+              "facebookCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg",
               "coverBusinessInfoLayout": "In grid cover image, business info overlay",
-              "galleryPhotos": [
-                "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-                "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
-                "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg"
-              ],
-              "videoUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.mp4",
               "covidInfo": {
                 "postDescription": "",
                 "covid19SupportLink": "",
@@ -2449,7 +2469,6 @@ Update Business API updates business information.
                 "additionalCategory4Gmb": "",
                 "additionalCategory5Gmb": "",
                 "googleDescription": "",
-                "googleTeamPhoto": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
                 "attributes": {
                   "Crowd": [
                     {
@@ -2506,9 +2525,8 @@ Update Business API updates business information.
               "services": "Beauty Salon, Hair Spa",
               "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
               "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
-              "image1Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-              "image2Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/9fc3f2ba7c1b4dcea38ea76327c617f3.jpeg",
-              "image3Url": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/77964cfead164cbf8f9c8dfd039269b0.jpeg",
+              "gmbCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg",
+              "facebookCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg",
               "timezone": "Pacific Standard Time",
               "languages": [
                 "English",
@@ -8479,6 +8497,293 @@ Update Survey Settings helps update the survey page appearance settings like Log
 
     [2096][]
 
+# Group Business Media
+Add, delete and manage business media.
+
+> __Supported Media Size__
+> - _Photo: JPG or PNG. 720 x 720px. 10KB min._
+> - _Video: 30 sec long. 720p or more upto 75MB._
+
+> __Note__
+> - _Uploaded media will be pushed to your google business profile (if connected) and other long tail directories only._
+
+
+## Add Media [/resources/v1/business/{businessNumber}/upload/media]
+API to upload the Business Media.
+
+
+### Add Media [POST]
+
++ Parameters
+
+    + businessNumber: 123456789 (string, required) - Location Number, in case of SMB it will be Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + media (required, array) - List of media items to be uploaded.
+            + (object)
+                + url: https://images.pexels.com/photos/12128533/pexelsphoto12128533.jpeg (string, required) - Url of the media item.
+                + mediaCategory: TEAMS (string, required) - Category for the media item. Possible values are:
+                                        EXTERIOR (PHOTO, VIDEO)
+                                        INTERIOR (PHOTO, VIDEO)
+                                        TEAMS (PHOTO, VIDEO)
+                                        ADDITIONAL (PHOTO, VIDEO)
+                + description: Image of the team (string, required) - Description of the media.
+                + mediaFormat: PHOTO (string, required) - Format of the Media. Possible values are:
+                                                    PHOTO
+                                                    VIDEO
+
+
+
+    + Body
+
+            {
+                "media": [
+                {
+                    "url": "https://images.pexels.com/photos/12128533/pexels-photo-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "TEAMS",
+                    "description": "Image of the team",
+                    "mediaFormat": "PHOTO"
+                },
+                {
+                    "url": "https://videos.pexels.com/video/123123/pexelsvideo-12323.mp4",
+                    "mediaCategory": "ADDITIONAL",
+                    "description": "Introductory video",
+                    "mediaFormat": "VIDEO"
+                }
+                ]
+            }
+
++ Response 200
+
+
+    + Attributes
+        + media (required, array) - List of media items.
+            + (object)
+                + mediaId: 987654321123 (string) - Id of the media.
+                + url: https://images.pexels.com/photos/12128533/pexelsphoto12128533.jpeg (string) - Url of the media item.
+                + mediaCategory: TEAMS (string) - Category for the media item.
+                + description: Image of the team (string) - Description of the media.
+                + mediaFormat: PHOTO (string) - Format of the Media.
+
+
+    + Body
+
+            {
+                "media": [
+                {
+                    "mediaId": "987654321123",
+                    "url": "https://images.pexels.com/photos/12128533/pexels-photo-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "TEAMS",
+                    "description": "Image of the team",
+                    "mediaFormat": "PHOTO"
+                },
+                {
+                    "mediaId": "7654321123",
+                    "url": "https://videos.pexels.com/video/123123/pexelsvideo-12323.mp4",
+                    "mediaCategory": "ADDITIONAL",
+                    "description": "Introductory video",
+                    "mediaFormat": "VIDEO"
+                }
+                ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [2174][]
+
++ Response 400
+
+    [2180][]
+
++ Response 400
+
+    [2181][]
+
+
+
+## Get Media [/resources/v1/business/{businessNumber}/media/get]
+API to get the Business Media details.
+
+### Get Media [GET]
+
++ Parameters
+
+    + businessNumber: 123456789 (string, required) - Location Number, in case of SMB it will be Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200
+
+
+    + Attributes
+        + media (array) - List of media items of the business.
+            + (object)
+                + mediaId: 987654321123 (string) - Id of the media.
+                + url: https://images.pexels.com/photos/12128533/pexelsphoto12128533.jpeg (string) - Url of the media item.
+                + mediaCategory: TEAMS (string) - Category for the media item.
+                + description: Image of the team (string) - Description of the media.
+                + mediaFormat: PHOTO (string) - Format of the Media.
+
+
+    + Body
+
+            {
+                "media": [
+                {
+                    "mediaId": "987654321123",
+                    "url": "https://images.pexels.com/photos/12128533/pexels-photo-12128533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                    "mediaCategory": "TEAMS",
+                    "description": "Image of the team",
+                    "mediaFormat": "PHOTO"
+                },
+                {
+                    "mediaId": "7654321122",
+                    "url": "https://videos.pexels.com/video/123123/pexelsvideo-12323.mp4",
+                    "mediaCategory": "ADDITIONAL",
+                    "description": "Introductory video",
+                    "mediaFormat": "VIDEO"
+                }
+                ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
+
+## Update Media [/resources/v1/business/{businessNumber}/update/media/{mediaId}]
+API to update the Business Media.
+
+### Update Media [PUT]
+
++ Parameters
+
+    + businessNumber: 123456789 (string, required) - Location Number, in case of SMB it will be Business Number.
+    + mediaId: 62185029212 (string, required) - Id of the media item.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + mediaCategory: INTERIOR (string, required) - Category for the media item. Possible values are:
+                                                                EXTERIOR
+                                                                INTERIOR
+                                                                TEAMS
+                                                                ADDITIONAL
+
+
+
+    + Body
+
+            {
+                "mediaCategory": "INTERIOR"
+            }
+
++ Response 200
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [2174][]
+
+
+## Delete Media [/resources/v1/business/{businessNumber}/media/delete]
+API to delete the Business Medias.
+
+### Delete Media [POST]
+
++ Parameters
+
+    + businessNumber: 123456789 (string, required) - Location Number, in case of SMB it will be Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + mediaIds: 123456,654321 (array, required) - List of Media Ids to be deleted.
+
+
+    + Body
+
+            {
+                "mediaIds": ["987654321123","7654321123"]
+            }
+
++ Response 200
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
 
 # Group Social
 Create and track Social posting for all channels.
@@ -10612,6 +10917,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>07/30/2023</b> - Added CRUD APIs for Business Media.
 * <b>07/21/2023</b> - Added new API under Business module i.e, Business Search API.
 * <b>06/30/2023</b> - Added support for service area based information in Get Business API and Update Business API.
 * <b>04/20/2023</b> - Added two new API under Listing module, Get Listings Insights and Get Listings Insights Datapoints.
