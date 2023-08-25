@@ -1621,6 +1621,53 @@ For example :
         }
 
 
+## 4011 [/4011]
+
++ Model (application/json)
+
+        {
+            "code": 400,
+            "message": "Category Id not found"
+        }
+
+## 4012 [/4012]
+
++ Model (application/json)
+
+        {
+            "code": 400,
+            "message": "Country code not found"
+        }
+
+## 4013 [/4013]
+
++ Model (application/json)
+
+        {
+            "code": 400,
+            "message": "Invalid country code"
+        }
+
+
+## 4014 [/4014]
+
++ Model (application/json)
+
+        {
+            "code": 400,
+            "message": "Source name not found"
+        }
+
+## 4015 [/4015]
+
++ Model (application/json)
+
+        {
+            "code": 400,
+            "message": "Invalid Source Name"
+        }
+
+
 
 # Group Business
 Create and maintain your business on Birdeye.
@@ -1937,7 +1984,7 @@ Get Business API gets business information, including product features opted and
             + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
             + linkedInUrl: https://linkedin.com/DrsChaAndPet (string) - Business LinkedId URL.
             + googleUrl: https://plus.google.com/103957250846354895095/about?gl=US&hl=en-US (string)- Business Google URL.
-            + youtubeUrl: https://www.youtube.com/channel/UCDNP0M75ySA5qt0So2F8Xxw (string)- Business Youtube URL.
+            + youTubeUrl: https://www.youtube.com/channel/UCDNP0M75ySA5qt0So2F8Xxw (string)- Business Youtube URL.
         + isSEOEnabled: true (boolean) - Enable/Disbale search engine indexing of business profile. Valid values are "true","false". Default is "true"
 
 
@@ -2091,7 +2138,7 @@ Get Business API gets business information, including product features opted and
                 "facebookUrl": null,
                 "twitterUrl": null,
                 "linkedinUrl": null,
-                "youtubeUrl":null
+                "youTubeUrl":null
               },
               "isSEOEnabled": "false",
               "baseUrl": "https://birdeye.com/diecispa-755009344"
@@ -2233,7 +2280,7 @@ Update Business API updates business information.
             + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
             + linkedInUrl: https://linkedin.com/DrsChaAndPet (string) - Business LinkedId URL.
             + googleUrl: https://plus.google.com/103957250846354895095/about?gl=US&hl=en-US (string)- Business Google URL.
-            + youtubeUrl: https://www.youtube.com/channel/UCDNP0M75ySA5qt0So2F8Xxw (string)- Business Youtube URL.
+            + youTubeUrl: https://www.youtube.com/channel/UCDNP0M75ySA5qt0So2F8Xxw (string)- Business Youtube URL.
         + isSEOEnabled: true (boolean) - Enable/Disbale search engine indexing of business profile. Valid values are "true","false". Default is "true".
         + externalReferenceId (string) - It should be a unique value for location identifier.
 
@@ -2480,7 +2527,7 @@ Update Business API updates business information.
                 "facebookUrl": null,
                 "twitterUrl": null,
                 "linkedinUrl": null,
-                "youtubeUrl": null,
+                "youTubeUrl": null,
                 "instagramUrl": null,
                 "pintrestUrl": null,
                 "lendingtreeUrl": null,
@@ -2639,7 +2686,7 @@ Update Business API updates business information.
                 "facebookUrl": null,
                 "twitterUrl": null,
                 "linkedinUrl": null,
-                "youtubeUrl": null
+                "youTubeUrl": null
               }
             }
 
@@ -2897,7 +2944,7 @@ Public profile tabs API saves information on business profile tabs.
     + Attributes (object)
         + profileTabs (array)
             + (object)
-                + tabType: Map (string, required) - Valid values are "Reviews", "Feedback", "Aboutus", "Map", "Appointment" or "BusinessOwner".
+                + tabType: Map (string, required) - Valid values are "Reviews", "Feedback", "FAQ", "Aboutus", "Map", "Appointment" or "BusinessOwner".
                 + label: map location (string) - Name on the tab. Max length 30 character.
                 + showOnProfile: 1 (number, required) - Show on profile Valid values "0" or "1".
                 + showOnWebsite: 0 (number, required) - Show on website Valid values "0" or "1".
@@ -3132,6 +3179,72 @@ Get Customer card API returns the detail of customer card of the location
 + Response 401
 
     [1167][]
+
++ Response 401
+
+    [1011][]
+
+
+
+## Get Timezone List [/v1/business/{businessNumber}/timezones]
+Get Timezone List API fetches the list of all available timezones.
+
+### Get Timezone List [GET]
+
++ Parameters
+    + businessNumber (number, required) - Id of a business (Long).
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+
++ Response 200 (application/json)
+
+
+    + Attributes
+        + timezones (array)
+            + (object)
+                + value: 123456 (number) - The timezone value.
+                + label: Steve Smith (string) - The timezone label.
+
+
+    + Body
+
+            {
+                "timezones": [
+                    {
+                        "value": "Etc/GMT+12",
+                        "label": "(GMT-12:00) Etc/GMT+12"
+                    },
+                    {
+                        "value": "Pacific/Pago_Pago",
+                        "label": "(GMT-11:00) Pacific/Pago_Pago"
+                    },
+                    {
+                        "value": "Pacific/Samoa",
+                        "label": "(GMT-11:00) Pacific/Samoa"
+                    },
+                    {
+                        "value": "Pacific/Niue",
+                        "label": "(GMT-11:00) Pacific/Niue"
+                    }
+             ]
+            }
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
 
 + Response 401
 
@@ -10453,7 +10566,7 @@ Insights/Analytics of Social Pages i.e Google, Facebook & Bing of a given busine
 
 
 
-## Listings Insights Datapoints [/resources/v1/listing/report/{reportType}/datapoints{?api_key,businessId}]
+## Listings Insights Datapoints [/v1/listing/report/{reportType}/datapoints{?api_key,businessId}]
 Datapoints of report graph is date/label mapped to value/data of a given business.
 
 ### Listings Insights Datapoints [POST]
@@ -10522,7 +10635,8 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
                 "wsiteVisitsCount": 730,
                 "directionsCount": 730,
                 "callsCount": 730
-            }]
+            }
+            ]
 
 
 + Response 401
@@ -10540,6 +10654,216 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
 + Response 404
 
     [1175][]
+
+
+
+## Get GMB Attributes [/v1/listing/{businessNumber}/gmb-attributes-list{?categoryId,countryCode}]
+The Get GMB Attributes API fetches the list of applicable GMB attributes for the selected GMB category ID
+
+
+### Get GMB Attributes [GET]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Business Number.
+    + categoryId: gcid:electrical_installation_service (string, required) - Category id.
+    + countryCode: US (string, required) - Code of the country, Possible values are US,CA,AU,PR,NZ,MX,IN,UK,FR,IT.
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200
+
+    + Attributes
+        + Accessibility (array) - This is dynamic field. Depends upon request inputs.
+            + (object)
+                + attributeId: has_wheelchair_accessible_restroom (string) - Attribute Id.
+                + valueType: BOOL (string) - Attribute value type.
+                + displayName: Wheelchair accessible restroom (string) - Attribute display name.
+                + groupDisplayName: Accessibility (string) - Attribute group name.
+                + valueMetadata (array) - Contains the list of possible values for the attribute.
+                    + (object)
+                        + value: true - Possible attribute value.
+                        + displayName: Wheelchair accessible restroom (string) - Attribute display name.
+
+    + Body
+
+            {
+                "Accessibility": [{
+                        "attributeId": "has_wheelchair_accessible_restroom",
+                        "valueType": "BOOL",
+                        "displayName": "Wheelchair accessible restroom",
+                        "groupDisplayName": "Accessibility",
+                        "valueMetadata": [{
+                                "value": "true",
+                                "displayName": "Wheelchair accessible restroom"
+                            },
+                            {
+                                "value": "false",
+                                "displayName": "No wheelchair accessible restroom"
+                            }
+                        ]
+                    },
+                    {
+                        "attributeId": "has_wheelchair_accessible_seating",
+                        "valueType": "BOOL",
+                        "displayName": "Wheelchair accessible seating",
+                        "groupDisplayName": "Accessibility",
+                        "valueMetadata": [{
+                                "value": "true",
+                                "displayName": "Wheelchair accessible seating"
+                            },
+                            {
+                                "value": "false",
+                                "displayName": "No wheelchair accessible seating"
+                        }]
+                    }
+                ],
+                    "Crowd": [{
+                        "attributeId": "welcomes_lgbtq",
+                        "valueType": "BOOL",
+                        "displayName": "LGBTQ+ friendly",
+                        "groupDisplayName": "Crowd",
+                        "valueMetadata": [{
+                            "value": "true",
+                            "displayName": "LGBTQ+ friendly"
+                        }]
+                    },
+                    {
+                        "attributeId": "is_transgender_safespace",
+                        "valueType": "BOOL",
+                        "displayName": "Transgender safespace",
+                        "groupDisplayName": "Crowd",
+                        "valueMetadata": [{
+                            "value": "true",
+                            "displayName": "Transgender safespace"
+                        }]
+                    }
+                ],
+                "Planning": [{
+                    "attributeId": "requires_appointments",
+                    "valueType": "BOOL",
+                    "displayName": "Appointment required",
+                    "groupDisplayName": "Planning",
+                    "valueMetadata": [{
+                        "value": "true",
+                        "displayName": "Appointment required"
+                    }]
+                }]
+            }
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
++ Response 400
+
+    [4011][]
+
++ Response 400
+
+    [4012][]
+
++ Response 400
+
+    [4013][]
+
+
+## Get Category List [/v1/listing/{businessNumber}/category-list{?sourceName,countryCode}]
+The Get Category List API fetches the list of category values for the selected source.
+
+### Get Category List [GET]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Business Number.
+    + sourceName: BING (string, required) -  Source name for which category data needs to be fetched. Possible values are BING, HEALTHCARE, GMB, VENDOR, FACEBOOK.
+    + countryCode: US (string, required) - Code of the country, Possible values are US,CA,AU,PR,NZ,MX,IN,UK,FR,IT.
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200
+
+   + Attributes (array)
+        + (object)
+            + id: 2 (string) - Category Id.
+            + name: Towing Service (string) - Category Name.
+            + primary: true (boolean) - It will be present in response only in case when sourceName = “VENDOR”
+
+
+
+    + Body
+
+            [
+                {
+                    "id": "2",
+                    "name": "Towing Service",
+                    "primary": true
+                },
+                {
+                    "id": "3",
+                    "name": "Auto Glass Shop",
+                    "primary": true
+                },
+                {
+                    "id": "4",
+                    "name": "Car Dealer",
+                    "primary": true
+                },
+                {
+                    "id": "6",
+                    "name": "Used Car Dealer",
+                    "primary": true
+                }
+            ]
+
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
++ Response 400
+
+    [4014][]
+
++ Response 400
+
+    [4012][]
+
++ Response 400
+
+    [4013][]
+
++ Response 400
+
+    [4015][]
 
 
 # Group Integration
@@ -10612,6 +10936,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>08/25/2023</b> - Added new APIs under Business and Listing modules, Get Category List API, Get GMB Attributes API & Get Timezone List
 * <b>07/21/2023</b> - Added new API under Business module i.e, Business Search API.
 * <b>06/30/2023</b> - Added support for service area based information in Get Business API and Update Business API.
 * <b>04/20/2023</b> - Added two new API under Listing module, Get Listings Insights and Get Listings Insights Datapoints.
