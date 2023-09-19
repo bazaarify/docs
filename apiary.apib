@@ -1668,6 +1668,14 @@ For example :
         }
 
 
+## 20083 [/20083]
+
++ Model (application/json)
+
+        {
+            "code": 20083,
+            "message": "End date can't be before start date"
+        }
 
 # Group Business
 Create and maintain your business on Birdeye.
@@ -4620,7 +4628,7 @@ You can retrieve the customer history or customer activity log using the Custome
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + startDate: 12/30/2021 (string, optional) - The start date format should be MM/dd/yyyy. if start date is not set, then we will use the date customer was created.
     + endDate: 12/30/2022 (string,optional) - The end date format should be MM/dd/yyyy. if end date is not set, then we will use the current date.
-    + customerId: 12344 (string,required) - Id of enterprise customer.
+    + customerId: 12344 (string,required) - Id of the customer.
 
 
 + Request (application/json)
@@ -5149,6 +5157,138 @@ Contact Us form can be integrated with Birdeye Inbox using Contact Us API.
     [5046][]
 
 
+## Get opt-out Contacts [/resources/v1/contact/{businessId}/update-feed]
+API to fetch the daily opt-out or blocked contact data for a business
+
+### Get opt-out contact data [POST]
+
++ Parameters
+
+    + businessId: 123456 (number, required) - Id of a business (Long).
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + start: 1693570640000 (number, required) - The start date format should be in milliseconds. If the start date is not set and the end date is provided, we will fetch data for 24 hours before the end date. If both are not provided, the latest 24 hours data will be fetched.
+        + end: 1693657040000 (number,required) -  The end date format should be in milliseconds. If the end date is not set and the start date is provided, we will fetch data for 24 hours after the start date. If both are not provided, the latest 24 hours data will be fetched.
+        + subscriptionStatus: 155911947195757, 155290409184734 (array,required) - Type of subscription update feed we want the data for. Like opted-out to get email and text optouts, and blocked for contacts getting blocked. If not provided, only opted-out updates will be returned, by default.
+
+
+
+
+    + Body
+
+            {
+                "end": 1693657040000,
+                "start": 1693570640000,
+                "subscriptionStatus": [ "blocked","opted-out" ]
+            }
+
++ Response 200 (application/json)
+
+
+    + Attributes
+
+        + emailOptOut (array) - All the contacts grouped under this field, which were opted out from email in the given duration
+            + (object)
+                + id: 1213422 (number) - id of the enterprise customer.
+                + firstName: John (string) - First name of the contact.
+                + lastName: Doe (string) - Last name of the contact.
+                + emailId: john@yahoo.com (string) - EmailId of the contact, if exists.
+                + phone (string) - Phone number of the contact, if exists. Format is (xxx) xxx-xxxx.
+        + textOptOut (array) - All the contacts grouped under this field, which were opted out from text in the given duration
+            + (object)
+                + id: 1213422 (number) - id of the enterprise customer.
+                + firstName: John (string) - First name of the contact.
+                + lastName: Doe (string) - Last name of the contact.
+                + emailId: john@yahoo.com (string) - EmailId of the contact, if exists.
+                + phone (string) - Phone number of the contact, if exists. Format is (xxx) xxx-xxxx.
+        + blocked (array) - All the contacts grouped under this field, which were blockedl in the given duration.
+            + (object)
+                + id: 1213422 (number) - id of the enterprise customer.
+                + firstName: John (string) - First name of the contact.
+                + lastName: Doe (string) - Last name of the contact.
+                + emailId: john@yahoo.com (string) - EmailId of the contact, if exists.
+                + phone (string) - Phone number of the contact, if exists. Format is (xxx) xxx-xxxx.
+
+
+    + Body
+
+            {
+              "emailOptOut": [
+                {
+                  "id": 1213422,
+                  "firstName": "John",
+                  "lastName": "Doe",
+                  "emailId": "john@yahoo.com",
+                  "phone": "(212) 234-1242"
+                },
+                {
+                  "id": 1213423,
+                  "firstName": "Johnny",
+                  "lastName": "Doe",
+                  "emailId": "johnny@yahoo.com",
+                  "phone": "(212) 231-1242"
+                }
+              ],
+              "textOptOut": [
+                {
+                  "id": 1213425,
+                  "firstName": "Jane",
+                  "lastName": "Doe",
+                  "emailId": "john@yahoo.com",
+                  "phone": "(212) 234-1242"
+                },
+                {
+                  "id": 1213423,
+                  "firstName": "Johnny",
+                  "lastName": "Doe",
+                  "emailId": "johnny@yahoo.com",
+                  "phone": "(212) 231-1242"
+                }
+              ],
+              "blocked": [
+                {
+                  "id": 1213422,
+                  "firstName": "John",
+                  "lastName": "Doe",
+                  "emailId": "john@yahoo.com",
+                  "phone": "(212) 234-1242"
+                },
+                {
+                  "id": 1213423,
+                  "firstName": "Johnny",
+                  "lastName": "Doe",
+                  "emailId": "johnny@yahoo.com",
+                  "phone": "(212) 231-1242"
+                }
+              ]
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1011][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [20083][]
+
+
 # Group Campaign
 Create a short link for review requests and set review sources in the template.
 
@@ -5256,6 +5396,7 @@ Set Default Review Sources API updates default templates of businesses under a r
             }
 
 + Response 200 (application/json)
+
 
 
 + Response 401
@@ -10889,10 +11030,10 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>09/18/2023</b> - Added new API under Contact module i.e, Get opt-out contact data
 * <b>08/25/2023</b> - Added new APIs under Business and Listing modules, Get Category List API, Get GMB Attributes API & Get Timezone List
 * <b>07/21/2023</b> - Added new API under Business module i.e, Business Search API.
 * <b>06/30/2023</b> - Added support for service area based information in Get Business API and Update Business API.
 * <b>04/20/2023</b> - Added two new API under Listing module, Get Listings Insights and Get Listings Insights Datapoints.
 * <b>04/03/2023</b> - Added two new APIs under Social module, Post Social Schedule and Track Social Post.
 * <b>03/15/2023</b> - Added new API under Listing module i.e, Get Location Status.
-* <b>02/17/2023</b> - Added new API under Business module i.e, Get Customer card details.
