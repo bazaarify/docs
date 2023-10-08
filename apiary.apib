@@ -10960,6 +10960,1282 @@ The Get Category List API fetches the list of category values for the selected s
     [4015][]
 
 
+## Create Listing [/resources/v1/listing/{businessNumber}/create]
+Create Listing API publishes information on online listing sources. We post presence information on more than 50+ online directories. You can use this API to not just create your detailed listing but also fix/ publish/ sync/ make live at the same time.
+
+
+> __Note__
+> - __For Service Area Businesses__ - Please ensure you do check the ‘Is Address hidden’ and add the location specific details/ areas you provide service/s to
+> - __For Healthcare Fields section__ - This is only applicable for customers who are on the Healthcare Add on plan. Please ensure that you choose the ‘Provider - True or False’ judiciously. Once the listings is fixed as Provider or Practice, it cannot be moved to the other type and vice versa
+
+
+### Create Listing [POST]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Business Number.
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+   + Attributes
+        + businessInfo - Business Information
+            + name: Drs. Chalker and Peterson, A Dental Partnership (required, string) - Name of the Business/Location. Should be Max 1000 characters long.
+            + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
+            + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
+            + emailId: 4568@livelovespa.com (string) - Business Email ID.
+            + location (object) - Business address
+                + address1: 7405 Morro Rd (string) - Address of the business.
+                + address2: Suite 102 (string) - Address of the business.
+                + city: Atascadero (string) - City (Max 1000 character long).
+                + state: CA (string) - State (2 character state code).
+                + countryCode: US (string) - Country Code (2 character country code).
+                + zip: 93422 (required,string) - Zip Code.
+        + additionalInfo - Business Additional Information
+            + establishedYear: 2012 (number) - Year established
+            + timezone: America/Los_Angeles (string)- Timezone of the business.
+            + languages: English, Spanish (array) - Languages.
+            + hoursOfOperations (array) - Working hours of business for each day.
+                + (object)
+                    + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
+                    + workingHours (array) - Working hours of the business
+                        + (object)
+                            + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
+                            + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
+                    + isOpen: 1 (number) - 0 (Business closed today), 1 (open)
+                    + comment: By appointment only (string) - Add the special instruction.
+            + specialHours (array) - For special holiday days, where you may have limited hours of operation and don’t want to change your preset regular hours. These would only be applicable only for the dates they are set for.
+                + (object)
+                    + specialDate: 10/20/2023 (string) - It should be "MM/dd/yyyy".
+                    + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
+                    + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
+                    + isOpen: 1 (number) - 0(Business closed today), 1 (open)
+            + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
+            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/dd/yyyy" format.
+            + services: Other Dental Specialties, Orthodontists, Dentistry (required,string)- Services (Comma separated list of services offered; used for SEO).
+            + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords about the business. Useful in SEO. Business keyword cannot be more than 1000 characters.
+            + products: Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
+            + appointmentLink (string)- Let customers reserve tables by linking them to your reservations page.
+            + menuLink (string) - Show customers what you serve by linking them to your menu.
+            + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
+            + impressum (string) - In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
+            + payment: Paypal, Visa, Master Card (string) - Payment Type (Max 250 character long).
+            + localPhoneNumber (string)- Local phone number.
+            + tollFreePhoneNumber (string) - Tollfree number.
+            + androidAppURL (string)- Android app url.
+            + iosAppURL (string) - IOS app url.
+        + media (object) - Media details.
+            + logoUrl: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - This logo will pushed to your listings sites such as Google, Facebook, Bing, Birdeye and all the other secondary listings sites. Format: JPG, JPEG, PNG. Minimum 1110 x 374px. Recommended: 720 X 720 px. 10 KB min.
+            + coverImageUrl: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - This cover photo will pushed to your listings sites such as Birdeye and all the other secondary listings sites. Cover image URL for business will be displayed on custom review site.  Format: JPG, JPEG, PNG. Minimum 1110 x 374px. 10 KB min.
+        + optOut (object) - Opt out section
+            + gmbLogoOptOut: true (boolean)- Update profile photo on your google my business page.
+                                                    Select ‘true’ if you want to opt out from updating the logo on your GBP page.
+                                                    Select ‘false’ if you want to opt in to updating the logo on your GBP page.
+            + fbLogoOptOut: false (boolean) - Update profile photo on your facebook profile.
+                                                    Select ‘true’ if you want to opt out from updating the logo on your FB business page.
+                                                    Select ‘false’ if you want to opt in to updating the logo on your FB business page.
+            + gmbCoverOptOut: true (boolean) - Update cover photo on your google my business page.
+                                                    Select ‘true’ if you want to opt out from updating the cover photo on your GBP page.
+                                                    Select ‘false’ if you want to opt in to updating the cover photo on your GBP page.
+            + fbCoverOptOut: true (boolean) - Update cover photo on your facebook profile.
+                                                    Select ‘true’ if you want to opt out from updating the cover photo on your FB business page.
+                                                    Select ‘false’ if you want to opt in to updating the cover photo on your FB business page.
+            + gmbProfileOptOut: false (boolean) - Opt out from the google specific section on the profile page.
+                                                        Select ‘true’ if you want to opt out from updating information such as category and related attributes and more hours on your Google Business Profile page.
+                                                        Select ‘false’ if you want to opt in to updating information such as category and related attributes and more hours on your Google Business Profile page.
+            + businessProfileOptOut: true (boolean) - Opt out from the business profile section.
+                                                            Select ‘true’ if you want to opt out from updating NAP information on your Google Business Profile page.
+                                                            Select ‘false’ if you want to opt in to updating NAP information on your Google Business Profile page.
+
+        + covidInfo (object) - Provide this data for updating any COVID specific information you want to share with your customers.
+            + postDescription (string) - This information is posted and updated on your Google business profile page and your FB business page.
+            + covid19SupportLink (string) - Should be a valid covid19 support url
+            + virtualCareLink (string) - Should be a valid url virtual care link
+        + bingListing (object) - This data will be used to update your Bing listing.
+            + primaryCategoryBing (string) - Primary category of bing.
+            + categories (string) - You can add a maximum of up to 3 categories.
+            + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
+            + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
+        + internalListing (object) - Provide data for microsite listing purpose.
+            + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
+            + category (string) - Primary category of business.
+            + subcategory (string) - You can add up to 3 subcategories.
+            + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
+        + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
+            + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
+            + category (string) - You can add up to 3 categories.
+            + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
+        + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
+            + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
+            + googleStoreId (string) - Store id for google.
+            + primaryCategoryGmb (string) - Primary category of google.
+            + additionalCategory (string) - You can add up to 5 subcategories.
+            + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
+            + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
+                    Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+        + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
+            + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
+            + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories.
+        + socialProfileURLs (object) - Profile URLs for business on top rated social sites
+            + facebookUrl: http://www.facebook.com/ChalkerandPetersonDental (string) - Facebook URL.
+            + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
+            + linkedInUrl: https://linkedin.com/DrsChaAndPet (string) - Business LinkedId URL.
+            + googleUrl: https://plus.google.com/103957250846354895095/about?gl=US&hl=en-US (string)- Business Google URL.
+            + youTubeUrl: https://www.youtube.com/channel/UCDNP0M75ySA5qt0So2F8Xxw (string)- Business Youtube URL.
+            + pintrestUrl - Business Pinterest URL.
+            + bbbUrl - Business BB URL.
+            + lendingtreeUrl - Business Lending Tree URL.
+        + healthcare (object) - This section is only applicable if you have purchased the health care listings plan and have been onboarded on the same.
+            + doctorCategories: Allergist-Immunologist > Allergy, Allergist-Immunologist > General (array) - This is the doctor specific category your business belongs to. Please refer to the sheet "Doctor Specific Categories" to get the possible values.
+            + isProvider: true (boolean) -  If provider then select value true. If practice then select value false. This is a true/false toggle for determining if the location is a provider or not.
+            + practiceName: General Medicine (string) - Name of the practice.Must be less than 191 characters.
+            + firstName: John (string) -  First name of the provider.
+            + middleName: Jack (string)  -  Middle name of the provider.
+            + surName: Doe (string)  -  Surname of the provider
+            + npi: 1245319599  (number) - National Provider Identifier - NPI. Must be 10 digits
+            + credentials: MD (string) - University of the provider/practice. Must be less than 25 characters
+            + university: Sample text (string) -  University of the provider/practice. Must be less than 255 characters
+            + hospitalAffiliations: Sample text (string) - Hospital Affiliations of the provider/practice. Must be less than 150 characters
+            + insurancesAccepted: Sample text (string) - Insurance Accepted of the provider/practice.  Must be less than 50 characters
+
+
+    + Body
+
+            {
+                "businessInfo": {
+                    "name": "Test 6 sept",
+                    "phone": "(973) 716-0007",
+                    "websiteUrl": "http://www.diecispa.org/",
+                    "emailId": "example@birdeye.com",
+                    "location": {
+                        "address1": "90 W Mount Pleasant Ave",
+                        "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+                        "city": "Livingston",
+                        "state": "NJ",
+                        "zip": "07039",
+                        "countryCode": "US"
+                    }
+                },
+                "additionalInfo": {
+                    "establishedYear": "2022",
+                    "timezone": "America/Los_Angeles",
+                    "languages": [
+                        "English",
+                        "Hindi"
+                    ],
+                    "hoursOfOperations": [
+                        {
+                            "day": 0,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 1,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 2,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 3,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 4,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 5,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 6,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "18:00"
+                                }
+                            ]
+                        }
+                    ],
+                    "specialHours": [
+                        {
+                            "specialDate": "12/31/2020",
+                            "startHour": "09:00",
+                            "endHour": "12:00",
+                            "isOpen": 0
+                        },
+                        {
+                            "specialDate": "01/01/2021",
+                            "startHour": "",
+                            "endHour": "",
+                            "isOpen": 1
+                        }
+                    ],
+                    "businessStatus": "Open",
+                    "reopenDate": "01/01/2021",
+                    "keywords": "HairSalons,DaySpas,BeautySalon,BeautySalons,Salons, MassageTherapists",
+                    "services": "BeautySalon,HairSpa",
+                    "products": "LivingProofDryShampoo,KevinMurphyBlondeAngelWash",
+                    "appointmentLink": "http://www.gmail.com",
+                    "reservationLink": "http://www.gmail.com",
+                    "menuLink": "http://www.gmail.com",
+                    "orderAheadLink": "http://www.gmail.com",
+                    "impressum": "Thisissampleimpressum",
+                    "payment": "Visa,MasterCard,AmericanExpress,DebitCards,Check",
+                    "localPhoneNumber": "(973)716-0102",
+                    "tollFreePhoneNumber": "",
+                    "iosAppURL": "http://www.gmail.com",
+                    "androidAppURL": "http://www.gmail.com"
+                },
+                "media": {
+                    "logoUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
+                    "coverImageUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg"
+                },
+                 "optOut": {
+                    "gmbCoverOptOut": true,
+                    "gmbLogoOptOut": true,
+                    "fbCoverOptOut": false,
+                    "fbLogoOptOut": false,
+                    "gmbProfileOptOut": false,
+                    "businessProfileOptOut": false
+                },
+                "covidInfo": {
+                    "postDescription": "SampleCovidDesc",
+                    "covid19SupportLink": "http://www.covidInfo.com",
+                    "virtualCareLink": "http://www.covidInfo.com"
+                },
+                "bingListing": {
+                    "primaryCategoryBing": "Art Restoration Service",
+                    "bingDescription": "Sample Bing Description",
+                    "bingCategories": [
+                        "Art Restoration Service"
+                    ],
+                    "bingPhoneNumber": "(415) 673-0868"
+
+                },
+                 "internalListing": {
+                    "description": "Alok ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic Alok ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic",
+                    "category": "Beauty",
+                    "subCategories": [
+                        "Eyelash Service",
+                        "Nail Salons"
+                    ],
+                    "displayCategory": "Eyelash Service"
+                },
+                "facebookListing": {
+                    "facebookDescription": "This is sample facebook description",
+                    "facebookPhoneNumber": "(415) 673-0868",
+                    "categories": [
+                        "Science",
+                        "Sports"
+                    ]
+                },
+                   "thirdPartyListing": {
+                    "thirdPartyCategory": "Towing Service",
+                    "thirdPartySubCategories": [
+                        "Car Dealer",
+                        "Auto Glass Shop"
+                    ]
+                },
+                  "gmbListing": {
+                    "googleWebsiteUrl": "http://www.gmail.com",
+                    "googleStoreId": "1232133",
+                    "googlePhoneNumber": "(973) 716-0007",
+                    "primaryCategoryGmb": "Storage facility",
+                    "googleDescription": "This is sample description for google",
+                    "additionalCategories": [
+                        "Snack bar"
+                    ],
+                    "attributes": {
+                        "Accessibility": [
+                            {
+                                "attributeId": "has_wheelchair_accessible_elevator",
+                                "attributeName": "Wheelchair accessible elevator",
+                                "value": false
+                            }
+                        ],
+                        "Crowd": [
+                            {
+                                "attributeId": "welcomes_families",
+                                "attributeName": "Family-friendly",
+                                "value": true
+                            }
+                        ]
+                    }
+                },
+                  "socialProfileURLs": {
+                    "googleUrl": "http://www.google.com/123",
+                    "facebookUrl": "http://www.facebook.com/123",
+                    "twitterUrl": "http://www.twitter.com/123",
+                    "youTubeUrl": "http://www.youtube.com/12",
+                    "linkedinUrl": "http://www.linkedin.com/12",
+                    "instagramUrl": "http://www.instagram.com/12",
+                    "pintrestUrl": "http://www.pinterest.com/12",
+                    "bbbUrl": "",
+                    "lendingtreeUrl": ""
+                },
+                "healthcare": {
+                    "doctorCategories": [
+                        "Allergist-Immunologist > Allergy",
+                        "Allergist-Immunologist > General",
+                        "Addiction Medicine Specialist > General"
+                    ],
+                    "isProvider": true,
+                    "practiceName": "General Medicine",
+                    "firstName": "John",
+                    "middleName": "Jack",
+                    "surName": "Doe",
+                    "npi": "1245319599",
+                    "credentials": "MD",
+                    "university": "Sample text",
+                    "hospitalAffiliations": "Sample text",
+                    "insurancesAccepted": "Sample text"
+                },
+            }
+
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
+## Update Listing [/resources/v1/listing/{businessNumber}/update]
+The Update Listing API will update the location details on all your listings sites.
+
+
+### Update Listing [POST]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Business Number.
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+   + Attributes
+        + businessInfo - Business Information
+            + name: Drs. Chalker and Peterson, A Dental Partnership (required, string) - Name of the Business/Location. Should be Max 1000 characters long.
+            + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
+            + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
+            + emailId: 4568@livelovespa.com (string) - Business Email ID.
+            + location (object) - Business address
+                + address1: 7405 Morro Rd (string) - Address of the business.
+                + address2: Suite 102 (string) - Address of the business.
+                + city: Atascadero (string) - City (Max 1000 character long).
+                + state: CA (string) - State (2 character state code).
+                + countryCode: US (string) - Country Code (2 character country code).
+                + zip: 93422 (required,string) - Zip Code.
+        + additionalInfo - Business Additional Information
+            + establishedYear: 2012 (number) - Year established
+            + timezone: America/Los_Angeles (string)- Timezone of the business.
+            + languages: English, Spanish (array) - Languages.
+            + hoursOfOperations (array) - Working hours of business for each day.
+                + (object)
+                    + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
+                    + workingHours (array) - Working hours of the business
+                        + (object)
+                            + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
+                            + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
+                    + isOpen: 1 (number) - 0 (Business closed today), 1 (open)
+                    + comment: By appointment only (string) - Add the special instruction.
+            + specialHours (array) - For special holiday days, where you may have limited hours of operation and don’t want to change your preset regular hours. These would only be applicable only for the dates they are set for.
+                + (object)
+                    + specialDate: 10/20/2023 (string) - It should be "MM/dd/yyyy".
+                    + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
+                    + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
+                    + isOpen: 1 (number) - 0(Business closed today), 1 (open)
+            + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
+            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/dd/yyyy" format.
+            + services: Other Dental Specialties, Orthodontists, Dentistry (required,string)- Services (Comma separated list of services offered; used for SEO).
+            + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords about the business. Useful in SEO. Business keyword cannot be more than 1000 characters.
+            + products: Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
+            + appointmentLink (string)- Let customers reserve tables by linking them to your reservations page.
+            + menuLink (string) - Show customers what you serve by linking them to your menu.
+            + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
+            + impressum (string) - In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
+            + payment: Paypal, Visa, Master Card (string) - Payment Type (Max 250 character long).
+            + localPhoneNumber (string)- Local phone number.
+            + tollFreePhoneNumber (string) - Tollfree number.
+            + androidAppURL (string)- Android app url.
+            + iosAppURL (string) - IOS app url.
+        + media (object) - Media details.
+            + logoUrl: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - This logo will pushed to your listings sites such as Google, Facebook, Bing, Birdeye and all the other secondary listings sites. Format: JPG, JPEG, PNG. Minimum 1110 x 374px. Recommended: 720 X 720 px. 10 KB min.
+            + coverImageUrl: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - This cover photo will pushed to your listings sites such as Birdeye and all the other secondary listings sites. Cover image URL for business will be displayed on custom review site.  Format: JPG, JPEG, PNG. Minimum 1110 x 374px. 10 KB min.
+        + optOut (object) - Opt out section
+            + gmbLogoOptOut: true (boolean)- Update profile photo on your google my business page.
+                                                    Select ‘true’ if you want to opt out from updating the logo on your GBP page.
+                                                    Select ‘false’ if you want to opt in to updating the logo on your GBP page.
+            + fbLogoOptOut: false (boolean) - Update profile photo on your facebook profile.
+                                                    Select ‘true’ if you want to opt out from updating the logo on your FB business page.
+                                                    Select ‘false’ if you want to opt in to updating the logo on your FB business page.
+            + gmbCoverOptOut: true (boolean) - Update cover photo on your google my business page.
+                                                    Select ‘true’ if you want to opt out from updating the cover photo on your GBP page.
+                                                    Select ‘false’ if you want to opt in to updating the cover photo on your GBP page.
+            + fbCoverOptOut: true (boolean) - Update cover photo on your facebook profile.
+                                                    Select ‘true’ if you want to opt out from updating the cover photo on your FB business page.
+                                                    Select ‘false’ if you want to opt in to updating the cover photo on your FB business page.
+            + gmbProfileOptOut: false (boolean) - Opt out from the google specific section on the profile page.
+                                                        Select ‘true’ if you want to opt out from updating information such as category and related attributes and more hours on your Google Business Profile page.
+                                                        Select ‘false’ if you want to opt in to updating information such as category and related attributes and more hours on your Google Business Profile page.
+            + businessProfileOptOut: true (boolean) - Opt out from the business profile section.
+                                                            Select ‘true’ if you want to opt out from updating NAP information on your Google Business Profile page.
+                                                            Select ‘false’ if you want to opt in to updating NAP information on your Google Business Profile page.
+
+        + covidInfo (object) - Provide this data for updating any COVID specific information you want to share with your customers.
+            + postDescription (string) - This information is posted and updated on your Google business profile page and your FB business page.
+            + covid19SupportLink (string) - Should be a valid covid19 support url
+            + virtualCareLink (string) - Should be a valid url virtual care link
+        + bingListing (object) - This data will be used to update your Bing listing.
+            + primaryCategoryBing (string) - Primary category of bing.
+            + categories (string) - You can add a maximum of up to 3 categories.
+            + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
+            + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
+        + internalListing (object) - Provide data for microsite listing purpose.
+            + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
+            + category (string) - Primary category of business.
+            + subcategory (string) - You can add up to 3 subcategories.
+            + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
+        + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
+            + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
+            + category (string) - You can add up to 3 categories.
+            + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
+        + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
+            + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
+            + googleStoreId (string) - Store id for google.
+            + primaryCategoryGmb (string) - Primary category of google.
+            + additionalCategory (string) - You can add up to 5 subcategories.
+            + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
+            + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
+                    Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+        + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
+            + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
+            + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories.
+        + socialProfileURLs (object) - Profile URLs for business on top rated social sites
+            + facebookUrl: http://www.facebook.com/ChalkerandPetersonDental (string) - Facebook URL.
+            + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
+            + linkedInUrl: https://linkedin.com/DrsChaAndPet (string) - Business LinkedId URL.
+            + googleUrl: https://plus.google.com/103957250846354895095/about?gl=US&hl=en-US (string)- Business Google URL.
+            + youTubeUrl: https://www.youtube.com/channel/UCDNP0M75ySA5qt0So2F8Xxw (string)- Business Youtube URL.
+            + pintrestUrl - Business Pinterest URL.
+            + bbbUrl - Business BB URL.
+            + lendingtreeUrl - Business Lending Tree URL.
+        + healthcare (object) - This section is only applicable if you have purchased the health care listings plan and have been onboarded on the same.
+            + doctorCategories: Allergist-Immunologist > Allergy, Allergist-Immunologist > General (array) - This is the doctor specific category your business belongs to. Please refer to the sheet "Doctor Specific Categories" to get the possible values.
+            + isProvider: true (boolean) -  If provider then select value true. If practice then select value false. This is a true/false toggle for determining if the location is a provider or not.
+            + practiceName: General Medicine (string) - Name of the practice.Must be less than 191 characters.
+            + firstName: John (string) -  First name of the provider.
+            + middleName: Jack (string)  -  Middle name of the provider.
+            + surName: Doe (string)  -  Surname of the provider
+            + npi: 1245319599  (number) - National Provider Identifier - NPI. Must be 10 digits
+            + credentials: MD (string) - University of the provider/practice. Must be less than 25 characters
+            + university: Sample text (string) -  University of the provider/practice. Must be less than 255 characters
+            + hospitalAffiliations: Sample text (string) - Hospital Affiliations of the provider/practice. Must be less than 150 characters
+            + insurancesAccepted: Sample text (string) - Insurance Accepted of the provider/practice.  Must be less than 50 characters
+
+
+    + Body
+
+            {
+                "businessInfo": {
+                    "name": "Test 6 sept",
+                    "phone": "(973) 716-0007",
+                    "websiteUrl": "http://www.diecispa.org/",
+                    "emailId": "example@birdeye.com",
+                    "location": {
+                        "address1": "90 W Mount Pleasant Ave",
+                        "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+                        "city": "Livingston",
+                        "state": "NJ",
+                        "zip": "07039",
+                        "countryCode": "US"
+                    }
+                },
+                "additionalInfo": {
+                    "establishedYear": "2022",
+                    "timezone": "America/Los_Angeles",
+                    "languages": [
+                        "English",
+                        "Hindi"
+                    ],
+                    "hoursOfOperations": [
+                        {
+                            "day": 0,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 1,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 2,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 3,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 4,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 5,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 6,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "18:00"
+                                }
+                            ]
+                        }
+                    ],
+                    "specialHours": [
+                        {
+                            "specialDate": "12/31/2020",
+                            "startHour": "09:00",
+                            "endHour": "12:00",
+                            "isOpen": 0
+                        },
+                        {
+                            "specialDate": "01/01/2021",
+                            "startHour": "",
+                            "endHour": "",
+                            "isOpen": 1
+                        }
+                    ],
+                    "businessStatus": "Open",
+                    "reopenDate": "01/01/2021",
+                    "keywords": "HairSalons,DaySpas,BeautySalon,BeautySalons,Salons, MassageTherapists",
+                    "services": "BeautySalon,HairSpa",
+                    "products": "LivingProofDryShampoo,KevinMurphyBlondeAngelWash",
+                    "appointmentLink": "http://www.gmail.com",
+                    "reservationLink": "http://www.gmail.com",
+                    "menuLink": "http://www.gmail.com",
+                    "orderAheadLink": "http://www.gmail.com",
+                    "impressum": "Thisissampleimpressum",
+                    "payment": "Visa,MasterCard,AmericanExpress,DebitCards,Check",
+                    "localPhoneNumber": "(973)716-0102",
+                    "tollFreePhoneNumber": "",
+                    "iosAppURL": "http://www.gmail.com",
+                    "androidAppURL": "http://www.gmail.com"
+                },
+                "media": {
+                    "logoUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
+                    "coverImageUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg"
+                },
+                 "optOut": {
+                    "gmbCoverOptOut": true,
+                    "gmbLogoOptOut": true,
+                    "fbCoverOptOut": false,
+                    "fbLogoOptOut": false,
+                    "gmbProfileOptOut": false,
+                    "businessProfileOptOut": false
+                },
+                "covidInfo": {
+                    "postDescription": "SampleCovidDesc",
+                    "covid19SupportLink": "http://www.covidInfo.com",
+                    "virtualCareLink": "http://www.covidInfo.com"
+                },
+                "bingListing": {
+                    "primaryCategoryBing": "Art Restoration Service",
+                    "bingDescription": "Sample Bing Description",
+                    "bingCategories": [
+                        "Art Restoration Service"
+                    ],
+                    "bingPhoneNumber": "(415) 673-0868"
+
+                },
+                 "internalListing": {
+                    "description": "Alok ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic Alok ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic",
+                    "category": "Beauty",
+                    "subCategories": [
+                        "Eyelash Service",
+                        "Nail Salons"
+                    ],
+                    "displayCategory": "Eyelash Service"
+                },
+                "facebookListing": {
+                    "facebookDescription": "This is sample facebook description",
+                    "facebookPhoneNumber": "(415) 673-0868",
+                    "categories": [
+                        "Science",
+                        "Sports"
+                    ]
+                },
+                   "thirdPartyListing": {
+                    "thirdPartyCategory": "Towing Service",
+                    "thirdPartySubCategories": [
+                        "Car Dealer",
+                        "Auto Glass Shop"
+                    ]
+                },
+                  "gmbListing": {
+                    "googleWebsiteUrl": "http://www.gmail.com",
+                    "googleStoreId": "1232133",
+                    "googlePhoneNumber": "(973) 716-0007",
+                    "primaryCategoryGmb": "Storage facility",
+                    "googleDescription": "This is sample description for google",
+                    "additionalCategories": [
+                        "Snack bar"
+                    ],
+                    "attributes": {
+                        "Accessibility": [
+                            {
+                                "attributeId": "has_wheelchair_accessible_elevator",
+                                "attributeName": "Wheelchair accessible elevator",
+                                "value": false
+                            }
+                        ],
+                        "Crowd": [
+                            {
+                                "attributeId": "welcomes_families",
+                                "attributeName": "Family-friendly",
+                                "value": true
+                            }
+                        ]
+                    }
+                },
+                  "socialProfileURLs": {
+                    "googleUrl": "http://www.google.com/123",
+                    "facebookUrl": "http://www.facebook.com/123",
+                    "twitterUrl": "http://www.twitter.com/123",
+                    "youTubeUrl": "http://www.youtube.com/12",
+                    "linkedinUrl": "http://www.linkedin.com/12",
+                    "instagramUrl": "http://www.instagram.com/12",
+                    "pintrestUrl": "http://www.pinterest.com/12",
+                    "bbbUrl": "",
+                    "lendingtreeUrl": ""
+                },
+                "healthcare": {
+                    "doctorCategories": [
+                        "Allergist-Immunologist > Allergy",
+                        "Allergist-Immunologist > General",
+                        "Addiction Medicine Specialist > General"
+                    ],
+                    "isProvider": true,
+                    "practiceName": "General Medicine",
+                    "firstName": "John",
+                    "middleName": "Jack",
+                    "surName": "Doe",
+                    "npi": "1245319599",
+                    "credentials": "MD",
+                    "university": "Sample text",
+                    "hospitalAffiliations": "Sample text",
+                    "insurancesAccepted": "Sample text"
+                },
+            }
+
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
+## Get Listing [/resources/v1/listing/{businessNumber}/get]
+The Update Listing API will update the location details on all your listings sites.
+
+
+### Get Listing [GET]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Business Number.
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200 (application/json)
+
+   + Attributes
+        + businessInfo - Business Information
+            + name: Drs. Chalker and Peterson, A Dental Partnership (string) - Name of the Business/Location. Should be Max 1000 characters long.
+            + phone (string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
+            + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
+            + emailId: 4568@livelovespa.com (string) - Business Email ID.
+            + location (object) - Business address
+                + address1: 7405 Morro Rd (string) - Address of the business.
+                + address2: Suite 102 (string) - Address of the business.
+                + city: Atascadero (string) - City (Max 1000 character long).
+                + state: CA (string) - State (2 character state code).
+                + countryCode: US (string) - Country Code (2 character country code).
+                + zip: 93422 (string) - Zip Code.
+        + additionalInfo - Business Additional Information
+            + establishedYear: 2012 (number) - Year established
+            + timezone: America/Los_Angeles (string)- Timezone of the business.
+            + languages: English, Spanish (array) - Languages.
+            + hoursOfOperations (array) - Working hours of business for each day.
+                + (object)
+                    + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
+                    + workingHours (array) - Working hours of the business
+                        + (object)
+                            + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
+                            + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
+                    + isOpen: 1 (number) - 0 (Business closed today), 1 (open)
+                    + comment: By appointment only (string) - Add the special instruction.
+            + specialHours (array) - For special holiday days, where you may have limited hours of operation and don’t want to change your preset regular hours. These would only be applicable only for the dates they are set for.
+                + (object)
+                    + specialDate: 10/20/2023 (string) - It should be "MM/dd/yyyy".
+                    + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
+                    + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
+                    + isOpen: 1 (number) - 0(Business closed today), 1 (open)
+            + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
+            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/dd/yyyy" format.
+            + services: Other Dental Specialties, Orthodontists, Dentistry (required,string)- Services (Comma separated list of services offered; used for SEO).
+            + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords about the business. Useful in SEO. Business keyword cannot be more than 1000 characters.
+            + products: Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
+            + appointmentLink (string)- Let customers reserve tables by linking them to your reservations page.
+            + menuLink (string) - Show customers what you serve by linking them to your menu.
+            + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
+            + impressum (string) - In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
+            + payment: Paypal, Visa, Master Card (string) - Payment Type (Max 250 character long).
+            + localPhoneNumber (string)- Local phone number.
+            + tollFreePhoneNumber (string) - Tollfree number.
+            + androidAppURL (string)- Android app url.
+            + iosAppURL (string) - IOS app url.
+        + media (object) - Media details.
+            + logoUrl: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - This logo will pushed to your listings sites such as Google, Facebook, Bing, Birdeye and all the other secondary listings sites. Format: JPG, JPEG, PNG. Minimum 1110 x 374px. Recommended: 720 X 720 px. 10 KB min.
+            + coverImageUrl: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - This cover photo will pushed to your listings sites such as Birdeye and all the other secondary listings sites. Cover image URL for business will be displayed on custom review site.  Format: JPG, JPEG, PNG. Minimum 1110 x 374px. 10 KB min.
+        + optOut (object) - Opt out section
+            + gmbLogoOptOut: true (boolean)- Update profile photo on your google my business page.
+                                                    Select ‘true’ if you want to opt out from updating the logo on your GBP page.
+                                                    Select ‘false’ if you want to opt in to updating the logo on your GBP page.
+            + fbLogoOptOut: false (boolean) - Update profile photo on your facebook profile.
+                                                    Select ‘true’ if you want to opt out from updating the logo on your FB business page.
+                                                    Select ‘false’ if you want to opt in to updating the logo on your FB business page.
+            + gmbCoverOptOut: true (boolean) - Update cover photo on your google my business page.
+                                                    Select ‘true’ if you want to opt out from updating the cover photo on your GBP page.
+                                                    Select ‘false’ if you want to opt in to updating the cover photo on your GBP page.
+            + fbCoverOptOut: true (boolean) - Update cover photo on your facebook profile.
+                                                    Select ‘true’ if you want to opt out from updating the cover photo on your FB business page.
+                                                    Select ‘false’ if you want to opt in to updating the cover photo on your FB business page.
+            + gmbProfileOptOut: false (boolean) - Opt out from the google specific section on the profile page.
+                                                        Select ‘true’ if you want to opt out from updating information such as category and related attributes and more hours on your Google Business Profile page.
+                                                        Select ‘false’ if you want to opt in to updating information such as category and related attributes and more hours on your Google Business Profile page.
+            + businessProfileOptOut: true (boolean) - Opt out from the business profile section.
+                                                            Select ‘true’ if you want to opt out from updating NAP information on your Google Business Profile page.
+                                                            Select ‘false’ if you want to opt in to updating NAP information on your Google Business Profile page.
+
+        + covidInfo (object) - Provide this data for updating any COVID specific information you want to share with your customers.
+            + postDescription (string) - This information is posted and updated on your Google business profile page and your FB business page.
+            + covid19SupportLink (string) - Should be a valid covid19 support url
+            + virtualCareLink (string) - Should be a valid url virtual care link
+        + bingListing (object) - This data will be used to update your Bing listing.
+            + primaryCategoryBing (string) - Primary category of bing.
+            + categories (string) - You can add a maximum of up to 3 categories.
+            + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
+            + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
+        + internalListing (object) - Provide data for microsite listing purpose.
+            + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
+            + category (string) - Primary category of business.
+            + subcategory (string) - You can add up to 3 subcategories.
+            + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
+        + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
+            + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
+            + category (string) - You can add up to 3 categories.
+            + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
+        + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
+            + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
+            + googleStoreId (string) - Store id for google.
+            + primaryCategoryGmb (string) - Primary category of google.
+            + additionalCategory (string) - You can add up to 5 subcategories.
+            + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
+            + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
+                    Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+        + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
+            + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
+            + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories.
+        + socialProfileURLs (object) - Profile URLs for business on top rated social sites
+            + facebookUrl: http://www.facebook.com/ChalkerandPetersonDental (string) - Facebook URL.
+            + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
+            + linkedInUrl: https://linkedin.com/DrsChaAndPet (string) - Business LinkedId URL.
+            + googleUrl: https://plus.google.com/103957250846354895095/about?gl=US&hl=en-US (string)- Business Google URL.
+            + youTubeUrl: https://www.youtube.com/channel/UCDNP0M75ySA5qt0So2F8Xxw (string)- Business Youtube URL.
+            + pintrestUrl - Business Pinterest URL.
+            + bbbUrl - Business BB URL.
+            + lendingtreeUrl - Business Lending Tree URL.
+        + healthcare (object) - This section is only applicable if you have purchased the health care listings plan and have been onboarded on the same.
+            + doctorCategories: Allergist-Immunologist > Allergy, Allergist-Immunologist > General (array) - This is the doctor specific category your business belongs to. Please refer to the sheet "Doctor Specific Categories" to get the possible values.
+            + isProvider: true (boolean) -  If provider then select value true. If practice then select value false. This is a true/false toggle for determining if the location is a provider or not.
+            + practiceName: General Medicine (string) - Name of the practice.Must be less than 191 characters.
+            + firstName: John (string) -  First name of the provider.
+            + middleName: Jack (string)  -  Middle name of the provider.
+            + surName: Doe (string)  -  Surname of the provider
+            + npi: 1245319599  (number) - National Provider Identifier - NPI. Must be 10 digits
+            + credentials: MD (string) - University of the provider/practice. Must be less than 25 characters
+            + university: Sample text (string) -  University of the provider/practice. Must be less than 255 characters
+            + hospitalAffiliations: Sample text (string) - Hospital Affiliations of the provider/practice. Must be less than 150 characters
+            + insurancesAccepted: Sample text (string) - Insurance Accepted of the provider/practice.  Must be less than 50 characters
+
+
+    + Body
+
+            {
+                "businessInfo": {
+                    "name": "Test 6 sept",
+                    "phone": "(973) 716-0007",
+                    "websiteUrl": "http://www.diecispa.org/",
+                    "emailId": "example@birdeye.com",
+                    "location": {
+                        "address1": "90 W Mount Pleasant Ave",
+                        "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+                        "city": "Livingston",
+                        "state": "NJ",
+                        "zip": "07039",
+                        "countryCode": "US"
+                    }
+                },
+                "additionalInfo": {
+                    "establishedYear": "2022",
+                    "timezone": "America/Los_Angeles",
+                    "languages": [
+                        "English",
+                        "Hindi"
+                    ],
+                    "hoursOfOperations": [
+                        {
+                            "day": 0,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 1,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 2,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 3,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 4,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 5,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "19:00"
+                                }
+                            ]
+                        },
+                        {
+                            "day": 6,
+                            "isOpen": 1,
+                            "workingHours": [
+                                {
+                                    "startHour": "09:00",
+                                    "endHour": "13:30"
+                                },
+                                {
+                                    "startHour": "14:30",
+                                    "endHour": "18:00"
+                                }
+                            ]
+                        }
+                    ],
+                    "specialHours": [
+                        {
+                            "specialDate": "12/31/2020",
+                            "startHour": "09:00",
+                            "endHour": "12:00",
+                            "isOpen": 0
+                        },
+                        {
+                            "specialDate": "01/01/2021",
+                            "startHour": "",
+                            "endHour": "",
+                            "isOpen": 1
+                        }
+                    ],
+                    "businessStatus": "Open",
+                    "reopenDate": "01/01/2021",
+                    "keywords": "HairSalons,DaySpas,BeautySalon,BeautySalons,Salons, MassageTherapists",
+                    "services": "BeautySalon,HairSpa",
+                    "products": "LivingProofDryShampoo,KevinMurphyBlondeAngelWash",
+                    "appointmentLink": "http://www.gmail.com",
+                    "reservationLink": "http://www.gmail.com",
+                    "menuLink": "http://www.gmail.com",
+                    "orderAheadLink": "http://www.gmail.com",
+                    "impressum": "Thisissampleimpressum",
+                    "payment": "Visa,MasterCard,AmericanExpress,DebitCards,Check",
+                    "localPhoneNumber": "(973)716-0102",
+                    "tollFreePhoneNumber": "",
+                    "iosAppURL": "http://www.gmail.com",
+                    "androidAppURL": "http://www.gmail.com"
+                },
+                "media": {
+                    "logoUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
+                    "coverImageUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg"
+                },
+                 "optOut": {
+                    "gmbCoverOptOut": true,
+                    "gmbLogoOptOut": true,
+                    "fbCoverOptOut": false,
+                    "fbLogoOptOut": false,
+                    "gmbProfileOptOut": false,
+                    "businessProfileOptOut": false
+                },
+                "covidInfo": {
+                    "postDescription": "SampleCovidDesc",
+                    "covid19SupportLink": "http://www.covidInfo.com",
+                    "virtualCareLink": "http://www.covidInfo.com"
+                },
+                "bingListing": {
+                    "primaryCategoryBing": "Art Restoration Service",
+                    "bingDescription": "Sample Bing Description",
+                    "bingCategories": [
+                        "Art Restoration Service"
+                    ],
+                    "bingPhoneNumber": "(415) 673-0868"
+
+                },
+                 "internalListing": {
+                    "description": "Alok ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic Alok ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic",
+                    "category": "Beauty",
+                    "subCategories": [
+                        "Eyelash Service",
+                        "Nail Salons"
+                    ],
+                    "displayCategory": "Eyelash Service"
+                },
+                "facebookListing": {
+                    "facebookDescription": "This is sample facebook description",
+                    "facebookPhoneNumber": "(415) 673-0868",
+                    "categories": [
+                        "Science",
+                        "Sports"
+                    ]
+                },
+                   "thirdPartyListing": {
+                    "thirdPartyCategory": "Towing Service",
+                    "thirdPartySubCategories": [
+                        "Car Dealer",
+                        "Auto Glass Shop"
+                    ]
+                },
+                  "gmbListing": {
+                    "googleWebsiteUrl": "http://www.gmail.com",
+                    "googleStoreId": "1232133",
+                    "googlePhoneNumber": "(973) 716-0007",
+                    "primaryCategoryGmb": "Storage facility",
+                    "googleDescription": "This is sample description for google",
+                    "additionalCategories": [
+                        "Snack bar"
+                    ],
+                    "attributes": {
+                        "Accessibility": [
+                            {
+                                "attributeId": "has_wheelchair_accessible_elevator",
+                                "attributeName": "Wheelchair accessible elevator",
+                                "value": false
+                            }
+                        ],
+                        "Crowd": [
+                            {
+                                "attributeId": "welcomes_families",
+                                "attributeName": "Family-friendly",
+                                "value": true
+                            }
+                        ]
+                    }
+                },
+                  "socialProfileURLs": {
+                    "googleUrl": "http://www.google.com/123",
+                    "facebookUrl": "http://www.facebook.com/123",
+                    "twitterUrl": "http://www.twitter.com/123",
+                    "youTubeUrl": "http://www.youtube.com/12",
+                    "linkedinUrl": "http://www.linkedin.com/12",
+                    "instagramUrl": "http://www.instagram.com/12",
+                    "pintrestUrl": "http://www.pinterest.com/12",
+                    "bbbUrl": "",
+                    "lendingtreeUrl": ""
+                },
+                "healthcare": {
+                    "doctorCategories": [
+                        "Allergist-Immunologist > Allergy",
+                        "Allergist-Immunologist > General",
+                        "Addiction Medicine Specialist > General"
+                    ],
+                    "isProvider": true,
+                    "practiceName": "General Medicine",
+                    "firstName": "John",
+                    "middleName": "Jack",
+                    "surName": "Doe",
+                    "npi": "1245319599",
+                    "credentials": "MD",
+                    "university": "Sample text",
+                    "hospitalAffiliations": "Sample text",
+                    "insurancesAccepted": "Sample text"
+                },
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
+
+## Deactivate Listing [/resources/v1/listing/{businessNumber}/deactivate]
+Deactivate Listing API stops publishing any information on the given online directories/ listings sites (as per your plan/ package chosen).
+
+> __Note__
+> - If you want to reactivate posting to / update your listing sites after you have deactivated, you will need to use either of create Listings or Fix Listings API.
+
+### Deactivate Listing [POST]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Business Number.
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
 # Group Integration
 Birdeye integrates with various software or tools you use.
 
@@ -11030,10 +12306,10 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>10/10/2023</b> - Added new APIs under Listing module, Create, Update, Get, Deactive Listings
 * <b>09/18/2023</b> - Added new API under Contact module i.e, Get opt-out contact data
 * <b>08/25/2023</b> - Added new APIs under Business and Listing modules, Get Category List API, Get GMB Attributes API & Get Timezone List
 * <b>07/21/2023</b> - Added new API under Business module i.e, Business Search API.
 * <b>06/30/2023</b> - Added support for service area based information in Get Business API and Update Business API.
 * <b>04/20/2023</b> - Added two new API under Listing module, Get Listings Insights and Get Listings Insights Datapoints.
 * <b>04/03/2023</b> - Added two new APIs under Social module, Post Social Schedule and Track Social Post.
-* <b>03/15/2023</b> - Added new API under Listing module i.e, Get Location Status.
