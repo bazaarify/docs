@@ -5157,7 +5157,7 @@ Contact Us form can be integrated with Birdeye Inbox using Contact Us API.
     [5046][]
 
 
-## Get opt-out Contacts [/resources/v1/contact/{businessId}/update-feed]
+## Get opt-out Contacts [/v1/contact/{businessId}/update-feed]
 API to fetch the daily opt-out or blocked contact data for a business
 
 ### Get opt-out contact data [POST]
@@ -10960,12 +10960,11 @@ The Get Category List API fetches the list of category values for the selected s
     [4015][]
 
 
-## Create Listing [/resources/v1/listing/{businessNumber}/create]
+## Create Listing [/v1/listing/{businessNumber}/create]
 Create Listing API publishes information on online listing sources. We post presence information on more than 50+ online directories. You can use this API to not just create your detailed listing but also fix/ publish/ sync/ make live at the same time.
 
 
 > __Note__
-> - __For Service Area Businesses__ - Please ensure you do check the ‘Is Address hidden’ and add the location specific details/ areas you provide service/s to
 > - __For Healthcare Fields section__ - This is only applicable for customers who are on the Healthcare Add on plan. Please ensure that you choose the ‘Provider - True or False’ judiciously. Once the listings is fixed as Provider or Practice, it cannot be moved to the other type and vice versa
 
 
@@ -11378,7 +11377,7 @@ Create Listing API publishes information on online listing sources. We post pres
     [89][]
 
 
-## Update Listing [/resources/v1/listing/{businessNumber}/update]
+## Update Listing [/v1/listing/{businessNumber}/update]
 The Update Listing API will update the location details on all your listings sites.
 
 
@@ -11475,7 +11474,7 @@ The Update Listing API will update the location details on all your listings sit
             + categories (string) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
-        + internalListing (object) - Provide data for microsite listing purpose.
+        + internalListing (object) - This data will be used to update your Birdeye microsite/listing.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
             + category (string) - Primary category of business.
             + subcategory (string) - You can add up to 3 subcategories.
@@ -11791,7 +11790,7 @@ The Update Listing API will update the location details on all your listings sit
     [89][]
 
 
-## Get Listing [/resources/v1/listing/{businessNumber}/get]
+## Get Listing [/v1/listing/{businessNumber}/get]
 The Update Listing API will update the location details on all your listings sites.
 
 
@@ -11890,7 +11889,7 @@ The Update Listing API will update the location details on all your listings sit
             + categories (string) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
-        + internalListing (object) - Provide data for microsite listing purpose.
+        + internalListing (object) - This data will be used to update your Birdeye microsite/listing.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
             + category (string) - Primary category of business.
             + subcategory (string) - You can add up to 3 subcategories.
@@ -12204,7 +12203,7 @@ The Update Listing API will update the location details on all your listings sit
 
 
 
-## Deactivate Listing [/resources/v1/listing/{businessNumber}/deactivate]
+## Deactivate Listing [/v1/listing/{businessNumber}/deactivate]
 Deactivate Listing API stops publishing any information on the given online directories/ listings sites (as per your plan/ package chosen).
 
 > __Note__
