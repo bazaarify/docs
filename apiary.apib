@@ -2225,7 +2225,7 @@ Update Business API updates business information.
                 + comment: By appointment only (string) - Add the special instruction.
         + specialHours (array) - Special hours of business.
             + (object)
-                + specialDate: 10/20/2023 (string) - It should be "MM/dd/yyyy".
+                + specialDate: 10/20/2023 (string) - It should be "MM/DD/YYYY".
                 + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                 + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                 + isOpen: 1 (number) - 0(Business closed today), 1 (open)
@@ -2241,8 +2241,8 @@ Update Business API updates business information.
         + payment: Paypal, Visa, Master Card (string) - Payment Type (Max 250 character long).
         + localPhoneNumber (string)- Local phone number.
         + tollFreePhoneNumber (string) - Tollfree number.
-        + androidAppURL (string)- Android app url.
-        + iosAppURL (string) - IOS app url.
+        + androidAppURL: http://www.gmail.com (string)- Android app url.
+        + iosAppURL: http://www.gmail.com (string) - IOS app url.
         + logoUrl: http://bzimages-prod.s3.amazonaws.com/669029760/Logo 180 X 121.png (string) - Logo Image (Dimension should be 60 x 60 px).
         + gmbLogoOptOut (number)- Update profile photo on your google my business page. (1-false,0-true).
         + fbLogoOptOut (number) - Update profile photo on your facebook profile. (1-false,0-true).
@@ -10964,10 +10964,6 @@ The Get Category List API fetches the list of category values for the selected s
 Create Listing API publishes information on online listing sources. We post presence information on more than 50+ online directories. You can use this API to not just create your detailed listing but also fix/ publish/ sync/ make live at the same time.
 
 
-> __Note__
-> - __For Healthcare Fields section__ - This is only applicable for customers who are on the Healthcare Add on plan. Please ensure that you choose the ‘Provider - True or False’ judiciously. Once the listings is fixed as Provider or Practice, it cannot be moved to the other type and vice versa
-
-
 ### Create Listing [POST]
 
 + Parameters
@@ -11000,7 +10996,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
-            + hoursOfOperations (array) - Working hours of business for each day.
+            + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
                     + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
                     + workingHours (array) - Working hours of the business
@@ -11011,15 +11007,15 @@ Create Listing API publishes information on online listing sources. We post pres
                     + comment: By appointment only (string) - Add the special instruction.
             + specialHours (array) - For special holiday days, where you may have limited hours of operation and don’t want to change your preset regular hours. These would only be applicable only for the dates they are set for.
                 + (object)
-                    + specialDate: 10/20/2023 (string) - It should be "MM/dd/yyyy".
+                    + specialDate: 10/20/2023 (string) - It should be "MM/DD/YYYY".
                     + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                     + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                     + isOpen: 1 (number) - 0(Business closed today), 1 (open)
             + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
-            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/dd/yyyy" format.
-            + services: Other Dental Specialties, Orthodontists, Dentistry (required,string)- Services (Comma separated list of services offered; used for SEO).
-            + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords about the business. Useful in SEO. Business keyword cannot be more than 1000 characters.
-            + products: Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
+            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/DD/YYYY" format.
+            + services:  Other Dental Specialties, Orthodontists, Dentistry (required,string) - Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
+            + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
+            + products: Invisalign, Cookies Set of 8, Brochure design & prints (string) - Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
             + appointmentLink (string)- Let customers reserve tables by linking them to your reservations page.
             + menuLink (string) - Show customers what you serve by linking them to your menu.
             + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
@@ -11027,8 +11023,8 @@ Create Listing API publishes information on online listing sources. We post pres
             + payment: Paypal, Visa, Master Card (string) - Payment Type (Max 250 character long).
             + localPhoneNumber (string)- Local phone number.
             + tollFreePhoneNumber (string) - Tollfree number.
-            + androidAppURL (string)- Android app url.
-            + iosAppURL (string) - IOS app url.
+            + androidAppURL: http://www.gmail.com (string)- Android app url.
+            + iosAppURL: http://www.gmail.com (string) - IOS app url.
         + media (object) - Media details.
             + logoUrl: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - This logo will pushed to your listings sites such as Google, Facebook, Bing, Birdeye and all the other secondary listings sites. Format: JPG, JPEG, PNG. Minimum 1110 x 374px. Recommended: 720 X 720 px. 10 KB min.
             + coverImageUrl: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - This cover photo will pushed to your listings sites such as Birdeye and all the other secondary listings sites. Cover image URL for business will be displayed on custom review site.  Format: JPG, JPEG, PNG. Minimum 1110 x 374px. 10 KB min.
@@ -11051,7 +11047,6 @@ Create Listing API publishes information on online listing sources. We post pres
             + businessProfileOptOut: true (boolean) - Opt out from the business profile section.
                                                             Select ‘true’ if you want to opt out from updating NAP information on your Google Business Profile page.
                                                             Select ‘false’ if you want to opt in to updating NAP information on your Google Business Profile page.
-
         + covidInfo (object) - Provide this data for updating any COVID specific information you want to share with your customers.
             + postDescription (string) - This information is posted and updated on your Google business profile page and your FB business page.
             + covid19SupportLink (string) - Should be a valid covid19 support url
@@ -11413,7 +11408,7 @@ The Update Listing API will update the location details on all your listings sit
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
-            + hoursOfOperations (array) - Working hours of business for each day.
+            + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
                     + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
                     + workingHours (array) - Working hours of the business
@@ -11424,15 +11419,15 @@ The Update Listing API will update the location details on all your listings sit
                     + comment: By appointment only (string) - Add the special instruction.
             + specialHours (array) - For special holiday days, where you may have limited hours of operation and don’t want to change your preset regular hours. These would only be applicable only for the dates they are set for.
                 + (object)
-                    + specialDate: 10/20/2023 (string) - It should be "MM/dd/yyyy".
+                    + specialDate: 10/20/2023 (string) - It should be "MM/DD/YYYY".
                     + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                     + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                     + isOpen: 1 (number) - 0(Business closed today), 1 (open)
             + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
-            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/dd/yyyy" format.
-            + services: Other Dental Specialties, Orthodontists, Dentistry (required,string)- Services (Comma separated list of services offered; used for SEO).
-            + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords about the business. Useful in SEO. Business keyword cannot be more than 1000 characters.
-            + products: Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
+            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/DD/YYYY" format.
+            + services:  Other Dental Specialties, Orthodontists, Dentistry (required,string) - Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
+            + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
+            + products: Invisalign, Cookies Set of 8, Brochure design & prints (string) - Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
             + appointmentLink (string)- Let customers reserve tables by linking them to your reservations page.
             + menuLink (string) - Show customers what you serve by linking them to your menu.
             + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
@@ -11440,8 +11435,8 @@ The Update Listing API will update the location details on all your listings sit
             + payment: Paypal, Visa, Master Card (string) - Payment Type (Max 250 character long).
             + localPhoneNumber (string)- Local phone number.
             + tollFreePhoneNumber (string) - Tollfree number.
-            + androidAppURL (string)- Android app url.
-            + iosAppURL (string) - IOS app url.
+            + androidAppURL: http://www.gmail.com (string)- Android app url.
+            + iosAppURL: http://www.gmail.com (string) - IOS app url.
         + media (object) - Media details.
             + logoUrl: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - This logo will pushed to your listings sites such as Google, Facebook, Bing, Birdeye and all the other secondary listings sites. Format: JPG, JPEG, PNG. Minimum 1110 x 374px. Recommended: 720 X 720 px. 10 KB min.
             + coverImageUrl: http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg (string) - This cover photo will pushed to your listings sites such as Birdeye and all the other secondary listings sites. Cover image URL for business will be displayed on custom review site.  Format: JPG, JPEG, PNG. Minimum 1110 x 374px. 10 KB min.
@@ -11464,7 +11459,6 @@ The Update Listing API will update the location details on all your listings sit
             + businessProfileOptOut: true (boolean) - Opt out from the business profile section.
                                                             Select ‘true’ if you want to opt out from updating NAP information on your Google Business Profile page.
                                                             Select ‘false’ if you want to opt in to updating NAP information on your Google Business Profile page.
-
         + covidInfo (object) - Provide this data for updating any COVID specific information you want to share with your customers.
             + postDescription (string) - This information is posted and updated on your Google business profile page and your FB business page.
             + covid19SupportLink (string) - Should be a valid covid19 support url
@@ -11474,7 +11468,7 @@ The Update Listing API will update the location details on all your listings sit
             + categories (string) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
-        + internalListing (object) - This data will be used to update your Birdeye microsite/listing.
+        + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
             + category (string) - Primary category of business.
             + subcategory (string) - You can add up to 3 subcategories.
@@ -11814,7 +11808,7 @@ The Update Listing API will update the location details on all your listings sit
    + Attributes
         + businessInfo - Business Information
             + name: Drs. Chalker and Peterson, A Dental Partnership (string) - Name of the Business/Location. Should be Max 1000 characters long.
-            + phone (string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
+            + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
             + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + location (object) - Business address
@@ -11828,7 +11822,7 @@ The Update Listing API will update the location details on all your listings sit
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
-            + hoursOfOperations (array) - Working hours of business for each day.
+            + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
                     + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
                     + workingHours (array) - Working hours of the business
@@ -11839,15 +11833,15 @@ The Update Listing API will update the location details on all your listings sit
                     + comment: By appointment only (string) - Add the special instruction.
             + specialHours (array) - For special holiday days, where you may have limited hours of operation and don’t want to change your preset regular hours. These would only be applicable only for the dates they are set for.
                 + (object)
-                    + specialDate: 10/20/2023 (string) - It should be "MM/dd/yyyy".
+                    + specialDate: 10/20/2023 (string) - It should be "MM/DD/YYYY".
                     + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                     + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                     + isOpen: 1 (number) - 0(Business closed today), 1 (open)
             + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
-            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/dd/yyyy" format.
-            + services: Other Dental Specialties, Orthodontists, Dentistry (required,string)- Services (Comma separated list of services offered; used for SEO).
-            + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords about the business. Useful in SEO. Business keyword cannot be more than 1000 characters.
-            + products: Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
+            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/DD/YYYY" format.
+            + services:  Other Dental Specialties, Orthodontists, Dentistry (required,string) - Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
+            + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
+            + products: Invisalign, Cookies Set of 8, Brochure design & prints (string) - Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
             + appointmentLink (string)- Let customers reserve tables by linking them to your reservations page.
             + menuLink (string) - Show customers what you serve by linking them to your menu.
             + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
@@ -11879,7 +11873,6 @@ The Update Listing API will update the location details on all your listings sit
             + businessProfileOptOut: true (boolean) - Opt out from the business profile section.
                                                             Select ‘true’ if you want to opt out from updating NAP information on your Google Business Profile page.
                                                             Select ‘false’ if you want to opt in to updating NAP information on your Google Business Profile page.
-
         + covidInfo (object) - Provide this data for updating any COVID specific information you want to share with your customers.
             + postDescription (string) - This information is posted and updated on your Google business profile page and your FB business page.
             + covid19SupportLink (string) - Should be a valid covid19 support url
@@ -11889,7 +11882,7 @@ The Update Listing API will update the location details on all your listings sit
             + categories (string) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
-        + internalListing (object) - This data will be used to update your Birdeye microsite/listing.
+        + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
             + category (string) - Primary category of business.
             + subcategory (string) - You can add up to 3 subcategories.
@@ -12305,7 +12298,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
-* <b>10/10/2023</b> - Added new APIs under Listing module, Create, Update, Get, Deactive Listings
+* <b>10/11/2023</b> - Added new APIs under Listing module, Create, Update, Get, Deactive Listings
 * <b>09/18/2023</b> - Added new API under Contact module i.e, Get opt-out contact data
 * <b>08/25/2023</b> - Added new APIs under Business and Listing modules, Get Category List API, Get GMB Attributes API & Get Timezone List
 * <b>07/21/2023</b> - Added new API under Business module i.e, Business Search API.
