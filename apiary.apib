@@ -2370,6 +2370,13 @@ Update Business API updates business information.
             + googleDescription (string) - Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+        + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
+            + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.   
+            + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
+                crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
+            + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.            
         + socialProfileURLs (object) - Profile URLs for business on top rated social sites
             + facebookUrl: http://www.facebook.com/ChalkerandPetersonDental (string) - Facebook URL.
             + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
@@ -2606,12 +2613,40 @@ Update Business API updates business information.
                   ]
                 }
               },
+               "appleListing": {
+                    "primaryCategory": "active.amateursportsteams",
+                    "additionalCategories": [
+                                "active.publicplazas",
+                                "auto.autoelectric",
+                                "auto.autoelectric"
+                        ],
+                   "appleLocationAttributes": {
+                   "crossbusiness.accessibility_features": [{
+                    "attributeId": "accessible_elevator"
+                                  }
+                            ],
+                    "crossbusiness.family_kids": [{
+                    "attributeId": "kidsclub"
+                            },{
+                    "attributeId": "parents_waitingarea"
+                                   }
+                             ]
+                       },
+                    "appleActionLinks": [{
+                        "id": "quicklinks.airline_book_travel",
+                        "deepLinkUrl": "https://www.google.com",
+                        "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
+                         }
+                        ],
+                    "phoneNumber": "+1 201-819-7989"    
+                    
+            },
               "vendorListing": {
                 "venderCategory": "",
                 "venderSubcategory1": "",
                 "venderSubcategory2": "",
                 "venderSubcategory3": ""
-              },
+             },
               "socialProfileURLs": {
                 "googleUrl": "null",
                 "facebookUrl": null,
@@ -11282,7 +11317,156 @@ The Get GMB Attributes API fetches the list of applicable GMB attributes for the
 + Response 400
 
     [4013][]
+    
 
+## Get Apple Attributes [/v1/listing/{businessNumber}/apple-location-attributes-list]
+The Get Apple Attributes API fetches the list of applicable Apple attributes. An attribute is typically something that helps describe your location better. E.g.: You provide paid parking or that your location is kid friendly etc.
+
+
+### Get Apple Attributes [GET]
+
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200
+
+    + Attributes
+        + Accessibility (array) - This is dynamic field. Depends upon request inputs.
+            + (object)
+                
+    + Body
+             
+            {
+                "crossbusiness.family_kids": [{
+                        "attributeId": "kidsclub",
+                        "description": "Kids club is the facility that a business or establishment has where various social and recreational activities are available for children's entertainment."
+                    }
+                ],
+                    "crossbusiness.goodfor": [{
+                        "attributeId": "groups",
+                        "description": "Good for groups refer that the establishment is good for people in groups."
+                    },
+                    {
+                        "attributeId": "singles",
+                        "description": "Good for singles refer that the establishment is good for people who are single."
+                    }
+                ],
+                    "crossbusiness.barservice": [{
+                        "attributeId": "no_alcohol",
+                        "description": "Business that does not serve alcohol."
+                    },
+                    {
+                        "attributeId": "bar_lounge",
+                        "description": "The bar lounge is the facility where non-alcoholic, alcoholic drinks and other condiments are available in a room with comfortable tables and sittings."
+                    }
+                ],
+                  "crossbusiness.cellphone_rental": []
+
+
+            }
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
++ Response 400
+
+    [4011][]
+
++ Response 400
+
+    [4012][]
+
++ Response 400
+
+    [4013][]
+    
+    
+## Get Apple Action Links [/v1/listing/{businessNumber}/apple-action-links]
+The Get Apple Action Links fetches the list of applicable Apple Action Link Types. Apple action links are the click throughs that are displayed in the action row on your Apple Maps listings also known as the Apple Maps Placecard.
+
+
+### Get Apple Action Links [GET]
+
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200
+
+    + Attributes
+        + Accessibility (array) - This is dynamic field. Depends upon request inputs.
+            + (object)
+               
+    + Body
+             
+
+             [
+                {
+                     "id": "quicklinks.parking_available_parking",
+                     "name": "Parking"
+                },{
+                    "id": "quicklinks.parking_reserve_parking",
+                    "name": "Reserve"
+                },{
+                     "id": "quicklinks.restaurant_join_waitlist",
+                     "name": "Waitlist"
+                },{
+                    "id": "quicklinks.restaurant_order_delivery",
+                     "name": "Delivery"
+                },{
+                     "id": "quicklinks.restaurant_order_food",
+                     "name": "Order"
+                },{
+                    "id": "quicklinks.restaurant_pickup",
+                     "name": "Pickup"
+                }
+
+
+            ]
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
++ Response 400
+
+    [4011][]
+
++ Response 400
+
+    [4012][]
+
++ Response 400
+
+    [4013][]      
 
 ## Get Category List [/v1/listing/{businessNumber}/category-list{?sourceName,countryCode}]
 The Get Category List API fetches the list of category values for the selected source.
@@ -11292,7 +11476,7 @@ The Get Category List API fetches the list of category values for the selected s
 + Parameters
 
     + businessNumber: 12345678 (number, required) - Business Number.
-    + sourceName: BING (string, required) -  Source name for which category data needs to be fetched. Possible values are BING, HEALTHCARE, GMB, VENDOR, FACEBOOK.
+    + sourceName: BING (string, required) -  Source name for which category data needs to be fetched. Possible values are BING, HEALTHCARE, GMB, VENDOR, FACEBOOK, APPLE.
     + countryCode: US (string, required) - Code of the country, Possible values are US,CA,AU,PR,NZ,MX,IN,UK,FR,IT.
 
 + Request (application/json)
@@ -11483,6 +11667,13 @@ Create Listing API publishes information on online listing sources. We post pres
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+        + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
+            + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.   
+            + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
+crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
+            + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
             + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories.
@@ -11742,7 +11933,34 @@ Create Listing API publishes information on online listing sources. We post pres
                         ]
                     }
                 },
-                  "socialProfileURLs": {
+                 "appleListing": {
+                    "primaryCategory": "active.amateursportsteams",
+                    "additionalCategories": [
+                                "active.publicplazas",
+                                "auto.autoelectric",
+                                "auto.autoelectric"
+                        ],
+                   "appleLocationAttributes": {
+                   "crossbusiness.accessibility_features": [{
+                    "attributeId": "accessible_elevator"
+                                  }
+                            ],
+                    "crossbusiness.family_kids": [{
+                    "attributeId": "kidsclub"
+                            },{
+                    "attributeId": "parents_waitingarea"
+                                   }
+                             ]
+                       },
+                    "appleActionLinks": [{
+                        "id": "quicklinks.airline_book_travel",
+                        "deepLinkUrl": "https://www.google.com",
+                        "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
+                         }
+                        ],
+                    "phoneNumber": "+1 201-819-7989"
+               },
+                 "socialProfileURLs": {
                     "googleUrl": "http://www.google.com/123",
                     "facebookUrl": "http://www.facebook.com/123",
                     "twitterUrl": "http://www.twitter.com/123",
@@ -11900,6 +12118,13 @@ The Update Listing API will update the location details on all your listings sit
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+        + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
+            + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.   
+            + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
+                  crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
+            + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.            
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
             + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories.
@@ -12158,6 +12383,33 @@ The Update Listing API will update the location details on all your listings sit
                         ]
                     }
                 },
+                  "appleListing": {
+                    "primaryCategory": "active.amateursportsteams",
+                    "additionalCategories": [
+                                "active.publicplazas",
+                                "auto.autoelectric",
+                                "auto.autoelectric"
+                        ],
+                   "appleLocationAttributes": {
+                   "crossbusiness.accessibility_features": [{
+                    "attributeId": "accessible_elevator"
+                                  }
+                            ],
+                    "crossbusiness.family_kids": [{
+                    "attributeId": "kidsclub"
+                            },{
+                    "attributeId": "parents_waitingarea"
+                                   }
+                             ]
+                       },
+                    "appleActionLinks": [{
+                        "id": "quicklinks.airline_book_travel",
+                        "deepLinkUrl": "https://www.google.com",
+                        "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
+                         }
+                        ],
+                    "phoneNumber": "+1 201-819-7989"
+               },
                   "socialProfileURLs": {
                     "googleUrl": "http://www.google.com/123",
                     "facebookUrl": "http://www.facebook.com/123",
@@ -12318,6 +12570,13 @@ The Update Listing API will update the location details on all your listings sit
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+        + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
+            + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.   
+            + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
+               crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
+            + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.            
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
             + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories.
@@ -12576,7 +12835,34 @@ The Update Listing API will update the location details on all your listings sit
                         ]
                     }
                 },
-                  "socialProfileURLs": {
+                 "appleListing": {
+                    "primaryCategory": "active.amateursportsteams",
+                    "additionalCategories": [
+                                "active.publicplazas",
+                                "auto.autoelectric",
+                                "auto.autoelectric"
+                        ],
+                   "appleLocationAttributes": {
+                   "crossbusiness.accessibility_features": [{
+                    "attributeId": "accessible_elevator"
+                                  }
+                            ],
+                    "crossbusiness.family_kids": [{
+                    "attributeId": "kidsclub"
+                            },{
+                    "attributeId": "parents_waitingarea"
+                                   }
+                             ]
+                       },
+                    "appleActionLinks": [{
+                        "id": "quicklinks.airline_book_travel",
+                        "deepLinkUrl": "https://www.google.com",
+                        "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
+                         }
+                        ],
+                    "phoneNumber": "+1 201-819-7989"
+                },
+                 "socialProfileURLs": {
                     "googleUrl": "http://www.google.com/123",
                     "facebookUrl": "http://www.facebook.com/123",
                     "twitterUrl": "http://www.twitter.com/123",
@@ -12719,6 +13005,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>11/08/2023</b> - Added CRUD APIs for Apple chat
 * <b>10/15/2023</b> - Added CRUD APIs for Business Media.
 * <b>10/11/2023</b> - Added new APIs under Listing module, Create, Update, Get, Deactive Listings
 * <b>09/18/2023</b> - Added new API under Contact module i.e, Get opt-out contact data
