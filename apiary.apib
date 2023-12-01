@@ -4129,7 +4129,7 @@ Fetch Tags returns the list of tags associated with the account.
 
 
 
-## Search reviews and assign tags [/v1/tag/add/review{?bId,api_key,tags}]
+## Search reviews and assign tags [/v1/tag/add/review{?bid,api_key,tag}]
 Assign the list of tags to the reviews on the basis of review filter.
 
 ### Assign tags to filtered reviews [POST]
@@ -4138,8 +4138,8 @@ Assign the list of tags to the reviews on the basis of review filter.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + bId: 12345678 (string, required) - Id of the Business.
-    + tags: positive2022&negative2022 (string, required) - List of tags.
+    + bid: 12345678 (string, required) - Id of the Business.
+    + tag: positive2022&negative2022 (string, required) - List of tags.
 
 
 + Request (application/json)
@@ -4198,7 +4198,7 @@ Assign the list of tags to the reviews on the basis of review filter.
 
 
 
-## Search reviews and remove tags [/v1/tag/remove/review{?bId,api_key,tag}]
+## Search reviews and remove tags [/v1/tag/remove/review{?bid,api_key,tag}]
 Search reviews and remove tags removes the list of tags from reviews on the basis of review filter.
 
 ### Remove tags from filtered reviews [POST]
@@ -4207,7 +4207,7 @@ Search reviews and remove tags removes the list of tags from reviews on the basi
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + bId: 12345678 (string, required) - Id of the Business.
+    + bid: 12345678 (string, required) - Id of the Business.
     + tag: positive2022&negative2022 (string, required) - List of tags to be removed from reviews.
 
 
@@ -4265,7 +4265,7 @@ Search reviews and remove tags removes the list of tags from reviews on the basi
     [1011][]
 
 
-## Remove tags from all reviews [/v1/tag/remove/all/review{?bId,api_key}]
+## Remove tags from all reviews [/v1/tag/remove/all/review{?bid,api_key}]
 Remove particular tags from all reviews removes the list of tags from all the reviews of an account.
 
 ### Remove particular tags from all reviews [POST]
@@ -4273,7 +4273,7 @@ Remove particular tags from all reviews removes the list of tags from all the re
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + bId: 12345678 (string, required) - Id of the Business.
+    + bid: 12345678 (string, required) - Id of the Business.
 
 
 + Request (application/json)
