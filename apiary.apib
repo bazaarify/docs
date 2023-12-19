@@ -7971,7 +7971,7 @@ List Responses for a Survey API fetches all the responses available for a partic
     + survey_id: 123 (integer, required) - Id of the Survey.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessNumber: 1232131 (string, required) - The Business Number of Enterprise
-    + page: 1 (integer, optional) - The page number.
+    + page: 0 (integer, optional) - The page number, starts with 0.
     + size: 30 (integer, optional) - The size of the page.
     + sortby: date (string, optional) - The sort by parameter.
     + sorder: asc (string, optional) - The sort order parameter.
@@ -9187,7 +9187,7 @@ API to update the Business Media.
 ## Delete Media [/v1/business/{businessNumber}/media/delete]
 API to delete the Business Medias.
 
-### Delete Media [POST]
+### Delete Media [DELETE]
 
 + Parameters
 
@@ -11817,7 +11817,7 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
 
             {
                 "businessInfo": {
-                    "name": "Test 6 sept",
+                    "name": "Dieci Lifestyle Spa",
                     "phone": "(973) 716-0007",
                     "websiteUrl": "http://www.diecispa.org/",
                     "emailId": "example@birdeye.com",
@@ -12268,7 +12268,7 @@ The Update Listing API will update the location details on all your listings sit
 
             {
                 "businessInfo": {
-                    "name": "Test 6 sept",
+                    "name": "Dieci Lifestyle Spa",
                     "phone": "(973) 716-0007",
                     "websiteUrl": "http://www.diecispa.org/",
                     "emailId": "example@birdeye.com",
@@ -12567,7 +12567,7 @@ The Update Listing API will update the location details on all your listings sit
 
 
 ## Get Listing [/v1/listing/{businessNumber}/get]
-The Update Listing API will update the location details on all your listings sites.
+The Get Listing API will get the listing information for the given business number/ ID.
 
 
 ### Get Listing [GET]
@@ -12720,7 +12720,7 @@ The Update Listing API will update the location details on all your listings sit
 
             {
                 "businessInfo": {
-                    "name": "Test 6 sept",
+                    "name": "Dieci Lifestyle Spa",
                     "phone": "(973) 716-0007",
                     "websiteUrl": "http://www.diecispa.org/",
                     "emailId": "example@birdeye.com",
@@ -13118,6 +13118,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>11/08/2023</b> - Add survey changes (BIRD-11944) and listing changes (BIRD-14345)
 * <b>11/08/2023</b> - Added CRUD APIs for Apple chat
 * <b>10/15/2023</b> - Added CRUD APIs for Business Media.
 * <b>10/11/2023</b> - Added new APIs under Listing module, Create, Update, Get, Deactive Listings
