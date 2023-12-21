@@ -1862,7 +1862,35 @@ For example :
             "code": 2166,
             "message": "Invalid Business Type"
         }
+        
+## 2292 [/2292]
 
++ Model (application/json)
+
+        {
+            "code": 2292,
+            "message": "sortby can only be 'total' or 'location'"
+        }
+    
+## 2293 [/2293]
+
++ Model (application/json)
+
+        {
+            "code": 2293,
+            "message": "order can only be 'asc' or 'desc'"
+        }
+        
+## 40001 [/40001]
+
++ Model (application/json)
+
+        {
+            "code": 40001,
+            "message": "invalid start date (supported format is yyyy-MM-dd)"
+        }        
+        
+        
 
 
 # Group Business
@@ -3480,6 +3508,93 @@ Get Timezone List API fetches the list of all available timezones.
 
     [1011][]
 
+## Get Visitor Report [/v1/business/{businessNumber}/birdeye/impressions]
+Returns only birdeye (source: website) impressions by location as well as total.
+
+### Get Visitor Report [POST]
+
++ Parameters
+
+    + businessNumber: 986031488 (string, required) - Account Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+         + businessName: Test Business (required,string)- list of the unique business ids associated with a business eg: [123456789, 987656789]
+         + startDate: 32323 (required,string)-yyyy-MM-dd eg: "2020-11-10"
+         + endDate: 32323 (required,string)-yyyy-MM-dd eg: "2020-11-10"
+         + limit: 25 (number) - page size. default: 25
+         + startIndex: 0 (number)-default: 0
+         + sortby: 25 (string) -  "location" or "total" default: total.
+         + order: asc (string) - "asc" or "desc" default: desc
+       
+
+    + Body
+
+            {
+                "startDate": "2022-11-23",
+                "endDate": "2023-11-23",
+                "limit": 5,
+                "order": "desc",
+                "sortby": "location",
+                "startIndex": 0
+            }
+
+
+
++ Response 200
+
+  
+    + Body
+
+            {
+                  "total": 300178,
+                  "locations": [
+                    {
+                      "locationName": "Natick House of Prom",
+                      "count": "87"
+                    },
+                    {
+                      "locationName": "Kansas City House of Prom",
+                      "count": "265"
+                    },
+                    {
+                      "locationName": "Glendale House of Prom House of Prom",
+                      "count": "158"
+                    },
+                    {
+                      "locationName": "Fairfax House of Prom",
+                      "count": "355"
+                    },
+                    {
+                      "locationName": "David's Bridal - Corporate Office",
+                      "count": "2546"
+                    }
+                  ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 2292
+
+    [2292][]
+
++ Response 2293
+
+    [2293][]
+
++ Response 401
+
+    [1167][]
+  
 
 
 # Group User
@@ -11089,6 +11204,8 @@ Get Location Status retrieves status for each sources for a given business.
             + name: Utah Dental Center (string) - Name of the location.
             + phone (string) - Phone number Format is (xxx) xxx-xxxx.
             + address: 420 E S Temple St #220 (string) - Address of the business.
+        + health (object) -  Aggregates sum and percentage metrics for distinct statuses
+             
 
     + Body
 
@@ -11108,8 +11225,45 @@ Get Location Status retrieves status for each sources for a given business.
                         "name": "Richard L. Blackhurst/Utah Dental Center",
                         "phone": "(123) 456-0987",
                         "address": "420 E S Temple St #220"
-                    }]
-            }
+                    }],
+                 "health": [
+                        {
+                          "status": "Action Required",
+                          "count": 1,
+                          "percentage": 14.29
+                        },
+                        {
+                          "status": "In Progress",
+                          "count": 1,
+                          "percentage": 14.29
+                        },
+                        {
+                          "status": "Reconnect",
+                          "count": 1,
+                          "percentage": 14.29
+                        },
+                        {
+                          "status": "Connect",
+                          "count": 1,
+                          "percentage": 14.29
+                        },
+                        {
+                          "status": "Live",
+                          "count": 1,
+                          "percentage": 14.29
+                        },
+                        {
+                          "status": "Opted out",
+                          "count": 1,
+                          "percentage": 14.29
+                        },
+                        {
+                          "status": "Sync Initiated",
+                          "count": 1,
+                          "percentage": 14.29
+                        }
+                      ]    
+             }
 
 + Response 401
 
@@ -11157,7 +11311,8 @@ Insights/Analytics of Social Pages i.e Google, Facebook & Bing of a given busine
             {
                 "businessNumbers": [156387109031976],
                 "startDate": "2010-02-01",
-                "endDate": "2022-02-01"
+                "endDate": "2022-02-01",
+                "viewMode": [ "Mobile"]
             }
 
 
@@ -11175,6 +11330,7 @@ Insights/Analytics of Social Pages i.e Google, Facebook & Bing of a given busine
         + impressionCountTotalCount: 0 (number) - The number of users who saw the activity from your page including posts, check-ins, and ads.
         + liveCount: 10 (number) - Total no of synched sites for a business.
         + entityCount: 1 (number) - Total businesses count.
+        + viewMode: desktop (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
 
     + Body
 
@@ -11231,6 +11387,7 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
         + businessNumbers: 23456788,1231313 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
         + startDate (string) - Start Date, Format: yyyy-MM-dd.
         + endDate (string) - End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen with groupByType as the day.
+        + viewMode: desktop (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
         + groupByType: year (string) - Group the data accordingly. The default value will be the week. Possible values are
                                                         day,
                                                         week,
@@ -11245,7 +11402,8 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
                 "businessNumbers": [156387109031976],
                 "startDate": "2010-02-01",
                 "endDate": "2022-02-01",
-                "groupByType": "year"
+                "groupByType": "year",
+                "viewMode": [ "Mobile"]
             }
 
 
@@ -13517,8 +13675,174 @@ The Get Listing API will get the listing information for the given business numb
 + Response 429
 
     [89][]
+    
+## Get More Hours [/v1/listing/{businessNumber}/more-hours-type]
+Get supported more hours type for a location. This will depend on the country and gmb primary category for the particular location.
+
+### Get More Hours [GET]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Business Number.
+
++ Request (application/json)
 
 
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200
+
+   + Attributes (array)
+        + (object)
+          
+    + Body
+
+            [
+              "Access",
+              "Breakfast",
+              "Brunch",
+              "Delivery",
+              "Dinner",
+              "Drive through",
+              "Happy hours",
+              "Kitchen",
+              "Lunch",
+              "Online service hours",
+              "Pickup",
+              "Takeout",
+              "Senior hours"
+            ]
+
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
++ Response 400
+
+    [4014][]
+
++ Response 400
+
+    [4012][]
+
++ Response 400
+
+    [4013][]
+
++ Response 400
+
+    [4015][]
+
+## Get Google Keywords Count [/v1/listing/{businessNumber}/gmb/keywords]
+Get’s Google keywords count for an account.Google keyword: Top keywords searched for which your business is ranked.
+
+### Get Google Keywords Count [POST]
+
++ Parameters
+
+    + businessNumber: 986031488 (string, required) - Account Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + selectedMonth: Oct 2023,NOV 2023 (array , required ) - Filter months for which keyword data is required
+        + selectedkeywords: prom (array) - Gives you keyword count for the selected keywords. keywordsSearch: To search by keywords that may also exist in search phrases, including the keyword itself.
+       
+
+    + Body
+
+            {
+                  "selectedMonth": [
+                    "Oct 2023",
+                    "Sep 2023",
+                    "Nov 2023"
+                  ],
+                  "limit": 25,
+                  "startIndex": 0,
+                  "selectedkeywords": [
+                    "prom"
+                  ],
+                  "sortby": "frequency",
+                  "order": "desc",
+                  "keywordsSearch": "prom dresses"
+            }
+
+
++ Response 200
+
+    + Attributes
+        + competitorId: 100037739 (number) - Enterprise Competitor Business ID.
+        + templateid: 0 (number) - Template Id.
+        + isAggregationRequired: 1 (number) - Is agrgegation required.
+        + type: Enterprise-Location-Competitor (string) - Type.
+        + businessNumber: 161295237142347 (number) - Enterprise Competitor Business Number.
+        + businessAlreadyPresent: false (boolean) - Is Business Already Present.
+
+    + Body
+
+            {
+                  "data": [
+                    {
+                      "label": "Total",
+                      "frequency": 50909
+                    },
+                    {
+                      "label": "prom dresses near me",
+                      "frequency": 19156
+                    },
+                    {
+                      "label": "prom dresses",
+                      "frequency": 6168
+                    },
+                    {
+                      "label": "david's bridal prom dresses",
+                      "frequency": 3642
+                    },
+                    {
+                      "label": "davids bridal prom dresses",
+                      "frequency": 1005
+                    },
+                    {
+                      "label": "prom dresses nearby",
+                      "frequency": 825
+                    }
+                  ],
+                  "totalKeywordCount": 734
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
 
 ## Deactivate Listing [/v1/listing/{businessNumber}/deactivate]
 Deactivate Listing API stops publishing any information on the given online directories/ listings sites (as per your plan/ package chosen).
