@@ -11690,6 +11690,12 @@ Create Listing API publishes information on online listing sources. We post pres
             + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
             + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
+            + isAddressHidden: If your business doesn’t have a place for your customers to visit, then you can hide your street address (string) - (note that this isn’t supported by all sites). Possible Values - “Yes”, “No”.
+            + isServiceAreaProvider: If you deliver or provide service at customer locations. Possible Values (string) - “Yes”, “No”.
+            + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
+                + (object)
+                    + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
+                    + placeId (string) - ChIJk8EIXIG3j4ARwL_Ao3ykdeQ
             + location (object) - Business address
                 + address1: 7405 Morro Rd (string) - Address of the business.
                 + address2: Suite 102 (string) - Address of the business.
@@ -11701,6 +11707,9 @@ Create Listing API publishes information on online listing sources. We post pres
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
+            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. 
+                + (object)
+            + wholeWeekOperating: true (boolean) -Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
                     + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
@@ -11821,6 +11830,18 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                     "phone": "(973) 716-0007",
                     "websiteUrl": "http://www.diecispa.org/",
                     "emailId": "example@birdeye.com",
+                    "isAddressHidden": "No",
+                    "isServiceAreaProvider": "No",
+                    "serviceAreas": [
+                      {
+                        "description": "Van An, Berryessa Road, San Jose, CA, USA",
+                        "placeId": "ChIJc_clvUTMj4AR_K0M2GO2CYg"
+                      },
+                      {
+                        "description": "Santa Clara, CA, USA",
+                        "placeId": "ChIJk8EIXIG3j4ARwL_Ao3ykdeQ"
+                      }
+                    ],
                     "location": {
                         "address1": "90 W Mount Pleasant Ave",
                         "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
@@ -11837,6 +11858,153 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                         "English",
                         "Hindi"
                     ],
+                    "moreHours": {
+                              "Dinner": [
+                                {
+                                  "day": 0,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 1,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 2,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "20:10"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 3,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 4,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "9:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 5,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 6,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "00:00",
+                                      "endHour": "20:30"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Delivery": [
+                                {
+                                  "day": 0,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 1,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "7:00",
+                                      "endHour": "09:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 2,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "02:00",
+                                      "endHour": "09:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 3,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "00:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 4,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "0:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 5,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "0:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 6,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "1:00",
+                                      "endHour": "1:00"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                    "wholeWeekOperating": 0, 
                     "hoursOfOperations": [
                         {
                             "day": 0,
@@ -12141,6 +12309,12 @@ The Update Listing API will update the location details on all your listings sit
             + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
             + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
+            + isAddressHidden: If your business doesn’t have a place for your customers to visit, then you can hide your street address (string) - (note that this isn’t supported by all sites). Possible Values - “Yes”, “No”.
+            + isServiceAreaProvider: If you deliver or provide service at customer locations. Possible Values (string) - “Yes”, “No”.
+            + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
+                + (object)
+                    + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
+                    + placeId (string) - ChIJk8EIXIG3j4ARwL_Ao3ykdeQ
             + location (object) - Business address
                 + address1: 7405 Morro Rd (string) - Address of the business.
                 + address2: Suite 102 (string) - Address of the business.
@@ -12152,6 +12326,9 @@ The Update Listing API will update the location details on all your listings sit
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
+            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. 
+                + (object)
+            + wholeWeekOperating: true (boolean) -Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
                     + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
@@ -12272,6 +12449,18 @@ The Update Listing API will update the location details on all your listings sit
                     "phone": "(973) 716-0007",
                     "websiteUrl": "http://www.diecispa.org/",
                     "emailId": "example@birdeye.com",
+                    "isAddressHidden": "No",
+                    "isServiceAreaProvider": "No",
+                    "serviceAreas": [
+                      {
+                        "description": "Van An, Berryessa Road, San Jose, CA, USA",
+                        "placeId": "ChIJc_clvUTMj4AR_K0M2GO2CYg"
+                      },
+                      {
+                        "description": "Santa Clara, CA, USA",
+                        "placeId": "ChIJk8EIXIG3j4ARwL_Ao3ykdeQ"
+                      }
+                    ],
                     "location": {
                         "address1": "90 W Mount Pleasant Ave",
                         "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
@@ -12288,6 +12477,153 @@ The Update Listing API will update the location details on all your listings sit
                         "English",
                         "Hindi"
                     ],
+                "moreHours": {
+                              "Dinner": [
+                                {
+                                  "day": 0,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 1,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 2,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "20:10"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 3,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 4,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "9:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 5,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 6,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "00:00",
+                                      "endHour": "20:30"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Delivery": [
+                                {
+                                  "day": 0,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 1,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "7:00",
+                                      "endHour": "09:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 2,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "02:00",
+                                      "endHour": "09:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 3,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "00:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 4,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "0:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 5,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "0:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 6,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "1:00",
+                                      "endHour": "1:00"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                    "wholeWeekOperating": 0,    
                     "hoursOfOperations": [
                         {
                             "day": 0,
@@ -12593,6 +12929,12 @@ The Get Listing API will get the listing information for the given business numb
             + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
             + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
+            + isAddressHidden: If your business doesn’t have a place for your customers to visit, then you can hide your street address (string) - (note that this isn’t supported by all sites). Possible Values - “Yes”, “No”.
+            + isServiceAreaProvider: If you deliver or provide service at customer locations. Possible Values (string) - “Yes”, “No”.
+            + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
+                + (object)
+                    + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
+                    + placeId (string) - ChIJk8EIXIG3j4ARwL_Ao3ykdeQ
             + location (object) - Business address
                 + address1: 7405 Morro Rd (string) - Address of the business.
                 + address2: Suite 102 (string) - Address of the business.
@@ -12604,6 +12946,9 @@ The Get Listing API will get the listing information for the given business numb
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
+            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. 
+                + (object)
+            + wholeWeekOperating: true (boolean) -Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
                     + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
@@ -12724,6 +13069,18 @@ The Get Listing API will get the listing information for the given business numb
                     "phone": "(973) 716-0007",
                     "websiteUrl": "http://www.diecispa.org/",
                     "emailId": "example@birdeye.com",
+                    "isAddressHidden": "No",
+                    "isServiceAreaProvider": "No",
+                    "serviceAreas": [
+                      {
+                        "description": "Van An, Berryessa Road, San Jose, CA, USA",
+                        "placeId": "ChIJc_clvUTMj4AR_K0M2GO2CYg"
+                      },
+                      {
+                        "description": "Santa Clara, CA, USA",
+                        "placeId": "ChIJk8EIXIG3j4ARwL_Ao3ykdeQ"
+                      }
+                    ],
                     "location": {
                         "address1": "90 W Mount Pleasant Ave",
                         "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
@@ -12740,6 +13097,153 @@ The Get Listing API will get the listing information for the given business numb
                         "English",
                         "Hindi"
                     ],
+                    "moreHours": {
+                              "Dinner": [
+                                {
+                                  "day": 0,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 1,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 2,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "20:10"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 3,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 4,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "9:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 5,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 6,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "00:00",
+                                      "endHour": "20:30"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Delivery": [
+                                {
+                                  "day": 0,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 1,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "7:00",
+                                      "endHour": "09:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 2,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "02:00",
+                                      "endHour": "09:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 3,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "00:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 4,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "0:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 5,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "0:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 6,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "1:00",
+                                      "endHour": "1:00"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
                             "day": 0,
