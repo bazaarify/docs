@@ -1741,8 +1741,25 @@ For example :
             "code": 400,
             "message": "Category can not be empty"
         }
+        
+## 2457 [/2457]
 
++ Model (application/json)
 
+        {
+            "code": 2457,
+            "message": "Invalid sortby value. Allowed values are 'frequency' or 'keyword'"
+        }
+        
+## 2458 [/2458]
+
++ Model (application/json)
+
+        {
+            "code": 2458,
+            "message": "Invalid order value. Allowed values are 'asc' or 'desc'."
+        }
+        
 ## 2177 [/2177]
 
 + Model (application/json)
@@ -1751,8 +1768,6 @@ For example :
             "code": 400,
             "message": "Invalid media id"
         }
-
-
 
 ## 2178 [/2178]
 
@@ -1888,8 +1903,7 @@ For example :
         {
             "code": 40001,
             "message": "invalid start date (supported format is yyyy-MM-dd)"
-        }        
-        
+        } 
         
 
 
@@ -3595,6 +3609,8 @@ Returns only birdeye (source: website) impressions by location as well as total.
 
     [1167][]
   
+    
+
 
 
 # Group User
@@ -11169,7 +11185,7 @@ Fix Listing publishes information on online listing sources. We post presence in
     [1175][]
 
 ## Get Location Status [/v1/listing/{businessNumber}/location/status]
-Get Location Status retrieves status for each sources for a given business.
+Get Location Status retrieves status for each sources for a given business. Health aggregates sum and percentage metrics for distinct statuses.
 
 ### Get Location Status [GET]
 
@@ -11283,7 +11299,7 @@ Get Location Status retrieves status for each sources for a given business.
 
 
 ## Listings Insights [/v1/listing/insights{?api_key,businessId}]
-Insights/Analytics of Social Pages i.e Google, Facebook & Bing of a given business.
+Insights/Analytics for Google Listings of a given business.
 
 ### Listings Insights [POST]
 
@@ -11304,6 +11320,7 @@ Insights/Analytics of Social Pages i.e Google, Facebook & Bing of a given busine
         + businessNumbers: 23456788,1231313 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
         + startDate (string) - Start Date, Format: yyyy-MM-dd.
         + endDate (string) - End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen.
+        + viewMode (array,required) - for mobile or desktop or both (if none is provided then data for both will be displayed) Example “Desktop”, ”Mobile”
 
 
     + Body
@@ -11330,7 +11347,7 @@ Insights/Analytics of Social Pages i.e Google, Facebook & Bing of a given busine
         + impressionCountTotalCount: 0 (number) - The number of users who saw the activity from your page including posts, check-ins, and ads.
         + liveCount: 10 (number) - Total no of synched sites for a business.
         + entityCount: 1 (number) - Total businesses count.
-        + viewMode: desktop (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
+        + viewMode:  (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
 
     + Body
 
@@ -11387,7 +11404,7 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
         + businessNumbers: 23456788,1231313 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
         + startDate (string) - Start Date, Format: yyyy-MM-dd.
         + endDate (string) - End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen with groupByType as the day.
-        + viewMode: desktop (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
+        + viewMode: (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
         + groupByType: year (string) - Group the data accordingly. The default value will be the week. Possible values are
                                                         day,
                                                         week,
@@ -11848,8 +11865,8 @@ Create Listing API publishes information on online listing sources. We post pres
             + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
             + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
-            + isAddressHidden: If your business doesn’t have a place for your customers to visit, then you can hide your street address (string) - (note that this isn’t supported by all sites). Possible Values - “Yes”, “No”.
-            + isServiceAreaProvider: If you deliver or provide service at customer locations. Possible Values (string) - “Yes”, “No”.
+            + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
+            + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
@@ -11865,9 +11882,9 @@ Create Listing API publishes information on online listing sources. We post pres
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
-            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. 
+            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api.  NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday. 
                 + (object)
-            + wholeWeekOperating: true (boolean) -Whether your business is open 24/7, Possible Values - 0 or 1.
+            + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
                     + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
@@ -12467,12 +12484,11 @@ The Update Listing API will update the location details on all your listings sit
             + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
             + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
-            + isAddressHidden: If your business doesn’t have a place for your customers to visit, then you can hide your street address (string) - (note that this isn’t supported by all sites). Possible Values - “Yes”, “No”.
-            + isServiceAreaProvider: If you deliver or provide service at customer locations. Possible Values (string) - “Yes”, “No”.
+            + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
+            + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
-                    + placeId (string) - ChIJk8EIXIG3j4ARwL_Ao3ykdeQ
             + location (object) - Business address
                 + address1: 7405 Morro Rd (string) - Address of the business.
                 + address2: Suite 102 (string) - Address of the business.
@@ -12484,9 +12500,9 @@ The Update Listing API will update the location details on all your listings sit
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
-            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. 
+            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
                 + (object)
-            + wholeWeekOperating: true (boolean) -Whether your business is open 24/7, Possible Values - 0 or 1.
+            + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
                     + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
@@ -12611,12 +12627,10 @@ The Update Listing API will update the location details on all your listings sit
                     "isServiceAreaProvider": "No",
                     "serviceAreas": [
                       {
-                        "description": "Van An, Berryessa Road, San Jose, CA, USA",
-                        "placeId": "ChIJc_clvUTMj4AR_K0M2GO2CYg"
+                        "description": "Van An, Berryessa Road, San Jose, CA, USA"
                       },
                       {
-                        "description": "Santa Clara, CA, USA",
-                        "placeId": "ChIJk8EIXIG3j4ARwL_Ao3ykdeQ"
+                        "description": "Santa Clara, CA, USA"
                       }
                     ],
                     "location": {
@@ -13087,8 +13101,8 @@ The Get Listing API will get the listing information for the given business numb
             + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
             + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
-            + isAddressHidden: If your business doesn’t have a place for your customers to visit, then you can hide your street address (string) - (note that this isn’t supported by all sites). Possible Values - “Yes”, “No”.
-            + isServiceAreaProvider: If you deliver or provide service at customer locations. Possible Values (string) - “Yes”, “No”.
+            + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
+            + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
@@ -13104,9 +13118,9 @@ The Get Listing API will get the listing information for the given business numb
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
-            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. 
+            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
                 + (object)
-            + wholeWeekOperating: true (boolean) -Whether your business is open 24/7, Possible Values - 0 or 1.
+            + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
                     + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
@@ -13676,10 +13690,10 @@ The Get Listing API will get the listing information for the given business numb
 
     [89][]
     
-## Get More Hours [/v1/listing/{businessNumber}/more-hours-type]
+## Get More Hours Type [/v1/listing/{businessNumber}/more-hours-type]
 Get supported more hours type for a location. This will depend on the country and gmb primary category for the particular location.
 
-### Get More Hours [GET]
+### Get More Hours Type [GET]
 
 + Parameters
 
@@ -13746,7 +13760,9 @@ Get supported more hours type for a location. This will depend on the country an
     [4015][]
 
 ## Get Google Keywords Count [/v1/listing/{businessNumber}/gmb/keywords]
-Get’s Google keywords count for an account.Google keyword: Top keywords searched for which your business is ranked.
+Get’s Google keywords count for an account.
+Google keyword: Top keywords searched for which your business is ranked.
+
 
 ### Get Google Keywords Count [POST]
 
@@ -13770,6 +13786,7 @@ Get’s Google keywords count for an account.Google keyword: Top keywords search
     + Body
 
             {
+                  "businessNumbers": [147286063579104,147286063579108],
                   "selectedMonth": [
                     "Oct 2023",
                     "Sep 2023",
@@ -13789,12 +13806,10 @@ Get’s Google keywords count for an account.Google keyword: Top keywords search
 + Response 200
 
     + Attributes
-        + competitorId: 100037739 (number) - Enterprise Competitor Business ID.
-        + templateid: 0 (number) - Template Id.
-        + isAggregationRequired: 1 (number) - Is agrgegation required.
-        + type: Enterprise-Location-Competitor (string) - Type.
-        + businessNumber: 161295237142347 (number) - Enterprise Competitor Business Number.
-        + businessAlreadyPresent: false (boolean) - Is Business Already Present.
+        + data (array) - Returns business/location name along with its keywords count.
+            + (object)
+                + label: Total (string)  - Business/location name. Total, for sum of all locations keyword count
+                + frequency: 50909 (string)  - Keywords count
 
     + Body
 
@@ -13843,6 +13858,14 @@ Get’s Google keywords count for an account.Google keyword: Top keywords search
 + Response 401
 
     [1167][]
+    
++ Response 400
+
+    [2457][] 
+
++ Response 400
+
+    [2458][]     
 
 ## Deactivate Listing [/v1/listing/{businessNumber}/deactivate]
 Deactivate Listing API stops publishing any information on the given online directories/ listings sites (as per your plan/ package chosen).
@@ -13874,6 +13897,8 @@ Deactivate Listing API stops publishing any information on the given online dire
 + Response 429
 
     [89][]
+    
+    
 
 
 # Group Integration
