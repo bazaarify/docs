@@ -228,7 +228,6 @@ For example :
             "message": "Invalid API key"
         }
 
-
 ## 1167 [/1167]
 
 + Model (application/json)
@@ -1859,7 +1858,6 @@ For example :
             "code": 2157,
             "message": "Business already associated with another reseller/enterprise."
         }
-
 ## 2286 [/2286]
 
 + Model (application/json)
@@ -1868,7 +1866,6 @@ For example :
             "code": 2286,
             "message": "Zip code is not provided for business"
         }
-
 ## 2166 [/2166]
 
 + Model (application/json)
@@ -1877,7 +1874,6 @@ For example :
             "code": 2166,
             "message": "Invalid Business Type"
         }
-        
 ## 2292 [/2292]
 
 + Model (application/json)
@@ -1886,7 +1882,6 @@ For example :
             "code": 2292,
             "message": "sortby can only be 'total' or 'location'"
         }
-    
 ## 2293 [/2293]
 
 + Model (application/json)
@@ -1895,7 +1890,6 @@ For example :
             "code": 2293,
             "message": "order can only be 'asc' or 'desc'"
         }
-        
 ## 40001 [/40001]
 
 + Model (application/json)
@@ -1903,9 +1897,34 @@ For example :
         {
             "code": 40001,
             "message": "invalid start date (supported format is yyyy-MM-dd)"
-        } 
+        }
         
+## 2296 [/2296]
 
++ Model (application/json)
+
+        {
+            "code": 2296,
+            "message": "Invalid Food Delivery link"
+        }
+        
+## 2297 [/2297]
+
++ Model (application/json)
+
+        {
+            "code": 2297,
+            "message": "Invalid Food Takeout link"
+        }
+        
+## 2290 [/2290]
+
++ Model (application/json)
+
+        {
+            "code": 2290,
+            "message": "Food Takeout/Food Delivery not supported for gmb primary category"
+        }        
 
 # Group Business
 Create and maintain your business on Birdeye.
@@ -2080,8 +2099,8 @@ Create a business API creates a new business under a reseller.
 
 + Response 400
 
-    [2166][]      
-
+    [2166][]  
+    
 
 ## Search [/v1/business/{businessNumber}/search]
 
@@ -2553,6 +2572,8 @@ Update Business API updates business information.
             + googleDescription (string) - Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+            + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com        
         + socialProfileURLs (object) - Profile URLs for business on top rated social sites
             + facebookUrl: http://www.facebook.com/ChalkerandPetersonDental (string) - Facebook URL.
             + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
@@ -2787,7 +2808,9 @@ Update Business API updates business information.
 
                     }
                   ]
-                }
+                },
+                "foodDelivery":"https://www.ubereats.com",
+                "foodTakeout":"https://www.ubereats.com"
               },
                "vendorListing": {
                 "venderCategory": "",
@@ -3009,6 +3032,19 @@ Update Business API updates business information.
 + Response 401
 
     [1190][]
+    
++ Response 400
+
+    [2296][]
+    
++ Response 400
+
+    [2297][]      
+
++ Response 400
+
+    [2290][] 
+    
 
 
 
@@ -3522,10 +3558,10 @@ Get Timezone List API fetches the list of all available timezones.
 
     [1011][]
 
-## Get Visitor Report [/v1/business/{businessNumber}/birdeye/impressions]
+## Get Birdeye Impressions [/v1/business/{businessNumber}/birdeye/impressions]
 Returns only birdeye (source: website) impressions by location as well as total.
 
-### Get Visitor Report [POST]
+### Get Birdeye Impressions [POST]
 
 + Parameters
 
@@ -3540,18 +3576,18 @@ Returns only birdeye (source: website) impressions by location as well as total.
             api_key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
-         + businessName: Test Business (required,string)- list of the unique business ids associated with a business eg: [123456789, 987656789]
-         + startDate: 32323 (required,string)-yyyy-MM-dd eg: "2020-11-10"
-         + endDate: 32323 (required,string)-yyyy-MM-dd eg: "2020-11-10"
+         + businessNumbers: 987656789 (required,string)- list of the unique business ids associated with a business eg: [123456789, 987656789]
+         + startDate: 2020-11-10 (required,string)-yyyy-MM-dd eg: "2020-11-10"
+         + endDate: 2020-11-10 (required,string)-yyyy-MM-dd eg: "2020-11-10"
          + limit: 25 (number) - page size. default: 25
-         + startIndex: 0 (number)-default: 0
-         + sortby: 25 (string) -  "location" or "total" default: total.
+         + startIndex: 0 (number)- default: 0
+         + sortby: 25 (string) - "location" or "total" default: total.
          + order: asc (string) - "asc" or "desc" default: desc
        
-
     + Body
 
             {
+                "businessNumbers": [147286063579104,147286063579108],
                 "startDate": "2022-11-23",
                 "endDate": "2023-11-23",
                 "limit": 5,
@@ -3609,8 +3645,6 @@ Returns only birdeye (source: website) impressions by location as well as total.
 
     [1167][]
   
-    
-
 
 
 # Group User
@@ -11964,6 +11998,8 @@ Create Listing API publishes information on online listing sources. We post pres
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+            + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com        
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
@@ -12387,7 +12423,9 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                                 "value": true
                             }
                         ]
-                    }
+                    },
+                    "foodDelivery":"https://www.ubereats.com",
+                    "foodTakeout":"https://www.ubereats.com"
                 },
                  "appleListing": {
                     "primaryCategory": "active.amateursportsteams",
@@ -12457,6 +12495,18 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
 + Response 429
 
     [89][]
+    
++ Response 400
+
+    [2296][]
+    
++ Response 400
+
+    [2297][]      
+
++ Response 400
+
+    [2290][]    
 
 
 ## Update Listing [/v1/listing/{businessNumber}/update]
@@ -12582,6 +12632,8 @@ The Update Listing API will update the location details on all your listings sit
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+            + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com        
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
@@ -13002,7 +13054,9 @@ The Update Listing API will update the location details on all your listings sit
                                 "value": true
                             }
                         ]
-                    }
+                    },
+                    "foodDelivery":"https://www.ubereats.com",
+                    "foodTakeout":"https://www.ubereats.com"
                 },
                   "appleListing": {
                     "primaryCategory": "active.amateursportsteams",
@@ -13072,6 +13126,18 @@ The Update Listing API will update the location details on all your listings sit
 + Response 429
 
     [89][]
+
++ Response 400
+
+    [2296][]
+    
++ Response 400
+
+    [2297][]      
+
++ Response 400
+
+    [2290][]    
 
 
 ## Get Listing [/v1/listing/{businessNumber}/get]
@@ -13200,6 +13266,8 @@ The Get Listing API will get the listing information for the given business numb
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+            + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
@@ -13622,7 +13690,9 @@ The Get Listing API will get the listing information for the given business numb
                                 "value": true
                             }
                         ]
-                    }
+                    },
+                    "foodDelivery":"https://www.ubereats.com",
+                    "foodTakeout":"https://www.ubereats.com"
                 },
                  "appleListing": {
                     "primaryCategory": "active.amateursportsteams",
