@@ -1937,7 +1937,7 @@ Create a business API creates a new business under a reseller.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + rid: 123 (required, number) - Id of the Reseller.
+    + rid: 12334667201 (required, number) - Id of the Reseller.
     + email_id: sample@birdeye.com (required, string) - Business Email id.
 
 + Request (application/json)
@@ -1955,7 +1955,8 @@ Create a business API creates a new business under a reseller.
                 "zip": 32323,
                 "type": "Business",
                 "phone": "4032365164",
-                "aggrOptions" : 3
+                "countryCode": "US"
+                "aggrOptions" : 1
             }
 
     + Attributes
@@ -1969,7 +1970,8 @@ Create a business API creates a new business under a reseller.
                 Reseller
                 or a existing custom hierarchy type. Default is: Business.
         + phone: 4032365164 (required,number)- Phone number of the Business.
-        + aggrOptions:4 (number)- Aggregation Options to enable/disable aggregations. Possible values are [0,1]
+        + countryCode: AU (string) - This field is mandatory for non US locations.
+        + aggrOptions:1 (number)- Aggregation Options to enable/disable aggregations. Possible values are [0,1]
                 0 to Disable Search Business
                 1 to Enable Search Business,
 
