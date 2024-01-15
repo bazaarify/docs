@@ -1937,7 +1937,7 @@ Create a business API creates a new business under a reseller.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + rid: 123 (required, number) - Id of the Reseller.
+    + rid: 12334667201 (required, number) - Id of the Reseller.
     + email_id: sample@birdeye.com (required, string) - Business Email id.
 
 + Request (application/json)
@@ -1955,7 +1955,8 @@ Create a business API creates a new business under a reseller.
                 "zip": 32323,
                 "type": "Business",
                 "phone": "4032365164",
-                "aggrOptions" : 3
+                "countryCode": "US"
+                "aggrOptions" : 1
             }
 
     + Attributes
@@ -1969,13 +1970,12 @@ Create a business API creates a new business under a reseller.
                 Reseller
                 or a existing custom hierarchy type. Default is: Business.
         + phone: 4032365164 (required,number)- Phone number of the Business.
-        + aggrOptions:4 (number)- Aggregation Options to enable/disable aggregations. Possible values are [0,1,3,4]
-                0 to Disable all aggregations
-                1 to Disable Fetch Business Info, Enable Review Aggregation and Search Business,
-                3 to Enable Search Business, Disable Fetch Business and Disable Review Aggregation,
-                4 to Enable all Aggregations.
+        + countryCode: AU (string) - This field is mandatory for non US locations.
+        + aggrOptions:1 (number)- Aggregation Options to enable/disable aggregations. Possible values are [0,1]
+                0 to Disable Search Business
+                1 to Enable Search Business,
 
-            If aggrOptions is not provided, then all aggregations are enabled.
+            If aggrOptions is not provided, then Search Business is enabled.
 
 
 + Response 200 (application/json)
@@ -11238,7 +11238,7 @@ Get Location Status retrieves status for each sources for a given business. Heal
 + Response 200
 
     + Attributes
-        + listingStatus (object) - List of location status.
+        + listingStatus (array) - List of location status.
             + sourceName: Google (string) - Name of listing source.
             + status: Action Required (string) -  Status of the location on that source. Possible values are :
                         Sync Initiated,
@@ -11254,7 +11254,7 @@ Get Location Status retrieves status for each sources for a given business. Heal
             + name: Utah Dental Center (string) - Name of the location.
             + phone (string) - Phone number Format is (xxx) xxx-xxxx.
             + address: 420 E S Temple St #220 (string) - Address of the business.
-        + health (object) -  Aggregates sum and percentage metrics for distinct statuses
+        + health (array) -  Aggregates sum and percentage metrics for distinct statuses
              
 
     + Body
@@ -11424,7 +11424,7 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + reportType: google_view_search_map (string, required) - Report type, Possible values [google_view_search_map, gmb_customer_actions_map, fb_users_reached, bing_impression_count]
+    + reportType: google_view_search_map (string, required) - Report type, Possible values [google_view_search_map, gmb_customer_actions_map, fb_users_reached,fb_users_engaged, bing_impression_count,bing_customer_actions]
     + businessId: 12345678 (number, required) - Id of the account.
 
 
@@ -11904,7 +11904,6 @@ Create Listing API publishes information on online listing sources. We post pres
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
-                    + placeId (string) - ChIJk8EIXIG3j4ARwL_Ao3ykdeQ
             + location (object) - Business address
                 + address1: 7405 Morro Rd (string) - Address of the business.
                 + address2: Suite 102 (string) - Address of the business.
@@ -11917,7 +11916,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
             + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api.  NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday. 
-                + (object)
+            Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
             + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
@@ -12045,12 +12044,10 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                     "isServiceAreaProvider": "No",
                     "serviceAreas": [
                       {
-                        "description": "Van An, Berryessa Road, San Jose, CA, USA",
-                        "placeId": "ChIJc_clvUTMj4AR_K0M2GO2CYg"
+                        "description": "Van An, Berryessa Road, San Jose, CA, USA"
                       },
                       {
-                        "description": "Santa Clara, CA, USA",
-                        "placeId": "ChIJk8EIXIG3j4ARwL_Ao3ykdeQ"
+                        "description": "Santa Clara, CA, USA"
                       }
                     ],
                     "location": {
@@ -12551,7 +12548,7 @@ The Update Listing API will update the location details on all your listings sit
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
             + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
-                + (object)
+            Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
             + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
@@ -13185,7 +13182,7 @@ The Get Listing API will get the listing information for the given business numb
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
             + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
-                + (object)
+            Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
             + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
@@ -13851,6 +13848,12 @@ Google keyword: Top keywords searched for which your business is ranked.
     + Attributes
         + selectedMonth: Oct 2023,NOV 2023 (array , required ) - Filter months for which keyword data is required
         + selectedkeywords: prom (array) - Gives you keyword count for the selected keywords. keywordsSearch: To search by keywords that may also exist in search phrases, including the keyword itself.
+        + keywordsSearch: (string) - To search by keywords that may also exist in search phrases, including the keyword itself.
+        + limit: (number) - Specify number of records to return.
+        + startIndex: (number) - Index to start search from. Default value 0.
+        + sortby: (string) - Possible values “frequency” or “keyword”.
+        + order: (string) - Possible values “asc” or “desc”.
+        + businessNumbers: 123456789, 987656789 (array) - list of the unique business ids associated with a business.
        
 
     + Body
