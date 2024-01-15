@@ -228,7 +228,6 @@ For example :
             "message": "Invalid API key"
         }
 
-
 ## 1167 [/1167]
 
 + Model (application/json)
@@ -1741,8 +1740,25 @@ For example :
             "code": 400,
             "message": "Category can not be empty"
         }
+        
+## 2457 [/2457]
 
++ Model (application/json)
 
+        {
+            "code": 2457,
+            "message": "Invalid sortby value. Allowed values are 'frequency' or 'keyword'"
+        }
+        
+## 2458 [/2458]
+
++ Model (application/json)
+
+        {
+            "code": 2458,
+            "message": "Invalid order value. Allowed values are 'asc' or 'desc'."
+        }
+        
 ## 2177 [/2177]
 
 + Model (application/json)
@@ -1751,8 +1767,6 @@ For example :
             "code": 400,
             "message": "Invalid media id"
         }
-
-
 
 ## 2178 [/2178]
 
@@ -1844,7 +1858,6 @@ For example :
             "code": 2157,
             "message": "Business already associated with another reseller/enterprise."
         }
-
 ## 2286 [/2286]
 
 + Model (application/json)
@@ -1853,7 +1866,6 @@ For example :
             "code": 2286,
             "message": "Zip code is not provided for business"
         }
-
 ## 2166 [/2166]
 
 + Model (application/json)
@@ -1862,8 +1874,57 @@ For example :
             "code": 2166,
             "message": "Invalid Business Type"
         }
+## 2292 [/2292]
 
++ Model (application/json)
 
+        {
+            "code": 2292,
+            "message": "sortby can only be 'total' or 'location'"
+        }
+## 2293 [/2293]
+
++ Model (application/json)
+
+        {
+            "code": 2293,
+            "message": "order can only be 'asc' or 'desc'"
+        }
+## 40001 [/40001]
+
++ Model (application/json)
+
+        {
+            "code": 40001,
+            "message": "invalid start date (supported format is yyyy-MM-dd)"
+        }
+        
+## 2296 [/2296]
+
++ Model (application/json)
+
+        {
+            "code": 2296,
+            "message": "Invalid Food Delivery link"
+        }
+        
+## 2297 [/2297]
+
++ Model (application/json)
+
+        {
+            "code": 2297,
+            "message": "Invalid Food Takeout link"
+        }
+        
+## 2290 [/2290]
+
++ Model (application/json)
+
+        {
+            "code": 2290,
+            "message": "Food Takeout/Food Delivery not supported for gmb primary category"
+        }        
 
 # Group Business
 Create and maintain your business on Birdeye.
@@ -1876,7 +1937,7 @@ Create a business API creates a new business under a reseller.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + rid: 123 (required, number) - Id of the Reseller.
+    + rid: 12334667201 (required, number) - Id of the Reseller.
     + email_id: sample@birdeye.com (required, string) - Business Email id.
 
 + Request (application/json)
@@ -1894,7 +1955,8 @@ Create a business API creates a new business under a reseller.
                 "zip": 32323,
                 "type": "Business",
                 "phone": "4032365164",
-                "aggrOptions" : 3
+                "countryCode": "US"
+                "aggrOptions" : 1
             }
 
     + Attributes
@@ -1908,13 +1970,12 @@ Create a business API creates a new business under a reseller.
                 Reseller
                 or a existing custom hierarchy type. Default is: Business.
         + phone: 4032365164 (required,number)- Phone number of the Business.
-        + aggrOptions:4 (number)- Aggregation Options to enable/disable aggregations. Possible values are [0,1,3,4]
-                0 to Disable all aggregations
-                1 to Disable Fetch Business Info, Enable Review Aggregation and Search Business,
-                3 to Enable Search Business, Disable Fetch Business and Disable Review Aggregation,
-                4 to Enable all Aggregations.
+        + countryCode: AU (string) - This field is mandatory for non US locations.
+        + aggrOptions:1 (number)- Aggregation Options to enable/disable aggregations. Possible values are [0,1]
+                0 to Disable Search Business
+                1 to Enable Search Business,
 
-            If aggrOptions is not provided, then all aggregations are enabled.
+            If aggrOptions is not provided, then Search Business is enabled.
 
 
 + Response 200 (application/json)
@@ -2038,8 +2099,8 @@ Create a business API creates a new business under a reseller.
 
 + Response 400
 
-    [2166][]      
-
+    [2166][]  
+    
 
 ## Search [/v1/business/{businessNumber}/search]
 
@@ -2511,6 +2572,8 @@ Update Business API updates business information.
             + googleDescription (string) - Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+            + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com        
         + socialProfileURLs (object) - Profile URLs for business on top rated social sites
             + facebookUrl: http://www.facebook.com/ChalkerandPetersonDental (string) - Facebook URL.
             + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
@@ -2745,7 +2808,9 @@ Update Business API updates business information.
 
                     }
                   ]
-                }
+                },
+                "foodDelivery":"https://www.ubereats.com",
+                "foodTakeout":"https://www.ubereats.com"
               },
                "vendorListing": {
                 "venderCategory": "",
@@ -2967,6 +3032,19 @@ Update Business API updates business information.
 + Response 401
 
     [1190][]
+    
++ Response 400
+
+    [2296][]
+    
++ Response 400
+
+    [2297][]      
+
++ Response 400
+
+    [2290][] 
+    
 
 
 
@@ -3480,6 +3558,93 @@ Get Timezone List API fetches the list of all available timezones.
 
     [1011][]
 
+## Get Birdeye Impressions [/v1/business/{businessNumber}/birdeye/impressions]
+Returns only birdeye (source: website) impressions by location as well as total.
+
+### Get Birdeye Impressions [POST]
+
++ Parameters
+
+    + businessNumber: 986031488 (string, required) - Account Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+         + businessNumbers: 987656789 (required,string)- list of the unique business ids associated with a business eg: [123456789, 987656789]
+         + startDate: 2020-11-10 (required,string)-yyyy-MM-dd eg: "2020-11-10"
+         + endDate: 2020-11-10 (required,string)-yyyy-MM-dd eg: "2020-11-10"
+         + limit: 25 (number) - page size. default: 25
+         + startIndex: 0 (number)- default: 0
+         + sortby: 25 (string) - "location" or "total" default: total.
+         + order: asc (string) - "asc" or "desc" default: desc
+       
+    + Body
+
+            {
+                "businessNumbers": [147286063579104,147286063579108],
+                "startDate": "2022-11-23",
+                "endDate": "2023-11-23",
+                "limit": 5,
+                "order": "desc",
+                "sortby": "location",
+                "startIndex": 0
+            }
+
+
+
++ Response 200
+
+  
+    + Body
+
+            {
+                  "total": 300178,
+                  "locations": [
+                    {
+                      "locationName": "Natick House of Prom",
+                      "count": "87"
+                    },
+                    {
+                      "locationName": "Kansas City House of Prom",
+                      "count": "265"
+                    },
+                    {
+                      "locationName": "Glendale House of Prom House of Prom",
+                      "count": "158"
+                    },
+                    {
+                      "locationName": "Fairfax House of Prom",
+                      "count": "355"
+                    },
+                    {
+                      "locationName": "David's Bridal - Corporate Office",
+                      "count": "2546"
+                    }
+                  ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 2292
+
+    [2292][]
+
++ Response 2293
+
+    [2293][]
+
++ Response 401
+
+    [1167][]
+  
 
 
 # Group User
@@ -11054,7 +11219,7 @@ Fix Listing publishes information on online listing sources. We post presence in
     [1175][]
 
 ## Get Location Status [/v1/listing/{businessNumber}/location/status]
-Get Location Status retrieves status for each sources for a given business.
+Get Location Status retrieves status for each sources for a given business. Health aggregates sum and percentage metrics for distinct statuses.
 
 ### Get Location Status [GET]
 
@@ -11073,7 +11238,7 @@ Get Location Status retrieves status for each sources for a given business.
 + Response 200
 
     + Attributes
-        + listingStatus (object) - List of location status.
+        + listingStatus (array) - List of location status.
             + sourceName: Google (string) - Name of listing source.
             + status: Action Required (string) -  Status of the location on that source. Possible values are :
                         Sync Initiated,
@@ -11089,6 +11254,8 @@ Get Location Status retrieves status for each sources for a given business.
             + name: Utah Dental Center (string) - Name of the location.
             + phone (string) - Phone number Format is (xxx) xxx-xxxx.
             + address: 420 E S Temple St #220 (string) - Address of the business.
+        + health (array) -  Aggregates sum and percentage metrics for distinct statuses
+             
 
     + Body
 
@@ -11108,8 +11275,45 @@ Get Location Status retrieves status for each sources for a given business.
                         "name": "Richard L. Blackhurst/Utah Dental Center",
                         "phone": "(123) 456-0987",
                         "address": "420 E S Temple St #220"
-                    }]
-            }
+                    }],
+                 "health": [
+                        {
+                          "status": "Action Required",
+                          "count": 1,
+                          "percentage": 14.29
+                        },
+                        {
+                          "status": "In Progress",
+                          "count": 1,
+                          "percentage": 14.29
+                        },
+                        {
+                          "status": "Reconnect",
+                          "count": 1,
+                          "percentage": 14.29
+                        },
+                        {
+                          "status": "Connect",
+                          "count": 1,
+                          "percentage": 14.29
+                        },
+                        {
+                          "status": "Live",
+                          "count": 1,
+                          "percentage": 14.29
+                        },
+                        {
+                          "status": "Opted out",
+                          "count": 1,
+                          "percentage": 14.29
+                        },
+                        {
+                          "status": "Sync Initiated",
+                          "count": 1,
+                          "percentage": 14.29
+                        }
+                      ]    
+             }
 
 + Response 401
 
@@ -11129,7 +11333,7 @@ Get Location Status retrieves status for each sources for a given business.
 
 
 ## Listings Insights [/v1/listing/insights{?api_key,businessId}]
-Insights/Analytics of Social Pages i.e Google, Facebook & Bing of a given business.
+Insights/Analytics for Google Listings of a given business.
 
 ### Listings Insights [POST]
 
@@ -11150,6 +11354,7 @@ Insights/Analytics of Social Pages i.e Google, Facebook & Bing of a given busine
         + businessNumbers: 23456788,1231313 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
         + startDate (string) - Start Date, Format: yyyy-MM-dd.
         + endDate (string) - End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen.
+        + viewMode (array,required) - for mobile or desktop or both (if none is provided then data for both will be displayed) Example “Desktop”, ”Mobile”
 
 
     + Body
@@ -11157,7 +11362,8 @@ Insights/Analytics of Social Pages i.e Google, Facebook & Bing of a given busine
             {
                 "businessNumbers": [156387109031976],
                 "startDate": "2010-02-01",
-                "endDate": "2022-02-01"
+                "endDate": "2022-02-01",
+                "viewMode": [ "Mobile"]
             }
 
 
@@ -11175,6 +11381,7 @@ Insights/Analytics of Social Pages i.e Google, Facebook & Bing of a given busine
         + impressionCountTotalCount: 0 (number) - The number of users who saw the activity from your page including posts, check-ins, and ads.
         + liveCount: 10 (number) - Total no of synched sites for a business.
         + entityCount: 1 (number) - Total businesses count.
+        + viewMode:  (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
 
     + Body
 
@@ -11217,7 +11424,7 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + reportType: google_view_search_map (string, required) - Report type, Possible values [google_view_search_map, gmb_customer_actions_map, fb_users_reached, bing_impression_count]
+    + reportType: google_view_search_map (string, required) - Report type, Possible values [google_view_search_map, gmb_customer_actions_map, fb_users_reached,fb_users_engaged, bing_impression_count,bing_customer_actions]
     + businessId: 12345678 (number, required) - Id of the account.
 
 
@@ -11231,6 +11438,7 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
         + businessNumbers: 23456788,1231313 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
         + startDate (string) - Start Date, Format: yyyy-MM-dd.
         + endDate (string) - End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen with groupByType as the day.
+        + viewMode: (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
         + groupByType: year (string) - Group the data accordingly. The default value will be the week. Possible values are
                                                         day,
                                                         week,
@@ -11245,7 +11453,8 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
                 "businessNumbers": [156387109031976],
                 "startDate": "2010-02-01",
                 "endDate": "2022-02-01",
-                "groupByType": "year"
+                "groupByType": "year",
+                "viewMode": [ "Mobile"]
             }
 
 
@@ -11690,6 +11899,11 @@ Create Listing API publishes information on online listing sources. We post pres
             + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
             + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
+            + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
+            + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
+            + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
+                + (object)
+                    + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
             + location (object) - Business address
                 + address1: 7405 Morro Rd (string) - Address of the business.
                 + address2: Suite 102 (string) - Address of the business.
@@ -11701,6 +11915,9 @@ Create Listing API publishes information on online listing sources. We post pres
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
+            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api.  NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday. 
+            Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
+            + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
                     + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
@@ -11780,6 +11997,8 @@ Create Listing API publishes information on online listing sources. We post pres
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+            + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com        
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
@@ -11821,6 +12040,16 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                     "phone": "(973) 716-0007",
                     "websiteUrl": "http://www.diecispa.org/",
                     "emailId": "example@birdeye.com",
+                    "isAddressHidden": "No",
+                    "isServiceAreaProvider": "No",
+                    "serviceAreas": [
+                      {
+                        "description": "Van An, Berryessa Road, San Jose, CA, USA"
+                      },
+                      {
+                        "description": "Santa Clara, CA, USA"
+                      }
+                    ],
                     "location": {
                         "address1": "90 W Mount Pleasant Ave",
                         "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
@@ -11837,6 +12066,153 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                         "English",
                         "Hindi"
                     ],
+                    "moreHours": {
+                              "Dinner": [
+                                {
+                                  "day": 0,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 1,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 2,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "20:10"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 3,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 4,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "9:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 5,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 6,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "00:00",
+                                      "endHour": "20:30"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Delivery": [
+                                {
+                                  "day": 0,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 1,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "7:00",
+                                      "endHour": "09:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 2,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "02:00",
+                                      "endHour": "09:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 3,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "00:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 4,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "0:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 5,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "0:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 6,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "1:00",
+                                      "endHour": "1:00"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                    "wholeWeekOperating": 0, 
                     "hoursOfOperations": [
                         {
                             "day": 0,
@@ -12044,7 +12420,9 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                                 "value": true
                             }
                         ]
-                    }
+                    },
+                    "foodDelivery":"https://www.ubereats.com",
+                    "foodTakeout":"https://www.ubereats.com"
                 },
                  "appleListing": {
                     "primaryCategory": "active.amateursportsteams",
@@ -12114,6 +12492,18 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
 + Response 429
 
     [89][]
+    
++ Response 400
+
+    [2296][]
+    
++ Response 400
+
+    [2297][]      
+
++ Response 400
+
+    [2290][]    
 
 
 ## Update Listing [/v1/listing/{businessNumber}/update]
@@ -12141,6 +12531,11 @@ The Update Listing API will update the location details on all your listings sit
             + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
             + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
+            + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
+            + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
+            + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
+                + (object)
+                    + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
             + location (object) - Business address
                 + address1: 7405 Morro Rd (string) - Address of the business.
                 + address2: Suite 102 (string) - Address of the business.
@@ -12152,6 +12547,9 @@ The Update Listing API will update the location details on all your listings sit
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
+            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
+            Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
+            + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
                     + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
@@ -12231,6 +12629,8 @@ The Update Listing API will update the location details on all your listings sit
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+            + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com        
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
@@ -12272,6 +12672,16 @@ The Update Listing API will update the location details on all your listings sit
                     "phone": "(973) 716-0007",
                     "websiteUrl": "http://www.diecispa.org/",
                     "emailId": "example@birdeye.com",
+                    "isAddressHidden": "No",
+                    "isServiceAreaProvider": "No",
+                    "serviceAreas": [
+                      {
+                        "description": "Van An, Berryessa Road, San Jose, CA, USA"
+                      },
+                      {
+                        "description": "Santa Clara, CA, USA"
+                      }
+                    ],
                     "location": {
                         "address1": "90 W Mount Pleasant Ave",
                         "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
@@ -12288,6 +12698,153 @@ The Update Listing API will update the location details on all your listings sit
                         "English",
                         "Hindi"
                     ],
+                "moreHours": {
+                              "Dinner": [
+                                {
+                                  "day": 0,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 1,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 2,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "20:10"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 3,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 4,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "9:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 5,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 6,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "00:00",
+                                      "endHour": "20:30"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Delivery": [
+                                {
+                                  "day": 0,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 1,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "7:00",
+                                      "endHour": "09:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 2,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "02:00",
+                                      "endHour": "09:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 3,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "00:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 4,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "0:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 5,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "0:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 6,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "1:00",
+                                      "endHour": "1:00"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                    "wholeWeekOperating": 0,    
                     "hoursOfOperations": [
                         {
                             "day": 0,
@@ -12494,7 +13051,9 @@ The Update Listing API will update the location details on all your listings sit
                                 "value": true
                             }
                         ]
-                    }
+                    },
+                    "foodDelivery":"https://www.ubereats.com",
+                    "foodTakeout":"https://www.ubereats.com"
                 },
                   "appleListing": {
                     "primaryCategory": "active.amateursportsteams",
@@ -12565,6 +13124,18 @@ The Update Listing API will update the location details on all your listings sit
 
     [89][]
 
++ Response 400
+
+    [2296][]
+    
++ Response 400
+
+    [2297][]      
+
++ Response 400
+
+    [2290][]    
+
 
 ## Get Listing [/v1/listing/{businessNumber}/get]
 The Get Listing API will get the listing information for the given business number/ ID.
@@ -12593,6 +13164,12 @@ The Get Listing API will get the listing information for the given business numb
             + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
             + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
+            + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
+            + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
+            + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
+                + (object)
+                    + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
+                    + placeId (string) - ChIJk8EIXIG3j4ARwL_Ao3ykdeQ
             + location (object) - Business address
                 + address1: 7405 Morro Rd (string) - Address of the business.
                 + address2: Suite 102 (string) - Address of the business.
@@ -12604,6 +13181,9 @@ The Get Listing API will get the listing information for the given business numb
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
+            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
+            Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
+            + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
                     + day: 5 (number) - 0(Monday), 1(Tuesday), 2(Wednesday) and so on.
@@ -12683,6 +13263,8 @@ The Get Listing API will get the listing information for the given business numb
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+            + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
@@ -12724,6 +13306,18 @@ The Get Listing API will get the listing information for the given business numb
                     "phone": "(973) 716-0007",
                     "websiteUrl": "http://www.diecispa.org/",
                     "emailId": "example@birdeye.com",
+                    "isAddressHidden": "No",
+                    "isServiceAreaProvider": "No",
+                    "serviceAreas": [
+                      {
+                        "description": "Van An, Berryessa Road, San Jose, CA, USA",
+                        "placeId": "ChIJc_clvUTMj4AR_K0M2GO2CYg"
+                      },
+                      {
+                        "description": "Santa Clara, CA, USA",
+                        "placeId": "ChIJk8EIXIG3j4ARwL_Ao3ykdeQ"
+                      }
+                    ],
                     "location": {
                         "address1": "90 W Mount Pleasant Ave",
                         "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
@@ -12740,6 +13334,153 @@ The Get Listing API will get the listing information for the given business numb
                         "English",
                         "Hindi"
                     ],
+                    "moreHours": {
+                              "Dinner": [
+                                {
+                                  "day": 0,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 1,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 2,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "20:10"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 3,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 4,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "9:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 5,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "09:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 6,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "00:00",
+                                      "endHour": "20:30"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Delivery": [
+                                {
+                                  "day": 0,
+                                  "isOpen": 0,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "",
+                                      "endHour": ""
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 1,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "7:00",
+                                      "endHour": "09:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 2,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "02:00",
+                                      "endHour": "09:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 3,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "00:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 4,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "0:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 5,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "0:00",
+                                      "endHour": "11:30"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "day": 6,
+                                  "isOpen": 1,
+                                  "workingHours": [
+                                    {
+                                      "startHour": "1:00",
+                                      "endHour": "1:00"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
                             "day": 0,
@@ -12946,7 +13687,9 @@ The Get Listing API will get the listing information for the given business numb
                                 "value": true
                             }
                         ]
-                    }
+                    },
+                    "foodDelivery":"https://www.ubereats.com",
+                    "foodTakeout":"https://www.ubereats.com"
                 },
                  "appleListing": {
                     "primaryCategory": "active.amateursportsteams",
@@ -13013,8 +13756,189 @@ The Get Listing API will get the listing information for the given business numb
 + Response 429
 
     [89][]
+    
+## Get More Hours Type [/v1/listing/{businessNumber}/more-hours-type]
+Get supported more hours type for a location. This will depend on the country and gmb primary category for the particular location.
+
+### Get More Hours Type [GET]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Business Number.
+
++ Request (application/json)
 
 
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200
+
+   + Attributes (array)
+        + (object)
+          
+    + Body
+
+            [
+              "Access",
+              "Breakfast",
+              "Brunch",
+              "Delivery",
+              "Dinner",
+              "Drive through",
+              "Happy hours",
+              "Kitchen",
+              "Lunch",
+              "Online service hours",
+              "Pickup",
+              "Takeout",
+              "Senior hours"
+            ]
+
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
++ Response 400
+
+    [4014][]
+
++ Response 400
+
+    [4012][]
+
++ Response 400
+
+    [4013][]
+
++ Response 400
+
+    [4015][]
+
+## Get Google Keywords Count [/v1/listing/{businessNumber}/gmb/keywords]
+Get’s Google keywords count for an account.
+Google keyword: Top keywords searched for which your business is ranked.
+
+
+### Get Google Keywords Count [POST]
+
++ Parameters
+
+    + businessNumber: 986031488 (string, required) - Account Business Number.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + selectedMonth: Oct 2023,NOV 2023 (array , required ) - Filter months for which keyword data is required
+        + selectedkeywords: prom (array) - Gives you keyword count for the selected keywords. keywordsSearch: To search by keywords that may also exist in search phrases, including the keyword itself.
+        + keywordsSearch: (string) - To search by keywords that may also exist in search phrases, including the keyword itself.
+        + limit: (number) - Specify number of records to return.
+        + startIndex: (number) - Index to start search from. Default value 0.
+        + sortby: (string) - Possible values “frequency” or “keyword”.
+        + order: (string) - Possible values “asc” or “desc”.
+        + businessNumbers: 123456789, 987656789 (array) - list of the unique business ids associated with a business.
+       
+
+    + Body
+
+            {
+                  "businessNumbers": [147286063579104,147286063579108],
+                  "selectedMonth": [
+                    "Oct 2023",
+                    "Sep 2023",
+                    "Nov 2023"
+                  ],
+                  "limit": 25,
+                  "startIndex": 0,
+                  "selectedkeywords": [
+                    "prom"
+                  ],
+                  "sortby": "frequency",
+                  "order": "desc",
+                  "keywordsSearch": "prom dresses"
+            }
+
+
++ Response 200
+
+    + Attributes
+        + data (array) - Returns business/location name along with its keywords count.
+            + (object)
+                + label: Total (string)  - Business/location name. Total, for sum of all locations keyword count
+                + frequency: 50909 (string)  - Keywords count
+
+    + Body
+
+            {
+                  "data": [
+                    {
+                      "label": "Total",
+                      "frequency": 50909
+                    },
+                    {
+                      "label": "prom dresses near me",
+                      "frequency": 19156
+                    },
+                    {
+                      "label": "prom dresses",
+                      "frequency": 6168
+                    },
+                    {
+                      "label": "david's bridal prom dresses",
+                      "frequency": 3642
+                    },
+                    {
+                      "label": "davids bridal prom dresses",
+                      "frequency": 1005
+                    },
+                    {
+                      "label": "prom dresses nearby",
+                      "frequency": 825
+                    }
+                  ],
+                  "totalKeywordCount": 734
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+    
++ Response 400
+
+    [2457][] 
+
++ Response 400
+
+    [2458][]     
 
 ## Deactivate Listing [/v1/listing/{businessNumber}/deactivate]
 Deactivate Listing API stops publishing any information on the given online directories/ listings sites (as per your plan/ package chosen).
@@ -13046,6 +13970,8 @@ Deactivate Listing API stops publishing any information on the given online dire
 + Response 429
 
     [89][]
+    
+    
 
 
 # Group Integration
@@ -13118,6 +14044,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>12/21/2023</b> - Add listing phase 2 api changes (BIRD-16589)
 * <b>11/08/2023</b> - Add survey changes (BIRD-11944) and listing changes (BIRD-14345)
 * <b>11/08/2023</b> - Added CRUD APIs for Apple chat
 * <b>10/15/2023</b> - Added CRUD APIs for Business Media.
