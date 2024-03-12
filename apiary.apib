@@ -3413,6 +3413,54 @@ between businesses.
     [1167][]
 
 
+## Update Hierarchy [/v1/business/business-hierarchy/location/update-mapping/{businessId}{?api_key}]
+The Update Hierarchy API maps the hierarchical level to its corresponding level value for a given location. This API is used to update the hierarchical structure of locations, ensuring that each location is correctly placed within the hierarchy based on its level and value.
+
+
+### Update Hierarchy [POST]
+
++ Parameters
+
+    + businessId: 12345678 (string, required) - Id of the Business.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+
+   + Attributes
+        + Level - It will be a key-value pair for each level with its corresponding level value.
+            
+
+    + Body
+
+            {
+              "Division": "Division 3",
+              "Region": "Region 3",
+              "RD": "Richard Steves",
+              "Department": "Store 3"
+            }
+
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
+
 
 ## Get Custom card details [/v1/business/{businessNumber}/profile/customcard]
 Get Customer card API returns the detail of customer card of the location
@@ -3491,7 +3539,6 @@ Get Customer card API returns the detail of customer card of the location
 + Response 401
 
     [1011][]
-
 
 
 ## Get Timezone List [/v1/business/{businessNumber}/timezones]
@@ -14044,6 +14091,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>02/26/2024</b> - Add Update Hierarchy API (BIRD-32609)
 * <b>02/26/2024</b> - Updated logoUrl description in Get, Update APIs under Business module and Create, Get, Update APIs under Listing module (BIRD-29386)
 * <b>12/21/2023</b> - Add listing phase 2 api changes (BIRD-16589)
 * <b>11/08/2023</b> - Add survey changes (BIRD-11944) and listing changes (BIRD-14345)
