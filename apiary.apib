@@ -1740,7 +1740,7 @@ For example :
             "code": 400,
             "message": "Category can not be empty"
         }
-        
+
 ## 2457 [/2457]
 
 + Model (application/json)
@@ -1749,7 +1749,7 @@ For example :
             "code": 2457,
             "message": "Invalid sortby value. Allowed values are 'frequency' or 'keyword'"
         }
-        
+
 ## 2458 [/2458]
 
 + Model (application/json)
@@ -1758,7 +1758,7 @@ For example :
             "code": 2458,
             "message": "Invalid order value. Allowed values are 'asc' or 'desc'."
         }
-        
+
 ## 2177 [/2177]
 
 + Model (application/json)
@@ -1898,7 +1898,7 @@ For example :
             "code": 40001,
             "message": "invalid start date (supported format is yyyy-MM-dd)"
         }
-        
+
 ## 2296 [/2296]
 
 + Model (application/json)
@@ -1907,7 +1907,7 @@ For example :
             "code": 2296,
             "message": "Invalid Food Delivery link"
         }
-        
+
 ## 2297 [/2297]
 
 + Model (application/json)
@@ -1916,7 +1916,7 @@ For example :
             "code": 2297,
             "message": "Invalid Food Takeout link"
         }
-        
+
 ## 2290 [/2290]
 
 + Model (application/json)
@@ -1924,7 +1924,7 @@ For example :
         {
             "code": 2290,
             "message": "Food Takeout/Food Delivery not supported for gmb primary category"
-        }        
+        }
 
 # Group Business
 Create and maintain your business on Birdeye.
@@ -2079,7 +2079,7 @@ Create a business API creates a new business under a reseller.
 
 + Response 400
 
-    [2154][]   
+    [2154][]
 
 + Response 400
 
@@ -2091,7 +2091,7 @@ Create a business API creates a new business under a reseller.
 
 + Response 400
 
-    [2157][]       
+    [2157][]
 
 + Response 400
 
@@ -2099,8 +2099,8 @@ Create a business API creates a new business under a reseller.
 
 + Response 400
 
-    [2166][]  
-    
+    [2166][]
+
 
 ## Search [/v1/business/{businessNumber}/search]
 
@@ -2573,7 +2573,7 @@ Update Business API updates business information.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
             + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
-            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com        
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + socialProfileURLs (object) - Profile URLs for business on top rated social sites
             + facebookUrl: http://www.facebook.com/ChalkerandPetersonDental (string) - Facebook URL.
             + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
@@ -3032,19 +3032,19 @@ Update Business API updates business information.
 + Response 401
 
     [1190][]
-    
+
 + Response 400
 
     [2296][]
-    
-+ Response 400
-
-    [2297][]      
 
 + Response 400
 
-    [2290][] 
-    
+    [2297][]
+
++ Response 400
+
+    [2290][]
+
 
 
 
@@ -3583,7 +3583,7 @@ Returns only birdeye (source: website) impressions by location as well as total.
          + startIndex: 0 (number)- default: 0
          + sortby: 25 (string) - "location" or "total" default: total.
          + order: asc (string) - "asc" or "desc" default: desc
-       
+
     + Body
 
             {
@@ -3600,7 +3600,7 @@ Returns only birdeye (source: website) impressions by location as well as total.
 
 + Response 200
 
-  
+
     + Body
 
             {
@@ -3644,7 +3644,7 @@ Returns only birdeye (source: website) impressions by location as well as total.
 + Response 401
 
     [1167][]
-  
+
 
 
 # Group User
@@ -11255,7 +11255,7 @@ Get Location Status retrieves status for each sources for a given business. Heal
             + phone (string) - Phone number Format is (xxx) xxx-xxxx.
             + address: 420 E S Temple St #220 (string) - Address of the business.
         + health (array) -  Aggregates sum and percentage metrics for distinct statuses
-             
+
 
     + Body
 
@@ -11312,7 +11312,7 @@ Get Location Status retrieves status for each sources for a given business. Heal
                           "count": 1,
                           "percentage": 14.29
                         }
-                      ]    
+                      ]
              }
 
 + Response 401
@@ -11381,7 +11381,7 @@ Insights/Analytics for Google Listings of a given business.
         + impressionCountTotalCount: 0 (number) - The number of users who saw the activity from your page including posts, check-ins, and ads.
         + liveCount: 10 (number) - Total no of synched sites for a business.
         + entityCount: 1 (number) - Total businesses count.
-        + viewMode:  (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
+        + viewMode  (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
 
     + Body
 
@@ -11438,7 +11438,7 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
         + businessNumbers: 23456788,1231313 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
         + startDate (string) - Start Date, Format: yyyy-MM-dd.
         + endDate (string) - End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen with groupByType as the day.
-        + viewMode: (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
+        + viewMode (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
         + groupByType: year (string) - Group the data accordingly. The default value will be the week. Possible values are
                                                         day,
                                                         week,
@@ -11632,7 +11632,7 @@ The Get GMB Attributes API fetches the list of applicable GMB attributes for the
 + Response 400
 
     [4013][]
-    
+
 
 ## Get Apple Attributes [/v1/listing/{businessNumber}/apple-location-attributes-list]
 The Get Apple Attributes API fetches the list of applicable Apple attributes. An attribute is typically something that helps describe your location better. E.g.: You provide paid parking or that your location is kid friendly etc.
@@ -11643,7 +11643,7 @@ The Get Apple Attributes API fetches the list of applicable Apple attributes. An
 + Parameters
 
     + businessNumber: 12345678 (number, required) - Business Number.
-    
+
 + Request (application/json)
 
 
@@ -11658,9 +11658,9 @@ The Get Apple Attributes API fetches the list of applicable Apple attributes. An
     + Attributes
         + Accessibility (array) - This is dynamic field. Depends upon request inputs.
             + (object)
-                
+
     + Body
-             
+
             {
                 "crossbusiness.family_kids": [{
                         "attributeId": "kidsclub",
@@ -11712,8 +11712,8 @@ The Get Apple Attributes API fetches the list of applicable Apple attributes. An
 + Response 400
 
     [4013][]
-    
-    
+
+
 ## Get Apple Action Links [/v1/listing/{businessNumber}/apple-action-links]
 The Get Apple Action Links fetches the list of applicable Apple Action Link Types. Apple action links are the click throughs that are displayed in the action row on your Apple Maps listings also known as the Apple Maps Placecard.
 
@@ -11724,7 +11724,7 @@ The Get Apple Action Links fetches the list of applicable Apple Action Link Type
 + Parameters
 
     + businessNumber: 12345678 (number, required) - Business Number.
-    
+
 + Request (application/json)
 
 
@@ -11739,9 +11739,9 @@ The Get Apple Action Links fetches the list of applicable Apple Action Link Type
     + Attributes
         + Accessibility (array) - This is dynamic field. Depends upon request inputs.
             + (object)
-               
+
     + Body
-             
+
 
              [
                 {
@@ -11788,7 +11788,7 @@ The Get Apple Action Links fetches the list of applicable Apple Action Link Type
 
 + Response 400
 
-    [4013][]      
+    [4013][]
 
 ## Get Category List [/v1/listing/{businessNumber}/category-list{?sourceName,countryCode}]
 The Get Category List API fetches the list of category values for the selected source.
@@ -11915,7 +11915,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
-            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api.  NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday. 
+            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api.  NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
             Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
             + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
@@ -11998,11 +11998,11 @@ Create Listing API publishes information on online listing sources. We post pres
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
             + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
-            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com        
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
-            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.   
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
 crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
@@ -12212,7 +12212,7 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                                 }
                               ]
                             },
-                    "wholeWeekOperating": 0, 
+                    "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
                             "day": 0,
@@ -12492,18 +12492,18 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
 + Response 429
 
     [89][]
-    
+
 + Response 400
 
     [2296][]
-    
-+ Response 400
-
-    [2297][]      
 
 + Response 400
 
-    [2290][]    
+    [2297][]
+
++ Response 400
+
+    [2290][]
 
 
 ## Update Listing [/v1/listing/{businessNumber}/update]
@@ -12630,14 +12630,14 @@ The Update Listing API will update the location details on all your listings sit
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
             + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
-            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com        
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
-            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.   
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
                   crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
-            + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.            
+            + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
             + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories.
@@ -12844,7 +12844,7 @@ The Update Listing API will update the location details on all your listings sit
                                 }
                               ]
                             },
-                    "wholeWeekOperating": 0,    
+                    "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
                             "day": 0,
@@ -13127,14 +13127,14 @@ The Update Listing API will update the location details on all your listings sit
 + Response 400
 
     [2296][]
-    
-+ Response 400
-
-    [2297][]      
 
 + Response 400
 
-    [2290][]    
+    [2297][]
+
++ Response 400
+
+    [2290][]
 
 
 ## Get Listing [/v1/listing/{businessNumber}/get]
@@ -13268,10 +13268,10 @@ The Get Listing API will get the listing information for the given business numb
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
-            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.   
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
                crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
-            + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.            
+            + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
             + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories.
@@ -13756,7 +13756,7 @@ The Get Listing API will get the listing information for the given business numb
 + Response 429
 
     [89][]
-    
+
 ## Get More Hours Type [/v1/listing/{businessNumber}/more-hours-type]
 Get supported more hours type for a location. This will depend on the country and gmb primary category for the particular location.
 
@@ -13779,7 +13779,7 @@ Get supported more hours type for a location. This will depend on the country an
 
    + Attributes (array)
         + (object)
-          
+
     + Body
 
             [
@@ -13848,13 +13848,13 @@ Google keyword: Top keywords searched for which your business is ranked.
     + Attributes
         + selectedMonth: Oct 2023,NOV 2023 (array , required ) - Filter months for which keyword data is required
         + selectedkeywords: prom (array) - Gives you keyword count for the selected keywords. keywordsSearch: To search by keywords that may also exist in search phrases, including the keyword itself.
-        + keywordsSearch: (string) - To search by keywords that may also exist in search phrases, including the keyword itself.
-        + limit: (number) - Specify number of records to return.
-        + startIndex: (number) - Index to start search from. Default value 0.
-        + sortby: (string) - Possible values “frequency” or “keyword”.
-        + order: (string) - Possible values “asc” or “desc”.
+        + keywordsSearch (string) - To search by keywords that may also exist in search phrases, including the keyword itself.
+        + limit: 25 (number) - Specify number of records to return.
+        + startIndex: 0 (number) - Index to start search from. Default value 0.
+        + sortby: frequency (string) - Possible values “frequency” or “keyword”.
+        + order: desc (string) - Possible values “asc” or “desc”.
         + businessNumbers: 123456789, 987656789 (array) - list of the unique business ids associated with a business.
-       
+
 
     + Body
 
@@ -13931,14 +13931,14 @@ Google keyword: Top keywords searched for which your business is ranked.
 + Response 401
 
     [1167][]
-    
-+ Response 400
-
-    [2457][] 
 
 + Response 400
 
-    [2458][]     
+    [2457][]
+
++ Response 400
+
+    [2458][]
 
 ## Deactivate Listing [/v1/listing/{businessNumber}/deactivate]
 Deactivate Listing API stops publishing any information on the given online directories/ listings sites (as per your plan/ package chosen).
@@ -13970,14 +13970,487 @@ Deactivate Listing API stops publishing any information on the given online dire
 + Response 429
 
     [89][]
-    
-    
+
+
+
+# Group Ticketing
+Create standout customer support with ticketing across reviews, untagged, and survey responses.
+
+## Create ticket [/resources/v1/ticket/{businessNumber}/create-ticket]
+Create reviews, untagged, and survey responses tickets.
+
+### Create ticket [PUT]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Business number of the location on which we want to create a ticket.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + externalId: 3943351204239963055 (number) - Public Review Id for which you want to create ticket, Mandatory and applicable for creating review ticket.
+        + assignedTo: warne@ymail.com (required, string) - EmailId of the user to whom the ticket will be assigned.
+        + ticketType: review (required, string) - Type of ticket you want to create. Possible values:
+                                                review,
+                                                untagged,
+                                                SURVEY
+        + customer (object) -Customer details for which ticket is created, Mandatory and applicable for untagged ticket
+            + emailId: steven@ymail.com (string) - Email id of the customer.
+            + firstName: Steve (string) - First name of the customer.
+            + lastName: Smith (string) - Last name of the customer.
+            + location (object) - Location details of the customer.
+                + city: Dallas (string) - City of the customer’s location.
+                + state: Texas (string) - State of the customer’s location.
+            + phone: 4032365164 (number)- Phone number of the customer.
+        + description: Issue with the Store service (string) - Description of the ticket. Applicable for untagged and survey ticket
+        + sourceType: Email (string) - Source Type of the ticket. Applicable for untagged ticket Possible values:
+                                        Email,
+                                        Phone,
+                                        Chat,
+                                        Internal,
+                                        Social media
+        + surveyId: 43503 (number) - Id of the survey for which we want to create a ticket. Applicable for survey ticket
+        + surveyResponseId: 13577112 (number) - Id of the survey response for which we want to create a ticket. Applicable for survey ticket
+        + additionalParams (array) - If you want to create tickets of survey for particular question and answer. Applicable for survey ticket
+            + answerId: 1024530591 (number) - Id of any of the answers on the survey. Applicable for survey ticket
+            + questionId: 221132 (number) - Id of any of the questions on the survey. Applicable for survey ticket
+
+
+
+
+
+
+    + Body
+
+            {
+                "externalId": 3943351204239963055,
+                "assignedTo": "pranav.singh@birdeye.com",
+                "ticketType":"review",
+                "customer": {
+                    "emailId": "test+4@yopmail.com",
+                    "firstName": "Steve",
+                    "lastName": "Smith",
+                    "location": {
+                        "city": "Dallas",
+                        "state": "Texas"
+                    },
+                    "phone": ""
+                },
+                "description": "Issue with the Store service",
+                "sourceType": "internal"
+            }
+
+
+
++ Response 200
+
+    + Attributes
+        + ticketId: 882382 (number) - Id of the new ticket created.
+
+
+
+    + Body
+
+            {
+                "ticketId": 882382
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1033][]
+
++ Response 404
+
+    [1175][]
+
+
+
+
+## Add Ticket Comments [/resources/v1/ticket/{businessNumber}/comment-activity]
+Add comment activity on tickets.
+
+### Add Ticket Comments [POST]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Business number of the location.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + comment: Had a chat with customer, he will visit again. (required, string) - Comment to be added on ticket.
+        + ticketId: 886172 (required, number) - Id of the ticket.
+        + userEmail: steve@ymail.com (required,string) - EmailId of the user who is adding the comment.
+
+
+
+    + Body
+
+            {
+                "comment": "Had a chat with customer, he will visit again.",
+                "ticketId": "886172",
+                "userEmail": "steve@ymail.com"
+            }
+
+
+
++ Response 200
+
+    + Attributes
+        + ticketId: 882382 (number) - Id of the new ticket created.
+
+
+
+    + Body
+
+            {
+                "ticketId": 882382
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1033][]
+
++ Response 404
+
+    [1175][]
+
+
+
+
+## Update ticket [/resources/v1/ticket/{businessNumber}/update]
+Update the ticket status or ticket assignee.
+
+
+### Update ticket [PUT]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Business number of the location.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + ticketUpdateMessages (array) - Update ticket.
+            + (object)
+                + assignedTo: steve@ymail.com (string) - New assignee of the ticket.
+                + ticketId: 882382 (string) - Id of the ticket.
+                + ticketStatus: assigned (string) - Status to be changed.
+
+
+    + Body
+
+            {
+                "ticketUpdateMessages": [{
+                    "assignedTo": "steve@ymail.com",
+                    "ticketId": "882382",
+                    "ticketStatus": "assigned"
+                }],
+                "userEmail": "pranav.singh@birdeye.com"
+            }
+
+
+
++ Response 200
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1033][]
+
++ Response 404
+
+    [1175][]
+
+
+
+
+## Get All Ticket Data [/resources/v1/ticket/{businessNumber}/get/all?{?op,sortOrder,count,sIndex,sortBy,totalCount}]
+Get tickets
+
+### Get All Ticket Data [POST]
+
++ Parameters
+
+    + businessNumber: 12345678 (number, required) - Business number of the account.
+    + op: 3 (number) - Possible values are: [1] will display ticket count only, [3] will display all the data of the ticket. Default value - 3.
+    + sIndex: 0 (number) - Start index of the response. Default value - 0
+    + count: 25  (number) - Number of tickets want to get in the response. Default value - 25
+    + sortBy: 2  (number) - Sort options, Possible values [2] will sort on the basis of ticket creation date. [3] will sort on the basis of characters of business aliases. Default value 2.
+    + sortOrder: 1 (number) - Sort Order [0] will sort the data in ascending order. [1] this will sort the data in descending order. Default value - 1
+    + totalCount: true (Boolean) false, total count would not be displayed. true, total count would be displayed along with the data of all the tickets. Default Value - false
+
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + assignees: steve@ymail.com,smith@ymail.com (array) - List of assignee email id.
+        + businessNumbers: 123123123,12314231 (array) - List of Location Business Numbers.
+        + fromDate: 1581230064000 (number) - Epoc start date.
+        + toDate: 1707460464000 (number) - Epoc end date.
+        + sourceAliases: google (array) - Source alias.
+        + sourceTypes: phone (array) - Source Type.
+        + tagNames: newReview (array) - Tag assigned to any review ticket.
+        + ticketStatuses: new (array) - Filter tickets with status.
+        + ticketTypes: review,survey (array) - List of ticket type, Possible values
+                                                review,
+                                                untagged,
+                                                survey
+
+
+    + Body
+
+            {
+                "assignees": [],
+                "businessNumbers": [],
+                "fromDate": 1581230064000,
+                "sourceAliases": [""],
+                "sourceTypes": ["phone","socialmedia","chat","internal"],
+                "tagNames": ["newReview"],
+                "ticketStatuses": ["assigned", "new"],
+                "ticketTypes": ["review", "survey", "untagged"],
+                "toDate": 1707460464000
+            }
+
+
+
++ Response 200
+
+    + Attributes
+        + ticketDetails (array) - Ticket Details.
+            + (object)
+                + id: 188556 (number) - Id of the ticket.
+                + status: new (string) - Ticket status.
+                + rating: 5.0 (number) - Review rating.
+                + externalId: 213243231 (string) - Public review id.
+                + description: Customer will visit again (number) - Description of the ticket.
+                + activityCount: 4 (number) - Number of activities associated with the ticket.
+                + assignedTo (object) - Assignee details.
+                    + firstName: Steve (string) - First Name of the assignee.
+                    + lastName: Steve (string) - Last Name of the assignee.
+                    + name: Steve Smith (string) - Name  of the assignee.
+                    + emailId: steve@ymail.com (string) - Email id of the assignee.
+                + source (object) - Source details of the ticket
+                    + name: Google (string)- Source details
+                                                        [1] “Google”, in case of a review ticket.
+                                                        [2] “email”, in case of an untagged ticket.
+                                                        [3] “Training Feb 24th”, name of the survey in case of survey ticket.
+                + ticketType: review (string) - Type of the ticket.
+                + tags: newreview (array) - List of Ticket tags.
+                + reporter (object) - Ticket reporter details.
+                    + firstName: Steve (string) - First Name of the reporter
+                    + lastName: Smith (string) -  Last Name of the reporter
+
+
+
+
+    + Body
+
+            {
+                "ticketDetails": [{
+                    "id": 188556,
+                    "status": "assigned",
+                    "rating": 5.0,
+                    "externalId": 2131605005145285326,
+                    "date": "2020-02-14 00:08:00",
+                    "postedOn": "2020-02-08 00:00:00",
+                    "updateDate": "2020-08-11 00:00:00",
+                    "created": "2020-02-14 12:08:02",
+                    "description": "Room was outstanding....location was also good....",
+                    "activityCount": 4,
+                    "assignedTo": {
+                        "firstName": "Atul",
+                        "lastName": "Ghainna",
+                        "emailId": "atulkumar.ghainna@birdeye.com",
+                        "name": "Atul Ghainna"
+                    },
+                    "business": {
+                        "name": "JYSK - Whitby",
+                        "alias": "JYSK - Whitby",
+                        "number": 157851547625021,
+                        "phone": "(905) 451-9054"
+                    },
+                    "source": {
+                        "name": "Airbnb"
+                    },
+                    "ticketType": "review",
+                    "tags": [
+                        "awesome",
+                        "it was good",
+                        "newtest",
+                        "promoters!!!",
+                        "great service",
+                        "time",
+                        "poor",
+                        "Enjoy",
+                        "newtag",
+                        "test",
+                        "check",
+                        "good review",
+                        "excellent",
+                        "Dirty Car",
+                        "User request no response",
+                        "customer service",
+                        "nice"
+                    ],
+                    "reporter": {
+                        "firstName": "Megha",
+                        "lastName": ""
+                    }
+                },
+                {
+                    "id": 192727,
+                    "status": "assigned",
+                    "date": "2020-02-18 00:34:00",
+                    "updateDate": "2020-02-18 00:00:00",
+                    "created": "2020-02-18 12:34:18",
+                    "description": "Apil look into it.",
+                    "activityCount": 2,
+                    "assignedTo": {
+                        "firstName": "April",
+                        "lastName": "Dover",
+                        "emailId": "aparna.dass@birdeye.com",
+                        "name": "April Dover"
+                    },
+                    "business": {
+                        "name": "JYSK - Cambridge",
+                        "alias": "JYSK - Cambridge",
+                        "number": 157721146574913,
+                        "phone": "(905) 451-9054"
+                    },
+                    "source": {
+                        "name": "phone"
+                    },
+                    "ticketType": "untagged",
+                    "reporter": {
+                        "firstName": "Jerry",
+                        "lastName": "Jacob",
+                        "emailId": "jerry@jerry.com",
+                        "phone": ""
+                    }
+                },
+                {
+                    "id": 199287,
+                    "status": "assigned",
+                    "date": "2020-02-27 01:28:00",
+                    "postedOn": "2020-02-27 00:00:00",
+                    "updateDate": "2020-10-29 00:00:00",
+                    "created": "2020-02-27 01:28:14",
+                    "description": "Question: Please rate us based on your training experience\nAnswer: 1",
+                    "activityCount": 3,
+                    "assignedTo": {
+                        "firstName": "April",
+                        "lastName": "Dover",
+                        "emailId": "aparna.dass@birdeye.com",
+                        "name": "April Dover"
+                    },
+                    "business": {
+                        "name": "JYSK - Whitby",
+                        "alias": "JYSK - Whitby",
+                        "number": 157851547625021,
+                        "phone": "(905) 451-9054"
+                    },
+                    "source": {
+                        "name": "Training Feb 24th"
+                    },
+                    "ticketType": "survey",
+                    "surveyId": 15492
+                }
+            ],
+            "count": 0,
+            "totalcount": 3
+        }
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1033][]
+
++ Response 404
+
+    [1175][]
+
+
 
 
 # Group Integration
 Birdeye integrates with various software or tools you use.
 
-## Add Business Integration Mapping [/v1/integrations/add/businessintegrationmapping{?api_key}]
+## Add Business Integration Mapping[/v1/integrations/add/businessintegrationmapping{?api_key}]
 Add Business Integration Mapping adds locations to integrations and set them active.
 
 ### Add locations [PUT]
@@ -14044,6 +14517,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>03/19/2024</b> - Added Ticket APIs Create, Get, Update APIs under Ticket module
 * <b>02/26/2024</b> - Updated logoUrl description in Get, Update APIs under Business module and Create, Get, Update APIs under Listing module (BIRD-29386)
 * <b>12/21/2023</b> - Add listing phase 2 api changes (BIRD-16589)
 * <b>11/08/2023</b> - Add survey changes (BIRD-11944) and listing changes (BIRD-14345)
@@ -14054,4 +14528,3 @@ Add Business Integration Mapping adds locations to integrations and set them act
 * <b>08/25/2023</b> - Added new APIs under Business and Listing modules, Get Category List API, Get GMB Attributes API & Get Timezone List
 * <b>07/21/2023</b> - Added new API under Business module i.e, Business Search API.
 * <b>06/30/2023</b> - Added support for service area based information in Get Business API and Update Business API.
-* <b>04/20/2023</b> - Added two new API under Listing module, Get Listings Insights and Get Listings Insights Datapoints.
