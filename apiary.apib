@@ -2553,6 +2553,7 @@ Update Business API updates business information.
             + virtualCareLink (string) - Should be a valid url virtual care link
         + bingListing (object) - Provide bing data for listing purpose.
             + primaryCategoryBing (string) - Primary category of bing.
+            + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + categories (string) - You can add up to 3 categories.
             + bingDescription (string) - Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
@@ -2563,9 +2564,11 @@ Update Business API updates business information.
         + facebookListing (object) - Provide data for facebook listing purpose.
             + category (string) - You can add up to 3 categories.
             + facebookDescription (string) - Facebook description cannot be more than 255 characters.
+            + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
 
         + gmbListing (object) - Provide data for gmb listing purpose.
             + googleWebsiteUrl (string) - Website url will update on google listing.
+            + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
             + googleStoreId (string) - Store id for google.
             + primaryCategoryGmb (string) - Primary category of google.
             + additionalCategory (string) - You can add up to 5 subcategories.
@@ -2764,7 +2767,8 @@ Update Business API updates business information.
                 "category1Bing": "",
                 "category2Bing": "",
                 "category3Bing": "",
-                "bingDescription": ""
+                "bingDescription": "",
+                "bingPhoneNumber": ""
               },
               "internalListing": {
                 "description": "pecialties\nBridal ServicesMakeup: Makeovers/Lessons/ Faux Lash applicationMassagesFacialsMicrocurrentMicrodermabrasionBody…",
@@ -2779,7 +2783,8 @@ Update Business API updates business information.
                 "category1Fb": "",
                 "category2Fb": "",
                 "category3Fb": "",
-                "facebookDescription": ""
+                "facebookDescription": "",
+                "facebookPhoneNumber": ""
               },
               "gmbListing": {
                 "googleWebsiteUrl": "",
@@ -2791,6 +2796,7 @@ Update Business API updates business information.
                 "additionalCategory4Gmb": "",
                 "additionalCategory5Gmb": "",
                 "googleDescription": "",
+                "googlePhoneNumber": ""
                 "attributes": {
                   "Crowd": [
                     {
@@ -12043,6 +12049,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
         + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
             + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
+            + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
             + googleStoreId (string) - Store id for google.
             + primaryCategoryGmb (string) - Primary category of google.
             + additionalCategory (string) - You can add up to 5 subcategories.
@@ -12675,6 +12682,7 @@ The Update Listing API will update the location details on all your listings sit
             + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
         + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
             + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
+            + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
             + googleStoreId (string) - Store id for google.
             + primaryCategoryGmb (string) - Primary category of google.
             + additionalCategory (string) - You can add up to 5 subcategories.
@@ -13309,6 +13317,7 @@ The Get Listing API will get the listing information for the given business numb
             + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
         + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
             + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
+            + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
             + googleStoreId (string) - Store id for google.
             + primaryCategoryGmb (string) - Primary category of google.
             + additionalCategory (string) - You can add up to 5 subcategories.
