@@ -9911,6 +9911,119 @@ List Conversations retrieves conversations for a business.
 
 
 
+# Group subscription
+
+Subscribe or Unsubscribe multiple webhooks with different URLs or Events for a subscription and deliver real-time notifications.
+
+## Subscribe [/v1/subscriptions/subscribe{?api_key,businessId}]
+Create webhook subscription listens to subscribed webhook events on a specific passed URL.
+
+### Create subscription [POST]
+
++ Parameters
+
+    + businessId: 1234567890 (number, required) - Account business number.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
++ Request (application/json)
+    + Headers
+            Accept: application/json
+
+    + Attributes
+        + webhookUrl: https://webhook.site/0c27e14d-f833-4589 (string) - The webhook endpoint URL on your server on which webhook requests are to be sent.
+        + emails: test@xyz.com, test2@xyz.com (array) - The email id(s) of the business.
+        + eventName: APPOINTMENT_BOOKED (string)-  Name of the evnet to be subscribed
+                     Events Supported:
+                        APPOINTMENT_BOOKED
+                        APPOINTMENT_CONFIRMED
+                        APPOINTMENT_COMPLETED
+                        APPOINTMENT_CANCELLED
+                        APPOINTMENT_NOSHOW
+                        APPOINTMENT_RESCHEDULED
+                        SURVEY_COMPLETED
+                        LISTING_UPDATED
+                        CONTACT_CREATED
+                        CONTACT_UPDATED
+                        CONTACT_DELETED
+                        CONTACT_ACTIVITY_UPDATE
+
+    + Body
+
+        {
+            "webhookUrl": "https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65",
+            "emails": [
+                        "test@xyz.com"
+                    ],
+            "eventName": "APPOINTMENT_BOOKED"
+        }
+
++ Response 200 (application/json)
+        {
+            "id": "abcchdguweUGBSK16789278",
+            "message": "You have successfully subscribed to : https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65"
+        }
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
+
+## Unsubscribe [/v1/subscriptions/unsubscribe/{subscriptionId}{?api_key,businessId}]
+Delete webhook subscription to stop listening to subscribed webhook events on the subscribed url.
+
+### Unsubscribe subscription [GET]
+
++ Parameters
+
+    + subscriptionId: tyhjwvbtys56782hbjsAGH
+    + businessId: 1234567890 (number, required) - Account business number.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
++ Request (application/json)
+    + Headers
+            Accept: application/json
+
++ Response 200 (application/json)
+    {
+      "message": "This Subscription has been Unsubscribed"
+    }
+
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 500 (application/json)
+
+        {
+            "code": 1005,
+            "message": "Subscription Not found for Particular Id"
+        }
+
 
 
 # Group Webhook
