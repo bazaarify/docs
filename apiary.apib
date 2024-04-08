@@ -2111,7 +2111,7 @@ Search Business API searches a business using a name or number. Partial name mat
 
 + Parameters
 
-    + businessNumber: 12345678 (required, number) - Long id of the business, under which user wants to search for.
+    + businessNumber: 169744180007807 (required, number) - Long id of the business, under which user wants to search for.
 
 
 
@@ -2160,7 +2160,7 @@ Search Business API searches a business using a name or number. Partial name mat
                 + status : active (string) - The business status - active, demo, paid, suspended etc.
                 + createdAt: May 01, 2013 (string) - The date of business (or location) creation.
                 + createdBy: Sam Bilings (string) - Full name of the user who created the business (or location).
-                + businessNumber: ASC (string)- Unique number associated with every business (or location).
+                + businessNumber: 169744180007807 (string) - Unique number associated with every business (or location).
                 + type: SMB (string)- Returned in case of resellers, specifies whether account is SMB, enterprise, or reseller
 
 
@@ -3624,7 +3624,7 @@ Returns only birdeye (source: website) impressions by location as well as total.
 
 + Parameters
 
-    + businessNumber: 986031488 (string, required) - Account Business Number.
+    + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 
 + Request (application/json)
@@ -3635,7 +3635,7 @@ Returns only birdeye (source: website) impressions by location as well as total.
             api_key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
-         + businessNumbers: 987656789 (required,string)- list of the unique business ids associated with a business eg: [123456789, 987656789]
+         + businessNumbers: 169744180007807 (required,string)- list of the unique business ids associated with a business eg: [123456789, 987656789]
          + startDate: 2020-11-10 (required,string)-yyyy-MM-dd eg: "2020-11-10"
          + endDate: 2020-11-10 (required,string)-yyyy-MM-dd eg: "2020-11-10"
          + limit: 25 (number) - page size. default: 25
@@ -4256,7 +4256,7 @@ Eligible reviews can be replied to from the Birdeye platform using Review Reply 
 
 + Parameters
 
-    + businessNumber: 123456789 (string, required) - Id of the business.
+    + businessNumber: 169744180007807 (string, required) - Id of the business.
     + reviewId: 88778877 (string, required) - Review Id.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
@@ -4838,7 +4838,7 @@ Get Contact fetches Customer details.
                 + cid: 12345 (number) - Customer location id.
                 + location: New York (string) - Name of the location.
                 + bid: 710687 (number) - Location id.
-                + businessNumber: 161458406365307 (number) - Location Number.
+                + businessNumber: 169744180007807 (number) - Location Number.
         + tags: Tag One, Tag Two (string) - List of tags.
         + customFields (array) - List of Custom fields.
             + (object)
@@ -8194,7 +8194,7 @@ List Responses for a Survey API fetches all the responses available for a partic
 + Parameters
     + survey_id: 123 (integer, required) - Id of the Survey.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessNumber: 1232131 (string, required) - The Business Number of Enterprise
+    + businessNumber: 169744180007807 (string, required) - The Business Number of Enterprise
     + page: 0 (integer, optional) - The page number, starts with 0.
     + size: 30 (integer, optional) - The size of the page.
     + sortby: date (string, optional) - The sort by parameter.
@@ -9163,7 +9163,7 @@ API to upload the Business Media.
 
 + Parameters
 
-    + businessNumber: 123456789 (string, required) - Location Number, in case of SMB it will be Business Number.
+    + businessNumber: 169744180007807 (string, required) - Location Number, in case of SMB it will be Business Number.
 
 
 + Request (application/json)
@@ -9289,7 +9289,7 @@ API to get the Business Media details.
 
 + Parameters
 
-    + businessNumber: 123456789 (string, required) - Location Number, in case of SMB it will be Business Number.
+    + businessNumber: 169744180007807 (string, required) - Location Number, in case of SMB it will be Business Number.
 
 
 + Request (application/json)
@@ -9359,7 +9359,7 @@ API to update the Business Media.
 
 + Parameters
 
-    + businessNumber: 123456789 (string, required) - Location Number, in case of SMB it will be Business Number.
+    + businessNumber: 169744180007807 (string, required) - Location Number, in case of SMB it will be Business Number.
     + mediaId: 62185029212 (string, required) - Id of the media item.
 
 
@@ -9426,7 +9426,7 @@ API to delete the Business Medias.
 
 + Parameters
 
-    + businessNumber: 123456789 (string, required) - Location Number, in case of SMB it will be Business Number.
+    + businessNumber: 169744180007807 (string, required) - Location Number, in case of SMB it will be Business Number.
 
 
 + Request (application/json)
@@ -9762,7 +9762,7 @@ List Conversations retrieves conversations for a business.
 + Request (application/json)
 
     + Attributes
-        + businessNumber: 755009344 (number, required) - The business number for which the details to be fetched, it can be either enterprise or location business number.
+        + businessNumber: 169744180007807 (number, required) - The business number for which the details to be fetched, it can be either enterprise or location business number.
         + apiKey: abcdefgh (string, required) -  Partner specific API key provided by Birdeye for data exchange.
         + startDate: 04/06/2020 (string) - Start fetching messages from this date in MM/DD/YYYY format.
         + endDate: 05/30/2020 (string) - Fetch messages till this date in MM/DD/YYYY format.
@@ -9981,7 +9981,7 @@ Create webhook subscription listens to webhook events on a specific passed URL.
             Accept: application/json
 
     + Attributes
-        + businessNumber: 755009344 (number, required) - The business number for which events to be subscribed. Should always be the account business number not the location business number.
+        + businessNumber: 169744180007807 (number, required) - The business number for which events to be subscribed. Should always be the account business number not the location business number.
         + apiKey: abcdefgh (string, required) -  Partner specific API key provided by Birdeye for data exchange.
         + events: conversation.created, conversation.updated, message.added, message.closed (array, required) - A list of event name strings from the list of available events that should trigger this webhook. Possible values are
                 conversation.created - A new conversation started,
@@ -10342,7 +10342,7 @@ Create New Competitor Enterprise creates a new competitor for an enterprise.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessNumber: 986031488 (string, required) - Account Business Number.
+    + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 
 + Request (application/json)
@@ -10381,7 +10381,7 @@ Create New Competitor Enterprise creates a new competitor for an enterprise.
         + templateid: 0 (number) - Template Id.
         + isAggregationRequired: 1 (number) - Is agrgegation required.
         + type: Enterprise-Location-Competitor (string) - Type.
-        + businessNumber: 161295237142347 (number) - Enterprise Competitor Business Number.
+        + businessNumber: 169744180007807 (number) - Enterprise Competitor Business Number.
         + businessAlreadyPresent: false (boolean) - Is Business Already Present.
 
     + Body
@@ -10438,7 +10438,7 @@ Create New Child Business in Competitor Enterprise creates a new child business 
         + templateid: 0 (number) - Template Id.
         + isAggregationRequired: 1 (number) - Is agrgegation required.
         + type: Enterprise-Location-Competitor (string) - Type.
-        + businessNumber: 161295237142347 (number) - Enterprise Competitor Business Number.
+        + businessNumber: 169744180007807 (number) - Enterprise Competitor Business Number.
         + businessAlreadyPresent: false (boolean) - Is Business Already Present.
 
 
@@ -10481,7 +10481,7 @@ Add new Competitor Aggregation URL adds an aggregation URL for a competitor loca
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Id of the business.
+    + businessNumber: 169744180007807 (number, required) - Id of the business.
     + compAccountId : 234567 (number, required) - Competitor Account Id.
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
@@ -10728,7 +10728,7 @@ Get Score retrieves Insights category details for a competitor.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessNumber: 986031488 (string, required) - Account Business Number.
+    + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 
 + Request (application/json)
@@ -10879,7 +10879,7 @@ Get Theme Statistics retrieves Insights topic details for a competitor.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessNumber: 986031488 (string, required) - Account Business Number.
+    + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 + Request (application/json)
 
@@ -11068,7 +11068,7 @@ Get Keyword Statistics retrieves Insights keywords details for a competitor.
 + Parameters
 
     + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessNumber: 986031488 (string, required) - Account Business Number.
+    + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 + Request (application/json)
 
@@ -11295,7 +11295,7 @@ Get Location Status retrieves status for each sources for a given business. Heal
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Id of the business.
+    + businessNumber: 169744180007807 (number, required) - Id of the business.
 
 + Request (application/json)
 
@@ -11587,7 +11587,7 @@ The Get GMB Attributes API fetches the list of applicable GMB attributes for the
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
     + categoryId: gcid:electrical_installation_service (string, required) - Category id.
     + countryCode: US (string, required) - Code of the country, Possible values are US,CA,AU,PR,NZ,MX,IN,UK,FR,IT.
 
@@ -11712,7 +11712,7 @@ The Get Apple Attributes API fetches the list of applicable Apple attributes. An
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
 
 + Request (application/json)
 
@@ -11793,7 +11793,7 @@ The Get Apple Action Links fetches the list of applicable Apple Action Link Type
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
 
 + Request (application/json)
 
@@ -11867,7 +11867,7 @@ The Get Category List API fetches the list of category values for the selected s
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
     + sourceName: BING (string, required) -  Source name for which category data needs to be fetched. Possible values are BING, HEALTHCARE, GMB, VENDOR, FACEBOOK, APPLE.
     + countryCode: US (string, required) - Code of the country, Possible values are US,CA,AU,PR,NZ,MX,IN,UK,FR,IT.
 
@@ -11952,7 +11952,7 @@ Create Listing API publishes information on online listing sources. We post pres
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
 
 + Request (application/json)
 
@@ -12586,7 +12586,7 @@ The Update Listing API will update the location details on all your listings sit
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
 
 + Request (application/json)
 
@@ -13219,7 +13219,7 @@ The Get Listing API will get the listing information for the given business numb
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
 
 + Request (application/json)
 
@@ -13839,7 +13839,7 @@ Get supported more hours type for a location. This will depend on the country an
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
 
 + Request (application/json)
 
@@ -13910,7 +13910,7 @@ Google keyword: Top keywords searched for which your business is ranked.
 
 + Parameters
 
-    + businessNumber: 986031488 (string, required) - Account Business Number.
+    + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 
 + Request (application/json)
@@ -14025,7 +14025,7 @@ Deactivate Listing API stops publishing any information on the given online dire
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
 
 + Request (application/json)
 
@@ -14058,7 +14058,7 @@ Create reviews, untagged, and survey responses tickets.
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business number of the location on which we want to create a ticket.
+    + businessNumber: 169744180007807 (number, required) - Business number of the location on which we want to create a ticket.
 
 
 + Request (application/json)
@@ -14167,7 +14167,7 @@ Add comment activity on tickets.
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business number of the location.
+    + businessNumber: 169744180007807 (number, required) - Business number of the location.
 
 
 + Request (application/json)
@@ -14239,7 +14239,7 @@ Update the ticket status or ticket assignee.
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business number of the location.
+    + businessNumber: 169744180007807 (number, required) - Business number of the location.
 
 
 + Request (application/json)
@@ -14302,7 +14302,7 @@ Get tickets
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business number of the account.
+    + businessNumber: 169744180007807 (number, required) - Business number of the account.
     + op: 3 (number) - Possible values are: [1] will display ticket count only, [3] will display all the data of the ticket. Default value - 3.
     + sIndex: 0 (number) - Start index of the response. Default value - 0
     + count: 25  (number) - Number of tickets want to get in the response. Default value - 25
@@ -14542,7 +14542,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
             Accept: application/json
 
     + Attributes
-        + businessNumber: 166015909542313 (required, number) - Business number.
+        + businessNumber: 169744180007807 (required, number) - Business number.
         + integrationGroupId: 12345 (required, number) - Integration Group Id.
         + active: true (required, boolean) - Active state.
         + integrationProperties (object) - Add properties in key value pair.
