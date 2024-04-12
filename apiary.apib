@@ -12046,24 +12046,24 @@ Create Listing API publishes information on online listing sources. We post pres
             + virtualCareLink (string) - Should be a valid url virtual care link
         + bingListing (object) - This data will be used to update your Bing listing.
             + primaryCategoryBing (string) - Primary category of bing.
-            + categories (string) - You can add a maximum of up to 3 categories.
+            + bingCategories (array) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
-            + category (string) - Primary category of business.
+            + subCategories (array) - Primary category of business.
             + subcategory (string) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
-            + category (string) - You can add up to 3 categories.
+            + categories (array) - You can add up to 3 categories.
             + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
         + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
             + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
             + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
             + googleStoreId (string) - Store id for google.
             + primaryCategoryGmb (string) - Primary category of google.
-            + additionalCategory (string) - You can add up to 5 subcategories.
+            + additionalCategories (array) - You can add up to 5 subcategories.
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
@@ -12679,24 +12679,24 @@ The Update Listing API will update the location details on all your listings sit
             + virtualCareLink (string) - Should be a valid url virtual care link
         + bingListing (object) - This data will be used to update your Bing listing.
             + primaryCategoryBing (string) - Primary category of bing.
-            + categories (string) - You can add a maximum of up to 3 categories.
+            + bingCategories (array) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
-            + category (string) - Primary category of business.
+            + subCategories (array) - Primary category of business.
             + subcategory (string) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
-            + category (string) - You can add up to 3 categories.
+            + categories (array) - You can add up to 3 categories.
             + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
         + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
             + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
             + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
             + googleStoreId (string) - Store id for google.
             + primaryCategoryGmb (string) - Primary category of google.
-            + additionalCategory (string) - You can add up to 5 subcategories.
+            + additionalCategories (array) - You can add up to 5 subcategories.
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
@@ -13314,24 +13314,24 @@ The Get Listing API will get the listing information for the given business numb
             + virtualCareLink (string) - Should be a valid url virtual care link
         + bingListing (object) - This data will be used to update your Bing listing.
             + primaryCategoryBing (string) - Primary category of bing.
-            + categories (string) - You can add a maximum of up to 3 categories.
+            + bingCategories (array) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
-            + category (string) - Primary category of business.
+            + subCategories (array) - Primary category of business.
             + subcategory (string) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
-            + category (string) - You can add up to 3 categories.
+            + categories (array) - You can add up to 3 categories.
             + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
         + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
             + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
             + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
             + googleStoreId (string) - Store id for google.
             + primaryCategoryGmb (string) - Primary category of google.
-            + additionalCategory (string) - You can add up to 5 subcategories.
+            + additionalCategories (array) - You can add up to 5 subcategories.
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
