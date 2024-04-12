@@ -1925,6 +1925,102 @@ For example :
             "code": 2290,
             "message": "Food Takeout/Food Delivery not supported for gmb primary category"
         }
+## 2476 [/2476]
+
++ Model (application/json)
+
+        {
+            "code": 2476,
+            "message": "Question Id cannot be blank"
+        }
+## 2477 [/2477]
+
++ Model (application/json)
+
+        {
+            "code": 2477,
+            "message": "Answer Id is required to update existing answer"
+        }
+## 2478 [/2478]
+
++ Model (application/json)
+
+        {
+            "code": 2478,
+            "message": "Question is required"
+        }
+## 2479 [/2479]
+
++ Model (application/json)
+
+        {
+            "code": 2479,
+            "message": "Answer is required"
+        }
+## 2480 [/2480]
+
++ Model (application/json)
+
+        {
+            "code": 2480,
+            "message": "Cannot modify non owner Q&A"
+        }
+## 2482 [/2482]
+
++ Model (application/json)
+
+        {
+            "code": 2482,
+            "message": "Question Id is Invalid"
+        }
+## 2481 [/2481]
+
++ Model (application/json)
+
+        {
+            "code": 2481,
+            "message": "Q&A cannot be more than 4096 characters"
+        }
+## 2485 [/2485]
+
++ Model (application/json)
+
+        {
+            "code": 2485,
+            "message": "Questions should be 10 characters minimum"
+        }
+## 2483 [/2483]
+
++ Model (application/json)
+
+        {
+            "code": 2483,
+            "message": "Question should have minimum 3 words"
+        }
+## 2484 [/2484]
+
++ Model (application/json)
+
+        {
+            "code": 2484,
+            "message": "Answer Id cannot be blank"
+        }
+## 2461 [/2461]
+
++ Model (application/json)
+
+        {
+            "code": 2461,
+            "message": "No question found with provided request"
+        }
+## 2462 [/2462]
+
++ Model (application/json)
+
+        {
+            "code": 2462,
+            "message": "Owner answer already added please edit answer"
+        }
 
 # Group Business
 Create and maintain your business on Birdeye.
@@ -14043,8 +14139,589 @@ Deactivate Listing API stops publishing any information on the given online dire
 
     [89][]
 
+## Create Question [/v1/qna/question/create{?api_key,businessId}]
+Create new Question on Google Q&A section of your business
 
 
+### Create Question [POST]
+
++ Parameters
+    + businessId: 12345678 (string, required) - Id of the business.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + question: Enter question here (string , required ) - text of the question to be posted on Google Q&A profile ; minimum 3 word and 10 characters
+        + answer: Enter answer here  (string,required) - text of the answer to be posted on Google Q&A profile ; minimum 1 one non-space character
+
+
+    + Body
+
+            {
+                  "question": "Enter question here",
+                  "answer": "Enter answer here"
+            }
+
+
++ Response 200 (application/json)
+
+
+    + Attributes
+        + question_id: 2892   (number)  - unique question identifier
+        
+    + Body
+
+            {
+                  "question_id":2892
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [2478][]
+    
++ Response 401
+
+    [2479][]
++ Response 401
+
+    [2481][]
++ Response 401
+
+    [2485][]
+    
++ Response 401
+
+    [2483][]
+
+
+
+## Create Answer [/v1/qna/answer/create{?api_key,businessId}]
+Add Answer to Existing Question. Owner can add only one answer per question
+
+
+
+### Create Answer [POST]
+
++ Parameters
+    + businessId: 12345678 (string, required) - Id of the business.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + questionId: 7812   (number , required ) - unique question identifier
+        + answer: Enter answer here  (string,required) - text of the question to be posted on Google Q&A profile ; minimum 1 one non-space character
+
+
+    + Body
+
+            {
+                  "questionId": 7812,
+                  "answer": "Enter answer here"
+            }
+
+
++ Response 200 (application/json)
+
+
+    + Attributes
+        + answer_id: 2893  (string)  - unique answer identifier
+        
+    + Body
+
+            {
+                  "answer_id":2893
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [2478][]
+    
++ Response 401
+
+    [2479][]
+    
++ Response 401
+
+    [2481][]
+    
++ Response 401
+
+    [2485][]
+    
++ Response 401
+
+    [2483][]
++ Response 401
+
+    [2461][]
+    
++ Response 401
+
+    [2462][]
+
+
+
+## Update Question [/v1/qna/question/update{?api_key,businessId}]
+Update an existing question
+
+
+
+### Update Question [PUT]
+
+
++ Parameters
+    + businessId: 12345678 (string, required) - Id of the business.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + questionId: 7812  (number , required ) - unique question identifier
+        + question: Enter question here  (string,required) - text of the question to be posted on Google Q&A profile ; minimum 3 word and 10 characters
+
+
+    + Body
+
+            {
+                  "questionId": 7812,
+                  "question": "Enter question here"
+            }
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [2478][]
+    
++ Response 401
+
+    [2479][]
+    
++ Response 401
+
+    [2481][]
+    
++ Response 401
+
+    [2485][]
+    
++ Response 401
+
+    [2483][]
++ Response 401
+
+    [2461][]
+    
++ Response 401
+
+    [2480][]
++ Response 401
+
+    [2482][]
+
+
+
+## Update Answer [/v1/qna/answer/update{?api_key,businessId}]
+Update an answer to an existing question
+
+
+
+### Update Answer [PUT]
+
+
++ Parameters
+    + businessId: 12345678 (string, required) - Id of the business.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + questionId: 7812  (number , required ) - unique question identifier
+        + answerId: 7813  (number , required ) - unique answer identifier
+        + answer: Enter answer here  (string,required) - text of the answer to be posted on Google Q&A profile ; minimum 1 one non-space character
+
+
+    + Body
+
+            {
+                  "questionId": 7812,
+                  "answerId": 7813,
+                  "question": "Enter answer here"
+            }
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [2478][]
+    
++ Response 401
+
+    [2479][]
+    
++ Response 401
+
+    [2481][]
+    
++ Response 401
+
+    [2485][]
+    
++ Response 401
+
+    [2483][]
++ Response 401
+
+    [2461][]
+    
++ Response 401
+
+    [2480][]
++ Response 401
+
+    [2482][]
+    
+
+## Delete Question [/v1/qna/question/delete{?api_key,businessId}]
+Delete existing questions. Only that question can be deleted which is posted by the owner.
+
+
+
+### Delete Question [POST]
+
++ Parameters
+    + businessId: 12345678 (string, required) - Id of the business.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + questionId: 7812 (number , required ) - unique question identifier
+
+
+    + Body
+
+            {
+                  "questionId": 7812
+                  
+            }
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [2478][]
+    
++ Response 401
+
+    [2479][]
+    
++ Response 401
+
+    [2481][]
+    
++ Response 401
+
+    [2485][]
+    
++ Response 401
+
+    [2483][]
++ Response 401
+
+    [2461][]
+    
++ Response 401
+
+    [2480][]
++ Response 401
+
+    [2482][]
+
+
+## Delete Answer [/v1/qna/answer/delete{?api_key,businessId}]
+Delete answers to existing questions. Only that answer can be deleted which is posted by the owner.
+
+
+
+### Delete Answer [POST]
+
++ Parameters
+    + businessId: 12345678 (string, required) - Id of the business.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + questionId: 7812 (number , required ) - unique question identifier
+        + answerId: 7813 (number , required ) - unique answer identifier
+        
+
+
+    + Body
+
+            {
+                  "questionId": 7812,
+                  "answerId":7813
+                  
+            }
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [2478][]
+    
++ Response 401
+
+    [2479][]
+    
++ Response 401
+
+    [2481][]
+    
++ Response 401
+
+    [2485][]
+    
++ Response 401
+
+    [2483][]
++ Response 401
+
+    [2461][]
+    
++ Response 401
+
+    [2480][]
++ Response 401
+
+    [2482][]
+
+
+## Delete All Questions and Answers [/v1/qna/question/deleteAll{?api_key,businessId}]
+Delete all A&A on the businessId provided.
+
+
+
+### Delete All Questions and Answers  [DELETE]
+
++ Parameters
+    + businessId: 12345678 (string, required) - Id of the business.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + questionId: 7812 (number , required ) - unique question identifier
+        + answerId: 7813 (number , required ) - unique answer identifier
+        
+
+
+    + Body
+
+            {
+                  "questionId": 7812,
+                  "answerId":7813
+                  
+            }
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [2478][]
+    
++ Response 401
+
+    [2479][]
+    
++ Response 401
+
+    [2481][]
+    
++ Response 401
+
+    [2485][]
+    
++ Response 401
+
+    [2483][]
++ Response 401
+
+    [2461][]
+    
++ Response 401
+
+    [2480][]
++ Response 401
+
+    [2482][]
+
+
+    
+    
+    
 # Group Ticketing
 Create standout customer support with ticketing across reviews, untagged, and survey responses.
 
@@ -14153,7 +14830,6 @@ Create reviews, untagged, and survey responses tickets.
 + Response 404
 
     [1175][]
-
 
 
 
@@ -14516,8 +15192,106 @@ Get tickets
 
     [1175][]
 
+   
+## Get All Questions and Answers[/v1/qna/get{?api_key,businessId}]
+Get all Questions and Answers for a Business
+
+### Get All Questions and Answers [POST]
+
++ Parameters
+    + businessId: 12345678 (string, required) - Id of the business.
+    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + startIndex: 25 (number , required ) - start index
+        + pageSize:  25 (number,required) - page size
 
 
+    + Body
+
+            {
+                  "startIndex": 0,
+                  "pageSize":25
+            }
+
+
++ Response 200 (application/json)
+
+
+    + Attributes
+        
+        + totalCount: 100   (number)  - Total number of questions
+          + questionsAndAnswers (array) - Ticket Details.
+            + (object)
+                + questionId: 188556 (number) - Unique question identifier.
+                + answeredByOwner: true (boolean) - Status of owner answer.
+                + askedByOwner: true (boolean) - Identifies if question was asked by page owner.
+                + question: This is Dummy question  (string) - text of question
+                + updatedBy: John (String) - Name of the person who
+                + activityCount: 4 (number) - Number of activities associated with the ticket.
+                + assignedTo (object) - Assignee details.
+                    + firstName: Steve (string) - First Name of the assignee.
+                    + lastName: Steve (string) - Last Name of the assignee.
+                    + name: Steve Smith (string) - Name  of the assignee.
+                    + emailId: steve@ymail.com (string) - Email id of the assignee.
+                + source (object) - Source details of the ticket
+                    + name: Google (string)- Source details
+                                                        [1] “Google”, in case of a review ticket.
+                                                        [2] “email”, in case of an untagged ticket.
+                                                        [3] “Training Feb 24th”, name of the survey in case of survey ticket.
+                + ticketType: review (string) - Type of the ticket.
+                + tags: newreview (array) - List of Ticket tags.
+                + reporter (object) - Ticket reporter details.
+                    + firstName: Steve (string) - First Name of the reporter
+                    + lastName: Smith (string) -  Last Name of the reporter
+
+        
+    + Body
+
+            {
+                  "question_id":2892
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [2478][]
+    
++ Response 401
+
+    [2479][]
++ Response 401
+
+    [2481][]
++ Response 401
+
+    [2485][]
+    
++ Response 401
+
+    [2483][]
 
 # Group Integration
 Birdeye integrates with various software or tools you use.
