@@ -4807,15 +4807,17 @@ Get Contact fetches Customer details.
 
     + Attributes
 
-        + id: 115339282 (string) - Id of enterprise customer. optional (if phone OR email is provided).
-        + email: ron@test.con (string) - Email of customer, optional (if phone or id is provided).
-        + phone: 123 456 7890 (string) - Phone of customer optional (if email or id is provided).
+        + id: 115339282 (string) - Id of enterprise customer. optional (if cid, phone or email is provided).
+        + cid: 293847172 (string) - Id of customer mapping on a location. optional (if id, phone or email is provided).
+        + email: ron@test.con (string) - Email of customer, optional (if phone, id or cid is provided).
+        + phone: 123 456 7890 (string) - Phone of customer optional (if email, id or cid is provided).
 
 
     + Body
 
             {
                 "id": 115339282,
+                "cid": 293847172,
                 "email": "test.user@test.com",
                 "phone": "(212) xxx-xxxx"
             }
@@ -4832,7 +4834,7 @@ Get Contact fetches Customer details.
         + phone: 123 456 7890 (string) - Phone of customer optional (if email is provided).
         + countryCode: US (string) - Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
         + smsOptin: false (boolean) - SMS Opting flag.
-        + mappings (array) - List of locations where customer is mapped.
+        + mappings (array) - List of locations where customer is mapped. If requested by cid, only that location's mapping is returned.
             + (object)
                 + cid: 12345 (number) - Customer location id.
                 + location: New York (string) - Name of the location.
