@@ -3988,7 +3988,9 @@ Get Reviews returns the list of reviews for an account with all its details.
 
     + Attributes
         + fromDate: 04/01/2013 (string) - Review date start in UTC format.
-        + toDate: 04/01/2013 (string) - Review date end in UTC format.
+        + toDate: 04/01/2013 (string) - Review date end in UTC format, eg if toDate is 04/01/2013, reviews of date 04/01/2013 is excluded .
+        + fromTimestamp: 1712986782000 (number) - Review start date in milliseconds, pass either fromDate or fromTimestamp.
+        + toTimestamp: 1715578782000 (number) - Review end date in milliseconds, pass either endDate or toTimestamp.
         + updateFromDate: 04/01/2013 (string) - Review response date start in UTC format.
         + updateToDate: 04/01/2013 (string) - Review response date end in UTC format.
         + sources: google (string) - Aggregation source name Note: use "our_website" to filter reviews posted on Birdeye platform or use "direct_feedback" for direct feedback.
@@ -4005,8 +4007,8 @@ Get Reviews returns the list of reviews for an account with all its details.
     + Body
 
             {
-                "fromDate":"04/01/2013",
-                "toDate":"05/3/2015",
+                "fromTimestamp": 1712986782000,
+                "toTimestamp": 1715578782000,
                 "updateFromDate":"04/01/2013",
                 "updateToDate":"05/3/2015",
                 "sources":["google","citysearch"],
