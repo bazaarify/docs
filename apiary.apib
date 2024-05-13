@@ -1740,7 +1740,7 @@ For example :
             "code": 400,
             "message": "Category can not be empty"
         }
-        
+
 ## 2457 [/2457]
 
 + Model (application/json)
@@ -1749,7 +1749,7 @@ For example :
             "code": 2457,
             "message": "Invalid sortby value. Allowed values are 'frequency' or 'keyword'"
         }
-        
+
 ## 2458 [/2458]
 
 + Model (application/json)
@@ -1758,7 +1758,7 @@ For example :
             "code": 2458,
             "message": "Invalid order value. Allowed values are 'asc' or 'desc'."
         }
-        
+
 ## 2177 [/2177]
 
 + Model (application/json)
@@ -1898,7 +1898,7 @@ For example :
             "code": 40001,
             "message": "invalid start date (supported format is yyyy-MM-dd)"
         }
-        
+
 ## 2296 [/2296]
 
 + Model (application/json)
@@ -1907,7 +1907,7 @@ For example :
             "code": 2296,
             "message": "Invalid Food Delivery link"
         }
-        
+
 ## 2297 [/2297]
 
 + Model (application/json)
@@ -1916,7 +1916,7 @@ For example :
             "code": 2297,
             "message": "Invalid Food Takeout link"
         }
-        
+
 ## 2290 [/2290]
 
 + Model (application/json)
@@ -1924,7 +1924,7 @@ For example :
         {
             "code": 2290,
             "message": "Food Takeout/Food Delivery not supported for gmb primary category"
-        }        
+        }
 
 # Group Business
 Create and maintain your business on Birdeye.
@@ -1936,7 +1936,7 @@ Create a business API creates a new business under a reseller.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + rid: 12334667201 (required, number) - Id of the Reseller.
     + email_id: sample@birdeye.com (required, string) - Business Email id.
 
@@ -2079,7 +2079,7 @@ Create a business API creates a new business under a reseller.
 
 + Response 400
 
-    [2154][]   
+    [2154][]
 
 + Response 400
 
@@ -2091,7 +2091,7 @@ Create a business API creates a new business under a reseller.
 
 + Response 400
 
-    [2157][]       
+    [2157][]
 
 + Response 400
 
@@ -2099,8 +2099,8 @@ Create a business API creates a new business under a reseller.
 
 + Response 400
 
-    [2166][]  
-    
+    [2166][]
+
 
 ## Search [/v1/business/{businessNumber}/search]
 
@@ -2111,7 +2111,7 @@ Search Business API searches a business using a name or number. Partial name mat
 
 + Parameters
 
-    + businessNumber: 12345678 (required, number) - Long id of the business, under which user wants to search for.
+    + businessNumber: 169744180007807 (required, number) - Long id of the business, under which user wants to search for.
 
 
 
@@ -2160,7 +2160,7 @@ Search Business API searches a business using a name or number. Partial name mat
                 + status : active (string) - The business status - active, demo, paid, suspended etc.
                 + createdAt: May 01, 2013 (string) - The date of business (or location) creation.
                 + createdBy: Sam Bilings (string) - Full name of the user who created the business (or location).
-                + businessNumber: ASC (string)- Unique number associated with every business (or location).
+                + businessNumber: 169744180007807 (string) - Unique number associated with every business (or location).
                 + type: SMB (string)- Returned in case of resellers, specifies whether account is SMB, enterprise, or reseller
 
 
@@ -2218,7 +2218,7 @@ Get Business API gets business information, including product features opted and
 
 + Parameters
     + business_id: 12345678 (string, required) - Id of the Business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -2466,7 +2466,7 @@ Update Business API updates business information.
 
 + Parameters
     + businessId: 12345678 (string, required) - The Business Number
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
@@ -2476,12 +2476,12 @@ Update Business API updates business information.
 
     + Attributes
 
-        + name: Drs. Chalker and Peterson, A Dental Partnership (string) - Name of the Business/Product (Max 1000 character long).
+        + name: Drs. Chalker and Peterson, A Dental Partnership (string) - Name of the Business/Product (Max 250 character long).
         + alias: Drs. Chalker (string) - Alias, Your internal way of identifying this location.
         + isAddressHidden: 0 (number) - If your business doesn’t have a place for your customers to visit, then you can hide your street address. 1 -> hide, 0 -> unhide (Note that this isn’t supported by all sites).
         + location (object) - Business address
-            + address1: 7405 Morro Rd (string) - Address of the business.
-            + address2: Suite 102 (string) - Address of the business.
+            + address1: 7405 Morro Rd (string) - Address of the business/location.
+            + address2: Suite 102 (string) - Address of the business/location.
             + city: Atascadero (string) - City (Max 1000 character long).
             + state: CA (string) - State (2 character state code).
             + countryCode: US (string) - Country Code (2 character country code).
@@ -2524,7 +2524,8 @@ Update Business API updates business information.
         + services: Other Dental Specialties, Orthodontists, Dentistry (required,string)- Services (Comma separated list of services offered; used for SEO).
         + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords about the business. Useful in SEO. Business keyword cannot be more than 1000 characters.
         + products: Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
-        + appointmentLink (string)- Let customers reserve tables by linking them to your reservations page.
+        + appointmentLink (string) - Let customers book appointments by redirecting them to your appointments page.
+        + reservationLink (string) - Let customers reserve tables by linking them to your reservations page.
         + menuLink (string) - Show customers what you serve by linking them to your menu.
         + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
         + impressum (string) - In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
@@ -2553,6 +2554,7 @@ Update Business API updates business information.
             + virtualCareLink (string) - Should be a valid url virtual care link
         + bingListing (object) - Provide bing data for listing purpose.
             + primaryCategoryBing (string) - Primary category of bing.
+            + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + categories (string) - You can add up to 3 categories.
             + bingDescription (string) - Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
@@ -2563,9 +2565,11 @@ Update Business API updates business information.
         + facebookListing (object) - Provide data for facebook listing purpose.
             + category (string) - You can add up to 3 categories.
             + facebookDescription (string) - Facebook description cannot be more than 255 characters.
+            + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
 
         + gmbListing (object) - Provide data for gmb listing purpose.
             + googleWebsiteUrl (string) - Website url will update on google listing.
+            + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
             + googleStoreId (string) - Store id for google.
             + primaryCategoryGmb (string) - Primary category of google.
             + additionalCategory (string) - You can add up to 5 subcategories.
@@ -2573,7 +2577,7 @@ Update Business API updates business information.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
             + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
-            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com        
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + socialProfileURLs (object) - Profile URLs for business on top rated social sites
             + facebookUrl: http://www.facebook.com/ChalkerandPetersonDental (string) - Facebook URL.
             + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
@@ -2764,7 +2768,8 @@ Update Business API updates business information.
                 "category1Bing": "",
                 "category2Bing": "",
                 "category3Bing": "",
-                "bingDescription": ""
+                "bingDescription": "",
+                "bingPhoneNumber": ""
               },
               "internalListing": {
                 "description": "pecialties\nBridal ServicesMakeup: Makeovers/Lessons/ Faux Lash applicationMassagesFacialsMicrocurrentMicrodermabrasionBody…",
@@ -2779,7 +2784,8 @@ Update Business API updates business information.
                 "category1Fb": "",
                 "category2Fb": "",
                 "category3Fb": "",
-                "facebookDescription": ""
+                "facebookDescription": "",
+                "facebookPhoneNumber": ""
               },
               "gmbListing": {
                 "googleWebsiteUrl": "",
@@ -2791,6 +2797,7 @@ Update Business API updates business information.
                 "additionalCategory4Gmb": "",
                 "additionalCategory5Gmb": "",
                 "googleDescription": "",
+                "googlePhoneNumber": ""
                 "attributes": {
                   "Crowd": [
                     {
@@ -3032,19 +3039,19 @@ Update Business API updates business information.
 + Response 401
 
     [1190][]
-    
+
 + Response 400
 
     [2296][]
-    
-+ Response 400
-
-    [2297][]      
 
 + Response 400
 
-    [2290][] 
-    
+    [2297][]
+
++ Response 400
+
+    [2290][]
+
 
 
 
@@ -3056,7 +3063,7 @@ Delete Business API deletes an account or sub-reseller under a reseller.
 
 + Parameters
     + business_Id: 12345678 (string, required) - Id of the Business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
@@ -3097,7 +3104,7 @@ Status Update Business API updates the activation status of a business. Activati
 + Parameters
 
     + business_id: 12345678 (string, required) - Business id whose status has to be changed. Returned by create business API
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + astatus: inactive (string, required) - New status for the business. Valid values are "active/inactive".
 
 + Request (application/json)
@@ -3142,7 +3149,7 @@ Child Businesses API gets all the businesses under an account.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + pid:  12345678 (number, required) - Reseller/Sub-reseller/Enterprise Id.
 
 + Request (application/json)
@@ -3240,7 +3247,7 @@ Public profile tabs API saves information on business profile tabs.
 
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the Business.
 
 + Request (application/json)
@@ -3320,7 +3327,7 @@ between businesses.
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the Business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -3413,6 +3420,59 @@ between businesses.
     [1167][]
 
 
+## Update Hierarchy [/v1/business/business-hierarchy/location/update-mapping/{businessId}{?api_key}]
+The Update Hierarchy API maps the hierarchical level to its corresponding level value for a given location. This API is used to update the hierarchical structure of locations, ensuring that each location is correctly placed within the hierarchy based on its level and value. It is important to avoid overwriting existing data by passing all values accurately.
+
+
+### Update Hierarchy [POST]
+
++ Parameters
+
+    + businessId: 12345678 (string, required) - Id of the Business.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+
+   + Attributes
+        + Level - It will be a key-value pair for each level with its corresponding level value.
+
+
+    + Body
+
+            {
+              "Division": "Division 3",
+              "Region": "Region 3",
+              "RD": "Richard Steves",
+              "Department": "Store 3"
+            }
+
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
+
++ Response 401
+
+    [1011][]
+
+
 
 ## Get Custom card details [/v1/business/{businessNumber}/profile/customcard]
 Get Customer card API returns the detail of customer card of the location
@@ -3493,7 +3553,6 @@ Get Customer card API returns the detail of customer card of the location
     [1011][]
 
 
-
 ## Get Timezone List [/v1/business/{businessNumber}/timezones]
 Get Timezone List API fetches the list of all available timezones.
 
@@ -3565,7 +3624,7 @@ Returns only birdeye (source: website) impressions by location as well as total.
 
 + Parameters
 
-    + businessNumber: 986031488 (string, required) - Account Business Number.
+    + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 
 + Request (application/json)
@@ -3576,14 +3635,14 @@ Returns only birdeye (source: website) impressions by location as well as total.
             api_key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
-         + businessNumbers: 987656789 (required,string)- list of the unique business ids associated with a business eg: [123456789, 987656789]
+         + businessNumbers: 169744180007807 (required,string)- list of the unique business ids associated with a business eg: [123456789, 987656789]
          + startDate: 2020-11-10 (required,string)-yyyy-MM-dd eg: "2020-11-10"
          + endDate: 2020-11-10 (required,string)-yyyy-MM-dd eg: "2020-11-10"
          + limit: 25 (number) - page size. default: 25
          + startIndex: 0 (number)- default: 0
          + sortby: 25 (string) - "location" or "total" default: total.
          + order: asc (string) - "asc" or "desc" default: desc
-       
+
     + Body
 
             {
@@ -3600,7 +3659,7 @@ Returns only birdeye (source: website) impressions by location as well as total.
 
 + Response 200
 
-  
+
     + Body
 
             {
@@ -3644,7 +3703,7 @@ Returns only birdeye (source: website) impressions by location as well as total.
 + Response 401
 
     [1167][]
-  
+
 
 
 # Group User
@@ -3654,7 +3713,7 @@ Add, delete and manage user profiles and permissions easily.
 Create User API creates a new user for a business.
 
 + Parameters
-    + api_key: abcdefg (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 12345678 (string, required) - Id of the Business.
 
 ### Create User [POST]
@@ -3749,7 +3808,7 @@ Delete User API removes user access from a business.
 ### Delete a user [DELETE]
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 123 (string, required) - Business Id from which user access has to be revoked
     + email: abc@test.com (string, required) - Email id of the user whose access has to be revoked
 
@@ -3798,7 +3857,7 @@ Forgot Password API generates forgot password mail to reset the password.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + email: abc@test.com  (string, required) - Email Id of the user whose access has to be revoked
 
 + Request (application/json)
@@ -3841,7 +3900,7 @@ Get User API gets details of a user.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + email: abc@test.com (string, required) - Email Id of the user whose details to be retrieved
 
 + Request (application/json)
@@ -3918,7 +3977,7 @@ Get Reviews returns the list of reviews for an account with all its details.
     + businessId: 12345678 (number, required) - Id of the Business.
     + sindex: 10 (integer, required) - Start index of the reviews. Refer API note for max permissible value.
     + count: 30 (integer, required) - Number of reviews to query. Refer API note for max permissible value.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + includeNonAggregatedReviews: false (boolean, optional) - Include Reviews whose auto-crawling is blocked e.g. PressGaney
 
 + Request (application/json)
@@ -3929,7 +3988,9 @@ Get Reviews returns the list of reviews for an account with all its details.
 
     + Attributes
         + fromDate: 04/01/2013 (string) - Review date start in UTC format.
-        + toDate: 04/01/2013 (string) - Review date end in UTC format.
+        + toDate: 04/01/2013 (string) - Review date end in UTC format, eg if toDate is 04/01/2013, reviews of date 04/01/2013 is excluded .
+        + fromTimestamp: 1712986782000 (number) - Review start date in milliseconds, pass either fromDate or fromTimestamp.
+        + toTimestamp: 1715578782000 (number) - Review end date in milliseconds, pass either endDate or toTimestamp.
         + updateFromDate: 04/01/2013 (string) - Review response date start in UTC format.
         + updateToDate: 04/01/2013 (string) - Review response date end in UTC format.
         + sources: google (string) - Aggregation source name Note: use "our_website" to filter reviews posted on Birdeye platform or use "direct_feedback" for direct feedback.
@@ -3946,8 +4007,8 @@ Get Reviews returns the list of reviews for an account with all its details.
     + Body
 
             {
-                "fromDate":"04/01/2013",
-                "toDate":"05/3/2015",
+                "fromTimestamp": 1712986782000,
+                "toTimestamp": 1715578782000,
                 "updateFromDate":"04/01/2013",
                 "updateToDate":"05/3/2015",
                 "sources":["google","citysearch"],
@@ -4091,7 +4152,7 @@ It also returns the list of review sources and review ratings.
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + statuses: published,parked (string[], optional) -  List of review status.
 
 
@@ -4197,9 +4258,9 @@ Eligible reviews can be replied to from the Birdeye platform using Review Reply 
 
 + Parameters
 
-    + businessNumber: 123456789 (string, required) - Id of the business.
+    + businessNumber: 169744180007807 (string, required) - Id of the business.
     + reviewId: 88778877 (string, required) - Review Id.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
@@ -4314,7 +4375,7 @@ Create Tags creates new tag(s) in the account.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the Business.
 
 
@@ -4361,7 +4422,7 @@ Delete Tag deletes any tag from the account.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Business Number.
     + tagname: positive2022 (string, required) - Tag name to be deleted.
 
@@ -4400,7 +4461,7 @@ Fetch Tags returns the list of tags associated with the account.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Business Number.
 
 
@@ -4443,7 +4504,7 @@ Assign the list of tags to the reviews on the basis of review filter.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 12345678 (string, required) - Id of the Business.
     + tag: positive2022&negative2022 (string, required) - List of tags.
 
@@ -4512,7 +4573,7 @@ Search reviews and remove tags removes the list of tags from reviews on the basi
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 12345678 (string, required) - Id of the Business.
     + tag: positive2022&negative2022 (string, required) - List of tags to be removed from reviews.
 
@@ -4578,7 +4639,7 @@ Remove particular tags from all reviews removes the list of tags from all the re
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 12345678 (string, required) - Id of the Business.
 
 
@@ -4631,7 +4692,7 @@ Customers can be created & updated using Create or Update Contact API.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the business.
 
 
@@ -4737,7 +4798,7 @@ Get Contact fetches Customer details.
 
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the business.
 
 
@@ -4749,15 +4810,17 @@ Get Contact fetches Customer details.
 
     + Attributes
 
-        + id: 115339282 (string) - Id of enterprise customer. optional (if phone OR email is provided).
-        + email: ron@test.con (string) - Email of customer, optional (if phone or id is provided).
-        + phone: 123 456 7890 (string) - Phone of customer optional (if email or id is provided).
+        + id: 115339282 (string) - Id of enterprise customer. optional (if cid, phone or email is provided).
+        + cid: 293847172 (string) - Id of customer mapping on a location. optional (if id, phone or email is provided).
+        + email: ron@test.con (string) - Email of customer, optional (if phone, id or cid is provided).
+        + phone: 123 456 7890 (string) - Phone of customer optional (if email, id or cid is provided).
 
 
     + Body
 
             {
                 "id": 115339282,
+                "cid": 293847172,
                 "email": "test.user@test.com",
                 "phone": "(212) xxx-xxxx"
             }
@@ -4774,12 +4837,12 @@ Get Contact fetches Customer details.
         + phone: 123 456 7890 (string) - Phone of customer optional (if email is provided).
         + countryCode: US (string) - Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
         + smsOptin: false (boolean) - SMS Opting flag.
-        + mappings (array) - List of locations where customer is mapped.
+        + mappings (array) - List of locations where customer is mapped. If requested by cid, only that location's mapping is returned.
             + (object)
                 + cid: 12345 (number) - Customer location id.
                 + location: New York (string) - Name of the location.
                 + bid: 710687 (number) - Location id.
-                + businessNumber: 161458406365307 (number) - Location Number.
+                + businessNumber: 169744180007807 (number) - Location Number.
         + tags: Tag One, Tag Two (string) - List of tags.
         + customFields (array) - List of Custom fields.
             + (object)
@@ -4859,7 +4922,7 @@ Customers can be deleted using Delete Contact API.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the business.
 
 
@@ -4905,7 +4968,7 @@ Customer check-in can be done using Check in API.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 12345678 (string, required) - Id of the business.
 
 
@@ -5012,7 +5075,7 @@ You can retrieve the customer history or customer activity log using the Custome
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + startDate: 12/30/2021 (string, optional) - The start date format should be MM/dd/yyyy. if start date is not set, then we will use the date customer was created.
     + endDate: 12/30/2022 (string,optional) - The end date format should be MM/dd/yyyy. if end date is not set, then we will use the current date.
     + customerId: 12344 (string,required) - Id of the customer.
@@ -5102,7 +5165,7 @@ Customer can be deleted using this API.
 + Parameters
 
     + customerId: 12345678 (string, required) - Id of enterprise customer.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -5158,7 +5221,7 @@ Customer can be subscribe/unsubscribe from Email & SMS using this API.
 
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -5223,7 +5286,7 @@ Contact list API fetches contact list for a business.
     + businessId: 12345678 (string, required) - Id of the Business.
     + page: 0 (number, required) - The page number.
     + size: 30 (number, required) - Maximum number of contacts return in response.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + sortby: lastActivityOn (string, required) - The sorting order of the list.
 
 + Request (application/json)
@@ -5311,7 +5374,7 @@ Customer or Lead list fetches the contact list for a business, which can be filt
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + tags: true (boolean, optional) - If tag data is required send true, default value is false.
     + customfields: true (boolean, optional) - If custom fields data is required send true, default is false.
 
@@ -5454,7 +5517,7 @@ Contact Us form can be integrated with Birdeye Inbox using Contact Us API.
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
@@ -5687,7 +5750,7 @@ Fetch Request URL gets the short link of the requested URL for the customer.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
@@ -5762,7 +5825,7 @@ Set Default Review Sources API updates default templates of businesses under a r
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
@@ -5811,7 +5874,7 @@ Get source list API returns the list of aggregations associated with the locatio
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the Business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -5885,7 +5948,7 @@ Get Source List-lite returns a list of aggregation aliases associated with the l
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -5950,7 +6013,7 @@ Add Aggregation Link adds the aggregation URL to the location.
 + Parameters
 
     + business_id: 12345678 (string, required) - Id of the business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
@@ -6029,7 +6092,7 @@ Delete Aggregation API deletes aggregation from the location/SMB.
 + Parameters
 
     + businessID: 12345678 (string, required) - Id of the business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + aggregationID: abcdefgh (number, required) - Id of the aggregation to be deleted.
 
 
@@ -6068,7 +6131,7 @@ Get Dashboard Data API gives you an overview of business data with data points l
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 12345678 (string, required) - Id of the Business.
 
 
@@ -6327,7 +6390,7 @@ Review conversion report API gives you the detail overview of the review request
 ### Get Review conversion report [GET]
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
     + fromDate: 01/13/2021 (string, optional) - Date from result is expected. Format MM/DD/YYYY.
     + toDate: 01/21/2021 (string, optional) - Date up to result is expected. Format MM/DD/YYYY.
@@ -6500,7 +6563,7 @@ Review and rating over time API gives you the number of reviews and average rati
 
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
     + sortby: rating (string, optional) - Values can be 'count' or 'rating'.
     + sorder: 0 (number, optional) - '0' for ascending and '1' for descending order.
@@ -6608,7 +6671,7 @@ Reviews & Rating By Location gives an overall view of how many reviews, and the 
 
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
     + sortby: rating (string, optional) - Values can be 'count' or 'rating'.
     + sorder: 0 (number, optional) - '0' for ascending and '1' for descending order.
@@ -6691,7 +6754,7 @@ Review Count & Rating API fetches the review count according to the rating.
 + Parameters
 
     + BusinessId: 12345678 (string, required) - Id of the business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
@@ -6786,7 +6849,7 @@ Review Count & Rating By Employee returns review count by rating associated with
 + Parameters
 
     + BusinessId: 12345678 (string, required) - Id of the business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
@@ -6902,7 +6965,7 @@ Insights Category Report by location provides the location-wise insights categor
 ### Insights Category Report by location report [POST]
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
 
 
@@ -6999,7 +7062,7 @@ Competitive Ranking Report provides the competitors ranking & rating data in the
 ### Competitive Ranking Report [POST]
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
 
 
@@ -7110,7 +7173,7 @@ NPS Over time gives you the NPS score for a selected period of time for all loca
 ### NPS Over time Report [POST]
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
 
 
@@ -7215,7 +7278,7 @@ NPS By Location gives you the NPS score for each location and the count of promo
 ### NPS By Location Report [POST]
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
 
 
@@ -7329,7 +7392,7 @@ Review By Source  API groups the number of reviews and average ratings in an acc
 
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
 
 
@@ -7417,7 +7480,7 @@ Visitor report groups the data according to source.
 
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
 
 
@@ -7518,7 +7581,7 @@ Usage report gives the usage details for the review requests, and the number of 
 ### Usage report [POST]
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + business_id: 12345678 (number, required) - Id of the Business.
     + reportType: rating (string, required) - The type of Report - Summary or Tabular.
     + sindex: 0 (number, required) - The starting index of the reviews
@@ -7743,7 +7806,7 @@ Get Survey fetches the survey designer page details for a particular survey. It 
 
 + Parameters
     + survey_id: 123 (integer, required) - Id of the Survey.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
     + lang: english (string, optional) - The survey locale, default is english
 
@@ -7960,7 +8023,7 @@ Post a survey response API submits the survey response for a particular survey u
 ### Post a survey response [POST]
 
 + Parameters
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + survey_id: 123 (integer, required) - Id of the Survey.
     + businessId: 12345678 (string, required) - Id of the Business.
 
@@ -8134,8 +8197,8 @@ List Responses for a Survey API fetches all the responses available for a partic
 
 + Parameters
     + survey_id: 123 (integer, required) - Id of the Survey.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessNumber: 1232131 (string, required) - The Business Number of Enterprise
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessNumber: 169744180007807 (string, required) - The Business Number of Enterprise
     + page: 0 (integer, optional) - The page number, starts with 0.
     + size: 30 (integer, optional) - The size of the page.
     + sortby: date (string, optional) - The sort by parameter.
@@ -8404,7 +8467,18 @@ List Responses for a Survey API fetches all the responses available for a partic
                               }
                            ]
                         }
-                     ]
+                     ],
+                     "overallScore": "9.0",
+                     "customParam":  {
+                          "order Date": "2024-03-21 06:14:00",
+                          "orderId": "52"
+                     },
+                     "extraParams": {
+                         "facilityId": "38861",
+                         "Integration Trigger": "Updated Rentals",
+                         "Current balance due": "0.0000",
+                         "Move In date": "12-19-2023"
+                     }
                   }
                ],
                "totalResponses":2,
@@ -8442,7 +8516,7 @@ Get All Surveys fetches the list of all available surveys on the business.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + sortby: modified (string, optional) - Sort results by lastModified[modified], Created[created], Response Count[response].
     + sorder: 0 (string, optional) - Sort order ascending (0) and descending (1).
     + searchStr: abc (string, optional) - Search survey by name or business location.
@@ -8520,7 +8594,7 @@ Create Survey API helps create a new survey for the required question structure 
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) -Id of the Business.
 
 
@@ -8932,7 +9006,7 @@ Update Survey Settings helps update the survey page appearance settings like Log
 + Parameters
 
     + surveyId: 123 (integer, required) - Survey ID
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the Business.
 
 
@@ -9093,7 +9167,7 @@ API to upload the Business Media.
 
 + Parameters
 
-    + businessNumber: 123456789 (string, required) - Location Number, in case of SMB it will be Business Number.
+    + businessNumber: 169744180007807 (string, required) - Location Number, in case of SMB it will be Business Number.
 
 
 + Request (application/json)
@@ -9219,7 +9293,7 @@ API to get the Business Media details.
 
 + Parameters
 
-    + businessNumber: 123456789 (string, required) - Location Number, in case of SMB it will be Business Number.
+    + businessNumber: 169744180007807 (string, required) - Location Number, in case of SMB it will be Business Number.
 
 
 + Request (application/json)
@@ -9289,7 +9363,7 @@ API to update the Business Media.
 
 + Parameters
 
-    + businessNumber: 123456789 (string, required) - Location Number, in case of SMB it will be Business Number.
+    + businessNumber: 169744180007807 (string, required) - Location Number, in case of SMB it will be Business Number.
     + mediaId: 62185029212 (string, required) - Id of the media item.
 
 
@@ -9356,7 +9430,7 @@ API to delete the Business Medias.
 
 + Parameters
 
-    + businessNumber: 123456789 (string, required) - Location Number, in case of SMB it will be Business Number.
+    + businessNumber: 169744180007807 (string, required) - Location Number, in case of SMB it will be Business Number.
 
 
 + Request (application/json)
@@ -9611,7 +9685,7 @@ Get details of Employees is a lite version API that retrieves a sorted list of a
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the Business.
 
 
@@ -9692,7 +9766,7 @@ List Conversations retrieves conversations for a business.
 + Request (application/json)
 
     + Attributes
-        + businessNumber: 755009344 (number, required) - The business number for which the details to be fetched, it can be either enterprise or location business number.
+        + businessNumber: 169744180007807 (number, required) - The business number for which the details to be fetched, it can be either enterprise or location business number.
         + apiKey: abcdefgh (string, required) -  Partner specific API key provided by Birdeye for data exchange.
         + startDate: 04/06/2020 (string) - Start fetching messages from this date in MM/DD/YYYY format.
         + endDate: 05/30/2020 (string) - Fetch messages till this date in MM/DD/YYYY format.
@@ -9911,7 +9985,7 @@ Create webhook subscription listens to webhook events on a specific passed URL.
             Accept: application/json
 
     + Attributes
-        + businessNumber: 755009344 (number, required) - The business number for which events to be subscribed. Should always be the account business number not the location business number.
+        + businessNumber: 169744180007807 (number, required) - The business number for which events to be subscribed. Should always be the account business number not the location business number.
         + apiKey: abcdefgh (string, required) -  Partner specific API key provided by Birdeye for data exchange.
         + events: conversation.created, conversation.updated, message.added, message.closed (array, required) - A list of event name strings from the list of available events that should trigger this webhook. Possible values are
                 conversation.created - A new conversation started,
@@ -9986,7 +10060,7 @@ Competitor of Enterprise Business retrieves list of all competitor businesses fo
 + Parameters
 
     + EnterpriseBusinessNumber: 231123123 (string, required) - Enterprise Business id.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + isCompetitor: true (boolean, required) - True for get competitor business of Enterprise Business and False for get Child Business of Enterprise Business.
 
 
@@ -10054,7 +10128,7 @@ Get Competitor Child Business retrieves all child locations.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + isCompetitor: true (boolean, required) - True for get competitor business of Enterprise Business and False for get Child Business of Enterprise Business.
 
 + Request (application/json)
@@ -10167,7 +10241,7 @@ Get Business Competitors retrieves competitor’s details for an enterprise.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 986031488 (string, required) - Account Business Number.
 
 
@@ -10271,8 +10345,8 @@ Create New Competitor Enterprise creates a new competitor for an enterprise.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessNumber: 986031488 (string, required) - Account Business Number.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 
 + Request (application/json)
@@ -10311,7 +10385,7 @@ Create New Competitor Enterprise creates a new competitor for an enterprise.
         + templateid: 0 (number) - Template Id.
         + isAggregationRequired: 1 (number) - Is agrgegation required.
         + type: Enterprise-Location-Competitor (string) - Type.
-        + businessNumber: 161295237142347 (number) - Enterprise Competitor Business Number.
+        + businessNumber: 169744180007807 (number) - Enterprise Competitor Business Number.
         + businessAlreadyPresent: false (boolean) - Is Business Already Present.
 
     + Body
@@ -10351,7 +10425,7 @@ Create New Child Business in Competitor Enterprise creates a new child business 
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 986031488 (string, required) - Account Business Number.
 
 
@@ -10368,7 +10442,7 @@ Create New Child Business in Competitor Enterprise creates a new child business 
         + templateid: 0 (number) - Template Id.
         + isAggregationRequired: 1 (number) - Is agrgegation required.
         + type: Enterprise-Location-Competitor (string) - Type.
-        + businessNumber: 161295237142347 (number) - Enterprise Competitor Business Number.
+        + businessNumber: 169744180007807 (number) - Enterprise Competitor Business Number.
         + businessAlreadyPresent: false (boolean) - Is Business Already Present.
 
 
@@ -10411,9 +10485,9 @@ Add new Competitor Aggregation URL adds an aggregation URL for a competitor loca
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Id of the business.
+    + businessNumber: 169744180007807 (number, required) - Id of the business.
     + compAccountId : 234567 (number, required) - Competitor Account Id.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
@@ -10492,7 +10566,7 @@ Get Competitor Review returns the list of review(s) of competitors for an accoun
 
     + sindex: 10 (integer, required) - Start index of the reviews.
     + count: 30 (integer, required) - Number of reviews to query.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + isCompetitor: false (boolean, required) - True for Competitor Review.
 
 
@@ -10657,8 +10731,8 @@ Get Score retrieves Insights category details for a competitor.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessNumber: 986031488 (string, required) - Account Business Number.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 
 + Request (application/json)
@@ -10808,8 +10882,8 @@ Get Theme Statistics retrieves Insights topic details for a competitor.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessNumber: 986031488 (string, required) - Account Business Number.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 + Request (application/json)
 
@@ -10997,8 +11071,8 @@ Get Keyword Statistics retrieves Insights keywords details for a competitor.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
-    + businessNumber: 986031488 (string, required) - Account Business Number.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 + Request (application/json)
 
@@ -11185,7 +11259,7 @@ Fix Listing publishes information on online listing sources. We post presence in
 + Parameters
 
     + b_id: 12345678 (number, required) - Id of the business.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -11225,7 +11299,7 @@ Get Location Status retrieves status for each sources for a given business. Heal
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Id of the business.
+    + businessNumber: 169744180007807 (number, required) - Id of the business.
 
 + Request (application/json)
 
@@ -11255,7 +11329,7 @@ Get Location Status retrieves status for each sources for a given business. Heal
             + phone (string) - Phone number Format is (xxx) xxx-xxxx.
             + address: 420 E S Temple St #220 (string) - Address of the business.
         + health (array) -  Aggregates sum and percentage metrics for distinct statuses
-             
+
 
     + Body
 
@@ -11312,7 +11386,7 @@ Get Location Status retrieves status for each sources for a given business. Heal
                           "count": 1,
                           "percentage": 14.29
                         }
-                      ]    
+                      ]
              }
 
 + Response 401
@@ -11339,7 +11413,7 @@ Insights/Analytics for Google Listings of a given business.
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the account.
 
 + Request (application/json)
@@ -11381,7 +11455,7 @@ Insights/Analytics for Google Listings of a given business.
         + impressionCountTotalCount: 0 (number) - The number of users who saw the activity from your page including posts, check-ins, and ads.
         + liveCount: 10 (number) - Total no of synched sites for a business.
         + entityCount: 1 (number) - Total businesses count.
-        + viewMode:  (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
+        + viewMode  (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
 
     + Body
 
@@ -11423,7 +11497,7 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + reportType: google_view_search_map (string, required) - Report type, Possible values [google_view_search_map, gmb_customer_actions_map, fb_users_reached,fb_users_engaged, bing_impression_count,bing_customer_actions]
     + businessId: 12345678 (number, required) - Id of the account.
 
@@ -11438,7 +11512,7 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
         + businessNumbers: 23456788,1231313 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
         + startDate (string) - Start Date, Format: yyyy-MM-dd.
         + endDate (string) - End Date, Format: yyyy-MM-dd. If startDate and endDate are not provided, then the last 3 months date range will be chosen with groupByType as the day.
-        + viewMode: (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
+        + viewMode (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
         + groupByType: year (string) - Group the data accordingly. The default value will be the week. Possible values are
                                                         day,
                                                         week,
@@ -11517,7 +11591,7 @@ The Get GMB Attributes API fetches the list of applicable GMB attributes for the
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
     + categoryId: gcid:electrical_installation_service (string, required) - Category id.
     + countryCode: US (string, required) - Code of the country, Possible values are US,CA,AU,PR,NZ,MX,IN,UK,FR,IT.
 
@@ -11632,7 +11706,7 @@ The Get GMB Attributes API fetches the list of applicable GMB attributes for the
 + Response 400
 
     [4013][]
-    
+
 
 ## Get Apple Attributes [/v1/listing/{businessNumber}/apple-location-attributes-list]
 The Get Apple Attributes API fetches the list of applicable Apple attributes. An attribute is typically something that helps describe your location better. E.g.: You provide paid parking or that your location is kid friendly etc.
@@ -11642,8 +11716,8 @@ The Get Apple Attributes API fetches the list of applicable Apple attributes. An
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
-    
+    + businessNumber: 169744180007807 (number, required) - Business Number.
+
 + Request (application/json)
 
 
@@ -11658,9 +11732,9 @@ The Get Apple Attributes API fetches the list of applicable Apple attributes. An
     + Attributes
         + Accessibility (array) - This is dynamic field. Depends upon request inputs.
             + (object)
-                
+
     + Body
-             
+
             {
                 "crossbusiness.family_kids": [{
                         "attributeId": "kidsclub",
@@ -11712,8 +11786,8 @@ The Get Apple Attributes API fetches the list of applicable Apple attributes. An
 + Response 400
 
     [4013][]
-    
-    
+
+
 ## Get Apple Action Links [/v1/listing/{businessNumber}/apple-action-links]
 The Get Apple Action Links fetches the list of applicable Apple Action Link Types. Apple action links are the click throughs that are displayed in the action row on your Apple Maps listings also known as the Apple Maps Placecard.
 
@@ -11723,8 +11797,8 @@ The Get Apple Action Links fetches the list of applicable Apple Action Link Type
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
-    
+    + businessNumber: 169744180007807 (number, required) - Business Number.
+
 + Request (application/json)
 
 
@@ -11739,9 +11813,9 @@ The Get Apple Action Links fetches the list of applicable Apple Action Link Type
     + Attributes
         + Accessibility (array) - This is dynamic field. Depends upon request inputs.
             + (object)
-               
+
     + Body
-             
+
 
              [
                 {
@@ -11788,7 +11862,7 @@ The Get Apple Action Links fetches the list of applicable Apple Action Link Type
 
 + Response 400
 
-    [4013][]      
+    [4013][]
 
 ## Get Category List [/v1/listing/{businessNumber}/category-list{?sourceName,countryCode}]
 The Get Category List API fetches the list of category values for the selected source.
@@ -11797,7 +11871,7 @@ The Get Category List API fetches the list of category values for the selected s
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
     + sourceName: BING (string, required) -  Source name for which category data needs to be fetched. Possible values are BING, HEALTHCARE, GMB, VENDOR, FACEBOOK, APPLE.
     + countryCode: US (string, required) - Code of the country, Possible values are US,CA,AU,PR,NZ,MX,IN,UK,FR,IT.
 
@@ -11882,7 +11956,7 @@ Create Listing API publishes information on online listing sources. We post pres
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
 
 + Request (application/json)
 
@@ -11895,7 +11969,7 @@ Create Listing API publishes information on online listing sources. We post pres
 
    + Attributes
         + businessInfo - Business Information
-            + name: Drs. Chalker and Peterson, A Dental Partnership (required, string) - Name of the Business/Location. Should be Max 1000 characters long.
+            + name: Drs. Chalker and Peterson, A Dental Partnership (required, string) - Name of the Business/Product (Max 250 character long).
             + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
             + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
@@ -11905,8 +11979,8 @@ Create Listing API publishes information on online listing sources. We post pres
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
             + location (object) - Business address
-                + address1: 7405 Morro Rd (string) - Address of the business.
-                + address2: Suite 102 (string) - Address of the business.
+                + address1: 7405 Morro Rd (string) - Address of the business/location.
+                + address2: Suite 102 (string) - Address of the business/location.
                 + city: Atascadero (string) - City (Max 1000 character long).
                 + state: CA (string) - State (2 character state code).
                 + countryCode: US (string) - Country Code (2 character country code).
@@ -11915,7 +11989,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
             + languages: English, Spanish (array) - Languages.
-            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api.  NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday. 
+            + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api.  NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
             Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
             + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
@@ -11938,7 +12012,8 @@ Create Listing API publishes information on online listing sources. We post pres
             + services:  Other Dental Specialties, Orthodontists, Dentistry (required,string) - Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
             + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
             + products: Invisalign, Cookies Set of 8, Brochure design & prints (string) - Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
-            + appointmentLink (string)- Let customers reserve tables by linking them to your reservations page.
+            + appointmentLink (string) - Let customers book appointments by redirecting them to your appointments page.
+            + reservationLink (string) - Let customers reserve tables by linking them to your reservations page.
             + menuLink (string) - Show customers what you serve by linking them to your menu.
             + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
             + impressum (string) - In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
@@ -11977,38 +12052,39 @@ Create Listing API publishes information on online listing sources. We post pres
             + virtualCareLink (string) - Should be a valid url virtual care link
         + bingListing (object) - This data will be used to update your Bing listing.
             + primaryCategoryBing (string) - Primary category of bing.
-            + categories (string) - You can add a maximum of up to 3 categories.
+            + bingCategories (array) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
-            + category (string) - Primary category of business.
+            + subCategories (array) - Primary category of business.
             + subcategory (string) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
-            + category (string) - You can add up to 3 categories.
+            + categories (array) - You can add up to 3 categories.
             + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
         + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
             + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
+            + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
             + googleStoreId (string) - Store id for google.
             + primaryCategoryGmb (string) - Primary category of google.
-            + additionalCategory (string) - You can add up to 5 subcategories.
+            + additionalCategories (array) - You can add up to 5 subcategories.
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
             + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
-            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com        
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
-            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.   
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
 crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
-            + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories.
+            + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories. Note: This is a Mandatory field if thirdPartyCategory is available.
         + socialProfileURLs (object) - Profile URLs for business on top rated social sites
             + facebookUrl: http://www.facebook.com/ChalkerandPetersonDental (string) - Facebook URL.
             + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
@@ -12212,7 +12288,7 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                                 }
                               ]
                             },
-                    "wholeWeekOperating": 0, 
+                    "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
                             "day": 0,
@@ -12492,18 +12568,18 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
 + Response 429
 
     [89][]
-    
+
 + Response 400
 
     [2296][]
-    
-+ Response 400
-
-    [2297][]      
 
 + Response 400
 
-    [2290][]    
+    [2297][]
+
++ Response 400
+
+    [2290][]
 
 
 ## Update Listing [/v1/listing/{businessNumber}/update]
@@ -12514,7 +12590,7 @@ The Update Listing API will update the location details on all your listings sit
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
 
 + Request (application/json)
 
@@ -12527,7 +12603,7 @@ The Update Listing API will update the location details on all your listings sit
 
    + Attributes
         + businessInfo - Business Information
-            + name: Drs. Chalker and Peterson, A Dental Partnership (required, string) - Name of the Business/Location. Should be Max 1000 characters long.
+            + name: Drs. Chalker and Peterson, A Dental Partnership (required, string) - Name of the Business/Product (Max 250 character long).
             + phone (required, string) - Your official Business Phone number. Format is (xxx) xxx-xxxx.
             + websiteUrl: http://www.diecispa.org/ (string) - Business website url.
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
@@ -12537,8 +12613,8 @@ The Update Listing API will update the location details on all your listings sit
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
             + location (object) - Business address
-                + address1: 7405 Morro Rd (string) - Address of the business.
-                + address2: Suite 102 (string) - Address of the business.
+                + address1: 7405 Morro Rd (string) - Address of the business/location.
+                + address2: Suite 102 (string) - Address of the business/location.
                 + city: Atascadero (string) - City (Max 1000 character long).
                 + state: CA (string) - State (2 character state code).
                 + countryCode: US (string) - Country Code (2 character country code).
@@ -12570,7 +12646,8 @@ The Update Listing API will update the location details on all your listings sit
             + services:  Other Dental Specialties, Orthodontists, Dentistry (required,string) - Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
             + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
             + products: Invisalign, Cookies Set of 8, Brochure design & prints (string) - Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
-            + appointmentLink (string)- Let customers reserve tables by linking them to your reservations page.
+            + appointmentLink (string) - Let customers book appointments by redirecting them to your appointments page.
+            + reservationLink (string) - Let customers reserve tables by linking them to your reservations page.
             + menuLink (string) - Show customers what you serve by linking them to your menu.
             + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
             + impressum (string) - In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
@@ -12609,38 +12686,39 @@ The Update Listing API will update the location details on all your listings sit
             + virtualCareLink (string) - Should be a valid url virtual care link
         + bingListing (object) - This data will be used to update your Bing listing.
             + primaryCategoryBing (string) - Primary category of bing.
-            + categories (string) - You can add a maximum of up to 3 categories.
+            + bingCategories (array) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
-            + category (string) - Primary category of business.
+            + subCategories (array) - Primary category of business.
             + subcategory (string) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
-            + category (string) - You can add up to 3 categories.
+            + categories (array) - You can add up to 3 categories.
             + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
         + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
             + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
+            + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
             + googleStoreId (string) - Store id for google.
             + primaryCategoryGmb (string) - Primary category of google.
-            + additionalCategory (string) - You can add up to 5 subcategories.
+            + additionalCategories (array) - You can add up to 5 subcategories.
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
             + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
-            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com        
+            + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
-            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.   
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
                   crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
-            + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.            
+            + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
-            + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories.
+            + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories. Note: This is a Mandatory field if thirdPartyCategory is available.
         + socialProfileURLs (object) - Profile URLs for business on top rated social sites
             + facebookUrl: http://www.facebook.com/ChalkerandPetersonDental (string) - Facebook URL.
             + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
@@ -12844,7 +12922,7 @@ The Update Listing API will update the location details on all your listings sit
                                 }
                               ]
                             },
-                    "wholeWeekOperating": 0,    
+                    "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
                             "day": 0,
@@ -13127,14 +13205,14 @@ The Update Listing API will update the location details on all your listings sit
 + Response 400
 
     [2296][]
-    
-+ Response 400
-
-    [2297][]      
 
 + Response 400
 
-    [2290][]    
+    [2297][]
+
++ Response 400
+
+    [2290][]
 
 
 ## Get Listing [/v1/listing/{businessNumber}/get]
@@ -13145,7 +13223,7 @@ The Get Listing API will get the listing information for the given business numb
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
 
 + Request (application/json)
 
@@ -13204,7 +13282,8 @@ The Get Listing API will get the listing information for the given business numb
             + services:  Other Dental Specialties, Orthodontists, Dentistry (required,string) - Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
             + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
             + products: Invisalign, Cookies Set of 8, Brochure design & prints (string) - Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
-            + appointmentLink (string)- Let customers reserve tables by linking them to your reservations page.
+            + appointmentLink (string) - Let customers book appointments by redirecting them to your appointments page.
+            + reservationLink (string) - Let customers reserve tables by linking them to your reservations page.
             + menuLink (string) - Show customers what you serve by linking them to your menu.
             + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
             + impressum (string) - In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
@@ -13243,23 +13322,24 @@ The Get Listing API will get the listing information for the given business numb
             + virtualCareLink (string) - Should be a valid url virtual care link
         + bingListing (object) - This data will be used to update your Bing listing.
             + primaryCategoryBing (string) - Primary category of bing.
-            + categories (string) - You can add a maximum of up to 3 categories.
+            + bingCategories (array) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
-            + category (string) - Primary category of business.
+            + subCategories (array) - Primary category of business.
             + subcategory (string) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
-            + category (string) - You can add up to 3 categories.
+            + categories (array) - You can add up to 3 categories.
             + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
         + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
             + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
+            + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
             + googleStoreId (string) - Store id for google.
             + primaryCategoryGmb (string) - Primary category of google.
-            + additionalCategory (string) - You can add up to 5 subcategories.
+            + additionalCategories (array) - You can add up to 5 subcategories.
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
@@ -13268,13 +13348,13 @@ The Get Listing API will get the listing information for the given business numb
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
-            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.   
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
                crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
-            + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.            
+            + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
-            + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories.
+            + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories. Note: This is a Mandatory field if thirdPartyCategory is available.
         + socialProfileURLs (object) - Profile URLs for business on top rated social sites
             + facebookUrl: http://www.facebook.com/ChalkerandPetersonDental (string) - Facebook URL.
             + twitterUrl: https://twitter.com/DrsChaAndPet (string) - Business Twitter URL.
@@ -13756,7 +13836,7 @@ The Get Listing API will get the listing information for the given business numb
 + Response 429
 
     [89][]
-    
+
 ## Get More Hours Type [/v1/listing/{businessNumber}/more-hours-type]
 Get supported more hours type for a location. This will depend on the country and gmb primary category for the particular location.
 
@@ -13764,7 +13844,7 @@ Get supported more hours type for a location. This will depend on the country an
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
 
 + Request (application/json)
 
@@ -13779,7 +13859,7 @@ Get supported more hours type for a location. This will depend on the country an
 
    + Attributes (array)
         + (object)
-          
+
     + Body
 
             [
@@ -13835,7 +13915,7 @@ Google keyword: Top keywords searched for which your business is ranked.
 
 + Parameters
 
-    + businessNumber: 986031488 (string, required) - Account Business Number.
+    + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 
 + Request (application/json)
@@ -13848,13 +13928,13 @@ Google keyword: Top keywords searched for which your business is ranked.
     + Attributes
         + selectedMonth: Oct 2023,NOV 2023 (array , required ) - Filter months for which keyword data is required
         + selectedkeywords: prom (array) - Gives you keyword count for the selected keywords. keywordsSearch: To search by keywords that may also exist in search phrases, including the keyword itself.
-        + keywordsSearch: (string) - To search by keywords that may also exist in search phrases, including the keyword itself.
-        + limit: (number) - Specify number of records to return.
-        + startIndex: (number) - Index to start search from. Default value 0.
-        + sortby: (string) - Possible values “frequency” or “keyword”.
-        + order: (string) - Possible values “asc” or “desc”.
+        + keywordsSearch (string) - To search by keywords that may also exist in search phrases, including the keyword itself.
+        + limit: 25 (number) - Specify number of records to return.
+        + startIndex: 0 (number) - Index to start search from. Default value 0.
+        + sortby: frequency (string) - Possible values “frequency” or “keyword”.
+        + order: desc (string) - Possible values “asc” or “desc”.
         + businessNumbers: 123456789, 987656789 (array) - list of the unique business ids associated with a business.
-       
+
 
     + Body
 
@@ -13931,14 +14011,14 @@ Google keyword: Top keywords searched for which your business is ranked.
 + Response 401
 
     [1167][]
-    
-+ Response 400
-
-    [2457][] 
 
 + Response 400
 
-    [2458][]     
+    [2457][]
+
++ Response 400
+
+    [2458][]
 
 ## Deactivate Listing [/v1/listing/{businessNumber}/deactivate]
 Deactivate Listing API stops publishing any information on the given online directories/ listings sites (as per your plan/ package chosen).
@@ -13950,7 +14030,7 @@ Deactivate Listing API stops publishing any information on the given online dire
 
 + Parameters
 
-    + businessNumber: 12345678 (number, required) - Business Number.
+    + businessNumber: 169744180007807 (number, required) - Business Number.
 
 + Request (application/json)
 
@@ -13970,21 +14050,494 @@ Deactivate Listing API stops publishing any information on the given online dire
 + Response 429
 
     [89][]
-    
-    
+
+
+
+# Group Ticketing
+Create standout customer support with ticketing across reviews, untagged, and survey responses.
+
+## Create ticket [/resources/v1/ticket/{businessNumber}/create-ticket]
+Create reviews, untagged, and survey responses tickets.
+
+### Create ticket [PUT]
+
++ Parameters
+
+    + businessNumber: 169744180007807 (number, required) - Business number of the location on which we want to create a ticket.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + externalId: 3943351204239963055 (number) - Public Review Id for which you want to create ticket, Mandatory and applicable for creating review ticket.
+        + assignedTo: warne@ymail.com (required, string) - EmailId of the user to whom the ticket will be assigned.
+        + ticketType: review (required, string) - Type of ticket you want to create. Possible values:
+                                                review,
+                                                untagged,
+                                                SURVEY
+        + customer (object) -Customer details for which ticket is created, Mandatory and applicable for untagged ticket
+            + emailId: steven@ymail.com (string) - Email id of the customer.
+            + firstName: Steve (string) - First name of the customer.
+            + lastName: Smith (string) - Last name of the customer.
+            + location (object) - Location details of the customer.
+                + city: Dallas (string) - City of the customer’s location.
+                + state: Texas (string) - State of the customer’s location.
+            + phone: 4032365164 (number)- Phone number of the customer.
+        + description: Issue with the Store service (string) - Description of the ticket. Applicable for untagged and survey ticket
+        + sourceType: Email (string) - Source Type of the ticket. Applicable for untagged ticket Possible values:
+                                        Email,
+                                        Phone,
+                                        Chat,
+                                        Internal,
+                                        Social media
+        + surveyId: 43503 (number) - Id of the survey for which we want to create a ticket. Applicable for survey ticket
+        + surveyResponseId: 13577112 (number) - Id of the survey response for which we want to create a ticket. Applicable for survey ticket
+        + additionalParams (array) - If you want to create tickets of survey for particular question and answer. Applicable for survey ticket
+            + answerId: 1024530591 (number) - Id of any of the answers on the survey. Applicable for survey ticket
+            + questionId: 221132 (number) - Id of any of the questions on the survey. Applicable for survey ticket
+
+
+
+
+
+
+    + Body
+
+            {
+                "externalId": 3943351204239963055,
+                "assignedTo": "pranav.singh@birdeye.com",
+                "ticketType":"review",
+                "customer": {
+                    "emailId": "test+4@yopmail.com",
+                    "firstName": "Steve",
+                    "lastName": "Smith",
+                    "location": {
+                        "city": "Dallas",
+                        "state": "Texas"
+                    },
+                    "phone": ""
+                },
+                "description": "Issue with the Store service",
+                "sourceType": "internal"
+            }
+
+
+
++ Response 200
+
+    + Attributes
+        + ticketId: 882382 (number) - Id of the new ticket created.
+
+
+
+    + Body
+
+            {
+                "ticketId": 882382
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1033][]
+
++ Response 404
+
+    [1175][]
+
+
+
+
+## Add Ticket Comments [/resources/v1/ticket/{businessNumber}/comment-activity]
+Add comment activity on tickets.
+
+### Add Ticket Comments [POST]
+
++ Parameters
+
+    + businessNumber: 169744180007807 (number, required) - Business number of the location.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + comment: Had a chat with customer, he will visit again. (required, string) - Comment to be added on ticket.
+        + ticketId: 886172 (required, number) - Id of the ticket.
+        + userEmail: steve@ymail.com (required,string) - EmailId of the user who is adding the comment.
+
+
+
+    + Body
+
+            {
+                "comment": "Had a chat with customer, he will visit again.",
+                "ticketId": "886172",
+                "userEmail": "steve@ymail.com"
+            }
+
+
+
++ Response 200
+
+    + Attributes
+        + ticketId: 882382 (number) - Id of the new ticket created.
+
+
+
+    + Body
+
+            {
+                "ticketId": 882382
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1033][]
+
++ Response 404
+
+    [1175][]
+
+
+
+
+## Update ticket [/resources/v1/ticket/{businessNumber}/update]
+Update the ticket status or ticket assignee.
+
+
+### Update ticket [PUT]
+
++ Parameters
+
+    + businessNumber: 169744180007807 (number, required) - Business number of the location.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + ticketUpdateMessages (array) - Update ticket.
+            + (object)
+                + assignedTo: steve@ymail.com (string) - New assignee of the ticket.
+                + ticketId: 882382 (string) - Id of the ticket.
+                + ticketStatus: assigned (string) - Status to be changed.
+
+
+    + Body
+
+            {
+                "ticketUpdateMessages": [{
+                    "assignedTo": "steve@ymail.com",
+                    "ticketId": "882382",
+                    "ticketStatus": "assigned"
+                }],
+                "userEmail": "pranav.singh@birdeye.com"
+            }
+
+
+
++ Response 200
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1033][]
+
++ Response 404
+
+    [1175][]
+
+
+
+
+## Get All Ticket Data [/resources/v1/ticket/{businessNumber}/get/all?{?op,sortOrder,count,sIndex,sortBy,totalCount}]
+Get tickets
+
+### Get All Ticket Data [POST]
+
++ Parameters
+
+    + businessNumber: 169744180007807 (number, required) - Business number of the account.
+    + op: 3 (number) - Possible values are: [1] will display ticket count only, [3] will display all the data of the ticket. Default value - 3.
+    + sIndex: 0 (number) - Start index of the response. Default value - 0
+    + count: 25  (number) - Number of tickets want to get in the response. Default value - 25
+    + sortBy: 2  (number) - Sort options, Possible values [2] will sort on the basis of ticket creation date. [3] will sort on the basis of characters of business aliases. Default value 2.
+    + sortOrder: 1 (number) - Sort Order [0] will sort the data in ascending order. [1] this will sort the data in descending order. Default value - 1
+    + totalCount: true (Boolean) false, total count would not be displayed. true, total count would be displayed along with the data of all the tickets. Default Value - false
+
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + assignees: steve@ymail.com,smith@ymail.com (array) - List of assignee email id.
+        + businessNumbers: 123123123,12314231 (array) - List of Location Business Numbers.
+        + fromDate: 1581230064000 (number) - Epoc start date.
+        + toDate: 1707460464000 (number) - Epoc end date.
+        + sourceAliases: google (array) - Source alias.
+        + sourceTypes: phone (array) - Source Type.
+        + tagNames: newReview (array) - Tag assigned to any review ticket.
+        + ticketStatuses: new (array) - Filter tickets with status.
+        + ticketTypes: review,survey (array) - List of ticket type, Possible values
+                                                review,
+                                                untagged,
+                                                survey
+
+
+    + Body
+
+            {
+                "assignees": [],
+                "businessNumbers": [],
+                "fromDate": 1581230064000,
+                "sourceAliases": [""],
+                "sourceTypes": ["phone","socialmedia","chat","internal"],
+                "tagNames": ["newReview"],
+                "ticketStatuses": ["assigned", "new"],
+                "ticketTypes": ["review", "survey", "untagged"],
+                "toDate": 1707460464000
+            }
+
+
+
++ Response 200
+
+    + Attributes
+        + ticketDetails (array) - Ticket Details.
+            + (object)
+                + id: 188556 (number) - Id of the ticket.
+                + status: new (string) - Ticket status.
+                + rating: 5.0 (number) - Review rating.
+                + externalId: 213243231 (string) - Public review id.
+                + description: Customer will visit again (number) - Description of the ticket.
+                + activityCount: 4 (number) - Number of activities associated with the ticket.
+                + assignedTo (object) - Assignee details.
+                    + firstName: Steve (string) - First Name of the assignee.
+                    + lastName: Steve (string) - Last Name of the assignee.
+                    + name: Steve Smith (string) - Name  of the assignee.
+                    + emailId: steve@ymail.com (string) - Email id of the assignee.
+                + source (object) - Source details of the ticket
+                    + name: Google (string)- Source details
+                                                        [1] “Google”, in case of a review ticket.
+                                                        [2] “email”, in case of an untagged ticket.
+                                                        [3] “Training Feb 24th”, name of the survey in case of survey ticket.
+                + ticketType: review (string) - Type of the ticket.
+                + tags: newreview (array) - List of Ticket tags.
+                + reporter (object) - Ticket reporter details.
+                    + firstName: Steve (string) - First Name of the reporter
+                    + lastName: Smith (string) -  Last Name of the reporter
+
+
+
+
+    + Body
+
+            {
+                "ticketDetails": [{
+                    "id": 188556,
+                    "status": "assigned",
+                    "rating": 5.0,
+                    "externalId": 2131605005145285326,
+                    "date": "2020-02-14 00:08:00",
+                    "postedOn": "2020-02-08 00:00:00",
+                    "updateDate": "2020-08-11 00:00:00",
+                    "created": "2020-02-14 12:08:02",
+                    "description": "Room was outstanding....location was also good....",
+                    "activityCount": 4,
+                    "assignedTo": {
+                        "firstName": "Atul",
+                        "lastName": "Ghainna",
+                        "emailId": "atulkumar.ghainna@birdeye.com",
+                        "name": "Atul Ghainna"
+                    },
+                    "business": {
+                        "name": "JYSK - Whitby",
+                        "alias": "JYSK - Whitby",
+                        "number": 157851547625021,
+                        "phone": "(905) 451-9054"
+                    },
+                    "source": {
+                        "name": "Airbnb"
+                    },
+                    "ticketType": "review",
+                    "tags": [
+                        "awesome",
+                        "it was good",
+                        "newtest",
+                        "promoters!!!",
+                        "great service",
+                        "time",
+                        "poor",
+                        "Enjoy",
+                        "newtag",
+                        "test",
+                        "check",
+                        "good review",
+                        "excellent",
+                        "Dirty Car",
+                        "User request no response",
+                        "customer service",
+                        "nice"
+                    ],
+                    "reporter": {
+                        "firstName": "Megha",
+                        "lastName": ""
+                    }
+                },
+                {
+                    "id": 192727,
+                    "status": "assigned",
+                    "date": "2020-02-18 00:34:00",
+                    "updateDate": "2020-02-18 00:00:00",
+                    "created": "2020-02-18 12:34:18",
+                    "description": "Apil look into it.",
+                    "activityCount": 2,
+                    "assignedTo": {
+                        "firstName": "April",
+                        "lastName": "Dover",
+                        "emailId": "aparna.dass@birdeye.com",
+                        "name": "April Dover"
+                    },
+                    "business": {
+                        "name": "JYSK - Cambridge",
+                        "alias": "JYSK - Cambridge",
+                        "number": 157721146574913,
+                        "phone": "(905) 451-9054"
+                    },
+                    "source": {
+                        "name": "phone"
+                    },
+                    "ticketType": "untagged",
+                    "reporter": {
+                        "firstName": "Jerry",
+                        "lastName": "Jacob",
+                        "emailId": "jerry@jerry.com",
+                        "phone": ""
+                    }
+                },
+                {
+                    "id": 199287,
+                    "status": "assigned",
+                    "date": "2020-02-27 01:28:00",
+                    "postedOn": "2020-02-27 00:00:00",
+                    "updateDate": "2020-10-29 00:00:00",
+                    "created": "2020-02-27 01:28:14",
+                    "description": "Question: Please rate us based on your training experience\nAnswer: 1",
+                    "activityCount": 3,
+                    "assignedTo": {
+                        "firstName": "April",
+                        "lastName": "Dover",
+                        "emailId": "aparna.dass@birdeye.com",
+                        "name": "April Dover"
+                    },
+                    "business": {
+                        "name": "JYSK - Whitby",
+                        "alias": "JYSK - Whitby",
+                        "number": 157851547625021,
+                        "phone": "(905) 451-9054"
+                    },
+                    "source": {
+                        "name": "Training Feb 24th"
+                    },
+                    "ticketType": "survey",
+                    "surveyId": 15492
+                }
+            ],
+            "count": 0,
+            "totalcount": 3
+        }
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1167][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1033][]
+
++ Response 404
+
+    [1175][]
+
+
 
 
 # Group Integration
 Birdeye integrates with various software or tools you use.
 
-## Add Business Integration Mapping [/v1/integrations/add/businessintegrationmapping{?api_key}]
+## Add Business Integration Mapping[/v1/integrations/add/businessintegrationmapping{?api_key}]
 Add Business Integration Mapping adds locations to integrations and set them active.
 
 ### Add locations [PUT]
 
 + Parameters
 
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -13994,7 +14547,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
             Accept: application/json
 
     + Attributes
-        + businessNumber: 166015909542313 (required, number) - Business number.
+        + businessNumber: 169744180007807 (required, number) - Business number.
         + integrationGroupId: 12345 (required, number) - Integration Group Id.
         + active: true (required, boolean) - Active state.
         + integrationProperties (object) - Add properties in key value pair.
@@ -14044,6 +14597,9 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>05/13/2024</b> - Added epoc date support for GetReviews APIs.
+* <b>03/22/2024</b> - Add Update Hierarchy API (BIRD-32609)
+* <b>03/19/2024</b> - Added Ticket APIs Create, Get, Update APIs under Ticket module
 * <b>02/26/2024</b> - Updated logoUrl description in Get, Update APIs under Business module and Create, Get, Update APIs under Listing module (BIRD-29386)
 * <b>12/21/2023</b> - Add listing phase 2 api changes (BIRD-16589)
 * <b>11/08/2023</b> - Add survey changes (BIRD-11944) and listing changes (BIRD-14345)
@@ -14054,4 +14610,3 @@ Add Business Integration Mapping adds locations to integrations and set them act
 * <b>08/25/2023</b> - Added new APIs under Business and Listing modules, Get Category List API, Get GMB Attributes API & Get Timezone List
 * <b>07/21/2023</b> - Added new API under Business module i.e, Business Search API.
 * <b>06/30/2023</b> - Added support for service area based information in Get Business API and Update Business API.
-* <b>04/20/2023</b> - Added two new API under Listing module, Get Listings Insights and Get Listings Insights Datapoints.
