@@ -11374,8 +11374,8 @@ Create a new question and associated answer
             api_key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
-        + question: Enter question here (string , required ) - text of the question to be posted on Google Q&A profile ; minimum 3 word and 10 characters
-        + answer: Enter answer here  (string,required) - text of the answer to be posted on Google Q&A profile ; minimum 1 one non-space character
+        + question: Enter question here (string , required ) - text of the question to be posted on Google Q&A profile ; minimum 3 word and 10 characters ; maximum 4096 characters
+        + answer: Enter answer here  (string,required) - text of the answer to be posted on Google Q&A profile ; minimum 1 one non-space character ; maximum 4096 characters
 
 
     + Body
@@ -11457,7 +11457,7 @@ This API would be needed when you wish to answer a third party raised question. 
 
     + Attributes
         + questionId: 7812   (number , required ) - unique question identifier
-        + answer: Enter answer here  (string,required) - text of the question to be posted on Google Q&A profile ; minimum 1 one non-space character
+        + answer: Enter answer here  (string,required) - text of the question to be posted on Google Q&A profile ; minimum 1 one non-space character ; maximum 4096 characters
 
 
     + Body
@@ -11547,7 +11547,7 @@ Update an existing question. You can edit/ update an existing question posted / 
 
     + Attributes
         + questionId: 7812  (number , required ) - unique question identifier
-        + question: Enter question here  (string,required) - text of the question to be posted on Google Q&A profile ; minimum 3 word and 10 characters
+        + question: Enter question here  (string,required) - text of the question to be posted on Google Q&A profile ; minimum 3 word and 10 characters ; maximum 4096 characters
 
 
     + Body
@@ -11631,7 +11631,7 @@ Update an answer to an existing question. You can edit/ update an existing answe
     + Attributes
         + questionId: 7812  (number , required ) - unique question identifier
         + answerId: 7813  (number , required ) - unique answer identifier
-        + answer: Enter answer here  (string,required) - text of the answer to be posted on Google Q&A profile ; minimum 1 one non-space character
+        + answer: Enter answer here  (string,required) - text of the answer to be posted on Google Q&A profile ; minimum 1 one non-space character ; maximum 4096 characters
 
 
     + Body
@@ -11858,7 +11858,7 @@ Delete answers to existing questions. Only that answer can be deleted which is p
 
 
 ## Delete All Questions and Answers [/v1/qna/question/deleteAll{?api_key,businessId}]
-Delete all A&A on the businessId provided.
+Delete all Q&A on the businessId provided.
 
 
 
