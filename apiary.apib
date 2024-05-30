@@ -2031,6 +2031,105 @@ For example :
             "message": "Invalid input request"
         }
 
+## 2486 [/2486]
+
++ Model (application/json)
+
+        {
+            "code": 2486,
+            "message": "Business Id missing or invalid"
+        }
+
+## 2487 [/2487]
+
++ Model (application/json)
+
+        {
+            "code": 2487,
+            "message": "Invalid input request data"
+        }
+
+## 2488 [/2488]
+
++ Model (application/json)
+
+        {
+            "code": 2488,
+            "message": "Invalid GBP Service name"
+        }
+
+## 2489 [/2489]
+
++ Model (application/json)
+
+        {
+            "code": 2489,
+            "message": "Invalid GBP Service description"
+        }
+
+## 2490 [/2490]
+
++ Model (application/json)
+
+        {
+            "code": 2490,
+            "message": "Invalid GBP Service price type"
+        }
+
+## 2491 [/2491]
+
++ Model (application/json)
+
+        {
+            "code": 2491,
+            "message": "Invalid GBP Service price"
+        }
+
+## 2492 [/2492]
+
++ Model (application/json)
+
+        {
+            "code": 2492,
+            "message": "Invalid GBP Service currency code"
+        }
+
+## 2493 [/2493]
+
++ Model (application/json)
+
+        {
+            "code": 2493,
+            "message": "Duplicate Google Service is not allowed"
+        }
+
+## 2494 [/2494]
+
++ Model (application/json)
+
+        {
+            "code": 2494,
+            "message": "Invalid GBP Service Id"
+        }
+
+## 2495 [/2495]
+
++ Model (application/json)
+
+        {
+            "code": 2495,
+            "message": "Invalid GBP Service Id"
+        }
+
+## 2496 [/2496]
+
++ Model (application/json)
+
+        {
+            "code": 2496,
+            "message": "Missing GBP category for given location"
+        }
+        
 
 
 # Group Business
@@ -12002,6 +12101,7 @@ Get all Questions and Answers for a Location
              
         
     + Body
+
             {
                 "totalCount": 1,
                 "questionsAndAnswers": [
@@ -12052,6 +12152,475 @@ Get all Questions and Answers for a Location
 + Response 401
 
     [2466][]
+
+
+
+# Group Google Services
+
+> __Note__
+> - _Applicable to be used only by paid listings clients, for their active locations, for the Google Services section, in the Google listing_
+
+## Create Service [/v1/google-services/service/create{?api_key,businessId}]
+Create a new service for the account
+
+> __Best practise__
+> - _Please ensure that a business appropriate service is created._
+
+
+### Create Service [POST]
+
++ Parameters
+
+    + businessId: 169744180007807 (number, required) - Id of the business
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Attributes
+
+        + name: Customer Service (string , required ) - text of the service name to be posted on Google Services profile ; maximum 140 characters
+        + priceType: paid (string , required) - text of the service price type to be posted on Google Services profile ; 'paid' or 'free' value
+        + currencyCode: USD (string , optional) - text of the paid service currency code to be posted on Google Services profile ; excatly 3 characters
+        + price: 100.50 (number , optional) - text of the paid service price to be posted on Google Services profile ; minimum amount 0.10 ; maximum amount 2147483647
+        + description: We provide 24x7 customer service (string , optional) - text of the service description to be posted on Google Services profile ; maximum 300 characters
+
+
+    + Body
+
+            {
+                  "name": "Customer Service",
+                  "priceType": "paid",
+                  "currencyCode": "USD",
+                  "price": 100.50,
+                  "description": "We provide 24x7 customer service"
+            }
+
+
++ Response 200 (application/json)
+
+
+    + Attributes
+
+        + serviceId: SERV10021056 (string) - unique service identifier
+        
+    + Body
+
+            {
+                  "serviceId": "SERV10021056"
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2486][]
+    
++ Response 400
+
+    [2487][]
+
++ Response 400
+
+    [2488][]
+
++ Response 400
+
+    [2489][]
+    
++ Response 400
+
+    [2490][]
+    
++ Response 400
+
+    [2491][]
+    
++ Response 400
+
+    [2492][]
+    
++ Response 400
+
+    [2493][]
+
+
+
+## Get All Services [/v1/google-services/services{?api_key,businessId,startIndex,pageSize,sortBy,sortOrder}]
+Get all services for an account
+
+### Get All Services [POST]
+
++ Parameters
+
+    + businessId: 169744180007807 (number, required) - Id of the business
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + startIndex: 0 (number) - start index; default 0
+    + pageSize: 25 (number) - page size; default 25
+    + sortBy: updated (string) - "updated", "name" or "price"; default : updated
+    + sortOrder: desc (string) - "asc" or "desc"; default: desc
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Attributes
+
+        + search: SERV10021056 (string) - search phrase for the service. This could be service Id or name phrase
+
+    + Body
+
+            {
+                  "search": "Customer Service"
+            }
+
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + services (array) - Google services details
+            + (object)
+                + serviceId: SERV10021056 (string) - Unique service identifier
+                + name: Customer Service (string) - name of the service
+                + priceType: paid (string) - price type of the service
+                + currencyCode: USD (string) - currency code of the paid service
+                + price: 100.50 (number) - price of the paid service
+                + description: We provide 24x7 customer service (string) - description of the service
+        
+    + Body
+
+            {
+                "services": [
+                    {
+                        "serviceId": "SERV10021056",
+                        "name": "Customer Service",
+                        "priceType": "paid",
+                        "currencyCode": "USD",
+                        "price": 100.50,
+                        "description": "We provide 24x7 customer service"
+                    }
+                ]
+            }
+            
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2486][]
+
+
+
+## Update Service [/v1/google-services/service/update{?api_key,businessId}]
+Update an existing service of an account.
+
+
+### Update Service [POST]
+
++ Parameters
+
+    + businessId: 169744180007807 (number, required) - Id of the business
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Attributes
+
+        + serviceId: SERV10021056  (string , required ) - unique service identifier
+        + name: Customer Service(string , required ) - text of the service name posted on Google Services profile; name cannot be altered.
+        + priceType: paid  (string , required) - text of the service price type to be posted on Google Services profile ; 'paid' or 'free' value
+        + currencyCode: USD  (string , optional) - text of the paid service currency code to be posted on Google Services profile ; minimum 3 characters ; maximum 3 characters
+        + price: 100.50  (number , optional) - text of the paid service price to be posted on Google Services profile ; minimum amount 0 ; maximum amount 2147483647
+        + description: We provide 24x7 customer service  (string , optional) - text of the service description to be posted on Google Services profile ; maximum 300 characters
+
+
+    + Body
+
+            {
+                  "serviceId": "SERV10021056",
+                  "name": "Customer Service",
+                  "priceType": "paid",
+                  "currencyCode": "USD",
+                  "price": 100.50,
+                  "description": "We provide 24x7 customer service"
+            }
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2486][]
+    
++ Response 400
+
+    [2487][]
+
++ Response 400
+
+    [2488][]
+
++ Response 400
+
+    [2489][]
+    
++ Response 400
+
+    [2490][]
+    
++ Response 400
+
+    [2491][]
+    
++ Response 400
+
+    [2492][]
+    
++ Response 400
+
+    [2493][]
+    
++ Response 400
+
+    [2494][]
+
+
+## Delete Services [/v1/google-services/service/delete{?api_key,businessId}]
+Delete existing services of an account
+
+
+### Delete Services [POST]
+
++ Parameters
+
+    + businessId: 169744180007807 (number, required) - Id of the business
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+    + Attributes
+
+        + serviceIds: [SERV10021056, SERV10021057] (array , required) - List of unique service identifier
+
+    + Body
+
+            {
+                "serviceIds": [
+                    "SERV10021056",
+                    "SERV10021057"
+                ]
+            }
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2486][]
+
++ Response 400
+
+    [2495][]
+
+
+## Get Location Mapping [/v1/google-services/service/location-mapping{?api_key,businessId}]
+Get location level service - category mapping
+
+### Get Location Mapping [GET]
+
++ Parameters
+
+    + businessId: 169744180007807 (number, required) - Id of the business
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + category_name: Marketing (string , required) - name of the GMB category
+        + service_id: [SERV10021056, SERV10021057] (array , required) - List of unique service identifier
+        
+    + Body
+
+            {
+                "Marketing" : ["SERV10021056", "SERV10021057"]
+            }
+            
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2486][]
+
+
+## Update Location Mapping [/v1/google-services/services/location-mapping{?api_key,businessId}]
+Map services to categories at location level
+
+
+### Update Location Mapping [POST]
+
++ Parameters
+
+    + businessId: 169744180007807 (number, required) - Id of the business
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + category_name: Marketing (string , required) - name of the GMB category
+        + service_id: [SERV10021056, SERV10021057] (array , required) - List of unique service identifier
+        
+    + Body
+
+            {
+                "Marketing" : ["SERV10021056", "SERV10021057"]
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2486][]
+    
++ Response 400
+
+    [2487][]
+
++ Response 400
+
+    [2496][]
+    
++ Response 400
+
+    [2493][]
+    
++ Response 400
+
+    [2494][]
+
 
 
 # Group Listing
@@ -15405,6 +15974,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>05/30/2024</b> - Added Google Services Developers API Section
 * <b>05/29/2024</b> - Added Google Q&A Developers API Section
 * <b>05/13/2024</b> - Added epoc date support for GetReviews APIs.
 * <b>03/22/2024</b> - Add Update Hierarchy API (BIRD-32609)
