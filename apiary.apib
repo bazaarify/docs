@@ -12886,7 +12886,7 @@ Create Listing API publishes information on online listing sources. We post pres
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
-            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
 crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
@@ -13520,7 +13520,7 @@ The Update Listing API will update the location details on all your listings sit
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
-            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
                   crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
@@ -14155,8 +14155,10 @@ The Get Listing API will get the listing information for the given business numb
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
-            + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
-            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.
+            + primaryCategory (string) - Primary category Id for Apple.
+            + additionalCategories (array) - Additional categories Id for Apple.
+            + primaryCategoryName (string) - Primary category Name for Apple.
+            + additionalCategoriesNames (array) - Additional categories Name for Apple.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
                crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
@@ -14580,12 +14582,14 @@ The Get Listing API will get the listing information for the given business numb
                     "foodTakeout":"https://www.ubereats.com"
                 },
                  "appleListing": {
-                    "primaryCategory": "active.amateursportsteams",
+                    "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
+                    "primaryCategoryName": "Dentist",
                     "additionalCategories": [
-                                "active.publicplazas",
-                                "auto.autoelectric",
-                                "auto.autoelectric"
+                                "health_care.dentistry.dental_clinic.dentist.oral_surgeon"
                         ],
+                    "additionalCategoriesNames": [
+                                "Oral Surgeon"
+                        ], 
                    "appleLocationAttributes": {
                    "crossbusiness.accessibility_features": [{
                     "attributeId": "accessible_elevator"
