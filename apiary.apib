@@ -2856,14 +2856,14 @@ Update Business API updates business information.
               "tollFreePhoneNumber": "",
               "androidAppURL": "",
               "iosAppURL": "",
-              "logoUrl": "http://d3cnqzq0ivprch.cloudfront.net/prod/css/images/logo.jpg",
+              "logoUrl": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082646457/2816b900140211eb870e7bf4ed6bc766.png",
               "gmbLogoOptOut": 1,
               "fbLogoOptOut": 1,
               "gmbCoverOptOut": 1,
               "fbCoverOptOut": 1,
-              "coverImageUrl": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/spa.jpg",
-              "gmbCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg",
-              "facebookCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg",
+              "coverImageUrl": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082720956/GustavKlimtExpectationTreeoflifeArboldelaVidaFulfilment.jpeg",
+              "gmbCover": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082807649/41cdeb014d36cb35f936152d44c4c77d.jpeg",
+              "facebookCover": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082871068/IJ8Sa5.jpeg",
               "coverBusinessInfoLayout": "In grid cover image, business info overlay",
               "covidInfo": {
                 "postDescription": "",
@@ -12886,7 +12886,7 @@ Create Listing API publishes information on online listing sources. We post pres
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
-            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
 crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
@@ -13228,11 +13228,10 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                     "androidAppURL": "http://www.gmail.com"
                 },
                 "media": {
-                    "logoUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-                    "coverImageUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-                    "gmbCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg",
-                    "facebookCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg"
-
+                    "logoUrl": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082646457/2816b900140211eb870e7bf4ed6bc766.png",
+                    "coverImageUrl": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082720956/GustavKlimtExpectationTreeoflifeArboldelaVidaFulfilment.jpeg",
+                    "gmbCover": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082807649/41cdeb014d36cb35f936152d44c4c77d.jpeg",
+                    "facebookCover": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082871068/IJ8Sa5.jpeg"
                 },
                  "optOut": {
                     "gmbCoverOptOut": true,
@@ -13284,7 +13283,7 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                     "googleWebsiteUrl": "http://www.gmail.com",
                     "googleStoreId": "1232133",
                     "googlePhoneNumber": "(973) 716-0007",
-                    "primaryCategoryGmb": "Storage facility",
+                    "primaryCategoryGmb": "Fast Food Restaurant",
                     "googleDescription": "This is sample description for google",
                     "additionalCategories": [
                         "Snack bar"
@@ -13309,12 +13308,9 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                     "foodTakeout":"https://www.ubereats.com"
                 },
                  "appleListing": {
-                    "primaryCategory": "active.amateursportsteams",
+                    "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
                     "additionalCategories": [
-                                "active.publicplazas",
-                                "auto.autoelectric",
-                                "auto.autoelectric"
-                        ],
+                      "health_care.dentistry.dental_clinic.dentist.oral_surgeon"],
                    "appleLocationAttributes": {
                    "crossbusiness.accessibility_features": [{
                     "attributeId": "accessible_elevator"
@@ -13343,8 +13339,8 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                     "linkedinUrl": "http://www.linkedin.com/12",
                     "instagramUrl": "http://www.instagram.com/12",
                     "pintrestUrl": "http://www.pinterest.com/12",
-                    "bbbUrl": "",
-                    "lendingtreeUrl": ""
+                    "bbbUrl": "http://www.bbb.org/12",
+                    "lendingtreeUrl": "http://www.lendingtree.com/12"
                 },
                 "healthcare": {
                     "doctorCategories": [
@@ -13520,7 +13516,7 @@ The Update Listing API will update the location details on all your listings sit
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
-            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.
+            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
                   crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
@@ -13584,7 +13580,7 @@ The Update Listing API will update the location details on all your listings sit
                         "English",
                         "Hindi"
                     ],
-                "moreHours": {
+                    "moreHours": {
                               "Dinner": [
                                 {
                                   "day": 0,
@@ -13862,10 +13858,10 @@ The Update Listing API will update the location details on all your listings sit
                     "androidAppURL": "http://www.gmail.com"
                 },
                 "media": {
-                    "logoUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-                    "coverImageUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-                    "gmbCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg",
-                    "facebookCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg"
+                    "logoUrl": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082646457/2816b900140211eb870e7bf4ed6bc766.png",
+                    "coverImageUrl": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082720956/GustavKlimtExpectationTreeoflifeArboldelaVidaFulfilment.jpeg",
+                    "gmbCover": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082807649/41cdeb014d36cb35f936152d44c4c77d.jpeg",
+                    "facebookCover": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082871068/IJ8Sa5.jpeg"
                 },
                  "optOut": {
                     "gmbCoverOptOut": true,
@@ -13890,7 +13886,7 @@ The Update Listing API will update the location details on all your listings sit
 
                 },
                  "internalListing": {
-                    "description": "Alok ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic Alok ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic",
+                    "description": "ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridic",
                     "category": "Beauty",
                     "subCategories": [
                         "Eyelash Service",
@@ -13917,7 +13913,7 @@ The Update Listing API will update the location details on all your listings sit
                     "googleWebsiteUrl": "http://www.gmail.com",
                     "googleStoreId": "1232133",
                     "googlePhoneNumber": "(973) 716-0007",
-                    "primaryCategoryGmb": "Storage facility",
+                    "primaryCategoryGmb": "Fast Food Restaurant",
                     "googleDescription": "This is sample description for google",
                     "additionalCategories": [
                         "Snack bar"
@@ -13941,13 +13937,10 @@ The Update Listing API will update the location details on all your listings sit
                     "foodDelivery":"https://www.ubereats.com",
                     "foodTakeout":"https://www.ubereats.com"
                 },
-                  "appleListing": {
-                    "primaryCategory": "active.amateursportsteams",
+                 "appleListing": {
+                    "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
                     "additionalCategories": [
-                                "active.publicplazas",
-                                "auto.autoelectric",
-                                "auto.autoelectric"
-                        ],
+                      "health_care.dentistry.dental_clinic.dentist.oral_surgeon"],
                    "appleLocationAttributes": {
                    "crossbusiness.accessibility_features": [{
                     "attributeId": "accessible_elevator"
@@ -13968,7 +13961,7 @@ The Update Listing API will update the location details on all your listings sit
                         ],
                     "phoneNumber": "+1 201-819-7989"
                },
-                  "socialProfileURLs": {
+                 "socialProfileURLs": {
                     "googleUrl": "http://www.google.com/123",
                     "facebookUrl": "http://www.facebook.com/123",
                     "twitterUrl": "http://www.twitter.com/123",
@@ -13976,8 +13969,8 @@ The Update Listing API will update the location details on all your listings sit
                     "linkedinUrl": "http://www.linkedin.com/12",
                     "instagramUrl": "http://www.instagram.com/12",
                     "pintrestUrl": "http://www.pinterest.com/12",
-                    "bbbUrl": "",
-                    "lendingtreeUrl": ""
+                    "bbbUrl": "http://www.bbb.org/12",
+                    "lendingtreeUrl": "http://www.lendingtree.com/12"
                 },
                 "healthcare": {
                     "doctorCategories": [
@@ -14155,8 +14148,10 @@ The Get Listing API will get the listing information for the given business numb
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
-            + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
-            + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business.
+            + primaryCategory (string) - Primary category Id for Apple.
+            + additionalCategories (array) - Additional categories Id for Apple.
+            + primaryCategoryName (string) - Primary category Name for Apple.
+            + additionalCategoriesNames (array) - Additional categories Name for Apple.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
                crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
@@ -14188,7 +14183,7 @@ The Get Listing API will get the listing information for the given business numb
 
     + Body
 
-            {
+             {
                 "businessInfo": {
                     "name": "Dieci Lifestyle Spa",
                     "phone": "(973) 716-0007",
@@ -14198,12 +14193,10 @@ The Get Listing API will get the listing information for the given business numb
                     "isServiceAreaProvider": "No",
                     "serviceAreas": [
                       {
-                        "description": "Van An, Berryessa Road, San Jose, CA, USA",
-                        "placeId": "ChIJc_clvUTMj4AR_K0M2GO2CYg"
+                        "description": "Van An, Berryessa Road, San Jose, CA, USA"
                       },
                       {
-                        "description": "Santa Clara, CA, USA",
-                        "placeId": "ChIJk8EIXIG3j4ARwL_Ao3ykdeQ"
+                        "description": "Santa Clara, CA, USA"
                       }
                     ],
                     "location": {
@@ -14368,7 +14361,7 @@ The Get Listing API will get the listing information for the given business numb
                                 }
                               ]
                             },
-                            "wholeWeekOperating": 0,
+                    "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
                             "day": 0,
@@ -14500,10 +14493,10 @@ The Get Listing API will get the listing information for the given business numb
                     "androidAppURL": "http://www.gmail.com"
                 },
                 "media": {
-                    "logoUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-                    "coverImageUrl": "http://d2xt3xymj142xp.cloudfront.net/712586432/other/ab60b93831ba490383b9c59c0b4cf49d.jpeg",
-                    "gmbCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/abcd.jpg",
-                    "facebookCover": "http://d3cnqzq0ivprch.cloudfront.net/common/css/images/profile/fb.jpg"
+                    "logoUrl": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082646457/2816b900140211eb870e7bf4ed6bc766.png",
+                    "coverImageUrl": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082720956/GustavKlimtExpectationTreeoflifeArboldelaVidaFulfilment.jpeg",
+                    "gmbCover": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082807649/41cdeb014d36cb35f936152d44c4c77d.jpeg",
+                    "facebookCover": "https://d1py4eyp5hehj0.cloudfront.net/upload/1334812/1718082871068/IJ8Sa5.jpeg"
                 },
                  "optOut": {
                     "gmbCoverOptOut": true,
@@ -14555,7 +14548,7 @@ The Get Listing API will get the listing information for the given business numb
                     "googleWebsiteUrl": "http://www.gmail.com",
                     "googleStoreId": "1232133",
                     "googlePhoneNumber": "(973) 716-0007",
-                    "primaryCategoryGmb": "Storage facility",
+                    "primaryCategoryGmb": "Fast Food Restaurant",
                     "googleDescription": "This is sample description for google",
                     "additionalCategories": [
                         "Snack bar"
@@ -14580,12 +14573,14 @@ The Get Listing API will get the listing information for the given business numb
                     "foodTakeout":"https://www.ubereats.com"
                 },
                  "appleListing": {
-                    "primaryCategory": "active.amateursportsteams",
+                    "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
+                    "primaryCategoryName": "Dentist",
                     "additionalCategories": [
-                                "active.publicplazas",
-                                "auto.autoelectric",
-                                "auto.autoelectric"
+                                "health_care.dentistry.dental_clinic.dentist.oral_surgeon"
                         ],
+                    "additionalCategoriesNames": [
+                                "Oral Surgeon"
+                        ],           
                    "appleLocationAttributes": {
                    "crossbusiness.accessibility_features": [{
                     "attributeId": "accessible_elevator"
@@ -14605,7 +14600,7 @@ The Get Listing API will get the listing information for the given business numb
                          }
                         ],
                     "phoneNumber": "+1 201-819-7989"
-                },
+               },
                  "socialProfileURLs": {
                     "googleUrl": "http://www.google.com/123",
                     "facebookUrl": "http://www.facebook.com/123",
@@ -14614,8 +14609,8 @@ The Get Listing API will get the listing information for the given business numb
                     "linkedinUrl": "http://www.linkedin.com/12",
                     "instagramUrl": "http://www.instagram.com/12",
                     "pintrestUrl": "http://www.pinterest.com/12",
-                    "bbbUrl": "",
-                    "lendingtreeUrl": ""
+                    "bbbUrl": "http://www.bbb.org/12",
+                    "lendingtreeUrl": "http://www.lendingtree.com/12"
                 },
                 "healthcare": {
                     "doctorCategories": [
@@ -14633,7 +14628,7 @@ The Get Listing API will get the listing information for the given business numb
                     "university": "Sample text",
                     "hospitalAffiliations": "Sample text",
                     "insurancesAccepted": "Sample text"
-                },
+                }
             }
 
 
