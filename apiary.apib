@@ -12529,13 +12529,45 @@ Get location level service - category mapping
 
     + Attributes
 
-        + category_name: Marketing (string , required) - name of the GMB category
-        + service_id: [SERV10021056, SERV10021057] (array , required) - List of unique service identifier
+        + category_name: Marketing (string) - name of the GMB category
+        + services (array) - Google services details
+            + (object)
+                + serviceId: SERV10021056 (string) - Unique service identifier
+                + name: Customer Service (string) - name of the service
+                + priceType: paid (string) - price type of the service
+                + currencyCode: USD (string) - currency code of the paid service
+                + price: 100.50 (number) - price of the paid service
+                + description: We provide 24x7 customer service (string) - description of the service
         
     + Body
 
             {
-                "Marketing" : ["SERV10021056", "SERV10021057"]
+                "Marketing" : [
+                    {
+                        "serviceId": "SERV10021056",
+                        "name": "Customer Service",
+                        "priceType": "paid",
+                        "currencyCode": "USD",
+                        "price": 100.50,
+                        "description": "We provide 24x7 customer service"
+                    },
+                    {
+                        "serviceId": "SERV10021057",
+                        "name": "Marketing Service",
+                        "priceType": "free",
+                        "description": "We provide 24x7 marketing service"
+                    }
+                ],
+                "Advertisement" : [
+                    {
+                        "serviceId": "SERV10021056",
+                        "name": "Advertising Service",
+                        "priceType": "paid",
+                        "currencyCode": "USD",
+                        "price": 100.50,
+                        "description": "We provide advertising service across various platforms"
+                    }
+                ]
             }
             
 + Response 401
