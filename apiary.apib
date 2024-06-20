@@ -12799,6 +12799,8 @@ Create Listing API publishes information on online listing sources. We post pres
             + languages: English, Spanish (array) - Languages.
             + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api.  NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
             Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
+            + appleMoreHours (array) -  Apple more hours for specific services you offer such as Dining, Bar and Delivery. Apple more hours can only be added if apple primary category is added. To get specific types of apple more hours, please refer to Get supported more hours type api.  NOTE: In apple more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
+            Please refer /listing/get-more-hours-type/get-more-hours-type api to get apple more hours type. Possible Values Service Hours, Delivery Service Hours, Dine In Hours etc.
             + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
@@ -13096,6 +13098,80 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                                 }
                               ]
                             },
+                    "appleMoreHours": {
+                             "Dining Hours": [
+                              {
+                                "day": 0,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 1,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 2,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 3,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 4,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 5,
+                                "isOpen": 0,
+                                "workingHours": [
+                                  {
+                                    "startHour": "",
+                                    "endHour": ""
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 6,
+                                "isOpen": 0,
+                                "workingHours": [
+                                  {
+                                    "startHour": "",
+                                    "endHour": ""
+                                  }
+                                ]
+                              }
+                          ]
+                    },
                     "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
@@ -13429,6 +13505,8 @@ The Update Listing API will update the location details on all your listings sit
             + languages: English, Spanish (array) - Languages.
             + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
             Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
+            + appleMoreHours (array) -  Apple more hours for specific services you offer such as Dining, Bar and Delivery. Apple more hours can only be added if apple primary category is added. To get specific types of apple more hours, please refer to Get supported more hours type api.  NOTE: In apple more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
+            Please refer /listing/get-more-hours-type/get-more-hours-type api to get apple more hours type. Possible Values Service Hours, Delivery Service Hours, Dine In Hours etc.
             + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
@@ -13726,6 +13804,80 @@ The Update Listing API will update the location details on all your listings sit
                                 }
                               ]
                             },
+                   "appleMoreHours": {
+                             "Dining Hours": [
+                              {
+                                "day": 0,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 1,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 2,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 3,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 4,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 5,
+                                "isOpen": 0,
+                                "workingHours": [
+                                  {
+                                    "startHour": "",
+                                    "endHour": ""
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 6,
+                                "isOpen": 0,
+                                "workingHours": [
+                                  {
+                                    "startHour": "",
+                                    "endHour": ""
+                                  }
+                                ]
+                              }
+                          ]
+                    },
                     "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
@@ -14062,6 +14214,8 @@ The Get Listing API will get the listing information for the given business numb
             + languages: English, Spanish (array) - Languages.
             + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
             Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
+            + appleMoreHours (array) -  Apple more hours for specific services you offer such as Dining, Bar and Delivery. Apple more hours can only be added if apple primary category is added. To get specific types of apple more hours, please refer to Get supported more hours type api.  NOTE: In apple more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
+            Please refer /listing/get-more-hours-type/get-more-hours-type api to get apple more hours type. Possible Values Service Hours, Delivery Service Hours, Dine In Hours etc.
             + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
@@ -14361,6 +14515,80 @@ The Get Listing API will get the listing information for the given business numb
                                 }
                               ]
                             },
+                    "appleMoreHours": {
+                             "Dining Hours": [
+                              {
+                                "day": 0,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 1,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 2,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 3,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 4,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 5,
+                                "isOpen": 0,
+                                "workingHours": [
+                                  {
+                                    "startHour": "",
+                                    "endHour": ""
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 6,
+                                "isOpen": 0,
+                                "workingHours": [
+                                  {
+                                    "startHour": "",
+                                    "endHour": ""
+                                  }
+                                ]
+                              }
+                          ]
+                    },
                     "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
@@ -14640,7 +14868,7 @@ The Get Listing API will get the listing information for the given business numb
 
     [89][]
 
-## Get More Hours Type [/v1/listing/{businessNumber}/more-hours-type]
+## Get More Hours Type [/v1/listing/{businessNumber}/more-hours-type{?channel}]
 Get supported more hours type for a location. This will depend on the country and gmb primary category for the particular location.
 
 ### Get More Hours Type [GET]
@@ -14648,6 +14876,8 @@ Get supported more hours type for a location. This will depend on the country an
 + Parameters
 
     + businessNumber: 169744180007807 (number, required) - Business Number.
+    
+    + channel: gmb (string) -  Source name for which more hours type needs to be fetched. Possible values are gmb, apple. Default value will be gmb if not passed
 
 + Request (application/json)
 
