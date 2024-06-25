@@ -12245,7 +12245,7 @@ Insights/Analytics for Google Listings of a given business.
                 "businessNumbers": [156387109031976],
                 "startDate": "2010-02-01",
                 "endDate": "2022-02-01",
-                "viewMode": [ "Mobile"]
+                "viewMode": [ "Mobile", "Desktop"]
             }
 
 
@@ -12254,16 +12254,19 @@ Insights/Analytics for Google Listings of a given business.
 
     + Attributes
 
-        + mapViewTotalCount: 2868 (number) - Business impressions on Google Maps on Desktop and mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression.
-        + searchViewTotalCount: 2868 (number) - Business impressions on Google Search on Desktop and mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression.
-        + websiteVisitsTotalCount: 2868 (number) - The number of times the business profile website was clicked.
-        + getDirectionsTotalCount: 0 (number) - The number of times a direction request was requested to the business location.
-        + callsTotalCount: 2868 (number) - The number of times the business profile call button was clicked.
-        + usersReachedTotalCount: 0 (number) - The number of times your business appeared in search results and other services in Bing.
-        + impressionCountTotalCount: 0 (number) - The number of users who saw the activity from your page including posts, check-ins, and ads.
+        + mapViewTotalCount: 2868 (number) - Business impressions on Google Maps on Desktop and mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression on Google.
+        + searchViewTotalCount: 2868 (number) - Business impressions on Google Search on Desktop and mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression on Google.
+        + websiteVisitsTotalCount: 2868 (number) - The number of times the business profile website was clicked on Google.
+        + getDirectionsTotalCount: 0 (number) - The number of times a direction request was requested to the business location on Google.
+        + callsTotalCount: 2868 (number) - The number of times the business profile call button was clicked on Google.
+        + usersReachedTotalCount: 0 (number) - The number of times your business appeared in search results and other services on Facebook.
+        + usersEngagedTotalCount: 0 (number) - The number of times users have engaged with your business through reactions, comments, shares and more on Facebook.
+        + impressionCountTotalCount: 0 (number) - The number of users who saw the activity from your page including posts, check-ins, and ads on Bing.
+        + bingWebsiteVisitsTotalCount: 2868 (number) - The number of times the business profile website was clicked on Bing.
+        + bingDirectionsTotalCount: 0 (number) - The number of times a direction request was requested to the business location on Bing.
+        + bingCallsTotalCount: 2868 (number) - The number of times the business profile call button was clicked on Bing.
         + liveCount: 10 (number) - Total no of synched sites for a business.
         + entityCount: 1 (number) - Total businesses count.
-        + viewMode  (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
 
     + Body
 
@@ -12274,7 +12277,11 @@ Insights/Analytics for Google Listings of a given business.
                 "getDirectionsTotalCount": 0,
                 "callsTotalCount": 2868,
                 "usersReachedTotalCount": 0,
+                "usersEngagedTotalCount": 0,
                 "impressionCountTotalCount": 0,
+                "bingWebsiteVisitsTotalCount": 2868,
+                "bingDirectionsTotalCount": 0,
+                "bingCallsTotalCount": 2868,
                 "liveCount": 10,
                 "entityCount": 1
             }
@@ -12336,7 +12343,7 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
                 "startDate": "2010-02-01",
                 "endDate": "2022-02-01",
                 "groupByType": "year",
-                "viewMode": [ "Mobile"]
+                "viewMode": [ "Mobile", "Desktop"]
             }
 
 
