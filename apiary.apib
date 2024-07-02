@@ -12144,6 +12144,7 @@ A detailed view of the listings status at location level
         + needUpdatesPercentage: 0.00% (string) - Total no. of Need Updates Sites Percentage.
         + optedOutPercentage: 0.00% (string) - Total no. of Opted out sites percentage.
         + notConnectedPercentage: 2.27% (string) - Total no. of Not Connected Sites Percentage.
+        + publishListings: Please initiate Publish for this locations listings. (string) - Message to initiate publish locations listings.
         + errors (array) - List of Error messages in case of Not Published state if exists.
         + sites (array) - List of location status.
             + siteName: Google (string) - Name of listing source.
@@ -12166,8 +12167,10 @@ A detailed view of the listings status at location level
                 "activationStatus": "active",
                 "lastUpdated": "Mon Jun 10 09:49:30 GMT 2024",
                 "locationStatus": "Published",
+                "publishListings": "Please initiate Publish for this locations listings.",
                 "errors":["The selected address is invalid or not supported.",
-                "The business description needs to be longer than 200 characters."],
+                "The business description needs to be longer than 200 characters.",
+                "Please activate your demo location."],
                 "totalSites": 44,
                   "syncedCount": 30,
                   "submittedCount": 13,
@@ -12929,6 +12932,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            + appleWebsiteUrl (string) - Website url will update on apple listing. This website URL will override your existing website URL on your Google business profile.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
             + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
@@ -13427,6 +13431,7 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                 },
                  "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
+                    "appleWebsiteUrl":"https://www.apple.com",
                     "additionalCategories": [
                       "health_care.dentistry.dental_clinic.dentist.oral_surgeon"],
                    "appleLocationAttributes": {
@@ -13442,7 +13447,7 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                              ]
                        },
                     "appleActionLinks": [{
-                        "id": "quicklinks.airline_book_travel",
+                        "id": "quicklinks.schedule_appointment",
                         "deepLinkUrl": "https://www.google.com",
                         "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
                          }
@@ -13635,6 +13640,7 @@ The Update Listing API will update the location details on all your listings sit
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            + appleWebsiteUrl (string) - Website url will update on apple listing. This website URL will override your existing website URL on your Google business profile.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
             + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
@@ -14133,6 +14139,7 @@ The Update Listing API will update the location details on all your listings sit
                 },
                  "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
+                    "appleWebsiteUrl":"https://www.apple.com",
                     "additionalCategories": [
                       "health_care.dentistry.dental_clinic.dentist.oral_surgeon"],
                    "appleLocationAttributes": {
@@ -14148,7 +14155,7 @@ The Update Listing API will update the location details on all your listings sit
                              ]
                        },
                     "appleActionLinks": [{
-                        "id": "quicklinks.airline_book_travel",
+                        "id": "quicklinks.schedule_appointment",
                         "deepLinkUrl": "https://www.google.com",
                         "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
                          }
@@ -14344,6 +14351,7 @@ The Get Listing API will get the listing information for the given business numb
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            + appleWebsiteUrl (string) - Website url will update on apple listing. This website URL will override your existing website URL on your Google business profile.
             + primaryCategory (string) - Primary category Id for Apple.
             + additionalCategories (array) - Additional categories Id for Apple.
             + primaryCategoryName (string) - Primary category Name for Apple.
@@ -14845,6 +14853,7 @@ The Get Listing API will get the listing information for the given business numb
                  "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
                     "primaryCategoryName": "Dentist",
+                    "appleWebsiteUrl":"https://www.apple.com",
                     "additionalCategories": [
                                 "health_care.dentistry.dental_clinic.dentist.oral_surgeon"
                         ],
@@ -14864,7 +14873,7 @@ The Get Listing API will get the listing information for the given business numb
                              ]
                        },
                     "appleActionLinks": [{
-                        "id": "quicklinks.airline_book_travel",
+                        "id": "quicklinks.schedule_appointment",
                         "deepLinkUrl": "https://www.google.com",
                         "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
                          }
