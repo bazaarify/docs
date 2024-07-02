@@ -2031,6 +2031,15 @@ For example :
             "message": "Invalid input request"
         }
 
+## 3333 [/3333]
+
++ Model (application/json)
+
+        {
+            "code": 1043,
+            "message": "Business should be either SMB or Enterprise sub account"
+        }
+
 
 
 # Group Business
@@ -12100,10 +12109,10 @@ Fix Listing publishes information on online listing sources. We post presence in
 
     [1175][]
 
-## Get Location Status [/v1/listing/{businessNumber}/location/status]
-Get Location Status retrieves status for each sources for a given business. Health aggregates sum and percentage metrics for distinct statuses.
+## Get Location Status Report [/v1/listing/status/location/{businessNumber}]
+A detailed view of the listings status at location level
 
-### Get Location Status [GET]
+### Get Location Status Report[GET]
 
 + Parameters
 
@@ -12120,82 +12129,104 @@ Get Location Status retrieves status for each sources for a given business. Heal
 + Response 200
 
     + Attributes
-        + listingStatus (array) - List of location status.
-            + sourceName: Google (string) - Name of listing source.
+        + businessName -  Name of the Business/Location.
+        + activationStatus: active/demo/inactive (string) - Activation Status of Business/Location
+        + lastUpdated: Mon Jun 10 09:49:30 GMT 2024 (string) - Last Updated Date of a Business/Location.
+        + locationStatus: Possible Values “Published”,“Scan State” or “Disabled“ (string) - Return the state of Business/Location.
+        + totalSites:   44 (number) - Total no. of Sites.
+        + syncedCount:   30 (number) - Total no. of Synced sites count.
+        + submittedCount: 13 (number) - Total no. of Submitted sites Count.
+        + needUpdatesCount:  0 (number) - Total no. of Sites where Action is required.
+        + optedOutCount: 0 (number) - Total no. of Opted out sites count.
+        + notConnectedCount: 1 (number) - Total no. of Not connected sites count.
+        + syncedPercentage: 68.18% (string) - Total no. of Synced Sites Percentage.
+        + submittedPercentage: 29.55% (string) - Total no. of Submitted Sites Percentage.
+        + needUpdatesPercentage: 0.00% (string) - Total no. of Need Updates Sites Percentage.
+        + optedOutPercentage: 0.00% (string) - Total no. of Opted out sites percentage.
+        + notConnectedPercentage: 2.27% (string) - Total no. of Not Connected Sites Percentage.
+        + errors (array) - List of Error messages in case of Not Published state if exists.
+        + sites (array) - List of location status.
+            + siteName: Google (string) - Name of listing source.
             + status: Action Required (string) -  Status of the location on that source. Possible values are :
-                        Sync Initiated,
-                        In Progress,
-                        Opted out,
+                        Synced,
                         Submitted,
-                        Live,
                         Action Required,
-                        Connect,
-                        Reconnect,
-                        Unavailable.
-            + liveLink: https://maps.google.com/maps?cid=151047735163 (string) - Location source link.
-            + name: Utah Dental Center (string) - Name of the location.
-            + phone (string) - Phone number Format is (xxx) xxx-xxxx.
-            + address: 420 E S Temple St #220 (string) - Address of the business.
-        + health (array) -  Aggregates sum and percentage metrics for distinct statuses
+                        Opted out,
+                        Connect
+            + url: https://maps.google.com/maps?cid=151047735163 (string) - Location source link.
+            + errors (array) - Possible errors would be come when status of directory is 'Action Required'
+           
+
 
 
     + Body
 
             {
-                "listingStatus": [{
-                    "sourceName": "Navmii",
-                    "status": "Action Required",
-                    "liveLink": "http://livepoi.navmii.com/p/view/4d6c-ace0-0a2483b47182",
-                    "name": "Richard L. Blackhurst/Utah Dental Center",
-                    "phone": "(123) 456-7890",
-                    "address": "420 E S Temple St #220"
+                "businessName": "FLTLT - Tulip Cremation Tampa",
+                "activationStatus": "active",
+                "lastUpdated": "Mon Jun 10 09:49:30 GMT 2024",
+                "locationStatus": "Published",
+                "errors":["The selected address is invalid or not supported.",
+                "The business description needs to be longer than 200 characters."],
+                "totalSites": 44,
+                  "syncedCount": 30,
+                  "submittedCount": 13,
+                  "needUpdatesCount": 0,
+                  "optedOutCount": 0,
+                  "notConnectedCount": 1,
+                  "syncedPercentage": "68.18%",
+                  "submittedPercentage": "29.55%",
+                  "needUpdatesPercentage": "0.00%",
+                  "optedOutPercentage": "0.00%",
+                  "notConnectedPercentage": "2.27%",
+                  "sites": [
+                    {
+                      "siteId": 2,
+                      "siteName": "Google Maps",
+                      "status": "Action Required",
+                      "errors": [
+                        "The geographic coordinates and the address you provided do not match. Make sure that the address line and zip code are correct."
+                      ],
+                      "url": "https://maps.google.com/maps?cid=17209435735184138870"
                     },
                     {
-                        "sourceName": "Where To?",
-                        "status": "In Progress",
-                        "liveLink": "https://wheretoapp.com/search?poi=86183685562887",
-                        "name": "Richard L. Blackhurst/Utah Dental Center",
-                        "phone": "(123) 456-0987",
-                        "address": "420 E S Temple St #220"
-                    }],
-                 "health": [
-                        {
-                          "status": "Action Required",
-                          "count": 1,
-                          "percentage": 14.29
-                        },
-                        {
-                          "status": "In Progress",
-                          "count": 1,
-                          "percentage": 14.29
-                        },
-                        {
-                          "status": "Reconnect",
-                          "count": 1,
-                          "percentage": 14.29
-                        },
-                        {
-                          "status": "Connect",
-                          "count": 1,
-                          "percentage": 14.29
-                        },
-                        {
-                          "status": "Live",
-                          "count": 1,
-                          "percentage": 14.29
-                        },
-                        {
-                          "status": "Opted out",
-                          "count": 1,
-                          "percentage": 14.29
-                        },
-                        {
-                          "status": "Sync Initiated",
-                          "count": 1,
-                          "percentage": 14.29
-                        }
+                      "siteId": 110,
+                      "siteName": "Facebook",
+                      "status": "Connect"
+                    },
+                    {
+                      "siteId": 226,
+                      "siteName": "Bing",
+                      "status": "In Progress",
+                      "url": "https://www.bing.com/maps?ss=ypid.YN377x6765823"
+                    },
+                    {
+                      "siteId": 100,
+                      "siteName": "Birdeye",
+                      "status": "Synced",
+                      "url": "https://birdeye.com/farm-bureau-insurance-163944578027442"
+                    },
+                    {
+                      "siteId": 381,
+                      "siteName": "Apple Maps",
+                      "status": "Action Required",
+                      "errors": [
+                        "Apple Category for the business is not available"
                       ]
-             }
+                    },
+                    {
+                      "siteId": 142,
+                      "siteName": "Opendi",
+                      "status": "Action Required",
+                      "errors": [
+                        "We’re unable to update your listing as there is a 'Claim Listing' issue which requires release of management of listings from the previous listings management provider. Please contact support for assistance."
+                      ],
+                      "url": "https://columbia-la.opendi.us/10046961.html"
+                    }
+                  ]
+            }
+
+
 
 + Response 401
 
@@ -12212,6 +12243,10 @@ Get Location Status retrieves status for each sources for a given business. Heal
 + Response 404
 
     [1175][]
+    
++ Response 400
+
+    [3333][]
 
 
 ## Listings Insights [/v1/listing/insights{?api_key,businessId}]
@@ -12245,7 +12280,7 @@ Insights/Analytics for Google Listings of a given business.
                 "businessNumbers": [156387109031976],
                 "startDate": "2010-02-01",
                 "endDate": "2022-02-01",
-                "viewMode": [ "Mobile"]
+                "viewMode": [ "Mobile", "Desktop"]
             }
 
 
@@ -12254,16 +12289,19 @@ Insights/Analytics for Google Listings of a given business.
 
     + Attributes
 
-        + mapViewTotalCount: 2868 (number) - Business impressions on Google Maps on Desktop and mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression.
-        + searchViewTotalCount: 2868 (number) - Business impressions on Google Search on Desktop and mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression.
-        + websiteVisitsTotalCount: 2868 (number) - The number of times the business profile website was clicked.
-        + getDirectionsTotalCount: 0 (number) - The number of times a direction request was requested to the business location.
-        + callsTotalCount: 2868 (number) - The number of times the business profile call button was clicked.
-        + usersReachedTotalCount: 0 (number) - The number of times your business appeared in search results and other services in Bing.
-        + impressionCountTotalCount: 0 (number) - The number of users who saw the activity from your page including posts, check-ins, and ads.
+        + mapViewTotalCount: 2868 (number) - Business impressions on Google Maps on Desktop and mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression on Google.
+        + searchViewTotalCount: 2868 (number) - Business impressions on Google Search on Desktop and mobile devices. Multiple impressions by a unique user within a single day are counted as a single impression on Google.
+        + websiteVisitsTotalCount: 2868 (number) - The number of times the business profile website was clicked on Google.
+        + getDirectionsTotalCount: 0 (number) - The number of times a direction request was requested to the business location on Google.
+        + callsTotalCount: 2868 (number) - The number of times the business profile call button was clicked on Google.
+        + usersReachedTotalCount: 0 (number) - The number of times your business appeared in search results and other services on Facebook.
+        + usersEngagedTotalCount: 0 (number) - The number of times users have engaged with your business through reactions, comments, shares and more on Facebook.
+        + impressionCountTotalCount: 0 (number) - The number of users who saw the activity from your page including posts, check-ins, and ads on Bing.
+        + bingWebsiteVisitsTotalCount: 2868 (number) - The number of times the business profile website was clicked on Bing.
+        + bingDirectionsTotalCount: 0 (number) - The number of times a direction request was requested to the business location on Bing.
+        + bingCallsTotalCount: 2868 (number) - The number of times the business profile call button was clicked on Bing.
         + liveCount: 10 (number) - Total no of synched sites for a business.
         + entityCount: 1 (number) - Total businesses count.
-        + viewMode  (array) - is data required for mobile or desktop or both (if none is provided then data for both will be displayed)
 
     + Body
 
@@ -12274,7 +12312,11 @@ Insights/Analytics for Google Listings of a given business.
                 "getDirectionsTotalCount": 0,
                 "callsTotalCount": 2868,
                 "usersReachedTotalCount": 0,
+                "usersEngagedTotalCount": 0,
                 "impressionCountTotalCount": 0,
+                "bingWebsiteVisitsTotalCount": 2868,
+                "bingDirectionsTotalCount": 0,
+                "bingCallsTotalCount": 2868,
                 "liveCount": 10,
                 "entityCount": 1
             }
@@ -12336,7 +12378,7 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
                 "startDate": "2010-02-01",
                 "endDate": "2022-02-01",
                 "groupByType": "year",
-                "viewMode": [ "Mobile"]
+                "viewMode": [ "Mobile", "Desktop"]
             }
 
 
@@ -15630,6 +15672,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>06/25/2024</b> - Updated Listings Insights API (BIRDEYE-137367)
 * <b>05/29/2024</b> - Added Google Q&A Developers API Section
 * <b>05/13/2024</b> - Added epoc date support for GetReviews APIs.
 * <b>03/22/2024</b> - Add Update Hierarchy API (BIRD-32609)
