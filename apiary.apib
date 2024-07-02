@@ -12144,6 +12144,7 @@ A detailed view of the listings status at location level
         + needUpdatesPercentage: 0.00% (string) - Total no. of Need Updates Sites Percentage.
         + optedOutPercentage: 0.00% (string) - Total no. of Opted out sites percentage.
         + notConnectedPercentage: 2.27% (string) - Total no. of Not Connected Sites Percentage.
+        + publishListings: Please initiate Publish for this locations listings. (string) - Message to initiate publish locations listings.
         + errors (array) - List of Error messages in case of Not Published state if exists.
         + sites (array) - List of location status.
             + siteName: Google (string) - Name of listing source.
@@ -12166,8 +12167,10 @@ A detailed view of the listings status at location level
                 "activationStatus": "active",
                 "lastUpdated": "Mon Jun 10 09:49:30 GMT 2024",
                 "locationStatus": "Published",
+                "publishListings": "Please initiate Publish for this locations listings.",
                 "errors":["The selected address is invalid or not supported.",
-                "The business description needs to be longer than 200 characters."],
+                "The business description needs to be longer than 200 characters.",
+                "Please activate your demo location."],
                 "totalSites": 44,
                   "syncedCount": 30,
                   "submittedCount": 13,
@@ -12841,6 +12844,8 @@ Create Listing API publishes information on online listing sources. We post pres
             + languages: English, Spanish (array) - Languages.
             + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api.  NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
             Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
+            + appleMoreHours (array) -  Apple more hours for specific services you offer such as Dining, Bar and Delivery. Apple more hours can only be added if apple primary category is added. To get specific types of apple more hours, please refer to Get supported more hours type api.  NOTE: In apple more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
+            Please refer /listing/get-more-hours-type/get-more-hours-type api to get apple more hours type. Possible Values Service Hours, Delivery Service Hours, Dine In Hours etc.
             + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
@@ -12927,6 +12932,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            + appleWebsiteUrl (string) - Website url will update on apple listing. This website URL will override your existing website URL on your Apple Business Connect.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
             + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
@@ -13138,6 +13144,80 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                                 }
                               ]
                             },
+                    "appleMoreHours": {
+                             "Dining Hours": [
+                              {
+                                "day": 0,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 1,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 2,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 3,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 4,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 5,
+                                "isOpen": 0,
+                                "workingHours": [
+                                  {
+                                    "startHour": "",
+                                    "endHour": ""
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 6,
+                                "isOpen": 0,
+                                "workingHours": [
+                                  {
+                                    "startHour": "",
+                                    "endHour": ""
+                                  }
+                                ]
+                              }
+                          ]
+                    },
                     "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
@@ -13351,6 +13431,7 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                 },
                  "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
+                    "appleWebsiteUrl":"https://www.apple.com",
                     "additionalCategories": [
                       "health_care.dentistry.dental_clinic.dentist.oral_surgeon"],
                    "appleLocationAttributes": {
@@ -13366,7 +13447,7 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                              ]
                        },
                     "appleActionLinks": [{
-                        "id": "quicklinks.airline_book_travel",
+                        "id": "quicklinks.schedule_appointment",
                         "deepLinkUrl": "https://www.google.com",
                         "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
                          }
@@ -13471,6 +13552,8 @@ The Update Listing API will update the location details on all your listings sit
             + languages: English, Spanish (array) - Languages.
             + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
             Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
+            + appleMoreHours (array) -  Apple more hours for specific services you offer such as Dining, Bar and Delivery. Apple more hours can only be added if apple primary category is added. To get specific types of apple more hours, please refer to Get supported more hours type api.  NOTE: In apple more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
+            Please refer /listing/get-more-hours-type/get-more-hours-type api to get apple more hours type. Possible Values Service Hours, Delivery Service Hours, Dine In Hours etc.
             + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
@@ -13557,6 +13640,7 @@ The Update Listing API will update the location details on all your listings sit
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            + appleWebsiteUrl (string) - Website url will update on apple listing. This website URL will override your existing website URL on your Apple Business Connect.
             + primaryCategory (string) - Primary category of apple ,This is a mandatory field. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
             + additionalCategories (array) - You can add upto 5 additional categories most suitable for your business. Please pass an acceptable category name/ id by first getting the approved list using the Get category API.
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
@@ -13768,6 +13852,80 @@ The Update Listing API will update the location details on all your listings sit
                                 }
                               ]
                             },
+                   "appleMoreHours": {
+                             "Dining Hours": [
+                              {
+                                "day": 0,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 1,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 2,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 3,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 4,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 5,
+                                "isOpen": 0,
+                                "workingHours": [
+                                  {
+                                    "startHour": "",
+                                    "endHour": ""
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 6,
+                                "isOpen": 0,
+                                "workingHours": [
+                                  {
+                                    "startHour": "",
+                                    "endHour": ""
+                                  }
+                                ]
+                              }
+                          ]
+                    },
                     "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
@@ -13981,6 +14139,7 @@ The Update Listing API will update the location details on all your listings sit
                 },
                  "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
+                    "appleWebsiteUrl":"https://www.apple.com",
                     "additionalCategories": [
                       "health_care.dentistry.dental_clinic.dentist.oral_surgeon"],
                    "appleLocationAttributes": {
@@ -13996,7 +14155,7 @@ The Update Listing API will update the location details on all your listings sit
                              ]
                        },
                     "appleActionLinks": [{
-                        "id": "quicklinks.airline_book_travel",
+                        "id": "quicklinks.schedule_appointment",
                         "deepLinkUrl": "https://www.google.com",
                         "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
                          }
@@ -14104,6 +14263,8 @@ The Get Listing API will get the listing information for the given business numb
             + languages: English, Spanish (array) - Languages.
             + moreHours (array) -  Google more hours for specific services you offer such as delivery, takeout, drive-through, and pickup (see: Supported More Hours). Google more hours can only be added if google primary category is added. To get specific types of more hours, please refer to Get supported more hours type api. NOTE: In more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
             Please refer /listing/get-more-hours-type/get-more-hours-type api to get google more hours type. Possible Values Breakfast, Lunch, Pickup, etc.
+            + appleMoreHours (array) -  Apple more hours for specific services you offer such as Dining, Bar and Delivery. Apple more hours can only be added if apple primary category is added. To get specific types of apple more hours, please refer to Get supported more hours type api.  NOTE: In apple more hours, day 0 denotes Monday, day 1 denotes Tuesday, …, day 6 denotes Sunday.
+            Please refer /listing/get-more-hours-type/get-more-hours-type api to get apple more hours type. Possible Values Service Hours, Delivery Service Hours, Dine In Hours etc.
             + wholeWeekOperating: 0 (number) - Whether your business is open 24/7, Possible Values - 0 or 1.
             + hoursOfOperations (array, required) - Regular hours: Regular working hours of the business for each day from Monday to Sunday.
                 + (object)
@@ -14190,6 +14351,7 @@ The Get Listing API will get the listing information for the given business numb
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
+            + appleWebsiteUrl (string) - Website url will update on apple listing. This website URL will override your existing website URL on your Apple Business Connect.
             + primaryCategory (string) - Primary category Id for Apple.
             + additionalCategories (array) - Additional categories Id for Apple.
             + primaryCategoryName (string) - Primary category Name for Apple.
@@ -14403,6 +14565,80 @@ The Get Listing API will get the listing information for the given business numb
                                 }
                               ]
                             },
+                    "appleMoreHours": {
+                             "Dining Hours": [
+                              {
+                                "day": 0,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 1,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 2,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 3,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 4,
+                                "isOpen": 1,
+                                "workingHours": [
+                                  {
+                                    "startHour": "10:00",
+                                    "endHour": "16:00"
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 5,
+                                "isOpen": 0,
+                                "workingHours": [
+                                  {
+                                    "startHour": "",
+                                    "endHour": ""
+                                  }
+                                ]
+                              },
+                              {
+                                "day": 6,
+                                "isOpen": 0,
+                                "workingHours": [
+                                  {
+                                    "startHour": "",
+                                    "endHour": ""
+                                  }
+                                ]
+                              }
+                          ]
+                    },
                     "wholeWeekOperating": 0,
                     "hoursOfOperations": [
                         {
@@ -14617,6 +14853,7 @@ The Get Listing API will get the listing information for the given business numb
                  "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
                     "primaryCategoryName": "Dentist",
+                    "appleWebsiteUrl":"https://www.apple.com",
                     "additionalCategories": [
                                 "health_care.dentistry.dental_clinic.dentist.oral_surgeon"
                         ],
@@ -14636,7 +14873,7 @@ The Get Listing API will get the listing information for the given business numb
                              ]
                        },
                     "appleActionLinks": [{
-                        "id": "quicklinks.airline_book_travel",
+                        "id": "quicklinks.schedule_appointment",
                         "deepLinkUrl": "https://www.google.com",
                         "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
                          }
@@ -14682,7 +14919,7 @@ The Get Listing API will get the listing information for the given business numb
 
     [89][]
 
-## Get More Hours Type [/v1/listing/{businessNumber}/more-hours-type]
+## Get More Hours Type [/v1/listing/{businessNumber}/more-hours-type{?channel}]
 Get supported more hours type for a location. This will depend on the country and gmb primary category for the particular location.
 
 ### Get More Hours Type [GET]
@@ -14690,6 +14927,8 @@ Get supported more hours type for a location. This will depend on the country an
 + Parameters
 
     + businessNumber: 169744180007807 (number, required) - Business Number.
+    
+    + channel: gmb (string) -  Source name for which more hours type needs to be fetched. Possible values are gmb, apple. Default value will be gmb if not passed
 
 + Request (application/json)
 
