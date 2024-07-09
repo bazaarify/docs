@@ -11993,8 +11993,8 @@ Get all Questions and Answers for a Location
                 + askedByOwner: true (boolean) - Identifies if question was asked by page owner.
                 + question: This is Dummy question  (string) - text of question
                 + updatedBy: John (string) - Name of author of question
-                + time: 10:52 PM (string) -  time at which question was created/updated h:mm a
-                + updatedOn: Apr 10, 2024 (string) - Date at which question was created/updated MMM d, yyyy
+                + time: 10:52 PM (string) -  time at which question was created/updated hh:mm AM/PM
+                + updatedOn: Apr 10, 2024 (string) - Date at which question was created/updated MMM DD, YYYY
                 + userProfileLogoUrl: http://logourl (string) - url link to google profile photo of author
                 + userCategory: MERCHANT (string) - category of author MERCHANT, REGULAR_USER, LOCAL_GUIDE
                 + locationName: abcdefgh (string) - Birdeye registered business name
@@ -12004,8 +12004,8 @@ Get all Questions and Answers for a Location
                     + answer: This is Dummy answer (string) - Text of answer.
                     + answeredByOwner: true (boolean) - Identifies if this answer was added by owner.
                     + updatedBy: John (string) - Name of author of answer.
-                    + updatedOn: Apr 10, 2024 (string) - Date at which answer was created/updated format : MMM d, yyyy                    
-                    + time: 10:52 PM (string) -  time at which answer was created/updated format: h:mm a
+                    + updatedOn: Apr 10, 2024 (string) - Date at which answer was created/updated format : MMM DD, YYYY                  
+                    + time: 10:52 PM (string) -  time at which answer was created/updated format: hh:mm AM/PM
                     + userCategory: MERCHANT (string) - category of author MERCHANT, REGULAR_USER, LOCAL_GUIDE
                     + userProfileLogoUrl: http://logourl (string) - url link to google profile photo of author
              
@@ -12033,6 +12033,119 @@ Get all Questions and Answers for a Location
                                 "updatedBy": "John",
                                 "updatedOn": "Apr 10, 2024",
                                 "answeredByOwner": true,
+                                "userCategory": "MERCHANT",
+                                "time": "10:52 PM",
+                                "userProfileLogoUrl": "https://logo.png"
+                            }
+                        ]
+                    }
+                ]
+            }
+            
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [2466][]
+
+
+## Get All Unanswered Q&A [/v1/qna/unanswered/get{?api_key,businessId}]
+Get all Unanswered Questions and Answers for a Location
+
+### Get All Unanswered Questions and Answers [POST]
+
++ Parameters
+    + businessId: 12345678 (string, required) - Id of the business.
+    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + startIndex: 0 (number , required ) - start index
+        + pageSize:  25 (number,required) - page size
+
+
+    + Body
+
+            {
+                  "startIndex": 0,
+                  "pageSize":25
+            }
+
+
++ Response 200 (application/json)
+
+
+    + Attributes
+        
+        + totalCount: 100 (number)  - Total number of questions
+        + questionsAndAnswers (array) - Questions and answers details
+            + (object)
+                + questionId: 188556 (number) - Unique question identifier.
+                + answeredByOwner: true (boolean) - Identified if question was answered by page owner.
+                + askedByOwner: true (boolean) - Identifies if question was asked by page owner.
+                + question: This is Dummy question  (string) - text of question
+                + updatedBy: John (string) - Name of author of question
+                + time: 10:52 PM (string) -  time at which question was created/updated hh:mm AM/PM
+                + updatedOn: Apr 10, 2024 (string) - Date at which question was created/updated MMM DD, YYYY
+                + userProfileLogoUrl: http://logourl (string) - url link to google profile photo of author
+                + userCategory: MERCHANT (string) - category of author MERCHANT, REGULAR_USER, LOCAL_GUIDE
+                + locationName: abcdefgh (string) - Birdeye registered business name
+                + noOfAnswers: 4 (string) - number of answer available on question
+                + answers (object) - Answers details
+                    + answerId: 6721 (number) - Unique answer identifier.
+                    + answer: This is Dummy answer (string) - Text of answer.
+                    + answeredByOwner: true (boolean) - Identifies if this answer was added by owner.
+                    + updatedBy: John (string) - Name of author of answer.
+                    + updatedOn: Apr 10, 2024 (string) - Date at which answer was created/updated format : MMM DD, YYYY                   
+                    + time: 10:52 PM (string) -  time at which answer was created/updated format: hh:mm AM/PM
+                    + userCategory: MERCHANT (string) - category of author MERCHANT, REGULAR_USER, LOCAL_GUIDE
+                    + userProfileLogoUrl: http://logourl (string) - url link to google profile photo of author
+             
+        
+    + Body
+    
+            {
+                "totalCount": 1,
+                "questionsAndAnswers": [
+                    {
+                        "questionId": 5107,
+                        "answeredByOwner": false,
+                        "askedByOwner": false,
+                        "question": "This is dummy question",
+                        "updatedBy": "John",
+                        "time": "10:52 PM",
+                        "updatedOn": "Apr 10, 2024",
+                        "userProfileLogoUrl": "https://logo.png",
+                        "userCategory": "MERCHANT",
+                        "locationName": "XYZ",
+                        "noOfAnswers": 1,
+                        "answers": [
+                            {
+                                "answerId": 5108,
+                                "answer": "This is dummy answer",
+                                "updatedBy": "John",
+                                "updatedOn": "Apr 10, 2024",
+                                "answeredByOwner": false,
                                 "userCategory": "MERCHANT",
                                 "time": "10:52 PM",
                                 "userProfileLogoUrl": "https://logo.png"
