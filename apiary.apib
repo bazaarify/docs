@@ -10067,6 +10067,9 @@ Create webhook subscription listens to subscribed webhook events on a specific p
                         CONTACT_UPDATED
                         CONTACT_DELETED
                         CONTACT_ACTIVITY_UPDATE
+        + auth (object) - Will be used for basic authorization, should be null for no auth
+                + username: username (string)- username for authorization
+                + password: password (string)- password for authorization                
 
     + Body
 
@@ -10075,7 +10078,13 @@ Create webhook subscription listens to subscribed webhook events on a specific p
             "emails": [
                         "test@xyz.com"
                     ],
-            "eventName": "APPOINTMENT_BOOKED"
+            "eventName": "APPOINTMENT_BOOKED",
+            "auth": {
+                "username": "testUser",
+                "password": "userpassword"
+            }
+
+            
         }
 
 + Response 200 (application/json)
@@ -10144,7 +10153,6 @@ Delete webhook subscription to stop listening to subscribed webhook events on th
             "code": 1005,
             "message": "Subscription Not found for Particular Id"
         }
-
 
 
 # Group Webhook
