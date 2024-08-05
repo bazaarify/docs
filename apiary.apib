@@ -2049,6 +2049,33 @@ For example :
             "message": "Primary category can not be included in additional category."
         }
 
+## 3335 [/3335]
+
++ Model (application/json)
+
+        {
+            "code": 2276,
+            "message": "Please add upto 9 GBP additional categories only."
+        }
+
+## 3336 [/3336]
+
++ Model (application/json)
+
+        {
+            "code": 2277,
+            "message": "Duplicate GBP categories are not allowed."
+        }
+
+## 3337 [/3337]
+
++ Model (application/json)
+
+        {
+            "code": 2278,
+            "message": "Primary GBP category is not allowed in additional GBP categories."
+        }
+
 
 
 # Group Business
@@ -3180,6 +3207,18 @@ Update Business API updates business information.
 + Response 400
 
     [2290][]
+
++ Response 400
+
+    [3335][]
+
++ Response 400
+
+    [3336][]
+
++ Response 400
+
+    [3337][]
 
 
 
@@ -13636,7 +13675,15 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
 
 + Response 400
 
-    [3334][]
+    [3335][]
+
++ Response 400
+
+    [3336][]
+
++ Response 400
+
+    [3337][]
 
 
 ## Update Listing [/v1/listing/{businessNumber}/update]
@@ -14348,7 +14395,15 @@ The Update Listing API will update the location details on all your listings sit
 
 + Response 400
 
-    [3334][]
+    [3335][]
+
++ Response 400
+
+    [3336][]
+
++ Response 400
+
+    [3337][]
 
 
 ## Get Listing [/v1/listing/{businessNumber}/get]
