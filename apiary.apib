@@ -2049,6 +2049,15 @@ For example :
             "message": "Primary category can not be included in additional category."
         }
 
+## 3335 [/3335]
+
++ Model (application/json)
+
+        {
+            "code": 2162,
+            "message": "Reopen date should not be less than current date."
+        }
+
 
 
 # Group Business
@@ -3180,6 +3189,10 @@ Update Business API updates business information.
 + Response 400
 
     [2290][]
+
++ Response 400
+
+    [3335][]
 
 
 
@@ -13638,6 +13651,10 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
 
     [3334][]
 
++ Response 400
+
+    [3335][]
+
 
 ## Update Listing [/v1/listing/{businessNumber}/update]
 The Update Listing API will update the location details on all your listings sites.
@@ -14349,6 +14366,10 @@ The Update Listing API will update the location details on all your listings sit
 + Response 400
 
     [3334][]
+
++ Response 400
+
+    [3335][]
 
 
 ## Get Listing [/v1/listing/{businessNumber}/get]
