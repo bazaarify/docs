@@ -2166,6 +2166,15 @@ For example :
             "message": "Invalid Lending Tree Url, please enter a valid URL"
         }
 
+## 3348 [/3348]
+
++ Model (application/json)
+
+        {
+            "code": 2162,
+            "message": "Reopen date should not be less than current date."
+        }
+
 
 
 # Group Business
@@ -3353,6 +3362,10 @@ Update Business API updates business information.
 + Response 400
 
     [3347][]
+
++ Response 400
+
+    [3348][]
 
 
 
@@ -13863,6 +13876,10 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
 
     [3347][]
 
++ Response 400
+
+    [3348][]
+
 
 ## Update Listing [/v1/listing/{businessNumber}/update]
 The Update Listing API will update the location details on all your listings sites.
@@ -14626,6 +14643,10 @@ The Update Listing API will update the location details on all your listings sit
 + Response 400
 
     [3347][]
+
++ Response 400
+
+    [3348][]
 
 
 ## Get Listing [/v1/listing/{businessNumber}/get]
