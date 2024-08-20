@@ -5120,6 +5120,7 @@ Customer check-in can be done using Check in API.
         + employees (array)
             + (object)
                 + emailId: sshikha@abcd.com (string) - Email Id of assisted Employee.
+        + externalId: ABC123 (string) - Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
 
     + Body
 
@@ -5136,7 +5137,8 @@ Customer check-in can be done using Check in API.
                },
               "employees":[{
                              "emailId" : "sshikha@abcd.com"
-                          }]
+                          }],
+              "externalId": "ABC123"
             }
 
 + Response 200 (application/json)
