@@ -4864,6 +4864,7 @@ Customers can be created & updated using Create or Update Contact API.
                 + fieldName: Company (string) - Field name.
                 + type: text (string) - Field type.
                 + fieldValue: Dunder Mifflin (string) - Value of field.
+        + externalId: ABC123 (string) - Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
 
     + Body
 
@@ -4889,7 +4890,8 @@ Customers can be created & updated using Create or Update Contact API.
                     "fieldName": "Product",
                     "type": "text",
                     "fieldValue": "Paper"
-                }]
+                }],
+                "externalId": "ABC123"
             }
 
 
@@ -4991,6 +4993,7 @@ Get Contact fetches Customer details.
                 + fieldName: Company (string) - Field name.
                 + type: text (string) - Field type.
                 + fieldValue: Dunder Mifflin (string) - Value of field.
+        + externalId: ABC123 (string) - Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
 
 
     + Body
@@ -5031,7 +5034,8 @@ Get Contact fetches Customer details.
                     "fieldName": "Product",
                     "type": "text",
                     "fieldValue": "Paper"
-                }]
+                }],
+                "externalId": "ABC123"
             }
 
 + Response 401
@@ -5129,6 +5133,7 @@ Customer check-in can be done using Check in API.
         + employees (array)
             + (object)
                 + emailId: sshikha@abcd.com (string) - Email Id of assisted Employee.
+        + externalId: ABC123 (string) - Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
 
     + Body
 
@@ -5145,7 +5150,8 @@ Customer check-in can be done using Check in API.
                },
               "employees":[{
                              "emailId" : "sshikha@abcd.com"
-                          }]
+                          }],
+              "externalId": "ABC123"
             }
 
 + Response 200 (application/json)
