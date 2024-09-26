@@ -2085,6 +2085,103 @@ For example :
             "message": "Reopen date should not be less than current date."
         }
 
+## 2511 [/2511]
+
++ Model (application/json)
+
+        {
+            "code": 2511,
+            "message": "Cannot update business status when listing is already fixed."
+        }
+
+## 2512 [/2512]
+
++ Model (application/json)
+
+        {
+            "code": 2512,
+            "message": "Cannot update opening soon date when listing is already fixed."
+        }
+
+## 2513 [/2513]
+
++ Model (application/json)
+
+        {
+            "code": 2513,
+            "message": "Opened On date can not be in future."
+        }
+
+## 2514 [/2514]
+
++ Model (application/json)
+
+        {
+            "code": 2514,
+            "message": "Opening Soon date is mandatory when business is marked as Opening soon."
+        }
+
+
+## 2515 [/2515]
+
++ Model (application/json)
+
+        {
+            "code": 2515,
+            "message": "Reopen date is not supported for this date."
+        }
+
+
+## 2516 [/2516]
+
++ Model (application/json)
+
+        {
+            "code": 2516,
+            "message": "Opening Soon Date can not be more than 1 year from now."
+        }
+
+
+## 2517 [/2517]
+
++ Model (application/json)
+
+        {
+            "code": 2517,
+            "message": "Opening Soon date should not be less than current date."
+        }
+
+
+## 2518 [/2518]
+
++ Model (application/json)
+
+        {
+            "code": 2518,
+            "message": "Business Status is mandatory to pass with reopen, opened on and opening soon date."
+        }
+
+
+## 2519 [/2519]
+
++ Model (application/json)
+
+        {
+            "code": 2519,
+            "message": "Third party categories change for opening soon business is not allowed."
+        }
+
+
+## 2520 [/2520]
+
++ Model (application/json)
+
+        {
+            "code": 2520,
+            "message": "Open Date is not supported for this date"
+        }
+
+
 
 
 # Group Business
@@ -3237,7 +3334,49 @@ Update Business API updates business information.
 
     [3348][]
 
++ Response 400
 
+    [3348][]
+
++ Response 400
+
+    [2511][]
+
++ Response 400
+
+    [2512][]
+
++ Response 400
+
+    [2513][]
+
++ Response 400
+
+    [2514][]
+
++ Response 400
+
+    [2515][]
+
++ Response 400
+
+    [2516][]
+
++ Response 400
+
+    [2517][]
+
++ Response 400
+
+    [2518][]
+
++ Response 400
+
+    [2519][]
+    
++ Response 400
+
+    [2520][]
 
 
 ## Delete [/v1/business/{business_Id}{?api_key}]
@@ -9184,6 +9323,7 @@ Create Survey API helps create a new survey for the required question structure 
 
 
 
+
 ## Update Settings [/v1/survey/{surveyId}/settings/update{?api_key,businessId}]
 Update Survey Settings helps update the survey page appearance settings like Logo, Title, ProgessBar setting, Theme Colour, User Acess, and many more.
 
@@ -13837,6 +13977,46 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
 
     [3348][]
 
++ Response 400
+
+    [2511][]
+
++ Response 400
+
+    [2512][]
+
++ Response 400
+
+    [2513][]
+
++ Response 400
+
+    [2514][]
+
++ Response 400
+
+    [2515][]
+
++ Response 400
+
+    [2516][]
+
++ Response 400
+
+    [2517][]
+
++ Response 400
+
+    [2518][]
+
++ Response 400
+
+    [2519][]
+    
++ Response 400
+
+    [2520][]
+
 
 ## Update Listing [/v1/listing/{businessNumber}/update]
 The Update Listing API will update the location details on all your listings sites.
@@ -14564,6 +14744,46 @@ The Update Listing API will update the location details on all your listings sit
 + Response 400
 
     [3348][]
+
++ Response 400
+
+    [2511][]
+
++ Response 400
+
+    [2512][]
+
++ Response 400
+
+    [2513][]
+
++ Response 400
+
+    [2514][]
+
++ Response 400
+
+    [2515][]
+
++ Response 400
+
+    [2516][]
+
++ Response 400
+
+    [2517][]
+
++ Response 400
+
+    [2518][]
+
++ Response 400
+
+    [2519][]
+    
++ Response 400
+
+    [2520][]
 
 
 ## Get Listing [/v1/listing/{businessNumber}/get]
@@ -16030,6 +16250,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>09/27/2024</b> - Added update for Google Opening Soon (BIRD-56987)
 * <b>06/25/2024</b> - Updated Listings Insights API (BIRDEYE-137367)
 * <b>05/29/2024</b> - Added Google Q&A Developers API Section
 * <b>05/13/2024</b> - Added epoc date support for GetReviews APIs.
