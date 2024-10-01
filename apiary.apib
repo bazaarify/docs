@@ -2777,8 +2777,8 @@ Update Business API updates business information.
                 + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                 + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                 + isOpen: 1 (number) - 0(Business closed today), 1 (open)
-        + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
-        + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/dd/yyyy" format.
+        + businessStatus : Open (string) - The business status on the listing page can be set to Open, Temporarily Closed, Permanently Closed, or Opening Soon. A Reopen Date is mandatory for 'Temporarily Closed' and 'Opening Soon' statuses, while optional for 'Open'.
+        + reopenDate : 10/20/2022 - Reopen Date is required for the 'Temporarily Closed' and 'Opening Soon' statuses, and optional for 'Open.' The date must be in the 'MM/dd/yyyy' format.
         + services: Other Dental Specialties, Orthodontists, Dentistry (required,string)- Services (Comma separated list of services offered; used for SEO).
         + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords about the business. Useful in SEO. Business keyword cannot be more than 1000 characters.
         + products: Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
@@ -13311,8 +13311,8 @@ Create Listing API publishes information on online listing sources. We post pres
                     + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                     + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                     + isOpen: 1 (number) - 0(Business closed today), 1 (open)
-            + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
-            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/DD/YYYY" format.
+            + businessStatus : Open (string) - The business status on the listing page can be set to Open, Temporarily Closed, Permanently Closed, or Opening Soon. A Reopen Date is mandatory for 'Temporarily Closed' and 'Opening Soon' statuses, while optional for 'Open'.
+            + reopenDate : 10/20/2022 - Reopen Date is required for the 'Temporarily Closed' and 'Opening Soon' statuses, and optional for 'Open.' The date must be in the 'MM/dd/yyyy' format.
             + services:  Other Dental Specialties, Orthodontists, Dentistry (required,string) - Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
             + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
             + products: Invisalign, Cookies Set of 8, Brochure design & prints (string) - Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
@@ -14079,8 +14079,8 @@ The Update Listing API will update the location details on all your listings sit
                     + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                     + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                     + isOpen: 1 (number) - 0(Business closed today), 1 (open)
-            + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
-            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/DD/YYYY" format.
+            + businessStatus : Open (string) - The business status on the listing page can be set to Open, Temporarily Closed, Permanently Closed, or Opening Soon. A Reopen Date is mandatory for 'Temporarily Closed' and 'Opening Soon' statuses, while optional for 'Open'.
+            + reopenDate : 10/20/2022 - Reopen Date is required for the 'Temporarily Closed' and 'Opening Soon' statuses, and optional for 'Open.' The date must be in the 'MM/dd/yyyy' format.
             + services:  Other Dental Specialties, Orthodontists, Dentistry (required,string) - Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
             + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
             + products: Invisalign, Cookies Set of 8, Brochure design & prints (string) - Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
@@ -14850,8 +14850,8 @@ The Get Listing API will get the listing information for the given business numb
                     + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                     + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                     + isOpen: 1 (number) - 0(Business closed today), 1 (open)
-            + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
-            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/DD/YYYY" format.
+            + businessStatus : Open (string) - The business status on the listing page can be set to Open, Temporarily Closed, Permanently Closed, or Opening Soon. A Reopen Date is mandatory for 'Temporarily Closed' and 'Opening Soon' statuses, while optional for 'Open'.
+            + reopenDate : 10/20/2022 - Reopen Date is required for the 'Temporarily Closed' and 'Opening Soon' statuses, and optional for 'Open.' The date must be in the 'MM/dd/yyyy' format.
             + services:  Other Dental Specialties, Orthodontists, Dentistry (required,string) - Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
             + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
             + products: Invisalign, Cookies Set of 8, Brochure design & prints (string) - Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
