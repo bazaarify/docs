@@ -8533,6 +8533,7 @@ List Responses for a Survey API fetches all the responses available for a partic
     + size: 30 (integer, optional) - The size of the page.
     + sortby: date (string, optional) - The sort by parameter.
     + sorder: asc (string, optional) - The sort order parameter.
+    + includeTicketId: false (boolean, optional)  - The field to fetch ticketIds associated with the response. 
 
 
 + Request (application/json)
@@ -8542,14 +8543,14 @@ List Responses for a Survey API fetches all the responses available for a partic
             Accept: application/json
 
     + Attributes
-        + startDate: "07/02/2018 06:30:00" (string, optional) - Start date.
-        + endDate: "07/03/2018 06:45:00" (string, optional) - End date.
+        + startDate: "MM/dd/yyyy HH:mm:ss" (string, optional) - Start date.
+        + endDate: "MM/dd/yyyy HH:mm:ss" (string, optional) - End date.
 
     + Body
 
             {
-                "startDate" : "07/02/2018 06:30:00",
-                "endDate" : "07/03/2018 06:45:00"
+                "startDate" : "07/03/2018 06:30:00",
+                "endDate" : "07/23/2018 06:45:00"
             }
 
 
@@ -8574,6 +8575,10 @@ List Responses for a Survey API fetches all the responses available for a partic
                      "customerId":123456,
                      "customerName":"Anonymous",
                      "ticketed":false,
+                     "ticketIds": [
+                        100770,
+                        100751
+                      ],
                      "answers":[
                         {
                            "questionTitle":"We are interested in receiving your feedback. \nabout the care provided at our facility. \n\nPlease take a few minutes to rate your satisfaction with each of the following\n\nPlease describe ur properties.",
@@ -8811,7 +8816,7 @@ List Responses for a Survey API fetches all the responses available for a partic
                      } 
                   }
                ],
-               "totalResponses":2,
+               "totalResponses":1,
                "pageNo":0,
                "pageSize":1,
                "hasNext":true
