@@ -9842,11 +9842,10 @@ This API allows users to schedule or immediately post content on supported socia
             + Error message: Input SocialSite does not match with any one of the SOCIAL SITE {TWITTER,FACEBOOK, GOOGLEMYBUSINESS,LINKEDIN,INSTAGRAM}
         + subBusinessNumbers: 123456780,123456781 (array) - List of Location Ids. Optional for SMB.
         + scheduleTimestamp: 1677759962528 (number) - A Unix timestamp in milliseconds that represents the date and time when the post should be scheduled. If not provided, the post will be published after 5 minutes of posting.
-            + Error message: Post cannot be scheduled before current time.
         + media (object) - Media details.
             + type: IMAGE (string) - "An array of media objects, each containing the media type and the URL. Allowed media type are IMAGE, VIDEO and REEL.
             + mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png (string) - Media Link.
-            + Error message: Input Media Type does not match with any one of the MEDIA TYPE {IMAGE,VIDEO, REEL}
+            + Error message: Input Media Type does not match with any one of the MEDIA TYPE.
         + additionalMetaData (object) - Additional metadata for the post, including a call to action (CTA). Applicable only for GOOGLEMYBUSINESS.
             + callToActionType: LEARN_MORE, BOOK, ORDER, SHOP, SIGN_UP, CALL (string) - Type of data.
             + callToActionUrl: https://app.birdeye.com (string) - Link of the additional data(Not required when CTA type is CALL).
