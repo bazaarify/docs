@@ -5859,7 +5859,7 @@ Contact Us form can be integrated with Birdeye Inbox using Contact Us API.
         + customerComment: What all services do you offer? (string) - Comment or query by the customer
         + customer (object,required) - Customer details.
             + name: Ron Smith (string, required) - Name of the customer.
-            + email: ron@test.com (string) - Email Id of the Customer. Mandatory if phone not provided.
+            + emailId: ron@test.com (string) - Email Id of the Customer. Mandatory if phone not provided.
             + phone: 1234567890 (string) - Phone No of the Customer. Mandatory if email not provided.
         + additionalParams (object) - Additional Params contains (key,value) pair which can be used to track the customers.
 
@@ -5870,7 +5870,7 @@ Contact Us form can be integrated with Birdeye Inbox using Contact Us API.
                 "customerComment": "What all services do you offer?",
                 "customer": {
                     "name": "Dummy Name",
-                    "email": "sam@gmail.com",
+                    "emailId": "sam@gmail.com",
                     "phone": "4424242424"
                 },
                 "additionalParams": {
@@ -8533,6 +8533,7 @@ List Responses for a Survey API fetches all the responses available for a partic
     + size: 30 (integer, optional) - The size of the page.
     + sortby: date (string, optional) - The sort by parameter.
     + sorder: asc (string, optional) - The sort order parameter.
+    + includeTicketId: false (boolean, optional)  - The field to fetch ticketIds associated with the response. 
 
 
 + Request (application/json)
@@ -8542,14 +8543,14 @@ List Responses for a Survey API fetches all the responses available for a partic
             Accept: application/json
 
     + Attributes
-        + startDate: "07/02/2018 06:30:00" (string, optional) - Start date.
-        + endDate: "07/03/2018 06:45:00" (string, optional) - End date.
+        + startDate: "MM/dd/yyyy HH:mm:ss" (string, optional) - Start date.
+        + endDate: "MM/dd/yyyy HH:mm:ss" (string, optional) - End date.
 
     + Body
 
             {
-                "startDate" : "07/02/2018 06:30:00",
-                "endDate" : "07/03/2018 06:45:00"
+                "startDate" : "07/03/2018 06:30:00",
+                "endDate" : "07/23/2018 06:45:00"
             }
 
 
@@ -8574,6 +8575,10 @@ List Responses for a Survey API fetches all the responses available for a partic
                      "customerId":123456,
                      "customerName":"Anonymous",
                      "ticketed":false,
+                     "ticketIds": [
+                        100770,
+                        100751
+                      ],
                      "answers":[
                         {
                            "questionTitle":"We are interested in receiving your feedback. \nabout the care provided at our facility. \n\nPlease take a few minutes to rate your satisfaction with each of the following\n\nPlease describe ur properties.",
@@ -8811,7 +8816,7 @@ List Responses for a Survey API fetches all the responses available for a partic
                      } 
                   }
                ],
-               "totalResponses":2,
+               "totalResponses":1,
                "pageNo":0,
                "pageSize":1,
                "hasNext":true
@@ -16268,3 +16273,4 @@ Add Business Integration Mapping adds locations to integrations and set them act
 * <b>08/25/2023</b> - Added new APIs under Business and Listing modules, Get Category List API, Get GMB Attributes API & Get Timezone List
 * <b>07/21/2023</b> - Added new API under Business module i.e, Business Search API.
 * <b>06/30/2023</b> - Added support for service area based information in Get Business API and Update Business API.
+* <b>10/04/2024</b> - Added support to fetch ticketId associated with the survey responses in List Response API.
