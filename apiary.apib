@@ -9833,8 +9833,13 @@ This API allows users to schedule or immediately post content on supported socia
                             Instagram: 5000
                             LinkedIn: 3000
                             Twitter: 240
-        + socialSite: (string, required) - The social site where the post will be made. Possible values are INSTAGRAM, FACEBOOK, GOOGLEMYBUSINESS, LINKEDIN, TWITTER
-            + Error message: Input SocialSite does not match with any one of the SOCIAL SITE {TWITTER,FACEBOOK, GOOGLEMYBUSINESS,LINKEDIN,INSTAGRAM}
+        + socialSite: TWITTER (string, required) - The social site where the post will be made. Possible values are
+                            INSTAGRAM,
+                            FACEBOOK,
+                            GOOGLEMYBUSINESS,
+                            LINKEDIN,
+                            TWITTER
+            + Error message: Input SocialSite does not match with any one of the SOCIAL SITE (TWITTER,FACEBOOK, GOOGLEMYBUSINESS,LINKEDIN,INSTAGRAM)
         + subBusinessNumbers: 123456780,123456781 (array) - List of Location Ids. Optional for SMB.
         + scheduleTimestamp: 1677759962528 (number) - A Unix timestamp in milliseconds that represents the date and time when the post should be scheduled. If not provided, the post will be published after 5 minutes of posting.
         + media (object) - Media details.
@@ -9921,7 +9926,12 @@ This API allows users to track the status of a social post that was previously s
     + Attributes
         + trackingId: BvgqPRWtObg4jWTKG2wHBg (string) -  The tracking ID of the scheduled or posted social post.
         + accountNumber: 124356718987 (string) -  The account ID associated with the post.
-        + socialSite: (string) - Social Sites. Possible values are INSTAGRAM, FACEBOOK, GOOGLEMYBUSINESS, LINKEDIN, TWITTER
+        + socialSite: TWITTER (string) - Social Sites. Possible values are
+                            INSTAGRAM,
+                            FACEBOOK,
+                            GOOGLEMYBUSINESS,
+                            LINKEDIN,
+                            TWITTER
         + subBusinessNumbers: 123456780,123456781 (array) - List of Location Ids. Optional for SMB.
         + socialPostDetails (array) - An array of objects containing post details, including status, location name, and published timestamp.
             + (object)
