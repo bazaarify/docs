@@ -9815,7 +9815,7 @@ API to delete the Business Medias.
 Create and track Social posting for all channels.
 
 ## Schedule Social Post [/v1/social/{accountNumber}/schedule]
-Schedule or immediately post content on  Social sites.
+This API allows users to schedule or immediately post content on supported social sites. Users can specify the content, media, and schedule a specific time for the post. Supported social sites include Google Business Profile, Facebook, Instagram, LinkedIn, and Twitter.
 
 ### Schedule Social Post [POST]
 
@@ -9838,20 +9838,22 @@ Schedule or immediately post content on  Social sites.
                             Instagram: 5000
                             LinkedIn: 3000
                             Twitter: 240
-        + socialSite: GOOGLEMYBUSINESS (string, required) - Social Sites. Possible values are
-                                            INSTAGRAM,
-                                            FACEBOOK,
-                                            GOOGLEMYBUSINESS,
-                                            LINKEDIN,
-                                            TWITTER
+        + socialSite: TWITTER (string, required) - The social site where the post will be made. Possible values are
+                            INSTAGRAM,
+                            FACEBOOK,
+                            GOOGLEMYBUSINESS,
+                            LINKEDIN,
+                            TWITTER
+            + Error message: Input SocialSite does not match with any one of the SOCIAL SITE (TWITTER,FACEBOOK, GOOGLEMYBUSINESS,LINKEDIN,INSTAGRAM)
         + subBusinessNumbers: 123456780,123456781 (array) - List of Location Ids. Optional for SMB.
-        + scheduleTimestamp: 1677759962528 (number) - Epoch time in milliseconds.
+        + scheduleTimestamp: 1677759962528 (number) - A Unix timestamp in milliseconds that represents the date and time when the post should be scheduled. If not provided, the post will be published after 5 minutes of posting.
         + media (object) - Media details.
-            + type: IMAGE (string) - Type of Media. IMAGE or VIDEO
+            + type: IMAGE (string) - An array of media objects, each containing the media type and the URL. Allowed media type are IMAGE, VIDEO and REEL.
             + mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png (string) - Media Link.
-        + additionalMetaData (object) - Applicable only for GOOGLEMYBUSINESS, learn more link.
-            + callToActionType: LEARN_MORE (string) - Type of data.
-            + callToActionUrl: https://app.birdeye.com (string) - Link of the additional data.
+            + Error message: Input Media Type does not match with any one of the MEDIA TYPE.
+        + additionalMetaData (object) - Additional metadata for the post, including a call to action (CTA). Applicable only for GOOGLEMYBUSINESS.
+            + callToActionType: LEARN_MORE, BOOK, ORDER, SHOP, SIGN_UP, CALL (string) - Type of data.
+            + callToActionUrl: https://app.birdeye.com (string) - Link of the additional data(Not required when CTA type is CALL).
 
 
 
@@ -9906,14 +9908,15 @@ Schedule or immediately post content on  Social sites.
 
 
 ## Track Social Post [/v1/social/{accountNumber}/post/track/{trackingId}]
-Track the status of scheduled or published post.
+This API allows users to track the status of a social post that was previously scheduled or published using the Schedule Social Post API. By providing the trackingId from the response of the scheduling API, users can query the status and details of the post across different social sites.
 
 ### Track Social Post [GET]
 
 + Parameters
 
     + accountNumber: 12345678 (number, required) - Id of the Account.
-    + trackingId: abcdefdhs (string, required) - Id to track the post status.
+    + trackingId: abcdefdhs (string, required) - The tracking ID to track the status of the post.
+        + Error message: Tracking Id not present in System
 
 + Request (application/json)
 
@@ -9926,19 +9929,19 @@ Track the status of scheduled or published post.
 + Response 200 (application/json)
 
     + Attributes
-        + trackingId: BvgqPRWtObg4jWTKG2wHBg (string) -  Track Id.
-        + accountNumber: 124356718987 (string) -  Account Id.
-        + socialSite: GOOGLEMYBUSINESS (string) - Social Sites. Possible values are
-                                            INSTAGRAM,
-                                            FACEBOOK,
-                                            GOOGLEMYBUSINESS,
-                                            LINKEDIN,
-                                            TWITTER
+        + trackingId: BvgqPRWtObg4jWTKG2wHBg (string) -  The tracking ID of the scheduled or posted social post.
+        + accountNumber: 124356718987 (string) -  The account ID associated with the post.
+        + socialSite: TWITTER (string) - Social Sites. Possible values are
+                            INSTAGRAM,
+                            FACEBOOK,
+                            GOOGLEMYBUSINESS,
+                            LINKEDIN,
+                            TWITTER
         + subBusinessNumbers: 123456780,123456781 (array) - List of Location Ids. Optional for SMB.
-        + socialPostDetails (array) - Post details.
+        + socialPostDetails (array) - An array of objects containing post details, including status, location name, and published timestamp.
             + (object)
-                + locationName: Chalker and Peterson (string) - Name of the location.
-                + locationNumber: 12345678909 (string) - Location Id.
+                + locationName: Chalker and Peterson (string) - The name of the location where the post was published.
+                + locationNumber: 12345678909 (string) - The ID of the location where the post was published.
                 + status (object) - Post status details.
                     + status: POST_SUCCEEDED (string) - Post status. Possible values:
                                                                 POST_SCHEDULED,
@@ -9947,7 +9950,7 @@ Track the status of scheduled or published post.
                                                                 POST_FAILED,
                                                                 REJECTED_BY_APPROVER
                     + failureReason: Your session has expired. Please log back into your Facebook account to continue. (string) - Failure reason if any.
-                + publishedTimestamp: 43412413412 (number) - Published timestamp in milliseconds.
+                + publishedTimestamp: 43412413412 (number) - The Unix timestamp (in milliseconds) when the post was published.
                 + socialSitePostId: 847803613041846_899791936843015 (string) - Social site post id.
                 + socialSitePostUrl: http://www.facebook.com/847803613041846_899791936843015 (string) - Social site post link.
 
