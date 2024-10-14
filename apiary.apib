@@ -2085,6 +2085,103 @@ For example :
             "message": "Reopen date should not be less than current date."
         }
 
+## 2511 [/2511]
+
++ Model (application/json)
+
+        {
+            "code": 2511,
+            "message": "Cannot update business status when listing is already fixed."
+        }
+
+## 2512 [/2512]
+
++ Model (application/json)
+
+        {
+            "code": 2512,
+            "message": "Cannot update opening soon date when listing is already fixed."
+        }
+
+## 2513 [/2513]
+
++ Model (application/json)
+
+        {
+            "code": 2513,
+            "message": "Opened On date can not be in future."
+        }
+
+## 2514 [/2514]
+
++ Model (application/json)
+
+        {
+            "code": 2514,
+            "message": "Opening Soon date is mandatory when business is marked as Opening soon."
+        }
+
+
+## 2515 [/2515]
+
++ Model (application/json)
+
+        {
+            "code": 2515,
+            "message": "Reopen date is not supported for this date."
+        }
+
+
+## 2516 [/2516]
+
++ Model (application/json)
+
+        {
+            "code": 2516,
+            "message": "Opening Soon Date can not be more than 1 year from now."
+        }
+
+
+## 2517 [/2517]
+
++ Model (application/json)
+
+        {
+            "code": 2517,
+            "message": "Opening Soon date should not be less than current date."
+        }
+
+
+## 2518 [/2518]
+
++ Model (application/json)
+
+        {
+            "code": 2518,
+            "message": "Business Status is mandatory to pass with reopen, opened on and opening soon date."
+        }
+
+
+## 2519 [/2519]
+
++ Model (application/json)
+
+        {
+            "code": 2519,
+            "message": "Third party categories change for opening soon business is not allowed."
+        }
+
+
+## 2520 [/2520]
+
++ Model (application/json)
+
+        {
+            "code": 2520,
+            "message": "Open Date is not supported for this date"
+        }
+
+
 
 
 # Group Business
@@ -2680,8 +2777,8 @@ Update Business API updates business information.
                 + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                 + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                 + isOpen: 1 (number) - 0(Business closed today), 1 (open)
-        + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
-        + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/dd/yyyy" format.
+        + businessStatus : Open (string) - The business status on the listing page can be set to Open, Temporarily Closed, Permanently Closed, or Opening Soon. A Reopen Date is mandatory for 'Temporarily Closed' and 'Opening Soon' statuses, while optional for 'Open'.
+        + reopenDate : 10/20/2022 - Reopen Date is required for the 'Temporarily Closed' and 'Opening Soon' statuses, and optional for 'Open.' The date must be in the 'MM/dd/yyyy' format.
         + services: Other Dental Specialties, Orthodontists, Dentistry (required,string)- Services (Comma separated list of services offered; used for SEO).
         + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Keywords about the business. Useful in SEO. Business keyword cannot be more than 1000 characters.
         + products: Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
@@ -3237,7 +3334,49 @@ Update Business API updates business information.
 
     [3348][]
 
++ Response 400
 
+    [3348][]
+
++ Response 400
+
+    [2511][]
+
++ Response 400
+
+    [2512][]
+
++ Response 400
+
+    [2513][]
+
++ Response 400
+
+    [2514][]
+
++ Response 400
+
+    [2515][]
+
++ Response 400
+
+    [2516][]
+
++ Response 400
+
+    [2517][]
+
++ Response 400
+
+    [2518][]
+
++ Response 400
+
+    [2519][]
+    
++ Response 400
+
+    [2520][]
 
 
 ## Delete [/v1/business/{business_Id}{?api_key}]
@@ -5720,7 +5859,7 @@ Contact Us form can be integrated with Birdeye Inbox using Contact Us API.
         + customerComment: What all services do you offer? (string) - Comment or query by the customer
         + customer (object,required) - Customer details.
             + name: Ron Smith (string, required) - Name of the customer.
-            + email: ron@test.com (string) - Email Id of the Customer. Mandatory if phone not provided.
+            + emailId: ron@test.com (string) - Email Id of the Customer. Mandatory if phone not provided.
             + phone: 1234567890 (string) - Phone No of the Customer. Mandatory if email not provided.
         + additionalParams (object) - Additional Params contains (key,value) pair which can be used to track the customers.
 
@@ -5731,7 +5870,7 @@ Contact Us form can be integrated with Birdeye Inbox using Contact Us API.
                 "customerComment": "What all services do you offer?",
                 "customer": {
                     "name": "Dummy Name",
-                    "email": "sam@gmail.com",
+                    "emailId": "sam@gmail.com",
                     "phone": "4424242424"
                 },
                 "additionalParams": {
@@ -8380,7 +8519,7 @@ Post a survey response API submits the survey response for a particular survey u
 
 
 
-## List Responses [/v1/survey/ext/list/responses/{survey_id}{?api_key,businessNumber,page,size,sortby,sorder}]
+## List Responses [/v1/survey/ext/list/responses/{survey_id}{?api_key,businessNumber,page,size,sortby,sorder,includeTicketId}]
 List Responses for a Survey API fetches all the responses available for a particular survey ID.
 
 
@@ -8394,6 +8533,7 @@ List Responses for a Survey API fetches all the responses available for a partic
     + size: 30 (integer, optional) - The size of the page.
     + sortby: date (string, optional) - The sort by parameter.
     + sorder: asc (string, optional) - The sort order parameter.
+    + includeTicketId: false (boolean, optional)  - The field to fetch ticketIds associated with the response. 
 
 
 + Request (application/json)
@@ -8403,14 +8543,14 @@ List Responses for a Survey API fetches all the responses available for a partic
             Accept: application/json
 
     + Attributes
-        + startDate: "07/02/2018 06:30:00" (string, optional) - Start date.
-        + endDate: "07/03/2018 06:45:00" (string, optional) - End date.
+        + startDate: "MM/dd/yyyy HH:mm:ss" (string, optional) - Start date.
+        + endDate: "MM/dd/yyyy HH:mm:ss" (string, optional) - End date.
 
     + Body
 
             {
-                "startDate" : "07/02/2018 06:30:00",
-                "endDate" : "07/03/2018 06:45:00"
+                "startDate" : "07/03/2018 06:30:00",
+                "endDate" : "07/23/2018 06:45:00"
             }
 
 
@@ -8435,6 +8575,10 @@ List Responses for a Survey API fetches all the responses available for a partic
                      "customerId":123456,
                      "customerName":"Anonymous",
                      "ticketed":false,
+                     "ticketIds": [
+                        100770,
+                        100751
+                      ],
                      "answers":[
                         {
                            "questionTitle":"We are interested in receiving your feedback. \nabout the care provided at our facility. \n\nPlease take a few minutes to rate your satisfaction with each of the following\n\nPlease describe ur properties.",
@@ -8672,7 +8816,7 @@ List Responses for a Survey API fetches all the responses available for a partic
                      } 
                   }
                ],
-               "totalResponses":2,
+               "totalResponses":1,
                "pageNo":0,
                "pageSize":1,
                "hasNext":true
@@ -9181,6 +9325,7 @@ Create Survey API helps create a new survey for the required question structure 
 + Response 400
 
     [2095][]
+
 
 
 
@@ -13171,8 +13316,8 @@ Create Listing API publishes information on online listing sources. We post pres
                     + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                     + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                     + isOpen: 1 (number) - 0(Business closed today), 1 (open)
-            + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
-            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/DD/YYYY" format.
+            + businessStatus : Open (string) - The business status on the listing page can be set to Open, Temporarily Closed, Permanently Closed, or Opening Soon. A Reopen Date is mandatory for 'Temporarily Closed' and 'Opening Soon' statuses, while optional for 'Open'.
+            + reopenDate : 10/20/2022 - Reopen Date is required for the 'Temporarily Closed' and 'Opening Soon' statuses, and optional for 'Open.' The date must be in the 'MM/dd/yyyy' format.
             + services:  Other Dental Specialties, Orthodontists, Dentistry (required,string) - Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
             + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
             + products: Invisalign, Cookies Set of 8, Brochure design & prints (string) - Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
@@ -13256,6 +13401,7 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
             + linkedInUrl: https://linkedin.com/DrsChaAndPet (string) - Business LinkedId URL.
             + googleUrl: https://plus.google.com/103957250846354895095/about?gl=US&hl=en-US (string)- Business Google URL.
             + youTubeUrl: https://www.youtube.com/channel/UCDNP0M75ySA5qt0So2F8Xxw (string)- Business Youtube URL.
+            + instagramUrl: https://www.instagram.com/ChalkerandPetersonDental (string)- Business Instagram URL.
             + pintrestUrl - Business Pinterest URL.
             + bbbUrl - Business BB URL.
             + lendingtreeUrl - Business Lending Tree URL.
@@ -13837,6 +13983,46 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
 
     [3348][]
 
++ Response 400
+
+    [2511][]
+
++ Response 400
+
+    [2512][]
+
++ Response 400
+
+    [2513][]
+
++ Response 400
+
+    [2514][]
+
++ Response 400
+
+    [2515][]
+
++ Response 400
+
+    [2516][]
+
++ Response 400
+
+    [2517][]
+
++ Response 400
+
+    [2518][]
+
++ Response 400
+
+    [2519][]
+    
++ Response 400
+
+    [2520][]
+
 
 ## Update Listing [/v1/listing/{businessNumber}/update]
 The Update Listing API will update the location details on all your listings sites.
@@ -13899,8 +14085,8 @@ The Update Listing API will update the location details on all your listings sit
                     + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                     + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                     + isOpen: 1 (number) - 0(Business closed today), 1 (open)
-            + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
-            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/DD/YYYY" format.
+            + businessStatus : Open (string) - The business status on the listing page can be set to Open, Temporarily Closed, Permanently Closed, or Opening Soon. A Reopen Date is mandatory for 'Temporarily Closed' and 'Opening Soon' statuses, while optional for 'Open'.
+            + reopenDate : 10/20/2022 - Reopen Date is required for the 'Temporarily Closed' and 'Opening Soon' statuses, and optional for 'Open.' The date must be in the 'MM/dd/yyyy' format.
             + services:  Other Dental Specialties, Orthodontists, Dentistry (required,string) - Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
             + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
             + products: Invisalign, Cookies Set of 8, Brochure design & prints (string) - Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
@@ -13984,6 +14170,7 @@ The Update Listing API will update the location details on all your listings sit
             + linkedInUrl: https://linkedin.com/DrsChaAndPet (string) - Business LinkedId URL.
             + googleUrl: https://plus.google.com/103957250846354895095/about?gl=US&hl=en-US (string)- Business Google URL.
             + youTubeUrl: https://www.youtube.com/channel/UCDNP0M75ySA5qt0So2F8Xxw (string)- Business Youtube URL.
+            + instagramUrl: https://www.instagram.com/ChalkerandPetersonDental (string)- Business Instagram URL.
             + pintrestUrl - Business Pinterest URL.
             + bbbUrl - Business BB URL.
             + lendingtreeUrl - Business Lending Tree URL.
@@ -14565,6 +14752,46 @@ The Update Listing API will update the location details on all your listings sit
 
     [3348][]
 
++ Response 400
+
+    [2511][]
+
++ Response 400
+
+    [2512][]
+
++ Response 400
+
+    [2513][]
+
++ Response 400
+
+    [2514][]
+
++ Response 400
+
+    [2515][]
+
++ Response 400
+
+    [2516][]
+
++ Response 400
+
+    [2517][]
+
++ Response 400
+
+    [2518][]
+
++ Response 400
+
+    [2519][]
+    
++ Response 400
+
+    [2520][]
+
 
 ## Get Listing [/v1/listing/{businessNumber}/get]
 The Get Listing API will get the listing information for the given business number/ ID.
@@ -14630,8 +14857,8 @@ The Get Listing API will get the listing information for the given business numb
                     + startHour: 7:00 (string) - Start hour 9:00 (9 AM), 18:00 (6 PM)
                     + endHour: 17:30 (string) - End hour  9:00 (9 AM), 18:00 (6 PM)
                     + isOpen: 1 (number) - 0(Business closed today), 1 (open)
-            + businessStatus : Open (string) - It will update your business status on lisitng page and If business will choose "Temporarily closed" then Reopen date is mandatry. [Open, Temporarily closed, Permanently closed]
-            + reopenDate : 10/20/2022 - Reopen date is applicable only when the status is "temporarily closed". It should be "MM/DD/YYYY" format.
+            + businessStatus : Open (string) - The business status on the listing page can be set to Open, Temporarily Closed, Permanently Closed, or Opening Soon. A Reopen Date is mandatory for 'Temporarily Closed' and 'Opening Soon' statuses, while optional for 'Open'.
+            + reopenDate : 10/20/2022 - Reopen Date is required for the 'Temporarily Closed' and 'Opening Soon' statuses, and optional for 'Open.' The date must be in the 'MM/dd/yyyy' format.
             + services:  Other Dental Specialties, Orthodontists, Dentistry (required,string) - Services offered by the business. Useful in SEO. (Comma separated list of services offered) Business services cannot be more than 1000 characters.
             + keywords: Dentists Atascadero CA, Other Dental Specialties Atascadero CA, Orthodontists Atascadero CA (string)- Important keywords related to the business. Useful in SEO. (Comma separated list of important keywords) Business keywords cannot be more than 1000 characters.
             + products: Invisalign, Cookies Set of 8, Brochure design & prints (string) - Products about the business. Useful in SEO and Business products cannot be more than 1000 characters.
@@ -16030,6 +16257,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>09/27/2024</b> - Added update for Google Opening Soon (BIRD-56987)
 * <b>06/25/2024</b> - Updated Listings Insights API (BIRDEYE-137367)
 * <b>05/29/2024</b> - Added Google Q&A Developers API Section
 * <b>05/13/2024</b> - Added epoc date support for GetReviews APIs.
@@ -16045,3 +16273,4 @@ Add Business Integration Mapping adds locations to integrations and set them act
 * <b>08/25/2023</b> - Added new APIs under Business and Listing modules, Get Category List API, Get GMB Attributes API & Get Timezone List
 * <b>07/21/2023</b> - Added new API under Business module i.e, Business Search API.
 * <b>06/30/2023</b> - Added support for service area based information in Get Business API and Update Business API.
+* <b>10/04/2024</b> - Added support to fetch ticketId associated with the survey responses in List Response API.
