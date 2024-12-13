@@ -1925,7 +1925,7 @@ For example :
             "code": 2290,
             "message": "Food Takeout/Food Delivery not supported for gmb primary category"
         }
-        
+
 ## 2476 [/2476]
 
 + Model (application/json)
@@ -2075,7 +2075,7 @@ For example :
             "code": 2278,
             "message": "Primary GBP category is not allowed in additional GBP categories."
         }
-        
+
 ## 3348 [/3348]
 
 + Model (application/json)
@@ -3373,7 +3373,7 @@ Update Business API updates business information.
 + Response 400
 
     [2519][]
-    
+
 + Response 400
 
     [2520][]
@@ -3764,7 +3764,7 @@ The Update Hierarchy API maps the hierarchical level to its corresponding level 
 
    + Attributes
         + Level - It will be a key-value pair for each level with its corresponding level value.
-            
+
 
     + Body
 
@@ -4363,6 +4363,7 @@ Get Reviews returns the list of reviews for an account with all its details.
             + reviewDate: Jan 20, 2014 (string) - Review posted date.
             + response: Thanks you for the review (string) - Review response text.
             + responseDate: Jan 20, 2014 (string) - Response date.
+            + inlineReplyEnabled: true (boolean) - If true, you can post replies through the dashboard else, you cannot.
             + enableReply: true (boolean) - Whether a review reply is supported via Birdeye API or not.
             + customerId: 123456 (number) - Customer's Id attributed with this review (if any).
             + extraParams (object) - Key value pair of custom field(s) associated with the customer attributed to the review (if any)
@@ -4384,6 +4385,7 @@ Get Reviews returns the list of reviews for an account with all its details.
                     },
                     "reviewURL": "https://www.facebook.com/Imp-Flow-17565744/reviews",
                     "sourceType": "Facebook",
+                    "inlineReplyEnabled": false,
                     "reviewDate": "Jan 20, 2014",
                     "response": "Thanks",
                     "responseDate": "Feb 18, 2014",
@@ -4406,6 +4408,7 @@ Get Reviews returns the list of reviews for an account with all its details.
                     },
                     "reviewUrl": "https://birdeye.com/imp-flower-15229573096",
                     "sourceType": "Direct Feedback",
+                    "inlineReplyEnabled": true,
                     "reviewDate": "Jan 20, 2019",
                     "response": "Thanks",
                     "responseDate": "Feb 18, 2019",
@@ -8533,7 +8536,7 @@ List Responses for a Survey API fetches all the responses available for a partic
     + size: 30 (integer, optional) - The size of the page.
     + sortby: date (string, optional) - The sort by parameter.
     + sorder: asc (string, optional) - The sort order parameter.
-    + includeTicketId: false (boolean, optional)  - The field to fetch ticketIds associated with the response. 
+    + includeTicketId: false (boolean, optional)  - The field to fetch ticketIds associated with the response.
 
 
 + Request (application/json)
@@ -8813,7 +8816,7 @@ List Responses for a Survey API fetches all the responses available for a partic
                          "Integration Trigger": "Updated Rentals",
                          "Current balance due": "0.0000",
                          "Move In date": "12-19-2023"
-                     } 
+                     }
                   }
                ],
                "totalResponses":1,
@@ -10292,7 +10295,7 @@ Create webhook subscription listens to subscribed webhook events on a specific p
                         CONTACT_ACTIVITY_UPDATE
         + auth (object) - Will be used for basic authorization, should be null for no auth
                 + username: username (string)- username for authorization
-                + password: password (string)- password for authorization                
+                + password: password (string)- password for authorization
 
     + Body
 
@@ -10307,7 +10310,7 @@ Create webhook subscription listens to subscribed webhook events on a specific p
                 "password": "userpassword"
             }
 
-            
+
         }
 
 + Response 200 (application/json)
@@ -11746,7 +11749,7 @@ Create a new question and associated answer
 
     + Attributes
         + question_id: 2892   (number)  - unique question identifier
-        
+
     + Body
 
             {
@@ -11772,7 +11775,7 @@ Create a new question and associated answer
 + Response 401
 
     [2478][]
-    
+
 + Response 401
 
     [2479][]
@@ -11782,7 +11785,7 @@ Create a new question and associated answer
 + Response 401
 
     [2485][]
-    
+
 + Response 401
 
     [2483][]
@@ -11828,7 +11831,7 @@ This API would be needed when you wish to answer a third party raised question. 
 
     + Attributes
         + answer_id: 2893  (string)  - unique answer identifier
-        
+
     + Body
 
             {
@@ -11854,26 +11857,26 @@ This API would be needed when you wish to answer a third party raised question. 
 + Response 401
 
     [2478][]
-    
+
 + Response 401
 
     [2479][]
-    
+
 + Response 401
 
     [2481][]
-    
+
 + Response 401
 
     [2485][]
-    
+
 + Response 401
 
     [2483][]
 + Response 401
 
     [2461][]
-    
+
 + Response 401
 
     [2462][]
@@ -11934,26 +11937,26 @@ Update an existing question. You can edit/ update an existing question posted / 
 + Response 401
 
     [2478][]
-    
+
 + Response 401
 
     [2479][]
-    
+
 + Response 401
 
     [2481][]
-    
+
 + Response 401
 
     [2485][]
-    
+
 + Response 401
 
     [2483][]
 + Response 401
 
     [2461][]
-    
+
 + Response 401
 
     [2480][]
@@ -12019,33 +12022,33 @@ Update an answer to an existing question. You can edit/ update an existing answe
 + Response 401
 
     [2478][]
-    
+
 + Response 401
 
     [2479][]
-    
+
 + Response 401
 
     [2481][]
-    
+
 + Response 401
 
     [2485][]
-    
+
 + Response 401
 
     [2483][]
 + Response 401
 
     [2461][]
-    
+
 + Response 401
 
     [2480][]
 + Response 401
 
     [2482][]
-    
+
 
 ## Delete Question [/v1/qna/question/delete{?api_key,businessId}]
 Delete existing questions. Only those questions can be deleted which are created by the owner.
@@ -12077,7 +12080,7 @@ Delete existing questions. Only those questions can be deleted which are created
 
             {
                   "questionId": 7812
-                  
+
             }
 
 
@@ -12102,26 +12105,26 @@ Delete existing questions. Only those questions can be deleted which are created
 + Response 401
 
     [2478][]
-    
+
 + Response 401
 
     [2479][]
-    
+
 + Response 401
 
     [2481][]
-    
+
 + Response 401
 
     [2485][]
-    
+
 + Response 401
 
     [2483][]
 + Response 401
 
     [2461][]
-    
+
 + Response 401
 
     [2480][]
@@ -12151,7 +12154,7 @@ Delete answers to existing questions. Only that answer can be deleted which is p
     + Attributes
         + questionId: 7812 (number , required ) - unique question identifier
         + answerId: 7813 (number , required ) - unique answer identifier
-        
+
 
 
     + Body
@@ -12159,7 +12162,7 @@ Delete answers to existing questions. Only that answer can be deleted which is p
             {
                   "questionId": 7812,
                   "answerId":7813
-                  
+
             }
 
 
@@ -12184,26 +12187,26 @@ Delete answers to existing questions. Only that answer can be deleted which is p
 + Response 401
 
     [2478][]
-    
+
 + Response 401
 
     [2479][]
-    
+
 + Response 401
 
     [2481][]
-    
+
 + Response 401
 
     [2485][]
-    
+
 + Response 401
 
     [2483][]
 + Response 401
 
     [2461][]
-    
+
 + Response 401
 
     [2480][]
@@ -12234,7 +12237,7 @@ Delete all Q&A on the businessId provided.
     + Attributes
         + questionId: 7812 (number , required ) - unique question identifier
         + answerId: 7813 (number , required ) - unique answer identifier
-        
+
 
 
     + Body
@@ -12242,7 +12245,7 @@ Delete all Q&A on the businessId provided.
             {
                   "questionId": 7812,
                   "answerId":7813
-                  
+
             }
 
 
@@ -12267,26 +12270,26 @@ Delete all Q&A on the businessId provided.
 + Response 401
 
     [2478][]
-    
+
 + Response 401
 
     [2479][]
-    
+
 + Response 401
 
     [2481][]
-    
+
 + Response 401
 
     [2485][]
-    
+
 + Response 401
 
     [2483][]
 + Response 401
 
     [2461][]
-    
+
 + Response 401
 
     [2480][]
@@ -12328,7 +12331,7 @@ Get all Questions and Answers for a Location
 
 
     + Attributes
-        
+
         + totalCount: 100 (number)  - Total number of questions
         + questionsAndAnswers (array) - Questions and answers details
             + (object)
@@ -12348,12 +12351,12 @@ Get all Questions and Answers for a Location
                     + answer: This is Dummy answer (string) - Text of answer.
                     + answeredByOwner: true (boolean) - Identifies if this answer was added by owner.
                     + updatedBy: John (string) - Name of author of answer.
-                    + updatedOn: Apr 10, 2024 (string) - Date at which answer was created/updated format : MMM DD, YYYY                  
+                    + updatedOn: Apr 10, 2024 (string) - Date at which answer was created/updated format : MMM DD, YYYY
                     + time: 10:52 PM (string) -  time at which answer was created/updated format: hh:mm AM/PM
                     + userCategory: MERCHANT (string) - category of author MERCHANT, REGULAR_USER, LOCAL_GUIDE
                     + userProfileLogoUrl: http://logourl (string) - url link to google profile photo of author
-             
-        
+
+
     + Body
             {
                 "totalCount": 1,
@@ -12385,7 +12388,7 @@ Get all Questions and Answers for a Location
                     }
                 ]
             }
-            
+
 + Response 401
 
     [1161][]
@@ -12440,7 +12443,7 @@ Get all Unanswered Questions and Answers for a Location
 
 
     + Attributes
-        
+
         + totalCount: 100 (number)  - Total number of questions
         + questionsAndAnswers (array) - Questions and answers details
             + (object)
@@ -12460,14 +12463,14 @@ Get all Unanswered Questions and Answers for a Location
                     + answer: This is Dummy answer (string) - Text of answer.
                     + answeredByOwner: true (boolean) - Identifies if this answer was added by owner.
                     + updatedBy: John (string) - Name of author of answer.
-                    + updatedOn: Apr 10, 2024 (string) - Date at which answer was created/updated format : MMM DD, YYYY                   
+                    + updatedOn: Apr 10, 2024 (string) - Date at which answer was created/updated format : MMM DD, YYYY
                     + time: 10:52 PM (string) -  time at which answer was created/updated format: hh:mm AM/PM
                     + userCategory: MERCHANT (string) - category of author MERCHANT, REGULAR_USER, LOCAL_GUIDE
                     + userProfileLogoUrl: http://logourl (string) - url link to google profile photo of author
-             
-        
+
+
     + Body
-    
+
             {
                 "totalCount": 1,
                 "questionsAndAnswers": [
@@ -12498,7 +12501,7 @@ Get all Unanswered Questions and Answers for a Location
                     }
                 ]
             }
-            
+
 + Response 401
 
     [1161][]
@@ -12613,7 +12616,7 @@ A detailed view of the listings status at location level
                         Connect
             + url: https://maps.google.com/maps?cid=151047735163 (string) - Location source link.
             + errors (array) - Possible errors would be come when status of directory is 'Action Required'
-           
+
 
 
 
@@ -12703,7 +12706,7 @@ A detailed view of the listings status at location level
 + Response 404
 
     [1175][]
-    
+
 + Response 400
 
     [3333][]
@@ -14021,7 +14024,7 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
 + Response 400
 
     [2519][]
-    
+
 + Response 400
 
     [2520][]
@@ -14750,7 +14753,7 @@ The Update Listing API will update the location details on all your listings sit
 + Response 400
 
     [3337][]
-    
+
 + Response 400
 
     [3348][]
@@ -14790,7 +14793,7 @@ The Update Listing API will update the location details on all your listings sit
 + Response 400
 
     [2519][]
-    
+
 + Response 400
 
     [2520][]
@@ -15438,7 +15441,7 @@ The Get Listing API will get the listing information for the given business numb
                         ],
                     "additionalCategoriesNames": [
                                 "Oral Surgeon"
-                        ],           
+                        ],
                    "appleLocationAttributes": {
                    "crossbusiness.accessibility_features": [{
                     "attributeId": "accessible_elevator"
@@ -15506,7 +15509,7 @@ Get supported more hours type for a location. This will depend on the country an
 + Parameters
 
     + businessNumber: 169744180007807 (number, required) - Business Number.
-    
+
     + channel: gmb (string) -  Source name for which more hours type needs to be fetched. Possible values are gmb, apple. Default value will be gmb if not passed
 
 + Request (application/json)
@@ -15719,7 +15722,7 @@ Deactivate Listing API stops publishing any information on the given online dire
 # Group Ticketing
 Create standout customer support with ticketing across reviews, untagged, and survey responses.
 
-## Create ticket [/resources/v1/ticket/{businessNumber}/create-ticket]
+## Create ticket [/v1/ticket/{businessNumber}/create-ticket]
 Create reviews, untagged, and survey responses tickets.
 
 ### Create ticket [PUT]
@@ -15828,7 +15831,7 @@ Create reviews, untagged, and survey responses tickets.
 
 
 
-## Add Ticket Comments [/resources/v1/ticket/{businessNumber}/comment-activity]
+## Add Ticket Comments [/v1/ticket/{businessNumber}/comment-activity]
 Add comment activity on tickets.
 
 ### Add Ticket Comments [POST]
@@ -15899,7 +15902,7 @@ Add comment activity on tickets.
 
 
 
-## Update ticket [/resources/v1/ticket/{businessNumber}/update]
+## Update ticket [/v1/ticket/{businessNumber}/update]
 Update the ticket status or ticket assignee.
 
 
@@ -15963,7 +15966,7 @@ Update the ticket status or ticket assignee.
 
 
 
-## Get All Ticket Data [/resources/v1/ticket/{businessNumber}/get/all?{?op,sortOrder,count,sIndex,sortBy,totalCount}]
+## Get All Ticket Data [/v1/ticket/{businessNumber}/get/all?{?op,sortOrder,count,sIndex,sortBy,totalCount}]
 Get tickets
 
 ### Get All Ticket Data [POST]
@@ -16260,6 +16263,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>12/13/2024</b> - Added inline reply support for GetReviews APIs.
 * <b>09/27/2024</b> - Added update for Google Opening Soon (BIRD-56987)
 * <b>06/25/2024</b> - Updated Listings Insights API (BIRDEYE-137367)
 * <b>05/29/2024</b> - Added Google Q&A Developers API Section
