@@ -13370,6 +13370,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + bingCategories (array) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
+            + bingWebsiteUrl (string) - Website url will update on bing listing. This website URL will override your existing website URL on your bing business profile.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
             + subCategories (array) - Primary category of business.
@@ -13379,6 +13380,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
             + categories (array) - You can add up to 3 categories.
             + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
+            + facebookUrl (string) - Website url will update on facebook listing. This website URL will override your existing website URL on your facebook business profile.
         + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
             + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
             + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
@@ -13835,7 +13837,8 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                     "bingCategories": [
                         "Art Restoration Service"
                     ],
-                    "bingPhoneNumber": "(415) 673-0868"
+                    "bingPhoneNumber": "(415) 673-0868",
+                    "bingWebsiteUrl" : "https://www.bing.com/test"
 
                 },
                  "internalListing": {
@@ -13853,9 +13856,10 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                     "categories": [
                         "Science",
                         "Sports"
-                    ]
+                    ],
+                    "facebookUrl" : "https://www.facebook.com/test"
                 },
-                   "thirdPartyListing": {
+                "thirdPartyListing": {
                     "thirdPartyCategory": "Towing Service",
                     "thirdPartySubCategories": [
                         "Car Dealer",
@@ -14139,6 +14143,7 @@ The Update Listing API will update the location details on all your listings sit
             + bingCategories (array) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
+            + bingWebsiteUrl (string) - Website url will update on bing listing. This website URL will override your existing website URL on your bing business profile.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
             + subCategories (array) - Primary category of business.
@@ -14148,6 +14153,7 @@ The Update Listing API will update the location details on all your listings sit
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
             + categories (array) - You can add up to 3 categories.
             + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
+            + facebookUrl (string) - Website url will update on facebook listing. This website URL will override your existing website URL on your facebook business profile.
         + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
             + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
             + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
@@ -14604,7 +14610,8 @@ The Update Listing API will update the location details on all your listings sit
                     "bingCategories": [
                         "Art Restoration Service"
                     ],
-                    "bingPhoneNumber": "(415) 673-0868"
+                    "bingPhoneNumber": "(415) 673-0868",
+                    "bingWebsiteUrl" : "https://www.bing.com/test"
 
                 },
                  "internalListing": {
@@ -14622,7 +14629,8 @@ The Update Listing API will update the location details on all your listings sit
                     "categories": [
                         "Science",
                         "Sports"
-                    ]
+                    ],
+                    "facebookUrl" : "https://www.facebook.com/test"
                 },
                    "thirdPartyListing": {
                     "thirdPartyCategory": "Towing Service",
@@ -14911,6 +14919,7 @@ The Get Listing API will get the listing information for the given business numb
             + bingCategories (array) - You can add a maximum of up to 3 categories.
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
+            + bingWebsiteUrl (string) - Website url will update on bing listing. This website URL will override your existing website URL on your bing business profile.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
             + subCategories (array) - Primary category of business.
@@ -14920,6 +14929,7 @@ The Get Listing API will get the listing information for the given business numb
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
             + categories (array) - You can add up to 3 categories.
             + facebookDescription (string) - An ‘about your business’ description. Facebook description cannot be more than 255 characters.
+            + facebookUrl (string) - Website url will update on facebook listing. This website URL will override your existing website URL on your facebook business profile.
         + gmbListing (object) - This data will be used to update your Google Business Profile/ listing.
             + googleWebsiteUrl (string) - Website url will update on google listing. This website URL will override your existing website URL on your Google business profile.
             + googlePhoneNumber (string) - You can provide a phone number which will be pushed only to your google listing site and will override the primary phone number set.
@@ -15377,7 +15387,8 @@ The Get Listing API will get the listing information for the given business numb
                     "bingCategories": [
                         "Art Restoration Service"
                     ],
-                    "bingPhoneNumber": "(415) 673-0868"
+                    "bingPhoneNumber": "(415) 673-0868",
+                    "bingWebsiteUrl" : "https://www.bing.com/test"
 
                 },
                  "internalListing": {
@@ -15395,16 +15406,17 @@ The Get Listing API will get the listing information for the given business numb
                     "categories": [
                         "Science",
                         "Sports"
-                    ]
+                    ],
+                    "facebookUrl" : "https://www.facebook.com/test"
                 },
-                   "thirdPartyListing": {
+                "thirdPartyListing": {
                     "thirdPartyCategory": "Towing Service",
                     "thirdPartySubCategories": [
                         "Car Dealer",
                         "Auto Glass Shop"
                     ]
                 },
-                  "gmbListing": {
+                "gmbListing": {
                     "googleWebsiteUrl": "http://www.gmail.com",
                     "googleStoreId": "1232133",
                     "googlePhoneNumber": "(973) 716-0007",
@@ -15432,7 +15444,7 @@ The Get Listing API will get the listing information for the given business numb
                     "foodDelivery":"https://www.ubereats.com",
                     "foodTakeout":"https://www.ubereats.com"
                 },
-                 "appleListing": {
+                "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
                     "primaryCategoryName": "Dentist",
                     "appleWebsiteUrl":"https://www.apple.com",
