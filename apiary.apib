@@ -8522,7 +8522,7 @@ Post a survey response API submits the survey response for a particular survey u
 
 
 
-## List Responses [/v1/survey/ext/list/responses/{survey_id}{?api_key,businessNumber,page,size,sortby,sorder,includeTicketId}]
+## List Responses [/v1/survey/ext/list/responses/{survey_id}{?api_key,businessNumber,page,size,sortby,sorder,includeTicketId,additionalFields}]
 List Responses for a Survey API fetches all the responses available for a particular survey ID.
 
 
@@ -8537,6 +8537,8 @@ List Responses for a Survey API fetches all the responses available for a partic
     + sortby: date (string, optional) - The sort by parameter.
     + sorder: asc (string, optional) - The sort order parameter.
     + includeTicketId: false (boolean, optional)  - The field to fetch ticketIds associated with the response.
+    + additionalFields: false (boolean, optional)  - The field to fetch source and overall score of response.
+
 
 
 + Request (application/json)
@@ -8582,6 +8584,8 @@ List Responses for a Survey API fetches all the responses available for a partic
                         100770,
                         100751
                       ],
+                     "overallScore":"5.0",
+                     "source":"sms"
                      "answers":[
                         {
                            "questionTitle":"We are interested in receiving your feedback. \nabout the care provided at our facility. \n\nPlease take a few minutes to rate your satisfaction with each of the following\n\nPlease describe ur properties.",
@@ -8806,7 +8810,6 @@ List Responses for a Survey API fetches all the responses available for a partic
                            ]
                         }
                      ],
-                     "overallScore": "9.0",
                      "customParam":  {
                           "order Date": "2024-03-21 06:14:00",
                           "orderId": "52"
