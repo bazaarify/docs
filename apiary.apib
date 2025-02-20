@@ -4315,8 +4315,8 @@ Get Reviews returns the list of reviews for an account with all its details.
         + toDate: 04/01/2013 (string) - Review date end in UTC format, eg if toDate is 04/01/2013, reviews of date 04/01/2013 is excluded .
         + fromTimestamp: 1712986782000 (number) - Review start date in milliseconds, pass either fromDate or fromTimestamp.
         + toTimestamp: 1715578782000 (number) - Review end date in milliseconds, pass either endDate or toTimestamp.
-        + updateFromDate: 04/01/2013 (string) - Review response date start in UTC format.
-        + updateToDate: 04/01/2013 (string) - Review response date end in UTC format.
+        + updateFromDate: 04/01/2013 (string) - Review updated date start in UTC format.
+        + updateToDate: 04/01/2013 (string) - Review updated date end in UTC format.
         + sources: google (string) - Aggregation source name Note: use "our_website" to filter reviews posted on Birdeye platform or use "direct_feedback" for direct feedback.
         + ratings: 4,5 (array) - Review rating Possible values 0,1,2,3,4,5.
         + searchStr: Great service (string) - String that is contained by review.
@@ -4326,6 +4326,7 @@ Get Reviews returns the list of reviews for an account with all its details.
         + tags: ["top reviews", "need action"] (array) - Reviews with assigned tags
         + fetchExtraParams: false (boolean) - To fetch custom field(s) associated with the customer attributed to the review [if any].
         + needCustomerInfo: false (boolean) - To fetch customer information associated with the reviewer [if attributed].
+        + fetchAssitedByDetails: true (boolean) - To retrieve employees associated with the review [if mapped].
 
 
     + Body
@@ -4343,7 +4344,9 @@ Get Reviews returns the list of reviews for an account with all its details.
                 "allChild":"true",
                 "tags":["positive","negative"],
                 "fetchExtraParams":false,
-                "needCustomerInfo":false
+                "needCustomerInfo":false,
+                "fetchAssitedByDetails":true
+
             }
 
 + Response 200 (application/json)
@@ -4354,10 +4357,10 @@ Get Reviews returns the list of reviews for an account with all its details.
             + rating: 5.0 (number) - Overall rating for the review, in case of direct feedback and facebook recommendations it will be 0. For Facebook recommendations, value will be 1, Non recommended review will have value set as 0.
             + comments: Great service, excellent food (string) - User comment.
             + reviewer - Reviewer details
-                + firstName: Ron (string) :
-                + lastName: Spector (string) :
-                + nickName: Ron Spector (string) :
-                + thumbnailUrl: https://ddjkm7n7lx.cloudfront.net/reviewer/dc42f6d8b2b84dc0b688c43e616.jpeg (string) : Thumbn
+                + firstName: Ron (string) : Reviewer first name.
+                + lastName: Spector (string) : Reviewer last name.
+                + nickName: Ron Spector (string) : Reviewer full name.
+                + thumbnailUrl: https://ddjkm7n7lx.cloudfront.net/reviewer/dc42f6d8b2b84dc0b688c43e616.jpeg (string) : Thumbnail URL
             + sourceType: Direct Feedback (string) - Source of the review if it is an aggregated review.
             + reviewURL: https://www.facebook.com/Imp-Flow-17565744/reviews (string) - Review url
             + reviewDate: Jan 20, 2014 (string) - Review posted date.
@@ -4367,6 +4370,11 @@ Get Reviews returns the list of reviews for an account with all its details.
             + enableReply: true (boolean) - Whether a review reply is supported via Birdeye API or not.
             + customerId: 123456 (number) - Customer's Id attributed with this review (if any).
             + extraParams (object) - Key value pair of custom field(s) associated with the customer attributed to the review (if any)
+            + assitedByUser (object) - Employees associated with the review
+                + firstName: Ron (string) : Employee first name.
+                + lastName: Spector (string) : Employee last name.
+                + emailId: ronspector@test.com (string) : Employee email id.
+                + phoneNum: 7123123213 (string) : Employee phone number.
 
     + Body
 
@@ -4418,7 +4426,21 @@ Get Reviews returns the list of reviews for an account with all its details.
                         "key1": "value1",
                         "key2": "value2",
                         "key3": "value3"
-                    }
+                    },
+                    "assitedByUser": [
+                        {
+                            "firstName": "Steve",
+                            "lastName": "M.",
+                            "emailId": "steve@test.com",
+                            "phoneNum": ""
+                        },
+                        {
+                            "firstName": "Smith",
+                            "lastName": "S.",
+                            "emailId": "smith@test.com",
+                            "phoneNum": ""
+                        }
+                    ]
                 }
             ]
 
@@ -6928,7 +6950,6 @@ Review and rating over time API gives you the number of reviews and average rati
             + rating: 2.0 (number) - Average Rating for the particular day.
             + count: 10 (number) - Number of reviews for the particular day.
             + milestone: 8/20/15 (string) - Date.
-            + timeStamp: 1439942400158 (number) - Epoc time.
 
 
     + Body
@@ -6937,43 +6958,36 @@ Review and rating over time API gives you the number of reviews and average rati
                 "rating": 0.0,
                 "count": 0,
                 "milestone": "8\/19\/15",
-                "timeStamp": 1439942400158
             },
             {
                 "rating": 3.9,
                 "count": 23,
                 "milestone": "8\/20\/15",
-                "timeStamp": 1440028800158
             },
             {
                 "rating": 4.9,
                 "count": 55,
                 "milestone": "8\/21\/15",
-                "timeStamp": 1440115200158
             },
             {
                 "rating": 2.9,
                 "count": 24,
                 "milestone": "8\/22\/15",
-                "timeStamp": 1440201600158
             },
             {
                 "rating": 2.6,
                 "count": 23,
                 "milestone": "8\/23\/15",
-                "timeStamp": 1440288000158
             },
             {
                 "rating": 3.3,
                 "count": 45,
                 "milestone": "8\/24\/15",
-                "timeStamp": 1440374400158
             },
             {
                 "rating": 1.6,
                 "count": 28,
                 "milestone": "8\/25\/15",
-                "timeStamp": 1440460800158
             }]
 
 
@@ -7559,31 +7573,56 @@ NPS Over time gives you the NPS score for a selected period of time for all loca
     + Body
 
             {
-                "totalCount": 190322,
-                "avgNpsScore": "48.6",
-                "promoters": "63.1",
-                "passives": "22.4",
-                "detractors": "14.5",
-                "dataPoints": [
-                {
-                    "nodeId": null,
-                    "label": "Jul 2009 - Sep 2009",
-                    "shortLabel": "Q3 2009",
-                    "startDate": "07/21/2009",
-                    "endDate": "09/30/2009",
-                    "totalCount": 1,
-                    "detractorPercentile": 100,
-                    "passivePercentile": 0,
-                    "promoterPercentile": 0,
-                    "npsScore": -100,
-                    "positiveCount": 0,
-                    "negativeCount": 1,
-                    "neutralCount": 0
+                  "totalCount": 2,
+                  "avgNpsScore": "-50",
+                  "promoters": "0",
+                  "passives": "50",
+                  "detractors": "50",
+                  "dataPoints": [
+                    {
+                      "label": "10/08/2019 - 10/13/2019",
+                      "shortLabel": "Oct 08-Oct 13 2019",
+                      "startDate": "10/08/2019",
+                      "endDate": "10/13/2019",
+                      "dynamicLabel": {
+                        "header": "label",
+                        "value": "10/08/2019",
+                        "order": 2147483647,
+                        "cellType": "TEXT"
+                      },
+                      "detractorPercentile": 100,
+                      "passivePercentile": 0,
+                      "promoterPercentile": 0,
+                      "npsScore": -100,
+                      "positiveCount": 0,
+                      "negativeCount": 1,
+                      "neutralCount": 0,
+                      "totalCount": 1
+                    },
+                    {
+                      "label": "10/14/2019 - 10/20/2019",
+                      "shortLabel": "Oct 14-Oct 20 2019",
+                      "startDate": "10/14/2019",
+                      "endDate": "10/20/2019",
+                      "dynamicLabel": {
+                        "header": "label",
+                        "value": "10/14/2019",
+                        "order": 2147483647,
+                        "cellType": "TEXT"
+                      },
+                      "detractorPercentile": 0,
+                      "passivePercentile": 100,
+                      "promoterPercentile": 0,
+                      "npsScore": 0,
+                      "positiveCount": 0,
+                      "negativeCount": 0,
+                      "neutralCount": 1,
+                      "totalCount": 1
                     }
-                ],
-                "groupByType": "quarter",
-                "dateDiff": 3526
-            }
+                  ],
+                  "groupByType": "week",
+                  "dateDiff": 100
+                }
 
 
 
@@ -7641,9 +7680,6 @@ NPS By Location gives you the NPS score for each location and the count of promo
 + Response 200 (application/json)
 
     + Attributes
-        + page: 0 (number) - Page number.
-        + size: 333 (number) - Size.
-        + totalPages: 12 (number) - Total pages.
         + totalCount: 190322 (number) - Total number of promoters, passives, and detractors.
         + avgNpsScore: 48.6 (number) - Average NPS score.
         + promoters: 63.1 (number) - Total number of promoters.
@@ -7651,52 +7687,57 @@ NPS By Location gives you the NPS score for each location and the count of promo
         + detractors: 14.5 (number) - Total number of detractors.
         + dataPoints (array) - Data points.
             + (object)
-                + page: 0 (number) - Page number.
                 + nodeId: 9 (number) - Node Id.
-                + label: Jul 2009 - Sep 2009 (string) - Label.
-                + shortLabel: Q3 2009 (string) - Short Label.
-                + startDate: 07/21/2009 (string) - Start date.
-                + endDate: 09/30/2009 (string) - End date.
-                + totalCount: 1 (number) - Count.
+                + label: Anjou (string) - Location Name.
                 + detractorPercentile: 100 (number) - Detractor Percentile.
                 + passivePercentile: 0 (number) - Passive Percentile.
+                + promoterPercentile: 0 (number) - Promoter Percentile.
                 + npsScore: /-100 (number) - Average NPS Score.
                 + positiveCount: 0 (number) - Positive Count.
                 + negativeCount: 1 (number) - Negative Count.
                 + neutralCount: 0 (number) - Neutral Count.
+                + totalCount: 100 (number) - Total Count.
+                + businessNumber: 172712121274890 (number) - Business number of the location
+        + groupByType: quarter (string) - Grouping by.
         + dateDiff: 324 (number) - Date difference.
-
+        + totalPages: 1 (number) - Total number of pages.
+        + page: 0 (number) - Current Page.
+        + size: 1 (number) - Size.
 
     + Body
 
             {
-                page": 0,
-                "size": 333,
-                "totalCount": 190322,
-                "totalPages": 1,
-                "avgNpsScore": "48.6",
-                "promoters": "63.1",
-                "passives": "22.4",
-                "detractors": "14.5",
-                "dataPoints": [
-                {
-                    "nodeId": null,
-                    "label": "Jul 2009 - Sep 2009",
-                    "shortLabel": "Q3 2009",
-                    "startDate": "07/21/2009",
-                    "endDate": "09/30/2009",
-                    "totalCount": 1,
-                    "detractorPercentile": 100,
-                    "passivePercentile": 0,
-                    "promoterPercentile": 0,
-                    "npsScore": -100,
-                    "positiveCount": 0,
-                    "negativeCount": 1,
-                    "neutralCount": 0
+                  "totalCount": 2,
+                  "avgNpsScore": "-50",
+                  "promoters": "0",
+                  "passives": "50",
+                  "detractors": "50",
+                  "dataPoints": [
+                    {
+                      "nodeId": 1398773,
+                      "label": "Anjou",
+                      "dynamicLabel": {
+                        "header": "Location",
+                        "value": "Anjou",
+                        "order": 2147483647,
+                        "cellType": "TEXT"
+                      },
+                      "detractorPercentile": 50,
+                      "passivePercentile": 50,
+                      "promoterPercentile": 0,
+                      "npsScore": -50,
+                      "positiveCount": 0,
+                      "negativeCount": 1,
+                      "neutralCount": 1,
+                      "totalCount": 2,
+                      "businessNumber": 172712121274890
                     }
-                ],
-                "dateDiff": 3526
-            }
+                  ],
+                  "dateDiff": 100,
+                  "totalPages": 1,
+                  "page": 0,
+                  "size": 1
+                }
 
 
 
@@ -11042,8 +11083,8 @@ Get Competitor Review returns the list of review(s) of competitors for an accoun
     + Attributes
         + fromDate: 04/01/2013 (string) - Review date (start) in UTC format.
         + toDate: 04/01/2013 (string) - Review date (end) in UTC format.
-        + updateFromDate: 04/01/2013 (string) - Review response date (start) in UTC format.
-        + updateToDate: 04/01/2013 (string) - Review response date (end) in UTC format.
+        + updateFromDate: 04/01/2013 (string) - Review updated date (start) in UTC format.
+        + updateToDate: 04/01/2013 (string) - Review updated date (end) in UTC format.
         + sources: google (string) - Aggregation source name Note: use "our_website" to filter reviews posted on Birdeye platform or use "direct_feedback" for direct feedback.
         + ratings: 4,5 (array) - Review rating Possible values 0,1,2,3,4,5.
         + searchStr: Great service (string) - String that is contained by review.
