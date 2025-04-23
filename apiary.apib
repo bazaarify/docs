@@ -15729,7 +15729,7 @@ Google keyword: Top keywords searched for which your business is ranked.
 
 ## Get Google Suggestions [/resources/v1/listing/googleSuggestions{?status}]
 
-Google Suggestions public APIs provide a way for businesses to review suggestions from Google and approve/reject them.
+Google Suggestions allow businesses to access, review, and manage suggestions by approving or rejecting them as needed
 
 ### Get Google Suggestions [GET]
 
@@ -15742,44 +15742,63 @@ Google Suggestions public APIs provide a way for businesses to review suggestion
             api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             businessId: 169744180007807 (number, required) - Business Number.
 
-+ Response 200 (application/json)
++ Response 200
 
-        {
-           "totalCount": 2,
-           "result": [
-               {
-                   "suggestionId": 2435345,
-                   "locationName": "100 NY Street",
-                   "suggestedAttributeName": "Phone Number",
-                   "suggestedInput": "+1 34567899004",
-                   "status": "Approved",
-                   "lastActivity": "Date MMM DD YYYY format",
-                   "lastActivityByName": "Michecl Smith",
-                   "birdeyeValue": "+1 4667766545",
-                   "suggestionReceivedDate": "",
-                   "lastValueUpdatedOn": "",
-                   "userComments": "Approved, effects All listings"
-               },
-               {
-                   "suggestionId": 2435345,
-                   "locationName": "100 NY Street",
-                   "suggestedAttributeName": "Category",
-                   "suggestedInput": "E-commerce",
-                   "birdeyeValue": "retail",
-                   "status": "PENDING_REVIEW",
-                   "lastActivity": "Date MMM DD YYYY format",
-                   "lastActivityByName": "Michecl Smith",
-                   "suggestionReceivedDate": "23/04/2024 14:34:00",
-                   "lastValueUpdatedOn": "",
-                   "userComments": null
-               }
-           ]
-        }
+    + Attributes (object)
+        + totalCount: 2 (number) - Total number of Google Suggestions returned.
+        + result (array) - A list of suggestion objects.
+            + (object)
+                + suggestionId: 2435345 (number) - Unique identifier for the suggestion.
+                + locationName: 100 NY Street (string) - Name or address of the business location.
+                + suggestedAttributeName: Phone Number (string) - Attribute being suggested for update.
+                + suggestedInput: +1 34567899004 (string) - New value suggested for the attribute.
+                + birdeyeValue: +1 4667766545 (string) - Current value stored in the system.
+                + status: Approved (string) - Status of the suggestion. Possible values: `PENDING_REVIEW`, `Approved`, `Rejected`.
+                + lastActivity: Date MMM DD YYYY format (string) - Date of the most recent activity.
+                + lastActivityByName: Michecl Smith (string) - Name of the user who last acted on the suggestion.
+                + suggestionReceivedDate: 23/04/2024 14:34:00 (string) - Date and time when the suggestion was received.
+                + lastValueUpdatedOn: 23/04/2024 14:34:00 (string) - Date when the value was last updated, if applicable.
+                + userComments: Approved, effects All listings (string) - Comments added by the user. May be null.
+
+    + Body
+
+            {
+               "totalCount": 2,
+               "result": [
+                   {
+                       "suggestionId": 2435345,
+                       "locationName": "100 NY Street",
+                       "suggestedAttributeName": "Phone Number",
+                       "suggestedInput": "+1 34567899004",
+                       "status": "Approved",
+                       "lastActivity": "Date MMM DD YYYY format",
+                       "lastActivityByName": "Michecl Smith",
+                       "birdeyeValue": "+1 4667766545",
+                       "suggestionReceivedDate": "",
+                       "lastValueUpdatedOn": "",
+                       "userComments": "Approved, effects All listings"
+                   },
+                   {
+                       "suggestionId": 2435345,
+                       "locationName": "100 NY Street",
+                       "suggestedAttributeName": "Category",
+                       "suggestedInput": "E-commerce",
+                       "birdeyeValue": "retail",
+                       "status": "PENDING_REVIEW",
+                       "lastActivity": "Date MMM DD YYYY format",
+                       "lastActivityByName": "Michecl Smith",
+                       "suggestionReceivedDate": "23/04/2024 14:34:00",
+                       "lastValueUpdatedOn": "",
+                       "userComments": null
+                   }
+               ]
+            }
+
 
 
 ## Update Google Suggestions [/resources/v1/listing/update/GoogleSuggestions]
 
-API to approve or reject Google Suggestions by passing the suggestion IDs and an action.
+API to approve or reject Google Suggestions by providing suggestion IDs and the corresponding action.
 
 ### Update Google Suggestions [POST]
 
@@ -15788,6 +15807,10 @@ API to approve or reject Google Suggestions by passing the suggestion IDs and an
 
             api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             businessId: 169744180007807 (number, required) - Business Number.
+
+    + Attributes (object)
+        + suggestionIds: [12345, 56789] (array[number], required) - List of suggestion IDs to be approved or rejected.
+        + action: approved (string, required) - Action to be performed on the suggestions. Possible values: `approved`, `rejected`.
 
     + Body
 
