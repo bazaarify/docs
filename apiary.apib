@@ -10315,6 +10315,7 @@ Create webhook subscription listens to subscribed webhook events on a specific p
 
 + Request (application/json)
     + Headers
+
             Accept: application/json
 
     + Attributes
@@ -10340,21 +10341,20 @@ Create webhook subscription listens to subscribed webhook events on a specific p
 
     + Body
 
-        {
-            "webhookUrl": "https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65",
-            "emails": [
-                        "test@xyz.com"
-                    ],
-            "eventName": "APPOINTMENT_BOOKED",
-            "auth": {
-                "username": "testUser",
-                "password": "userpassword"
+            {
+                "webhookUrl": "https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65",
+                "emails": [
+                    "test@xyz.com"
+                ],
+                "eventName": "APPOINTMENT_BOOKED",
+                "auth": {
+                    "username": "testUser",
+                    "password": "userpassword"
+                }
             }
 
-
-        }
-
 + Response 200 (application/json)
+
         {
             "id": "abcchdguweUGBSK16789278",
             "message": "You have successfully subscribed to : https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65"
@@ -10390,12 +10390,14 @@ Delete webhook subscription to stop listening to subscribed webhook events on th
 
 + Request (application/json)
     + Headers
+
             Accept: application/json
 
 + Response 200 (application/json)
-    {
-      "message": "This Subscription has been Unsubscribed"
-    }
+
+        {
+            "message": "This Subscription has been Unsubscribed"
+        }
 
 
 + Response 404
@@ -12399,6 +12401,7 @@ Get all Questions and Answers for a Location
 
 
     + Body
+
             {
                 "totalCount": 1,
                 "questionsAndAnswers": [
@@ -15816,7 +15819,7 @@ Create reviews, untagged, and survey responses tickets.
     + Body
 
             {
-                "externalId": 3943351204239963055,
+                "externalId": 394335120423996305,
                 "assignedTo": "pranav.singh@birdeye.com",
                 "ticketType":"review",
                 "customer": {
@@ -16237,7 +16240,7 @@ Get tickets
 # Group Integration
 Birdeye integrates with various software or tools you use.
 
-## Add Business Integration Mapping[/v1/integrations/add/businessintegrationmapping{?api_key}]
+## Add Business Integration Mapping [/v1/integrations/add/businessintegrationmapping{?api_key}]
 Add Business Integration Mapping adds locations to integrations and set them active.
 
 ### Add locations [PUT]
