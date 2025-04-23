@@ -15727,6 +15727,82 @@ Google keyword: Top keywords searched for which your business is ranked.
 
     [2458][]
 
+## Get Google Suggestions [/resources/v1/listing/googleSuggestions{?status}]
+
+Google Suggestions public APIs provide a way for businesses to review suggestions from Google and approve/reject them.
+
+### Get Google Suggestions [GET]
+
++ Parameters
+    + status (optional, string) - Filter by status. Possible values: `Pending`, `Approved`, `Rejected`. If not passed, all suggestions are shown.
+
++ Request (application/json)
+    + Headers
+
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            businessId: 169744180007807 (number, required) - Business Number.
+
++ Response 200 (application/json)
+
+        {
+           "totalCount": 2,
+           "result": [
+               {
+                   "suggestionId": 2435345,
+                   "locationName": "100 NY Street",
+                   "suggestedAttributeName": "Phone Number",
+                   "suggestedInput": "+1 34567899004",
+                   "status": "Approved",
+                   "lastActivity": "Date MMM DD YYYY format",
+                   "lastActivityByName": "Michecl Smith",
+                   "birdeyeValue": "+1 4667766545",
+                   "suggestionReceivedDate": "",
+                   "lastValueUpdatedOn": "",
+                   "userComments": "Approved, effects All listings"
+               },
+               {
+                   "suggestionId": 2435345,
+                   "locationName": "100 NY Street",
+                   "suggestedAttributeName": "Category",
+                   "suggestedInput": "E-commerce",
+                   "birdeyeValue": "retail",
+                   "status": "PENDING_REVIEW",
+                   "lastActivity": "Date MMM DD YYYY format",
+                   "lastActivityByName": "Michecl Smith",
+                   "suggestionReceivedDate": "23/04/2024 14:34:00",
+                   "lastValueUpdatedOn": "",
+                   "userComments": null
+               }
+           ]
+        }
+
+
+## Update Google Suggestions [/resources/v1/listing/update/GoogleSuggestions]
+
+API to approve or reject Google Suggestions by passing the suggestion IDs and an action.
+
+### Update Google Suggestions [POST]
+
++ Request (application/json)
+    + Headers
+
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            businessId: 169744180007807 (number, required) - Business Number.
+
+    + Body
+
+            {
+               "suggestionIds": [12345,56789],
+               "action": "approved"
+            }
+
++ Response 200 (application/json)
+
+        {
+           "code":200,
+           "message":"suggestion(s) processed successfully"
+        }
+
 ## Deactivate Listing [/v1/listing/{businessNumber}/deactivate]
 Deactivate Listing API stops publishing any information on the given online directories/ listings sites (as per your plan/ package chosen).
 
