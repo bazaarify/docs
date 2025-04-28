@@ -15748,17 +15748,17 @@ Google Suggestions allow businesses to access, review, and manage suggestions by
         + totalCount: 2 (number) - Total number of Google Suggestions returned.
         + result (array) - A list of suggestion objects.
             + (object)
-                + suggestionId: 2435345 (number) - Unique identifier for the suggestion.
-                + locationName: 100 NY Street (string) - Name or address of the business location.
-                + suggestedAttributeName: Phone Number (string) - Attribute being suggested for update.
-                + suggestedInput: +1 34567899004 (string) - New value suggested for the attribute.
+                + suggestionId: 2435345 (number) - Unique identifier for the suggestion (auto generated).
+                + locationName: 100 NY Street (string) - Name or alias of the location for which suggestion is received.
+                + suggestedAttributeName: Phone Number (string) - Field for which suggestion is received from google.
+                + suggestedInput: +1 34567899004 (string) - Suggested input/value from google for the above field.
                 + birdeyeValue: +1 4667766545 (string) - Current value stored in the system.
                 + status: Approved (string) - Status of the suggestion. Possible values: `PENDING_REVIEW`, `Approved`, `Rejected`.
-                + lastActivity: Date MMM DD YYYY format (string) - Date of the most recent activity.
+                + lastActivity: Date MMM DD YYYY format (string) - Date and time for any last action performed over the suggestion.
                 + lastActivityByName: Michecl Smith (string) - Name of the user who last acted on the suggestion.
-                + suggestionReceivedDate: 23/04/2024 14:34:00 (string) - Date and time when the suggestion was received.
-                + lastValueUpdatedOn: 23/04/2024 14:34:00 (string) - Date when the value was last updated, if applicable.
-                + userComments: Approved, effects All listings (string) - Comments added by the user. May be null.
+                + suggestionReceivedDate: 23/04/2024 14:34:00 (string) - Initial Date and time when the suggestion was received from google.
+                + lastValueUpdatedOn: 23/04/2024 14:34:00 (string) - Date when any update or another suggestion received on top of the previous suggestion.
+                + userComments: Approved, effects All listings (string) - Comments added by the user while approving/rejecting the suggestion.
 
     + Body
 
@@ -15809,8 +15809,8 @@ API to approve or reject Google Suggestions by providing suggestion IDs and the 
             businessId: 169744180007807 (number, required) - Business Number.
 
     + Attributes (object)
-        + suggestionIds: [12345, 56789] (array[number], required) - List of suggestion IDs to be approved or rejected.
-        + action: approved (string, required) - Action to be performed on the suggestions. Possible values: `approved`, `rejected`.
+        + suggestionIds: [12345, 56789] (array[number], required) - List of suggestion IDs selected by user to be approved or rejected.
+        + action: approved (string, required) - user wants to approve or rejects these suggestions based on that value will be set. Possible values: `approved`, `rejected`.
 
     + Body
 
