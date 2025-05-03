@@ -2755,7 +2755,7 @@ Update Business API updates business information.
                           Possible values are:
                                         Yes
                                         No
-        + serviceAreas (array) - Service Area information. You can enter upto 10 service area addresses in one request
+        + serviceAreas (array) - Service Area information. You can enter upto 20 service area addresses in one request
             + (object)
                 + description: 400 Boston Street, Seattle, WA, 98109 (string)  - For supported service areas, Possible formats:
                                     1. Apartment Name/ Suite Name, Street Name/ Locality, City, State, ZIP
@@ -13329,7 +13329,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
             + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
-            + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
+            + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 20.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
             + location (object) - Business address
@@ -14098,7 +14098,7 @@ The Update Listing API will update the location details on all your listings sit
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
             + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
-            + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
+            + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 20.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
             + location (object) - Business address
@@ -14869,7 +14869,7 @@ The Get Listing API will get the listing information for the given business numb
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
             + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
-            + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
+            + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 20.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
                     + placeId (string) - ChIJk8EIXIG3j4ARwL_Ao3ykdeQ
