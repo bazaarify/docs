@@ -2181,7 +2181,22 @@ For example :
             "message": "Open Date is not supported for this date"
         }
 
+## 2521 [/2521]
 
++ Model (application/json)
+
+        {
+            "code": 2285,
+            "message": "Invalid text message number"
+        }
+## 2522 [/2522]
+
++ Model (application/json)
+
+        {
+            "code": 2286,
+            "message": "Invalid whatsapp business link"
+        }
 
 
 # Group Business
@@ -13061,6 +13076,13 @@ The Get GMB Attributes API fetches the list of applicable GMB attributes for the
 
     [4013][]
 
++ Response 400
+
+    [2521][]
+
++ Response 400
+
+    [2522][]
 
 ## Get Apple Attributes [/v1/listing/{businessNumber}/apple-location-attributes-list]
 The Get Apple Attributes API fetches the list of applicable Apple attributes. An attribute is typically something that helps describe your location better. E.g.: You provide paid parking or that your location is kid friendly etc.
@@ -14847,6 +14869,13 @@ The Update Listing API will update the location details on all your listings sit
 
     [2520][]
 
++ Response 400
+
+    [2521][]
+
++ Response 400
+
+    [2522][]
 
 ## Get Listing [/v1/listing/{businessNumber}/get]
 The Get Listing API will get the listing information for the given business number/ ID.
