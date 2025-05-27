@@ -4126,6 +4126,120 @@ Create User API creates a new user for a business.
     [1059][]
 
 
+## Update User [/v1/user/updateUser/{userId}{?entuser}]
+Updates an existing user’s access, notifications, and role.
+
+
+### Update User [PUT]
+
++ Parameters
+    + userId: 123 (string, required, in path) — ID of the user to update.
+    + entuser : false (boolean) - true if the user needs to provide enterprise level access in case of all locations.
+                entUser needs to be passed as true if user needs to be provided access to all locations otherwise by default its false.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Attributes (object)
+
+        + locationsNumberAccess: 3901784402334,3901744402337 (array) - Location Numbers list of which the user has access. Must provide full list each time, empty list grants access to all locations.
+        + user - user details
+               + firstName: Rhonda (string) - First name of the user.
+               + lastName: Randy (string) - The last name of the user.
+        + userRole: admin (string) - Role to assign within the application.
+        + notification - user details
+               + sendReviewEmailAlert: (number) - Flag to enable sending of review email alerts.
+               + sendDailyReviewDigest: 0 (number) - Flag to enable sending of daily review summary emails.
+               + dailyDigestAbsoluteTime: 5:00 (string) - Daily digest delivery time in HH:MM format.
+               + dailyDigestRunHour: 5 (number) - Hour component when daily digest is executed.
+               + dailyDigestRunMinute: 0 (number) - Minute component when daily digest is executed.
+               + sendWeeklyReviewDigest: 0 (number) - Flag to enable sending of weekly review summary emails.
+               + weeklyDigestAbsoluteTime: 05:30 (string) - Weekly digest delivery time in HH:MM format.
+               + weeklyDigestRunDay:  0 (number) - Day of the week for executing the weekly digest (0=Sunday).
+               + weeklyDigestRunHour: 5 (number) - Hour component when weekly digest is executed.
+               + weeklyDigestRunMinute: 0 (number) - Minute component when weekly digest is executed.
+               + sendReviewSmsAlert: 1 (number) - Flag to enable sending of review SMS alerts.
+               + sendDailySocialDigest: 1 (number) - Flag to enable sending of daily social media digests.
+               + sendTicketAlert: 1 (number) - Flag to enable sending of alerts when a new ticket is created.
+               + sendTicketStatusAlert: 0 (number) - Flag to enable sending of alerts when a ticket status changes.
+               + sendTicketAssigneeChangeAlert: 1 (number) - Flag to enable sending of alerts when ticket assignee changes.
+               + sendTicketCommentAlert: 0 (number) - Flag to enable sending of alerts when comments are added to tickets.
+               + sendTicketStartOrStoppedWatchingAlert: 0 (number) - Flag to enable sending of alerts when watching status changes for tickets.
+               + sendSurveyAlert: 1 (number) - Flag to enable sending of survey invitation alerts.
+               + sendReferralAlert: 1 (number) - Flag to enable sending of referral alerts.
+               + sendScanToolSignUpAlert: 1 (number) - Flag to enable sending of scan tool signup alerts.
+               + webChatEmailInterval: 15,M (string) - Interval for web chat email notifications (e.g., "15,M").
+               + webChatEmailAbsoluteTime: 05:30 (string) - Absolute time for web chat email notifications in HH:MM format.
+               + enableWebchat: 1 (number) - Flag to enable web chat notifications.
+               + enableTeamAlert: 0 (number) - Flag to enable team-wide alerts.
+               + reviewAlertRatings: 1,2,3,4,5,0,-1 (array) - Array of review ratings that trigger alerts.
+               + messengerEmailConversationType: unAssigned,assignedToMe,assignedToOthers (string) - Comma-separated conversation types for messenger email notifications.
+               + assignedToMeAlert: 1 (number) - Flag to enable alerts for items assigned to the current user.
+               + enableBrowserNotification: 1 (number) - Flag to enable browser push notifications.
+               + messengerReportEnable: 1 (number) - Flag to enable messenger report feature.
+               + appointmentBooking: 1 (number) - Flag to enable in-app appointment booking feature.
+               + appointmentFormsEnabled: 1 (number) - Flag to enable appointment forms.
+               + enableAIPostSuggestions: 0 (number) - Flag to enable AI-driven post suggestions.
+               + enablePostFailureEmail: 1 (number) - Flag to enable email alerts for post failures.
+               + enableDirectMessageEmail: 1 (number) - Flag to enable email alerts for direct messages.
+               + enablePostCommentsEmail: 1 (number) - Flag to enable email alerts for post comments.
+               + enableMentionsEmail: 1 (number) - Flag to enable email alerts when the user is mentioned.
+               + enableStoryMentionsEmail: 0 (number) - Flag to enable email alerts for story mentions.
+               + enableNewFollowersEmail: 0 (number) - Flag to enable email alerts for new followers.
+               + enableRetweetEmail: 0 (number) - Flag to enable email alerts when a post is retweeted.
+               + enableQuoteTweetEmail: 0 (number) - Flag to enable email alerts for quote tweets.
+               + enablePostFailureBrowserNotification: 1 (number) - Flag to enable browser notifications for post failures.
+               + paymentAlert: 1 (number) - Flag to enable payment-related alerts.
+               + sendBrokenIntegrationAlert: 1 (number) - Flag to enable in-app alerts for broken integrations.
+               + sendBrokenIntegrationEmail: 1 (number) - Flag to enable email alerts for broken integrations.
+
++ Body
+
+    {
+      "locationsNumberAccess": [0],
+      user:{
+      "firstName": "string",
+      "lastName": "string",
+      },
+      "userRole": "string",
+      "notification": { /* as above */ }
+    }
+
+
++ Response 200 (application/json)
+
++ Response 400
+
+    [1010][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1177][]
+
++ Response 404
+
+    [1189][]
+
+
+
 ## Delete [/v1/user/remove{?api_key,bid,email}]
 Delete User API removes user access from a business.
 
