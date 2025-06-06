@@ -2181,7 +2181,22 @@ For example :
             "message": "Open Date is not supported for this date"
         }
 
+## 2521 [/2521]
 
++ Model (application/json)
+
+        {
+            "code": 2285,
+            "message": "Invalid text message number"
+        }
+## 2522 [/2522]
+
++ Model (application/json)
+
+        {
+            "code": 2286,
+            "message": "Invalid whatsapp business link"
+        }
 
 
 # Group Business
@@ -13175,6 +13190,13 @@ The Get GMB Attributes API fetches the list of applicable GMB attributes for the
 
     [4013][]
 
++ Response 400
+
+    [2521][]
+
++ Response 400
+
+    [2522][]
 
 ## Get Apple Attributes [/v1/listing/{businessNumber}/apple-location-attributes-list]
 The Get Apple Attributes API fetches the list of applicable Apple attributes. An attribute is typically something that helps describe your location better. E.g.: You provide paid parking or that your location is kid friendly etc.
@@ -13545,6 +13567,8 @@ Create Listing API publishes information on online listing sources. We post pres
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
             + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
+            + whatsappBusinessLink (string) - Enter your WhatsApp Business link to display a direct chat option on your live Google Business Profile. This allows customers to easily message you. Example https://wa.me/<yourphonenumber>
+            + textMessageNumber (string) - Enter a valid phone number to enable a text message chat option on your live Google Business Profile, allowing customers to easily reach you via SMS.
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + appleWebsiteUrl (string) - Website url will update on apple listing. This website URL will override your existing website URL on your Apple Business Connect.
@@ -14043,7 +14067,9 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                         ]
                     },
                     "foodDelivery":"https://www.ubereats.com",
-                    "foodTakeout":"https://www.ubereats.com"
+                    "foodTakeout":"https://www.ubereats.com",
+                    "whatsappBusinessLink":"https://wa.me/9737160007",
+                    "textMessageNumber":"973716-0007"
                 },
                  "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
@@ -14314,6 +14340,8 @@ The Update Listing API will update the location details on all your listings sit
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
             + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
+            + whatsappBusinessLink (string) - Enter your WhatsApp Business link to display a direct chat option on your live Google Business Profile. This allows customers to easily message you. Example https://wa.me/<yourphonenumber>
+            + textMessageNumber (string) - Enter a valid phone number to enable a text message chat option on your live Google Business Profile, allowing customers to easily reach you via SMS.
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + appleWebsiteUrl (string) - Website url will update on apple listing. This website URL will override your existing website URL on your Apple Business Connect.
@@ -14812,7 +14840,9 @@ The Update Listing API will update the location details on all your listings sit
                         ]
                     },
                     "foodDelivery":"https://www.ubereats.com",
-                    "foodTakeout":"https://www.ubereats.com"
+                    "foodTakeout":"https://www.ubereats.com",
+                    "whatsappBusinessLink":"https://wa.me/9737160007",
+                    "textMessageNumber":"973716-0007"
                 },
                  "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
@@ -14953,6 +14983,13 @@ The Update Listing API will update the location details on all your listings sit
 
     [2520][]
 
++ Response 400
+
+    [2521][]
+
++ Response 400
+
+    [2522][]
 
 ## Get Listing [/v1/listing/{businessNumber}/get]
 The Get Listing API will get the listing information for the given business number/ ID.
@@ -15086,6 +15123,8 @@ The Get Listing API will get the listing information for the given business numb
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
             + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
+            + whatsappBusinessLink (string) - Enter your WhatsApp Business link to display a direct chat option on your live Google Business Profile. This allows customers to easily message you. Example https://wa.me/<yourphonenumber>
+            + textMessageNumber (string) - Enter a valid phone number to enable a text message chat option on your live Google Business Profile, allowing customers to easily reach you via SMS.
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + appleWebsiteUrl (string) - Website url will update on apple listing. This website URL will override your existing website URL on your Apple Business Connect.
@@ -15585,7 +15624,9 @@ The Get Listing API will get the listing information for the given business numb
                         ]
                     },
                     "foodDelivery":"https://www.ubereats.com",
-                    "foodTakeout":"https://www.ubereats.com"
+                    "foodTakeout":"https://www.ubereats.com",
+                    "whatsappBusinessLink":"https://wa.me/9737160007",
+                    "textMessageNumber":"973716-0007"
                 },
                  "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
