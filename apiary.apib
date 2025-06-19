@@ -6222,6 +6222,636 @@ API to fetch the daily opt-out or blocked contact data for a business
 
     [20083][]
 
+## Upsert Contact [/v1/contact/external/preferences/saveCustomer]
+Customers can Create or Update Contact API.
+
+### Upsert Contact [POST]
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Attributes
+
+
+        + id: 115339282 (string) - Id of enterprise customer.
+        + firstName: Ron (string) - First name of the customer.
+        + lastName: Spector (string) - Last name of the customer.
+        + email: ron@test.con (string) - Email of customer, optional (if phone is provided).
+        + phone: 123 456 7890 (string) - Phone of customer optional (if email is provided).
+        + countryCode: US (string, optional) - Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
+        + smsOptin: false (boolean) - SMS Opt flag.
+        + emailOptin: false (boolean) - Email Opt flag.
+        + blocked: false (boolean) - Contact block flag.
+        + businessIds: 145308764185002,145308769721320 (array) - Business Ids under enterprise account. The Business Ids field is mandatory while creating a new contact. While updating, if no business Ids are provided, the same location mappings are retained.
+        + tags: Tag One, Tag Two (string) - List of tags.
+        + customFields (array) - List of Custom fields. We currently support 4 types of customfields - text, number, currency, date (in formats - “MM/dd/yyyy” and "MM-dd-yyyy" only), and yes or no (1:"yes", 0:"no").
+            + (object)
+                + fieldName: Company (string) - Field name.
+                + type: text (string) - Field type.
+                + fieldValue: Dunder Mifflin (string) - Value of field.
+        + externalId: ABC123 (string) - Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
+        + emailPreferences (object) - Email communication preference flags.
+            + marketingOptin: true (boolean) - Marketing communication.
+            + feedbackOptin: true (boolean) - Feedback communication.
+            + serviceOptin: true (boolean) - Service communication.
+        + smsPreferences (object) - SMS communication preference flags.
+            + marketingOptin: true (boolean) - Marketing communication.
+            + feedbackOptin: true (boolean) - Feedback communication.
+            + serviceOptin: true (boolean) - Service communication.
+
+
+    + Body
+
+            {
+                "id": 115339282,
+                "firstName": "Michael",
+                "lastName": "Scott",
+                "email": "michael@test.com",
+                "phone": "(212) xxx-xxxx",
+                "countryCode": "US",
+                "emailOptin": true,
+                "smsOptin": true,
+                "blocked": false,
+                "businessIds": [161458406365307,161072537475129],
+                "tags": ["Tag One","Tag Two"],
+                "customFields": [
+                {
+                    "fieldName": "Company",
+                    "type": "text",
+                    "fieldValue": "Dunder Mifflin"
+                },
+                {
+                    "fieldName": "Product",
+                    "type": "text",
+                    "fieldValue": "Paper"
+                }],
+                "externalId": "ABC123",
+                "emailPreferences": {
+                    "marketingOptin": true,
+                    "feedbackOptin": true,
+                    "serviceOptin": true
+                },
+                "smsPreferences": {
+                    "marketingOptin": true,
+                    "feedbackOptin": true,
+                    "serviceOptin": true
+                }
+            }
+
+
++ Response 200 (application/json)
+
+    + Attributes
+        + id: 115339282 (number) - Id of enterprise customer.
+
+    + Body
+
+            {
+                "id": 115339282
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "code": 20099,
+                "message": "Text Communication categorisation is not enabled please use smsOptin flag"
+            }
+
++ Response 400
+
+    [1167][]
+
++ Response 400
+
+    [5008][]
+
++ Response 400
+
+    [5043][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+
++ Response 400
+
+    [1167][]
+
+
++ Response 404
+
+    [1532][]
+
++ Response 400
+
+    [5008][]
+
++ Response 400
+
+    [5043][]
+
+
+## Retrieve Contact [/v1/contact/external/preferences/getCustomer]
+Retrieve a customer's contact profile and associated details.
+
+### Retrieve Contact [POST]
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Attributes
+
+        + id: 115339282 (string) - Id of enterprise customer. optional (if cid, phone or email is provided).
+        + cid: 293847172 (string) - Id of customer mapping on a location. optional (if id, phone or email is provided).
+        + email: ron@test.con (string) - Email of customer, optional (if phone, id or cid is provided).
+        + phone: 123 456 7890 (string) - Phone of customer optional (if email, id or cid is provided).
+
+
+    + Body
+
+            {
+                "id": 115339282,
+                "cid": 293847172,
+                "email": "test.user@test.com",
+                "phone": "(212) xxx-xxxx"
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+
+
+        + id: 115339282 (string) - Id of enterprise customer.
+        + firstName: Ron (string) - First name of the customer.
+        + lastName: Spector (string) - Last name of the customer.
+        + email: ron@test.con (string) - Email of customer, optional (if phone is provided).
+        + phone: 123 456 7890 (string) - Phone of customer optional (if email is provided).
+        + countryCode: US (string) - Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
+        + smsOptin: false (boolean) - SMS Opting flag.
+        + mappings (array) - List of locations where customer is mapped. If requested by cid, only that location's mapping is returned.
+            + (object)
+                + cid: 12345 (number) - Customer location id.
+                + location: New York (string) - Name of the location.
+                + bid: 710687 (number) - Location id.
+                + businessNumber: 169744180007807 (number) - Location Number.
+        + tags: Tag One, Tag Two (string) - List of tags.
+        + customFields (array) - List of Custom fields.
+            + (object)
+                + fieldName: Company (string) - Field name.
+                + type: text (string) - Field type.
+                + fieldValue: Dunder Mifflin (string) - Value of field.
+        + externalId: ABC123 (string) - Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
+        + emailPreferences (object) - Email communication preference flags.
+            + marketingOptin: true (boolean) - Marketing communication.
+            + feedbackOptin: true (boolean) - Feedback communication.
+            + serviceOptin: true (boolean) - Service communication.
+        + smsPreferences (object) - SMS communication preference flags.
+            + marketingOptin: true (boolean) - Marketing communication.
+            + feedbackOptin: true (boolean) - Feedback communication.
+            + serviceOptin: true (boolean) - Service communication.
+
+
+    + Body
+
+            {
+                "id": 115339282,
+                "firstName": "Michael",
+                "lastName": "Scott",
+                "email": "test.user@test.com",
+                "phone": "(212) xxx-xxxx",
+                "countryCode": "US",
+                "blocked": false,
+                "emailOtin": true,
+                "smsOptin": true,
+                "source": "api",
+                "created": "January 12, 2021",
+                "mappings": [
+                {
+                    "cid": 1234451,
+                    "location": "new horizon",
+                    "bid": 710687,
+                    "businessNumber": 161458406365307
+                },
+                {
+                    "cid": 1235452,
+                    "location": "North Carolina",
+                    "bid": 714169,
+                    "businessNumber": 161072537475129
+                }],
+                "tags": ["Tag One","Tag Two"],
+                "customFields": [
+                {
+                    "fieldName": "Company",
+                    "type": "text",
+                    "fieldValue": "Dunder Mifflin"
+                },
+                {
+                    "fieldName": "Product",
+                    "type": "text",
+                    "fieldValue": "Paper"
+                }],
+                "externalId": "ABC123",
+                "emailPreferences": {
+                    "marketingOptin": true,
+                    "feedbackOptin": true,
+                    "serviceOptin": true
+                },
+                "smsPreferences": {
+                    "marketingOptin": true,
+                    "feedbackOptin": true,
+                    "serviceOptin": true
+                }
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [1167][]
+
++ Response 404
+
+    [1532][]
+
++ Response 400
+
+    [5043][]
+
+
+## Customer Check in [/v1/contact/external/preferences/checkin]
+Customer check-in can be done using Check in API.
+
+
+### Customer Checkin [POST]
+
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Attributes
+        + name: Steve Smith  (string) - Name of the customer.
+        + emailId: steves@abcd.com (string) - Email ID of the customer (optional If business has enabled for sms, then either email or phone will be required).
+        + phone: 4081231234 (string) - Phone number of the customer (optional If business has enabled for sms, then either email or phone will be required).
+        + smsEnabled: 0 (number) - Whether customer has opted to receive SMS request or not. Valid values are 0(false), 1(true). Default is 1.
+        + additionalParams (object) - Custom tags can be added as key value pair.
+        + employees (array)
+            + (object)
+                + emailId: sshikha@abcd.com (string) - Email Id of assisted Employee.
+        + externalId: ABC123 (string) - Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
+        + emailPreferences (object) - Email communication preference flags.
+            + marketingOptin: true (boolean) - Marketing communication.
+            + feedbackOptin: true (boolean) - Feedback communication.
+            + serviceOptin: true (boolean) - Service communication.
+        + smsPreferences (object) - SMS communication preference flags.
+            + marketingOptin: true (boolean) - Marketing communication.
+            + feedbackOptin: true (boolean) - Feedback communication.
+            + serviceOptin: true (boolean) - Service communication.
+
+    + Body
+
+            {
+              "name": "Steve Smith",
+              "emailId": "steves@abcd.com",
+              "phone": "408-xxx-xxxx",
+              "smsEnabled": 1,
+              "additionalParams" :
+               {
+                    "Tag Group Name 1": "Tag Name 1",
+                    "Tag Group Name 2" :"Tag Name 2",
+                    "location" :"New York"
+               },
+              "employees":[{
+                             "emailId" : "sshikha@abcd.com"
+                          }],
+              "externalId": "ABC123",
+                "emailPreferences": {
+                    "marketingOptin": true,
+                    "feedbackOptin": true,
+                    "serviceOptin": true
+                },
+                "smsPreferences": {
+                    "marketingOptin": true,
+                    "feedbackOptin": true,
+                    "serviceOptin": true
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + customerId: 673356544  (number) - Id of enterprise customer.
+
+
+    + Body
+
+            {
+                "customerId":”673356544”
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "code": 20099,
+                "message": "Text Communication categorisation is not enabled please use smsOptin flag"
+            }
+
+
++ Response 400
+
+    [1142][]
+
++ Response 400
+
+    [1086][]
+
++ Response 400
+
+    [1087][]
+
+
++ Response 400
+
+    [1088][]
+
+
++ Response 400
+
+    [1055][]
+
+
++ Response 400
+
+    [1170][]
+
++ Response 401
+
+    [1033][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1175][]
+
+## Update Communication Preferences [/v1/contact/external/preferences/change-permission]
+Customer can be subscribe/unsubscribe from Email & SMS using this API.
+
+
+### Update Communication Preferences [POST]
+
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Attributes
+        + emailPreferences (object) - Email communication preference flags.
+            + marketingOptin: true (boolean) - Marketing communication.
+            + feedbackOptin: true (boolean) - Feedback communication.
+            + serviceOptin: true (boolean) - Service communication.
+        + smsPreferences (object) - SMS communication preference flags.
+            + marketingOptin: true (boolean) - Marketing communication.
+            + feedbackOptin: true (boolean) - Feedback communication.
+            + serviceOptin: true (boolean) - Service communication.
+        + email: test1@mail.in, ron@test.com (array) - Customer email ids.
+        + phone: 2345654326, 1234567890 (array) - Customer phone numbers.
+        + accountNumber: 123456789876543 (number, required) - Location id.
+
+    + Body
+
+            {
+                "emailPreferences": {
+                    "marketingOptin": true,
+                    "feedbackOptin": true,
+                    "serviceOptin": true
+                },
+                "smsPreferences": {
+                    "marketingOptin": true,
+                    "feedbackOptin": true,
+                    "serviceOptin": true
+                },
+                "email": ["test1@mail.in"],
+                "phone": ["2345654326"],
+                "accountNumber":123456789876543
+            }
+
++ Response 200 (application/json)
+
+
+    + Body
+
+            true or false
+
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
+
++ Response 400
+
+    [1089][]
+
+## Retrieve Opted-Out Contacts [/v1/contact/external/preferences/update-feed]
+API to fetch the daily opt-out or blocked contact data for a business
+
+### Retrieve Opted-Out Contacts [POST]
+
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+
+    + Attributes
+        + start: 1693570640000 (number, required) - The start date format should be in milliseconds. If the start date is not set and the end date is provided, we will fetch data for 24 hours before the end date. If both are not provided, the latest 24 hours data will be fetched.
+        + end: 1693657040000 (number,required) -  The end date format should be in milliseconds. If the end date is not set and the start date is provided, we will fetch data for 24 hours after the start date. If both are not provided, the latest 24 hours data will be fetched.
+        + subscriptionStatus: 155911947195757, 155290409184734 (array,required) - Type of subscription update feed we want the data for. Like opted-out to get email and text optouts, and blocked for contacts getting blocked. If not provided, only opted-out updates will be returned, by default.
+
+
+
+
+    + Body
+
+            {
+                "end": 1693657040000,
+                "start": 1693570640000,
+                "subscriptionStatus": [ "blocked","opted-out" ]
+            }
+
++ Response 200 (application/json)
+
+
+    + Attributes
+
+        + emailOptOut (array) - All the contacts grouped under this field, which were opted out from email in the given duration
+            + (object)
+                + id: 1213422 (number) - id of the enterprise customer.
+                + firstName: John (string) - First name of the contact.
+                + lastName: Doe (string) - Last name of the contact.
+                + emailId: john@yahoo.com (string) - EmailId of the contact, if exists.
+                + phone (string) - Phone number of the contact, if exists. Format is (xxx) xxx-xxxx.
+                + optOutFrom (array[string]) - Categories from which the contact has opted out (e.g., marketing, feedback, service).
+        + textOptOut (array) - All the contacts grouped under this field, which were opted out from text in the given duration
+            + (object)
+                + id: 1213422 (number) - id of the enterprise customer.
+                + firstName: John (string) - First name of the contact.
+                + lastName: Doe (string) - Last name of the contact.
+                + emailId: john@yahoo.com (string) - EmailId of the contact, if exists.
+                + phone (string) - Phone number of the contact, if exists. Format is (xxx) xxx-xxxx.
+                + optOutFrom (array[string]) - Categories from which the contact has opted out (e.g., marketing, feedback, service).
+        + blocked (array) - All the contacts grouped under this field, which were blockedl in the given duration.
+            + (object)
+                + id: 1213422 (number) - id of the enterprise customer.
+                + firstName: John (string) - First name of the contact.
+                + lastName: Doe (string) - Last name of the contact.
+                + emailId: john@yahoo.com (string) - EmailId of the contact, if exists.
+                + phone (string) - Phone number of the contact, if exists. Format is (xxx) xxx-xxxx.
+                + optOutFrom (array[string]) - Categories from which the contact has opted out (e.g., marketing, feedback, service).
+
+
+    + Body
+
+            {
+              "emailOptOut": [
+                {
+                  "id": 1213422,
+                  "firstName": "John",
+                  "lastName": "Doe",
+                  "emailId": "john@yahoo.com",
+                  "phone": "(212) 234-1242",
+                  "optOutFrom": ["marketing", "feedback"]
+                },
+                {
+                  "id": 1213423,
+                  "firstName": "Johnny",
+                  "lastName": "Doe",
+                  "emailId": "johnny@yahoo.com",
+                  "phone": "(212) 231-1242",
+                  "optOutFrom": ["marketing", "feedback"]
+                }
+              ],
+              "textOptOut": [
+                {
+                  "id": 1213425,
+                  "firstName": "Jane",
+                  "lastName": "Doe",
+                  "emailId": "john@yahoo.com",
+                  "phone": "(212) 234-1242",
+                  "optOutFrom": ["marketing", "feedback"]
+                },
+                {
+                  "id": 1213423,
+                  "firstName": "Johnny",
+                  "lastName": "Doe",
+                  "emailId": "johnny@yahoo.com",
+                  "phone": "(212) 231-1242",
+                  "optOutFrom": ["marketing", "feedback"]
+                }
+              ],
+              "blocked": [
+                {
+                  "id": 1213422,
+                  "firstName": "John",
+                  "lastName": "Doe",
+                  "emailId": "john@yahoo.com",
+                  "phone": "(212) 234-1242",
+                  "optOutFrom": ["marketing", "feedback"]
+                },
+                {
+                  "id": 1213423,
+                  "firstName": "Johnny",
+                  "lastName": "Doe",
+                  "emailId": "johnny@yahoo.com",
+                  "phone": "(212) 231-1242",
+                  "optOutFrom": ["marketing", "feedback"]
+                }
+              ]
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 401
+
+    [1011][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [20083][]
+
+
 
 # Group Campaign
 Create a short link for review requests and set review sources in the template.
