@@ -6254,7 +6254,9 @@ Customers can Create or Update Contact API.
         + emailOptin: false (boolean) - Email Opt flag.
         + blocked: false (boolean) - Contact block flag.
         + businessIds: 145308764185002,145308769721320 (array) - Business Ids under enterprise account. The Business Ids field is mandatory while creating a new contact. While updating, if no business Ids are provided, the same location mappings are retained.
-        + tags: Tag One, Tag Two (string) - List of tags.
+        + tags (array[string]) - List of tags
+            + Tag One
+            + Tag Two
         + customFields (array) - List of Custom fields. We currently support 4 types of customfields - text, number, currency, date (in formats - “MM/dd/yyyy” and "MM-dd-yyyy" only), and yes or no (1:"yes", 0:"no").
             + (object)
                 + fieldName: Company (string) - Field name.
