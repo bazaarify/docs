@@ -6251,7 +6251,6 @@ Customers can Create or Update Contact API.
         + phone: 123 456 7890 (string) - Phone of customer optional (if email is provided).
         + countryCode: US (string, optional) - Country code of the phone number. Default value=US, Other Possible values=AU,CA,MX,PR,VI
         + smsOptin: false (boolean) - SMS Opt flag.
-        + emailOptin: false (boolean) - Email Opt flag.
         + blocked: false (boolean) - Contact block flag.
         + businessIds: 145308764185002,145308769721320 (array) - Business Ids under enterprise account. The Business Ids field is mandatory while creating a new contact. While updating, if no business Ids are provided, the same location mappings are retained.
         + tags (array[string]) - List of tags
@@ -6282,7 +6281,6 @@ Customers can Create or Update Contact API.
                 "email": "michael@test.com",
                 "phone": "(212) xxx-xxxx",
                 "countryCode": "US",
-                "emailOptin": true,
                 "smsOptin": true,
                 "blocked": false,
                 "businessIds": [161458406365307,161072537475129],
@@ -6447,7 +6445,6 @@ Retrieve a customer's contact profile and associated details.
                 "phone": "(212) xxx-xxxx",
                 "countryCode": "US",
                 "blocked": false,
-                "emailOtin": true,
                 "smsOptin": true,
                 "source": "api",
                 "created": "January 12, 2021",
