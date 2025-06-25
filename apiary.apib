@@ -4141,15 +4141,15 @@ Create User API creates a new user for a business.
     [1059][]
 
 
-## Update User [/v1/user/updateUser/{userId}{?entuser}]
+## Update User [/v1/user/updateUser{?userEmailId,entUser}]
 Updates an existing user’s access, notifications, and role.
 
 
 ### Update User [PUT]
 
 + Parameters
-    + userId: 123 (string, required, in path) — ID of the user to update.
-    + entuser : false (boolean) - true if the user needs to provide enterprise level access in case of all locations.
+    + userEmailId: abc@test.com (string, required) - Email id of the user to be updated
+    + entUser : false (boolean) - true if the user needs to provide enterprise level access in case of all locations.
                 entUser needs to be passed as true if user needs to be provided access to all locations otherwise by default its false.
 
 
