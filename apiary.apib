@@ -2181,23 +2181,88 @@ For example :
             "message": "Open Date is not supported for this date"
         }
 
-## 2521 [/2521]
+
+## 5022 [/5022]
 
 + Model (application/json)
 
         {
-            "code": 2285,
-            "message": "Invalid text message number"
+            "code": 5022,
+            "message": "Another custom field with same name already present."
         }
-## 2522 [/2522]
+
+## 5023 [/5023]
 
 + Model (application/json)
 
         {
-            "code": 2286,
-            "message": "Invalid whatsapp business link"
+            "code": 5023,
+            "message": "Custom field request dto cannot be null."
         }
 
+## 5024 [/5024]
+
++ Model (application/json)
+
+        {
+            "code": 5024,
+            "message": "Custom field creation failed."
+        }
+
+## 5025 [/5025]
+
++ Model (application/json)
+
+        {
+            "code": 5025,
+            "message": "Custom field not found."
+        }
+
+## 5026 [/5026]
+
++ Model (application/json)
+
+        {
+            "code": 5026,
+            "message": "Custom field updation failed."
+        }
+
+## 5028 [/5028]
+
++ Model (application/json)
+
+        {
+            "code": 5028,
+            "message": "Custom field delete failed."
+        }
+
+
+## 5031 [/5031]
+
++ Model (application/json)
+
+        {
+            "code": 5031,
+            "message": "Method not implemented for unknown custom field type."
+        }
+
+## 5039 [/5039]
+
++ Model (application/json)
+
+        {
+            "code": 5039,
+            "message": "Custom field name cannot be a reserved keyword."
+        }
+
+## 5040 [/5040]
+
++ Model (application/json)
+
+        {
+            "code": 5040,
+            "message": "Max limit reached for custom fields."
+        }
 
 # Group Business
 Create and maintain your business on Birdeye.
@@ -4043,6 +4108,289 @@ Returns only birdeye (source: website) impressions by location as well as total.
 
     [1167][]
 
+# Group CustomFields
+Create, delete , update , associate and get custom fields easily.
+
+## Create Custom Fields [/v1/business/public/custom-fields/create]
+Create custom Fields
+### Create [POST]
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number
+
+    + Attributes
+         + defaultValue: Green (string)- Default Value of custom field.
+         + dropDownOptions: Blue,Green,Red (array)- The list of options in custom field.
+Only required when when type is either "DROPDOWN_SINGLE" or "DROPDOWN_MULTI".
+         + fieldDescription: This custom field contains list of colours (string)-Description of custom field.
+         + fieldName: colours (required,string)-Name of custom field.
+         + filterable: false (boolean)- Whether the custom field will be filterable or not. Default: false
+         + type: DROPDOWN_MULTI (string)- Type of custom field.
+         Values allowed are TEXT, URL, NUMBER, DATE, DROPDOWN_SINGLE ,DROPDOWN_MULTI,TEXT_RAW.
+
+    + Body
+
+            {
+               "defaultValue": "Green",
+               "dropDownOptions": ["Blue", "Green", "Red"],
+               "fieldDescription": "This custom field contains list of colours",
+               "fieldName": "colours",
+               "filterable": "false",
+               "type": "DROPDOWN_MULTI"
+            }
+
+
+
++ Response 200
+
+
+    + Body
+
+            {
+
+                    "id": 376,
+                    "fieldName": "colours",
+                    "created": 1751480725861,
+                    "updated": 1751480725861
+
+            }
+
++ Response 400
+
+    [5022][]
+
++ Response 400
+
+    [5023][]
+
++ Response 400
+
+    [5024][]
+
++ Response 400
+
+    [5031][]
+
++ Response 400
+
+    [5039][]
+
++ Response 400
+
+    [5040][]
+
+
+## Update Custom Fields [/v1/business/public/custom-fields/update/{fieldId}]
+Update custom Fields
+### Update [PUT]
+
++ Parameters
+    + fieldId: 376 (number)- fieldId of the custom field created earlier.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number
+
+
+
+    + Attributes
+         + defaultValue: Green (string)- Default Value of custom field.
+         + dropDownOptions: Blue,Green,Red (array)- The list of options in custom field.The list of options in custom field
+           (In case the dropdown options were added during creation, while updating , add the same in
+         + fieldDescription: This custom field contains list of colours (string)-Description of custom field.
+         + filterable:  false (boolean)- Whether the custom field will be filterable or not.
+         + isHidden: false (boolean)- Whether the custom field will be hidden or not.
+
+    + Body
+
+
+        {
+               "defaultValue": "Green",
+               "dropDownOptions": ["Blue", "Green", "Red"],
+               "fieldDescription": "This custom field contains list of colours"
+               "filterable": "false",
+               "isHidden": "false"
+        }
+
+
+
++ Response 200
+
+
+    + Body
+
+            {
+                    OK
+            }
+
++ Response 400
+
+     [5025][]
+
+
++ Response 400
+
+    [5026][]
+
+
+## Get Custom Fields [/v1/business/public/custom-fields/get/{fieldId}]
+Get custom Fields
+### Get [GET]
+
++ Parameters
+    + fieldId: 376 (number)- fieldId of the custom field created earlier.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number
+
+
+
++ Response 200
+
+    + Attributes
+         + id: 376 (number)- fieldId of the custom field.
+         + fieldValue: Green (string)- Field Value of custom field and will only be visible if value is present.
+         + fieldName: colours (string)- Name of the custom field.
+         + type: DROPDOWN_MULTI (string)- Type of field.
+         + defaultValue: Green (string)- Default Value of custom field and will only be visible if value is present.
+         + fieldDescription: This custom field contains list of colours (string)-Description of custom field.
+         + filterable:  false (boolean)- Whether the custom field will be filterable or not.
+
+    + Body
+
+            {
+               "id": 376,
+               "fieldName": "colours",
+               "fieldValue": "Green",
+               "type": "DROPDOWN_MULTI",
+               "defaultValue": "Greens",
+               "fieldDescription": "This custom field contains list of colours",
+               "filterable": false
+            }
+
+
++ Response 400
+
+     [5025][]
+
+
+## Delete Custom Fields [/v1/business/public/custom-fields/delete/{fieldId}]
+Delete custom Fields
+### Delete [DELETE]
+
++ Parameters
+    + fieldId: 376 (number)- fieldId of the custom field created earlier.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number
+
+
+
++ Response 200
+
+   + Body
+
+            {
+                    OK
+            }
+
+
++ Response 400
+
+     [5025][]
+
++ Response 400
+
+     [5028][]
+
+
+## Associate Custom Fields [/v1/business/public/custom-fields/associate]
+Associate custom Fields
+### Associate [PUT]
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number.
+
+
+    + Attributes
+         + fieldId: 376 (number)- fieldId of the custom field.
+         + fieldValue: Green (string)- Field Value of custom field and will only be visible if value is present.
+         + businessNumber: 1234567890 (string)- Long Business Number.
+
+     + Body
+
+            {
+                "businessNumber": 1234567890,
+                 "fieldId": 376,
+                 "fieldValue": "Green"
+            }
+
+
+
+
++ Response 200
+
+    + Attributes
+         + id: 376 (number)- fieldId of the custom field.
+         + fieldName: colours (string)- Name of the custom field.
+         + type: DROPDOWN_MULTI (string)- Type of field.
+         + fieldValue: Green (string)- Associated Field Value of custom field .
+         + defaultValue: Green (string)- Default Value of custom field and will only be visible if value is present.
+         + isHidden: false (boolean)- Whether the custom field will be hidden or not.
+         + allBusinesses: false (boolean)- Whether the custom field will be for all businesses or not.
+         + filterable: false (boolean)- Whether the custom field will be filterable or not.
+
+   + Body
+
+            {
+                "id": 376,
+                "fieldName": "colours",
+                "type": "DROPDOWN_MULTI",
+                "fieldValue": "Green",
+                "isHidden": false,
+                "allBusinesses": false,
+                "filterable": false
+            }
+
+
++ Response 400
+
+     [5025][]
+
++ Response 400
+
+     [5028][]
+
+
 
 
 # Group User
@@ -4139,120 +4487,6 @@ Create User API creates a new user for a business.
 + Response 400
 
     [1059][]
-
-
-## Update User [/v1/user/updateUser{?userEmailId,entUser}]
-Updates an existing user’s access, notifications, and role.
-
-
-### Update User [PUT]
-
-+ Parameters
-    + userEmailId: abc@test.com (string, required) - Email id of the user to be updated
-    + entUser : false (boolean) - true if the user needs to provide enterprise level access in case of all locations.
-                entUser needs to be passed as true if user needs to be provided access to all locations otherwise by default its false.
-
-
-+ Request (application/json)
-
-    + Headers
-
-            Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
-            x-business-number: [Required] User assosiated businessNumber
-
-    + Attributes (object)
-
-        + locationsNumberAccess: 3901784402334,3901744402337 (array) - Location Numbers list of which the user has access. Must provide full list each time, empty list grants access to all locations.
-        + user - user details
-               + firstName: Rhonda (string) - First name of the user.
-               + lastName: Randy (string) - The last name of the user.
-        + userRole: admin (string) - Role to assign within the application.
-        + notification - user details
-               + sendReviewEmailAlert: (number) - Flag to enable sending of review email alerts.
-               + sendDailyReviewDigest: 0 (number) - Flag to enable sending of daily review summary emails.
-               + dailyDigestAbsoluteTime: 5:00 (string) - Daily digest delivery time in HH:MM format.
-               + dailyDigestRunHour: 5 (number) - Hour component when daily digest is executed.
-               + dailyDigestRunMinute: 0 (number) - Minute component when daily digest is executed.
-               + sendWeeklyReviewDigest: 0 (number) - Flag to enable sending of weekly review summary emails.
-               + weeklyDigestAbsoluteTime: 05:30 (string) - Weekly digest delivery time in HH:MM format.
-               + weeklyDigestRunDay:  0 (number) - Day of the week for executing the weekly digest (0=Sunday).
-               + weeklyDigestRunHour: 5 (number) - Hour component when weekly digest is executed.
-               + weeklyDigestRunMinute: 0 (number) - Minute component when weekly digest is executed.
-               + sendReviewSmsAlert: 1 (number) - Flag to enable sending of review SMS alerts.
-               + sendDailySocialDigest: 1 (number) - Flag to enable sending of daily social media digests.
-               + sendTicketAlert: 1 (number) - Flag to enable sending of alerts when a new ticket is created.
-               + sendTicketStatusAlert: 0 (number) - Flag to enable sending of alerts when a ticket status changes.
-               + sendTicketAssigneeChangeAlert: 1 (number) - Flag to enable sending of alerts when ticket assignee changes.
-               + sendTicketCommentAlert: 0 (number) - Flag to enable sending of alerts when comments are added to tickets.
-               + sendTicketStartOrStoppedWatchingAlert: 0 (number) - Flag to enable sending of alerts when watching status changes for tickets.
-               + sendSurveyAlert: 1 (number) - Flag to enable sending of survey invitation alerts.
-               + sendReferralAlert: 1 (number) - Flag to enable sending of referral alerts.
-               + sendScanToolSignUpAlert: 1 (number) - Flag to enable sending of scan tool signup alerts.
-               + webChatEmailInterval: 15,M (string) - Interval for web chat email notifications (e.g., "15,M").
-               + webChatEmailAbsoluteTime: 05:30 (string) - Absolute time for web chat email notifications in HH:MM format.
-               + enableWebchat: 1 (number) - Flag to enable web chat notifications.
-               + enableTeamAlert: 0 (number) - Flag to enable team-wide alerts.
-               + reviewAlertRatings: 1,2,3,4,5,0,-1 (array) - Array of review ratings that trigger alerts.
-               + messengerEmailConversationType: unAssigned,assignedToMe,assignedToOthers (string) - Comma-separated conversation types for messenger email notifications.
-               + assignedToMeAlert: 1 (number) - Flag to enable alerts for items assigned to the current user.
-               + enableBrowserNotification: 1 (number) - Flag to enable browser push notifications.
-               + messengerReportEnable: 1 (number) - Flag to enable messenger report feature.
-               + appointmentBooking: 1 (number) - Flag to enable in-app appointment booking feature.
-               + appointmentFormsEnabled: 1 (number) - Flag to enable appointment forms.
-               + enableAIPostSuggestions: 0 (number) - Flag to enable AI-driven post suggestions.
-               + enablePostFailureEmail: 1 (number) - Flag to enable email alerts for post failures.
-               + enableDirectMessageEmail: 1 (number) - Flag to enable email alerts for direct messages.
-               + enablePostCommentsEmail: 1 (number) - Flag to enable email alerts for post comments.
-               + enableMentionsEmail: 1 (number) - Flag to enable email alerts when the user is mentioned.
-               + enableStoryMentionsEmail: 0 (number) - Flag to enable email alerts for story mentions.
-               + enableNewFollowersEmail: 0 (number) - Flag to enable email alerts for new followers.
-               + enableRetweetEmail: 0 (number) - Flag to enable email alerts when a post is retweeted.
-               + enableQuoteTweetEmail: 0 (number) - Flag to enable email alerts for quote tweets.
-               + enablePostFailureBrowserNotification: 1 (number) - Flag to enable browser notifications for post failures.
-               + paymentAlert: 1 (number) - Flag to enable payment-related alerts.
-               + sendBrokenIntegrationAlert: 1 (number) - Flag to enable in-app alerts for broken integrations.
-               + sendBrokenIntegrationEmail: 1 (number) - Flag to enable email alerts for broken integrations.
-
-+ Body
-
-    {
-      "locationsNumberAccess": [0],
-      user:{
-      "firstName": "string",
-      "lastName": "string",
-      },
-      "userRole": "string",
-      "notification": { /* as above */ }
-    }
-
-
-+ Response 200 (application/json)
-
-+ Response 400
-
-    [1010][]
-
-+ Response 401
-
-    [1161][]
-
-+ Response 429
-
-    [89][]
-
-+ Response 401
-
-    [1167][]
-
-+ Response 401
-
-    [1177][]
-
-+ Response 404
-
-    [1189][]
-
 
 
 ## Delete [/v1/user/remove{?api_key,bid,email}]
