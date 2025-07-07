@@ -2941,7 +2941,12 @@ Update Business API updates business information.
             + youTubeUrl: https://www.youtube.com/channel/UCDNP0M75ySA5qt0So2F8Xxw (string)- Business Youtube URL.
         + isSEOEnabled: true (boolean) - Enable/Disbale search engine indexing of business profile. Valid values are "true","false". Default is "true".
         + externalReferenceId (string) - It should be a unique value for location identifier.
-
+        + customFields (object) - Custom Field To be Updated
+            + defaultValue: Green (string)- Default Value of custom field.
+            + fieldValue: GR (string)- Custom field value.
+            + fieldDescription: This custom field contains list of colours (string)-Description of custom field.
+            + fieldName: colours (required,string)-Name of custom field (Make sure to enter the same fieldName or else the new field will be created).
+            + id: 376 (required,number)- fieldId of the custom field created earlier.
 
     + Body
 
@@ -3196,7 +3201,16 @@ Update Business API updates business information.
                 "bbbUrl": null
               },
               "isSEOEnabled": "false",
-              "externalReferenceId" : ""
+              "externalReferenceId" : "",
+                "customFields": [
+                 {
+                 "fieldDescription": "This custom field contains list of colours.",
+                 "fieldValue": "GR",
+                 "fieldName": "colors",
+                 "id": 376,
+                 "defaultValue": "Green"
+                }
+              ]
             }
 
 + Response 200 (application/json)
@@ -4148,7 +4162,7 @@ Only required when when type is either "DROPDOWN_SINGLE" or "DROPDOWN_MULTI".
          + fieldDescription: This custom field contains list of colours (string)-Description of custom field.
          + fieldName: colours (required,string)-Name of custom field.
          + filterable: false (boolean)- Whether the custom field will be filterable or not. Default: false
-         + type: DROPDOWN_MULTI (string)- Type of custom field.
+         + type: DROPDOWN_MULTI (required,string)- Type of custom field.
          Values allowed are TEXT, URL, NUMBER, DATE, DROPDOWN_SINGLE ,DROPDOWN_MULTI,TEXT_RAW.
 
     + Body
@@ -4208,7 +4222,7 @@ Update custom Fields
 ### Update [PUT]
 
 + Parameters
-    + fieldId: 376 (number)- fieldId of the custom field created earlier.
+    + fieldId: 376 (required,number)- fieldId of the custom field created earlier.
 
 
 + Request (application/json)
@@ -4266,7 +4280,7 @@ Get custom Fields
 ### Get [GET]
 
 + Parameters
-    + fieldId: 376 (number)- fieldId of the custom field created earlier.
+    + fieldId: 376 (required,number)- fieldId of the custom field created earlier.
 
 
 + Request (application/json)
@@ -4313,7 +4327,7 @@ Delete custom Fields
 ### Delete [DELETE]
 
 + Parameters
-    + fieldId: 376 (number)- fieldId of the custom field created earlier.
+    + fieldId: 376 (required,number)- fieldId of the custom field created earlier.
 
 
 + Request (application/json)
@@ -4359,9 +4373,9 @@ Associate custom Fields
 
 
     + Attributes
-         + fieldId: 376 (number)- fieldId of the custom field.
-         + fieldValue: Green (string)- Field Value of custom field and will only be visible if value is present.
-         + businessNumber: 1234567890 (string)- Long Business Number.
+         + fieldId: 376 (required,number)- fieldId of the custom field.
+         + fieldValue: Green (required,string)- Field Value of custom field and will only be visible if value is present.
+         + businessNumber: 1234567890 (required,number)- Long Business Number.
 
      + Body
 
