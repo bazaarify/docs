@@ -4347,12 +4347,11 @@ Get custom Fields List
 
     + Attributes
 
-         + defaultValue: Green (string)- Default Value of custom field.
-         + dropDownOptions: Blue,Green,Red (array)- The list of options in custom field.The list of options in custom field
-           (In case the dropdown options were added during creation, while updating , add the same in
-         + fieldDescription: This custom field contains list of colours (string)-Description of custom field.
-         + filterable:  false (boolean)- Whether the custom field will be filterable or not.
-         + isHidden: false (boolean)- Whether the custom field will be hidden or not.
+         + page: 0 (required,number)- Page number depending upon the size entered.
+         + size: 50 (required,number)- Maximum number of custom fields required in a result.
+         + searchStr: colours (string)- To Search for a particular field via custom field Name .
+         + sortBy:  fieldDescription (string)- To sort the resultsFor eg via fieldName,id, etc.
+         + orderBy: asc (string)- Order of the list and it can be only asc or desc.
 
     + Body
 
