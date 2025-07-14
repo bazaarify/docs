@@ -2199,6 +2199,98 @@ For example :
         }
 
 
+## 5022 [/5022]
+
++ Model (application/json)
+
+        {
+            "code": 5022,
+            "message": "Another custom field with same name already present."
+        }
+
+## 5023 [/5023]
+
++ Model (application/json)
+
+        {
+            "code": 5023,
+            "message": "Custom field request dto cannot be null."
+        }
+
+## 5024 [/5024]
+
++ Model (application/json)
+
+        {
+            "code": 5024,
+            "message": "Custom field creation failed."
+        }
+
+## 5025 [/5025]
+
++ Model (application/json)
+
+        {
+            "code": 5025,
+            "message": "Custom field not found."
+        }
+
+## 5026 [/5026]
+
++ Model (application/json)
+
+        {
+            "code": 5026,
+            "message": "Custom field updation failed."
+        }
+
+## 5028 [/5028]
+
++ Model (application/json)
+
+        {
+            "code": 5028,
+            "message": "Custom field delete failed."
+        }
+
+
+## 5031 [/5031]
+
++ Model (application/json)
+
+        {
+            "code": 5031,
+            "message": "Method not implemented for unknown custom field type."
+        }
+
+## 5039 [/5039]
+
++ Model (application/json)
+
+        {
+            "code": 5039,
+            "message": "Custom field name cannot be a reserved keyword."
+        }
+
+## 5040 [/5040]
+
++ Model (application/json)
+
+        {
+            "code": 5040,
+            "message": "Max limit reached for custom fields."
+        }
+
+## 1027 [/1027]
+
++ Model (application/json)
+
+        {
+            "code": 1027,
+            "message": "Invalid business number."
+        }
+
+
 # Group Business
 Create and maintain your business on Birdeye.
 
@@ -2859,7 +2951,12 @@ Update Business API updates business information.
             + youTubeUrl: https://www.youtube.com/channel/UCDNP0M75ySA5qt0So2F8Xxw (string)- Business Youtube URL.
         + isSEOEnabled: true (boolean) - Enable/Disbale search engine indexing of business profile. Valid values are "true","false". Default is "true".
         + externalReferenceId (string) - It should be a unique value for location identifier.
-
+        + customFields (object) - Custom Field To be Updated
+            + defaultValue: Green (string)- Default Value of custom field.
+            + fieldValue: GR (string)- Custom field value.
+            + fieldDescription: This custom field contains list of colours (string)-Description of custom field.
+            + fieldName: colours (required,string)-Name of custom field (Make sure to enter the same fieldName or else the new field will be created).
+            + id: 376 (required,number)- fieldId of the custom field created earlier.
 
     + Body
 
@@ -3114,7 +3211,16 @@ Update Business API updates business information.
                 "bbbUrl": null
               },
               "isSEOEnabled": "false",
-              "externalReferenceId" : ""
+              "externalReferenceId" : "",
+                "customFields": [
+                 {
+                 "fieldDescription": "This custom field contains list of colours.",
+                 "fieldValue": "GR",
+                 "fieldName": "colors",
+                 "id": 376,
+                 "defaultValue": "Green"
+                }
+              ]
             }
 
 + Response 200 (application/json)
@@ -4042,6 +4148,364 @@ Returns only birdeye (source: website) impressions by location as well as total.
 + Response 401
 
     [1167][]
+
+# Group CustomFields
+Create, delete , update , associate and get custom fields easily.
+
+## Create Custom Fields [/v1/business/public/custom-fields/create]
+Create custom Fields
+### Create [POST]
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number
+
+    + Attributes
+         + defaultValue: Green (string)- Default Value of custom field.
+         + dropDownOptions: Blue,Green,Red (array)- The list of options in custom field.
+Only required when when type is either "DROPDOWN_SINGLE" or "DROPDOWN_MULTI".
+         + fieldDescription: This custom field contains list of colours (string)-Description of custom field.
+         + fieldName: colours (required,string)-Name of custom field.
+         + filterable: false (boolean)- Whether the custom field will be filterable or not. Default: false
+         + type: DROPDOWN_MULTI (required,string)- Type of custom field.
+         Values allowed are TEXT, URL, NUMBER, DATE, DROPDOWN_SINGLE ,DROPDOWN_MULTI,TEXT_RAW.
+
+    + Body
+
+            {
+               "defaultValue": "Green",
+               "dropDownOptions": ["Blue", "Green", "Red"],
+               "fieldDescription": "This custom field contains list of colours",
+               "fieldName": "colours",
+               "filterable": "false",
+               "type": "DROPDOWN_MULTI"
+            }
+
+
+
++ Response 200
+
+
+    + Body
+
+            {
+
+                    "id": 376,
+                    "fieldName": "colours",
+                    "created": 1751480725861,
+                    "updated": 1751480725861
+
+            }
+
++ Response 400
+
+    [5022][]
+
++ Response 400
+
+    [5023][]
+
++ Response 400
+
+    [5024][]
+
++ Response 400
+
+    [5031][]
+
++ Response 400
+
+    [5039][]
+
++ Response 400
+
+    [5040][]
+
+
+## Update Custom Fields [/v1/business/public/custom-fields/update/{fieldId}]
+Update custom Fields
+### Update [PUT]
+
++ Parameters
+    + fieldId: 376 (required,number)- fieldId of the custom field created earlier.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number
+
+
+
+    + Attributes
+         + defaultValue: Green (string)- Default Value of custom field.
+         + dropDownOptions: Blue,Green,Red (array)- The list of options in custom field.The list of options in custom field
+           (In case the dropdown options were added during creation, while updating , add the same in
+         + fieldDescription: This custom field contains list of colours (string)-Description of custom field.
+         + filterable:  false (boolean)- Whether the custom field will be filterable or not.
+         + isHidden: false (boolean)- Whether the custom field will be hidden or not.
+
+    + Body
+
+
+        {
+               "defaultValue": "Green",
+               "dropDownOptions": ["Blue", "Green", "Red"],
+               "fieldDescription": "This custom field contains list of colours"
+               "filterable": "false",
+               "isHidden": "false"
+        }
+
+
+
++ Response 200
+
+
+    + Body
+
+            {
+                    OK
+            }
+
++ Response 400
+
+     [5025][]
+
+
++ Response 400
+
+    [5026][]
+
+
+## Get Custom Fields [/v1/business/public/custom-fields/get/{fieldId}]
+Get custom Fields
+### Get [GET]
+
++ Parameters
+    + fieldId: 376 (required,number)- fieldId of the custom field created earlier.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number
+
+
+
++ Response 200
+
+    + Attributes
+         + id: 376 (number)- fieldId of the custom field.
+         + fieldValue: Green (string)- Field Value of custom field and will only be visible if value is present.
+         + fieldName: colours (string)- Name of the custom field.
+         + type: DROPDOWN_MULTI (string)- Type of field.
+         + defaultValue: Green (string)- Default Value of custom field and will only be visible if value is present.
+         + fieldDescription: This custom field contains list of colours (string)-Description of custom field.
+         + filterable:  false (boolean)- Whether the custom field will be filterable or not.
+
+    + Body
+
+            {
+               "id": 376,
+               "fieldName": "colours",
+               "fieldValue": "Green",
+               "type": "DROPDOWN_MULTI",
+               "defaultValue": "Greens",
+               "fieldDescription": "This custom field contains list of colours",
+               "filterable": false
+            }
+
+
++ Response 400
+
+     [5025][]
+
+
+## Get Custom Fields List [/v1/business/public/custom-fields/getList]
+Get custom Fields List
+### POST [POST]
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api_key: - Partner specific API key provided by Birdeye for data exchange.
+            X-BUSINESS-NUMBER: - Long Business Number
+
+    + Attributes
+
+         + page: 0 (required,number)- Page number depending upon the size entered.
+         + size: 50 (required,number)- Maximum number of custom fields required in a result.
+         + searchStr: colours (string)- To Search for a particular field via custom field Name .
+         + sortBy:  fieldDescription (string)- To sort the resultsFor eg via fieldName,id, etc.
+         + orderBy: asc (string)- Order of the list and it can be only asc or desc.
+
+    + Body
+
+
+        {
+            "page":0,
+            "size": 50,
+            "searchStr": "colours",
+            "sortBy": "fieldDescription",
+            "orderBy": "asc"
+        }
+
+
+
++ Response 200
+
+    + Attributes
+         + id: 376 (number)- fieldId of the custom field.
+         + fieldValue: Green (string)- Field Value of custom field and will only be visible if value is present.
+         + fieldName: colours (string)- Name of the custom field.
+         + type: DROPDOWN_MULTI (string)- Type of field.
+         + defaultValue: Green (string)- Default Value of custom field and will only be visible if value is present.
+         + fieldDescription: This custom field contains list of colours (string)-Description of custom field.
+         + filterable:  false (boolean)- Whether the custom field will be filterable or not.
+         + dropDownOptions: Blue,Green,Red (array)- The list of options in custom field and will only be visible if value is present.
+
+    + Body
+
+            {
+               "id": 376,
+               "fieldName": "colours",
+               "fieldValue": "Green",
+               "type": "DROPDOWN_MULTI",
+               "defaultValue": "Greens",
+               "fieldDescription": "This custom field contains list of colours",
+               "filterable": false,
+               "dropDownOptions": [
+                  {
+                    "value": "Blue"
+                   },
+                  {
+                    "value": "Green"
+                  },
+                  {
+                   "value": "Red"
+                  }
+                ]
+            }
+
+
++ Response 406
+
+     [1027][]
+
+
+## Delete Custom Fields [/v1/business/public/custom-fields/delete/{fieldId}]
+Delete custom Fields
+### Delete [DELETE]
+
++ Parameters
+    + fieldId: 376 (required,number)- fieldId of the custom field created earlier.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number
+
+
+
++ Response 200
+
+   + Body
+
+            {
+                    OK
+            }
+
+
++ Response 400
+
+     [5025][]
+
++ Response 400
+
+     [5028][]
+
+
+## Associate Custom Fields [/v1/business/public/custom-fields/associate]
+Associate custom Fields
+### Associate [PUT]
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number.
+
+
+    + Attributes
+         + fieldId: 376 (required,number)- fieldId of the custom field.
+         + fieldValue: Green (required,string)- Field Value of custom field and will only be visible if value is present.
+         + businessNumber: 1234567890 (required,number)- Long Business Number.
+
+     + Body
+
+            {
+                "businessNumber": 1234567890,
+                 "fieldId": 376,
+                 "fieldValue": "Green"
+            }
+
+
+
+
++ Response 200
+
+    + Attributes
+         + id: 376 (number)- fieldId of the custom field.
+         + fieldName: colours (string)- Name of the custom field.
+         + type: DROPDOWN_MULTI (string)- Type of field.
+         + fieldValue: Green (string)- Associated Field Value of custom field .
+         + defaultValue: Green (string)- Default Value of custom field and will only be visible if value is present.
+         + isHidden: false (boolean)- Whether the custom field will be hidden or not.
+         + allBusinesses: false (boolean)- Whether the custom field will be for all businesses or not.
+         + filterable: false (boolean)- Whether the custom field will be filterable or not.
+
+   + Body
+
+            {
+                "id": 376,
+                "fieldName": "colours",
+                "type": "DROPDOWN_MULTI",
+                "fieldValue": "Green",
+                "isHidden": false,
+                "allBusinesses": false,
+                "filterable": false
+            }
+
+
++ Response 400
+
+     [5025][]
+
++ Response 400
+
+     [5028][]
+
 
 
 
