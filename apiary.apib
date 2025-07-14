@@ -4149,7 +4149,7 @@ Returns only birdeye (source: website) impressions by location as well as total.
 
     [1167][]
 
-# Group CustomFields
+# Group Custom Fields
 Create, delete , update , associate and get custom fields easily.
 
 ## Create Custom Fields [/v1/business/public/custom-fields/create]
@@ -4255,14 +4255,14 @@ Update custom Fields
 
     + Body
 
+            {
+                "defaultValue": "Green",
+                "dropDownOptions": ["Blue", "Green", "Red"],
+                "fieldDescription": "This custom field contains list of colours",
+                "filterable": "false",
+                "isHidden": "false"
+            }
 
-        {
-               "defaultValue": "Green",
-               "dropDownOptions": ["Blue", "Green", "Red"],
-               "fieldDescription": "This custom field contains list of colours"
-               "filterable": "false",
-               "isHidden": "false"
-        }
 
 
 
