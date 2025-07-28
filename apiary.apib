@@ -12983,7 +12983,7 @@ This API retrieves competitor review data for specified business numbers and dat
 
 + Parameters
     + startIndex: 0 (number, optional) - The starting index for pagination (0-based). Default is 0.
-    + pageSize: 20 (number, optional) - Number of records to return per page (max recommended: 100). Default is 20.
+    + pageSize: 25 (number, optional) - Number of records to return per page (max recommended: 100). Default is 25.
     + sortOrder: 0 (number, optional) - Sort order: 0 = Ascending, 1 = Descending order of review date. Default is 0.
 
 + Request (application/json)
@@ -13023,7 +13023,14 @@ This API retrieves competitor review data for specified business numbers and dat
     + Attributes
         + reviews (array) -
             + (object)
-                + businessLocation: L1 (string) - The name of your business location being analyzed
+                + businessLocations (array) - The list of business locations being analyzed
+                    + (object)
+                        + businessId: 100031493 (number) - The unique identifier for the business
+                        + name: Dieci Lifestyle Spa1 (string) - The name of your business location being analyzed
+                        + alias: ST (string, optional) - The alias for the business location
+                        + businessNumber: 157984189025195 (number) - Business number for the location
+                        + phone:  716-0102 (string, optional) - Phone number of the location
+                        + address: 90 W Mount Pleasant Ave (string, optional) - Address of the business location
                 + competitorLocation: C1 (string) - The name of the competitor location where the review was left
                 + competitorBrand: B1 (string) - The brand name or identifier of the competitor
                 + source: Google (string) - The review platform/source where the review was published
@@ -13035,30 +13042,42 @@ This API retrieves competitor review data for specified business numbers and dat
 
     + Body
 
-            [
-                {
-                    "businessLocation": "L1",
-                    "competitorLocation": "C1",
-                    "competitorBrand": "B1",
-                    "source": "Google",
-                    "rating": 4,
-                    "reviewComment": "Great experience",
-                    "reviewerName": "Allen",
-                    "reviewDate": "2024-07-01",
-                    "reply": "Thanks for the review"
+        [
+            {
+                "businessLocations": {
+                    "businessId": 100031493,
+                    "name": "Dieci Lifestyle Spa1",
+                    "alias": "ST",
+                    "businessNumber": 157984189025195,
+                    "phone": "(973) 716-0102",
+                    "address": "90 W Mount Pleasant Ave"
                 },
-                {
-                    "businessLocation": "L2",
-                    "competitorLocation": "C2",
-                    "competitorBrand": "B2",
-                    "source": "Yelp",
-                    "rating": 5,
-                    "reviewComment": "Excellent service!",
-                    "reviewerName": "Maria",
-                    "reviewDate": "2024-07-03",
-                    "reply": "We appreciate your feedback!"
-                }
-            ]
+                "competitorLocation": "C1",
+                "competitorBrand": "B1",
+                "source": "Google",
+                "rating": 4,
+                "reviewComment": "Great experience",
+                "reviewerName": "Allen",
+                "reviewDate": "2024-07-01",
+                "reply": "Thanks for the review"
+            },
+            {
+                "businessLocations": {
+                    "businessId": 100033957,
+                    "name": "Raghav_l",
+                    "businessNumber": 159116903548016,
+                    "phone": "(202) 555-0175"
+                },
+                "competitorLocation": "Dental Dreams",
+                "competitorBrand": "Dental Dreams - 60620",
+                "source": "Yelp",
+                "rating": 5,
+                "reviewComment": "Excellent service!",
+                "reviewerName": "Maria",
+                "reviewDate": "2024-07-03",
+                "reply": "We appreciate your feedback!"
+            }
+        ]
 
 + Response 401
 
@@ -13083,8 +13102,8 @@ This API retrieves aggregated competitor review data (average rating and total r
 
 + Parameters
     + startIndex: 0 (number, optional) - The starting index for pagination (0-based). Default is 0.
-    + pageSize: 20 (number, optional) - Number of records to return per page (max recommended: 100). Default is 20.
-    + sortOrder: 0 (number, optional) - Sort order: 0 = Ascending, 1 = Descending order of review date. Default is 0.
+    + pageSize: 25 (number, optional) - Number of records to return per page (max recommended: 100). Default is 25.
+    + sortOrder: 1 (number, optional) - Sort order: 0 = Ascending, 1 = Descending order of review date. Default is 1.
 
 + Request (application/json)
 
@@ -13123,9 +13142,16 @@ This API retrieves aggregated competitor review data (average rating and total r
     + Attributes
         + aggregates (array) -
             + (object)
-                + businessLocation: L1 (string) - The name of your business location being analyzed
-                + competitorLocation: C1 (string) - The name of the competitor location where the review was left
-                + competitorBrand: B1 (string) - The brand name or identifier of the competitor
+                + businessLocations (array) - The list of business locations being analyzed
+                    + (object)
+                        + businessId: 100031493 (number) - The unique identifier for the business
+                        + name: Dieci Lifestyle Spa1 (string) - The name of your business location being analyzed
+                        + alias: ST (string, optional) - The alias for the business location
+                        + businessNumber: 157984189025195 (number) - Business number for the location
+                        + phone:  716-0102 (string, optional) - Phone number of the location
+                        + address: 90 W Mount Pleasant Ave (string, optional) - Address of the business location
+                + competitorLocation: Aspen Dental - El Paso, TX (string) - The name of the competitor location where the review was left
+                + competitorBrand: Aspen Dental - El Paso, TX - 79912 (string) - The brand name or identifier of the competitor
                 + source: Google (string) - The review platform/source where the review was published
                 + overallRating: 4.7 (number) - The average rating for this competitor location on this specific source
                 + reviewCount: 514 (number) - The total number of reviews for this competitor location on this specific source
@@ -13134,36 +13160,47 @@ This API retrieves aggregated competitor review data (average rating and total r
 
             [
                 {
-                    "businessLocation": "Dieci Lifestyle Spa1",
-                    "competitorLocation": "Dental Dreams",
-                    "competitorBrand": "Dental Dreams - 60620",
+                    "businessLocations": {
+                        "businessId": 100031493,
+                        "name": "Dieci Lifestyle Spa1",
+                        "alias": "ST",
+                        "businessNumber": 157984189025195,
+                        "phone": "(973) 716-0102",
+                        "address": "90 W Mount Pleasant Ave"
+                    },
+                    "competitorLocation": "Nuvia Dental Implant Center",
+                    "competitorBrand": "Nuvia Dental Implant Center",
+                    "source": "Google",
+                    "overallRating": 4.9,
+                    "reviewCount": 1654
+                },
+                {
+                    "businessLocations": {
+                        "businessId": 100031493,
+                        "name": "Dieci Lifestyle Spa1",
+                        "alias": "ST",
+                        "businessNumber": 157984189025195,
+                        "phone": "(973) 716-0102",
+                        "address": "90 W Mount Pleasant Ave"
+                    },
+                    "competitorLocation": "Aspen Dental - El Paso, TX",
+                    "competitorBrand": "Aspen Dental - El Paso, TX - 79912",
                     "source": "Google",
                     "overallRating": 4.7,
-                    "reviewCount": 514
+                    "reviewCount": 21
                 },
                 {
-                    "businessLocation": "Dieci Lifestyle Spa1",
-                    "competitorLocation": "Dental Dreams",
-                    "competitorBrand": "Dental Dreams - 60620",
-                    "source": "Yellow Pages",
-                    "overallRating": 0.0,
-                    "reviewCount": 1
-                },
-                {
-                    "businessLocation": "Raghav_l",
-                    "competitorLocation": "Dental Dreams",
-                    "competitorBrand": "Dental Dreams - 60620",
+                    "businessLocations": {
+                        "businessId": 100033957,
+                        "name": "Raghav_l",
+                        "businessNumber": 159116903548016,
+                        "phone": "(202) 555-0175"
+                    },
+                    "competitorLocation": "Monroe Dental Office",
+                    "competitorBrand": "Monroe Dental Office - 10950",
                     "source": "Google",
-                    "overallRating": 4.7,
-                    "reviewCount": 514
-                },
-                {
-                    "businessLocation": "Raghav_l",
-                    "competitorLocation": "Dental Dreams",
-                    "competitorBrand": "Dental Dreams - 60620",
-                    "source": "Yellow Pages",
-                    "overallRating": 0.0,
-                    "reviewCount": 1
+                    "overallRating": 4.9,
+                    "reviewCount": 740
                 }
             ]
 
@@ -13835,6 +13872,7 @@ Get all Questions and Answers for a Location
 
 
     + Body
+
             {
                 "totalCount": 1,
                 "questionsAndAnswers": [
