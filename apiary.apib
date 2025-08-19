@@ -13009,19 +13009,18 @@ This API retrieves competitor review data for specified business numbers and dat
     + Body
 
             {
-                "businessNumbers": [161458406365307,161072537475129],
-                "fromDate":"04/01/2011",
-                "toDate":"05/3/2015",
-                "sources":["google","citysearch"],
-                "brandIds":[1001,1002],
-                "competitorLocationIds":[200001,200002],
+                "businessNumbers": [],
+                "fromDate":"04/01/2024",
+                "toDate":"08/03/2025",
+                "sources":[],
+                "brandIds":[],
+                "competitorLocationIds":[]
             }
 
 
 + Response 200
 
     + Attributes
-        + reviews (array) -
             + (object)
                 + businessLocations (array) - The list of business locations being analyzed
                     + (object)
@@ -13044,14 +13043,16 @@ This API retrieves competitor review data for specified business numbers and dat
 
         [
             {
-                "businessLocations": {
+                "businessLocations": [
+                  {
                     "businessId": 100031493,
                     "name": "Dieci Lifestyle Spa1",
                     "alias": "ST",
                     "businessNumber": 157984189025195,
                     "phone": "(973) 716-0102",
                     "address": "90 W Mount Pleasant Ave"
-                },
+                  }
+                ],
                 "competitorLocation": "C1",
                 "competitorBrand": "B1",
                 "source": "Google",
@@ -13062,12 +13063,14 @@ This API retrieves competitor review data for specified business numbers and dat
                 "reply": "Thanks for the review"
             },
             {
-                "businessLocations": {
+                "businessLocations": [
+                 {
                     "businessId": 100033957,
                     "name": "Raghav_l",
                     "businessNumber": 159116903548016,
                     "phone": "(202) 555-0175"
-                },
+                 }
+                ],
                 "competitorLocation": "Dental Dreams",
                 "competitorBrand": "Dental Dreams - 60620",
                 "source": "Yelp",
@@ -13095,7 +13098,7 @@ This API retrieves competitor review data for specified business numbers and dat
 
     [1167][]
 
-## Retrieve Competitor Review Aggregates [/v1/competitors/review/metrics{?startIndex,pageSize,sortOrder}]
+## Retrieve Competitor Review Metrics [/v1/competitors/review/metrics{?startIndex,pageSize,sortOrder}]
 This API retrieves competitor metrics review data (average rating and total reviews) for specified business numbers and date ranges.
 
 ### Retrieve Competitor Review metrics [POST]
@@ -13128,21 +13131,19 @@ This API retrieves competitor metrics review data (average rating and total revi
     + Body
 
             {
-                "businessNumbers": [161458406365307,161072537475129],
-                "fromDate":"04/01/2011",
-                "toDate":"05/3/2015",
-                "sources":["google","citysearch"],
-                "brandIds":[1001,1002],
-                "competitorLocationIds":[200001,200002],
+                "businessNumbers": [],
+                "fromDate":"04/01/2024",
+                "toDate":"08/03/2025",
+                "sources":[],
+                "brandIds":[],
+                "competitorLocationIds":[]
             }
 
 
 + Response 200
 
     + Attributes
-        + aggregates (array) -
-            + (object)
-                + businessLocations (array) - The list of business locations being analyzed
+                + businessLocations (object) - The list of business locations being analyzed
                     + (object)
                         + businessId: 100031493 (number) - The unique identifier for the business
                         + name: Dieci Lifestyle Spa1 (string) - The name of your business location being analyzed
@@ -13160,14 +13161,16 @@ This API retrieves competitor metrics review data (average rating and total revi
 
             [
                 {
-                    "businessLocations": {
+                    "businessLocations": [
+                     {
                         "businessId": 100031493,
                         "name": "Dieci Lifestyle Spa1",
                         "alias": "ST",
                         "businessNumber": 157984189025195,
                         "phone": "(973) 716-0102",
                         "address": "90 W Mount Pleasant Ave"
-                    },
+                     }
+                    ],
                     "competitorLocation": "Nuvia Dental Implant Center",
                     "competitorBrand": "Nuvia Dental Implant Center",
                     "source": "Google",
@@ -13175,14 +13178,16 @@ This API retrieves competitor metrics review data (average rating and total revi
                     "reviewCount": 1654
                 },
                 {
-                    "businessLocations": {
+                    "businessLocations": [
+                     {
                         "businessId": 100031493,
                         "name": "Dieci Lifestyle Spa1",
                         "alias": "ST",
                         "businessNumber": 157984189025195,
                         "phone": "(973) 716-0102",
                         "address": "90 W Mount Pleasant Ave"
-                    },
+                     }
+                    ],
                     "competitorLocation": "Aspen Dental - El Paso, TX",
                     "competitorBrand": "Aspen Dental - El Paso, TX - 79912",
                     "source": "Google",
@@ -13190,12 +13195,14 @@ This API retrieves competitor metrics review data (average rating and total revi
                     "reviewCount": 21
                 },
                 {
-                    "businessLocations": {
+                    "businessLocations": [
+                     {
                         "businessId": 100033957,
                         "name": "Raghav_l",
                         "businessNumber": 159116903548016,
                         "phone": "(202) 555-0175"
-                    },
+                     }
+                    ],
                     "competitorLocation": "Monroe Dental Office",
                     "competitorBrand": "Monroe Dental Office - 10950",
                     "source": "Google",
