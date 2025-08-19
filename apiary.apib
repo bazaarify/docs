@@ -13009,19 +13009,18 @@ This API retrieves competitor review data for specified business numbers and dat
     + Body
 
             {
-                "businessNumbers": [161458406365307,161072537475129],
-                "fromDate":"04/01/2011",
-                "toDate":"05/3/2015",
+                "businessNumbers": [],
+                "fromDate":"04/01/2024",
+                "toDate":"08/03/2025",
                 "sources":["google","citysearch"],
-                "brandIds":[1001,1002],
-                "competitorLocationIds":[200001,200002],
+                "brandIds":[],
+                "competitorLocationIds":[]
             }
 
 
 + Response 200
 
     + Attributes
-        + reviews (array) -
             + (object)
                 + businessLocations (array) - The list of business locations being analyzed
                     + (object)
@@ -13128,20 +13127,18 @@ This API retrieves competitor metrics review data (average rating and total revi
     + Body
 
             {
-                "businessNumbers": [161458406365307,161072537475129],
-                "fromDate":"04/01/2011",
-                "toDate":"05/3/2015",
+                "businessNumbers": [],
+                "fromDate":"04/01/2024",
+                "toDate":"08/03/2025",
                 "sources":["google","citysearch"],
-                "brandIds":[1001,1002],
-                "competitorLocationIds":[200001,200002],
+                "brandIds":[],
+                "competitorLocationIds":[]
             }
 
 
 + Response 200
 
     + Attributes
-        + aggregates (array) -
-            + (object)
                 + businessLocations (array) - The list of business locations being analyzed
                     + (object)
                         + businessId: 100031493 (number) - The unique identifier for the business
