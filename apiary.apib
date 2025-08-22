@@ -17540,10 +17540,10 @@ Returns product listing details stored in Birdeye, with optional activity histor
 
     [1167][]
 
-## Delete Product Listings Bulk [/v1/listing/public/product/deleteProduct]
+## Delete Product Listings  [/v1/listing/public/product/deleteProduct]
 Deletes products from Google Merchant Center and Birdeye for the provided product IDs.
 
-### Delete Product Listings (Bulk) [POST]
+### Delete Product Listings  [POST]
 
 + Request (application/json)
 
@@ -17595,18 +17595,15 @@ Deletes products from Google Merchant Center and Birdeye for the provided produc
     [1167][]
 
 
-## List Product Listings [/v1/listing/public/product/getList{?pageSize,pageNumber,sortBy,sortOrder,searchKey}]
+## Retrieve Product Listings List [/v1/listing/public/product/getList{?pageSize,pageNumber}]
 Returns paginated product listings for the account/locations based on search and filters.
 
-### List Product Listings [POST]
+### Retrieve Product Listings List [POST]
 
 + Parameters
 
     + pageSize: 50 (number, optional) - Number of records per page. Default 50.
     + pageNumber: 0 (number, optional) - 0-based page index. Default 0.
-    + sortBy: updatedOn (string, optional) - Sort field.
-    + sortOrder: ASC (string, optional) - `ASC` or `DESC`. Default `ASC`.
-    + searchKey: title (string, optional) - Supports Title only.
 
 + Request (application/json)
 
