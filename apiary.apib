@@ -17273,6 +17273,233 @@ Deactivate Listing API stops publishing any information on the given online dire
     [89][]
 
 
+## Retrieve Menu Details [/v1/listing/menu-details]
+This API retrieves structured menu information for specified business numbers.
+
+### Retrieve Menu Details [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User associated businessNumber
+
+    + Attributes
+
+        + businessNumbers: 175009059995828,169028735563867 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+
+    + Body
+
+            {
+                "businessNumbers": [
+                    175009059995828,
+                    169028735563867,
+                    166609110899853,
+                    164873686901155,
+                    164863775654389,
+                    164847076003414
+                ]
+            }
+
++ Response 200
+
+    + Attributes
+            + (array)
+                + (object)
+                    + id: abc123 (string) - Unique identifier of the record
+                    + businessId: 1210543123123 (number) - Unique business ID
+                    + accountId: 1191304123 (number) - Account ID associated with the business
+                    + menuDetails (object)
+                        + name: Restaurant Name (string) - Business display name
+                        + error: null (string, optional) - Error details if retrieval failed
+                        + menus (array)
+                            + (object)
+                                + cuisines: Italian,Continental (array) - List of cuisines served
+                                + labels (array)
+                                    + (object)
+                                        + displayName: Main Menu (string)
+                                        + description: Our signature dishes (string)
+                                        + languageCode: en (string)
+                                + sections (array)
+                                    + (object)
+                                        + labels (array)
+                                            + (object)
+                                                + displayName: Appetizers (string)
+                                                + description: Starters (string)
+                                                + languageCode: en (string)
+                                        + items (array)
+                                            + (object)
+                                                + labels (array)
+                                                    + (object)
+                                                        + displayName: Bruschetta (string)
+                                                        + description: Toasted bread with toppings (string)
+                                                        + languageCode: en (string)
+                                                + attributes (object)
+                                                    + price (object)
+                                                        + currencyCode: USD (string)
+                                                        + units: 7 (number)
+                                                        + nanos: 500000000 (number)
+                                                    + allergen: Gluten (array)
+                                                    + dietaryRestriction: Vegetarian (array)
+                                                    + nutritionFacts (object)
+                                                        + calories: 150 (number)
+                                                        + fatContent: 5g (string)
+                                                        + proteinContent: 3g (string)
+                                                        + carbohydrateContent: 20g (string)
+                                                    + ingredients (array)
+                                                        + (object)
+                                                            + name: Bread (string)
+                                                        + (object)
+                                                            + name: Tomato (string)
+                                                    + servesNumPeople: 2 (number)
+                                                    + preparationMethods: Grilled (array)
+                                                    + portionSize (object)
+                                                        + amount: 150 (number)
+                                                        + unit: grams (string)
+                                                    + mediaKeys: (array)
+                                                + options (array)
+                                                    + (object)
+                                                        + labels (array)
+                                                            + (object)
+                                                                + displayName: Extra Cheese (string)
+                                                                + description: null (string, optional)
+                                                                + languageCode: en (string)
+                                                        + attributes (object)
+                                                            + price (object)
+                                                                + currencyCode: USD (string)
+                                                                + units: 2 (number)
+                                                                + nanos: 0 (number)
+                        + businessId: 1210543 (number)
+                        + correlationId: xyz-456 (string)
+                    + createdAt: 2025-07-23T07:51:56.889Z (string) - Creation timestamp
+                    + updatedAt: 2025-07-24T10:11:22.456Z (string) - Last update timestamp
+                    + crmName: BirdeyeCRM (string)
+
+    + Body
+
+            [
+                {
+                    "id": "abc123",
+                    "businessId": 1210543123123,
+                    "accountId": 1191304123,
+                    "menuDetails": {
+                        "name": "Restaurant Name",
+                        "error": null,
+                        "menus": [
+                            {
+                                "cuisines": ["Italian", "Continental"],
+                                "labels": [
+                                    {
+                                        "displayName": "Main Menu",
+                                        "description": "Our signature dishes",
+                                        "languageCode": "en"
+                                    }
+                                ],
+                                "sections": [
+                                    {
+                                        "labels": [
+                                            {
+                                                "displayName": "Appetizers",
+                                                "description": "Starters",
+                                                "languageCode": "en"
+                                            }
+                                        ],
+                                        "items": [
+                                            {
+                                                "labels": [
+                                                    {
+                                                        "displayName": "Bruschetta",
+                                                        "description": "Toasted bread with toppings",
+                                                        "languageCode": "en"
+                                                    }
+                                                ],
+                                                "attributes": {
+                                                    "price": {
+                                                        "currencyCode": "USD",
+                                                        "units": 7,
+                                                        "nanos": 500000000
+                                                    },
+                                                    "allergen": ["Gluten"],
+                                                    "dietaryRestriction": ["Vegetarian"],
+                                                    "nutritionFacts": {
+                                                        "calories": 150,
+                                                        "fatContent": "5g",
+                                                        "proteinContent": "3g",
+                                                        "carbohydrateContent": "20g"
+                                                    },
+                                                    "ingredients": [
+                                                        { "name": "Bread" },
+                                                        { "name": "Tomato" }
+                                                    ],
+                                                    "servesNumPeople": 2,
+                                                    "preparationMethods": ["Grilled"],
+                                                    "portionSize": {
+                                                        "amount": 150,
+                                                        "unit": "grams"
+                                                    },
+                                                    "mediaKeys": []
+                                                },
+                                                "options": [
+                                                    {
+                                                        "labels": [
+                                                            {
+                                                                "displayName": "Extra Cheese",
+                                                                "description": null,
+                                                                "languageCode": "en"
+                                                            }
+                                                        ],
+                                                        "attributes": {
+                                                            "price": {
+                                                                "currencyCode": "USD",
+                                                                "units": 2,
+                                                                "nanos": 0
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        "businessId": 1210543,
+                        "correlationId": "xyz-456"
+                    },
+                    "createdAt": "2025-07-23T07:51:56.889Z",
+                    "updatedAt": "2025-07-24T10:11:22.456Z",
+                    "crmName": "BirdeyeCRM"
+                }
+            ]
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2457][]
+
++ Response 400
+
+    [2458][]
+
+
 
 # Group Ticketing
 Create standout customer support with ticketing across reviews, untagged, and survey responses.
