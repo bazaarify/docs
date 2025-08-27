@@ -17303,79 +17303,83 @@ This API retrieves structured menu information for specified business numbers.
                 ]
             }
 
-+ Response 200
++ Response 200 (application/json)
 
-    + Attributes
-            + (array)
-                + (object)
-                    + id: abc123 (string) - Unique identifier of the record
-                    + businessId: 1210543123123 (number) - Unique business ID
-                    + accountId: 1191304123 (number) - Account ID associated with the business
-                    + menuDetails (object)
-                        + name: Restaurant Name (string) - Business display name
-                        + error: null (string, optional) - Error details if retrieval failed
-                        + menus (array)
+    + Attributes (array)
+        + (object)
+            + id: abc123 (string) - Unique identifier of the record
+            + businessId: 1210543123123 (number) - Unique business ID
+            + accountId: 1191304123 (number) - Account ID associated with the business
+            + menuDetails (object)
+                + name: Restaurant Name (string) - Business display name
+                + error: null (string, optional) - Error details if retrieval failed
+                + menus (array)
+                    + (object)
+                        + cuisines (array[string]) - List of cuisines served
+                            + Italian
+                            + Continental
+                        + labels (array)
                             + (object)
-                                + cuisines: Italian,Continental (array) - List of cuisines served
+                                + displayName: Main Menu (string)
+                                + description: Our signature dishes (string)
+                                + languageCode: en (string)
+                        + sections (array)
+                            + (object)
                                 + labels (array)
                                     + (object)
-                                        + displayName: Main Menu (string)
-                                        + description: Our signature dishes (string)
+                                        + displayName: Appetizers (string)
+                                        + description: Starters (string)
                                         + languageCode: en (string)
-                                + sections (array)
+                                + items (array)
                                     + (object)
                                         + labels (array)
                                             + (object)
-                                                + displayName: Appetizers (string)
-                                                + description: Starters (string)
+                                                + displayName: Bruschetta (string)
+                                                + description: Toasted bread with toppings (string)
                                                 + languageCode: en (string)
-                                        + items (array)
+                                        + attributes (object)
+                                            + price (object)
+                                                + currencyCode: USD (string)
+                                                + units: 7 (number)
+                                                + nanos: 500000000 (number)
+                                            + allergen (array[string])
+                                                + Gluten
+                                            + dietaryRestriction (array[string])
+                                                + Vegetarian
+                                            + nutritionFacts (object)
+                                                + calories: 150 (number)
+                                                + fatContent: 5g (string)
+                                                + proteinContent: 3g (string)
+                                                + carbohydrateContent: 20g (string)
+                                            + ingredients (array)
+                                                + (object)
+                                                    + name: Bread (string)
+                                                + (object)
+                                                    + name: Tomato (string)
+                                            + servesNumPeople: 2 (number)
+                                            + preparationMethods (array[string])
+                                                + Grilled
+                                            + portionSize (object)
+                                                + amount: 150 (number)
+                                                + unit: grams (string)
+                                            + mediaKeys (array)
+                                        + options (array)
                                             + (object)
                                                 + labels (array)
                                                     + (object)
-                                                        + displayName: Bruschetta (string)
-                                                        + description: Toasted bread with toppings (string)
+                                                        + displayName: Extra Cheese (string)
+                                                        + description: null (string, optional)
                                                         + languageCode: en (string)
                                                 + attributes (object)
                                                     + price (object)
                                                         + currencyCode: USD (string)
-                                                        + units: 7 (number)
-                                                        + nanos: 500000000 (number)
-                                                    + allergen: Gluten (array)
-                                                    + dietaryRestriction: Vegetarian (array)
-                                                    + nutritionFacts (object)
-                                                        + calories: 150 (number)
-                                                        + fatContent: 5g (string)
-                                                        + proteinContent: 3g (string)
-                                                        + carbohydrateContent: 20g (string)
-                                                    + ingredients (array)
-                                                        + (object)
-                                                            + name: Bread (string)
-                                                        + (object)
-                                                            + name: Tomato (string)
-                                                    + servesNumPeople: 2 (number)
-                                                    + preparationMethods: Grilled (array)
-                                                    + portionSize (object)
-                                                        + amount: 150 (number)
-                                                        + unit: grams (string)
-                                                    + mediaKeys: (array)
-                                                + options (array)
-                                                    + (object)
-                                                        + labels (array)
-                                                            + (object)
-                                                                + displayName: Extra Cheese (string)
-                                                                + description: null (string, optional)
-                                                                + languageCode: en (string)
-                                                        + attributes (object)
-                                                            + price (object)
-                                                                + currencyCode: USD (string)
-                                                                + units: 2 (number)
-                                                                + nanos: 0 (number)
-                        + businessId: 1210543 (number)
-                        + correlationId: xyz-456 (string)
-                    + createdAt: 2025-07-23T07:51:56.889Z (string) - Creation timestamp
-                    + updatedAt: 2025-07-24T10:11:22.456Z (string) - Last update timestamp
-                    + crmName: BirdeyeCRM (string)
+                                                        + units: 2 (number)
+                                                        + nanos: 0 (number)
+                + businessId: 1210543 (number)
+                + correlationId: xyz-456 (string)
+            + createdAt: 2025-07-23T07:51:56.889Z (string) - Creation timestamp
+            + updatedAt: 2025-07-24T10:11:22.456Z (string) - Last update timestamp
+            + crmName: BirdeyeCRM (string)
 
     + Body
 
