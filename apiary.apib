@@ -17308,8 +17308,8 @@ This API retrieves structured menu information for specified business numbers.
     + Attributes (array)
         + (object)
             + id: abc123 (string) - Unique identifier of the record
-            + businessId: 1210543123123 (number) - Unique business ID
-            + accountId: 1191304123 (number) - Account ID associated with the business
+            + businessNumber: 1210543123123 (number) - Unique business ID
+            + accountNumber: 1191304123 (number) - Account ID associated with the business
             + menuDetails (object)
                 + name: Restaurant Name (string) - Business display name
                 + error: null (string, optional) - Error details if retrieval failed
@@ -17375,7 +17375,7 @@ This API retrieves structured menu information for specified business numbers.
                                                         + currencyCode: USD (string)
                                                         + units: 2 (number)
                                                         + nanos: 0 (number)
-                + businessId: 1210543 (number)
+                + businessNumber: 1210543 (number)
                 + correlationId: xyz-456 (string)
             + createdAt: 2025-07-23T07:51:56.889Z (string) - Creation timestamp
             + updatedAt: 2025-07-24T10:11:22.456Z (string) - Last update timestamp
@@ -17386,8 +17386,8 @@ This API retrieves structured menu information for specified business numbers.
             [
                 {
                     "id": "abc123",
-                    "businessId": 1210543123123,
-                    "accountId": 1191304123,
+                    "businessNumber": 1210543123123,
+                    "accountNumber": 1191304123,
                     "menuDetails": {
                         "name": "Restaurant Name",
                         "error": null,
@@ -17469,7 +17469,7 @@ This API retrieves structured menu information for specified business numbers.
                                 ]
                             }
                         ],
-                        "businessId": 1210543,
+                        "businessNumber": 1210543,
                         "correlationId": "xyz-456"
                     },
                     "createdAt": "2025-07-23T07:51:56.889Z",
