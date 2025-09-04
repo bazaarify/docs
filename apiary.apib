@@ -14044,6 +14044,219 @@ Get all Unanswered Questions and Answers for a Location
 
     [2466][]
 
+# Group Local SEO
+Create, manage and delete keywords report for business locations.
+
+## Create keywords report [/v1/localSeo/report/save]
+Create a local SEO ranking report for a specific location and one or multiple keywords.
+
+### Create keyword(s) report [POST]
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            businessId: [Required] location business number.
+
+    + Body
+
+            {
+                "keyword": "keyword"
+            }
+
+
++ Response 200
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
+
+
+## Get keywords report [/v1/localSeo/report/keywords]
+Get all keywords associated with the Local SEO Scan Tool for all locations
+
+### Get keyword(s) report [POST]
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            businessId: [Required] account business number.
+
+    + Body
+
+            {
+                "page" : 1,
+                "pageSize" : 50
+            }
+
+
++ Response 200
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
+
+
+
+## Get keyword report for single location [/v1/localSeo/report/ranking]
+Get the Local SEO Scan Tool report for a specific location and keyword. The report includes ranking details for the current business as well as competitor businesses.
+
+### Get keyword report for single location [POST]
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            businessId: [Required] location business number.
+
+    + Body
+
+            {
+                "keyword": "keyword",
+                "month" : "month", // e.g. January, February, etc.
+                "year" : 2024
+            }
+
+
++ Response 200
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
+
+
+## Get keywords report for time range [/v1/localSeo/report/timeline]
+Get a timeline ranking report for a specific business location and one or multiple keywords.
+
+### Get keyword(s) report for time range [POST]
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            businessId: [Required] location business number.
+
+    + Body
+
+            {
+                "keywords": [
+                    "keyword1", "keyword2 // list of keywords
+                ],
+                "startMonth" : "startMonth", // e.g. January, February, etc.
+                "startYear" : 2024,
+                "endMonth" : "endMonth", // e.g. January, February, etc.
+                "endYear" : 2024
+            }
+
+
++ Response 200
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
+
+
+
+## Delete keywords report for locations [/v1/localSeo/report/delete]
+Delete mapped or set keywords for one or multiple locations. Deleting the keywords will also delete the associated reports.
+
+### Delete keyword(s) report for locations(s) [POST]
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            businessId: [Required] account business number.
+
+    + Body
+
+            {
+                "businessId1": [
+                    "keyword1",
+                    "keyword2"
+                ],
+                "businessId2": [
+                    "keyword1",
+                    "keyword2"
+                ]
+            }
+
+
++ Response 200
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
+
+
 
 # Group Listing
 Keep your business information accurate and consistent across 50+ websites.
