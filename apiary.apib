@@ -17272,6 +17272,59 @@ Deactivate Listing API stops publishing any information on the given online dire
 
     [89][]
 
+# Group GMB Products
+To manage products, locations, and business details through Listing GMB platform
+
+## Onboard Google Merchant Account [/v1/listing/public/product/setup/googleMerchant{?merchantId}]
+Onboards/connects a Google Merchant account for products listing.
+
+### Onboard Google Merchant Account [POST]
+
++ Parameters
+
+    + merchantId: 1234567 (string, required) - Google Merchant Center account ID.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Body
+
+            {}
+
++ Response 200 (application/json)
+
+    + Attributes
+        + code: 200 (number)
+        + message: String (string)
+
+    + Body
+
+            {
+              "code": 200,
+              "message": "String"
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
 ## Create Product Listing [/v1/listing/public/product]
 Creates a product listing on the Google Merchant account linked to the Birdeye account.
 
@@ -17289,7 +17342,7 @@ Creates a product listing on the Google Merchant account linked to the Birdeye a
 
         + businessNumbers: 145308764185002,145308769721320 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
         + title: Dental Implant (string, required) - Product title.
-        + description: The dental procedure for replacing missing teeth using implants. (string, required)
+        + description: The dental procedure for replacing missing teeth using implants. (string, optional)
         + imageLink: https://example.com/images/dental-implant-main.jpg (string, required) - Publicly accessible image URL.
         + additionalImageLinks: https://example.com/images/dental-implant-side.jpg, https://example.com/images/dental-implant-closeup.jpg (array[string], optional) - Additional public image URLs.
         + brandName: SmileCare (string, optional)
@@ -17355,8 +17408,8 @@ Creates a product listing on the Google Merchant account linked to the Birdeye a
 
     [1167][]
 
-## Update Product Listing [/v1/listing/public/product/{productId}]
-Updates an existing product listing.
+## Product Listing [/v1/listing/public/product/{productId}]
+Operations related to a product listing.
 
 ### Update Product Listing [PUT]
 
@@ -17373,24 +17426,25 @@ Updates an existing product listing.
             x-business-number: [Required] User assosiated businessNumber
 
     + Attributes
-        + businessNumbers: 145308764185002,145308769721320 (array) - Location numbers to scope the update (empty → all valid enterprise locations).
-        + title (string, optional)
-        + description (string, optional)
-        + imageLink (string, optional)
-        + additionalImageLinks: ... (array[string], optional)
-        + brandName (string, optional)
-        + googleProductCategoryId (string, optional)
-        + price (object, optional)
-            + amount (string, required)
-            + currencyCode (string, required)
+
+        + businessNumbers: 145308764185002,145308769721320 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+        + title: Dental Implant (string, required) - Product title.
+        + description: The dental procedure for replacing missing teeth using implants. (string, optional)
+        + imageLink: https://example.com/images/dental-implant-main.jpg (string, required) - Publicly accessible image URL.
+        + additionalImageLinks: https://example.com/images/dental-implant-side.jpg, https://example.com/images/dental-implant-closeup.jpg (array[string], optional) - Additional public image URLs.
+        + brandName: SmileCare (string, optional)
+        + googleProductCategoryId: 123 (string, required) - Google product taxonomy ID.
+        + price (object, required)
+            + amount: 1500.00 (string, required) - Decimal string.
+            + currencyCode: USD (string, required) - ISO 4217 code.
         + salePrice (object, optional)
-            + amount (string, required)
-            + currencyCode (string, required)
-        + productSku (string, optional)
-        + productTypes: ... (array[string], optional)
-        + productUrl (string, optional)
-        + status: PUBLISH (string, optional) - `PUBLISH` or `DRAFT`.
-        + videoUrl (string, optional)
+            + amount: 1200.00 (string, required)
+            + currencyCode: USD (string, required)
+        + productSku: DENTAL-IMPLANT-001 (string, optional) - Merchant SKU; if omitted, system may assign.
+        + productTypes: Dental Services, Implants, Cosmetic Dentistry (array[string], optional) - Product categorization keywords.
+        + productUrl: https://example.com/products/dental-implant (string, optional)
+        + status: PUBLISH (string, required) - Accepted values: `PUBLISH`, `DRAFT`.
+        + videoUrl: https://example.com/videos/dental-implant-overview.mp4 (string, optional)
 
     + Body
 
@@ -17408,7 +17462,7 @@ Updates an existing product listing.
               "price": { "amount": "1500.00", "currencyCode": "USD" },
               "salePrice": { "amount": "1200.00", "currencyCode": "USD" },
               "productSku": "DENTAL-IMPLANT-001",
-              "productTypes": ["Dental Services","Implants","Cosmetic Dentistry"],
+              "productTypes": ["Dental Services", "Implants", "Cosmetic Dentistry"],
               "productUrl": "https://example.com/products/dental-implant",
               "status": "PUBLISH",
               "videoUrl": "https://example.com/videos/dental-implant-overview.mp4"
@@ -17441,15 +17495,12 @@ Updates an existing product listing.
 
     [1167][]
 
-## Get Product Listing [/v1/listing/public/product/{productId}{?activityHistory}]
-Returns product listing details stored in Birdeye, with optional activity history.
 
 ### Get Product Listing [GET]
 
 + Parameters
 
     + productId: 68767cb39ebf51000815ab39 (string, required) - Product identifier.
-    + activityHistory: true (boolean, optional) - If true, include activity entries.
 
 + Request (application/json)
 
@@ -17483,13 +17534,6 @@ Returns product listing details stored in Birdeye, with optional activity histor
         + status: DRAFT (string)
         + updatedOn: Mar 05 (string) - Display value or timestamp depending on environment.
         + updatedBy: XYZ (string)
-        + activityHistory (array, optional)
-            + (object)
-                + userId: 2136672 (number)
-                + userName: TestUser (string)
-                + updatedAt: 2012-07-14T01:00:00+01:00 (string) - ISO date-time.
-                + action: PUBLISH (string)
-                + userImage: Family Dental Plan  (string)
 
     + Body
 
@@ -17512,16 +17556,7 @@ Returns product listing details stored in Birdeye, with optional activity histor
               "salePrice": { "amount": "35", "currencyCode": "USD" },
               "status": "DRAFT",
               "updatedOn": "Mar 05",
-              "updatedBy": "XYZ",
-              "activityHistory": [
-                {
-                  "userId": 2136672,
-                  "userName": "TestUser",
-                  "updatedAt": "2012-07-14T01:00:00+01:00",
-                  "action": "PUBLISH",
-                  "userImage": ""
-                }
-              ]
+              "updatedBy": "XYZ"
             }
 
 + Response 401
@@ -17595,10 +17630,10 @@ Deletes products from Google Merchant Center and Birdeye for the provided produc
     [1167][]
 
 
-## Retrieve Product Listings List [/v1/listing/public/product/getList{?pageSize,pageNumber}]
+## Get List Product Listing [/v1/listing/public/product/getList{?pageSize,pageNumber}]
 Returns paginated product listings for the account/locations based on search and filters.
 
-### Retrieve Product Listings List [POST]
+### Get List Product Listing [POST]
 
 + Parameters
 
@@ -17700,10 +17735,10 @@ Returns paginated product listings for the account/locations based on search and
     [1167][]
 
 
-## Add Product On a Location [/v1/listing/public/product/addProduct]
+## Add Products On a Location [/v1/listing/public/product/addProduct]
 Adds products (by IDs) to the Google profile of the business provided in headers.
 
-### Add Product On a Location [POST]
+### Add Products On a Location [POST]
 
 + Request (application/json)
 
@@ -17754,10 +17789,10 @@ Adds products (by IDs) to the Google profile of the business provided in headers
 
     [1167][]
 
-## Remove Product From a Location [/v1/listing/public/product/removeProduct{?locationId}]
-Removes products (by IDs) from the specified location. If `locationId` is omitted, the `x-business-number` header is used.
+## Remove Products On a Location [/v1/listing/public/product/removeProduct{?locationId}]
+Removes products (by IDs) on the specified location. If `locationId` is omitted, the `x-business-number` header is used.
 
-### Remove Product From a Location [POST]
+### Remove Products On a Location [POST]
 
 + Parameters
 
@@ -17782,56 +17817,6 @@ Removes products (by IDs) from the specified location. If `locationId` is omitte
                 "68767cb39ebf51000815ab39"
               ]
             }
-
-+ Response 200 (application/json)
-
-    + Attributes
-        + code: 200 (number)
-        + message: String (string)
-
-    + Body
-
-            {
-              "code": 200,
-              "message": "String"
-            }
-
-+ Response 401
-
-    [1161][]
-
-+ Response 429
-
-    [89][]
-
-+ Response 404
-
-    [1011][]
-
-+ Response 401
-
-    [1167][]
-
-## Setup Google Merchant [/v1/listing/public/product/setup/googleMerchant{?merchantId}]
-Onboards/connects a Google Merchant account for products listing.
-
-### Setup Google Merchant [POST]
-
-+ Parameters
-
-    + merchantId: 1234567 (string, required) - Google Merchant Center account ID.
-
-+ Request (application/json)
-
-    + Headers
-
-            Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
-            x-business-number: [Required] User assosiated businessNumber
-
-    + Body
-
-            {}
 
 + Response 200 (application/json)
 
