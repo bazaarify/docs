@@ -17299,14 +17299,14 @@ Onboards/connects a Google Merchant account for products listing.
 + Response 200 (application/json)
 
     + Attributes
-        + code: 2322 (number)
+        + code: 200 (number)
         + message: String (string)
 
     + Body
 
             {
-              "code": 2322,
-              "message": ""
+              "code": 200,
+              "message": "String"
             }
 
 + Response 401
@@ -17343,8 +17343,8 @@ Creates a product listing on the Google Merchant account linked to the Birdeye a
         + businessNumbers: 145308764185002,145308769721320 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
         + title: Dental Implant (string, required) - Product title.
         + description: The dental procedure for replacing missing teeth using implants. (string, optional)
-        + imageLink: https://example.com/images/dental-implant-main.jpg (string, required) - Publicly accessible image URL.
-        + additionalImageLinks: https://example.com/images/dental-implant-side.jpg, https://example.com/images/dental-implant-closeup.jpg (array[string], optional) - Additional public image URLs.
+        + imageLink: https://example.com/images/dentalImplantMain.jpg (string, required) - Publicly accessible image URL.
+        + additionalImageLinks: https://example.com/images/dentalImplantSide.jpg, https://example.com/images/dentalImplantCloseup.jpg (array[string], optional) - Additional public image URLs.
         + brandName: SmileCare (string, optional)
         + googleProductCategoryId: 123 (string, required) - Google product taxonomy ID.
         + price (object, required)
@@ -17430,8 +17430,8 @@ Operations related to a product listing.
         + businessNumbers: 145308764185002,145308769721320 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
         + title: Dental Implant (string, required) - Product title.
         + description: The dental procedure for replacing missing teeth using implants. (string, optional)
-        + imageLink: https://example.com/images/dental-implant-main.jpg (string, required) - Publicly accessible image URL.
-        + additionalImageLinks: https://example.com/images/dental-implant-side.jpg, https://example.com/images/dental-implant-closeup.jpg (array[string], optional) - Additional public image URLs.
+        + imageLink: https://example.com/images/dentalImplantMain.jpg (string, required) - Publicly accessible image URL.
+        + additionalImageLinks: https://example.com/images/dentalImplantSide.jpg, https://example.com/images/dentalImplantCloseup.jpg (array[string], optional) - Additional public image URLs.
         + brandName: SmileCare (string, optional)
         + googleProductCategoryId: 123 (string, required) - Google product taxonomy ID.
         + price (object, required)
@@ -17440,7 +17440,6 @@ Operations related to a product listing.
         + salePrice (object, optional)
             + amount: 1200.00 (string, required)
             + currencyCode: USD (string, required)
-        + productSku: DENTAL-IMPLANT-001 (string, optional) - Merchant SKU; if omitted, system may assign.
         + productTypes: Dental Services, Implants, Cosmetic Dentistry (array[string], optional) - Product categorization keywords.
         + productUrl: https://example.com/products/dental-implant (string, optional)
         + status: PUBLISH (string, required) - Accepted values: `PUBLISH`, `DRAFT`.
@@ -17461,7 +17460,6 @@ Operations related to a product listing.
               "googleProductCategoryId": "123",
               "price": { "amount": "1500.00", "currencyCode": "USD" },
               "salePrice": { "amount": "1200.00", "currencyCode": "USD" },
-              "productSku": "DENTAL-IMPLANT-001",
               "productTypes": ["Dental Services", "Implants", "Cosmetic Dentistry"],
               "productUrl": "https://example.com/products/dental-implant",
               "status": "PUBLISH",
@@ -17603,14 +17601,14 @@ Deletes products from Google Merchant Center and Birdeye for the provided produc
 + Response 200 (application/json)
 
     + Attributes
-        + code: 2322 (number)
+        + code: 200 (number)
         + message: String (string)
 
     + Body
 
             {
-              "code": 2322,
-              "message": ""
+              "code": 200,
+              "message": "String"
             }
 
 + Response 401
@@ -17763,14 +17761,14 @@ Adds products (by IDs) to the Google profile of the business provided in headers
 + Response 200 (application/json)
 
     + Attributes
-        + code: 2322 (number)
+        + code: 200 (number)
         + message: String (string)
 
     + Body
 
             {
-              "code": 2322,
-              "message": ""
+              "code": 200,
+              "message": "String"
             }
 
 + Response 401
@@ -17821,14 +17819,14 @@ Removes products (by IDs) on the specified location. If `locationId` is omitted,
 + Response 200 (application/json)
 
     + Attributes
-        + code: 2322 (number)
+        + code: 200 (number)
         + message: String (string)
 
     + Body
 
             {
-              "code": 2322,
-              "message": ""
+              "code": 200,
+              "message": "String"
             }
 
 + Response 401
