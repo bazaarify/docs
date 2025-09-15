@@ -17561,6 +17561,7 @@ Onboards/connects a Google Merchant account for products listing.
 
     [1167][]
 
+
 ## Create Product Listing [/v1/listing/public/product]
 Creates a product listing on the Google Merchant account linked to the Birdeye account.
 
@@ -17804,9 +17805,12 @@ Operations related to a product listing.
         + status: DRAFT (string)
         + updatedOn: Mar 05 (string) - Display value or timestamp depending on environment.
         + updatedBy: XYZ (string)
+        + code: `2561` (number, optional) - Error code. Present on validation failure.
+        + message: `Products are not found with given criteria` (string, optional) - Error message. Present on validation failure.
 
     + Body
 
+            // Success response
             {
               "productId": "68a700bc022db880b5ffa038",
               "productSku": "7654749435-3",
@@ -17827,6 +17831,11 @@ Operations related to a product listing.
               "status": "DRAFT",
               "updatedOn": "Mar 05",
               "updatedBy": "XYZ"
+            }
+            // Error response
+            {
+              "code": 2561,
+              "message": "Products are not found with given criteria"
             }
 
 + Response 401
@@ -17860,14 +17869,22 @@ Deletes products from Google Merchant Center and Birdeye for the provided produc
 
     + Attributes
         + productIds: 68767cb39ebf51000815ab39,68767cb39ebf51000815ab39 (array[string], required) - IDs to delete.
+        + code: `2561` (number, optional) - Error code. Present on validation failure.
+        + message: `Products are not found with given criteria` (string, optional) - Error message. Present on validation failure.
 
     + Body
 
+            // Success response
             {
               "productIds": [
                 "68767cb39ebf51000815ab39",
                 "68767cb39ebf51000815ab39"
               ]
+            }
+            // Error response
+            {
+              "code": 2561,
+              "message": "Products are not found with given criteria"
             }
 
 + Response 200 (application/json)
@@ -18020,6 +18037,8 @@ Adds products (by IDs) to the Google profile of the business provided in headers
 
     + Attributes
         + productIds: 68767cb39ebf51000815ab39,68767cb39ebf51000815ab39 (array[string], required)
+        + code: `2564` (number, optional) - Error code. Present on validation failure.
+        + message: `Product not or Partial found with given productId List` (string, optional) - Error message. Present on validation failure.
 
     + Body
 
@@ -18033,14 +18052,14 @@ Adds products (by IDs) to the Google profile of the business provided in headers
 + Response 200 (application/json)
 
     + Attributes
-        + code: 200 (number)
+        + code: 2564 (number)
         + message: String (string)
 
     + Body
 
             {
-              "code": 200,
-              "message": "String"
+              "code": 2564,
+              "message": "Product not or Partial found with given productId List"
             }
 
 + Response 401
@@ -18091,14 +18110,14 @@ Removes products (by IDs) on the specified location. If `locationId` is omitted,
 + Response 200 (application/json)
 
     + Attributes
-        + code: 200 (number)
+        + code: 2561 (number)
         + message: String (string)
 
     + Body
 
             {
-              "code": 200,
-              "message": "String"
+              "code": 2561,
+              "message": "Products are not found with given criteria"
             }
 
 + Response 401
