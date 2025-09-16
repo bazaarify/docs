@@ -17869,35 +17869,28 @@ Deletes products from Google Merchant Center and Birdeye for the provided produc
 
     + Attributes
         + productIds: 68767cb39ebf51000815ab39,68767cb39ebf51000815ab39 (array[string], required) - IDs to delete.
-        + code: `2561` (number, optional) - Error code. Present on validation failure.
-        + message: `Products are not found with given criteria` (string, optional) - Error message. Present on validation failure.
 
     + Body
 
-            // Success response
             {
               "productIds": [
                 "68767cb39ebf51000815ab39",
                 "68767cb39ebf51000815ab39"
               ]
             }
-            // Error response
-            {
-              "code": 2561,
-              "message": "Products are not found with given criteria"
-            }
 
 + Response 200 (application/json)
 
     + Attributes
-        + code: 200 (number)
-        + message: String (string)
+        + code: `2561` (number, optional) - Error code. Present on validation failure.
+        + message: `Products are not found with given criteria` (string, optional) - Error message. Present on validation failure.
 
     + Body
 
+            // Error response
             {
-              "code": 200,
-              "message": "String"
+              "code": 2561,
+              "message": "Products are not found with given criteria"
             }
 
 + Response 401
@@ -18110,14 +18103,14 @@ Removes products (by IDs) on the specified location. If `locationId` is omitted,
 + Response 200 (application/json)
 
     + Attributes
-        + code: 2561 (number)
+        + code: 2564 (number)
         + message: String (string)
 
     + Body
 
             {
-              "code": 2561,
-              "message": "Products are not found with given criteria"
+              "code": 2564,
+              "message": "Product not or Partial found with given productId List"
             }
 
 + Response 401
