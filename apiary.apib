@@ -17278,7 +17278,6 @@ Deactivate Listing API stops publishing any information on the given online dire
 
     [89][]
 
-
 ## Retrieve Menu Details [/v1/listing/menu-details]
 This API retrieves structured menu information for specified business numbers.
 
@@ -17508,6 +17507,628 @@ This API retrieves structured menu information for specified business numbers.
 + Response 400
 
     [2458][]
+
+# Group GMB Products
+To manage products, locations, and business details through Listing GMB platform
+
+## Onboard Google Merchant Account [/v1/listing/public/product/setup/googleMerchant{?merchantId}]
+Onboards/connects a Google Merchant account for products listing.
+
+### Onboard Google Merchant Account [POST]
+
++ Parameters
+
+    + merchantId: 1234567 (string, required) - Google Merchant Center account ID.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Body
+
+            {}
+
++ Response 200 (application/json)
+
+    + Attributes
+        + code: 200 (number)
+        + message: String (string)
+
+    + Body
+
+            {
+              "code": 200,
+              "message": "String"
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
+
+## Create Product Listing [/v1/listing/public/product]
+Creates a product listing on the Google Merchant account linked to the Birdeye account.
+
+### Create Product Listing [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Attributes
+
+        + businessNumbers: 145308764185002,145308769721320 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+        + title: Dental Implant (string, required) - Product title.
+        + description: The dental procedure for replacing missing teeth using implants. (string, optional)
+        + imageLink: https://example.com/images/dentalImplantMain.jpg (string, required) - Publicly accessible image URL.
+        + additionalImageLinks: https://example.com/images/dentalImplantSide.jpg, https://example.com/images/dentalImplantCloseup.jpg (array[string], optional) - Additional public image URLs.
+        + brandName: SmileCare (string, optional)
+        + googleProductCategoryId: 123 (string, required) - Google product taxonomy ID.
+        + price (object, required)
+            + amount: 1500.00 (string, required) - Decimal string.
+            + currencyCode: USD (string, required) - ISO 4217 code.
+        + salePrice (object, optional)
+            + amount: 1200.00 (string, required)
+            + currencyCode: USD (string, required)
+        + productSku: DENTAL-IMPLANT-001 (string, optional) - Merchant SKU; if omitted, system may assign.
+        + productTypes: Dental Services, Implants, Cosmetic Dentistry (array[string], optional) - Product categorization keywords.
+        + productUrl: https://example.com/products/dental-implant (string, optional)
+        + status: PUBLISH (string, required) - Accepted values: `PUBLISH`, `DRAFT`.
+
+    + Body
+
+            {
+              "businessNumbers": [145308764185002,145308769721320],
+              "title": "Dental Implant",
+              "description": "The dental procedure for replacing missing teeth using implants.",
+              "imageLink": "https://example.com/images/dental-implant-main.jpg",
+              "additionalImageLinks": [
+                "https://example.com/images/dental-implant-side.jpg",
+                "https://example.com/images/dental-implant-closeup.jpg"
+              ],
+              "brandName": "SmileCare",
+              "googleProductCategoryId": "123",
+              "price": { "amount": "1500.00", "currencyCode": "USD" },
+              "salePrice": { "amount": "1200.00", "currencyCode": "USD" },
+              "productSku": "DENTAL-IMPLANT-001",
+              "productTypes": ["Dental Services", "Implants", "Cosmetic Dentistry"],
+              "productUrl": "https://example.com/products/dental-implant",
+              "status": "PUBLISH"
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + productId: 68767cb39ebf51000815ab39 (string) - Unique identifier for the product.
+        + code: `2565` (number, optional) - Error code. Present on validation failure.
+        + message: `Product request validation failure` (string, optional) - Error message. Present on validation failure.
+        + data (object, optional)
+            + errorAttributes (array[object], optional)
+                + type: `title` (string) - Type of validation error.
+                + message: `Product name is missing in the request` (string) - Validation error message.
+
+    + Body
+
+            // Success response
+            {
+              "productId": "68767cb39ebf51000815ab39"
+            }
+            // Error response
+            {
+              "code": 2565,
+              "message": "Product request validation failure",
+              "data": {
+                "errorAttributes": [
+                  {
+                    "type": "title",
+                    "message": "Product name is missing in the request"
+                  }
+                ]
+              }
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
+## Update Product Listing [/v1/listing/public/product/{productId}]
+Operations related to update a product listing.
+
+### Update Product Listing [PUT]
+
++ Parameters
+
+    + productId: 68767cb39ebf51000815ab39 (string, required) - Unique identifier of the product to update.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Attributes
+
+        + businessNumbers: 145308764185002,145308769721320 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+        + title: Dental Implant (string, required) - Product title.
+        + description: The dental procedure for replacing missing teeth using implants. (string, optional)
+        + imageLink: https://example.com/images/dentalImplantMain.jpg (string, required) - Publicly accessible image URL.
+        + additionalImageLinks: https://example.com/images/dentalImplantSide.jpg, https://example.com/images/dentalImplantCloseup.jpg (array[string], optional) - Additional public image URLs.
+        + brandName: SmileCare (string, optional)
+        + googleProductCategoryId: 123 (string, required) - Google product taxonomy ID.
+        + price (object, required)
+            + amount: 1500.00 (string, required) - Decimal string.
+            + currencyCode: USD (string, required) - ISO 4217 code.
+        + salePrice (object, optional)
+            + amount: 1200.00 (string, required)
+            + currencyCode: USD (string, required)
+        + productTypes: Dental Services, Implants, Cosmetic Dentistry (array[string], optional) - Product categorization keywords.
+        + productUrl: https://example.com/products/dental-implant (string, optional)
+        + status: PUBLISH (string, required) - Accepted values: `PUBLISH`, `DRAFT`.
+
+    + Body
+
+            {
+              "businessNumbers": [145308764185002,145308769721320],
+              "title": "Dental Implant",
+              "description": "The dental procedure for replacing missing teeth using implants.",
+              "imageLink": "https://example.com/images/dental-implant-main.jpg",
+              "additionalImageLinks": [
+                "https://example.com/images/dental-implant-side.jpg",
+                "https://example.com/images/dental-implant-closeup.jpg"
+              ],
+              "brandName": "SmileCare",
+              "googleProductCategoryId": "123",
+              "price": { "amount": "1500.00", "currencyCode": "USD" },
+              "salePrice": { "amount": "1200.00", "currencyCode": "USD" },
+              "productTypes": ["Dental Services", "Implants", "Cosmetic Dentistry"],
+              "productUrl": "https://example.com/products/dental-implant",
+              "status": "PUBLISH"
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + productId: 68767cb39ebf51000815ab39 (string) - Unique identifier for the product.
+        + code: `2565` (number, optional) - Error code. Present on validation failure.
+        + message: `Product request validation failure` (string, optional) - Error message. Present on validation failure.
+        + data (object, optional)
+            + errorAttributes (array[object], optional)
+                + type: `title` (string) - Type of validation error.
+                + message: `Product name is missing in the request` (string) - Validation error message.
+
+    + Body
+
+            // Success response
+            {
+              "productId": "68767cb39ebf51000815ab39"
+            }
+            // Error response
+            {
+              "code": 2565,
+              "message": "Product request validation failure",
+              "data": {
+                "errorAttributes": [
+                  {
+                    "type": "title",
+                    "message": "Product name is missing in the request"
+                  }
+                ]
+              }
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
+
+## Get Product Listing [/v1/listing/public/product/{productIdentifier}]
+Operations related to get a product listing.
+
+### Get Product Listing [GET]
+
++ Parameters
+
+    + productIdentifier: 68767cb39ebf51000815ab39 (string, required) - Product identifier.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
++ Response 200 (application/json)
+
+    + Attributes
+        + productId: 68a700bc022db880b5ffa038 (string)
+        + productSku: 7654749435-3 (string)
+        + locationCount: 1 (number)
+        + title: Family Dental Plan (string)
+        + description: Use this product to purchase the family dental plan for 3 visits/year for a family of 4 (string)
+        + productUrl: https://dentist-bragadiru.ro/preturi/ (string)
+        + imageLink: https://shopping.googleusercontent.com/image?... (string)
+        + additionalImageLinks: ... (array[string])
+        + videoUrl: Family Dental Plan  (string)
+        + brandName: SDR Clinic (string)
+        + googleProductCategoryId: 5010 (string)
+        + price (object)
+            + amount: 35 (string)
+            + currencyCode: USD (string)
+        + productTypes: FamilyDentalHelath (array[string])
+        + salePrice (object)
+            + amount: 35 (string)
+            + currencyCode: USD (string)
+        + status: DRAFT (string)
+        + updatedOn: Mar 05 (string) - Display value or timestamp depending on environment.
+        + updatedBy: XYZ (string)
+        + code: `2561` (number, optional) - Error code. Present on validation failure.
+        + message: `Products are not found with given criteria` (string, optional) - Error message. Present on validation failure.
+
+    + Body
+
+            // Success response
+            {
+              "productId": "68a700bc022db880b5ffa038",
+              "productSku": "7654749435-3",
+              "locationCount": 1,
+              "title": "Family Dental Plan",
+              "description": "Use this product to purchase the family dental plan for 3 visits/year for a family of 4",
+              "productUrl": "https://dentist-bragadiru.ro/preturi/",
+              "imageLink": "https://shopping.googleusercontent.com/image?q=AJqGhtVeXk2QAlVze5sxdIkrJqvnVzU_ApEvuPtiqXtE5slPUnd8ev_mctvrSvvwkcw6EYPn-6JoCfGyi1yp",
+              "additionalImageLinks": [
+                "https://shopping.googleusercontent.com/image?q=AJqGhtWrkvUc_hlewjdruW0_pE94O2KroiTvT9Iyvoq8rEo31Tdn0v4FYhxTsUbt2I-lu2Y2-8JVBA8P2flC"
+              ],
+              "videoUrl": "",
+              "brandName": "SDR Clinic",
+              "googleProductCategoryId": "5010",
+              "price": { "amount": "35", "currencyCode": "USD" },
+              "productTypes": ["FamilyDentalHelath"],
+              "salePrice": { "amount": "35", "currencyCode": "USD" },
+              "status": "DRAFT",
+              "updatedOn": "Mar 05",
+              "updatedBy": "XYZ"
+            }
+            // Error response
+            {
+              "code": 2561,
+              "message": "Products are not found with given criteria"
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
+## Delete Product Listings  [/v1/listing/public/product/deleteProduct]
+Deletes products from Google Merchant Center and Birdeye for the provided product IDs.
+
+### Delete Product Listings  [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Attributes
+        + productIds: 68767cb39ebf51000815ab39,68767cb39ebf51000815ab39 (array[string], required) - IDs to delete.
+
+    + Body
+
+            {
+              "productIds": [
+                "68767cb39ebf51000815ab39",
+                "68767cb39ebf51000815ab39"
+              ]
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + code: `2561` (number, optional) - Error code. Present on validation failure.
+        + message: `Products are not found with given criteria` (string, optional) - Error message. Present on validation failure.
+
+    + Body
+
+            // Error response
+            {
+              "code": 2561,
+              "message": "Products are not found with given criteria"
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
+
+## Get List Product Listing [/v1/listing/public/product/getList{?pageSize,pageNumber}]
+Returns paginated product listings for the account/locations based on search and filters.
+
+### Get List Product Listing [POST]
+
++ Parameters
+
+    + pageSize: 50 (number, optional) - Number of records per page. Default 50.
+    + pageNumber: 0 (number, optional) - 0-based page index. Default 0.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Attributes
+        + search: Dental (string, optional) - Regex/contains on title.
+        + status: DRAFT,PUBLISH (array[string], optional) - Filter by status.
+        + businessNumbers: 145308764185002,145308769721320 (array, optional) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+
+    + Body
+
+            {
+              "search": "Dental",
+              "status": ["DRAFT","PUBLISH"],
+              "businessNumbers": []
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + response (array[object]) - Product list
+            + (object)
+                + productId: 689af8f4f198dfbdfc88f05c (string)
+                + productSku: 7654749435 (string)
+                + locationCount: 2 (number)
+                + title: Family Dental Plan (string)
+                + description: Use this product to purchase the family dental plan for 3 visits/year for a family of 4 (string)
+                + productUrl: https://dentist-bragadiru.ro/preturi/ (string)
+                + imageLink: https://shopping.googleusercontent.com/image?... (string)
+                + additionalImageLinks: ... (array[string])
+                + videoUrl: Family Dental Plan  (string)
+                + brandName: SDR Clinic (string)
+                + googleProductCategoryId: 5823 (string)
+                + price (object)
+                    + amount: 3500000000 (string)
+                    + currencyCode: INR (string)
+                + productTypes: FamilyDentalHelath (array[string])
+                + salePrice (object)
+                    + amount: 2500000000 (string)
+                    + currencyCode: INR (string)
+                + status: PUBLISH (string)
+                + updatedOn: 1754993514625 (number) - Epoch time.
+                + updatedBy: XYZ (string)
+        + totalCount: 100 (number)
+
+    + Body
+
+            {
+              "response": [
+                {
+                  "productId": "689af8f4f198dfbdfc88f05c",
+                  "productSku": "7654749435",
+                  "locationCount": 2,
+                  "title": "Family Dental Plan",
+                  "description": "Use this product to purchase the family dental plan for 3 visits/year for a family of 4",
+                  "productUrl": "https://dentist-bragadiru.ro/preturi/",
+                  "imageLink": "https://shopping.googleusercontent.com/image?q=AJqGhtVeXk2QAlVze5sxdIkrJqvnVzU_ApEvuPtiqXtE5slPUnd8ev_mctvrSvvwkcw6EYPn-6JoCfGyi1yp",
+                  "additionalImageLinks": [
+                    "https://shopping.googleusercontent.com/image?q=AJqGhtWrkvUc_hlewjdruW0_pE94O2KroiTvT9Iyvoq8rEo31Tdn0v4FYhxTsUbt2I-lu2Y2-8JVBA8P2flC"
+                  ],
+                  "videoUrl": "",
+                  "brandName": "SDR Clinic",
+                  "googleProductCategoryId": "5823",
+                  "price": { "amount": "3500000000", "currencyCode": "INR" },
+                  "productTypes": ["FamilyDentalHelath"],
+                  "salePrice": { "amount": "2500000000", "currencyCode": "INR" },
+                  "status": "PUBLISH",
+                  "updatedOn": 1754993514625,
+                  "updatedBy": "XYZ"
+                }
+              ],
+              "totalCount": 100
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
+
+## Add Products On a Location [/v1/listing/public/product/addProduct]
+Adds products (by IDs) to the Google profile of the business provided in headers.
+
+### Add Products On a Location [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Attributes
+        + productIds: 68767cb39ebf51000815ab39,68767cb39ebf51000815ab39 (array[string], required)
+
+    + Body
+
+            {
+              "productIds": [
+                "68767cb39ebf51000815ab39",
+                "68767cb39ebf51000815ab39"
+              ]
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + code: 2564 (number)
+        + message: String (string)
+
+    + Body
+
+            {
+              "code": 2564,
+              "message": "Product not or Partial found with given productId List"
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
+## Remove Products On a Location [/v1/listing/public/product/removeProduct{?locationId}]
+Removes products (by IDs) on the specified location. If `locationId` is omitted, the `x-business-number` header is used.
+
+### Remove Products On a Location [POST]
+
++ Parameters
+
+    + locationId: 149271712556716 (number, optional) - Target location override.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Attributes
+        + productIds: 68767cb39ebf51000815ab39,68767cb39ebf51000815ab39 (array[string], required)
+
+    + Body
+
+            {
+              "productIds": [
+                "68767cb39ebf51000815ab39",
+                "68767cb39ebf51000815ab39"
+              ]
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + code: 2564 (number)
+        + message: String (string)
+
+    + Body
+
+            {
+              "code": 2564,
+              "message": "Product not or Partial found with given productId List"
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
 
 
 
