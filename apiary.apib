@@ -2952,9 +2952,8 @@ Update Business API updates business information.
         + isSEOEnabled: true (boolean) - Enable/Disbale search engine indexing of business profile. Valid values are "true","false". Default is "true".
         + externalReferenceId (string) - It should be a unique value for location identifier.
         + customFields (object) - Custom Field To be Updated
-            + defaultValue: Green (string)- Default Value of custom field.
+            + type: DROPDOWN_MULTI (string)- Type of field.
             + fieldValue: GR (string)- Custom field value.
-            + fieldDescription: This custom field contains list of colours (string)-Description of custom field.
             + fieldName: colours (required,string)-Name of custom field (Make sure to enter the same fieldName or else the new field will be created).
             + id: 376 (required,number)- fieldId of the custom field created earlier.
 
@@ -4285,13 +4284,13 @@ Update custom Fields
     [5026][]
 
 
-## Get Custom Fields [/v1/business/public/custom-fields/get/{fieldId}]
+## Get Custom Fields [/v1/business/public/custom-fields/get/{fieldId}?locationBizNumber={locationBizNumber}]
 Get custom Fields
 ### Get [GET]
 
 + Parameters
     + fieldId: 376 (required,number)- fieldId of the custom field created earlier.
-
+    + locationBizNumber : 123456789 (number)- Long Location number of the Location
 
 + Request (application/json)
 
@@ -4332,12 +4331,17 @@ Get custom Fields
      [5025][]
 
 
-## Get Custom Fields List [/v1/business/public/custom-fields/getList]
+## Get Custom Fields List [/v1/business/public/custom-fields/getList?locationBizNumber={locationBizNumber}]
 Get custom Fields List
 ### POST [POST]
 
+ + Parameters
+    + locationBizNumber : 123456789 (number) - Long Location number of the Location.
+
 
 + Request (application/json)
+
+
 
     + Headers
 
@@ -4462,16 +4466,13 @@ Associate custom Fields
          + fieldValue: Green (required,string)- Field Value of custom field and will only be visible if value is present.
          + businessNumber: 1234567890 (required,number)- Long Business Number.
 
-     + Body
+    + Body
 
             {
                 "businessNumber": 1234567890,
-                 "fieldId": 376,
-                 "fieldValue": "Green"
+                "fieldId": 376,
+                "fieldValue": "Green"
             }
-
-
-
 
 + Response 200
 
