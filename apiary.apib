@@ -14,6 +14,9 @@ The Birdeye APIs are built on HTTP and are RESTful APIs.
 
 ### Authentication and Rate limiting
 
+> __NOTE:__
+> __To protect your API key and prevent unauthorized access, please ensure all API requests are made from your backend server. Do not call the APIs directly from the browser or expose your API key in any client-side code.__
+
 To call a Birdeye API, you need a valid API key. It can be fetched via the Birdeye dashboard and is a confidential key.
 
 There is a limit to calling APIs with each API key [connect with the support team to get the current limit]. If too many requests are made within the threshold timeframe, an error will be returned in the response.
