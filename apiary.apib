@@ -11271,6 +11271,70 @@ This api will edit a scheduled post created through public api. Users can specif
 
 
 
+## Edit published social Post [/v1/social/post/public/published/edit]
+This api will edit a published post created through public api. Only text can be updated for a published post. Editing published post is only supported for these channels: Facebook, Google and LinedIn.
+
+### Edit Published social Post [POST]
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + trackingId: 4ece211b82162d1101d2d82a24876a92 (string, required) - Tracking id received when post was created through public api.
+        + text: Check out the latest collection (string, required) - Text to be updated for the post. Limits of characters across various Social Sites
+                            Google Business Profile: 1500
+                            Facebook: 5000
+                            LinkedIn: 3000
+        + socialSite: LINKEDIN (string, required) - The social site where the post will be edited. Possible values are
+                            FACEBOOK,
+                            GOOGLEMYBUSINESS,
+                            LINKEDIN
+            + Error message: Input SocialSite does not match with any one of the SOCIAL SITE (FACEBOOK, GOOGLEMYBUSINESS,LINKEDIN)
+        + subBusinessIds: 123456780,123456781 (array, required) - List of location ids for which this post should be edited. If list contains a location which is not part of the post, then no action will be taken for that location.
+
+    + Body
+
+            {
+                "trackingId": "4ece211b82162d1101d2d82a24876a92",
+                "text": "Check out the latest collection",
+                "socialSite" : "GOOGLEMYBUSINESS" ,
+                "subBusinessIds": [123456780,123456781]
+            }
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
++ Response 400
+
+    [5556][]
+
++ Response 400
+
+    [5557][]
+
+
+
 
 ## Track Social Post [/v1/social/{accountNumber}/post/track/{trackingId}]
 This API allows users to track the status of a social post that was previously scheduled or published using the Schedule Social Post API. By providing the trackingId from the response of the scheduling API, users can query the status and details of the post across different social sites.
