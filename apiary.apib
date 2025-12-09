@@ -11209,7 +11209,7 @@ This api will edit a scheduled post created through public api. Users can specif
                             GOOGLEMYBUSINESS,
                             LINKEDIN
             + Error message: Input SocialSite does not match with any one of the SOCIAL SITE (FACEBOOK, GOOGLEMYBUSINESS,LINKEDIN,INSTAGRAM)
-        + subBusinessIds: 123456780,123456781 (array, required) - List of location ids for which this post should be edited.
+        + subBusinessNumbers: 123456780,123456781 (array, required) - List of location ids for which this post should be edited.
         + scheduleTimestamp: 1677759962528 (number) - A Unix timestamp in milliseconds that represents the date and time when the post should be scheduled. If not provided, the post will have same schedule time as the original one.
         + media (object) - Media details.
             + type: IMAGE (string) - An array of media objects, each containing the media type and the URL. Allowed media type are IMAGE, VIDEO and REEL.
@@ -11227,7 +11227,7 @@ This api will edit a scheduled post created through public api. Users can specif
                 "trackingId": "4ece211b82162d1101d2d82a24876a92",
                 "text": "Check out the latest collection",
                 "socialSite" : "GOOGLEMYBUSINESS" ,
-                "subBusinessIds": [123456780,123456781],
+                "subBusinessNumbers": [123456780,123456781],
                 "scheduleTimestamp": 1677759962528,
                 "media": [{
                     "type": "IMAGE",
@@ -11296,7 +11296,7 @@ This api will edit a published post created through public api. Only text can be
                             GOOGLEMYBUSINESS,
                             LINKEDIN
             + Error message: Input SocialSite does not match with any one of the SOCIAL SITE (FACEBOOK, GOOGLEMYBUSINESS,LINKEDIN)
-        + subBusinessIds: 123456780,123456781 (array, required) - List of location ids for which this post should be edited. If list contains a location which is not part of the post, then no action will be taken for that location.
+        + subBusinessNumbers: 123456780,123456781 (array, required) - List of location ids for which this post should be edited. If list contains a location which is not part of the post, then no action will be taken for that location.
 
     + Body
 
@@ -11304,7 +11304,7 @@ This api will edit a published post created through public api. Only text can be
                 "trackingId": "4ece211b82162d1101d2d82a24876a92",
                 "text": "Check out the latest collection",
                 "socialSite" : "GOOGLEMYBUSINESS" ,
-                "subBusinessIds": [123456780,123456781]
+                "subBusinessNumbers": [123456780,123456781]
             }
 
 
