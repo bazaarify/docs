@@ -11182,11 +11182,14 @@ This API allows users to schedule or immediately post content on supported socia
     [5557][]
 
 
-## Edit scheduled Social Post [/v1/social/post/public/scheduled/edit]
+## Edit scheduled Social Post [/v1/social/post/public/scheduled/edit/{accountNumber}]
 This api will edit a scheduled post created through public api. Users can specify the content, media, and schedule a specific time for the post. Supported social sites include Google Business Profile, Facebook, Instagram and LinkedIn
 
 ### Edit Scheduled Social Post [POST]
 
++ Parameters
+
+    + accountNumber: 12345678 (number, required) - Id of the Account.
 
 + Request (application/json)
 
@@ -11271,11 +11274,14 @@ This api will edit a scheduled post created through public api. Users can specif
 
 
 
-## Edit published social Post [/v1/social/post/public/published/edit]
+## Edit published social Post [/v1/social/post/public/published/edit/{accountNumber}]
 This api will edit a published post created through public api. Only text can be updated for a published post. Editing published post is only supported for these channels: Facebook, Google and LinedIn.
 
 ### Edit Published social Post [POST]
 
++ Parameters
+
+    + accountNumber: 12345678 (number, required) - Id of the Account.
 
 + Request (application/json)
 
@@ -11334,10 +11340,14 @@ This api will edit a published post created through public api. Only text can be
     [5557][]
 
 
-## Delete public social Post [/v1/social/post/public/delete]
+## Delete public social Post [/v1/social/post/public/delete/{accountNumber}]
 This api will delete a post created through public api. It can delete both scheduled and published posts. Deleting published post is only supported for these channels: Facebook, Google, LinedIn
 ### Delete public social Post [POST]
 
+
++ Parameters
+
+    + accountNumber: 12345678 (number, required) - Id of the Account.
 
 + Request (application/json)
 
