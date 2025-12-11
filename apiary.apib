@@ -11183,8 +11183,8 @@ This API allows users to schedule or immediately post content on supported socia
 
 
 ## Edit scheduled Social Post [/v1/social/post/public/scheduled/edit/{accountNumber}]
-This api will edit a scheduled post created through public api. Users can specify the content, media, and schedule a specific time for the post. Supported social sites include Google Business Profile, Facebook, Instagram and LinkedIn
-
+This api will edit a scheduled post created through public api. Users can specify the content, media, and schedule a specific time for the post. Supported social sites include Google Business Profile, Facebook, Instagram and LinkedIn.
+If extra locations are included in subBusinessNumbers, the post will also be scheduled for those locations. If subBusinessNumbers now contains fewer locations than before, the post will be unscheduled from any locations that are no longer listed.
 ### Edit Scheduled Social Post [POST]
 
 + Parameters
