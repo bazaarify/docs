@@ -11090,6 +11090,219 @@ This API allows users to schedule or immediately post content on supported socia
     [5557][]
 
 
+## Edit scheduled Social Post [/v1/social/post/public/scheduled/edit/{accountNumber}]
+This api will edit a scheduled post created through public api. Users can specify the content, media, and schedule a specific time for the post. Supported social sites include Google Business Profile, Facebook, Instagram and LinkedIn.
+If extra locations are included in subBusinessNumbers, the post will also be scheduled for those locations. If subBusinessNumbers now contains fewer locations than before, the post will be unscheduled from any locations that are no longer listed.
+### Edit Scheduled Social Post [POST]
+
++ Parameters
+
+    + accountNumber: 12345678 (number, required) - Id of the Account.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + trackingId: 4ece211b82162d1101d2d82a24876a92 (string, required) - Tracking id received when post was created through public api.
+        + text: Check out the latest collection (string, required) - Input text that will be added in the post. Limits of characters across various Social Sites
+                            Google Business Profile: 1500
+                            Facebook: 5000
+                            Instagram: 5000
+                            LinkedIn: 3000
+        + socialSite: LINKEDIN (string, required) - The social site where the post will be edited. Possible values are
+                            INSTAGRAM,
+                            FACEBOOK,
+                            GOOGLEMYBUSINESS,
+                            LINKEDIN
+            + Error message: Input SocialSite does not match with any one of the SOCIAL SITE (FACEBOOK, GOOGLEMYBUSINESS,LINKEDIN,INSTAGRAM)
+        + subBusinessNumbers: 123456780,123456781 (array, required) - List of location ids for which this post should be edited.
+        + scheduleTimestamp: 1677759962528 (number) - A Unix timestamp in milliseconds that represents the date and time when the post should be scheduled. If not provided, the post will have same schedule time as the original one.
+        + media (object) - Media details.
+            + type: IMAGE (string) - An array of media objects, each containing the media type and the URL. Allowed media type are IMAGE, VIDEO and REEL.
+            + mediaUrl: https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png (string) - Media Link.
+            + Error message: Input Media Type does not match with any one of the MEDIA TYPE.
+        + additionalMetaData (object) - Additional metadata for the post, including a call to action (CTA). Applicable only for GOOGLEMYBUSINESS.
+            + callToActionType: LEARN_MORE, BOOK, ORDER, SHOP, SIGN_UP, CALL (string) - Type of data.
+            + callToActionUrl: https://app.birdeye.com (string) - Link of the additional data(Not required when CTA type is CALL).
+
+
+
+    + Body
+
+            {
+                "trackingId": "4ece211b82162d1101d2d82a24876a92",
+                "text": "Check out the latest collection",
+                "socialSite" : "GOOGLEMYBUSINESS" ,
+                "subBusinessNumbers": [123456780,123456781],
+                "scheduleTimestamp": 1677759962528,
+                "media": [{
+                    "type": "IMAGE",
+                    "mediaUrl": "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png"
+                },
+                {
+                    "type": "IMAGE",
+                    "mediaUrl": "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_Logo.png"
+                }],
+                "additionalMetaData": {
+                "callToActionType":"LEARN_MORE",
+                "callToActionUrl": "https://app.birdeye.com/"
+                }
+            }
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
++ Response 400
+
+    [5556][]
+
++ Response 400
+
+    [5557][]
+
+
+
+## Edit published social Post [/v1/social/post/public/published/edit/{accountNumber}]
+This api will edit a published post created through public api. Only text can be updated for a published post. Editing published post is only supported for these channels: Facebook, Google and LinedIn.
+
+### Edit Published social Post [POST]
+
++ Parameters
+
+    + accountNumber: 12345678 (number, required) - Id of the Account.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + trackingId: 4ece211b82162d1101d2d82a24876a92 (string, required) - Tracking id received when post was created through public api.
+        + text: Check out the latest collection (string, required) - Text to be updated for the post. Limits of characters across various Social Sites
+                            Google Business Profile: 1500
+                            Facebook: 5000
+                            LinkedIn: 3000
+        + socialSite: LINKEDIN (string, required) - The social site where the post will be edited. Possible values are
+                            FACEBOOK,
+                            GOOGLEMYBUSINESS,
+                            LINKEDIN
+            + Error message: Input SocialSite does not match with any one of the SOCIAL SITE (FACEBOOK, GOOGLEMYBUSINESS,LINKEDIN)
+        + subBusinessNumbers: 123456780,123456781 (array, required) - List of location ids for which this post should be edited. If list contains a location which is not part of the post, then no action will be taken for that location.
+
+    + Body
+
+            {
+                "trackingId": "4ece211b82162d1101d2d82a24876a92",
+                "text": "Check out the latest collection",
+                "socialSite" : "GOOGLEMYBUSINESS" ,
+                "subBusinessNumbers": [123456780,123456781]
+            }
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
++ Response 400
+
+    [5556][]
+
++ Response 400
+
+    [5557][]
+
+
+## Delete public social Post [/v1/social/post/public/delete/{accountNumber}]
+This api will delete a post created through public api. It can delete both scheduled and published posts. Deleting published post is only supported for these channels: Facebook, Google, LinedIn
+### Delete public social Post [POST]
+
+
++ Parameters
+
+    + accountNumber: 12345678 (number, required) - Id of the Account.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+    + Attributes
+        + trackingId: 4ece211b82162d1101d2d82a24876a92 (string, required) - Tracking id received when post was created through public api.
+        + subBusinessNumbers: 123456780,123456781 (array, required) - List of location ids for which this post should be deleted. If list contains a location which is not part of the post, then no action will be taken for that location.
+
+    + Body
+
+            {
+                "trackingId": "4ece211b82162d1101d2d82a24876a92",
+                "subBusinessNumbers": [123456780,123456781]
+            }
+
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1011][]
+
++ Response 400
+
+    [5556][]
+
++ Response 400
+
+    [5557][]
+
+
 
 
 ## Track Social Post [/v1/social/{accountNumber}/post/track/{trackingId}]
