@@ -14987,7 +14987,27 @@ Create Listing API publishes information on online listing sources. We post pres
             + menuLink (string) - Show customers what you serve by linking them to your menu.
             + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
             + impressum (string) - In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
-            + payment: Paypal, Visa, Master Card (string) - Payment Type (Max 250 character long).
+            + paymentTypes (array)
+                List of payment types accepted by the business.
+                + (Members)
+                    + China Union Pay
+                    + Bitcoin
+                    + Cash Accepted
+                    + MasterCard
+                    + PayPal
+                    + Check / Cheque
+                    + Contactless Payment
+                    + Debit Card
+                    + Diners Club
+                    + JCB
+                    + Financing
+                    + Visa
+                    + American Express
+                    + Cash Only
+                    + Rupay
+                    + Credit Card
+                    + Discover
+            + additionalPaymentTypes: Paypal, Visa, Master Card (string) - Additional Payment Type (Max 250 character long).
             + localPhoneNumber (string)- Local phone number.
             + tollFreePhoneNumber (string) - Tollfree number.
             + androidAppURL: http://www.gmail.com (string)- Android app url.
@@ -15462,7 +15482,8 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                     "menuLink": "http://www.gmail.com",
                     "orderAheadLink": "http://www.gmail.com",
                     "impressum": "Thisissampleimpressum",
-                    "payment": "Visa,MasterCard,AmericanExpress,DebitCards,Check",
+                    "paymentTypes": ["China Union Pay","Bitcoin","Cash Accepted","MasterCard","PayPal","Check / Cheque","Contactless Payment","Debit Card","Diners Club","JCB","Financing","Visa","American Express","Cash Only","Rupay","Credit Card","Discover"],
+                    "additionalPaymentTypes": "Visa,MasterCard,AmericanExpress,DebitCards,Check",
                     "localPhoneNumber": "(973)716-0102",
                     "tollFreePhoneNumber": "",
                     "iosAppURL": "http://www.gmail.com",
@@ -15769,7 +15790,27 @@ The Update Listing API will update the location details on all your listings sit
             + menuLink (string) - Show customers what you serve by linking them to your menu.
             + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
             + impressum (string) - In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
-            + payment: Paypal, Visa, Master Card (string) - Payment Type (Max 250 character long).
+            + paymentTypes (array)
+                List of payment types accepted by the business.
+                + (Members)
+                    + China Union Pay
+                    + Bitcoin
+                    + Cash Accepted
+                    + MasterCard
+                    + PayPal
+                    + Check / Cheque
+                    + Contactless Payment
+                    + Debit Card
+                    + Diners Club
+                    + JCB
+                    + Financing
+                    + Visa
+                    + American Express
+                    + Cash Only
+                    + Rupay
+                    + Credit Card
+                    + Discover
+            + additionalPaymentTypes: Paypal, Visa, Master Card (string) - Additional Payment Type (Max 250 character long).
             + localPhoneNumber (string)- Local phone number.
             + tollFreePhoneNumber (string) - Tollfree number.
             + androidAppURL: http://www.gmail.com (string)- Android app url.
@@ -16244,7 +16285,8 @@ The Update Listing API will update the location details on all your listings sit
                     "menuLink": "http://www.gmail.com",
                     "orderAheadLink": "http://www.gmail.com",
                     "impressum": "Thisissampleimpressum",
-                    "payment": "Visa,MasterCard,AmericanExpress,DebitCards,Check",
+                    "paymentTypes": ["China Union Pay","Bitcoin","Cash Accepted","MasterCard","PayPal","Check / Cheque","Contactless Payment","Debit Card","Diners Club","JCB","Financing","Visa","American Express","Cash Only","Rupay","Credit Card","Discover"],
+                    "additionalPaymentTypes": "Visa,MasterCard,AmericanExpress,DebitCards,Check",
                     "localPhoneNumber": "(973)716-0102",
                     "tollFreePhoneNumber": "",
                     "iosAppURL": "http://www.gmail.com",
@@ -16554,7 +16596,27 @@ The Get Listing API will get the listing information for the given business numb
             + menuLink (string) - Show customers what you serve by linking them to your menu.
             + orderAheadLink (string) - Let customers place delivery and pick-up orders by linking them to your ordering page.
             + impressum (string) - In certain countries (like Austria, Germany and Switzerland), businesses may be required by law to include a statement of ownership on their web presence.
-            + payment: Paypal, Visa, Master Card (string) - Payment Type (Max 250 character long).
+            + paymentTypes (array)
+                List of payment types accepted by the business.
+                + (Members)
+                    + China Union Pay
+                    + Bitcoin
+                    + Cash Accepted
+                    + MasterCard
+                    + PayPal
+                    + Check / Cheque
+                    + Contactless Payment
+                    + Debit Card
+                    + Diners Club
+                    + JCB
+                    + Financing
+                    + Visa
+                    + American Express
+                    + Cash Only
+                    + Rupay
+                    + Credit Card
+                    + Discover
+            + additionalPaymentTypes: Paypal, Visa, Master Card (string) - Additional Payment Type (Max 250 character long).
             + localPhoneNumber (string)- Local phone number.
             + tollFreePhoneNumber (string) - Tollfree number.
             + androidAppURL (string)- Android app url.
@@ -17030,7 +17092,8 @@ The Get Listing API will get the listing information for the given business numb
                     "menuLink": "http://www.gmail.com",
                     "orderAheadLink": "http://www.gmail.com",
                     "impressum": "Thisissampleimpressum",
-                    "payment": "Visa,MasterCard,AmericanExpress,DebitCards,Check",
+                    "paymentTypes": ["China Union Pay","Bitcoin","Cash Accepted","MasterCard","PayPal","Check / Cheque","Contactless Payment","Debit Card","Diners Club","JCB","Financing","Visa","American Express","Cash Only","Rupay","Credit Card","Discover"],
+                    "additionalPaymentTypes": "Visa,MasterCard,AmericanExpress,DebitCards,Check",
                     "localPhoneNumber": "(973)716-0102",
                     "tollFreePhoneNumber": "",
                     "iosAppURL": "http://www.gmail.com",
