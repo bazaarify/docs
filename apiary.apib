@@ -4516,6 +4516,92 @@ Associate custom Fields
 # Group User
 Add, delete and manage user profiles and permissions easily.
 
+## Signup [/v1/user/new/signup]
+Create User API creates a new user for a business.
+
+### Create User [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+
+    + Attributes (object)
+
+        + firstName: Rhonda (string) - First name of the user.
+        + lastName: Spears (string) - Last name of the user.
+        + userEmailId: rhonda@test.com (string, required) - Email Id of the user that’s being added to this business.
+        + phone: 123-456-7890 (string) - Mobile number of the user.
+        + userRole: admin (string, required) - User role. Valid values are "owner","admin". Default is "owner".
+
+    + Body
+
+            {
+                "firstName": "Rhonda",
+                "lastName": "Spears",
+                "userEmailId": "rhonda@reviewmanagement.com",
+                "phone": "408-xxx-xxxx",
+                "userRole": "owner"
+            }
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1033][]
+
++ Response 409
+
+    [1160][]
+
++ Response 404
+
+    [1175][]
+
++ Response 400
+
+    [1052][]
+
++ Response 400
+
+    [1053][]
+
++ Response 400
+
+    [1054][]
+
++ Response 400
+
+    [1014][]
+
++ Response 400
+
+    [1013][]
+
++ Response 400
+
+    [1057][]
+
++ Response 400
+
+    [1059][]
+
 
 ## Update User [/v1/user/updateUser{?userEmailId,entUser}]
 Updates an existing user’s access, notifications, and role.
