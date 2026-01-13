@@ -4518,6 +4518,7 @@ Add, delete and manage user profiles and permissions easily.
 
 ## Signup [/v1/user/signup/v2]
 Create User API creates a new user for a business.
+An invitation will be sent to the user via email.
 
 ### Create User [POST]
 
@@ -4527,7 +4528,7 @@ Create User API creates a new user for a business.
 
             Accept: application/json
             api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
-            x-business-number: [Required] User assosiated businessNumber
+            x-business-number: [Required] User associated businessNumber
 
 
     + Attributes (object)
