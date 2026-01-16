@@ -4154,6 +4154,71 @@ Returns only birdeye (source: website) impressions by location as well as total.
 
     [1167][]
 
+
+## Add Card [/business/public/card]
+The custom card creation API creates custom cards which will be shown under microsite.
+
+
+### Add Custom Card [POST]
+
+
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            x-api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-business-id: - Long Business Number
+
+   + Attributes
+        + clickURL: "" (string) - Clickable URL of the card.
+        + description: "custom card test" (string) - Description of the card.
+        + imagePosition: 1 (string) - Position of the image in the card (1 for true, 0 for false).
+        + imageURL: "https://d1py4eyp5hehj0.cloudfront.net/upload/1670003/1759138378356/image12.png" (string) - URL of the image.
+        + isPinOnTop: 1 (number) - Whether the card is pinned on top (1 for true, 0 for false).
+        + isVisible: 1 (number) - Whether the card is visible (1 for true, 0 for false).
+        + title: "AKJ test" (string) - Title of the card.
+
+
+
+
+
+    + Body
+
+            {
+              "clickURL": "",
+              "description": "custom card test",
+              "imagePosition": 1,
+              "imageURL": "https://d1py4eyp5hehj0.cloudfront.net/upload/1670003/1759138378356/image12.png",
+              "isPinOnTop": 1,
+              "isVisible": 0,
+              "title": "AKJ test"
+            }
+
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
+
++ Response 401
+
+    [1011][]
+
+
 # Group Custom Fields
 Create, delete , update , associate and get custom fields easily.
 
