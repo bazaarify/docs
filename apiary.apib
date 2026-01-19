@@ -11,9 +11,6 @@ The Birdeye APIs are built on HTTP and are RESTful APIs.
 * Responds with standard HTTP response codes to indicate errors.
 * Requests and responses payload attached with all the mentioned APIs, you may choose your preferred language per the integration requirement.
 
-> __NOTE:__
-> __For requests targeting EU region business accounts, all API requests must include the `x-api-key` in the request headers. This is a required field and is mandatory for successful authentication and access to the API endpoints.__
-
 ### Authentication and Rate limiting
 
 > __NOTE:__
@@ -22,6 +19,10 @@ The Birdeye APIs are built on HTTP and are RESTful APIs.
 To call a Birdeye API, you need a valid API key. It can be fetched via the Birdeye dashboard and is a confidential key.
 
 There is a limit to calling APIs with each API key [connect with the support team to get the current limit]. If too many requests are made within the threshold timeframe, an error will be returned in the response.
+
+> __NOTE:__
+> __For requests targeting EU region business accounts, all API requests must include the `x-api-key` in the request headers. This is a required field and is mandatory for successful authentication and access to the API endpoints.__
+
 
 ### Pagination
 
@@ -18948,7 +18949,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
-* <b>01/19/2026</b> - Added a note under the Birdeye section specifying that the x-api-key header is mandatory for all API requests targeting EU region business accounts.
+* <b>01/19/2026</b> - Added a note under the Authentication and Rate limiting section specifying that the x-api-key header is mandatory for all API requests targeting EU region business accounts.
 * <b>01/13/2026</b> - Added Create User (Signup) API under User module to create and invite users for a business.
 * <b>09/22/2025</b> - Added GMB Products APIs to onboard/connect Google Merchant accounts and manage product listing actions.
 * <b>08/21/2025</b> - Added Single main business description Support.
