@@ -14067,6 +14067,7 @@ Get all Questions and Answers for a Location
             }
 
 
+
 + Response 200 (application/json)
 
 
@@ -14273,6 +14274,12 @@ Customers can fetch a paginated, ordered list of all QnA entries available for a
 
 ### Get All QnA [POST]
 
++ Parameters
+    + sIndex: 0 (number, optional) - The starting index for the records to fetch. Default is 0 if not specified.
+    + count: 25 (number, optional) - The number of QnA records to return.Default is 25 if not specified.
+    + order: 1 (number, optional) - The ordering in which records should be returned by last updated date (0 for ascending, 1 for descending).Default is 1 if not specified.
+
+
 + Request (application/json)
 
     + Headers
@@ -14281,11 +14288,23 @@ Customers can fetch a paginated, ordered list of all QnA entries available for a
             x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange..
             x-business-number: [Required] User associated businessNumber
 
+
     + Attributes
 
-        + sIndex: 50 (number, optional) - The starting index for the records to fetch. Default is 0 if not specified.
-        + count: 25 (number, optional) - The number of QnA records to return.
-        + order: 1 (number, optional) - The ordering in which records should be returned (1 for ascending, -1 for descending).
+    + businessNumbers: 175009059995828,169028735563867 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+
+    + Body
+
+            {
+                "businessNumbers": [
+                    175009059995828,
+                    169028735563867,
+                    166609110899853,
+                    164873686901155,
+                    164863775654389,
+                    164847076003414
+                ]
+            }
 
 
 + Response 200
