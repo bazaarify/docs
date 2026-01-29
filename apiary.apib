@@ -14264,6 +14264,96 @@ Get all Unanswered Questions and Answers for a Location
     [2466][]
 
 
+# Group Quero
+
+To retrieve all Question and Answer (QnA) entries across locations using Quero APIs, enabling smart support and knowledge features for businesses.
+
+## Get All QnA [/v1/quero/external/get-all-qna?sIndex={sIndex}&count={count}&order={order}]
+Customers can fetch a paginated, ordered list of all QnA entries available for a business.
+
+### Get All QnA [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange..
+            x-business-number: [Required] User associated businessNumber
+
+    + Attributes
+
+        + sIndex: 50 (number, optional) - The starting index for the records to fetch. Default is 0 if not specified.
+        + count: 25 (number, optional) - The number of QnA records to return.
+        + order: 1 (number, optional) - The ordering in which records should be returned (1 for ascending, -1 for descending).
+
+
++ Response 200
+
+    + Attributes
+
+        + qnAs (array) - List of QnA objects.
+            + (object)
+                + question (object) - Details for this QnA's question.
+                    + text: What payment options does RetailPrime platform support? (string) - The text of the question.
+                    + updatedDate: 2026-01-15T09:00:00.000+0000 (string) - Last update date/time (ISO 8601 or yyyy-MM-dd'T'HH:mm:ss.SSSZ).
+                    + answers (array) - Array of answers to this question.
+                        + (object)
+                            + text: RetailPrime supports credit card, debit card, and PayPal payments. (string) - The text of the answer.
+                + allLocations: true (boolean) - Indicates if this QnA applies to all business locations.
+                + source: PLATFORM (string) - Source of the QnA entry, e.g. "PLATFORM", "USER", "FAQ".
+                + sourceType: DOCUMENTATION (string) - Kind of source of this QnA entry, such as "DOCUMENTATION", "FILE", etc.
+                + sourceValue: https://retailprime.com/docs/payment-options (string, optional) - Reference value for the source, could be a link, file, etc.
+                + locationNumbers: 123456789123456, 987654321987654 (array[number], optional) - Array of location/business numbers, if specific.
+
+    + Body
+
+            {
+                "qnAs": [
+                    {
+                        "question": {
+                            "text": "What payment options does RetailPrime platform support?",
+                            "updatedDate": "2026-01-15T09:00:00.000+0000",
+                            "answers": [
+                                {
+                                    "text": "RetailPrime supports credit card, debit card, and PayPal payments."
+                                }
+                            ]
+                        },
+                        "allLocations": true,
+                        "source": "PLATFORM",
+                        "sourceType": "DOCUMENTATION",
+                        "sourceValue": "https://retailprime.com/docs/payment-options",
+                        "locationNumbers": [123456789123456, 987654321987654]
+                    }
+                ]
+            }
+
++ Response 400
+
+    [1167][]
+
++ Response 400
+
+    [5008][]
+
++ Response 400
+
+    [5043][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1532][]
+
+
 # Group Listing
 Keep your business information accurate and consistent across 50+ websites.
 
@@ -18879,7 +18969,6 @@ Get tickets
 
 
 
-
 # Group Integration
 Birdeye integrates with various software or tools you use.
 
@@ -18950,6 +19039,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>01/29/2026</b> - Added the "Get All QnA" API under Quero group to enable retrieval of QnA entries across business locations, with full request and response documentation
 * <b>01/19/2026</b> - Added a note under the Authentication and Rate limiting section specifying that the x-api-key header is mandatory for all API requests targeting EU region business accounts.
 * <b>01/13/2026</b> - Added Create User (Signup) API under User module to create and invite users for a business.
 * <b>09/22/2025</b> - Added GMB Products APIs to onboard/connect Google Merchant accounts and manage product listing actions.
