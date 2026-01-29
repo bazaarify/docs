@@ -14268,12 +14268,13 @@ Get all Unanswered Questions and Answers for a Location
 
 To retrieve all Question and Answer (QnA) entries across locations using Quero APIs, enabling smart support and knowledge features for businesses.
 
-## Get All QnA [/v1/quero/external/get-all-qna?sIndex={sIndex}&count={count}&order={order}]
+## Get All QnA [/v1/quero/external/get-all-qna?{sIndex,count,order}]
 Customers can fetch a paginated, ordered list of all QnA entries available for a business.
 
 ### Get All QnA [POST]
 
 + Parameters
+
     + sIndex: 0 (number, optional) - The starting index for the records to fetch. Default is 0 if not specified.
     + count: 25 (number, optional) - The number of QnA records to return.Default is 25 if not specified.
     + order: 1 (number, optional) - The ordering in which records should be returned by last updated date (0 for ascending, 1 for descending).Default is 1 if not specified.
@@ -14290,7 +14291,7 @@ Customers can fetch a paginated, ordered list of all QnA entries available for a
 
     + Attributes
 
-    + businessNumbers: 175009059995828,169028735563867 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+        + businessNumbers: 175009059995828,169028735563867 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
 
     + Body
 
