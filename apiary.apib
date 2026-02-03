@@ -14291,7 +14291,7 @@ Customers can fetch a paginated, ordered list of all QnA entries available for a
 
     + Attributes
 
-        + businessNumbers: 175009059995828,169028735563867 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
+        + businessNumbers: 175009059995828,169028735563867 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected. This field is Optional
 
     + Body
 
@@ -14320,10 +14320,10 @@ Customers can fetch a paginated, ordered list of all QnA entries available for a
                         + (object)
                             + text: RetailPrime supports credit card, debit card, and PayPal payments. (string) - The text of the answer.
                 + allLocations: true (boolean) - Indicates if this QnA applies to all business locations.
-                + source: PLATFORM (string) - Source of the QnA entry, e.g. "PLATFORM", "USER", "FAQ".
-                + sourceType: DOCUMENTATION (string) - Kind of source of this QnA entry, such as "DOCUMENTATION", "FILE", etc.
-                + sourceValue: https://retailprime.com/docs/payment-options (string, optional) - Reference value for the source, could be a link, file, etc.
-                + locationNumbers: 123456789123456, 987654321987654 (array[number], optional) - Array of location/business numbers, if specific.
+                + source: USER (string) - Source of the QnA entry, e.g.  "USER", "AI".
+                + sourceType: FILE (string) - Indicates the source type when the QnA is AI-generated, such as "LINK", "FILE", and others.
+                + sourceValue: https://retailprime.com/docs/payment-options (string, optional) - Reference value for the source, could be a link, filename, etc.
+                + businessNumbers: 123456789123456, 987654321987654 (array[number], optional) - Array of location/business numbers, if specific.
 
     + Body
 
@@ -14340,10 +14340,10 @@ Customers can fetch a paginated, ordered list of all QnA entries available for a
                             ]
                         },
                         "allLocations": true,
-                        "source": "PLATFORM",
-                        "sourceType": "DOCUMENTATION",
-                        "sourceValue": "https://retailprime.com/docs/payment-options",
-                        "locationNumbers": [123456789123456, 987654321987654]
+                        "source": "AI",
+                        "sourceType": "FILE",
+                        "sourceValue": "sample.txt",
+                        "businessNumbers": [123456789123456, 987654321987654]
                     }
                 ]
             }
