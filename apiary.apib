@@ -2301,14 +2301,13 @@ For example :
 # Group Business
 Create and maintain your business on Birdeye.
 
-## Create Business [/v1/signup/reseller/subaccount{?api_key,rid,email_id}]
+## Create Business [/v1/signup/reseller/subaccount{?rid,email_id}]
 Create a business API creates a new business under a reseller.
 
 ### Create a business [POST]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + rid: 12334667201 (required, number) - Id of the Reseller.
     + email_id: sample@birdeye.com (required, string) - Business Email id.
 
@@ -2318,6 +2317,7 @@ Create a business API creates a new business under a reseller.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
     + Body
@@ -2492,7 +2492,7 @@ Search Business API searches a business using a name or number. Partial name mat
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Body
 
@@ -2582,7 +2582,7 @@ Search Business API searches a business using a name or number. Partial name mat
 
 
 
-## Get [/v1/business/{business_id}{?api_key}]
+## Get [/v1/business/{business_id}]
 Get Business API gets business information, including product features opted and profile information.
 
 
@@ -2590,14 +2590,13 @@ Get Business API gets business information, including product features opted and
 
 + Parameters
     + business_id: 12345678 (string, required) - Id of the Business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
-
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200 (application/json)
@@ -2831,20 +2830,20 @@ Get Business API gets business information, including product features opted and
     [1167][]
 
 
-## Update [/v1/business/{businessId}{?api_key}]
+## Update [/v1/business/{businessId}]
 Update Business API updates business information.
 
 ### Update Business [PUT]
 
 + Parameters
     + businessId: 12345678 (string, required) - The Business Number
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
 
@@ -3506,7 +3505,7 @@ Update Business API updates business information.
     [2520][]
 
 
-## Delete [/v1/business/{business_Id}{?api_key}]
+## Delete [/v1/business/{business_Id}]
 Delete Business API deletes an account or sub-reseller under a reseller.
 
 ### Delete Business [DELETE]
@@ -3514,13 +3513,14 @@ Delete Business API deletes an account or sub-reseller under a reseller.
 
 + Parameters
     + business_Id: 12345678 (string, required) - Id of the Business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -3547,7 +3547,7 @@ Delete Business API deletes an account or sub-reseller under a reseller.
 
 
 
-## Status Update [/v1/business/{business_id}/status{?api_key,astatus}]
+## Status Update [/v1/business/{business_id}/status{?astatus}]
 Status Update Business API updates the activation status of a business. Activation status signifies whether an account is active or inactive.
 
 ### Update the status [PUT]
@@ -3555,7 +3555,6 @@ Status Update Business API updates the activation status of a business. Activati
 + Parameters
 
     + business_id: 12345678 (string, required) - Business id whose status has to be changed. Returned by create business API
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + astatus: inactive (string, required) - New status for the business. Valid values are "active/inactive".
 
 + Request (application/json)
@@ -3563,6 +3562,7 @@ Status Update Business API updates the activation status of a business. Activati
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200 (application/json)
@@ -3592,7 +3592,7 @@ Status Update Business API updates the activation status of a business. Activati
     [1191][]
 
 
-## Child Businesses [/v1/business/child/all{?api_key,pid}]
+## Child Businesses [/v1/business/child/all{?pid}]
 Child Businesses API gets all the businesses under an account.
 
 ### Get Child Businesses [GET]
@@ -3600,7 +3600,6 @@ Child Businesses API gets all the businesses under an account.
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + pid:  12345678 (number, required) - Reseller/Sub-reseller/Enterprise Id.
 
 + Request (application/json)
@@ -3608,6 +3607,7 @@ Child Businesses API gets all the businesses under an account.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200 (application/json)
@@ -3694,14 +3694,13 @@ Child Businesses API gets all the businesses under an account.
 
 
 
-## Public profile tabs [/v1/business/tabs{?api_key,businessId}]
+## Public profile tabs [/v1/business/tabs{?businessId}]
 Public profile tabs API saves information on business profile tabs.
 
 ### Update public profile of Businesses [POST]
 
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the Business.
 
 + Request (application/json)
@@ -3709,6 +3708,7 @@ Public profile tabs API saves information on business profile tabs.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes (object)
         + profileTabs (array)
@@ -3772,7 +3772,7 @@ Public profile tabs API saves information on business profile tabs.
     [1191][]
 
 
-## Get Hierarchy [/v1/business/{businessId}/hierarchy{?api_key}]
+## Get Hierarchy [/v1/business/{businessId}/hierarchy]
 Get Hierarchy API gets business hierarchy. Hierarchical information contains the parent-child relationship information
 between businesses.
 
@@ -3781,7 +3781,6 @@ between businesses.
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the Business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -3789,6 +3788,7 @@ between businesses.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -3874,7 +3874,7 @@ between businesses.
     [1167][]
 
 
-## Update Hierarchy [/v1/business/business-hierarchy/location/update-mapping/{businessId}{?api_key}]
+## Update Hierarchy [/v1/business/business-hierarchy/location/update-mapping/{businessId}]
 The Update Hierarchy API maps the hierarchical level to its corresponding level value for a given location. This API is used to update the hierarchical structure of locations, ensuring that each location is correctly placed within the hierarchy based on its level and value. It is important to avoid overwriting existing data by passing all values accurately.
 
 
@@ -3883,7 +3883,6 @@ The Update Hierarchy API maps the hierarchical level to its corresponding level 
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the Business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
@@ -3891,6 +3890,7 @@ The Update Hierarchy API maps the hierarchical level to its corresponding level 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
    + Attributes
         + Level - It will be a key-value pair for each level with its corresponding level value.
@@ -3941,7 +3941,7 @@ Get Customer card API returns the detail of customer card of the location
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 
@@ -4023,7 +4023,7 @@ Get Timezone List API fetches the list of all available timezones.
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 
@@ -4089,7 +4089,7 @@ Returns only birdeye (source: website) impressions by location as well as total.
     + Headers
 
             Accept: application/json
-            api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
          + businessNumbers: 169744180007807 (required,string)- list of the unique business ids associated with a business eg: [123456789, 987656789]
@@ -4174,7 +4174,7 @@ Create custom Fields
     + Headers
 
             Accept: application/json
-            api-key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
             x-business-number: - Long Business Number
 
     + Attributes
@@ -4252,7 +4252,7 @@ Update custom Fields
     + Headers
 
             Accept: application/json
-            api-key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
             x-business-number: - Long Business Number
 
 
@@ -4310,7 +4310,7 @@ Get custom Fields
     + Headers
 
             Accept: application/json
-            api-key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
             x-business-number: - Long Business Number
 
 
@@ -4359,7 +4359,7 @@ Get custom Fields List
     + Headers
 
             Accept: application/json
-            api-key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
             X-BUSINESS-NUMBER: - Long Business Number
 
     + Attributes
@@ -4437,7 +4437,7 @@ Delete custom Fields
     + Headers
 
             Accept: application/json
-            api-key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
             x-business-number: - Long Business Number
 
 
@@ -4470,7 +4470,7 @@ Associate custom Fields
     + Headers
 
             Accept: application/json
-            api-key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
             x-business-number: - Long Business Number.
 
 
@@ -4537,7 +4537,7 @@ An invitation will be sent to the user via email.
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User associated businessNumber
 
 
@@ -4631,7 +4631,7 @@ Updates an existing user’s access, notifications, and role.
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
     + Attributes (object)
@@ -4728,13 +4728,12 @@ Updates an existing user’s access, notifications, and role.
 
 
 
-## Delete [/v1/user/remove{?api_key,bid,email}]
+## Delete [/v1/user/remove{?bid,email}]
 Delete User API removes user access from a business.
 
 ### Delete a user [DELETE]
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 123 (string, required) - Business Id from which user access has to be revoked
     + email: abc@test.com (string, required) - Email id of the user whose access has to be revoked
 
@@ -4744,6 +4743,7 @@ Delete User API removes user access from a business.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -4776,14 +4776,13 @@ Delete User API removes user access from a business.
     [1175][]
 
 
-## Password [/v1/user/forgotpassword{?api_key,email}]
+## Password [/v1/user/forgotpassword{?email}]
 Forgot Password API generates forgot password mail to reset the password.
 
 ### Forgot Password [POST]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + email: abc@test.com  (string, required) - Email Id of the user whose access has to be revoked
 
 + Request (application/json)
@@ -4791,6 +4790,7 @@ Forgot Password API generates forgot password mail to reset the password.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -4819,14 +4819,13 @@ Forgot Password API generates forgot password mail to reset the password.
     [1189][]
 
 
-## Get [/v1/user/details{?api_key,email}]
+## Get [/v1/user/details{?email}]
 Get User API gets details of a user.
 
 ### Get details of a user [GET]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + email: abc@test.com (string, required) - Email Id of the user whose details to be retrieved
 
 + Request (application/json)
@@ -4834,6 +4833,7 @@ Get User API gets details of a user.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -4890,7 +4890,7 @@ Get User API gets details of a user.
 # Group Reviews
 Consistently generate more reviews and higher ratings.
 
-## Get [/v1/review/businessId/{businessId}{?sindex,count,api_key,includeNonAggregatedReviews}]
+## Get [/v1/review/businessId/{businessId}{?sindex,count,includeNonAggregatedReviews}]
 Get Reviews returns the list of reviews for an account with all its details.
 
 > __Note__
@@ -4903,7 +4903,6 @@ Get Reviews returns the list of reviews for an account with all its details.
     + businessId: 12345678 (number, required) - Id of the Business.
     + sindex: 10 (integer, required) - Start index of the reviews. Refer API note for max permissible value.
     + count: 30 (integer, required) - Number of reviews to query. Refer API note for max permissible value.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + includeNonAggregatedReviews: false (boolean, optional) - Include Reviews whose auto-crawling is blocked e.g. PressGaney
 
 + Request (application/json)
@@ -4911,6 +4910,7 @@ Get Reviews returns the list of reviews for an account with all its details.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + fromDate: 04/01/2013 (string) - Review date start in UTC format.
@@ -5093,7 +5093,7 @@ Get Reviews returns the list of reviews for an account with all its details.
 
 
 
-## Review Summary [/v1/review/businessid/{businessId}/summary{?api_key,statuses}]
+## Review Summary [/v1/review/businessid/{businessId}/summary{?statuses}]
 Review Summary API returns the number of reviews based on the review source.
 It also returns the list of review sources and review ratings.
 
@@ -5103,7 +5103,6 @@ It also returns the list of review sources and review ratings.
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + statuses: published,parked (string[], optional) -  List of review status.
 
 
@@ -5112,6 +5111,7 @@ It also returns the list of review sources and review ratings.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200 (application/json)
@@ -5202,7 +5202,7 @@ It also returns the list of review sources and review ratings.
     [1167][]
 
 
-## Review Reply [/v1/review/reply/business/{businessNumber}/review/{reviewId}{?api_key}]
+## Review Reply [/v1/review/reply/business/{businessNumber}/review/{reviewId}]
 Eligible reviews can be replied to from the Birdeye platform using Review Reply API.
 
 ### Post Review Reply [PUT]
@@ -5211,13 +5211,13 @@ Eligible reviews can be replied to from the Birdeye platform using Review Reply 
 
     + businessNumber: 169744180007807 (string, required) - Id of the business.
     + reviewId: 88778877 (string, required) - Review Id.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + response: Thanks for reviewing us (string) - Review Reply text to be posted.
@@ -5319,14 +5319,13 @@ Eligible reviews can be replied to from the Birdeye platform using Review Reply 
     [2078][]
 
 
-## Create Tags [/v1/tag{?businessId,api_key}]
+## Create Tags [/v1/tag{?businessId}]
 Create Tags creates new tag(s) in the account.
 
 ### Create tags [POST]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the Business.
 
 
@@ -5335,6 +5334,7 @@ Create Tags creates new tag(s) in the account.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + tags: positive, spam (array) - List of tag name.
@@ -5366,14 +5366,13 @@ Create Tags creates new tag(s) in the account.
 
 
 
-## Delete Tag [/v1/tag/{tagname}{?businessId,api_key}]
+## Delete Tag [/v1/tag/{tagname}{?businessId}]
 Delete Tag deletes any tag from the account.
 
 ### Delete a tag [DELETE]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Business Number.
     + tagname: positive2022 (string, required) - Tag name to be deleted.
 
@@ -5383,6 +5382,7 @@ Delete Tag deletes any tag from the account.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -5404,7 +5404,7 @@ Delete Tag deletes any tag from the account.
 
 
 
-## Fetch Tags [/v1/tag/all{?businessId,api_key}]
+## Fetch Tags [/v1/tag/all{?businessId}]
 Fetch Tags returns the list of tags associated with the account.
 
 ### Get all tags [GET]
@@ -5412,7 +5412,6 @@ Fetch Tags returns the list of tags associated with the account.
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Business Number.
 
 
@@ -5421,6 +5420,7 @@ Fetch Tags returns the list of tags associated with the account.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -5447,7 +5447,7 @@ Fetch Tags returns the list of tags associated with the account.
 
 
 
-## Search reviews and assign tags [/v1/tag/add/review{?bid,api_key,tag}]
+## Search reviews and assign tags [/v1/tag/add/review{?bid,tag}]
 Assign the list of tags to the reviews on the basis of review filter.
 
 ### Assign tags to filtered reviews [POST]
@@ -5455,7 +5455,6 @@ Assign the list of tags to the reviews on the basis of review filter.
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 12345678 (string, required) - Id of the Business.
     + tag: positive2022&negative2022 (string, required) - List of tags.
 
@@ -5465,6 +5464,7 @@ Assign the list of tags to the reviews on the basis of review filter.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
             + reviewIds: 3901784402334,3901744402337 (array) - List of reviewIds.
@@ -5516,7 +5516,7 @@ Assign the list of tags to the reviews on the basis of review filter.
 
 
 
-## Search reviews and remove tags [/v1/tag/remove/review{?bid,api_key,tag}]
+## Search reviews and remove tags [/v1/tag/remove/review{?bid,tag}]
 Search reviews and remove tags removes the list of tags from reviews on the basis of review filter.
 
 ### Remove tags from filtered reviews [POST]
@@ -5524,7 +5524,6 @@ Search reviews and remove tags removes the list of tags from reviews on the basi
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 12345678 (string, required) - Id of the Business.
     + tag: positive2022&negative2022 (string, required) - List of tags to be removed from reviews.
 
@@ -5534,6 +5533,7 @@ Search reviews and remove tags removes the list of tags from reviews on the basi
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
             + reviewIds: 3901784402334,3901744402337 (array) - List of reviewIds.
@@ -5583,14 +5583,13 @@ Search reviews and remove tags removes the list of tags from reviews on the basi
     [1011][]
 
 
-## Remove tags from all reviews [/v1/tag/remove/all/review{?bid,api_key}]
+## Remove tags from all reviews [/v1/tag/remove/all/review{?bid}]
 Remove particular tags from all reviews removes the list of tags from all the reviews of an account.
 
 ### Remove particular tags from all reviews [POST]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 12345678 (string, required) - Id of the Business.
 
 
@@ -5599,6 +5598,7 @@ Remove particular tags from all reviews removes the list of tags from all the re
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + tags: happy,good (array) - List of tags to be removed.
@@ -5635,7 +5635,7 @@ Remove particular tags from all reviews removes the list of tags from all the re
 
 Manage contacts across locations effortlessly with a robust Contact Management System.
 
-## Create or Update Contact [/v1/customer-v2/external/saveCustomer{?api_key,businessId}]
+## Create or Update Contact [/v1/customer-v2/external/saveCustomer{?businessId}]
 Customers can be created & updated using Create or Update Contact API.
 
 
@@ -5643,7 +5643,6 @@ Customers can be created & updated using Create or Update Contact API.
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the business.
 
 
@@ -5652,6 +5651,7 @@ Customers can be created & updated using Create or Update Contact API.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
     + Attributes
@@ -5744,14 +5744,13 @@ Customers can be created & updated using Create or Update Contact API.
 
 
 
-## Get Contact [/v1/customer-v2/external/getCustomer{?api_key,businessId}]
+## Get Contact [/v1/customer-v2/external/getCustomer{?businessId}]
 Get Contact fetches Customer details.
 
 ### Get Contact [POST]
 
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the business.
 
 
@@ -5760,6 +5759,7 @@ Get Contact fetches Customer details.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
 
@@ -5869,7 +5869,7 @@ Get Contact fetches Customer details.
 
 
 
-## Delete Contact [/v1/customer-v2/external/deleteCustomer{?api_key,businessId}]
+## Delete Contact [/v1/customer-v2/external/deleteCustomer{?businessId}]
 Customers can be deleted using Delete Contact API.
 
 
@@ -5877,7 +5877,6 @@ Customers can be deleted using Delete Contact API.
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the business.
 
 
@@ -5886,6 +5885,7 @@ Customers can be deleted using Delete Contact API.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + id: 115339282 (string,required) - Id of enterprise customer.
@@ -5915,7 +5915,7 @@ Customers can be deleted using Delete Contact API.
 
 
 
-## Check in [/v1/customer/checkin{?api_key,bid}]
+## Check in [/v1/customer/checkin{?bid}]
 Customer check-in can be done using Check in API.
 
 
@@ -5923,7 +5923,6 @@ Customer check-in can be done using Check in API.
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 12345678 (string, required) - Id of the business.
 
 
@@ -5932,6 +5931,7 @@ Customer check-in can be done using Check in API.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + name: Steve Smith  (string) - Name of the customer.
@@ -6024,7 +6024,7 @@ Customer check-in can be done using Check in API.
 
 
 
-## Activity log [/v1/customer/history/{customerId}{?businessId,api_key,startDate,endDate}]
+## Activity log [/v1/customer/history/{customerId}{?businessId,startDate,endDate}]
 You can retrieve the customer history or customer activity log using the Customer activity log API.
 
 ### Customer activity log [GET]
@@ -6032,7 +6032,6 @@ You can retrieve the customer history or customer activity log using the Custome
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + startDate: 12/30/2021 (string, optional) - The start date format should be MM/dd/yyyy. if start date is not set, then we will use the date customer was created.
     + endDate: 12/30/2022 (string,optional) - The end date format should be MM/dd/yyyy. if end date is not set, then we will use the current date.
     + customerId: 12344 (string,required) - Id of the customer.
@@ -6043,6 +6042,7 @@ You can retrieve the customer history or customer activity log using the Custome
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -6114,7 +6114,7 @@ You can retrieve the customer history or customer activity log using the Custome
     [1524][]
 
 
-## Delete Customer [/v1/customer/id/{customerId}{?api_key}]
+## Delete Customer [/v1/customer/id/{customerId}]
 Customer can be deleted using this API.
 
 ### Customer Delete [DELETE]
@@ -6122,14 +6122,13 @@ Customer can be deleted using this API.
 + Parameters
 
     + customerId: 12345678 (string, required) - Id of enterprise customer.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
-
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -6170,15 +6169,11 @@ Customer can be deleted using this API.
 
 
 
-## Subscribe/Unsubscribe Customer [/v1/customer-v2/change-permission{?api_key}]
+## Subscribe/Unsubscribe Customer [/v1/customer-v2/change-permission]
 Customer can be subscribe/unsubscribe from Email & SMS using this API.
 
 
 ### Subscribe/Unsubscribe Customer [POST]
-
-
-+ Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -6186,6 +6181,7 @@ Customer can be subscribe/unsubscribe from Email & SMS using this API.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + permission: both-unsubscribed (string, required) -  Action to be taken. Valid values are both-subscribed, both-unsubscribed, sms-subscribed, and email-subscribed.
@@ -6233,7 +6229,7 @@ Customer can be subscribe/unsubscribe from Email & SMS using this API.
 
 
 
-## Contacts list [/v2/customer/list{?businessId,api_key,page,size,order,sortby}]
+## Contacts list [/v2/customer/list{?businessId,page,size,order,sortby}]
 Contact list API fetches contact list for a business.
 
 ### Contact [POST]
@@ -6243,7 +6239,6 @@ Contact list API fetches contact list for a business.
     + businessId: 12345678 (string, required) - Id of the Business.
     + page: 0 (number, required) - The page number.
     + size: 30 (number, required) - Maximum number of contacts return in response.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + sortby: lastActivityOn (string, required) - The sorting order of the list.
 
 + Request (application/json)
@@ -6251,6 +6246,7 @@ Contact list API fetches contact list for a business.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
 
@@ -6324,14 +6320,13 @@ Contact list API fetches contact list for a business.
 
 
 
-## Customer or Lead list [/v1/contact/details{?api_key,tags,customfields}]
+## Customer or Lead list [/v1/contact/details{?tags,customfields}]
 Customer or Lead list fetches the contact list for a business, which can be filtered based on contact type (Lead or Customer) & source of the contact.
 
 ### Customer or Lead list [POST]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + tags: true (boolean, optional) - If tag data is required send true, default value is false.
     + customfields: true (boolean, optional) - If custom fields data is required send true, default is false.
 
@@ -6340,6 +6335,7 @@ Customer or Lead list fetches the contact list for a business, which can be filt
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + sources: api,dashboard (array, optional) - Source of the customer/lead. Possible values are api,dashboard,facebook,integration,sftp,bulkupload,webchat,crmimport,other,referral,voicecall,text,email,google.
@@ -6466,7 +6462,7 @@ Customer or Lead list fetches the contact list for a business, which can be filt
     [2348][]
 
 
-## Contact Us [/v1/contactUs/{businessId}{?api_key}]
+## Contact Us [/v1/contactUs/{businessId}]
 Contact Us form can be integrated with Birdeye Inbox using Contact Us API.
 
 ### Contact Us Request [POST]
@@ -6474,13 +6470,13 @@ Contact Us form can be integrated with Birdeye Inbox using Contact Us API.
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + customerComment: What all services do you offer? (string) - Comment or query by the customer
@@ -6578,7 +6574,7 @@ API to fetch the daily opt-out or blocked contact data for a business
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
     + Attributes
@@ -6711,7 +6707,7 @@ Customers can Create or Update Contact API.
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
     + Attributes
@@ -6853,7 +6849,7 @@ Retrieve a customer's contact profile and associated details.
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
     + Attributes
@@ -6993,7 +6989,7 @@ Customer check-in can be done using Check in API.
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
     + Attributes
@@ -7126,7 +7122,7 @@ Customer can be subscribe/unsubscribe from Email & SMS using this API.
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
     + Attributes
@@ -7203,7 +7199,7 @@ API to fetch the daily opt-out or blocked contact data for a business
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
 
@@ -7335,21 +7331,18 @@ API to fetch the daily opt-out or blocked contact data for a business
 # Group Campaign
 Create a short link for review requests and set review sources in the template.
 
-## Fetch Request URL [/v1/campaign/external/campaign-request-url{?api_key}]
+## Fetch Request URL [/v1/campaign/external/campaign-request-url]
 Fetch Request URL gets the short link of the requested URL for the customer.
 
 ### Fetch Request URL [POST]
 
-
-+ Parameters
-
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + businessId: 100018055 (number, required) - Id of a business (Long).
@@ -7410,21 +7403,18 @@ Fetch Request URL gets the short link of the requested URL for the customer.
 
 
 
-## Set Defaullt Review Sources [/v1/campaign/external/default-review-sources{?api_key}]
+## Set Defaullt Review Sources [/v1/campaign/external/default-review-sources]
 Set Default Review Sources API updates default templates of businesses under a reseller with default review sources (i.e., Google/Facebook).
 
 ### Set Defaullt Review Sources [POST]
 
-
-+ Parameters
-
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + businessId: 157189662556139 (number, required) - Id of reseller (Long).
@@ -7458,7 +7448,7 @@ Set Default Review Sources API updates default templates of businesses under a r
 
 Access your public data from 150+ review sites.
 
-## Get source list [/v1/aggregation/business/{businessId}{?api_key}]
+## Get source list [/v1/aggregation/business/{businessId}]
 Get source list API returns the list of aggregations associated with the location/SMB.
 
 
@@ -7467,7 +7457,6 @@ Get source list API returns the list of aggregations associated with the locatio
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the Business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -7475,6 +7464,7 @@ Get source list API returns the list of aggregations associated with the locatio
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -7532,7 +7522,7 @@ Get source list API returns the list of aggregations associated with the locatio
     [1175][]
 
 
-## Get Source List-lite [/v1/survey/reviewsites-alias{?api_key,businessId}]
+## Get Source List-lite [/v1/survey/reviewsites-alias{?businessId}]
 Get Source List-lite returns a list of aggregation aliases associated with the location/SMB.
 
 ### Get all aggregation source [GET]
@@ -7541,7 +7531,6 @@ Get Source List-lite returns a list of aggregation aliases associated with the l
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -7549,6 +7538,7 @@ Get Source List-lite returns a list of aggregation aliases associated with the l
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -7598,7 +7588,7 @@ Get Source List-lite returns a list of aggregation aliases associated with the l
     [1175][]
 
 
-## Add Aggregation Link [/v1/aggregation/business/{business_id}{?api_key}]
+## Add Aggregation Link [/v1/aggregation/business/{business_id}]
 Add Aggregation Link adds the aggregation URL to the location.
 
 ### Add aggregation URL [POST]
@@ -7606,13 +7596,13 @@ Add Aggregation Link adds the aggregation URL to the location.
 + Parameters
 
     + business_id: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + sourceAlias: citysearch (string, required) - Source alias.
@@ -7676,7 +7666,7 @@ Add Aggregation Link adds the aggregation URL to the location.
 
 
 
-## Delete [/v1/aggregation/business/{businessID}/aggregation/{aggregationID}{?api_key}]
+## Delete [/v1/aggregation/business/{businessID}/aggregation/{aggregationID}]
 Delete Aggregation API deletes aggregation from the location/SMB.
 
 
@@ -7685,10 +7675,15 @@ Delete Aggregation API deletes aggregation from the location/SMB.
 + Parameters
 
     + businessID: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + aggregationID: abcdefgh (number, required) - Id of the aggregation to be deleted.
 
 
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -7717,14 +7712,13 @@ Delete Aggregation API deletes aggregation from the location/SMB.
 # Group Report
 Various reporting data points across Birdeye modules like reviews, insights and competitors etc for all your data visualisation
 
-## Dashboard [/v1/reports/smb{?api_key,bid}]
+## Dashboard [/v1/reports/smb{?bid}]
 Get Dashboard Data API gives you an overview of business data with data points like review & rating count, sentiment of reviews, negative/positive reviews, and past 30 days' reviews with review responses.
 
 ### Get Dashboard data [GET]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + bid: 12345678 (string, required) - Id of the Business.
 
 
@@ -7733,6 +7727,7 @@ Get Dashboard Data API gives you an overview of business data with data points l
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200 (application/json)
@@ -7977,13 +7972,12 @@ Get Dashboard Data API gives you an overview of business data with data points l
     [89][]
 
 
-## Review conversion report [/v1/reports/business/analytics/email{?api_key,businessId,fromDate,toDate,days,months}]
+## Review conversion report [/v1/reports/business/analytics/email{?businessId,fromDate,toDate,days,months}]
 Review conversion report API gives you the detail overview of the review request send to the customer.
 
 ### Get Review conversion report [GET]
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
     + fromDate: 01/13/2021 (string, optional) - Date from result is expected. Format MM/DD/YYYY.
     + toDate: 01/21/2021 (string, optional) - Date up to result is expected. Format MM/DD/YYYY.
@@ -7996,6 +7990,7 @@ Review conversion report API gives you the detail overview of the review request
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200 (application/json)
@@ -8149,14 +8144,13 @@ Review conversion report API gives you the detail overview of the review request
 
 
 
-## Review and rating over time [/v1/reports/review/analytic/time{?api_key,businessId,sortby,sorder}]
+## Review and rating over time [/v1/reports/review/analytic/time{?businessId,sortby,sorder}]
 Review and rating over time API gives you the number of reviews and average rating in accordance with the time.
 
 ### Review and rating over time Report [POST]
 
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
     + sortby: rating (string, optional) - Values can be 'count' or 'rating'.
     + sorder: 0 (number, optional) - '0' for ascending and '1' for descending order.
@@ -8166,6 +8160,7 @@ Review and rating over time API gives you the number of reviews and average rati
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + sourceAliases: citysearch,google (array) - List of source aliases.
@@ -8247,7 +8242,7 @@ Review and rating over time API gives you the number of reviews and average rati
 
 
 
-## Reviews & Rating By Location [/v1/reports/rating/location{?api_key,businessId,sortby,sorder}]
+## Reviews & Rating By Location [/v1/reports/rating/location{?businessId,sortby,sorder}]
 Reviews & Rating By Location gives an overall view of how many reviews, and the average ratings are associated with each location.
 
 
@@ -8256,7 +8251,6 @@ Reviews & Rating By Location gives an overall view of how many reviews, and the 
 
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
     + sortby: rating (string, optional) - Values can be 'count' or 'rating'.
     + sorder: 0 (number, optional) - '0' for ascending and '1' for descending order.
@@ -8267,6 +8261,7 @@ Reviews & Rating By Location gives an overall view of how many reviews, and the 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + sourceAliases: citysearch,google (array) - List of source aliases.
@@ -8331,7 +8326,7 @@ Reviews & Rating By Location gives an overall view of how many reviews, and the 
 
 
 
-## Review Count & Rating [/v1/review/report/count-by-rating/{BusinessId}{?api_key}]
+## Review Count & Rating [/v1/review/report/count-by-rating/{BusinessId}]
 Review Count & Rating API fetches the review count according to the rating.
 
 ### Review Count & Rating [POST]
@@ -8339,13 +8334,13 @@ Review Count & Rating API fetches the review count according to the rating.
 + Parameters
 
     + BusinessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
 
@@ -8426,7 +8421,7 @@ Review Count & Rating API fetches the review count according to the rating.
     [1167][]
 
 
-## Review Count & Rating By Employee [/v1/review/report/count-by-rating/employee/{BusinessId}{?api_key}]
+## Review Count & Rating By Employee [/v1/review/report/count-by-rating/employee/{BusinessId}]
 Review Count & Rating By Employee returns review count by rating associated with each assisted employee.
 
 ### Review Count & Rating By Employee [POST]
@@ -8434,13 +8429,13 @@ Review Count & Rating By Employee returns review count by rating associated with
 + Parameters
 
     + BusinessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
 
@@ -8543,14 +8538,13 @@ Review Count & Rating By Employee returns review count by rating associated with
 
 
 
-## Insights Category Report by location [/v1/keywords/opmetric/location{?api_key,businessId}]
+## Insights Category Report by location [/v1/keywords/opmetric/location{?businessId}]
 Insights Category Report by location provides the location-wise insights category data in the response.
 
 
 ### Insights Category Report by location report [POST]
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
 
 
@@ -8559,6 +8553,7 @@ Insights Category Report by location provides the location-wise insights categor
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + startDate: 04/01/2013 (string) - Start Date format MM/dd/YYYY.
@@ -8640,14 +8635,13 @@ Insights Category Report by location provides the location-wise insights categor
     [89][]
 
 
-## Competitive Ranking [/v2/competitive/ranking{?api_key,businessId}]
+## Competitive Ranking [/v2/competitive/ranking{?businessId}]
 Competitive Ranking Report provides the competitors ranking & rating data in the response for a business.
 
 
 ### Competitive Ranking Report [POST]
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
 
 
@@ -8657,6 +8651,7 @@ Competitive Ranking Report provides the competitors ranking & rating data in the
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + startDate: 04/01/2013 (string) - Start Date format MM/dd/YYYY.
@@ -8752,13 +8747,12 @@ Competitive Ranking Report provides the competitors ranking & rating data in the
     [89][]
 
 
-## NPS Over time [/v1/reports/nps/time/elst{?api_key,businessId}]
+## NPS Over time [/v1/reports/nps/time/elst{?businessId}]
 NPS Over time gives you the NPS score for a selected period of time for all locations across businesses and the count of promoters, passives, and detractors for this business. The report can be grouped per day/week/month/year.
 
 ### NPS Over time Report [POST]
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
 
 
@@ -8767,6 +8761,7 @@ NPS Over time gives you the NPS score for a selected period of time for all loca
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + startDate: 04/01/2013 (string) - Start Date format MM/dd/YYYY.
@@ -8881,14 +8876,13 @@ NPS Over time gives you the NPS score for a selected period of time for all loca
     [89][]
 
 
-## NPS By Location [/v1/reports/nps/location/elst{?api_key,businessId}]
+## NPS By Location [/v1/reports/nps/location/elst{?businessId}]
 NPS By Location gives you the NPS score for each location and the count of promoters, passives, and detractors for the business.
 
 
 ### NPS By Location Report [POST]
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
 
 
@@ -8898,6 +8892,7 @@ NPS By Location gives you the NPS score for each location and the count of promo
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + startDate: 04/01/2013 (string) - Start Date format MM/dd/YYYY.
@@ -8997,14 +8992,13 @@ NPS By Location gives you the NPS score for each location and the count of promo
 
 
 
-## Review By Source [/v1/reports/count/reviewsite{?api_key,businessId}]
+## Review By Source [/v1/reports/count/reviewsite{?businessId}]
 Review By Source  API groups the number of reviews and average ratings in an account according to the aggregation source.
 
 ### Review By Source Report [POST]
 
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
 
 
@@ -9013,6 +9007,7 @@ Review By Source  API groups the number of reviews and average ratings in an acc
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + sourceAliases: citysearch,google (array) - List of source aliases.
@@ -9085,14 +9080,13 @@ Review By Source  API groups the number of reviews and average ratings in an acc
 
     [89][]
 
-## Visitor report [/v1/reports/count/visitors{?api_key,businessId}]
+## Visitor report [/v1/reports/count/visitors{?businessId}]
 Visitor report groups the data according to source.
 
 ### Visitor report [POST]
 
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
 
 
@@ -9101,6 +9095,7 @@ Visitor report groups the data according to source.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + sourceAliases: citysearch,google (array) - List of source aliases.
@@ -9186,14 +9181,13 @@ Visitor report groups the data according to source.
 
 
 
-## Usage report [/v1/reports/usage{?api_key,reportType,sindex,count,business_id}]
+## Usage report [/v1/reports/usage{?reportType,sindex,count,business_id}]
 Usage report gives the usage details for the review requests, and the number of requests sent, opened and clicked.
 
 
 ### Usage report [POST]
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + business_id: 12345678 (number, required) - Id of the Business.
     + reportType: rating (string, required) - The type of Report - Summary or Tabular.
     + sindex: 0 (number, required) - The starting index of the reviews
@@ -9205,6 +9199,7 @@ Usage report gives the usage details for the review requests, and the number of 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + startDate: 04/01/2013 (string) - Start date.
@@ -9411,14 +9406,13 @@ Usage report gives the usage details for the review requests, and the number of 
 # Group Survey
 Engage each customer at the right time with NPS or CSAT surveys to improve your service.
 
-## Get [/v1/survey/{survey_id}{?api_key,businessId,lang}]
+## Get [/v1/survey/{survey_id}{?businessId,lang}]
 Get Survey fetches the survey designer page details for a particular survey. It provides all the questions which are available in the requested survey ID.
 
 ### Get Survey [GET]
 
 + Parameters
     + survey_id: 123 (integer, required) - Id of the Survey.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the Business.
     + lang: english (string, optional) - The survey locale, default is english
 
@@ -9429,6 +9423,7 @@ Get Survey fetches the survey designer page details for a particular survey. It 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200
 
@@ -9628,14 +9623,13 @@ Get Survey fetches the survey designer page details for a particular survey. It 
 
 
 
-## Submit [/v1/survey/{survey_id}/submit{?api_key,businessId}]
+## Submit [/v1/survey/{survey_id}/submit{?businessId}]
 Post a survey response API submits the survey response for a particular survey using JSON structure.
 
 
 ### Post a survey response [POST]
 
 + Parameters
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + survey_id: 123 (integer, required) - Id of the Survey.
     + businessId: 12345678 (string, required) - Id of the Business.
 
@@ -9646,6 +9640,7 @@ Post a survey response API submits the survey response for a particular survey u
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Body
 
@@ -9801,7 +9796,7 @@ Post a survey response API submits the survey response for a particular survey u
 
 
 
-## List Responses [/v1/survey/ext/list/responses/{survey_id}{?api_key,businessNumber,page,size,sortby,sorder,includeTicketId}]
+## List Responses [/v1/survey/ext/list/responses/{survey_id}{?businessNumber,page,size,sortby,sorder,includeTicketId}]
 List Responses for a Survey API fetches all the responses available for a particular survey ID.
 
 
@@ -9809,7 +9804,6 @@ List Responses for a Survey API fetches all the responses available for a partic
 
 + Parameters
     + survey_id: 123 (integer, required) - Id of the Survey.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessNumber: 169744180007807 (string, required) - The Business Number of Enterprise
     + page: 0 (integer, optional) - The page number, starts with 0.
     + size: 30 (integer, optional) - The size of the page.
@@ -9823,6 +9817,7 @@ List Responses for a Survey API fetches all the responses available for a partic
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + startDate: "MM/dd/yyyy HH:mm:ss" (string, optional) - Start date.
@@ -10126,14 +10121,13 @@ List Responses for a Survey API fetches all the responses available for a partic
 
 
 
-## Get All [/v1/survey/business/{business_id}/all{?api_key,sortby,sorder,searchStr}]
+## Get All [/v1/survey/business/{business_id}/all{?sortby,sorder,searchStr}]
 Get All Surveys fetches the list of all available surveys on the business.
 
 ### Get All Surveys [GET]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + sortby: modified (string, optional) - Sort results by lastModified[modified], Created[created], Response Count[response].
     + sorder: 0 (string, optional) - Sort order ascending (0) and descending (1).
     + searchStr: abc (string, optional) - Search survey by name or business location.
@@ -10145,6 +10139,7 @@ Get All Surveys fetches the list of all available surveys on the business.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200
 
@@ -10202,7 +10197,7 @@ Get All Surveys fetches the list of all available surveys on the business.
 
 
 
-## Create Survey [/v1/survey/external/create/{businessId}{?api_key}]
+## Create Survey [/v1/survey/external/create/{businessId}]
 Create Survey API helps create a new survey for the required question structure and further displays it on the survey list page.
 
 <b>Please go through <a href="https://bit.ly/3km4oJi">this document</a> for a detailed explanation of request body fields </b>
@@ -10211,7 +10206,6 @@ Create Survey API helps create a new survey for the required question structure 
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) -Id of the Business.
 
 
@@ -10221,6 +10215,7 @@ Create Survey API helps create a new survey for the required question structure 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
     + Body
@@ -10611,7 +10606,7 @@ Create Survey API helps create a new survey for the required question structure 
 
 
 
-## Update Settings [/v1/survey/{surveyId}/settings/update{?api_key,businessId}]
+## Update Settings [/v1/survey/{surveyId}/settings/update{?businessId}]
 Update Survey Settings helps update the survey page appearance settings like Logo, Title, ProgessBar setting, Theme Colour, User Acess, and many more.
 
 
@@ -10624,7 +10619,6 @@ Update Survey Settings helps update the survey page appearance settings like Log
 + Parameters
 
     + surveyId: 123 (integer, required) - Survey ID
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the Business.
 
 
@@ -10634,6 +10628,7 @@ Update Survey Settings helps update the survey page appearance settings like Log
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
 
@@ -10793,7 +10788,7 @@ API to upload the Business Media.
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
     + Attributes
@@ -10919,7 +10914,7 @@ API to get the Business Media details.
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200
@@ -10990,7 +10985,7 @@ API to update the Business Media.
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
     + Attributes
@@ -11056,7 +11051,7 @@ API to delete the Business Medias.
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
     + Attributes
@@ -11110,7 +11105,7 @@ This API allows users to schedule or immediately post content on supported socia
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
     + Attributes
@@ -11201,7 +11196,7 @@ If extra locations are included in subBusinessNumbers, the post will also be sch
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
     + Attributes
@@ -11293,7 +11288,7 @@ This api will edit a published post created through public api. Only text can be
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
     + Attributes
@@ -11359,7 +11354,7 @@ This api will delete a post created through public api. It can delete both sched
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
     + Attributes
@@ -11418,7 +11413,7 @@ This API allows users to track the status of a social post that was previously s
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200 (application/json)
@@ -11511,7 +11506,7 @@ This API allows users to track the status of a social post that was previously s
 # Group Employee
 
 
-## Get [/v1/employee/{businessId}{?api_key}]
+## Get [/v1/employee/{businessId}]
 Get details of Employees is a lite version API that retrieves a sorted list of all active employees for an account.
 
 
@@ -11519,7 +11514,6 @@ Get details of Employees is a lite version API that retrieves a sorted list of a
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (string, required) - Id of the Business.
 
 
@@ -11529,6 +11523,7 @@ Get details of Employees is a lite version API that retrieves a sorted list of a
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -11754,7 +11749,7 @@ List Conversations retrieves conversations for a business.
 
 Subscribe or Unsubscribe multiple webhooks with different URLs or Events for a subscription and deliver real-time notifications.
 
-## Subscribe [/v1/subscriptions/subscribe{?api_key,businessId}]
+## Subscribe [/v1/subscriptions/subscribe{?businessId}]
 Create webhook subscription listens to subscribed webhook events on a specific passed URL.
 
 ### Create subscription [POST]
@@ -11762,11 +11757,11 @@ Create webhook subscription listens to subscribed webhook events on a specific p
 + Parameters
 
     + businessId: 1234567890 (number, required) - Account business number.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
     + Headers
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + webhookUrl: https://webhook.site/0c27e14d-f833-4589 (string) - The webhook endpoint URL on your server on which webhook requests are to be sent.
@@ -11828,7 +11823,7 @@ Create webhook subscription listens to subscribed webhook events on a specific p
     [1167][]
 
 
-## Unsubscribe [/v1/subscriptions/unsubscribe/{subscriptionId}{?api_key,businessId}]
+## Unsubscribe [/v1/subscriptions/unsubscribe/{subscriptionId}{?businessId}]
 Delete webhook subscription to stop listening to subscribed webhook events on the subscribed url.
 
 ### Unsubscribe subscription [GET]
@@ -11837,11 +11832,11 @@ Delete webhook subscription to stop listening to subscribed webhook events on th
 
     + subscriptionId: tyhjwvbtys56782hbjsAGH
     + businessId: 1234567890 (number, required) - Account business number.
-    + api_key: abcdefgh (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
     + Headers
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
     {
@@ -12005,7 +12000,7 @@ Create webhook subscription listens to webhook events on a specific passed URL.
 # Group Competitor
 Make competitive insights your unfair advantage.
 
-## Competitor of Enterprise Business [/v1/business/{EnterpriseBusinessNumber}/child{?api_key,isCompetitor}]
+## Competitor of Enterprise Business [/v1/business/{EnterpriseBusinessNumber}/child{?isCompetitor}]
 Competitor of Enterprise Business retrieves list of all competitor businesses for an enterprise.
 
 
@@ -12015,7 +12010,6 @@ Competitor of Enterprise Business retrieves list of all competitor businesses fo
 + Parameters
 
     + EnterpriseBusinessNumber: 231123123 (string, required) - Enterprise Business id.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + isCompetitor: true (boolean, required) - True for get competitor business of Enterprise Business and False for get Child Business of Enterprise Business.
 
 
@@ -12025,6 +12019,7 @@ Competitor of Enterprise Business retrieves list of all competitor businesses fo
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200 (application/json)
@@ -12074,7 +12069,7 @@ Competitor of Enterprise Business retrieves list of all competitor businesses fo
 
 
 
-## Child Business of Competitor [/v1/business/{EnterpriseCompetitorBusinessId}/child{?api_key,isCompetitor}]
+## Child Business of Competitor [/v1/business/{EnterpriseCompetitorBusinessId}/child{?isCompetitor}]
 Get Competitor Child Business retrieves all child locations.
 
 
@@ -12083,7 +12078,6 @@ Get Competitor Child Business retrieves all child locations.
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + isCompetitor: true (boolean, required) - True for get competitor business of Enterprise Business and False for get Child Business of Enterprise Business.
 
 + Request (application/json)
@@ -12091,6 +12085,7 @@ Get Competitor Child Business retrieves all child locations.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200 (application/json)
@@ -12189,14 +12184,13 @@ Get Competitor Child Business retrieves all child locations.
     [1167][]
 
 
-## Get Competitors [/v1/business/{businessId}/competitors{?api_key}]
+## Get Competitors [/v1/business/{businessId}/competitors]
 Get Business Competitors retrieves competitor’s details for an enterprise.
 
 ### Get Business Competitors [GET]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 986031488 (string, required) - Account Business Number.
 
 
@@ -12205,6 +12199,7 @@ Get Business Competitors retrieves competitor’s details for an enterprise.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
 
@@ -12292,7 +12287,7 @@ Get Business Competitors retrieves competitor’s details for an enterprise.
     [1167][]
 
 
-## Create Competitor Enterprise [/v1/signup/competitor/{businessNumber}{?api_key}]
+## Create Competitor Enterprise [/v1/signup/competitor/{businessNumber}]
 Create New Competitor Enterprise creates a new competitor for an enterprise.
 
 
@@ -12300,7 +12295,6 @@ Create New Competitor Enterprise creates a new competitor for an enterprise.
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 
@@ -12309,6 +12303,7 @@ Create New Competitor Enterprise creates a new competitor for an enterprise.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + businessName: Location_compca (string) - Location competitor name.
@@ -12373,14 +12368,13 @@ Create New Competitor Enterprise creates a new competitor for an enterprise.
 
 
 
-## Create Child Business [/v1/signup/competitor/{businessId}{?api_key}]
+## Create Child Business [/v1/signup/competitor/{businessId}]
 Create New Child Business in Competitor Enterprise creates a new child business for a competitor enterprise.
 
 ### Create New Child Business in Competitor Enterprise [POST]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 986031488 (string, required) - Account Business Number.
 
 
@@ -12389,6 +12383,7 @@ Create New Child Business in Competitor Enterprise creates a new child business 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200
 
@@ -12432,7 +12427,7 @@ Create New Child Business in Competitor Enterprise creates a new child business 
 
 
 
-## Add Aggregation Link [/v1/aggregation/competitor/{compAccountId}/{businessNumber}{?api_key}]
+## Add Aggregation Link [/v1/aggregation/competitor/{compAccountId}/{businessNumber}]
 Add new Competitor Aggregation URL adds an aggregation URL for a competitor location.
 
 
@@ -12442,13 +12437,13 @@ Add new Competitor Aggregation URL adds an aggregation URL for a competitor loca
 
     + businessNumber: 169744180007807 (number, required) - Id of the business.
     + compAccountId : 234567 (number, required) - Competitor Account Id.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + sourceAlias: citysearch (string, required) - Source alias.
@@ -12512,7 +12507,7 @@ Add new Competitor Aggregation URL adds an aggregation URL for a competitor loca
 
     [1167][]
 
-## Get Competitor Review [/v1/review/businessId/{CompetitorEnterpriseBusinessId}{?sindex,count,api_key,isCompetitor}]
+## Get Competitor Review [/v1/review/businessId/{CompetitorEnterpriseBusinessId}{?sindex,count,isCompetitor}]
 Get Competitor Review returns the list of review(s) of competitors for an account.
 
 ### Get Competitor Reviews [POST]
@@ -12521,7 +12516,6 @@ Get Competitor Review returns the list of review(s) of competitors for an accoun
 
     + sindex: 10 (integer, required) - Start index of the reviews.
     + count: 30 (integer, required) - Number of reviews to query.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + isCompetitor: false (boolean, required) - True for Competitor Review.
 
 
@@ -12530,6 +12524,7 @@ Get Competitor Review returns the list of review(s) of competitors for an accoun
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + fromDate: 04/01/2013 (string) - Review date (start) in UTC format.
@@ -12679,14 +12674,13 @@ Get Competitor Review returns the list of review(s) of competitors for an accoun
 
 
 
-## Competitive Insight Category [/v1/competitors/competitive-insight/categories/{businessNumber}{?api_key}]
+## Competitive Insight Category [/v1/competitors/competitive-insight/categories/{businessNumber}]
 Get Score retrieves Insights category details for a competitor.
 
 ### Get Score [POST]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 
@@ -12695,6 +12689,7 @@ Get Score retrieves Insights category details for a competitor.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + sourceType: review (string) - Type of source e.g. review [by default] or social.
@@ -12830,14 +12825,13 @@ Get Score retrieves Insights category details for a competitor.
 
 
 
-## Competitive Insight Themes [/v1/competitors/competitive-insight/themes/{businessNumber}{?api_key}]
+## Competitive Insight Themes [/v1/competitors/competitive-insight/themes/{businessNumber}]
 Get Theme Statistics retrieves Insights topic details for a competitor.
 
 ### Get Theme Statistics [POST]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 + Request (application/json)
@@ -12845,6 +12839,7 @@ Get Theme Statistics retrieves Insights topic details for a competitor.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + sourceType: review (string) - Type of source e.g. review [by default] or social.
@@ -13019,14 +13014,13 @@ Get Theme Statistics retrieves Insights topic details for a competitor.
     [1167][]
 
 
-## Competitive Insight Keywords [/v1/competitors/competitive-insight/keywords/{businessNumber}{?api_key}]
+## Competitive Insight Keywords [/v1/competitors/competitive-insight/keywords/{businessNumber}]
 Get Keyword Statistics retrieves Insights keywords details for a competitor.
 
 ### Get Keyword Statistics [POST]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessNumber: 169744180007807 (string, required) - Account Business Number.
 
 + Request (application/json)
@@ -13034,6 +13028,7 @@ Get Keyword Statistics retrieves Insights keywords details for a competitor.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + sourceType: review (string) - Type of source e.g. review [by default] or social.
@@ -13213,7 +13208,7 @@ This API retrieves competitor review data for specified business numbers and dat
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
 
@@ -13335,7 +13330,7 @@ This API retrieves competitor metrics review data (average rating and total revi
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
 
@@ -13454,7 +13449,7 @@ This API retrieves competitor metrics review data (average rating and total revi
 > __Note__
 > - _Applicable to be used only by paid listings clients, for their active locations, for the Google Q&A section, in the Google listing_
 
-## Create Question [/v1/qna/question/create{?api_key,businessId}]
+## Create Question [/v1/qna/question/create{?businessId}]
 Create a new question and associated answer
 
 > __Best practise__
@@ -13465,14 +13460,13 @@ Create a new question and associated answer
 
 + Parameters
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
-            api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + question: Enter question here (string , required ) - text of the question to be posted on Google Q&A profile ; minimum 3 word and 10 characters ; maximum 4096 characters
@@ -13535,7 +13529,7 @@ Create a new question and associated answer
 
 
 
-## Create Answer [/v1/qna/answer/create{?api_key,businessId}]
+## Create Answer [/v1/qna/answer/create{?businessId}]
 Add an answer to an existing question. Owner can add only one answer per question.
 This API would be needed when you wish to answer a third party raised question. In this use case, you would need to do a GET all Q&A API call, identify the unanswered Q’s and then use this Create Answer API to answer the same.
 
@@ -13546,7 +13540,6 @@ This API would be needed when you wish to answer a third party raised question. 
 
 + Parameters
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -13554,7 +13547,7 @@ This API would be needed when you wish to answer a third party raised question. 
     + Headers
 
             Accept: application/json
-            api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + questionId: 7812   (number , required ) - unique question identifier
@@ -13626,7 +13619,7 @@ This API would be needed when you wish to answer a third party raised question. 
 
 
 
-## Update Question [/v1/qna/question/update{?api_key,businessId}]
+## Update Question [/v1/qna/question/update{?businessId}]
 Update an existing question. You can edit/ update an existing question posted / created by you. Google does not allow you to edit/ update a third party posted Question.
 
 
@@ -13636,7 +13629,6 @@ Update an existing question. You can edit/ update an existing question posted / 
 
 + Parameters
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -13644,7 +13636,7 @@ Update an existing question. You can edit/ update an existing question posted / 
     + Headers
 
             Accept: application/json
-            api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + questionId: 7812  (number , required ) - unique question identifier
@@ -13709,7 +13701,7 @@ Update an existing question. You can edit/ update an existing question posted / 
 
 
 
-## Update Answer [/v1/qna/answer/update{?api_key,businessId}]
+## Update Answer [/v1/qna/answer/update{?businessId}]
 Update an answer to an existing question. You can edit/ update an existing answer posted / created by you. Google does not allow you to edit/ update a third party posted answer
 
 
@@ -13719,7 +13711,6 @@ Update an answer to an existing question. You can edit/ update an existing answe
 
 + Parameters
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -13727,7 +13718,7 @@ Update an answer to an existing question. You can edit/ update an existing answe
     + Headers
 
             Accept: application/json
-            api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + questionId: 7812  (number , required ) - unique question identifier
@@ -13793,7 +13784,7 @@ Update an answer to an existing question. You can edit/ update an existing answe
     [2482][]
 
 
-## Delete Question [/v1/qna/question/delete{?api_key,businessId}]
+## Delete Question [/v1/qna/question/delete{?businessId}]
 Delete existing questions. Only those questions can be deleted which are created by the owner.
 
 > __Note__
@@ -13805,7 +13796,6 @@ Delete existing questions. Only those questions can be deleted which are created
 
 + Parameters
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -13813,7 +13803,7 @@ Delete existing questions. Only those questions can be deleted which are created
     + Headers
 
             Accept: application/json
-            api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + questionId: 7812 (number , required ) - unique question identifier
@@ -13876,7 +13866,7 @@ Delete existing questions. Only those questions can be deleted which are created
     [2482][]
 
 
-## Delete Answer [/v1/qna/answer/delete{?api_key,businessId}]
+## Delete Answer [/v1/qna/answer/delete{?businessId}]
 Delete answers to existing questions. Only that answer can be deleted which is posted by the owner.
 
 
@@ -13884,7 +13874,6 @@ Delete answers to existing questions. Only that answer can be deleted which is p
 
 + Parameters
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -13892,7 +13881,7 @@ Delete answers to existing questions. Only that answer can be deleted which is p
     + Headers
 
             Accept: application/json
-            api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + questionId: 7812 (number , required ) - unique question identifier
@@ -13958,7 +13947,7 @@ Delete answers to existing questions. Only that answer can be deleted which is p
     [2482][]
 
 
-## Delete All Questions and Answers [/v1/qna/question/deleteAll{?api_key,businessId}]
+## Delete All Questions and Answers [/v1/qna/question/deleteAll{?businessId}]
 Delete all Q&A on the businessId provided.
 
 
@@ -13967,7 +13956,6 @@ Delete all Q&A on the businessId provided.
 
 + Parameters
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -13975,7 +13963,7 @@ Delete all Q&A on the businessId provided.
     + Headers
 
             Accept: application/json
-            api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + questionId: 7812 (number , required ) - unique question identifier
@@ -14041,21 +14029,20 @@ Delete all Q&A on the businessId provided.
     [2482][]
 
 
-## Get All Questions and Answers [/v1/qna/get{?api_key,businessId}]
+## Get All Questions and Answers [/v1/qna/get{?businessId}]
 Get all Questions and Answers for a Location
 
 ### Get All Questions and Answers [POST]
 
 + Parameters
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
-            api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + startIndex: 0 (number , required ) - start index
@@ -14154,21 +14141,20 @@ Get all Questions and Answers for a Location
     [2466][]
 
 
-## Get All Unanswered Q&A [/v1/qna/unanswered/get{?api_key,businessId}]
+## Get All Unanswered Q&A [/v1/qna/unanswered/get{?businessId}]
 Get all Unanswered Questions and Answers for a Location
 
 ### Get All Unanswered Questions and Answers [POST]
 
 + Parameters
     + businessId: 12345678 (string, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
-            api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + startIndex: 0 (number , required ) - start index
@@ -14380,7 +14366,7 @@ Customers can fetch a paginated, ordered list of all QnA entries available for a
 Keep your business information accurate and consistent across 50+ websites.
 
 
-## Fix Listing [/v1/listing/fix{?api_key,b_id}]
+## Fix Listing [/v1/listing/fix{?b_id}]
 Fix Listing publishes information on online listing sources. We post presence information on more than 50 online directories.
 
 
@@ -14389,7 +14375,6 @@ Fix Listing publishes information on online listing sources. We post presence in
 + Parameters
 
     + b_id: 12345678 (number, required) - Id of the business.
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -14397,6 +14382,7 @@ Fix Listing publishes information on online listing sources. We post presence in
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Body
 
@@ -14436,7 +14422,7 @@ A detailed view of the listings status at location level
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200
@@ -14565,14 +14551,13 @@ A detailed view of the listings status at location level
     [3333][]
 
 
-## Listings Insights [/v1/listing/insights{?api_key,businessId}]
+## Listings Insights [/v1/listing/insights{?businessId}]
 Insights/Analytics for Google Listings of a given business.
 
 ### Listings Insights [POST]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + businessId: 12345678 (number, required) - Id of the account.
 
 + Request (application/json)
@@ -14580,6 +14565,7 @@ Insights/Analytics for Google Listings of a given business.
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
     + Attributes
@@ -14656,14 +14642,13 @@ Insights/Analytics for Google Listings of a given business.
 
 
 
-## Listings Insights Datapoints [/v1/listing/report/{reportType}/datapoints{?api_key,businessId}]
+## Listings Insights Datapoints [/v1/listing/report/{reportType}/datapoints{?businessId}]
 Datapoints of report graph is date/label mapped to value/data of a given business.
 
 ### Listings Insights Datapoints [POST]
 
 + Parameters
 
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + reportType: google_view_search_map (string, required) - Report type, Possible values [google_view_search_map, gmb_customer_actions_map, fb_users_reached,fb_users_engaged, bing_impression_count,bing_customer_actions]
     + businessId: 12345678 (number, required) - Id of the account.
 
@@ -14673,6 +14658,7 @@ Datapoints of report graph is date/label mapped to value/data of a given busines
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + businessNumbers: 23456788,1231313 (array) - Location numbers of enterprise locations. If empty all valid enterprise locations will be selected.
@@ -14767,7 +14753,7 @@ The Get GMB Attributes API fetches the list of applicable GMB attributes for the
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200
@@ -14897,7 +14883,7 @@ The Get Apple Attributes API fetches the list of applicable Apple attributes. An
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200
@@ -14978,7 +14964,7 @@ The Get Apple Action Links fetches the list of applicable Apple Action Link Type
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200
@@ -15054,7 +15040,7 @@ The Get Category List API fetches the list of category values for the selected s
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200
@@ -15137,7 +15123,7 @@ Create Listing API publishes information on online listing sources. We post pres
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
    + Attributes
@@ -15940,7 +15926,7 @@ The Update Listing API will update the location details on all your listings sit
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
    + Attributes
@@ -16743,7 +16729,7 @@ The Get Listing API will get the listing information for the given business numb
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200 (application/json)
@@ -17473,7 +17459,7 @@ Get supported more hours type for a location. This will depend on the country an
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200
@@ -17544,7 +17530,7 @@ Google keyword: Top keywords searched for which your business is ranked.
     + Headers
 
             Accept: application/json
-            api_key: - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + selectedMonth: Oct 2023,NOV 2023 (array , required ) - Filter months for which keyword data is required
@@ -17659,7 +17645,7 @@ Deactivate Listing API stops publishing any information on the given online dire
     + Headers
 
             Accept: application/json
-            api_key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200 (application/json)
@@ -17682,7 +17668,7 @@ This API retrieves structured menu information for specified business numbers.
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User associated businessNumber
 
     + Attributes
@@ -17919,7 +17905,7 @@ Onboards/connects a Google Merchant account for products listing.
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
     + Body
@@ -17966,7 +17952,7 @@ Creates a product listing on the Google Merchant account linked to the Birdeye a
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
     + Attributes
@@ -18071,7 +18057,7 @@ Operations related to update a product listing.
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
     + Attributes
@@ -18171,7 +18157,7 @@ Operations related to get a product listing.
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
 + Response 200 (application/json)
@@ -18257,7 +18243,7 @@ Deletes products from Google Merchant Center and Birdeye for the provided produc
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
     + Attributes
@@ -18318,7 +18304,7 @@ Returns paginated product listings for the account/locations based on search and
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
     + Attributes
@@ -18418,7 +18404,7 @@ Adds products (by IDs) to the Google profile of the business provided in headers
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
     + Attributes
@@ -18472,7 +18458,7 @@ Removes products (by IDs) to the Google profile of the business provided in head
     + Headers
 
             Accept: application/json
-            api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
             x-business-number: [Required] User assosiated businessNumber
 
     + Attributes
@@ -18536,7 +18522,7 @@ Create reviews, untagged, and survey responses tickets.
     + Headers
 
             Accept: application/json
-            api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + externalId: 3943351204239963055 (number) - Public Review Id for which you want to create ticket, Mandatory and applicable for creating review ticket.
@@ -18645,7 +18631,7 @@ Add comment activity on tickets.
     + Headers
 
             Accept: application/json
-            api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + comment: Had a chat with customer, he will visit again. (required, string) - Comment to be added on ticket.
@@ -18717,7 +18703,7 @@ Update the ticket status or ticket assignee.
     + Headers
 
             Accept: application/json
-            api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + ticketUpdateMessages (array) - Update ticket.
@@ -18787,7 +18773,7 @@ Get tickets
     + Headers
 
             Accept: application/json
-            api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + assignees: steve@ymail.com,smith@ymail.com (array) - List of assignee email id.
@@ -18995,14 +18981,10 @@ Get tickets
 # Group Integration
 Birdeye integrates with various software or tools you use.
 
-## Add Business Integration Mapping[/v1/integrations/add/businessintegrationmapping{?api_key}]
+## Add Business Integration Mapping[/v1/integrations/add/businessintegrationmapping]
 Add Business Integration Mapping adds locations to integrations and set them active.
 
 ### Add locations [PUT]
-
-+ Parameters
-
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -19010,6 +18992,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
     + Headers
 
             Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + businessNumber: 169744180007807 (required, number) - Business number.
@@ -19062,6 +19045,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>02/11/2026</b> - Updated the API key identifier for applicable APIs by moving it from a query parameter to the x-api-key request header.
 * <b>02/03/2026</b> - Added the "Get All QnA" API under FAQ group to enable retrieval of QnA entries across business locations, with full request and response documentation
 * <b>01/19/2026</b> - Added a note under the Authentication and Rate limiting section specifying that the x-api-key header is mandatory for all API requests targeting EU region business accounts.
 * <b>01/13/2026</b> - Added Create User (Signup) API under User module to create and invite users for a business.
