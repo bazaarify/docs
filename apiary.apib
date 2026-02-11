@@ -3963,6 +3963,7 @@ Get Customer card API returns the detail of customer card of the location
                         0 - card will not be visible on the microsite,
                         1 - card will be visible on the microsite
                 + clickURL: https://www.abcdef.com (string) - Redirect link for a particular website.
+                + linkText: Learn More (string) - Enter the text you want displayed for the link.
 
     + Body
 
@@ -3975,7 +3976,8 @@ Get Customer card API returns the detail of customer card of the location
                         "imageURL": "https://d2xt3xymj142xp.cloudfront.net/63936/fileUpload/936_16768607_FRetIc.jpeg",
                         "imagePosition": "2",
                         "isVisible": 1,
-                        "clickURL": "https://www.abcdef.com"
+                        "clickURL": "https://www.abcdef.com",
+                        "linkText": "Learn More"
                     },
                     {
                         "cardId": 5533,
@@ -3984,7 +3986,8 @@ Get Customer card API returns the detail of customer card of the location
                         "imageURL": "https://d2xt3xymj142xp.cloudfront.net/63936/fileUpload/63676550205863_FRetIc.jpeg",
                         "imagePosition": "1",
                         "isVisible": 0,
-                        "clickURL": "http://www.abcdef.com"
+                        "clickURL": "http://www.abcdef.com",
+                        "linkText": "Schedule"
                     }
                 ]
             }
@@ -14250,6 +14253,115 @@ Get all Unanswered Questions and Answers for a Location
     [2466][]
 
 
+# Group FAQ
+
+To retrieve all Question and Answer (QnA) entries across locations using FAQ APIs, enabling smart support and knowledge features for businesses.
+
+## Get All QnA [/v1/quero/external/get-all-qna{?sIndex,count,order}]
+Customers can fetch a paginated, ordered list of all QnA entries available for a business.
+
+### Get All QnA [POST]
+
++ Parameters
+
+    + sIndex: 0 (number, optional) - The starting index for the records to fetch. Default is 0 if not specified.
+    + count: 25 (number, optional) - The number of QnA records to return.Default is 25 if not specified.
+    + order: 1 (number, optional) - The ordering in which records should be returned by last updated date (0 for ascending, 1 for descending).Default is 1 if not specified.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange..
+            x-business-number: [Required] User associated businessNumber
+
+
+    + Attributes
+
+        + businessNumbers: 175009059995828,169028735563867 (array) - [OPTIONAL] Business numbers of locations under enterprise. If not assigned, all valid QnA assigned in the enterprise will be selected.
+
+    + Body
+
+            {
+                "businessNumbers": [
+                    175009059995828,
+                    169028735563867,
+                    166609110899853,
+                    164873686901155,
+                    164863775654389,
+                    164847076003414
+                ]
+            }
+
+
++ Response 200
+
+    + Attributes
+
+        + qnAs (array) - List of QnA objects.
+            + (object)
+                + question (object) - Details for this QnA's question.
+                    + text: What payment options does RetailPrime platform support? (string) - The text of the question.
+                    + updatedDate: 2026-01-15T09:00:00.000+0000 (string) - Last update date/time (ISO 8601 or yyyy-MM-dd'T'HH:mm:ss.SSSZ).
+                    + answers (array) - Array of answers to this question.
+                        + (object)
+                            + text: RetailPrime supports credit card, debit card, and PayPal payments. (string) - The text of the answer.
+                + allLocations: true (boolean) - Indicates if this QnA applies to all business locations.
+                + source: USER (string) - Source of the QnA entry, e.g.  "USER", "AI".
+                + sourceType: FILE (string) - Indicates the source type when the QnA is AI-generated, such as "LINK", "FILE", and others.
+                + sourceValue: https://retailprime.com/docs/payment-options (string, optional) - Reference value for the source, could be a link, filename, etc.
+                + businessNumbers: 123456789123456, 987654321987654 (array[number], optional) - Array of location/business numbers, if specific.
+
+    + Body
+
+            {
+                "qnAs": [
+                    {
+                        "question": {
+                            "text": "What payment options does RetailPrime platform support?",
+                            "updatedDate": "2026-01-15T09:00:00.000+0000",
+                            "answers": [
+                                {
+                                    "text": "RetailPrime supports credit card, debit card, and PayPal payments."
+                                }
+                            ]
+                        },
+                        "allLocations": true,
+                        "source": "AI",
+                        "sourceType": "FILE",
+                        "sourceValue": "sample.txt",
+                        "businessNumbers": [123456789123456, 987654321987654]
+                    }
+                ]
+            }
+
++ Response 400
+
+    [1167][]
+
++ Response 400
+
+    [5008][]
+
++ Response 400
+
+    [5043][]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1532][]
+
+
 # Group Listing
 Keep your business information accurate and consistent across 50+ websites.
 
@@ -18933,7 +19045,8 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
-* <b>01/28/2026</b> - Updated the API key identifier for applicable APIs by moving it from a query parameter to the x-api-key request header.
+* <b>02/11/2026</b> - Updated the API key identifier for applicable APIs by moving it from a query parameter to the x-api-key request header.
+* <b>02/03/2026</b> - Added the "Get All QnA" API under FAQ group to enable retrieval of QnA entries across business locations, with full request and response documentation
 * <b>01/19/2026</b> - Added a note under the Authentication and Rate limiting section specifying that the x-api-key header is mandatory for all API requests targeting EU region business accounts.
 * <b>01/13/2026</b> - Added Create User (Signup) API under User module to create and invite users for a business.
 * <b>09/22/2025</b> - Added GMB Products APIs to onboard/connect Google Merchant accounts and manage product listing actions.
