@@ -2129,7 +2129,9 @@ For example :
 ## 3333 [/3333]
 
 + Model (application/json)
-    "code": 1043,
+
+        {
+            "code": 1043,
             "message": "Business should be either SMB or Enterprise sub account"
         }
 
@@ -2137,7 +2139,8 @@ For example :
 
 + Model (application/json)
 
-        {"code": 2503,
+        {
+            "code": 2503,
             "message": "Primary category can not be included in additional category."
         }
 
@@ -2145,7 +2148,8 @@ For example :
 
 + Model (application/json)
 
-        {    "code": 2276,
+        {    
+            "code": 2276,
             "message": "Please add upto 9 GBP additional categories only."
         }
 
@@ -2153,7 +2157,8 @@ For example :
 
 + Model (application/json)
 
-        {    "code": 2277,
+        {    
+            "code": 2277,
             "message": "Duplicate GBP categories are not allowed."
         }
 
@@ -2161,7 +2166,8 @@ For example :
 
 + Model (application/json)
 
-        {    "code": 2278,
+        {    
+            "code": 2278,
             "message": "Primary GBP category is not allowed in additional GBP categories."
         }
 
@@ -2169,7 +2175,8 @@ For example :
 
 + Model (application/json)
 
-        {    "code": 2162,
+        {    
+            "code": 2162,
             "message": "Reopen date should not be less than current date."
         }
 
@@ -2177,7 +2184,8 @@ For example :
 
 + Model (application/json)
 
-        {    "code": 2511,
+        {    
+            "code": 2511,
             "message": "Cannot update business status when listing is already fixed."
         }
 
@@ -2185,7 +2193,8 @@ For example :
 
 + Model (application/json)
 
-        {    "code": 2512,
+        {    
+            "code": 2512,
             "message": "Cannot update opening soon date when listing is already fixed."
         }
 
@@ -2193,7 +2202,8 @@ For example :
 
 + Model (application/json)
 
-        {    "code": 2513,
+        {    
+            "code": 2513,
             "message": "Opened On date can not be in future."
         }
 
@@ -2201,7 +2211,8 @@ For example :
 
 + Model (application/json)
 
-        {    "code": 2514,
+        {    
+            "code": 2514,
             "message": "Opening Soon date is mandatory when business is marked as Opening soon."
         }
 
@@ -4431,8 +4442,6 @@ Get custom Fields List
 
 + Request (application/json)
 
-
-
     + Headers
 
             Accept: application/json
@@ -4449,7 +4458,6 @@ Get custom Fields List
 
     + Body
 
-
         {
             "page":0,
             "size": 50,
@@ -4457,8 +4465,6 @@ Get custom Fields List
             "sortBy": "fieldDescription",
             "orderBy": "asc"
         }
-
-
 
 + Response 200
 
