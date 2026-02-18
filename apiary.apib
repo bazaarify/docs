@@ -14377,9 +14377,8 @@ Create a new service for the account
 
     + Attributes
         + name: Customer Service (string, required) - Service name (1–140 characters)
-        + priceType: paid (string, required) - 'paid' or 'free'
-        + currencyCode: USD (string, optional) - Required if priceType is 'paid'
-        + price: 100.50 (number, optional) - Required if priceType is 'paid'
+        + currencyCode: USD (string, optional) - currency code of the paid service
+        + price: 100.50 (number, optional) - price of the paid service
         + description: We provide 24x7 customer service (string, optional) - Max 300 characters
         + group: Hair Care (string , optional) - A logical grouping label for related services ; Used internally to categorize services under a common group name ; if not provided ; the service will remain uncategorized ; Note: This field is not synced to Google ; minimum 3 character ; maximum 64 characters
         + duration: 90 (number , optional) - The expected length of time for the service ; expressed in minutes ; Used internally ; Optional ; if not provided ; no default duration will be set. Note: This field is not synced to Google; minimum 1 ; maximum 9999 minutes
@@ -14388,7 +14387,6 @@ Create a new service for the account
 
             {
                 "name": "Customer Service",
-                "priceType": "paid",
                 "currencyCode": "USD",
                 "price": 100.50,
                 "description": "We provide 24x7 customer service",
@@ -14498,7 +14496,6 @@ Get all services for an account
             + (object)
                 + serviceId: SERV10021056 (string) - Unique service identifier
                 + name: Customer Service (string) - name of the service
-                + priceType: paid (string) - price type of the service
                 + currencyCode: USD (string) - currency code of the paid service
                 + price: 100.50 (number) - price of the paid service
                 + description: We provide 24x7 customer service (string) - description of the service
@@ -14512,7 +14509,6 @@ Get all services for an account
                     {
                         "serviceId": "SERV10021056",
                         "name": "Customer Service",
-                        "priceType": "paid",
                         "currencyCode": "USD",
                         "price": 100.50,
                         "description": "We provide 24x7 customer service",
@@ -14568,7 +14564,6 @@ Update an existing service of an account.
 
         + serviceId: SERV10021056  (string , required ) - unique service identifier
         + name: Customer Service(string , required ) - text of the service name posted on Google Services profile; name cannot be altered.
-        + priceType: paid  (string , required) - text of the service price type to be posted on Google Services profile ; 'paid' or 'free' value
         + currencyCode: USD  (string , optional) - text of the paid service currency code to be posted on Google Services profile; This is a mandatory field in case of paid service ; 'USD', 'GBP', 'CAD', 'AUD', 'NZD', 'EUR', 'MXN', 'INR', 'AED', 'CHF', 'CNY', 'CZK', 'EGP', 'HKD', 'HUF', 'IDR', 'ILS', 'JPY', 'KES', 'KRW', 'LKR', 'MAD', 'MOP', 'MYR', 'PHP', 'PLN', 'RON', 'RUB', 'ZAR', 'SEK', 'SGD', 'THB', 'TRY', 'TWD', 'VND', 'SAR', 'KHR', 'MNT', 'NOK' or 'DKK' value
         + price: 100.50  (number , optional) - amount of the paid service price to be posted on Google Services profile; This is a mandatory field in case of paid service ; minimum amount 0.10 ; maximum amount 2147483647
         + description: We provide 24x7 customer service  (string , optional) - text of the service description to be posted on Google Services profile ; minimum 0 character ; maximum 300 characters
@@ -14581,7 +14576,6 @@ Update an existing service of an account.
             {
                   "serviceId": "SERV10021056",
                   "name": "Customer Service",
-                  "priceType": "paid",
                   "currencyCode": "USD",
                   "price": 100.50,
                   "description": "We provide 24x7 customer service",
@@ -14731,7 +14725,6 @@ Get location level service - category mapping
             + (object)
                 + serviceId: SERV10021056 (string) - Unique service identifier
                 + name: Customer Service (string) - name of the service
-                + priceType: paid (string) - price type of the service
                 + currencyCode: USD (string) - currency code of the paid service
                 + price: 100.50 (number) - price of the paid service
                 + description: We provide 24x7 customer service (string) - description of the service
@@ -14745,7 +14738,6 @@ Get location level service - category mapping
                     {
                         "serviceId": "SERV10021056",
                         "name": "Customer Service",
-                        "priceType": "paid",
                         "currencyCode": "USD",
                         "price": 100.50,
                         "description": "We provide 24x7 customer service",
@@ -14755,7 +14747,6 @@ Get location level service - category mapping
                     {
                         "serviceId": "SERV10021057",
                         "name": "Marketing Service",
-                        "priceType": "free",
                         "description": "We provide 24x7 marketing service"
                     }
                 ],
@@ -14763,7 +14754,6 @@ Get location level service - category mapping
                     {
                         "serviceId": "SERV10021058",
                         "name": "Advertising Service",
-                        "priceType": "paid",
                         "currencyCode": "USD",
                         "price": 100.50,
                         "description": "We provide advertising service across various platforms",
