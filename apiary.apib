@@ -14360,17 +14360,17 @@ Get all Unanswered Questions and Answers for a Location
 > - _You CAN have the same service across two diff categories e.g.: Emergency counselling as a $100 paid service can be a service created & mapped to category A - Mental health and category B - Psychotherapy - both categories being present for the same location._
 
 
-## Create Service [/v1/google-services/service/create{?api_key,businessId}]
+## Create Service [/v1/google-services/service/create{?api_key,accountId}]
 Create a new service for the account
 
 > __Best practise__
 > - _Please ensure that a business appropriate service is created._
 
 
-### Create Service [POST /v1/google-services/service/create{?api_key,businessId}]
+### Create Service [POST /v1/google-services/service/create{?api_key,accountId}]
 
 + Parameters
-    + businessId: 169744180007807 (number, required) - Id of the account
+    + accountId: 169744180007807 (number, required) - Id of the account
     + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
@@ -14381,6 +14381,8 @@ Create a new service for the account
         + currencyCode: USD (string, optional) - Required if priceType is 'paid'
         + price: 100.50 (number, optional) - Required if priceType is 'paid'
         + description: We provide 24x7 customer service (string, optional) - Max 300 characters
+        + group: Hair Care (string , optional) - A logical grouping label for related services ; Used internally to categorize services under a common group name ; if not provided ; the service will remain uncategorized ; Note: This field is not synced to Google ; minimum 3 character ; maximum 64 characters
+        + duration: 90 (number , optional) - The expected length of time for the service ; expressed in minutes ; Used internally ; Optional ; if not provided ; no default duration will be set. Note: This field is not synced to Google; minimum 1 ; maximum 9999 minutes
 
     + Body
 
@@ -14389,7 +14391,9 @@ Create a new service for the account
                 "priceType": "paid",
                 "currencyCode": "USD",
                 "price": 100.50,
-                "description": "We provide 24x7 customer service"
+                "description": "We provide 24x7 customer service",
+                "group": "Hair Care",
+                "duration": 90
             }
 
 + Response 200 (application/json)
@@ -14454,14 +14458,14 @@ Create a new service for the account
 
 
 
-## Get All Services [/v1/google-services/services{?api_key,businessId,startIndex,pageSize,sortBy,sortOrder}]
+## Get All Services [/v1/google-services/services{?api_key,accountId,startIndex,pageSize,sortBy,sortOrder}]
 Get all services for an account
 
 ### Get All Services [POST]
 
 + Parameters
 
-    + businessId: 169744180007807 (number, required) - Id of the account
+    + accountId: 169744180007807 (number, required) - Id of the account
     + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
     + startIndex: 0 (number) - start index; default 0
     + pageSize: 25 (number) - page size; default 25
@@ -14498,6 +14502,8 @@ Get all services for an account
                 + currencyCode: USD (string) - currency code of the paid service
                 + price: 100.50 (number) - price of the paid service
                 + description: We provide 24x7 customer service (string) - description of the service
+                + group: Hair Care (string) - service group
+                + duration: 90 (number) - service duration in minutes
         
     + Body
 
@@ -14509,7 +14515,9 @@ Get all services for an account
                         "priceType": "paid",
                         "currencyCode": "USD",
                         "price": 100.50,
-                        "description": "We provide 24x7 customer service"
+                        "description": "We provide 24x7 customer service",
+                        "group": "Hair Care",
+                        "duration": 90
                     }
                 ]
             }
@@ -14536,7 +14544,7 @@ Get all services for an account
 
 
 
-## Update Service [/v1/google-services/service/update{?api_key,businessId}]
+## Update Service [/v1/google-services/service/update{?api_key,accountId}]
 Update an existing service of an account.
 
 > __Note__
@@ -14546,7 +14554,7 @@ Update an existing service of an account.
 
 + Parameters
 
-    + businessId: 169744180007807 (number, required) - Id of the account
+    + accountId: 169744180007807 (number, required) - Id of the account
     + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
@@ -14564,6 +14572,8 @@ Update an existing service of an account.
         + currencyCode: USD  (string , optional) - text of the paid service currency code to be posted on Google Services profile; This is a mandatory field in case of paid service ; 'USD', 'GBP', 'CAD', 'AUD', 'NZD', 'EUR', 'MXN', 'INR', 'AED', 'CHF', 'CNY', 'CZK', 'EGP', 'HKD', 'HUF', 'IDR', 'ILS', 'JPY', 'KES', 'KRW', 'LKR', 'MAD', 'MOP', 'MYR', 'PHP', 'PLN', 'RON', 'RUB', 'ZAR', 'SEK', 'SGD', 'THB', 'TRY', 'TWD', 'VND', 'SAR', 'KHR', 'MNT', 'NOK' or 'DKK' value
         + price: 100.50  (number , optional) - amount of the paid service price to be posted on Google Services profile; This is a mandatory field in case of paid service ; minimum amount 0.10 ; maximum amount 2147483647
         + description: We provide 24x7 customer service  (string , optional) - text of the service description to be posted on Google Services profile ; minimum 0 character ; maximum 300 characters
+        + group: Hair Care (string , optional) - A logical grouping label for related services ; Used internally to categorize services under a common group name ; if not provided ; the service will remain uncategorized ; Note: This field is not synced to Google ; minimum 3 character ; maximum 64 characters
+        + duration: 90 (number , optional) - The expected length of time for the service ; expressed in minutes ; Used internally ; Optional ; if not provided ; no default duration will be set. Note: This field is not synced to Google ; minimum 1 ; maximum 9999 minutes
 
 
     + Body
@@ -14574,7 +14584,9 @@ Update an existing service of an account.
                   "priceType": "paid",
                   "currencyCode": "USD",
                   "price": 100.50,
-                  "description": "We provide 24x7 customer service"
+                  "description": "We provide 24x7 customer service",
+                  "group": "Hair Care",
+                  "duration": 90
             }
 
 
@@ -14633,7 +14645,7 @@ Update an existing service of an account.
     [2494][]
 
 
-## Delete Services [/v1/google-services/service/delete{?api_key,businessId}]
+## Delete Services [/v1/google-services/service/delete{?api_key,accountId}]
 Delete existing services of an account
 
 > __Note__
@@ -14643,7 +14655,7 @@ Delete existing services of an account
 
 + Parameters
 
-    + businessId: 169744180007807 (number, required) - Id of the account
+    + accountId: 169744180007807 (number, required) - Id of the account
     + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 + Request (application/json)
@@ -14723,6 +14735,8 @@ Get location level service - category mapping
                 + currencyCode: USD (string) - currency code of the paid service
                 + price: 100.50 (number) - price of the paid service
                 + description: We provide 24x7 customer service (string) - description of the service
+                + group: Hair Care (string) - service group
+                + duration: 90 (number) - service duration in minutes
         
     + Body
 
@@ -14734,7 +14748,9 @@ Get location level service - category mapping
                         "priceType": "paid",
                         "currencyCode": "USD",
                         "price": 100.50,
-                        "description": "We provide 24x7 customer service"
+                        "description": "We provide 24x7 customer service",
+                        "group": "Hair Care",
+                        "duration": 90
                     },
                     {
                         "serviceId": "SERV10021057",
@@ -14750,7 +14766,9 @@ Get location level service - category mapping
                         "priceType": "paid",
                         "currencyCode": "USD",
                         "price": 100.50,
-                        "description": "We provide advertising service across various platforms"
+                        "description": "We provide advertising service across various platforms",
+                        "group": "Hair Care",
+                        "duration": 90
                     }
                 ]
             }
