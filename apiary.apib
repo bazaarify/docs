@@ -14360,20 +14360,24 @@ Get all Unanswered Questions and Answers for a Location
 > - _You CAN have the same service across two diff categories e.g.: Emergency counselling as a $100 paid service can be a service created & mapped to category A - Mental health and category B - Psychotherapy - both categories being present for the same location._
 
 
-## Create Service [/v1/google-services/service/create{?api_key,accountId}]
+## Create Service [/v1/google-services/service/create{?businessId}]
 Create a new service for the account
 
 > __Best practise__
 > - _Please ensure that a business appropriate service is created._
 
 
-### Create Service [POST /v1/google-services/service/create{?api_key,accountId}]
+### Create Service [POST /v1/google-services/service/create{?businessId}]
 
 + Parameters
-    + accountId: 169744180007807 (number, required) - Id of the account
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 169744180007807 (number, required) - Id of the account
 
 + Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
         + name: Customer Service (string, required) - Service name (1–140 characters)
@@ -14456,15 +14460,14 @@ Create a new service for the account
 
 
 
-## Get All Services [/v1/google-services/services{?api_key,accountId,startIndex,pageSize,sortBy,sortOrder}]
+## Get All Services [/v1/google-services/services{?businessId,startIndex,pageSize,sortBy,sortOrder}]
 Get all services for an account
 
 ### Get All Services [POST]
 
 + Parameters
 
-    + accountId: 169744180007807 (number, required) - Id of the account
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 169744180007807 (number, required) - Id of the account
     + startIndex: 0 (number) - start index; default 0
     + pageSize: 25 (number) - page size; default 25
     + sortBy: updated (string) - "updated", "name" or "price"; default : updated
@@ -14476,6 +14479,7 @@ Get all services for an account
     + Headers
 
             Accept: application/json
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
 
@@ -14540,7 +14544,7 @@ Get all services for an account
 
 
 
-## Update Service [/v1/google-services/service/update{?api_key,accountId}]
+## Update Service [/v1/google-services/service/update{?businessId}]
 Update an existing service of an account.
 
 > __Note__
@@ -14550,8 +14554,7 @@ Update an existing service of an account.
 
 + Parameters
 
-    + accountId: 169744180007807 (number, required) - Id of the account
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 169744180007807 (number, required) - Id of the account
 
 
 + Request (application/json)
@@ -14559,6 +14562,7 @@ Update an existing service of an account.
     + Headers
 
             Accept: application/json
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
 
@@ -14639,7 +14643,7 @@ Update an existing service of an account.
     [2494][]
 
 
-## Delete Services [/v1/google-services/service/delete{?api_key,accountId}]
+## Delete Services [/v1/google-services/service/delete{?businessId}]
 Delete existing services of an account
 
 > __Note__
@@ -14649,14 +14653,14 @@ Delete existing services of an account
 
 + Parameters
 
-    + accountId: 169744180007807 (number, required) - Id of the account
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+    + businessId: 169744180007807 (number, required) - Id of the account
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
 
@@ -14698,7 +14702,7 @@ Delete existing services of an account
     [2495][]
 
 
-## Get Location Mapping [/v1/google-services/service/location-mapping{?api_key,businessId}]
+## Get Location Mapping [/v1/google-services/service/location-mapping{?businessId}]
 Get location level service - category mapping
 
 ### Get Location Mapping [GET]
@@ -14706,7 +14710,6 @@ Get location level service - category mapping
 + Parameters
 
     + businessId: 169744180007807 (number, required) - Id of the business
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Request (application/json)
@@ -14714,6 +14717,7 @@ Get location level service - category mapping
     + Headers
 
             Accept: application/json
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
 
 + Response 200 (application/json)
@@ -14784,7 +14788,7 @@ Get location level service - category mapping
     [2486][]
 
 
-## Update Location Mapping [/v1/google-services/services/location-mapping{?api_key,businessId}]
+## Update Location Mapping [/v1/google-services/services/location-mapping{?businessId}]
 Map services to categories at location level
 
 
@@ -14796,14 +14800,13 @@ Map services to categories at location level
 + Parameters
 
     + businessId: 169744180007807 (number, required) - Id of the business
-    + api_key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
-
 
 + Request (application/json)
 
     + Headers
 
             Accept: application/json
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
 
     + Attributes
 
