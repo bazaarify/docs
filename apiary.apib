@@ -4471,14 +4471,13 @@ Get custom Fields List
 
     + Body
 
-
-        {
-            "page":0,
-            "size": 50,
-            "searchStr": "colours",
-            "sortBy": "fieldDescription",
-            "orderBy": "asc"
-        }
+            {
+                "page":0,
+                "size": 50,
+                "searchStr": "colours",
+                "sortBy": "fieldDescription",
+                "orderBy": "asc"
+            }
 
 
 
@@ -4741,7 +4740,7 @@ Updates an existing user’s access, notifications, and role.
                + lastName: Randy (string) - The last name of the user.
         + userRole: admin (string) - Role to assign within the application.
         + notification - user details
-               + sendReviewEmailAlert: (number) - Flag to enable sending of review email alerts.
+               + sendReviewEmailAlert: 1 (number) - Flag to enable sending of review email alerts.
                + sendDailyReviewDigest: 0 (number) - Flag to enable sending of daily review summary emails.
                + dailyDigestAbsoluteTime: 5:00 (string) - Daily digest delivery time in HH:MM format.
                + dailyDigestRunHour: 5 (number) - Hour component when daily digest is executed.
@@ -11858,7 +11857,9 @@ Create webhook subscription listens to subscribed webhook events on a specific p
     + businessId: 1234567890 (number, required) - Account business number.
 
 + Request (application/json)
+
     + Headers
+
             Accept: application/json
             x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
@@ -11885,7 +11886,7 @@ Create webhook subscription listens to subscribed webhook events on a specific p
 
     + Body
 
-        {
+            {
             "webhookUrl": "https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65",
             "emails": [
                         "test@xyz.com"
@@ -11895,11 +11896,10 @@ Create webhook subscription listens to subscribed webhook events on a specific p
                 "username": "testUser",
                 "password": "userpassword"
             }
-
-
-        }
+            }
 
 + Response 200 (application/json)
+
         {
             "id": "abcchdguweUGBSK16789278",
             "message": "You have successfully subscribed to : https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65"
@@ -11933,7 +11933,9 @@ Delete webhook subscription to stop listening to subscribed webhook events on th
     + businessId: 1234567890 (number, required) - Account business number.
 
 + Request (application/json)
+
     + Headers
+
             Accept: application/json
             x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
@@ -14429,7 +14431,7 @@ Create a new service for the account
 + Response 400
 
     [2486][]
-    
+
 + Response 400
 
     [2487][]
@@ -14441,19 +14443,19 @@ Create a new service for the account
 + Response 400
 
     [2489][]
-    
+
 + Response 400
 
     [2490][]
-    
+
 + Response 400
 
     [2491][]
-    
+
 + Response 400
 
     [2492][]
-    
+
 + Response 400
 
     [2493][]
@@ -14495,7 +14497,7 @@ Get all services for an account
 + Response 200 (application/json)
 
     + Attributes
-    
+
         + services (array) - Google services details
             + (object)
                 + serviceId: SERV10021056 (string) - Unique service identifier
@@ -14505,7 +14507,7 @@ Get all services for an account
                 + description: We provide 24x7 customer service (string) - description of the service
                 + group: Hair Care (string) - service group
                 + duration: 90 (number) - service duration in minutes
-        
+
     + Body
 
             {
@@ -14521,7 +14523,7 @@ Get all services for an account
                     }
                 ]
             }
-            
+
 + Response 401
 
     [1161][]
@@ -14605,11 +14607,11 @@ Update an existing service of an account.
 + Response 401
 
     [1167][]
-    
+
 + Response 400
 
     [2486][]
-    
+
 + Response 400
 
     [2487][]
@@ -14621,23 +14623,23 @@ Update an existing service of an account.
 + Response 400
 
     [2489][]
-    
+
 + Response 400
 
     [2490][]
-    
+
 + Response 400
 
     [2491][]
-    
+
 + Response 400
 
     [2492][]
-    
+
 + Response 400
 
     [2493][]
-    
+
 + Response 400
 
     [2494][]
@@ -14734,7 +14736,7 @@ Get location level service - category mapping
                 + description: We provide 24x7 customer service (string) - description of the service
                 + group: Hair Care (string) - service group
                 + duration: 90 (number) - service duration in minutes
-        
+
     + Body
 
             {
@@ -14766,7 +14768,7 @@ Get location level service - category mapping
                     }
                 ]
             }
-            
+
 + Response 401
 
     [1161][]
@@ -14784,7 +14786,7 @@ Get location level service - category mapping
     [1167][]
 
 + Response 400
-    
+
     [2486][]
 
 
@@ -14812,7 +14814,7 @@ Map services to categories at location level
 
         + category_name: Marketing (string , required) - name of the GMB category
         + service_id: [SERV10021056, SERV10021057] (array , required) - List of unique service identifier
-        
+
     + Body
 
             {
@@ -14841,7 +14843,7 @@ Map services to categories at location level
 + Response 400
 
     [2486][]
-    
+
 + Response 400
 
     [2487][]
@@ -14849,11 +14851,11 @@ Map services to categories at location level
 + Response 400
 
     [2496][]
-    
+
 + Response 400
 
     [2493][]
-    
+
 + Response 400
 
     [2494][]
@@ -15741,7 +15743,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
             + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
-            + mainBusinessDescription: (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
+            + mainBusinessDescription: The business is a dental partnership providing general and specialized dental care services, including preventive checkups (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
@@ -16544,7 +16546,7 @@ The Update Listing API will update the location details on all your listings sit
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
             + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
-            + mainBusinessDescription: (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
+            + mainBusinessDescription: The business is a dental partnership providing general and specialized dental care services, including preventive checkups (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
@@ -17349,7 +17351,7 @@ The Get Listing API will get the listing information for the given business numb
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
             + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
-            + mainBusinessDescription: (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
+            + mainBusinessDescription: The business is a dental partnership providing general and specialized dental care services (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
@@ -19422,7 +19424,7 @@ Get tickets
                 + status: new (string) - Ticket status.
                 + rating: 5.0 (number) - Review rating.
                 + externalId: 213243231 (string) - Public review id.
-                + description: Customer will visit again (number) - Description of the ticket.
+                + description: Customer will visit again (string) - Description of the ticket.
                 + activityCount: 4 (number) - Number of activities associated with the ticket.
                 + assignedTo (object) - Assignee details.
                     + firstName: Steve (string) - First Name of the assignee.
