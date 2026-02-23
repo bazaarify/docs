@@ -2038,6 +2038,105 @@ For example :
             "message": "Invalid input request"
         }
 
+## 2486 [/2486]
+
++ Model (application/json)
+
+        {
+            "code": 2486,
+            "message": "Business Id missing or invalid"
+        }
+
+## 2487 [/2487]
+
++ Model (application/json)
+
+        {
+            "code": 2487,
+            "message": "Invalid input request data"
+        }
+
+## 2488 [/2488]
+
++ Model (application/json)
+
+        {
+            "code": 2488,
+            "message": "Invalid GBP Service name"
+        }
+
+## 2489 [/2489]
+
++ Model (application/json)
+
+        {
+            "code": 2489,
+            "message": "Invalid GBP Service description"
+        }
+
+## 2490 [/2490]
+
++ Model (application/json)
+
+        {
+            "code": 2490,
+            "message": "Invalid GBP Service price type"
+        }
+
+## 2491 [/2491]
+
++ Model (application/json)
+
+        {
+            "code": 2491,
+            "message": "Invalid GBP Service price"
+        }
+
+## 2492 [/2492]
+
++ Model (application/json)
+
+        {
+            "code": 2492,
+            "message": "Invalid GBP Service currency code"
+        }
+
+## 2493 [/2493]
+
++ Model (application/json)
+
+        {
+            "code": 2493,
+            "message": "Duplicate Google Service is not allowed"
+        }
+
+## 2494 [/2494]
+
++ Model (application/json)
+
+        {
+            "code": 2494,
+            "message": "Invalid GBP Service Id"
+        }
+
+## 2495 [/2495]
+
++ Model (application/json)
+
+        {
+            "code": 2495,
+            "message": "Invalid GBP Service Id"
+        }
+
+## 2496 [/2496]
+
++ Model (application/json)
+
+        {
+            "code": 2496,
+            "message": "Missing GBP category for given location"
+        }
+
 ## 3333 [/3333]
 
 + Model (application/json)
@@ -4372,14 +4471,13 @@ Get custom Fields List
 
     + Body
 
-
-        {
-            "page":0,
-            "size": 50,
-            "searchStr": "colours",
-            "sortBy": "fieldDescription",
-            "orderBy": "asc"
-        }
+            {
+                "page":0,
+                "size": 50,
+                "searchStr": "colours",
+                "sortBy": "fieldDescription",
+                "orderBy": "asc"
+            }
 
 
 
@@ -4642,7 +4740,7 @@ Updates an existing user’s access, notifications, and role.
                + lastName: Randy (string) - The last name of the user.
         + userRole: admin (string) - Role to assign within the application.
         + notification - user details
-               + sendReviewEmailAlert: (number) - Flag to enable sending of review email alerts.
+               + sendReviewEmailAlert: 1 (number) - Flag to enable sending of review email alerts.
                + sendDailyReviewDigest: 0 (number) - Flag to enable sending of daily review summary emails.
                + dailyDigestAbsoluteTime: 5:00 (string) - Daily digest delivery time in HH:MM format.
                + dailyDigestRunHour: 5 (number) - Hour component when daily digest is executed.
@@ -4687,17 +4785,17 @@ Updates an existing user’s access, notifications, and role.
                + sendBrokenIntegrationAlert: 1 (number) - Flag to enable in-app alerts for broken integrations.
                + sendBrokenIntegrationEmail: 1 (number) - Flag to enable email alerts for broken integrations.
 
-+ Body
+    + Body
 
-    {
-      "locationsNumberAccess": [0],
-      user:{
-      "firstName": "string",
-      "lastName": "string",
-      },
-      "userRole": "string",
-      "notification": { /* as above */ }
-    }
+            {
+              "locationsNumberAccess": [0],
+              user:{
+              "firstName": "string",
+              "lastName": "string",
+              },
+              "userRole": "string",
+              "notification": { /* as above */ }
+            }
 
 
 + Response 200 (application/json)
@@ -11759,7 +11857,9 @@ Create webhook subscription listens to subscribed webhook events on a specific p
     + businessId: 1234567890 (number, required) - Account business number.
 
 + Request (application/json)
+
     + Headers
+
             Accept: application/json
             x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
@@ -11786,7 +11886,7 @@ Create webhook subscription listens to subscribed webhook events on a specific p
 
     + Body
 
-        {
+            {
             "webhookUrl": "https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65",
             "emails": [
                         "test@xyz.com"
@@ -11796,11 +11896,10 @@ Create webhook subscription listens to subscribed webhook events on a specific p
                 "username": "testUser",
                 "password": "userpassword"
             }
-
-
-        }
+            }
 
 + Response 200 (application/json)
+
         {
             "id": "abcchdguweUGBSK16789278",
             "message": "You have successfully subscribed to : https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65"
@@ -11834,14 +11933,17 @@ Delete webhook subscription to stop listening to subscribed webhook events on th
     + businessId: 1234567890 (number, required) - Account business number.
 
 + Request (application/json)
+
     + Headers
+
             Accept: application/json
             x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
-    {
-      "message": "This Subscription has been Unsubscribed"
-    }
+
+        {
+          "message": "This Subscription has been Unsubscribed"
+        }
 
 
 + Response 404
@@ -14253,6 +14355,514 @@ Get all Unanswered Questions and Answers for a Location
     [2466][]
 
 
+# Group Google Services
+
+> __Note__
+> - _Applicable to be used only by paid listings clients, for their active locations, for the Google Services section, in the Google listing._
+> - _No two services should have the same service name. It is recommended that all services created should  HAVE UNIQUE service names._
+> - _You CAN have the same service across two diff categories e.g.: Emergency counselling as a $100 paid service can be a service created & mapped to category A - Mental health and category B - Psychotherapy - both categories being present for the same location._
+
+
+## Create Service [/v1/google-services/service/create{?businessId}]
+Create a new service for the account
+
+> __Best practise__
+> - _Please ensure that a business appropriate service is created._
+
+
+### Create Service [POST /v1/google-services/service/create{?businessId}]
+
++ Parameters
+    + businessId: 169744180007807 (number, required) - Id of the account
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+        + name: Customer Service (string, required) - Service name (1–140 characters)
+        + currencyCode: USD (string, optional) - currency code of the paid service
+        + price: 100.50 (number, optional) - price of the paid service
+        + description: We provide 24x7 customer service (string, optional) - Max 300 characters
+        + group: Hair Care (string , optional) - A logical grouping label for related services ; Used internally to categorize services under a common group name ; if not provided ; the service will remain uncategorized ; Note: This field is not synced to Google ; minimum 3 character ; maximum 64 characters
+        + duration: 90 (number , optional) - The expected length of time for the service ; expressed in minutes ; Used internally ; Optional ; if not provided ; no default duration will be set. Note: This field is not synced to Google; minimum 1 ; maximum 9999 minutes
+
+    + Body
+
+            {
+                "name": "Customer Service",
+                "currencyCode": "USD",
+                "price": 100.50,
+                "description": "We provide 24x7 customer service",
+                "group": "Hair Care",
+                "duration": 90
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + serviceId: SERV10021056 (string) - Unique service identifier
+
+    + Body
+
+            {
+                "serviceId": "SERV10021056"
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2486][]
+
++ Response 400
+
+    [2487][]
+
++ Response 400
+
+    [2488][]
+
++ Response 400
+
+    [2489][]
+
++ Response 400
+
+    [2490][]
+
++ Response 400
+
+    [2491][]
+
++ Response 400
+
+    [2492][]
+
++ Response 400
+
+    [2493][]
+
+
+
+## Get All Services [/v1/google-services/services{?businessId,startIndex,pageSize,sortBy,sortOrder}]
+Get all services for an account
+
+### Get All Services [POST]
+
++ Parameters
+
+    + businessId: 169744180007807 (number, required) - Id of the account
+    + startIndex: 0 (number) - start index; default 0
+    + pageSize: 25 (number) - page size; default 25
+    + sortBy: updated (string) - "updated", "name" or "price"; default : updated
+    + sortOrder: desc (string) - "asc" or "desc"; default: desc
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+
+        + search: SERV10021056 (string) - search phrase for the service. This could be service Id or name phrase, e.g.  "1002", "Customer".
+
+    + Body
+
+            {
+                  "search": "Customer Service"
+            }
+
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + services (array) - Google services details
+            + (object)
+                + serviceId: SERV10021056 (string) - Unique service identifier
+                + name: Customer Service (string) - name of the service
+                + currencyCode: USD (string) - currency code of the paid service
+                + price: 100.50 (number) - price of the paid service
+                + description: We provide 24x7 customer service (string) - description of the service
+                + group: Hair Care (string) - service group
+                + duration: 90 (number) - service duration in minutes
+
+    + Body
+
+            {
+                "services": [
+                    {
+                        "serviceId": "SERV10021056",
+                        "name": "Customer Service",
+                        "currencyCode": "USD",
+                        "price": 100.50,
+                        "description": "We provide 24x7 customer service",
+                        "group": "Hair Care",
+                        "duration": 90
+                    }
+                ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2486][]
+
+
+
+## Update Service [/v1/google-services/service/update{?businessId}]
+Update an existing service of an account.
+
+> __Note__
+> - _Any change in service will be reflected across all the locations mapped to the service._
+
+### Update Service [POST]
+
++ Parameters
+
+    + businessId: 169744180007807 (number, required) - Id of the account
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+
+        + serviceId: SERV10021056  (string , required ) - unique service identifier
+        + name: Customer Service(string , required ) - text of the service name posted on Google Services profile; name cannot be altered.
+        + currencyCode: USD  (string , optional) - text of the paid service currency code to be posted on Google Services profile; This is a mandatory field in case of paid service ; 'USD', 'GBP', 'CAD', 'AUD', 'NZD', 'EUR', 'MXN', 'INR', 'AED', 'CHF', 'CNY', 'CZK', 'EGP', 'HKD', 'HUF', 'IDR', 'ILS', 'JPY', 'KES', 'KRW', 'LKR', 'MAD', 'MOP', 'MYR', 'PHP', 'PLN', 'RON', 'RUB', 'ZAR', 'SEK', 'SGD', 'THB', 'TRY', 'TWD', 'VND', 'SAR', 'KHR', 'MNT', 'NOK' or 'DKK' value
+        + price: 100.50  (number , optional) - amount of the paid service price to be posted on Google Services profile; This is a mandatory field in case of paid service ; minimum amount 0.10 ; maximum amount 2147483647
+        + description: We provide 24x7 customer service  (string , optional) - text of the service description to be posted on Google Services profile ; minimum 0 character ; maximum 300 characters
+        + group: Hair Care (string , optional) - A logical grouping label for related services ; Used internally to categorize services under a common group name ; if not provided ; the service will remain uncategorized ; Note: This field is not synced to Google ; minimum 3 character ; maximum 64 characters
+        + duration: 90 (number , optional) - The expected length of time for the service ; expressed in minutes ; Used internally ; Optional ; if not provided ; no default duration will be set. Note: This field is not synced to Google ; minimum 1 ; maximum 9999 minutes
+
+
+    + Body
+
+            {
+                  "serviceId": "SERV10021056",
+                  "name": "Customer Service",
+                  "currencyCode": "USD",
+                  "price": 100.50,
+                  "description": "We provide 24x7 customer service",
+                  "group": "Hair Care",
+                  "duration": 90
+            }
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2486][]
+
++ Response 400
+
+    [2487][]
+
++ Response 400
+
+    [2488][]
+
++ Response 400
+
+    [2489][]
+
++ Response 400
+
+    [2490][]
+
++ Response 400
+
+    [2491][]
+
++ Response 400
+
+    [2492][]
+
++ Response 400
+
+    [2493][]
+
++ Response 400
+
+    [2494][]
+
+
+## Delete Services [/v1/google-services/service/delete{?businessId}]
+Delete existing services of an account
+
+> __Note__
+> - _Any change in service will be reflected across all the locations mapped to the service._
+
+### Delete Services [POST]
+
++ Parameters
+
+    + businessId: 169744180007807 (number, required) - Id of the account
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+
+        + serviceIds: [SERV10021056, SERV10021057] (array , required) - List of unique service identifier
+
+    + Body
+
+            {
+                "serviceIds": [
+                    "SERV10021056",
+                    "SERV10021057"
+                ]
+            }
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2486][]
+
++ Response 400
+
+    [2495][]
+
+
+## Get Location Mapping [/v1/google-services/service/location-mapping{?businessId}]
+Get location level service - category mapping
+
+### Get Location Mapping [GET]
+
++ Parameters
+
+    + businessId: 169744180007807 (number, required) - Id of the business
+
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + category_name: Marketing (string) - name of the GMB category
+        + services (array) - Google services details
+            + (object)
+                + serviceId: SERV10021056 (string) - Unique service identifier
+                + name: Customer Service (string) - name of the service
+                + currencyCode: USD (string) - currency code of the paid service
+                + price: 100.50 (number) - price of the paid service
+                + description: We provide 24x7 customer service (string) - description of the service
+                + group: Hair Care (string) - service group
+                + duration: 90 (number) - service duration in minutes
+
+    + Body
+
+            {
+                "Marketing" : [
+                    {
+                        "serviceId": "SERV10021056",
+                        "name": "Customer Service",
+                        "currencyCode": "USD",
+                        "price": 100.50,
+                        "description": "We provide 24x7 customer service",
+                        "group": "Hair Care",
+                        "duration": 90
+                    },
+                    {
+                        "serviceId": "SERV10021057",
+                        "name": "Marketing Service",
+                        "description": "We provide 24x7 marketing service"
+                    }
+                ],
+                "Advertisement" : [
+                    {
+                        "serviceId": "SERV10021058",
+                        "name": "Advertising Service",
+                        "currencyCode": "USD",
+                        "price": 100.50,
+                        "description": "We provide advertising service across various platforms",
+                        "group": "Hair Care",
+                        "duration": 90
+                    }
+                ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2486][]
+
+
+## Update Location Mapping [/v1/google-services/services/location-mapping{?businessId}]
+Map services to categories at location level
+
+
+### Update Location Mapping [POST]
+
+> __Note__
+> - _Any change will impact the service mapped to all the locations._
+
++ Parameters
+
+    + businessId: 169744180007807 (number, required) - Id of the business
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: 2uiHKCTi8hSg35MG75aaot0B2SAokhjk (string, required) - Partner specific API key provided by Birdeye for data exchange.
+
+    + Attributes
+
+        + category_name: Marketing (string , required) - name of the GMB category
+        + service_id: [SERV10021056, SERV10021057] (array , required) - List of unique service identifier
+
+    + Body
+
+            {
+                "Marketing" : ["SERV10021056", "SERV10021057"]
+            }
+
+
++ Response 200 (application/json)
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 404
+
+    [1011][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2486][]
+
++ Response 400
+
+    [2487][]
+
++ Response 400
+
+    [2496][]
+
++ Response 400
+
+    [2493][]
+
++ Response 400
+
+    [2494][]
+
+
+
 # Group FAQ
 
 To retrieve all Question and Answer (QnA) entries across locations using FAQ APIs, enabling smart support and knowledge features for businesses.
@@ -15134,7 +15744,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
             + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
-            + mainBusinessDescription: (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
+            + mainBusinessDescription: The business is a dental partnership providing general and specialized dental care services, including preventive checkups (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
@@ -15937,7 +16547,7 @@ The Update Listing API will update the location details on all your listings sit
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
             + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
-            + mainBusinessDescription: (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
+            + mainBusinessDescription: The business is a dental partnership providing general and specialized dental care services, including preventive checkups (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
@@ -16742,7 +17352,7 @@ The Get Listing API will get the listing information for the given business numb
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
             + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
-            + mainBusinessDescription: (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
+            + mainBusinessDescription: The business is a dental partnership providing general and specialized dental care services (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
@@ -18815,7 +19425,7 @@ Get tickets
                 + status: new (string) - Ticket status.
                 + rating: 5.0 (number) - Review rating.
                 + externalId: 213243231 (string) - Public review id.
-                + description: Customer will visit again (number) - Description of the ticket.
+                + description: Customer will visit again (string) - Description of the ticket.
                 + activityCount: 4 (number) - Number of activities associated with the ticket.
                 + assignedTo (object) - Assignee details.
                     + firstName: Steve (string) - First Name of the assignee.
@@ -18981,7 +19591,7 @@ Get tickets
 # Group Integration
 Birdeye integrates with various software or tools you use.
 
-## Add Business Integration Mapping[/v1/integrations/add/businessintegrationmapping]
+## Add Business Integration Mapping [/v1/integrations/add/businessintegrationmapping]
 Add Business Integration Mapping adds locations to integrations and set them active.
 
 ### Add locations [PUT]
