@@ -4785,17 +4785,17 @@ Updates an existing user’s access, notifications, and role.
                + sendBrokenIntegrationAlert: 1 (number) - Flag to enable in-app alerts for broken integrations.
                + sendBrokenIntegrationEmail: 1 (number) - Flag to enable email alerts for broken integrations.
 
-+ Body
+    + Body
 
-    {
-      "locationsNumberAccess": [0],
-      user:{
-      "firstName": "string",
-      "lastName": "string",
-      },
-      "userRole": "string",
-      "notification": { /* as above */ }
-    }
+            {
+              "locationsNumberAccess": [0],
+              user:{
+              "firstName": "string",
+              "lastName": "string",
+              },
+              "userRole": "string",
+              "notification": { /* as above */ }
+            }
 
 
 + Response 200 (application/json)
@@ -11940,9 +11940,10 @@ Delete webhook subscription to stop listening to subscribed webhook events on th
             x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
-    {
-      "message": "This Subscription has been Unsubscribed"
-    }
+
+        {
+          "message": "This Subscription has been Unsubscribed"
+        }
 
 
 + Response 404
@@ -19590,7 +19591,7 @@ Get tickets
 # Group Integration
 Birdeye integrates with various software or tools you use.
 
-## Add Business Integration Mapping[/v1/integrations/add/businessintegrationmapping]
+## Add Business Integration Mapping [/v1/integrations/add/businessintegrationmapping]
 Add Business Integration Mapping adds locations to integrations and set them active.
 
 ### Add locations [PUT]
