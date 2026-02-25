@@ -5629,6 +5629,656 @@ Remove particular tags from all reviews removes the list of tags from all the re
 
     [1011][]
 
+## Review Response Rate Over Time [/v1/review/report/response-rate/time/rate-over-time]
+Review Response Rate Over Time API returns response-rate trends over time, with optional previous-period comparison.
+
+### Review Response Rate Over Time [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Business number of the location.
+
+    + Attributes
+        + reviewSites: 2,1,110,100 (array) - List of review site IDs.
+        + ratings: 0,1,3,4,5 (array) - Ratings to include in the report.
+        + businessNumbers: 172957184851864,174436684666401 (array) - List of business numbers.
+        + startDate: 02/25/2025 (string) - Start date in `MM/dd/YYYY` format.
+        + endDate: 02/01/2026 (string) - End date in `MM/dd/YYYY` format.
+        + comparisonFilter (object) - Comparison options.
+            + previous: true (boolean) - If true, includes previous-period comparison.
+            + key: previous_period (string) - Comparison type key.
+
+    + Body
+
+            {
+                "reviewSites": [2, 1, 110, 100],
+                "ratings": ["0", "1", "3", "4", "5"],
+                "businessNumbers": [172957184851864, 174436684666401],
+                "startDate": "02/25/2025",
+                "endDate": "02/01/2026",
+                "comparisonFilter": {
+                    "previous": true,
+                    "key": "previous_period"
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + summary (object)
+            + actual (object)
+                + totalCount: 94 (number) - Total number of reviews in selected period.
+                + avgRating: 4.2 (number) - Average rating in selected period.
+                + responseRate: 5 (number) - Response rate percentage.
+                + unrespondedRate: 95 (number) - Unresponded rate percentage.
+                + unrespondedCount: 89 (number) - Count of unresponded reviews.
+                + respondedCount: 5 (number) - Count of responded reviews.
+                + unrespondedCountGrowth: 89.4 (number) - Growth percentage against comparison period.
+                + respondedCountGrowth: 400.0 (number) - Growth percentage against comparison period.
+                + totalCountGrowth: 95.8 (number) - Growth percentage against comparison period.
+                + responseRateGrowth: 150.0 (number) - Growth percentage against comparison period.
+            + compare (object)
+                + totalCount: 48 (number) - Total number of reviews in comparison period.
+                + avgRating: 4.1 (number) - Average rating in comparison period.
+                + responseRate: 2 (number) - Response rate percentage in comparison period.
+                + unrespondedRate: 98 (number) - Unresponded rate percentage in comparison period.
+                + unrespondedCount: 47 (number) - Count of unresponded reviews in comparison period.
+                + respondedCount: 1 (number) - Count of responded reviews in comparison period.
+        + dataPoints (array) - Time-series points for actual and comparison periods.
+            + (object)
+                + actual (object)
+                    + label: Feb 24, 2025 - Mar 2, 2025 (string) - Display label for the bucket.
+                    + shortLabel: Feb 24 - Mar 2 '25 (string) - Short display label.
+                    + totalCount: 0 (number) - Total reviews in the bucket.
+                    + startDate: 02/24/2025 (string) - Bucket start date.
+                    + endDate: 03/02/2025 (string) - Bucket end date.
+                    + responseRate: 0 (number) - Response rate percentage.
+                    + unrespondedCount: 0 (number) - Unresponded review count.
+                    + respondedCount: 0 (number) - Responded review count.
+                    + respondedCountGrowth: 0.0 (number) - Growth percentage.
+                    + totalCountGrowth: 0.0 (number) - Growth percentage.
+                    + responseRateGrowth: 0.0 (number) - Growth percentage.
+                + compare (object)
+                    + label: Mar 19, 2024 - Mar 24, 2024 (string) - Comparison label for the bucket.
+                    + shortLabel: Mar 19 - Mar 24 '24 (string) - Short comparison label.
+                    + totalCount: 0 (number) - Comparison total reviews in the bucket.
+                    + startDate: 03/19/2024 (string) - Comparison bucket start date.
+                    + endDate: 03/24/2024 (string) - Comparison bucket end date.
+                    + responseRate: 0 (number) - Comparison response rate percentage.
+                    + unrespondedCount: 0 (number) - Comparison unresponded review count.
+                    + respondedCount: 0 (number) - Comparison responded review count.
+        + dateDiff: 341 (number) - Date range difference.
+        + groupByType: week (string) - Grouping unit used in data points.
+        + dataPresent: true (boolean) - Indicates whether report data is present.
+
+    + Body
+
+            {
+                "summary": {
+                    "actual": {
+                        "totalCount": 94,
+                        "avgRating": 4.2,
+                        "responseRate": 5,
+                        "unrespondedRate": 95,
+                        "unrespondedCount": 89,
+                        "respondedCount": 5,
+                        "unrespondedCountGrowth": 89.4,
+                        "respondedCountGrowth": 400.0,
+                        "totalCountGrowth": 95.8,
+                        "responseRateGrowth": 150.0
+                    },
+                    "compare": {
+                        "totalCount": 48,
+                        "avgRating": 4.1,
+                        "responseRate": 2,
+                        "unrespondedRate": 98,
+                        "unrespondedCount": 47,
+                        "respondedCount": 1
+                    }
+                },
+                "dataPoints": [
+                    {
+                        "actual": {
+                            "label": "Feb 24, 2025 - Mar 2, 2025",
+                            "shortLabel": "Feb 24 - Mar 2 '25",
+                            "totalCount": 0,
+                            "startDate": "02/24/2025",
+                            "endDate": "03/02/2025",
+                            "responseRate": 0,
+                            "unrespondedCount": 0,
+                            "respondedCount": 0,
+                            "respondedCountGrowth": 0.0,
+                            "totalCountGrowth": 0.0,
+                            "responseRateGrowth": 0.0
+                        },
+                        "compare": {
+                            "label": "Mar 19, 2024 - Mar 24, 2024",
+                            "shortLabel": "Mar 19 - Mar 24 '24",
+                            "totalCount": 0,
+                            "startDate": "03/19/2024",
+                            "endDate": "03/24/2024",
+                            "responseRate": 0,
+                            "unrespondedCount": 0,
+                            "respondedCount": 0
+                        }
+                    }
+                ],
+                "dateDiff": 341,
+                "groupByType": "week",
+                "dataPresent": true
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [1167][]
+
+
+## Review Response Rate By Location Overview [/resources/v1/review/report/response-rate/by-location/overview{?order,sortBy,startIndex,size}]
+Review Response Rate By Location Overview API returns location-wise response-rate metrics.
+
+### Review Response Rate By Location Overview [POST]
+
++ Parameters
+    + order: 1 (number, optional) - Sort order. `1` for descending, `0` for ascending.
+    + sortBy: rate (string, optional) - Field used for sorting, for example `rate`.
+    + startIndex: 0 (number, optional) - Starting index for pagination.
+    + size: 100 (number, optional) - Number of records to return.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Business number of the location.
+
+    + Attributes
+        + reviewSites: 2,1,110,100 (array) - List of review site IDs.
+        + ratings: 0,1,3,4,5 (array) - Ratings to include in the report.
+        + businessNumbers: 172957184851864,174436684666401 (array) - List of business numbers.
+        + startDate: 02/25/2025 (string) - Start date in `MM/dd/YYYY` format.
+        + endDate: 02/01/2026 (string) - End date in `MM/dd/YYYY` format.
+        + comparisonFilter (object) - Comparison options.
+            + previous: true (boolean) - If true, includes previous-period comparison.
+            + key: previous_period (string) - Comparison type key.
+
+    + Body
+
+            {
+                "reviewSites": [2, 1, 110, 100],
+                "ratings": ["0", "1", "3", "4", "5"],
+                "businessNumbers": [172957184851864, 174436684666401],
+                "startDate": "02/25/2025",
+                "endDate": "02/01/2026",
+                "comparisonFilter": {
+                    "previous": true,
+                    "key": "previous_period"
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + summary (object)
+            + actual (object)
+                + totalCount: 0 (number) - Total number of reviews.
+                + responseRate: 0 (number) - Response rate percentage.
+                + unrespondedRate: 0 (number) - Unresponded rate percentage.
+                + unrespondedCount: 0 (number) - Count of unresponded reviews.
+                + respondedCount: 0 (number) - Count of responded reviews.
+            + compare (object)
+                + totalCount: 0 (number) - Total number of reviews in comparison period.
+                + responseRate: 0 (number) - Response rate percentage in comparison period.
+                + unrespondedRate: 0 (number) - Unresponded rate percentage in comparison period.
+                + unrespondedCount: 0 (number) - Count of unresponded reviews in comparison period.
+                + respondedCount: 0 (number) - Count of responded reviews in comparison period.
+        + dataPoints (array) - Location-wise response-rate metrics.
+            + (object)
+                + actual (object)
+                    + label: Plano, TX (string) - Location label.
+                    + totalCount: 0 (number) - Total number of reviews for the location.
+                    + responseRate: 0 (number) - Response rate percentage for the location.
+                    + unrespondedRate: 0 (number) - Unresponded rate percentage for the location.
+                    + unrespondedCount: 0 (number) - Count of unresponded reviews for the location.
+                    + respondedCount: 0 (number) - Count of responded reviews for the location.
+                    + businessNumber: 175457918679707 (number) - Business number of the location.
+                + compare (object)
+                    + label: Plano, TX (string) - Comparison location label.
+                    + totalCount: 0 (number) - Comparison total number of reviews for the location.
+                    + responseRate: 0 (number) - Comparison response rate percentage for the location.
+                    + unrespondedRate: 0 (number) - Comparison unresponded rate percentage for the location.
+                    + unrespondedCount: 0 (number) - Comparison unresponded reviews for the location.
+                    + respondedCount: 0 (number) - Comparison responded reviews for the location.
+                    + businessNumber: 175457918679707 (number) - Business number of the location.
+        + dataPresent: false (boolean) - Indicates whether report data is present.
+
+    + Body
+
+            {
+                "summary": {
+                    "actual": {
+                        "totalCount": 0,
+                        "responseRate": 0,
+                        "unrespondedRate": 0,
+                        "unrespondedCount": 0,
+                        "respondedCount": 0
+                    },
+                    "compare": {
+                        "totalCount": 0,
+                        "responseRate": 0,
+                        "unrespondedRate": 0,
+                        "unrespondedCount": 0,
+                        "respondedCount": 0
+                    }
+                },
+                "dataPoints": [
+                    {
+                        "actual": {
+                            "label": "Plano, TX",
+                            "totalCount": 0,
+                            "responseRate": 0,
+                            "unrespondedRate": 0,
+                            "unrespondedCount": 0,
+                            "respondedCount": 0,
+                            "businessNumber": 175457918679707
+                        },
+                        "compare": {
+                            "label": "Plano, TX",
+                            "totalCount": 0,
+                            "responseRate": 0,
+                            "unrespondedRate": 0,
+                            "unrespondedCount": 0,
+                            "respondedCount": 0,
+                            "businessNumber": 175457918679707
+                        }
+                    },
+                    {
+                        "actual": {
+                            "label": "Honda Complex",
+                            "totalCount": 0,
+                            "responseRate": 0,
+                            "unrespondedRate": 0,
+                            "unrespondedCount": 0,
+                            "respondedCount": 0,
+                            "businessNumber": 175700720136654
+                        },
+                        "compare": {
+                            "label": "Honda Complex",
+                            "totalCount": 0,
+                            "responseRate": 0,
+                            "unrespondedRate": 0,
+                            "unrespondedCount": 0,
+                            "respondedCount": 0,
+                            "businessNumber": 175700720136654
+                        }
+                    }
+                ],
+                "dataPresent": false
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [1167][]
+
+
+## Average Response Time By Location [/v1/review/report/avg-response-time/by-location{?order,sortBy,startIndex,size}]
+Average Response Time By Location API returns location-wise average response-time metrics.
+
+### Average Response Time By Location [POST]
+
++ Parameters
+    + order: 1 (number, optional) - Sort order. `1` for descending, `0` for ascending.
+    + sortBy: avg-resp-time (string, optional) - Field used for sorting.
+    + startIndex: 0 (number, optional) - Starting index for pagination.
+    + size: 100 (number, optional) - Number of records to return.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Business number of the location.
+
+    + Attributes
+        + reviewSites: 2,1,110,100 (array) - List of review site IDs.
+        + ratings: 0,1,3,4,5 (array) - Ratings to include in the report.
+        + businessNumbers: 172957184851864,174436684666401 (array) - List of business numbers.
+        + startDate: 02/25/2025 (string) - Start date in `MM/dd/YYYY` format.
+        + endDate: 02/01/2026 (string) - End date in `MM/dd/YYYY` format.
+        + comparisonFilter (object) - Comparison options.
+            + previous: true (boolean) - If true, includes previous-period comparison.
+            + key: previous_period (string) - Comparison type key.
+
+    + Body
+
+            {
+                "reviewSites": [2, 1, 110, 100],
+                "ratings": ["0", "1", "3", "4", "5"],
+                "businessNumbers": [172957184851864, 174436684666401],
+                "startDate": "02/25/2025",
+                "endDate": "02/01/2026",
+                "comparisonFilter": {
+                    "previous": true,
+                    "key": "previous_period"
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + summary (object)
+            + actual (object)
+                + avgResponseTime (object)
+                    + days: 2357.9 (number) - Average response time in days.
+                    + hours: 56589.57 (number) - Average response time in hours.
+                    + minutes: 3395374.0 (number) - Average response time in minutes.
+                + respondedCount: 80 (number) - Number of responded reviews.
+            + compare (object)
+                + avgResponseTime (object)
+                    + days: 0.0 (number) - Average response time in days for comparison period.
+                    + hours: 0.0 (number) - Average response time in hours for comparison period.
+                    + minutes: 0.0 (number) - Average response time in minutes for comparison period.
+                + respondedCount: 0 (number) - Number of responded reviews in comparison period.
+        + dataPoints (array) - Location-wise average response-time metrics.
+            + (object)
+                + actual (object)
+                    + label: Vignesh (string) - Location label.
+                    + avgResponseTime (object)
+                        + days: 2493.24 (number) - Average response time in days for the location.
+                        + hours: 59837.72 (number) - Average response time in hours for the location.
+                        + minutes: 3590263.0 (number) - Average response time in minutes for the location.
+                    + respondedCount: 70 (number) - Number of responded reviews for the location.
+                    + businessNumber: 174436684666401 (number) - Business number of the location.
+                + compare (object)
+                    + label: Vignesh (string) - Comparison location label.
+                    + avgResponseTime (object)
+                        + days: 0.0 (number) - Comparison average response time in days.
+                        + hours: 0.0 (number) - Comparison average response time in hours.
+                        + minutes: 0.0 (number) - Comparison average response time in minutes.
+                    + respondedCount: 0 (number) - Comparison responded reviews for the location.
+                    + businessNumber: 174436684666401 (number) - Business number of the location.
+        + dateDiff: 6792 (number) - Date range difference.
+        + groupByType: quarter (string) - Grouping unit used in data points.
+        + dataPresent: true (boolean) - Indicates whether report data is present.
+
+    + Body
+
+            {
+                "summary": {
+                    "actual": {
+                        "avgResponseTime": {
+                            "days": 2357.9,
+                            "hours": 56589.57,
+                            "minutes": 3395374.0
+                        },
+                        "respondedCount": 80
+                    },
+                    "compare": {
+                        "avgResponseTime": {
+                            "days": 0.0,
+                            "hours": 0.0,
+                            "minutes": 0.0
+                        },
+                        "respondedCount": 0
+                    }
+                },
+                "dataPoints": [
+                    {
+                        "actual": {
+                            "label": "Vignesh",
+                            "avgResponseTime": {
+                                "days": 2493.24,
+                                "hours": 59837.72,
+                                "minutes": 3590263.0
+                            },
+                            "respondedCount": 70,
+                            "businessNumber": 174436684666401
+                        },
+                        "compare": {
+                            "label": "Vignesh",
+                            "avgResponseTime": {
+                                "days": 0.0,
+                                "hours": 0.0,
+                                "minutes": 0.0
+                            },
+                            "respondedCount": 0,
+                            "businessNumber": 174436684666401
+                        }
+                    },
+                    {
+                        "actual": {
+                            "label": "Assembly Row",
+                            "avgResponseTime": {
+                                "days": 1410.52,
+                                "hours": 33852.52,
+                                "minutes": 2031151.4
+                            },
+                            "respondedCount": 10,
+                            "businessNumber": 172957184851864
+                        },
+                        "compare": {
+                            "label": "Assembly Row",
+                            "avgResponseTime": {
+                                "days": 0.0,
+                                "hours": 0.0,
+                                "minutes": 0.0
+                            },
+                            "respondedCount": 0,
+                            "businessNumber": 172957184851864
+                        }
+                    }
+                ],
+                "dateDiff": 6792,
+                "groupByType": "quarter",
+                "dataPresent": true
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [1167][]
+
+
+## Average Response Time Over Time [/v1/review/report/avg-response-time/time]
+Average Response Time Over Time API returns average response-time trends over time, with optional previous-period comparison.
+
+### Average Response Time Over Time [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Business number of the location.
+
+    + Attributes
+        + reviewSites: 2,1,110,100 (array) - List of review site IDs.
+        + ratings: 0,1,3,4,5 (array) - Ratings to include in the report.
+        + businessNumbers: 172957184851864,174436684666401 (array) - List of business numbers.
+        + startDate: 02/25/2025 (string) - Start date in `MM/dd/YYYY` format.
+        + endDate: 02/01/2026 (string) - End date in `MM/dd/YYYY` format.
+        + comparisonFilter (object) - Comparison options.
+            + previous: true (boolean) - If true, includes previous-period comparison.
+            + key: previous_period (string) - Comparison type key.
+
+    + Body
+
+            {
+                "reviewSites": [2, 1, 110, 100],
+                "ratings": ["0", "1", "3", "4", "5"],
+                "businessNumbers": [172957184851864, 174436684666401],
+                "startDate": "02/25/2025",
+                "endDate": "02/01/2026",
+                "comparisonFilter": {
+                    "previous": true,
+                    "key": "previous_period"
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + summary (object)
+            + actual (object)
+                + avgResponseTime (object)
+                    + days: 2357.9 (number) - Average response time in days.
+                    + hours: 56589.57 (number) - Average response time in hours.
+                    + minutes: 3395374.0 (number) - Average response time in minutes.
+                + respondedCount: 80 (number) - Number of responded reviews.
+            + compare (object)
+                + avgResponseTime (object)
+                    + days: 0.0 (number) - Average response time in days for comparison period.
+                    + hours: 0.0 (number) - Average response time in hours for comparison period.
+                    + minutes: 0.0 (number) - Average response time in minutes for comparison period.
+                + respondedCount: 0 (number) - Number of responded reviews in comparison period.
+        + dataPoints (array) - Time-series data points with comparison period values.
+            + (object)
+                + actual (object)
+                    + label: Apr 2017 - Jun 2017 (string) - Display label for the bucket.
+                    + shortLabel: Q2 2017 (string) - Short display label.
+                    + startDate: 04/01/2017 (string) - Bucket start date.
+                    + endDate: 06/30/2017 (string) - Bucket end date.
+                    + avgResponseTime (object)
+                        + days: 27.08 (number) - Average response time in days.
+                        + hours: 649.83 (number) - Average response time in hours.
+                        + minutes: 38990.08 (number) - Average response time in minutes.
+                    + respondedCount: 1 (number) - Number of responded reviews in the bucket.
+                + compare (object)
+                    + label: Apr 2016 - Jun 2016 (string) - Comparison label for the bucket.
+                    + shortLabel: Q2 2016 (string) - Short comparison label.
+                    + startDate: 04/01/2016 (string) - Comparison bucket start date.
+                    + endDate: 06/30/2016 (string) - Comparison bucket end date.
+                    + avgResponseTime (object)
+                        + days: 0.0 (number) - Comparison average response time in days.
+                        + hours: 0.0 (number) - Comparison average response time in hours.
+                        + minutes: 0.0 (number) - Comparison average response time in minutes.
+                    + respondedCount: 0 (number) - Comparison responded reviews in the bucket.
+        + dateDiff: 6792 (number) - Date range difference.
+        + groupByType: quarter (string) - Grouping unit used in data points.
+        + dataPresent: true (boolean) - Indicates whether report data is present.
+
+    + Body
+
+            {
+                "summary": {
+                    "actual": {
+                        "avgResponseTime": {
+                            "days": 2357.9,
+                            "hours": 56589.57,
+                            "minutes": 3395374.0
+                        },
+                        "respondedCount": 80
+                    },
+                    "compare": {
+                        "avgResponseTime": {
+                            "days": 0.0,
+                            "hours": 0.0,
+                            "minutes": 0.0
+                        },
+                        "respondedCount": 0
+                    }
+                },
+                "dataPoints": [
+                    {
+                        "actual": {
+                            "label": "Apr 2017 - Jun 2017",
+                            "shortLabel": "Q2 2017",
+                            "startDate": "04/01/2017",
+                            "endDate": "06/30/2017",
+                            "avgResponseTime": {
+                                "days": 27.08,
+                                "hours": 649.83,
+                                "minutes": 38990.08
+                            },
+                            "respondedCount": 1
+                        },
+                        "compare": {
+                            "label": "Apr 2016 - Jun 2016",
+                            "shortLabel": "Q2 2016",
+                            "startDate": "04/01/2016",
+                            "endDate": "06/30/2016",
+                            "avgResponseTime": {
+                                "days": 0.0,
+                                "hours": 0.0,
+                                "minutes": 0.0
+                            },
+                            "respondedCount": 0
+                        }
+                    },
+                    {
+                        "actual": {
+                            "label": "Jul 2017 - Sep 2017",
+                            "shortLabel": "Q3 2017",
+                            "startDate": "07/01/2017",
+                            "endDate": "09/30/2017",
+                            "avgResponseTime": {
+                                "days": 3.43,
+                                "hours": 82.28,
+                                "minutes": 4936.62
+                            },
+                            "respondedCount": 1
+                        },
+                        "compare": {
+                            "label": "Jul 2016 - Sep 2016",
+                            "shortLabel": "Q3 2016",
+                            "startDate": "07/01/2016",
+                            "endDate": "09/30/2016",
+                            "avgResponseTime": {
+                                "days": 0.0,
+                                "hours": 0.0,
+                                "minutes": 0.0
+                            },
+                            "respondedCount": 0
+                        }
+                    }
+                ],
+                "dateDiff": 6792,
+                "groupByType": "quarter",
+                "dataPresent": true
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [1167][]
+
+
 
 
 # Group Contact
@@ -19045,6 +19695,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>02/25/2026</b> - Added Response Time (overtime & by-location) and Response Rate(overtime & by-location) APIs under reviews section.
 * <b>02/11/2026</b> - Updated the API key identifier for applicable APIs by moving it from a query parameter to the x-api-key request header.
 * <b>02/03/2026</b> - Added the "Get All QnA" API under FAQ group to enable retrieval of QnA entries across business locations, with full request and response documentation
 * <b>01/19/2026</b> - Added a note under the Authentication and Rate limiting section specifying that the x-api-key header is mandatory for all API requests targeting EU region business accounts.
