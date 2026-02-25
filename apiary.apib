@@ -11760,6 +11760,7 @@ Create webhook subscription listens to subscribed webhook events on a specific p
 
 + Request (application/json)
     + Headers
+
             Accept: application/json
             x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
@@ -11786,21 +11787,20 @@ Create webhook subscription listens to subscribed webhook events on a specific p
 
     + Body
 
-        {
-            "webhookUrl": "https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65",
-            "emails": [
-                        "test@xyz.com"
-                    ],
-            "eventName": "APPOINTMENT_BOOKED",
-            "auth": {
-                "username": "testUser",
-                "password": "userpassword"
+            {
+                "webhookUrl": "https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65",
+                "emails": [
+                    "test@xyz.com"
+                ],
+                "eventName": "APPOINTMENT_BOOKED",
+                "auth": {
+                    "username": "testUser",
+                    "password": "userpassword"
+                }
             }
 
-
-        }
-
 + Response 200 (application/json)
+
         {
             "id": "abcchdguweUGBSK16789278",
             "message": "You have successfully subscribed to : https://webhook.site/2036c967-0174-4604-8b38-8d5493ed6d65"
@@ -11835,13 +11835,15 @@ Delete webhook subscription to stop listening to subscribed webhook events on th
 
 + Request (application/json)
     + Headers
+
             Accept: application/json
             x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
 
 + Response 200 (application/json)
-    {
-      "message": "This Subscription has been Unsubscribed"
-    }
+
+        {
+            "message": "This Subscription has been Unsubscribed"
+        }
 
 
 + Response 404
@@ -18815,7 +18817,7 @@ Get tickets
                 + status: new (string) - Ticket status.
                 + rating: 5.0 (number) - Review rating.
                 + externalId: 213243231 (string) - Public review id.
-                + description: Customer will visit again (number) - Description of the ticket.
+                + description: Customer will visit again (string) - Description of the ticket.
                 + activityCount: 4 (number) - Number of activities associated with the ticket.
                 + assignedTo (object) - Assignee details.
                     + firstName: Steve (string) - First Name of the assignee.
