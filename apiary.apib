@@ -5648,9 +5648,9 @@ Review Response Rate Over Time API returns response-rate trends over time, with 
         + businessNumbers: 172957184851864,174436684666401 (array) - List of business numbers.
         + startDate: 02/25/2025 (string) - Start date in `MM/dd/YYYY` format.
         + endDate: 02/01/2026 (string) - End date in `MM/dd/YYYY` format.
-        + comparisonFilter (object) - Comparison options.
-            + previous: true (boolean) - If true, includes previous-period comparison.
-            + key: previous_period (string) - Comparison type key.
+        + comparisonFilter (object) - Comparison date range.
+            + startDate: 01/01/2025 (string) - Comparison start date in `MM/dd/YYYY` format.
+            + endDate: 01/10/2025 (string) - Comparison end date in `MM/dd/YYYY` format.
 
     + Body
 
@@ -5661,8 +5661,8 @@ Review Response Rate Over Time API returns response-rate trends over time, with 
                 "startDate": "02/25/2025",
                 "endDate": "02/01/2026",
                 "comparisonFilter": {
-                    "previous": true,
-                    "key": "previous_period"
+                    "startDate": "01/01/2025",
+                    "endDate": "01/10/2025"
                 }
             }
 
@@ -5810,9 +5810,9 @@ Review Response Rate By Location Overview API returns location-wise response-rat
         + businessNumbers: 172957184851864,174436684666401 (array) - List of business numbers.
         + startDate: 02/25/2025 (string) - Start date in `MM/dd/YYYY` format.
         + endDate: 02/01/2026 (string) - End date in `MM/dd/YYYY` format.
-        + comparisonFilter (object) - Comparison options.
-            + previous: true (boolean) - If true, includes previous-period comparison.
-            + key: previous_period (string) - Comparison type key.
+        + comparisonFilter (object) - Comparison date range.
+            + startDate: 01/01/2025 (string) - Comparison start date in `MM/dd/YYYY` format.
+            + endDate: 01/10/2025 (string) - Comparison end date in `MM/dd/YYYY` format.
 
     + Body
 
@@ -5823,8 +5823,8 @@ Review Response Rate By Location Overview API returns location-wise response-rat
                 "startDate": "02/25/2025",
                 "endDate": "02/01/2026",
                 "comparisonFilter": {
-                    "previous": true,
-                    "key": "previous_period"
+                    "startDate": "01/01/2025",
+                    "endDate": "01/10/2025"
                 }
             }
 
@@ -5966,9 +5966,9 @@ Average Response Time By Location API returns location-wise average response-tim
         + businessNumbers: 172957184851864,174436684666401 (array) - List of business numbers.
         + startDate: 02/25/2025 (string) - Start date in `MM/dd/YYYY` format.
         + endDate: 02/01/2026 (string) - End date in `MM/dd/YYYY` format.
-        + comparisonFilter (object) - Comparison options.
-            + previous: true (boolean) - If true, includes previous-period comparison.
-            + key: previous_period (string) - Comparison type key.
+        + comparisonFilter (object) - Comparison date range.
+            + startDate: 01/01/2025 (string) - Comparison start date in `MM/dd/YYYY` format.
+            + endDate: 01/10/2025 (string) - Comparison end date in `MM/dd/YYYY` format.
 
     + Body
 
@@ -5979,8 +5979,8 @@ Average Response Time By Location API returns location-wise average response-tim
                 "startDate": "02/25/2025",
                 "endDate": "02/01/2026",
                 "comparisonFilter": {
-                    "previous": true,
-                    "key": "previous_period"
+                    "startDate": "01/01/2025",
+                    "endDate": "01/10/2025"
                 }
             }
 
@@ -6126,9 +6126,9 @@ Average Response Time Over Time API returns average response-time trends over ti
         + businessNumbers: 172957184851864,174436684666401 (array) - List of business numbers.
         + startDate: 02/25/2025 (string) - Start date in `MM/dd/YYYY` format.
         + endDate: 02/01/2026 (string) - End date in `MM/dd/YYYY` format.
-        + comparisonFilter (object) - Comparison options.
-            + previous: true (boolean) - If true, includes previous-period comparison.
-            + key: previous_period (string) - Comparison type key.
+        + comparisonFilter (object) - Comparison date range.
+            + startDate: 01/01/2025 (string) - Comparison start date in `MM/dd/YYYY` format.
+            + endDate: 01/10/2025 (string) - Comparison end date in `MM/dd/YYYY` format.
 
     + Body
 
@@ -6139,8 +6139,8 @@ Average Response Time Over Time API returns average response-time trends over ti
                 "startDate": "02/25/2025",
                 "endDate": "02/01/2026",
                 "comparisonFilter": {
-                    "previous": true,
-                    "key": "previous_period"
+                    "startDate": "01/01/2025",
+                    "endDate": "01/10/2025"
                 }
             }
 
@@ -19695,7 +19695,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
-* <b>02/25/2026</b> - Added Response Time (overtime & by-location) and Response Rate(overtime & by-location) APIs under reviews section.
+* <b>03/02/2026</b> - Added Response Time (overtime & by-location) and Response Rate(overtime & by-location) APIs under reviews section.
 * <b>02/11/2026</b> - Updated the API key identifier for applicable APIs by moving it from a query parameter to the x-api-key request header.
 * <b>02/03/2026</b> - Added the "Get All QnA" API under FAQ group to enable retrieval of QnA entries across business locations, with full request and response documentation
 * <b>01/19/2026</b> - Added a note under the Authentication and Rate limiting section specifying that the x-api-key header is mandatory for all API requests targeting EU region business accounts.
