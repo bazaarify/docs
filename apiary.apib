@@ -4528,7 +4528,7 @@ Delete and manage user profiles and permissions easily.
 
 ## Signup [/v1/user/signup/v2]
 Create User API creates a new user for a business.
-An invitation will be sent to the user via email.
+By default, an invitation is sent to the user via email.
 
 ### Create User [POST]
 
@@ -4548,6 +4548,7 @@ An invitation will be sent to the user via email.
         + userEmailId: rhonda@test.com (string, required) - Email Id of the user that’s being added to this business.
         + phone: 123-456-7890 (string) - Mobile number of the user.
         + userRole: admin (string, required) - User role. Valid values are "owner","admin". Default is "owner".
+        + sendInvite: true (boolean) - Whether to send invite email to the user. Default is `true`.
 
     + Body
 
@@ -4556,7 +4557,8 @@ An invitation will be sent to the user via email.
                 "lastName": "Spears",
                 "userEmailId": "rhonda@reviewmanagement.com",
                 "phone": "408-xxx-xxxx",
-                "userRole": "owner"
+                "userRole": "owner",
+                "sendInvite": true
             }
 
 + Response 200 (application/json)
@@ -19045,6 +19047,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>03/02/2026</b> - Added sendInvite (boolean, default - true) field in Create User Signup v2 API request body and attributes.
 * <b>02/11/2026</b> - Updated the API key identifier for applicable APIs by moving it from a query parameter to the x-api-key request header.
 * <b>02/03/2026</b> - Added the "Get All QnA" API under FAQ group to enable retrieval of QnA entries across business locations, with full request and response documentation
 * <b>01/19/2026</b> - Added a note under the Authentication and Rate limiting section specifying that the x-api-key header is mandatory for all API requests targeting EU region business accounts.
