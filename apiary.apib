@@ -14096,7 +14096,7 @@ This API retrieves competitor metrics review data (average rating and total revi
 
     [1167][]
 
-# Insight AI
+# Group Insight AI
 Insight intelligence, simplified by AI.
 
 ## Insight Experience Score Benchmark [/v1/api/insight/experience/scoreBenchmark]
@@ -14108,16 +14108,19 @@ Insight Experience Score Benchmark API retrieves benchmark scores comparing actu
 
     + Headers
 
-            + x-api-key: (string, required) - API key for authentication
-            + x-business-number: (number, required) - Business number identifier
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User associated businessNumber.
+
 
     + Attributes
 
-            + reviewSources (array[string], optional) - Review sources to include (e.g., Google, Facebook, CitySearch)
-            + ratings (array[string], optional) - Rating values to filter (0-5)
-            + businessNumbers (array[number], required) - List of business numbers (max 100)
-            + startDate (string, required) - Start date in MM/DD/YYYY format
-            + endDate (string, required) - End date in MM/DD/YYYY format
+        + reviewSources: Google,Facebook,CitySearch (array[number])- Review sources to include.
+        + ratings: 0,1,3,4,5 (array[string], optional) - Rating values to filter.
+        + businessNumbers: 172957184851864,174436684666401 (array[number], required) - List of business numbers (max 100).
+        + startDate: 02/25/2025 (string, required) - Start date in MM/DD/YYYY format.
+        + endDate: 02/01/2026 (string, required) - End date in MM/DD/YYYY format.
+
 
     + Body
 
@@ -14189,16 +14192,17 @@ Insight Experience Location Info API retrieves location-wise experience metrics 
 
     + Headers
 
-            + x-api-key (string, required) - API key for authentication
-            + x-business-number (number, required) - Business number identifier
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User associated businessNumber.
 
     + Attributes
 
-            + reviewSources (array[string], optional) - List of review sources to filter (e.g., Google, Facebook, CitySearch)
-            + ratings (array[string], optional) - List of rating values to filter (e.g., 0, 1, 3, 4, 5)
-            + businessNumbers (array[number], required) - List of business location identifiers (maximum 100 allowed)
-            + startDate (string, required) - Start date in MM/DD/YYYY format
-            + endDate (string, required) - End date in MM/DD/YYYY format
+        + reviewSources (array[string], optional) - List of review sources to filter (e.g., Google, Facebook, CitySearch)
+        + ratings (array[string], optional) - List of rating values to filter (e.g., 0, 1, 3, 4, 5)
+        + businessNumbers (array[number], required) - List of business location identifiers (maximum 100 allowed)
+        + startDate (string, required) - Start date in MM/DD/YYYY format
+        + endDate (string, required) - End date in MM/DD/YYYY format
 
     + Body
 
@@ -14215,8 +14219,9 @@ Insight Experience Location Info API retrieves location-wise experience metrics 
 
     + Attributes
 
-            + totalCount (number) - Total number of locations returned
-            + dataPoints (array) - Array of location experience metrics
+        + totalCount (number) - Total number of locations returned
+        + dataPoints (array) - Array of location experience metrics
+            + (object)
                 + id (number) - Location business number
                 + name (string) - Location name
                 + experienceScore (number) - Current experience score
@@ -14240,6 +14245,22 @@ Insight Experience Location Info API retrieves location-wise experience metrics 
                     {
                         "id": 149546078883527,
                         "name": "194 - Greywolf Veterinary Hospital",
+                        "experienceScore": 93.1,
+                        "listingScore": 86.7,
+                        "sentimentScore": 96.2,
+                        "reputationScore": 93.8,
+                        "experienceDeltaScore": 93,
+                        "listingDeltaScore": 86,
+                        "sentimentDeltaScore": 96,
+                        "reputationDeltaScore": 93,
+                        "experienceDelta": 0.1,
+                        "listingDelta": 0.7,
+                        "reputationDelta": 0.8,
+                        "sentimentDelta": 0.2
+                    },
+                    {
+                        "id": 149546078886677,
+                        "name": "The animal hospital",
                         "experienceScore": 93.1,
                         "listingScore": 86.7,
                         "sentimentScore": 96.2,
