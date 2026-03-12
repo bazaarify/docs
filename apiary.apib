@@ -14218,7 +14218,7 @@ Insight Experience Score Benchmark API retrieves benchmark scores comparing actu
 
     + Attributes
 
-        + reviewSources: Google,Facebook,CitySearch (array[number])- Review sources to include.
+        + reviewSources: Google,Facebook,CitySearch (array)- Review sources to include.
         + ratings: 0,1,3,4,5 (array[string], optional) - Rating values to filter.
         + businessNumbers: 172957184851864,174436684666401 (array[number], required) - List of business numbers (max 100).
         + startDate: 02/25/2025 (string, required) - Start date in MM/DD/YYYY format.
@@ -14301,11 +14301,11 @@ Insight Experience Location Info API retrieves location-wise experience metrics 
 
     + Attributes
 
-        + reviewSources (array[string], optional) - List of review sources to filter (e.g., Google, Facebook, CitySearch)
-        + ratings (array[string], optional) - List of rating values to filter (e.g., 0, 1, 3, 4, 5)
-        + businessNumbers (array[number], required) - List of business location identifiers (maximum 100 allowed)
-        + startDate (string, required) - Start date in MM/DD/YYYY format
-        + endDate (string, required) - End date in MM/DD/YYYY format
+        + reviewSources: Google,Facebook,CitySearch (array)- Review sources to include.
+        + ratings: 0,1,3,4,5 (array[string], optional) - Rating values to filter.
+        + businessNumbers: 172957184851864,174436684666401 (array[number], required) - List of business numbers (max 100).
+        + startDate: 02/25/2025 (string, required) - Start date in MM/DD/YYYY format.
+        + endDate: 02/01/2026 (string, required) - End date in MM/DD/YYYY format.
 
     + Body
 
