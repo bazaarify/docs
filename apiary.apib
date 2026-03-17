@@ -12249,6 +12249,232 @@ This API allows users to track the status of a social post that was previously s
     [1011][]
 
 
+## Social Open URL Performance Report [/v1/social/open-url/performance/report]
+Social Open URL Performance Report API returns channel-level social performance metrics with optional comparison data for the selected date range.
+
+### Social Open URL Performance Report [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Business number of the location.
+
+    + Attributes
+        + startDate: 02/03/2021 (string, required) - Start date in `MM/dd/YYYY` format.
+        + endDate: 02/10/2026 (string, required) - End date in `MM/dd/YYYY` format.
+        + sourceNames: Instagram,Tiktok (array) - List of social channels to include in the report.
+        + businessNumbers (array) - List of business numbers to filter the report. If empty, all accessible business numbers are considered.
+        + comparisonFilter (object) - Comparison date range.
+            + startDate: 01/01/2020 (string) - Comparison start date in `MM/dd/YYYY` format.
+            + endDate: 01/10/2020 (string) - Comparison end date in `MM/dd/YYYY` format.
+        + page: 1 (number) - Page number for location-level data points.
+        + size: 50 (number) - Number of records per page.
+
+    + Body
+
+            {
+                "startDate": "02/03/2021",
+                "endDate": "02/10/2026",
+                "sourceNames": [
+                    "Instagram",
+                    "Tiktok"
+                ],
+                "businessNumbers": [],
+                "comparisonFilter": {
+                    "startDate": "01/01/2020",
+                    "endDate": "01/10/2020"
+                },
+                "page": 1,
+                "size": 50
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + summary (object)
+            + actual (object)
+                + impressions: 11363 (number) - Total impressions in selected period.
+                + engagements: 1421 (number) - Total engagements in selected period.
+                + engRate: 12.51 (number) - Engagement rate in selected period.
+                + postCount: 4479 (number) - Total post count in selected period.
+                + channelWiseData (object) - Channel-level social metrics for selected period.
+                + totalRecords: 6 (number) - Total number of location-level records.
+                + postCountGrowthPercent: 100.0 (number) - Post count growth percentage against comparison period.
+                + engRateGrowthPercent: 100.0 (number) - Engagement rate growth percentage against comparison period.
+                + engagementGrowthPercent: 100.0 (number) - Engagement growth percentage against comparison period.
+            + compare (object)
+                + impressions: 0 (number) - Total impressions in comparison period.
+                + engagements: 0 (number) - Total engagements in comparison period.
+                + engRate: 0.0 (number) - Engagement rate in comparison period.
+                + postCount: 0 (number) - Total post count in comparison period.
+                + channelWiseData (object) - Channel-level social metrics in comparison period.
+                + totalRecords: 0 (number) - Total number of location-level records in comparison period.
+        + dataPoints (array) - Location-level report data for actual and comparison periods.
+            + (object)
+                + actual (object)
+                    + label: nesh (string) - Location label.
+                    + startDate: 02/03/2021 (string) - Start date of the selected period.
+                    + endDate: 02/10/2026 (string) - End date of the selected period.
+                    + locationId: 407984 (number) - Location ID.
+                    + businessNumber: 151378841524132 (number) - Business number of the location.
+                    + externalReferenceId: 1104900901 (string) - External reference ID of the location.
+                    + channelWiseData (object) - Channel-level social metrics for the location.
+                + compare (object) - Comparison period metrics for the same location.
+                    + label: nesh (string) - Location label.
+                    + startDate: 02/03/2021 (string) - Start date of the selected period.
+                    + endDate: 02/10/2026 (string) - End date of the selected period.
+                    + locationId: 407984 (number) - Location ID.
+                    + businessNumber: 151378841524132 (number) - Business number of the location.
+                    + externalReferenceId: 1104900901 (string) - External reference ID of the location.
+                    + channelWiseData (object) - Channel-level social metrics for the location.
+
+    + Body
+
+            {
+                "summary": {
+                    "actual": {
+                        "impressions": 11363,
+                        "engagements": 1421,
+                        "engRate": 12.51,
+                        "postCount": 4479,
+                        "channelWiseData": {
+                            "tiktok": {
+                                "totalPost": 0,
+                                "engagements": 321,
+                                "impressions": 9194,
+                                "engRate": 3.49
+                            },
+                            "instagram": {
+                                "totalPost": 4479,
+                                "engagements": 1100,
+                                "impressions": 2169,
+                                "engRate": 50.71
+                            }
+                        },
+                        "totalRecords": 6,
+                        "postCountGrowthPercent": 100.0,
+                        "engRateGrowthPercent": 100.0,
+                        "engagementGrowthPercent": 100.0
+                    },
+                    "compare": {
+                        "impressions": 0,
+                        "engagements": 0,
+                        "engRate": 0.0,
+                        "postCount": 0,
+                        "channelWiseData": {},
+                        "totalRecords": 0
+                    }
+                },
+                "dataPoints": [
+                    {
+                        "actual": {
+                            "label": "nesh",
+                            "startDate": "02/03/2021",
+                            "endDate": "02/10/2026",
+                            "locationId": 407984,
+                            "businessNumber": 151378841664132,
+                            "externalReferenceId": "1104900901",
+                            "channelWiseData": {
+                                "tiktok": {
+                                    "totalPost": 0,
+                                    "engagements": 143,
+                                    "impressions": 3902,
+                                    "engRate": 3.66
+                                }
+                            }
+                        },
+                        "compare": {
+                            "label": "nesh",
+                            "startDate": "02/03/2021",
+                            "endDate": "02/10/2026",
+                            "locationId": 407984,
+                            "businessNumber": 151378841664132,
+                            "externalReferenceId": "1104900901",
+                            "channelWiseData": {
+                                "tiktok": {
+                                    "totalPost": 0,
+                                    "engagements": 143,
+                                    "impressions": 3902,
+                                    "engRate": 3.66
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "actual": {
+                            "label": "Business",
+                            "startDate": "02/03/2021",
+                            "endDate": "02/10/2026",
+                            "locationId": 948224,
+                            "businessNumber": 166063705866724,
+                            "externalReferenceId": "1104900901",
+                            "channelWiseData": {
+                                "instagram": {
+                                    "totalPost": 3669,
+                                    "engagements": 836,
+                                    "impressions": 618,
+                                    "engRate": 135.28
+                                }
+                            }
+                        },
+                        "compare": {
+                            "label": "Business",
+                            "startDate": "02/03/2021",
+                            "endDate": "02/10/2026",
+                            "locationId": 948224,
+                            "businessNumber": 166063705866724,
+                            "externalReferenceId": "1104900901",
+                            "channelWiseData": {
+                                "instagram": {
+                                    "totalPost": 3669,
+                                    "engagements": 836,
+                                    "impressions": 618,
+                                    "engRate": 135.28
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "actual": {
+                            "label": "vulk loc ag",
+                            "startDate": "02/03/2021",
+                            "endDate": "02/10/2026",
+                            "locationId": 972854,
+                            "businessNumber": 166520715464268,
+                            "channelWiseData": {
+                                "tiktok": {
+                                    "totalPost": 0,
+                                    "engagements": 178,
+                                    "impressions": 5292,
+                                    "engRate": 3.36
+                                }
+                            }
+                        },
+                        "compare": {}
+                    }
+                ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2177][]
+
+
 
 # Group Employee
 
@@ -20307,6 +20533,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>03/17/2026</b> - Added Social Open URL Performance Report API under social section.
 * <b>03/03/2026</b> - Added Response Time (overtime & by-location) and Response Rate(overtime & by-location) APIs under reports section and created group for Competitor AI.
 * <b>03/02/2026</b> - Added sendInvite (boolean, default - true) field in Create User Signup v2 API request body and attributes.
 * <b>02/11/2026</b> - Updated the API key identifier for applicable APIs by moving it from a query parameter to the x-api-key request header.
