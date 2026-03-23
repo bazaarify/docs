@@ -12265,7 +12265,7 @@ Social Open URL Performance Report API returns channel-level social performance 
     + Attributes
         + startDate: 02/03/2021 (string, required) - Start date in `MM/dd/YYYY` format.
         + endDate: 02/10/2026 (string, required) - End date in `MM/dd/YYYY` format.
-        + sourceNames: Instagram,Tiktok (array) - List of social channels to include in the report.
+        + sourceNames: Instagram,Tiktok,Facebook,Linkedin (array) - List of social channels to include in the report.
         + businessNumbers (array) - List of business numbers to filter the report. If empty, all accessible business numbers are considered.
         + comparisonFilter (object) - Comparison date range.
             + startDate: 01/01/2020 (string) - Comparison start date in `MM/dd/YYYY` format.
@@ -12280,7 +12280,9 @@ Social Open URL Performance Report API returns channel-level social performance 
                 "endDate": "02/10/2026",
                 "sourceNames": [
                     "Instagram",
-                    "Tiktok"
+                    "Tiktok",
+                    "Facebook",
+                    "Linkedin"
                 ],
                 "businessNumbers": [],
                 "comparisonFilter": {
