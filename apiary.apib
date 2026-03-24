@@ -2396,6 +2396,15 @@ For example :
             "message": "Invalid business number."
         }
 
+## 2003 [/2003]
+
++ Model (application/json)
+
+        {
+            "code": 2003,
+            "message": "businessNumbers are mandatory"
+        }
+
 
 # Group Business
 Create and maintain your business on Birdeye.
@@ -14273,6 +14282,208 @@ This API retrieves competitor metrics review data (average rating and total revi
 
     [1167][]
 
+
+# Group Insight AI
+Insight intelligence, simplified by AI.
+
+## Insight Experience Score Benchmark [/v1/insight/experience/scoreBenchmark]
+Insight Experience Score Benchmark API retrieves benchmark scores comparing actual performance against industry standards and specified comparison periods for sentiment, reputation, experience, and listing metrics.
+
+### Get Insight Experience Score Benchmark [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User associated businessNumber.
+
+
+    + Attributes
+
+        + reviewSources: Google,Facebook,CitySearch (array)- Review sources to include.
+        + ratings: 0,1,3,4,5 (array[string], optional) - Rating values to filter.
+        + businessNumbers: 172957184851864,174436684666401 (array[number], required) - List of business numbers (max 100).
+        + startDate: 02/25/2025 (string, required) - Start date in MM/DD/YYYY format.
+        + endDate: 02/01/2026 (string, required) - End date in MM/DD/YYYY format.
+
+
+    + Body
+
+            {
+                "reviewSources": ["Google", "Facebook", "CitySearch"],
+                "ratings": ["0", "1", "3", "4", "5"],
+                "businessNumbers": [172957184851864, 174436684666401],
+                "startDate": "02/25/2025",
+                "endDate": "02/01/2026"
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + actual (object) - Current performance metrics
+            + sentimentScore (number) - Actual sentiment score
+            + reputationScore (number) - Actual reputation score
+            + experienceScore (number) - Actual experience score
+            + listingScore (number) - Actual listing score
+            + industrySentimentScore (number) - Industry benchmark sentiment score
+            + industryReputationScore (number) - Industry benchmark reputation score
+            + industryExperienceScore (number) - Industry benchmark experience score
+        + compare (object) - Comparison period metrics
+            + sentimentScore (number) - Comparison sentiment score
+            + reputationScore (number) - Comparison reputation score
+            + experienceScore (number) - Comparison experience score
+            + listingScore (number) - Comparison listing score
+
+    + Body
+
+            {
+                "actual": {
+                    "sentimentScore": 83.2,
+                    "reputationScore": 73.2,
+                    "experienceScore": 68.9,
+                    "listingScore": 36.5,
+                    "industrySentimentScore": 89.7,
+                    "industryReputationScore": 86.0,
+                    "industryExperienceScore": 87.8
+                },
+                "compare": {
+                    "sentimentScore": 80.0,
+                    "reputationScore": 72.8,
+                    "experienceScore": 67.7,
+                    "listingScore": 36.5
+                }
+            }
+
++ Response 401
+    [1161][]
+
++ Response 429
+    [89][]
+
++ Response 404
+    [1011][]
+
++ Response 401
+    [1167][]
+
++ Response 400
+    [2003][]
+
+
+## Insight Experience Location Info [/v1/insight/experience/locationInfo]
+Insight Experience Location Info API retrieves location-wise experience metrics including sentiment, reputation, experience, and listing scores along with delta comparisons for specified business locations and date ranges.
+
+### Get Insight Experience Location Info [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User associated businessNumber.
+
+    + Attributes
+
+        + reviewSources: Google,Facebook,CitySearch (array)- Review sources to include.
+        + ratings: 0,1,3,4,5 (array[string], optional) - Rating values to filter.
+        + businessNumbers: 172957184851864,174436684666401 (array[number], required) - List of business numbers (max 100).
+        + startDate: 02/25/2025 (string, required) - Start date in MM/DD/YYYY format.
+        + endDate: 02/01/2026 (string, required) - End date in MM/DD/YYYY format.
+
+    + Body
+
+            {
+                "reviewSources": ["Google","Facebook","CitySearch"],
+                "ratings": ["0", "1", "3", "4", "5"],
+                "businessNumbers": [172957184851864, 174436684666401],
+                "startDate": "02/25/2025",
+                "endDate": "02/01/2026"
+            }
+
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + totalCount (number) - Total number of locations returned
+        + dataPoints (array) - Array of location experience metrics
+            + (object)
+                + id (number) - Location business number
+                + name (string) - Location name
+                + experienceScore (number) - Current experience score
+                + listingScore (number) - Current listing score
+                + sentimentScore (number) - Current sentiment score
+                + reputationScore (number) - Current reputation score
+                + experienceDeltaScore (number) - Previous period experience score
+                + listingDeltaScore (number) - Previous period listing score
+                + sentimentDeltaScore (number) - Previous period sentiment score
+                + reputationDeltaScore (number) - Previous period reputation score
+                + experienceDelta (number) - Change in experience score
+                + listingDelta (number) - Change in listing score
+                + reputationDelta (number) - Change in reputation score
+                + sentimentDelta (number) - Change in sentiment score
+
+    + Body
+
+            {
+                "totalCount": 2,
+                "dataPoints": [
+                    {
+                        "id": 149546078883527,
+                        "name": "194 - Greywolf Veterinary Hospital",
+                        "experienceScore": 93.1,
+                        "listingScore": 86.7,
+                        "sentimentScore": 96.2,
+                        "reputationScore": 93.8,
+                        "experienceDeltaScore": 93,
+                        "listingDeltaScore": 86,
+                        "sentimentDeltaScore": 96,
+                        "reputationDeltaScore": 93,
+                        "experienceDelta": 0.1,
+                        "listingDelta": 0.7,
+                        "reputationDelta": 0.8,
+                        "sentimentDelta": 0.2
+                    },
+                    {
+                        "id": 149546078886677,
+                        "name": "The animal hospital",
+                        "experienceScore": 93.1,
+                        "listingScore": 86.7,
+                        "sentimentScore": 96.2,
+                        "reputationScore": 93.8,
+                        "experienceDeltaScore": 93,
+                        "listingDeltaScore": 86,
+                        "sentimentDeltaScore": 96,
+                        "reputationDeltaScore": 93,
+                        "experienceDelta": 0.1,
+                        "listingDelta": 0.7,
+                        "reputationDelta": 0.8,
+                        "sentimentDelta": 0.2
+                    }
+                ]
+            }
+
+
++ Response 401
+    [1167][]
+
++ Response 429
+    [1027][]
+
++ Response 404
+    [2151][]
+
++ Response 400
+    [2150][]
+
++ Response 400
+    [2003][]
+
+
 # Group Google Q&A
 
 > __Note__
@@ -20382,6 +20593,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>03/24/2026</b> - Added Insight AI APIs to retrieve location-wise metrics and benchmark score.
 * <b>03/18/2026</b> - Added Create Custom Card Time API under custom fields section.
 * <b>03/03/2026</b> - Added Response Time (overtime & by-location) and Response Rate(overtime & by-location) APIs under reports section and created group for Competitor AI.
 * <b>03/02/2026</b> - Added sendInvite (boolean, default - true) field in Create User Signup v2 API request body and attributes.
