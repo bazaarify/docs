@@ -4619,6 +4619,81 @@ Associate custom Fields
      [5028][]
 
 
+## Create Custom card [/v1/business/public/card]
+Create Custom card API creates a custom card for a business profile.
+
+### Create Custom card [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Long Business Number.
+
+    + Attributes
+        + title: AKJ test (required, string) - Title shown on the custom card.
+        + description: custom card test (string) - Description/content shown on the custom card.
+        + imageURL: https://d1py4eyp5hjjj0.cloudfront.net/upload/1670003/1759138378356/image12.png (string) - Public image URL displayed on the card.
+        + imagePosition: 1 (number) - Position of the image on the card.
+        + isVisible: 0 (number) - Visibility status of card on the microsite.
+        + isPinOnTop: 1 (number) - Pin status of card on the microsite.
+        + clickURL: https://www.example.com (string) - Redirect URL for card click action.
+
+    + Body
+
+            {
+                "clickURL": "",
+                "description": "custom card test",
+                "imagePosition": 1,
+                "imageURL": "https://d1py4eyp5hehj0.cloudfront.net/upload/1670003/1759138378356/image12.png",
+                "isPinOnTop": 1,
+                "isVisible": 0,
+                "title": "AKJ test"
+            }
+
++ Response 200 (application/json)
+
+    + Attributes
+        + cardId: 92426 (number) - Id of the created custom card.
+        + title: AKJ test (string) - Title shown on the custom card.
+        + description: custom card test (string) - Description/content shown on the custom card.
+        + imageURL: https://d1py4eyp5hehj0.cloudfront.net/upload/1670003/1759138378356/image12.png (string) - Public image URL displayed on the card.
+        + imagePosition: 1 (string) - Image position value.
+        + isVisible: 0 (number) - Visibility status of card on the microsite.
+        + isPinOnTop: 1 (number) - Pin status of card on the microsite.
+        + clickURL: "" (string) - Redirect URL for card click action. Empty when no redirect is configured.
+
+    + Body
+
+            {
+                "cardId": 92426,
+                "title": "AKJ test",
+                "description": "custom card test",
+                "imageURL": "https://d1py4eyp5hehj0.cloudfront.net/upload/1670003/1759138378356/image12.png",
+                "imagePosition": "1",
+                "isVisible": 0,
+                "isPinOnTop": 1,
+                "clickURL": ""
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1011][]
 
 
 # Group User
@@ -20536,6 +20611,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 # Group Change Logs
 
 * <b>03/17/2026</b> - Added Social Open URL Performance Report API under social section.
+* <b>03/18/2026</b> - Added Create Custom Card Time API under custom fields section.
 * <b>03/03/2026</b> - Added Response Time (overtime & by-location) and Response Rate(overtime & by-location) APIs under reports section and created group for Competitor AI.
 * <b>03/02/2026</b> - Added sendInvite (boolean, default - true) field in Create User Signup v2 API request body and attributes.
 * <b>02/11/2026</b> - Updated the API key identifier for applicable APIs by moving it from a query parameter to the x-api-key request header.
