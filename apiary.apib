@@ -19664,6 +19664,577 @@ This API retrieves structured menu information for specified business numbers.
 
     [2458][]
 
+## Get Accuracy Details [/v1/listing/search/ai/public/aio-details{?pageSize,startIndex}]
+Retrieves AI-generated accuracy details for business locations across AI models. Returns business information as reported by each AI model on specific processed dates, enabling comparison of how accurately AI platforms represent your business data. Supports pagination via query parameters `page-size` and `start-index`.
+
+### Get Accuracy Details [POST]
+
++ Parameters
+
+    + pageSize: 100 (number, optional) - Number of records to return per page.
+    + startIndex: 0 (number, optional) - Starting index for pagination.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Long Business Number.
+
+    + Attributes
+
+        + businessNumbers: 177337970010644,177337970029743 (array, required) - List of business location numbers to fetch accuracy details for.
+        + aiModels: CHATGPT,GEMINI,PERPLEXITY (array, required) - List of AI models to retrieve details from. Possible values: CHATGPT, GEMINI, PERPLEXITY.
+        + startDate: `2025-11-01` (string, required) - Start date for the date range filter. Format: yyyy-MM-dd.
+        + endDate: `2026-04-30` (string, required) - End date for the date range filter. Format: yyyy-MM-dd.
+
+    + Body
+
+            {
+                "businessNumbers": [177337970010644, 177337970029743],
+                "aiModels": ["CHATGPT", "GEMINI", "PERPLEXITY"],
+                "startDate": "2025-11-01",
+                "endDate": "2026-04-30"
+            }
+
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + data (object) - Map of business location numbers to their accuracy details.
+            + `177337970010644` (object) - Accuracy data keyed by business location number. Each key within is a processed date (MM/dd/yy format).
+                + `03/14/26` (object) - Data for a specific processed date. Each key within is an AI model name.
+                    + CHATGPT (object) - Business information as reported by the AI model.
+                        + businessName: ProHEALTH Dental - Astoria (string) - Business name as returned by the AI model.
+                        + fullAddress: 29-14 Ditmars Blvd, Astoria, NY 11105, United States (string) - Full address as returned by the AI model.
+                        + phone: `(718) 524-3677` (string) - Phone number as returned by the AI model.
+                        + hoursOfOperation (string) - Hours of operation as returned by the AI model. Newline-separated by day of week.
+                        + website: phdental.com (string) - Website URL as returned by the AI model.
+
+    + Body
+
+            {
+                "data": {
+                    "177337970010644": {
+                        "03/14/26": {
+                            "CHATGPT": {
+                                "businessName": "ProHEALTH Dental - Astoria",
+                                "fullAddress": "29-14 Ditmars Blvd, Astoria, NY 11105, United States",
+                                "phone": "(718) 524-3677",
+                                "hoursOfOperation": "Monday: Closed\nTuesday: Closed\nWednesday: Closed\nThursday: Closed\nFriday: Closed\nSaturday: Closed\nSunday: Closed",
+                                "website": "phdental.com"
+                            },
+                            "PERPLEXITY": {
+                                "businessName": "ProHEALTH Dental - Astoria",
+                                "fullAddress": "29-14 Ditmars Blvd, Astoria, NY 11105, United States",
+                                "phone": "(718) 524-3677",
+                                "hoursOfOperation": "Monday: Closed\nTuesday: Closed\nWednesday: Closed\nThursday: Closed\nFriday: Closed\nSaturday: Closed\nSunday: Closed",
+                                "website": "phdental.com/locations/prohealth-dental/astoria-ny/"
+                            }
+                        }
+                    },
+                    "177337970029743": {
+                        "03/14/26": {
+                            "PERPLEXITY": {
+                                "businessName": "ProHEALTH Dental - Bay Shore",
+                                "fullAddress": "11 Bay Shore Rd, Bay Shore, NY 11706, United States",
+                                "phone": "(631) 305-4883",
+                                "hoursOfOperation": "Monday: Closed\nTuesday: Closed\nWednesday: Closed\nThursday: Closed\nFriday: Closed\nSaturday: Closed\nSunday: Closed",
+                                "website": "https://www.phdental.com/locations/prohealth-dental/bay-shore-ny/"
+                            }
+                        }
+                    }
+                }
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
+
+## Get SWOT Details [/v1/listing/search/ai/public/swot-details{?pageSize,startIndex}]
+Retrieves AI-generated SWOT (Strengths, Weaknesses, Opportunities, Threats) analysis for business locations across AI models. Each AI model provides a unique SWOT perspective based on its analysis of the business and its local market. Supports pagination via query parameters `page-size` and `start-index`.
+
+### Get SWOT Details [POST]
+
++ Parameters
+
+    + pageSize: 100 (number, optional) - Number of records to return per page.
+    + startIndex: 0 (number, optional) - Starting index for pagination.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Long Business Number.
+
+    + Attributes
+
+        + businessNumbers: 177337970010644,177337970029743 (array, required) - List of business location numbers to fetch SWOT analysis for.
+        + aiModels: CHATGPT,GEMINI,PERPLEXITY (array, required) - List of AI models to retrieve SWOT details from. Possible values: CHATGPT, GEMINI, PERPLEXITY.
+        + startDate: `2025-11-01` (string, required) - Start date for the date range filter. Format: yyyy-MM-dd.
+        + endDate: `2026-04-30` (string, required) - End date for the date range filter. Format: yyyy-MM-dd.
+
+    + Body
+
+            {
+                "businessNumbers": [177337970010644, 177337970029743],
+                "aiModels": ["CHATGPT", "GEMINI", "PERPLEXITY"],
+                "startDate": "2025-11-01",
+                "endDate": "2026-04-30"
+            }
+
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + data (object) - Map of business location numbers to their SWOT analysis.
+            + `177337970010644` (object) - SWOT data keyed by business location number. Each key within is a processed date (MM/dd/yy format).
+                + `03/17/26` (object) - Data for a specific processed date. Each key within is an AI model name.
+                    + PERPLEXITY (object) - SWOT analysis as generated by the AI model.
+                        + strengths (array) - List of identified business strengths.
+                            + title: Affiliation with Reputable Network (string) - Short title summarizing the strength.
+                            + description: Part of Sutter Health, bringing award-winning care to the neighborhood. (string) - Detailed description of the strength.
+                        + weaknesses (array) - List of identified business weaknesses.
+                            + title: Limited Operating Days (string) - Short title summarizing the weakness.
+                            + description: Closed Fridays, Saturdays, Sundays, reducing accessibility for residents. (string) - Detailed description of the weakness.
+                        + oppurtunities (array) - List of identified business opportunities.
+                            + title: Proximity to Diagnostics (string) - Short title summarizing the opportunity.
+                            + description: Co-located with Quest Diagnostics, enabling seamless lab integration. (string) - Detailed description of the opportunity.
+                        + threats (array) - List of identified business threats.
+                            + title: Competitor Overlap (string) - Short title summarizing the threat.
+                            + description: Nearby departments at the same address create internal competition. (string) - Detailed description of the threat.
+
+    + Body
+
+            {
+                "data": {
+                    "177337970010644": {
+                        "03/17/26": {
+                            "PERPLEXITY": {
+                                "strengths": [
+                                    {
+                                        "title": "Affiliation with Reputable Network",
+                                        "description": "Part of Sutter Health, bringing award-winning care to Solvang neighborhood with established oncology and infusion services."
+                                    }
+                                ],
+                                "weaknesses": [
+                                    {
+                                        "title": "Limited Operating Days",
+                                        "description": "Closed Fridays, Saturdays, Sundays, and major holidays, reducing accessibility for Solvang residents needing weekend care."
+                                    }
+                                ],
+                                "oppurtunities": [
+                                    {
+                                        "title": "Proximity to Diagnostics",
+                                        "description": "Co-located with Quest Diagnostics in the same building, enabling seamless lab integration for Solvang patients."
+                                    }
+                                ],
+                                "threats": [
+                                    {
+                                        "title": "Competitor Overlap",
+                                        "description": "Nearby Sansum Clinic departments at the same address create internal competition for specialized care."
+                                    }
+                                ]
+                            },
+                            "CHATGPT": {
+                                "strengths": [
+                                    {
+                                        "title": "Highly qualified staff",
+                                        "description": "Patients appreciate the knowledgeable and friendly staff who provide exceptional care."
+                                    }
+                                ],
+                                "weaknesses": [
+                                    {
+                                        "title": "Limited parking space",
+                                        "description": "Some patients report challenges in finding parking during peak hours."
+                                    }
+                                ],
+                                "oppurtunities": [
+                                    {
+                                        "title": "Expansion of services",
+                                        "description": "Potential to add more services to cater to a broader range of infusion needs."
+                                    }
+                                ],
+                                "threats": [
+                                    {
+                                        "title": "Increased competition",
+                                        "description": "Emerging local clinics could present competition, potentially affecting market share."
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
+
+## Get Themes and Prompts [/v1/listing/searchAi/public/account-setup]
+Retrieves the AI search configuration for the account, including the active themes, their associated prompts, supported AI models, and usage quota details for the current billing cycle.
+
+### Get Themes and Prompts [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Long Business Number.
+
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + frequency: Monthly (string) - Billing cycle frequency for AI search runs.
+        + quota: 250 (number) - Total number of AI search runs available in the current cycle. Visible only for accounts using the credit system.
+        + themes (array) - List of currently active themes configured for the account in the current cycle.
+            + theme: dentist (string) - Name of the search theme.
+            + prompts (array[string]) - List of search prompts associated with the theme. These are the queries used by AI models to evaluate business visibility.
+        + aiModels: CHATGPT,GEMINI,PERPLEXITY (array[string]) - List of supported AI models available for search analysis.
+
+    + Body
+
+            {
+                "frequency": "Monthly",
+                "quota": 250,
+                "themes": [
+                    {
+                        "theme": "dentist",
+                        "prompts": [
+                            "Dentist near me",
+                            "Cheap services"
+                        ]
+                    },
+                    {
+                        "theme": "invisalign",
+                        "prompts": [
+                            "invisalign near me",
+                            "surgery near me"
+                        ]
+                    }
+                ],
+                "aiModels": ["CHATGPT", "GEMINI", "PERPLEXITY"]
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
+
+## Get Available Runs [/v1/listing/searchAi/public/available-runs]
+Retrieves the list of completed AI search analysis runs for the account, sorted by most recent. Each run corresponds to a date on which AI models were executed against configured themes.
+
+### Get Available Runs [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Long Business Number.
+
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + availableRuns (array) - List of completed AI search runs, sorted by most recent date first.
+            + (object) - A single run entry keyed by its run date (dd-MMM-yyyy format).
+                + `18-Mar-2026` (object) - Run details for a specific date.
+                    + themes: dentist,invisalign (array[string]) - List of theme names that were analyzed during this run.
+
+    + Body
+
+            {
+                "availableRuns": [
+                    {
+                        "18-Mar-2026": {
+                            "themes": ["dentist", "invisalign"]
+                        }
+                    },
+                    {
+                        "18-Feb-2026": {
+                            "themes": ["dentist", "invisalign"]
+                        }
+                    }
+                ]
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
+
+## Fetch Citations [/v1/listing/searchAi/public/citations]
+Retrieves citation sources referenced by AI models when generating responses for specific themes. Citations indicate which URLs and content pieces each AI model used, along with whether the business brand was present in those sources.
+
+### Fetch Citations [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Long Business Number.
+
+    + Attributes
+
+        + startDate: 02/25/2025 (string, required) - Start date in `MM/dd/YYYY` format.
+        + endDate: 02/01/2026 (string, required) - End date in `MM/dd/YYYY` format.
+        + businessNumbers: 172957184851864,174436684666401 (array, required) - List of business numbers to fetch citations for.
+        + theme: Dentist (string, required) - Theme name to filter citations by.
+        + pageNo: 1 (number, optional) - Page number for pagination. Default is 1.
+        + pageSize: 25 (number, optional) - Number of records per page. Default is 25.
+        + aiModel: CHATGPT (string, required) - AI model to retrieve citations from. Possible values: CHATGPT, GEMINI, PERPLEXITY.
+        + viewReportType: LOCATION_LEVEL (string, required) - Report aggregation level. Possible value: LOCATION_LEVEL.
+
+    + Body
+
+            {
+                "startDate": "02/25/2025",
+                "endDate": "02/01/2026",
+                "businessNumbers": [172957184851864, 174436684666401],
+                "theme": "Dentist",
+                "pageNo": 1,
+                "pageSize": 25,
+                "aiModel": "CHATGPT",
+                "viewReportType": "LOCATION_LEVEL"
+            }
+
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + data (array) - List of citation result entries, one per prompt-model-location combination.
+            + (object)
+                + theme: Dentist (string) - Theme name associated with this citation set.
+                + prompt (string) - The search prompt that was used to generate this AI response.
+                + aiModel: CHATGPT (string) - AI model that generated the response.
+                + businessNumber: 1234567 (number) - Business location number for this citation set.
+                + processedDate (string) - Date when the AI response was processed. Format: yyyy-MM-dd.
+                + citations (array) - List of source citations referenced by the AI model.
+                    + (object)
+                        + url (string) - URL of the cited source.
+                        + title (string) - Title of the cited source page.
+                        + description (string) - Brief description or snippet from the cited source.
+                        + brandPresent: false (boolean) - Whether the business brand was found in this cited source.
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "theme": "Dentist",
+                        "prompt": "Dentist near me",
+                        "aiModel": "CHATGPT",
+                        "businessNumber": 1234567,
+                        "processedDate": "2026-03-18",
+                        "citations": [
+                            {
+                                "url": "https://www.example.com/dentists",
+                                "title": "Top Dentists in Your Area",
+                                "description": "A curated list of top-rated dentists based on patient reviews.",
+                                "brandPresent": false
+                            },
+                            {
+                                "url": "https://www.healthsite.com/dental",
+                                "title": "Dental Care Directory",
+                                "description": "Find dental care providers near you with verified ratings.",
+                                "brandPresent": true
+                            }
+                        ]
+                    }
+                ]
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
+
+## Fetch Business Ranking [/v1/listing/searchAi/public/business]
+Retrieves the list of businesses recommended by AI models for specific themes and prompts. Shows which businesses each AI model surfaces in its responses, including their contact details and location information, enabling visibility tracking of your business in AI-powered search results.
+
+### Fetch Business Ranking [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Long Business Number.
+
+    + Attributes
+
+        + startDate: 02/25/2025 (string, required) - Start date in `MM/dd/YYYY` format.
+        + endDate: 02/01/2026 (string, required) - End date in `MM/dd/YYYY` format.
+        + businessNumbers: 172957184851864,174436684666401 (array, required) - List of business numbers to fetch ranking data for.
+        + theme: Dentist (string, required) - Theme name to filter results by.
+        + pageNo: 1 (number, optional) - Page number for pagination. Default is 1.
+        + pageSize: 25 (number, optional) - Number of records per page. Default is 25.
+        + sortBy: theme (string, optional) - Field to sort results by.
+        + aiModel: CHATGPT (string, required) - AI model to retrieve ranking from. Possible values: CHATGPT, GEMINI, PERPLEXITY.
+        + viewReportType: LOCATION_LEVEL (string, required) - Report aggregation level. Possible value: LOCATION_LEVEL.
+
+    + Body
+
+            {
+                "startDate": "02/25/2025",
+                "endDate": "02/01/2026",
+                "businessNumbers": [172957184851864, 174436684666401],
+                "theme": "Dentist",
+                "pageNo": 1,
+                "pageSize": 25,
+                "sortBy": "theme",
+                "aiModel": "CHATGPT",
+                "viewReportType": "LOCATION_LEVEL"
+            }
+
+
++ Response 200 (application/json)
+
+    + Attributes
+
+        + data (array) - List of business ranking entries, one per prompt-model-location combination.
+            + (object)
+                + theme: Dentist (string) - Theme name associated with this ranking result.
+                + prompt (string) - The search prompt that was used to generate this AI response.
+                + aiModel: CHATGPT (string) - AI model that generated the response.
+                + businessNumber: 123434556787866 (number) - Business location number for this ranking result.
+                + processedDate (string) - Date when the AI response was processed. Format: yyyy-MM-dd.
+                + businesses (array) - List of businesses recommended by the AI model in its response.
+                    + (object)
+                        + name (string) - Business name as mentioned by the AI model.
+                        + phone (string) - Phone number of the business as mentioned by the AI model.
+                        + postalCode (string) - Postal code of the business location.
+                        + address (string) - Street address of the business.
+                        + city (string) - City where the business is located.
+                        + websiteUrl (string) - Website URL of the business as mentioned by the AI model.
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "theme": "Dentist",
+                        "prompt": "Dentist near me",
+                        "aiModel": "CHATGPT",
+                        "businessNumber": 123434556787866,
+                        "processedDate": "2026-03-18",
+                        "businesses": [
+                            {
+                                "name": "Matt Blatt Mitsubishi",
+                                "phone": "",
+                                "postalCode": "08028",
+                                "address": "501 Delsea Dr N",
+                                "city": "Glassboro",
+                                "websiteUrl": "https://www.mattblattmitsubishi.com/?UTM_source=GBP_Listing&UTM_medium=Organic&utm_source=openai"
+                            },
+                            {
+                                "name": "Another Business",
+                                "phone": "(555) 123-4567",
+                                "postalCode": "08028",
+                                "address": "123 Main St",
+                                "city": "Glassboro",
+                                "websiteUrl": "https://www.example.com"
+                            }
+                        ]
+                    }
+                ]
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 404
+
+    [1175][]
+
 # Group GMB Products
 To manage products, locations, and business details through Listing GMB platform
 
