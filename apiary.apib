@@ -5107,7 +5107,7 @@ Get Reviews returns the list of reviews for an account with all its details.
         + ratings: 4,5 (array) - Review rating Possible values 0,1,2,3,4,5.
         + searchStr: Great service (string) - String that is contained by review.
         + subBusinessIds: 123456789 ,987654321 (array) - BusinessIds under enterprise account.
-        + statuses: published,parked (array) - Review status. Valid values are "published","parked","all". Default is "published" only.
+        + statuses: published,parked (array) - Review status. Valid values are "published","parked","all". Default is "published" only. Status “published” refers to featured reviews, while “parked” refers to non-featured reviews.
         + allChild: true (boolean) - Get review from all child ignoring merge reviews flag configured at parent/child relationship level.
         + tags: ["top reviews", "need action"] (array) - Reviews with assigned tags
         + fetchExtraParams: false (boolean) - To fetch custom field(s) associated with the customer attributed to the review [if any].
@@ -5287,7 +5287,7 @@ It also returns the list of review sources and review ratings.
 + Parameters
 
     + businessId: 12345678 (string, required) - Id of the business.
-    + statuses: published,parked (string[], optional) -  List of review status.
+    + statuses: published,parked (string[], optional) -  List of review status. Status “published” refers to featured reviews, while “parked” refers to non-featured reviews.
 
 
 + Request (application/json)
@@ -13598,7 +13598,7 @@ Get Competitor Review returns the list of review(s) of competitors for an accoun
         + ratings: 4,5 (array) - Review rating Possible values 0,1,2,3,4,5.
         + searchStr: Great service (string) - String that is contained by review.
         + subBusinessIds: 123456789 ,987654321 (array) - BusinessIds under enterprise account.
-        + statuses: published,parked (array) - Review status. Valid values are "published","parked","all". Default is "published" only.
+        + statuses: published,parked (array) - Review status. Valid values are "published","parked","all". Default is "published" only. Status “published” refers to featured reviews, while “parked” refers to non-featured reviews.
 
 
     + Body
