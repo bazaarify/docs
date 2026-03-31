@@ -17035,6 +17035,14 @@ Create Listing API publishes information on online listing sources. We post pres
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
             + whatsappBusinessLink (string) - Enter your WhatsApp Business link to display a direct chat option on your live Google Business Profile. This allows customers to easily message you. Example https://wa.me/<yourphonenumber>
             + textMessageNumber (string) - Enter a valid phone number to enable a text message chat option on your live Google Business Profile, allowing customers to easily reach you via SMS.
+        + hotelAttributes (object) - Hotel-specific attributes organized by category. Applicable for hotel/lodging businesses. Contains details about services, policies, payment options, and food & drink offerings available at the property. Each attribute includes an attributeId (string, unique identifier), attributeName (string, display name), and value (boolean, indicating availability).
+            + Services (object) - Hotel services and amenities available to guests.
+                + Services (object) - Individual service attributes indicating availability of hotel services such as 24-hour front desk, concierge, elevator, baggage storage, laundry, social hour, wake-up calls, convenience store, gift shop, and currency exchange.
+            + PoliciesAndPayments (object) - Hotel policies and accepted payment methods.
+                + Policies (object) - Hotel policies such as kids stay free, smoke-free property, all inclusive available, and all inclusive only.
+                + PaymentOptions (object) - Payment methods accepted at the hotel such as cash, cheque, credit card, debit card, and mobile NFC.
+            + FoodAndDrink (object) - Food and drink services available at the hotel.
+                + FoodAndDrink (object) - Individual food and drink service attributes such as room service, 24-hour room service, restaurant, and table service.
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + appleWebsiteUrl (string) - Website url will update on apple listing. This website URL will override your existing website URL on your Apple Business Connect.
@@ -17539,6 +17547,142 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                     "whatsappBusinessLink":"https://wa.me/9737160007",
                     "textMessageNumber":"973716-0007"
                 },
+                "hotelAttributes": {
+                    "Services": {
+                        "Services": {
+                            "twentyFourHourFrontDesk": {
+                                "attributeId": "twentyFourHourFrontDesk",
+                                "attributeName": "24-hour front desk",
+                                "value": true
+                            },
+                            "concierge": {
+                                "attributeId": "concierge",
+                                "attributeName": "Concierge",
+                                "value": true
+                            },
+                            "elevator": {
+                                "attributeId": "elevator",
+                                "attributeName": "Elevator",
+                                "value": true
+                            },
+                            "baggageStorage": {
+                                "attributeId": "baggageStorage",
+                                "attributeName": "Baggage storage",
+                                "value": false
+                            },
+                            "fullServiceLaundry": {
+                                "attributeId": "fullServiceLaundry",
+                                "attributeName": "Full-service laundry",
+                                "value": true
+                            },
+                            "selfServiceLaundry": {
+                                "attributeId": "selfServiceLaundry",
+                                "attributeName": "Self-service laundry",
+                                "value": false
+                            },
+                            "socialHour": {
+                                "attributeId": "socialHour",
+                                "attributeName": "Social hour",
+                                "value": true
+                            },
+                            "wakeUpCalls": {
+                                "attributeId": "wakeUpCalls",
+                                "attributeName": "Wake-up calls",
+                                "value": true
+                            },
+                            "convenienceStore": {
+                                "attributeId": "convenienceStore",
+                                "attributeName": "Convenience store",
+                                "value": false
+                            },
+                            "giftShop": {
+                                "attributeId": "giftShop",
+                                "attributeName": "Gift shop",
+                                "value": true
+                            },
+                            "currencyExchange": {
+                                "attributeId": "currencyExchange",
+                                "attributeName": "Currency exchange",
+                                "value": false
+                            }
+                        }
+                    },
+                    "PoliciesAndPayments": {
+                        "Policies": {
+                            "kidsStayFree": {
+                                "attributeId": "kidsStayFree",
+                                "attributeName": "Kids stay free",
+                                "value": true
+                            },
+                            "smokeFreeProperty": {
+                                "attributeId": "smokeFreeProperty",
+                                "attributeName": "Smoke-free property",
+                                "value": true
+                            },
+                            "allInclusiveAvailable": {
+                                "attributeId": "allInclusiveAvailable",
+                                "attributeName": "All inclusive available",
+                                "value": true
+                            },
+                            "allInclusiveOnly": {
+                                "attributeId": "allInclusiveOnly",
+                                "attributeName": "All inclusive only",
+                                "value": false
+                            }
+                        },
+                        "PaymentOptions": {
+                            "cash": {
+                                "attributeId": "cash",
+                                "attributeName": "Cash",
+                                "value": true
+                            },
+                            "cheque": {
+                                "attributeId": "cheque",
+                                "attributeName": "Cheque",
+                                "value": false
+                            },
+                            "creditCard": {
+                                "attributeId": "creditCard",
+                                "attributeName": "Credit Card",
+                                "value": true
+                            },
+                            "debitCard": {
+                                "attributeId": "debitCard",
+                                "attributeName": "Debit Card",
+                                "value": true
+                            },
+                            "mobileNfc": {
+                                "attributeId": "mobileNfc",
+                                "attributeName": "Mobile NFC",
+                                "value": false
+                            }
+                        }
+                    },
+                    "FoodAndDrink": {
+                        "FoodAndDrink": {
+                            "roomService": {
+                                "attributeId": "roomService",
+                                "attributeName": "Room service",
+                                "value": true
+                            },
+                            "twentyFourHourRoomService": {
+                                "attributeId": "twentyFourHourRoomService",
+                                "attributeName": "24-hour room service",
+                                "value": false
+                            },
+                            "restaurant": {
+                                "attributeId": "restaurant",
+                                "attributeName": "Restaurant",
+                                "value": true
+                            },
+                            "tableService": {
+                                "attributeId": "tableService",
+                                "attributeName": "Table service",
+                                "value": true
+                            }
+                        }
+                    }
+                },
                  "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
                     "appleWebsiteUrl":"https://www.apple.com",
@@ -17838,6 +17982,14 @@ The Update Listing API will update the location details on all your listings sit
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
             + whatsappBusinessLink (string) - Enter your WhatsApp Business link to display a direct chat option on your live Google Business Profile. This allows customers to easily message you. Example https://wa.me/<yourphonenumber>
             + textMessageNumber (string) - Enter a valid phone number to enable a text message chat option on your live Google Business Profile, allowing customers to easily reach you via SMS.
+        + hotelAttributes (object) - Hotel-specific attributes organized by category. Applicable for hotel/lodging businesses. Contains details about services, policies, payment options, and food & drink offerings available at the property. Each attribute includes an attributeId (string, unique identifier), attributeName (string, display name), and value (boolean, indicating availability).
+            + Services (object) - Hotel services and amenities available to guests.
+                + Services (object) - Individual service attributes indicating availability of hotel services such as 24-hour front desk, concierge, elevator, baggage storage, laundry, social hour, wake-up calls, convenience store, gift shop, and currency exchange.
+            + PoliciesAndPayments (object) - Hotel policies and accepted payment methods.
+                + Policies (object) - Hotel policies such as kids stay free, smoke-free property, all inclusive available, and all inclusive only.
+                + PaymentOptions (object) - Payment methods accepted at the hotel such as cash, cheque, credit card, debit card, and mobile NFC.
+            + FoodAndDrink (object) - Food and drink services available at the hotel.
+                + FoodAndDrink (object) - Individual food and drink service attributes such as room service, 24-hour room service, restaurant, and table service.
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + appleWebsiteUrl (string) - Website url will update on apple listing. This website URL will override your existing website URL on your Apple Business Connect.
@@ -18342,6 +18494,142 @@ The Update Listing API will update the location details on all your listings sit
                     "whatsappBusinessLink":"https://wa.me/9737160007",
                     "textMessageNumber":"973716-0007"
                 },
+                "hotelAttributes": {
+                    "Services": {
+                        "Services": {
+                            "twentyFourHourFrontDesk": {
+                                "attributeId": "twentyFourHourFrontDesk",
+                                "attributeName": "24-hour front desk",
+                                "value": true
+                            },
+                            "concierge": {
+                                "attributeId": "concierge",
+                                "attributeName": "Concierge",
+                                "value": true
+                            },
+                            "elevator": {
+                                "attributeId": "elevator",
+                                "attributeName": "Elevator",
+                                "value": true
+                            },
+                            "baggageStorage": {
+                                "attributeId": "baggageStorage",
+                                "attributeName": "Baggage storage",
+                                "value": false
+                            },
+                            "fullServiceLaundry": {
+                                "attributeId": "fullServiceLaundry",
+                                "attributeName": "Full-service laundry",
+                                "value": true
+                            },
+                            "selfServiceLaundry": {
+                                "attributeId": "selfServiceLaundry",
+                                "attributeName": "Self-service laundry",
+                                "value": false
+                            },
+                            "socialHour": {
+                                "attributeId": "socialHour",
+                                "attributeName": "Social hour",
+                                "value": true
+                            },
+                            "wakeUpCalls": {
+                                "attributeId": "wakeUpCalls",
+                                "attributeName": "Wake-up calls",
+                                "value": true
+                            },
+                            "convenienceStore": {
+                                "attributeId": "convenienceStore",
+                                "attributeName": "Convenience store",
+                                "value": false
+                            },
+                            "giftShop": {
+                                "attributeId": "giftShop",
+                                "attributeName": "Gift shop",
+                                "value": true
+                            },
+                            "currencyExchange": {
+                                "attributeId": "currencyExchange",
+                                "attributeName": "Currency exchange",
+                                "value": false
+                            }
+                        }
+                    },
+                    "PoliciesAndPayments": {
+                        "Policies": {
+                            "kidsStayFree": {
+                                "attributeId": "kidsStayFree",
+                                "attributeName": "Kids stay free",
+                                "value": true
+                            },
+                            "smokeFreeProperty": {
+                                "attributeId": "smokeFreeProperty",
+                                "attributeName": "Smoke-free property",
+                                "value": true
+                            },
+                            "allInclusiveAvailable": {
+                                "attributeId": "allInclusiveAvailable",
+                                "attributeName": "All inclusive available",
+                                "value": true
+                            },
+                            "allInclusiveOnly": {
+                                "attributeId": "allInclusiveOnly",
+                                "attributeName": "All inclusive only",
+                                "value": false
+                            }
+                        },
+                        "PaymentOptions": {
+                            "cash": {
+                                "attributeId": "cash",
+                                "attributeName": "Cash",
+                                "value": true
+                            },
+                            "cheque": {
+                                "attributeId": "cheque",
+                                "attributeName": "Cheque",
+                                "value": false
+                            },
+                            "creditCard": {
+                                "attributeId": "creditCard",
+                                "attributeName": "Credit Card",
+                                "value": true
+                            },
+                            "debitCard": {
+                                "attributeId": "debitCard",
+                                "attributeName": "Debit Card",
+                                "value": true
+                            },
+                            "mobileNfc": {
+                                "attributeId": "mobileNfc",
+                                "attributeName": "Mobile NFC",
+                                "value": false
+                            }
+                        }
+                    },
+                    "FoodAndDrink": {
+                        "FoodAndDrink": {
+                            "roomService": {
+                                "attributeId": "roomService",
+                                "attributeName": "Room service",
+                                "value": true
+                            },
+                            "twentyFourHourRoomService": {
+                                "attributeId": "twentyFourHourRoomService",
+                                "attributeName": "24-hour room service",
+                                "value": false
+                            },
+                            "restaurant": {
+                                "attributeId": "restaurant",
+                                "attributeName": "Restaurant",
+                                "value": true
+                            },
+                            "tableService": {
+                                "attributeId": "tableService",
+                                "attributeName": "Table service",
+                                "value": true
+                            }
+                        }
+                    }
+                },
                  "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
                     "appleWebsiteUrl":"https://www.apple.com",
@@ -18644,6 +18932,14 @@ The Get Listing API will get the listing information for the given business numb
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
             + whatsappBusinessLink (string) - Enter your WhatsApp Business link to display a direct chat option on your live Google Business Profile. This allows customers to easily message you. Example https://wa.me/<yourphonenumber>
             + textMessageNumber (string) - Enter a valid phone number to enable a text message chat option on your live Google Business Profile, allowing customers to easily reach you via SMS.
+        + hotelAttributes (object) - Hotel-specific attributes organized by category. Applicable for hotel/lodging businesses. Contains details about services, policies, payment options, and food & drink offerings available at the property. Each attribute includes an attributeId (string, unique identifier), attributeName (string, display name), and value (boolean, indicating availability).
+            + Services (object) - Hotel services and amenities available to guests.
+                + Services (object) - Individual service attributes indicating availability of hotel services such as 24-hour front desk, concierge, elevator, baggage storage, laundry, social hour, wake-up calls, convenience store, gift shop, and currency exchange.
+            + PoliciesAndPayments (object) - Hotel policies and accepted payment methods.
+                + Policies (object) - Hotel policies such as kids stay free, smoke-free property, all inclusive available, and all inclusive only.
+                + PaymentOptions (object) - Payment methods accepted at the hotel such as cash, cheque, credit card, debit card, and mobile NFC.
+            + FoodAndDrink (object) - Food and drink services available at the hotel.
+                + FoodAndDrink (object) - Individual food and drink service attributes such as room service, 24-hour room service, restaurant, and table service.
         + appleListing (object) - This data will be used to update your Google Business Profile/ listing.
             + phoneNumber (string) - This will be shown as the primary phoneNumber on your Apple maps place card and will replace/ override your business info phone number.
             + appleWebsiteUrl (string) - Website url will update on apple listing. This website URL will override your existing website URL on your Apple Business Connect.
@@ -19149,6 +19445,142 @@ The Get Listing API will get the listing information for the given business numb
                     "whatsappBusinessLink":"https://wa.me/9737160007",
                     "textMessageNumber":"973716-0007"
                 },
+                "hotelAttributes": {
+                    "Services": {
+                        "Services": {
+                            "twentyFourHourFrontDesk": {
+                                "attributeId": "twentyFourHourFrontDesk",
+                                "attributeName": "24-hour front desk",
+                                "value": true
+                            },
+                            "concierge": {
+                                "attributeId": "concierge",
+                                "attributeName": "Concierge",
+                                "value": true
+                            },
+                            "elevator": {
+                                "attributeId": "elevator",
+                                "attributeName": "Elevator",
+                                "value": true
+                            },
+                            "baggageStorage": {
+                                "attributeId": "baggageStorage",
+                                "attributeName": "Baggage storage",
+                                "value": false
+                            },
+                            "fullServiceLaundry": {
+                                "attributeId": "fullServiceLaundry",
+                                "attributeName": "Full-service laundry",
+                                "value": true
+                            },
+                            "selfServiceLaundry": {
+                                "attributeId": "selfServiceLaundry",
+                                "attributeName": "Self-service laundry",
+                                "value": false
+                            },
+                            "socialHour": {
+                                "attributeId": "socialHour",
+                                "attributeName": "Social hour",
+                                "value": true
+                            },
+                            "wakeUpCalls": {
+                                "attributeId": "wakeUpCalls",
+                                "attributeName": "Wake-up calls",
+                                "value": true
+                            },
+                            "convenienceStore": {
+                                "attributeId": "convenienceStore",
+                                "attributeName": "Convenience store",
+                                "value": false
+                            },
+                            "giftShop": {
+                                "attributeId": "giftShop",
+                                "attributeName": "Gift shop",
+                                "value": true
+                            },
+                            "currencyExchange": {
+                                "attributeId": "currencyExchange",
+                                "attributeName": "Currency exchange",
+                                "value": false
+                            }
+                        }
+                    },
+                    "PoliciesAndPayments": {
+                        "Policies": {
+                            "kidsStayFree": {
+                                "attributeId": "kidsStayFree",
+                                "attributeName": "Kids stay free",
+                                "value": true
+                            },
+                            "smokeFreeProperty": {
+                                "attributeId": "smokeFreeProperty",
+                                "attributeName": "Smoke-free property",
+                                "value": true
+                            },
+                            "allInclusiveAvailable": {
+                                "attributeId": "allInclusiveAvailable",
+                                "attributeName": "All inclusive available",
+                                "value": true
+                            },
+                            "allInclusiveOnly": {
+                                "attributeId": "allInclusiveOnly",
+                                "attributeName": "All inclusive only",
+                                "value": false
+                            }
+                        },
+                        "PaymentOptions": {
+                            "cash": {
+                                "attributeId": "cash",
+                                "attributeName": "Cash",
+                                "value": true
+                            },
+                            "cheque": {
+                                "attributeId": "cheque",
+                                "attributeName": "Cheque",
+                                "value": false
+                            },
+                            "creditCard": {
+                                "attributeId": "creditCard",
+                                "attributeName": "Credit Card",
+                                "value": true
+                            },
+                            "debitCard": {
+                                "attributeId": "debitCard",
+                                "attributeName": "Debit Card",
+                                "value": true
+                            },
+                            "mobileNfc": {
+                                "attributeId": "mobileNfc",
+                                "attributeName": "Mobile NFC",
+                                "value": false
+                            }
+                        }
+                    },
+                    "FoodAndDrink": {
+                        "FoodAndDrink": {
+                            "roomService": {
+                                "attributeId": "roomService",
+                                "attributeName": "Room service",
+                                "value": true
+                            },
+                            "twentyFourHourRoomService": {
+                                "attributeId": "twentyFourHourRoomService",
+                                "attributeName": "24-hour room service",
+                                "value": false
+                            },
+                            "restaurant": {
+                                "attributeId": "restaurant",
+                                "attributeName": "Restaurant",
+                                "value": true
+                            },
+                            "tableService": {
+                                "attributeId": "tableService",
+                                "attributeName": "Table service",
+                                "value": true
+                            }
+                        }
+                    }
+                },
                  "appleListing": {
                     "primaryCategory": "health_care.dentistry.dental_clinic.dentist",
                     "primaryCategoryName": "Dentist",
@@ -19206,6 +19638,268 @@ The Get Listing API will get the listing information for the given business numb
                     "university": "Sample text",
                     "hospitalAffiliations": "Sample text",
                     "insurancesAccepted": "Sample text"
+                }
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+## Get Hotel Attributes [/v1/listing/get/hotel-attributes]
+The Get Hotel Attributes API returns the available hotel-specific attributes and their possible values for the given business locations.
+
+
+### Get Hotel Attributes [POST]
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User associated businessNumber
+
+
+   + Attributes
+        + businessNumbers (array, required) - List of business numbers for which to retrieve hotel attributes.
+
+    + Body
+
+            {
+                "businessNumbers": [
+                    169744180007807
+                ]
+            }
+
+
++ Response 200 (application/json)
+
+   + Attributes
+        + hotelAttributes (object) - Hotel-specific attributes organized by category. Each attribute includes an attributeId (string, unique identifier), name (string, display name), and possibleValues (array of objects with value and name indicating the allowed settings).
+            + Services (object) - Hotel services and amenities available to guests.
+                + Services (object) - Individual service attributes such as 24-hour front desk, concierge, elevator, baggage storage, laundry, social hour, wake-up calls, convenience store, gift shop, and currency exchange. Each attribute contains possibleValues indicating Available or Not Available.
+            + PoliciesAndPayments (object) - Hotel policies and accepted payment methods.
+                + Policies (object) - Hotel policies such as kids stay free, smoke-free property, all inclusive available, and all inclusive only. Each attribute contains possibleValues indicating Available or Not Available.
+                + PaymentOptions (object) - Payment methods accepted at the hotel such as cash, cheque, credit card, debit card, and mobile NFC. Each attribute contains possibleValues indicating Available or Not Available.
+            + FoodAndDrink (object) - Food and drink services available at the hotel.
+                + FoodAndDrink (object) - Individual food and drink service attributes such as room service, 24-hour room service, restaurant, and table service. Each attribute contains possibleValues indicating Available or Not Available.
+
+    + Body
+
+            {
+                "hotelAttributes": {
+                    "Services": {
+                        "Services": {
+                            "twentyFourHourFrontDesk": {
+                                "attributeId": "twentyFourHourFrontDesk",
+                                "name": "24-hour front desk",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "concierge": {
+                                "attributeId": "concierge",
+                                "name": "Concierge",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "elevator": {
+                                "attributeId": "elevator",
+                                "name": "Elevator",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "baggageStorage": {
+                                "attributeId": "baggageStorage",
+                                "name": "Baggage storage",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "fullServiceLaundry": {
+                                "attributeId": "fullServiceLaundry",
+                                "name": "Full-service laundry",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "selfServiceLaundry": {
+                                "attributeId": "selfServiceLaundry",
+                                "name": "Self-service laundry",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "socialHour": {
+                                "attributeId": "socialHour",
+                                "name": "Social hour",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "wakeUpCalls": {
+                                "attributeId": "wakeUpCalls",
+                                "name": "Wake-up calls",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "convenienceStore": {
+                                "attributeId": "convenienceStore",
+                                "name": "Convenience store",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "giftShop": {
+                                "attributeId": "giftShop",
+                                "name": "Gift shop",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "currencyExchange": {
+                                "attributeId": "currencyExchange",
+                                "name": "Currency exchange",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            }
+                        }
+                    },
+                    "PoliciesAndPayments": {
+                        "Policies": {
+                            "kidsStayFree": {
+                                "attributeId": "kidsStayFree",
+                                "name": "Kids stay free",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "smokeFreeProperty": {
+                                "attributeId": "smokeFreeProperty",
+                                "name": "Smoke-free property",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "allInclusiveAvailable": {
+                                "attributeId": "allInclusiveAvailable",
+                                "name": "All inclusive available",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "allInclusiveOnly": {
+                                "attributeId": "allInclusiveOnly",
+                                "name": "All inclusive only",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            }
+                        },
+                        "PaymentOptions": {
+                            "cash": {
+                                "attributeId": "cash",
+                                "name": "Cash",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "cheque": {
+                                "attributeId": "cheque",
+                                "name": "Cheque",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "creditCard": {
+                                "attributeId": "creditCard",
+                                "name": "Credit Card",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "debitCard": {
+                                "attributeId": "debitCard",
+                                "name": "Debit Card",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "mobileNfc": {
+                                "attributeId": "mobileNfc",
+                                "name": "Mobile NFC",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            }
+                        }
+                    },
+                    "FoodAndDrink": {
+                        "FoodAndDrink": {
+                            "roomService": {
+                                "attributeId": "roomService",
+                                "name": "Room service",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "twentyFourHourRoomService": {
+                                "attributeId": "twentyFourHourRoomService",
+                                "name": "24-hour room service",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "restaurant": {
+                                "attributeId": "restaurant",
+                                "name": "Restaurant",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            },
+                            "tableService": {
+                                "attributeId": "tableService",
+                                "name": "Table service",
+                                "possibleValues": [
+                                    { "value": true, "name": "Available" },
+                                    { "value": false, "name": "Not Available" }
+                                ]
+                            }
+                        }
+                    }
                 }
             }
 
@@ -20821,6 +21515,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>04/02/2026</b> - Added hotelAttributes API under listing section.
 * <b>03/24/2026</b> - Added Social Open URL Performance Report API and Insight AI APIs to retrieve location-wise metrics and benchmark score.
 * <b>03/18/2026</b> - Added Create Custom Card Time API under custom fields section.
 * <b>03/03/2026</b> - Added Response Time (overtime & by-location) and Response Rate(overtime & by-location) APIs under reports section and created group for Competitor AI.
