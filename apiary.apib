@@ -20278,6 +20278,260 @@ Removes products (by IDs) to the Google profile of the business provided in head
 
     [1167][]
 
+# Group Search AI
+Search AI provides a comprehensive view of your business performance across AI-powered search platforms, including data accuracy, sentiment analysis, citations, brand ranking, and overall visibility.
+
+## Get Accuracy Report [/v1/listing/{businessNumber}/accuracy/report]
+Provides an accuracy report for the specified business, highlighting how consistent and reliable the business information is across platforms.
+
+
+### Get Accuracy Report [POST]
+
++ Parameters
+
+    + businessNumber: 169744180007807 (number, required) - Business Number.
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+
+   + Attributes
+        + businessNumbers - Comma-separated list of business numbers to retrieve the report for.
+        + aiModels - Comma-separated list of AI models to include in the report. Possible values are [**`CHATGPT`**, **`GEMINI`**, **`PERPLEXITY`**]
+        + startDate - Start date for the report range (format: **`yyyy-MM-dd`**).
+        + endDate - End date for the report range (format: **`yyyy-MM-dd`**).
+
+    + Body
+            {
+                "businessNumbers": [
+                    177337970010644,
+                    177337970029743
+                ],
+                "aiModels": [
+                    "CHATGPT",
+                    "GEMINI",
+                    "PERPLEXITY"
+                ],
+                "startDate": "2025-12-01",
+                "endDate": "2025-12-31"
+            }
+
++ Response 200 (application/json)
+
+            {
+                "data": {
+                    "177337970010644": {
+                        "2025-12-30": {
+                            "CHATGPT": {
+                                "businessName": "ProHEALTH Dental - Astoria",
+                                "fullAddress": "29-14 Ditmars Blvd, Astoria, NY 11105, United States",
+                                "phone": "(718) 524-3677",
+                                "hoursOfOperation": "Monday: Closed\nTuesday: Closed\nWednesday: Closed\nThursday: Closed\nFriday: Closed\nSaturday: Closed\nSunday: Closed",
+                                "website": "phdental.com"
+                            },
+                            "GEMINI": {
+                                "businessName": "ProHEALTH Dental - Astoria",
+                                "fullAddress": "29-14 Ditmars Blvd, Astoria, NY 11105, United States",
+                                "phone": "718-524-3677",
+                                "hoursOfOperation": "Monday: Closed\nTuesday: Closed\nWednesday: Closed\nThursday: Closed\nFriday: Closed\nSaturday: Closed\nSunday: Closed"
+                            },
+                            "PERPLEXITY": {
+                                "businessName": "ProHEALTH Dental - Astoria",
+                                "fullAddress": "29-14 Ditmars Blvd, Astoria, NY 11105, United States",
+                                "phone": "718-524-3677",
+                                "hoursOfOperation": "Monday: Closed\nTuesday: Closed\nWednesday: Closed\nThursday: Closed\nFriday: Closed\nSaturday: Closed\nSunday: Closed",
+                                "website": "https://www.phdental.com/locations/prohealth-dental/astoria-ny/"
+                            }
+                        }
+                    }
+                }
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+## Get Sentiment Report [/v1/listing/{businessNumber}/sentiment/report]
+Returns the sentiment report for the specified business, providing insights into customer sentiment across supported platforms.
+
+
+### Get Sentiment Report [POST]
+
++ Parameters
+
+    + businessNumber: 169744180007807 (number, required) - Business Number.
+
++ Request (application/json)
+    + Headers
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+
+   + Attributes
+        + businessNumbers - Comma-separated list of business numbers to retrieve the report for.
+        + aiModels - Comma-separated list of AI models to include in the report. Possible values are [**`CHATGPT`**, **`GEMINI`**, **`PERPLEXITY`**]
+        + startDate - Start date for the report range (format: **`yyyy-MM-dd`**).
+        + endDate - End date for the report range (format: **`yyyy-MM-dd`**).
+        + viewReportType - Defines the level at which the report is generated. Allowed values: **`LOCATION_LEVEL`**, **`ACCOUNT_LEVEL`**
+
+    + Body
+            {
+                "businessNumbers": [
+                    177337970010644,
+                    177337970029743
+                ],
+                "aiModels": [
+                    "CHATGPT",
+                    "GEMINI",
+                    "PERPLEXITY"
+                ],
+                "startDate": "2026-03-01",
+                "endDate": "2026-03-31",
+                "viewReportType": "LOCATION_LEVEL"
+            }
+
++ Response 200 (application/json)
+
+            {
+                "data": {
+                    "177337970010644": {
+                        "2026-03-17": {
+                            "PERPLEXITY": {
+                                "strengths": [
+                                    {
+                                        "title": "Affiliation with Reputable Network",
+                                        "description": "Part of Sutter Health, bringing award-winning care to Solvang neighborhood with established oncology and infusion services."
+                                    },
+                                    {
+                                        "title": "Convenient Extended Hours",
+                                        "description": "Open Monday through Thursday until 6 PM, accommodating local working professionals in the Viborg Specialty Building."
+                                    },
+                                    {
+                                        "title": "Positive Patient Experiences",
+                                        "description": "Local customers highlight excellent professional care, compelling first-time reviews for the facility."
+                                    }
+                                ],
+                                "weaknesses": [
+                                    {
+                                        "title": "Limited Operating Days",
+                                        "description": "Closed Fridays, Saturdays, Sundays, and major holidays, reducing accessibility for Solvang residents needing weekend care."
+                                    },
+                                    {
+                                        "title": "Lunchtime Closure",
+                                        "description": "Daily closure from 12-1 PM restricts same-day urgent infusion or oncology visits during peak hours."
+                                    },
+                                    {
+                                        "title": "Sparse Specific Feedback",
+                                        "description": "Few reviews directly address infusion services, with most feedback general to the care center."
+                                    }
+                                ],
+                                "oppurtunities": [
+                                    {
+                                        "title": "Proximity to Diagnostics",
+                                        "description": "Co-located with Quest Diagnostics in the same building, enabling seamless lab integration for Solvang patients."
+                                    },
+                                    {
+                                        "title": "Cancer Care Demand",
+                                        "description": "Ridley-Tree Cancer Center presence supports expanding infusion services amid local oncology needs."
+                                    },
+                                    {
+                                        "title": "Tourist Community Growth",
+                                        "description": "Solvang's popularity as a tourist destination offers potential to serve seasonal visitors requiring infusion therapy."
+                                    }
+                                ],
+                                "threats": [
+                                    {
+                                        "title": "Competitor Overlap",
+                                        "description": "Nearby Sansum Clinic departments at the same address create internal competition for specialized care."
+                                    },
+                                    {
+                                        "title": "Seasonal Traffic Fluctuations",
+                                        "description": "Solvang's heavy tourist traffic on Viborg Road may cause access issues during peak events."
+                                    },
+                                    {
+                                        "title": "Regional Healthcare Shifts",
+                                        "description": "Potential changes in Sutter Health or local regulations could impact infusion center operations."
+                                    }
+                                ]
+                            },
+                            "CHATGPT": {
+                                "strengths": [
+                                    {
+                                        "title": "Highly qualified staff",
+                                        "description": "Patients appreciate the knowledgeable and friendly staff who provide exceptional care."
+                                    },
+                                    {
+                                        "title": "Collaborations with local healthcare",
+                                        "description": "Strong ties with local healthcare providers increase trust and referral rates."
+                                    },
+                                    {
+                                        "title": "Convenient location",
+                                        "description": "Located conveniently for residents, with easy access from different parts of the neighborhood."
+                                    }
+                                ],
+                                "weaknesses": [
+                                    {
+                                        "title": "Limited parking space",
+                                        "description": "Some patients report challenges in finding parking during peak hours."
+                                    },
+                                    {
+                                        "title": "Wait times during peak hours",
+                                        "description": "Occasional increased wait times have been noted, particularly during busy periods."
+                                    },
+                                    {
+                                        "title": "Restricted operating hours",
+                                        "description": "Operating hours may not accommodate everyone, especially those needing evening appointments."
+                                    }
+                                ],
+                                "oppurtunities": [
+                                    {
+                                        "title": "Expansion of services",
+                                        "description": "Potential to add more services to cater to a broader range of infusion needs."
+                                    },
+                                    {
+                                        "title": "Partnership with more local clinics",
+                                        "description": "Building more partnerships could further solidify its local presence and patient base."
+                                    },
+                                    {
+                                        "title": "Community outreach programs",
+                                        "description": "Engaging in more community health events could raise awareness and attract new patients."
+                                    }
+                                ],
+                                "threats": [
+                                    {
+                                        "title": "Increased competition",
+                                        "description": "Emerging local clinics could present competition, potentially affecting market share."
+                                    },
+                                    {
+                                        "title": "Economic fluctuations",
+                                        "description": "Local and national economic changes could affect healthcare funding and patient affordability."
+                                    },
+                                    {
+                                        "title": "Regulatory changes",
+                                        "description": "Potential regulatory changes in healthcare practices could impact operations and compliance."
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
 
 
 # Group Ticketing
