@@ -5075,7 +5075,13 @@ Get User API gets details of a user.
 Consistently generate more reviews and higher ratings.
 
 ## Get [/v1/review/businessId/{businessId}{?sindex,count,includeNonAggregatedReviews}]
-Get Reviews returns the list of reviews for an account with all its details.
+Get Reviews returns reviews for a business account with detailed review fields.
+
+> __Behavior Note__
+> - _If `statuses` is not provided, the API defaults to `["published"]`, which returns featured reviews only._
+> - _Status mapping: `published` = featured reviews, `parked` = non-featured reviews._
+> - _To fetch both featured and non-featured reviews, pass `statuses: ["published","parked"]` or `statuses: ["all"]` in the request body._
+> - _`ratings` filters are applied only within the statuses selected for the request._
 
 > __Note__
 > - _Deep Pagination with record window greater than 100k is not supported. Either reduce the sindex + count to be less than equal to 100k or use appropriate filters to narrow down your result set._
@@ -5107,7 +5113,7 @@ Get Reviews returns the list of reviews for an account with all its details.
         + ratings: 4,5 (array) - Review rating Possible values 0,1,2,3,4,5.
         + searchStr: Great service (string) - String that is contained by review.
         + subBusinessIds: 123456789 ,987654321 (array) - BusinessIds under enterprise account.
-        + statuses: published,parked (array) - Review status. Valid values are "published","parked","all". Default is "published" only. Status “published” refers to featured reviews, while “parked” refers to non-featured reviews.
+        + statuses: published,parked (array) - Review status filter. Valid values are "published", "parked", and "all". If omitted, default is "published" only (featured reviews). "published" refers to featured reviews and "parked" refers to non-featured reviews.
         + allChild: true (boolean) - Get review from all child ignoring merge reviews flag configured at parent/child relationship level.
         + tags: ["top reviews", "need action"] (array) - Reviews with assigned tags
         + fetchExtraParams: false (boolean) - To fetch custom field(s) associated with the customer attributed to the review [if any].
@@ -5126,7 +5132,7 @@ Get Reviews returns the list of reviews for an account with all its details.
                 "ratings":[1,2,3,4,5,0],
                 "searchStr":"test string",
                 "subBusinessIds":[12345678,1232111,1231231321],
-                "statuses":["published","parked"],
+                "statuses":["all"],
                 "allChild":"true",
                 "tags":["positive","negative"],
                 "fetchExtraParams":false,
@@ -20821,6 +20827,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>04/06/2026</b> - Updated Get Reviews API documentation to improve clarity on review statuses and how to retrieve all review types.
 * <b>03/24/2026</b> - Added Social Open URL Performance Report API and Insight AI APIs to retrieve location-wise metrics and benchmark score.
 * <b>03/18/2026</b> - Added Create Custom Card Time API under custom fields section.
 * <b>03/03/2026</b> - Added Response Time (overtime & by-location) and Response Rate(overtime & by-location) APIs under reports section and created group for Competitor AI.
