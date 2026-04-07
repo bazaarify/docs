@@ -20367,10 +20367,12 @@ Retrieves the Search AI available runs for the specified business.
 ### Get Search AI Available Runs [GET]
 
 + Request (application/json)
+
     + Headers
+
             Accept: application/json
             x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
-            x-business-number: - Long Business Number
+            x-business-number: [Required] User associated businessNumber
 
 + Response 200 (application/json)
 
@@ -20476,6 +20478,7 @@ Retrieves Search AI citations for the specified business, including sources refe
         + viewReportType - Defines the level at which the report is generated. Allowed values: **`LOCATION_LEVEL`**, **`ACCOUNT_LEVEL`**
 
     + Body
+
             {
               "businessNumbers": [67348934989,327349434334,278237892323],
               "aiModel": "CHATGPT",
@@ -20566,10 +20569,12 @@ Retrieves Search AI business results for the specified business, including busin
 ### Get Search AI Businesses [POST]
 
 + Request (application/json)
+
     + Headers
+
             Accept: application/json
             x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
-            x-business-number: - Long Business Number
+            x-business-number: [Required] User associated businessNumber
 
    + Attributes
         + businessNumbers - Comma-separated list of business numbers to retrieve the report for.
@@ -20582,6 +20587,7 @@ Retrieves Search AI business results for the specified business, including busin
         + viewReportType - Defines the level at which the report is generated. Allowed values: **`LOCATION_LEVEL`**, **`ACCOUNT_LEVEL`**
 
     + Body
+
             {
               "businessNumbers": [67348934989,327349434334,278237892323],
               "aiModel": "CHATGPT",
@@ -20592,7 +20598,7 @@ Retrieves Search AI business results for the specified business, including busin
               "endDate": "2026-03-31",
               "viewReportType": "LOCATION_LEVEL"
             }
-            
+
 + Response 200 (application/json)
 
             {
@@ -20698,6 +20704,7 @@ Provides an accuracy report for the specified business, highlighting how consist
         + endDate - End date for the report range (format: **`yyyy-MM-dd`**).
 
     + Body
+
             {
                 "businessNumbers": [
                     177337970010644,
@@ -20760,10 +20767,12 @@ Returns the sentiment report for the specified business, providing insights into
 ### Get Sentiment Report [POST]
 
 + Request (application/json)
+
     + Headers
+
             Accept: application/json
             x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
-            x-business-number: - Long Business Number
+            x-business-number: [Required] User associated businessNumber
 
    + Attributes
         + businessNumbers - Comma-separated list of business numbers to retrieve the report for.
@@ -20773,6 +20782,7 @@ Returns the sentiment report for the specified business, providing insights into
         + viewReportType - Defines the level at which the report is generated. Allowed values: **`LOCATION_LEVEL`**, **`ACCOUNT_LEVEL`**
 
     + Body
+
             {
                 "businessNumbers": [
                     177337970010644,
