@@ -20284,7 +20284,656 @@ Removes products (by IDs) to the Google profile of the business provided in head
 
     [1167][]
 
+# Group Search AI
+Search AI provides a comprehensive view of your business performance across AI-powered search platforms, including data accuracy, sentiment analysis, citations, brand ranking, and overall visibility.
 
+## Get Search AI Configuration [/v1/listing/searchAi/account-setup]
+Retrieves the Search AI configuration for the specified business.
+
+
+### Get Search AI Configuration [GET]
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number
+
++ Response 200 (application/json)
+
+            {
+              "frequency": "Monthly",
+              "quota": 1200,
+              "billingType": "CREDIT_SYSTEM",
+              "themes": [
+                {
+                  "theme": "dental implants",
+                  "prompts": [
+                    "Find dental clinics near me that specialize in affordable dental implants and offer consultations.",
+                    "Search for providers offering full mouth dental implants or All-on-4 solutions in my area.",
+                    "Locate dental offices that provide transparent pricing for dental implants and flexible financing options."
+                  ]
+                },
+                {
+                  "theme": "teeth whitening",
+                  "prompts": [
+                    "Find dental clinics near me offering professional teeth whitening services.",
+                    "Who provides the best in-office teeth whitening treatments in my area?",
+                    "Local dentists with advanced teeth whitening options and kits for purchase."
+                  ]
+                },
+                {
+                  "theme": "dental crowns",
+                  "prompts": [
+                    "Find dental clinics near me that specialize in dental crown procedures.",
+                    "Where can I get affordable zirconia dental crowns from reputable dentists?",
+                    "Locate dental offices offering same-day dental crown services and consultations."
+                  ]
+                },
+                {
+                  "theme": "tooth extractions",
+                  "prompts": [
+                    "Find dental clinics near me that offer professional tooth extraction services, including same-day tooth extraction and implant placement.",
+                    "Search for dentists specializing in wisdom tooth extraction and post-extraction care in my area.",
+                    "Locate private dental practices offering affordable tooth extraction with transparent pricing and quick appointments."
+                  ]
+                },
+                {
+                  "theme": "dental bridges",
+                  "prompts": [
+                    "Find dental clinics near me that offer dental bridges and provide detailed pricing information.",
+                    "Looking for experienced dentists specializing in dental bridge procedures and consultations.",
+                    "Best dental practices for dental bridge installation and aftercare services in my area."
+                  ]
+                }
+              ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+## Get Search AI Available Runs [/v1/listing/searchAi/available-runs]
+Retrieves the Search AI available runs for the specified business.
+
+
+### Get Search AI Available Runs [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User associated businessNumber
+
++ Response 200 (application/json)
+
+            {
+              "availableRuns": [
+                {
+                  "runDate": "15-MAR-2026",
+                  "themes": [
+                    "dental implants"
+                  ]
+                },
+                {
+                  "runDate": "14-MAR-2026",
+                  "themes": [
+                    "dental implants",
+                    "teeth whitening",
+                    "dental bridges",
+                    "dental crowns",
+                    "tooth extractions"
+                  ]
+                },
+                {
+                  "runDate": "13-MAR-2026",
+                  "themes": [
+                    "dental implants",
+                    "teeth whitening",
+                    "dental bridges",
+                    "dental crowns",
+                    "tooth extractions"
+                  ]
+                },
+                {
+                  "runDate": "13-FEB-2026",
+                  "themes": [
+                    "dental implants",
+                    "teeth whitening",
+                    "dental bridges",
+                    "dental crowns",
+                    "tooth extractions"
+                  ]
+                },
+                {
+                  "runDate": "13-JAN-2026",
+                  "themes": [
+                    "dental implants",
+                    "teeth whitening",
+                    "dental bridges",
+                    "dental crowns",
+                    "tooth extractions"
+                  ]
+                },
+                {
+                  "runDate": "30-DEC-2025",
+                  "themes": [
+                    "dental implants",
+                    "teeth whitening",
+                    "dental bridges",
+                    "dental crowns",
+                    "tooth extractions"
+                  ]
+                },
+                {
+                  "runDate": "18-NOV-2025",
+                  "themes": [
+                    "dental implants",
+                    "teeth whitening",
+                    "dental bridges",
+                    "dental crowns",
+                    "tooth extractions"
+                  ]
+                }
+              ]
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+## Get Search AI Citations [/v1/listing/searchAi/public/citations]
+Retrieves Search AI citations for the specified business, including sources referenced by AI models for given prompts and themes.
+
+### Get Search AI Citations [POST]
+
++ Request (application/json)
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number
+
+   + Attributes
+        + businessNumbers - Comma-separated list of business numbers to retrieve the report for.
+        + aiModel - Possible values are [**`CHATGPT`**, **`GEMINI`**, **`PERPLEXITY`**]
+        + theme - Specifies the theme or category used to filter the report data.
+        + pageNo - Specifies the page number for paginated results. Defaults to 1.
+        + pageSize - Defines the number of records to be returned per page. Defaults to 25.
+        + startDate - Start date for the report range (format: **`yyyy-MM-dd`**).
+        + endDate - End date for the report range (format: **`yyyy-MM-dd`**).
+        + viewReportType - Defines the level at which the report is generated. Allowed values: **`LOCATION_LEVEL`**, **`ACCOUNT_LEVEL`**
+
+    + Body
+
+            {
+              "businessNumbers": [67348934989,327349434334,278237892323],
+              "aiModel": "CHATGPT",
+              "theme": "Dental implants",
+              "pageNo": 1,
+              "pageSize": 25,
+              "startDate": "2026-03-01",
+              "endDate": "2026-03-31",
+              "viewReportType": "LOCATION_LEVEL"
+            }
+
++ Response 200 (application/json)
+
+            {
+              "citations": [
+                {
+                  "theme": "Dental implants",
+                  "prompt": "Best dental implants near me",
+                  "aiModel": "CHATGPT",
+                  "businessNumber": 67348934989,
+                  "processedDate": "2026-03-10",
+                  "citations": [
+                    {
+                      "url": "https://www.healthline.com/health/dental-and-oral-health/dental-implants",
+                      "title": "Dental Implants: Procedure, Benefits, and Risks",
+                      "description": "A complete guide to dental implants including procedure, cost, and recovery.",
+                      "brandPresent": false
+                    },
+                    {
+                      "url": "https://www.exampleclinic.com/dental-implants",
+                      "title": "Affordable Dental Implants at Example Clinic",
+                      "description": "Get high-quality dental implants with experienced dentists.",
+                      "brandPresent": true
+                    }
+                  ]
+                },
+                {
+                  "theme": "Dental implants",
+                  "prompt": "Cost of dental implants in India",
+                  "aiModel": "GEMINI",
+                  "businessNumber": 327349434334,
+                  "processedDate": "2026-03-15",
+                  "citations": [
+                    {
+                      "url": "https://www.practo.com/healthfeed/dental-implant-cost-in-india-45910/post",
+                      "title": "Dental Implant Cost in India",
+                      "description": "Overview of dental implant pricing across major cities in India.",
+                      "brandPresent": false
+                    },
+                    {
+                      "url": "https://www.dentalcareplus.in/implants",
+                      "title": "Advanced Dental Implant Solutions",
+                      "description": "State-of-the-art dental implant services with modern technology.",
+                      "brandPresent": true
+                    }
+                  ]
+                },
+                {
+                  "theme": "Dental implants",
+                  "prompt": "Are dental implants safe?",
+                  "aiModel": "CHATGPT",
+                  "businessNumber": 278237892323,
+                  "processedDate": "2026-03-20",
+                  "citations": [
+                    {
+                      "url": "https://www.webmd.com/oral-health/guide/dental-implants",
+                      "title": "Dental Implants: What You Should Know",
+                      "description": "Learn about the safety, benefits, and risks of dental implants.",
+                      "brandPresent": false
+                    }
+                  ]
+                }
+              ],
+              "total": 3
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+## Get Search AI Businesses [/v1/listing/searchAi/public/business]
+Retrieves Search AI business results for the specified business, including businesses identified by AI models for given prompts and themes.
+
+### Get Search AI Businesses [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User associated businessNumber
+
+   + Attributes
+        + businessNumbers - Comma-separated list of business numbers to retrieve the report for.
+        + aiModel - Possible values are [**`CHATGPT`**, **`GEMINI`**, **`PERPLEXITY`**]
+        + theme - Specifies the theme or category used to filter the report data.
+        + pageNo - Specifies the page number for paginated results. Defaults to 1.
+        + pageSize - Defines the number of records to be returned per page. Defaults to 25.
+        + startDate - Start date for the report range (format: **`yyyy-MM-dd`**).
+        + endDate - End date for the report range (format: **`yyyy-MM-dd`**).
+        + viewReportType - Defines the level at which the report is generated. Allowed values: **`LOCATION_LEVEL`**, **`ACCOUNT_LEVEL`**
+
+    + Body
+
+            {
+              "businessNumbers": [67348934989,327349434334,278237892323],
+              "aiModel": "CHATGPT",
+              "theme": "Dental implants",
+              "pageNo": 1,
+              "pageSize": 25,
+              "startDate": "2026-03-01",
+              "endDate": "2026-03-31",
+              "viewReportType": "LOCATION_LEVEL"
+            }
+
++ Response 200 (application/json)
+
+            {
+              "data": [
+                {
+                  "theme": "Dental implants",
+                  "prompt": "Best dental implant clinics near me",
+                  "aiModel": "CHATGPT",
+                  "businessNumber": 67348934989,
+                  "processedDate": "2026-03-08",
+                  "businesses": [
+                    {
+                      "name": "SmileCare Dental Clinic",
+                      "phone": "+91-9876543210",
+                      "postalCode": "700091",
+                      "address": "Salt Lake Sector V, Bidhannagar",
+                      "city": "Kolkata",
+                      "websiteUrl": "https://www.smilecaredental.in"
+                    },
+                    {
+                      "name": "Apollo Dental Clinic",
+                      "phone": "+91-9831123456",
+                      "postalCode": "700020",
+                      "address": "Park Street, Near Metro Station",
+                      "city": "Kolkata",
+                      "websiteUrl": "https://www.apollodentalclinics.com"
+                    }
+                  ]
+                },
+                {
+                  "theme": "Dental implants",
+                  "prompt": "Affordable dental implants in India",
+                  "aiModel": "GEMINI",
+                  "businessNumber": 327349434334,
+                  "processedDate": "2026-03-14",
+                  "businesses": [
+                    {
+                      "name": "Clove Dental",
+                      "phone": "+91-9999030303",
+                      "postalCode": "110001",
+                      "address": "Connaught Place, Block A",
+                      "city": "New Delhi",
+                      "websiteUrl": "https://www.clovedental.in"
+                    },
+                    {
+                      "name": "32 Smile Dental Clinic",
+                      "phone": "+91-9823456789",
+                      "postalCode": "411001",
+                      "address": "MG Road, Camp Area",
+                      "city": "Pune",
+                      "websiteUrl": "https://www.32smile.in"
+                    }
+                  ]
+                },
+                {
+                  "theme": "Dental implants",
+                  "prompt": "Top rated dental implant specialists",
+                  "aiModel": "CHATGPT",
+                  "businessNumber": 278237892323,
+                  "processedDate": "2026-03-22",
+                  "businesses": [
+                    {
+                      "name": "Axiss Dental Clinic",
+                      "phone": "+91-9619944444",
+                      "postalCode": "400050",
+                      "address": "Linking Road, Bandra West",
+                      "city": "Mumbai",
+                      "websiteUrl": "https://www.axissdental.com"
+                    }
+                  ]
+                }
+              ],
+              "total": 3
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+## Get Accuracy Report [/v1/listing/searchAi/public/aio-details?page-size=100&start-index=0]
+Provides an accuracy report for the specified business, highlighting how consistent and reliable the business information is across platforms.
+
+
+### Get Accuracy Report [POST]
+
++ Request (application/json)
+
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: - Long Business Number
+
+   + Attributes
+        + businessNumbers - Comma-separated list of business numbers to retrieve the report for.
+        + aiModels - Comma-separated list of AI models to include in the report. Possible values are [**`CHATGPT`**, **`GEMINI`**, **`PERPLEXITY`**]
+        + startDate - Start date for the report range (format: **`yyyy-MM-dd`**).
+        + endDate - End date for the report range (format: **`yyyy-MM-dd`**).
+
+    + Body
+
+            {
+                "businessNumbers": [
+                    177337970010644,
+                    177337970029743
+                ],
+                "aiModels": [
+                    "CHATGPT",
+                    "GEMINI",
+                    "PERPLEXITY"
+                ],
+                "startDate": "2025-12-01",
+                "endDate": "2025-12-31"
+            }
+
++ Response 200 (application/json)
+
+            {
+              "total": 4,
+              "hasNext": false,
+                "data": {
+                    "177337970010644": {
+                        "2025-12-30": {
+                            "CHATGPT": {
+                                "businessName": "ProHEALTH Dental - Astoria",
+                                "fullAddress": "29-14 Ditmars Blvd, Astoria, NY 11105, United States",
+                                "phone": "(718) 524-3677",
+                                "hoursOfOperation": "Monday: Closed\nTuesday: Closed\nWednesday: Closed\nThursday: Closed\nFriday: Closed\nSaturday: Closed\nSunday: Closed",
+                                "website": "phdental.com"
+                            },
+                            "GEMINI": {
+                                "businessName": "ProHEALTH Dental - Astoria",
+                                "fullAddress": "29-14 Ditmars Blvd, Astoria, NY 11105, United States",
+                                "phone": "718-524-3677",
+                                "hoursOfOperation": "Monday: Closed\nTuesday: Closed\nWednesday: Closed\nThursday: Closed\nFriday: Closed\nSaturday: Closed\nSunday: Closed"
+                            },
+                            "PERPLEXITY": {
+                                "businessName": "ProHEALTH Dental - Astoria",
+                                "fullAddress": "29-14 Ditmars Blvd, Astoria, NY 11105, United States",
+                                "phone": "718-524-3677",
+                                "hoursOfOperation": "Monday: Closed\nTuesday: Closed\nWednesday: Closed\nThursday: Closed\nFriday: Closed\nSaturday: Closed\nSunday: Closed",
+                                "website": "https://www.phdental.com/locations/prohealth-dental/astoria-ny/"
+                            }
+                        }
+                    }
+                }
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
+## Get Sentiment Report [/v1/listing/searchAi/public/swot-details?page-size=100&start-index=0]
+Returns the sentiment report for the specified business, providing insights into customer sentiment across supported platforms.
+
+
+### Get Sentiment Report [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User associated businessNumber
+
+   + Attributes
+        + businessNumbers - Comma-separated list of business numbers to retrieve the report for.
+        + aiModels - Comma-separated list of AI models to include in the report. Possible values are [**`CHATGPT`**, **`GEMINI`**, **`PERPLEXITY`**]
+        + startDate - Start date for the report range (format: **`yyyy-MM-dd`**).
+        + endDate - End date for the report range (format: **`yyyy-MM-dd`**).
+        + viewReportType - Defines the level at which the report is generated. Allowed values: **`LOCATION_LEVEL`**, **`ACCOUNT_LEVEL`**
+
+    + Body
+
+            {
+                "businessNumbers": [
+                    177337970010644,
+                    177337970029743
+                ],
+                "aiModels": [
+                    "CHATGPT",
+                    "GEMINI",
+                    "PERPLEXITY"
+                ],
+                "startDate": "2026-03-01",
+                "endDate": "2026-03-31",
+                "viewReportType": "LOCATION_LEVEL"
+            }
+
++ Response 200 (application/json)
+
+            {
+                "total": 4,
+                "hasNext": false,
+                "data": {
+                    "177337970010644": {
+                        "2026-03-17": {
+                            "PERPLEXITY": {
+                                "strengths": [
+                                    {
+                                        "title": "Affiliation with Reputable Network",
+                                        "description": "Part of Sutter Health, bringing award-winning care to Solvang neighborhood with established oncology and infusion services."
+                                    },
+                                    {
+                                        "title": "Convenient Extended Hours",
+                                        "description": "Open Monday through Thursday until 6 PM, accommodating local working professionals in the Viborg Specialty Building."
+                                    },
+                                    {
+                                        "title": "Positive Patient Experiences",
+                                        "description": "Local customers highlight excellent professional care, compelling first-time reviews for the facility."
+                                    }
+                                ],
+                                "weaknesses": [
+                                    {
+                                        "title": "Limited Operating Days",
+                                        "description": "Closed Fridays, Saturdays, Sundays, and major holidays, reducing accessibility for Solvang residents needing weekend care."
+                                    },
+                                    {
+                                        "title": "Lunchtime Closure",
+                                        "description": "Daily closure from 12-1 PM restricts same-day urgent infusion or oncology visits during peak hours."
+                                    },
+                                    {
+                                        "title": "Sparse Specific Feedback",
+                                        "description": "Few reviews directly address infusion services, with most feedback general to the care center."
+                                    }
+                                ],
+                                "oppurtunities": [
+                                    {
+                                        "title": "Proximity to Diagnostics",
+                                        "description": "Co-located with Quest Diagnostics in the same building, enabling seamless lab integration for Solvang patients."
+                                    },
+                                    {
+                                        "title": "Cancer Care Demand",
+                                        "description": "Ridley-Tree Cancer Center presence supports expanding infusion services amid local oncology needs."
+                                    },
+                                    {
+                                        "title": "Tourist Community Growth",
+                                        "description": "Solvang's popularity as a tourist destination offers potential to serve seasonal visitors requiring infusion therapy."
+                                    }
+                                ],
+                                "threats": [
+                                    {
+                                        "title": "Competitor Overlap",
+                                        "description": "Nearby Sansum Clinic departments at the same address create internal competition for specialized care."
+                                    },
+                                    {
+                                        "title": "Seasonal Traffic Fluctuations",
+                                        "description": "Solvang's heavy tourist traffic on Viborg Road may cause access issues during peak events."
+                                    },
+                                    {
+                                        "title": "Regional Healthcare Shifts",
+                                        "description": "Potential changes in Sutter Health or local regulations could impact infusion center operations."
+                                    }
+                                ]
+                            },
+                            "CHATGPT": {
+                                "strengths": [
+                                    {
+                                        "title": "Highly qualified staff",
+                                        "description": "Patients appreciate the knowledgeable and friendly staff who provide exceptional care."
+                                    },
+                                    {
+                                        "title": "Collaborations with local healthcare",
+                                        "description": "Strong ties with local healthcare providers increase trust and referral rates."
+                                    },
+                                    {
+                                        "title": "Convenient location",
+                                        "description": "Located conveniently for residents, with easy access from different parts of the neighborhood."
+                                    }
+                                ],
+                                "weaknesses": [
+                                    {
+                                        "title": "Limited parking space",
+                                        "description": "Some patients report challenges in finding parking during peak hours."
+                                    },
+                                    {
+                                        "title": "Wait times during peak hours",
+                                        "description": "Occasional increased wait times have been noted, particularly during busy periods."
+                                    },
+                                    {
+                                        "title": "Restricted operating hours",
+                                        "description": "Operating hours may not accommodate everyone, especially those needing evening appointments."
+                                    }
+                                ],
+                                "oppurtunities": [
+                                    {
+                                        "title": "Expansion of services",
+                                        "description": "Potential to add more services to cater to a broader range of infusion needs."
+                                    },
+                                    {
+                                        "title": "Partnership with more local clinics",
+                                        "description": "Building more partnerships could further solidify its local presence and patient base."
+                                    },
+                                    {
+                                        "title": "Community outreach programs",
+                                        "description": "Engaging in more community health events could raise awareness and attract new patients."
+                                    }
+                                ],
+                                "threats": [
+                                    {
+                                        "title": "Increased competition",
+                                        "description": "Emerging local clinics could present competition, potentially affecting market share."
+                                    },
+                                    {
+                                        "title": "Economic fluctuations",
+                                        "description": "Local and national economic changes could affect healthcare funding and patient affordability."
+                                    },
+                                    {
+                                        "title": "Regulatory changes",
+                                        "description": "Potential regulatory changes in healthcare practices could impact operations and compliance."
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
 
 # Group Ticketing
 Create standout customer support with ticketing across reviews, untagged, and survey responses.
