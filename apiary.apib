@@ -5282,6 +5282,131 @@ Get Reviews returns reviews for a business account with detailed review fields.
 
 
 
+## Archive Public Reviews [/v1/review/archive/public]
+Archive Public Reviews returns archived public reviews for the requested business and date range, with optional filters for source, delete date, ratings, tags, and search text.
+
+### Archive Public Reviews [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] User assosiated businessNumber
+
+    + Attributes
+        + businessNumbers (array) - List of business numbers to filter the report. If empty, all accessible business numbers are considered.
+        + startDate: 02/03/2021 (string, required) - Review date start in `MM/dd/YYYY` format.
+        + endDate: 02/10/2026 (string, required) - Review date end in `MM/dd/YYYY` format.
+        + sourceAlias: google,facebook (array) - List of review source aliases to include.
+        + deleteStartDate: 02/01/2026 (string) - Archived/deleted date start in `MM/dd/YYYY` format.
+        + deleteEndDate: 02/15/2026 (string) - Archived/deleted date end in `MM/dd/YYYY` format.
+        + ratings: 4,5 (array) - Review ratings to filter. Possible values are `0,1,2,3,4,5`.
+        + tagNames: vip,follow-up (array) - List of review tags to filter.
+        + searchStr: great service (string) - Free-text search term for review content.
+
+    + Body
+
+            {
+                "businessNumbers": [],
+                "startDate": "02/03/2021",
+                "endDate": "02/10/2026",
+                "sourceAlias": [
+                    "google",
+                    "facebook"
+                ],
+                "deleteStartDate": "02/01/2026",
+                "deleteEndDate": "02/15/2026",
+                "ratings": [
+                    4,
+                    5
+                ],
+                "tagNames": [
+                    "abc",
+                    "def"
+                ],
+                "searchStr": "great service"
+            }
+
++ Response 200 (application/json)
+
+    + Attributes (array)
+        + (object)
+            + reviewId: 123456745001001 (string) - Unique identifier of the archived review.
+            + rating: 4.0 (number) - Rating given in the review.
+            + comments: Great service! (string) - Review comment text.
+            + title: Great experience (string) - Review title, if available; can be `null`.
+            + recommended: 1 (number) - Recommendation flag for supported sources.
+            + status: 2 (string) - Status value returned for the archived review record.
+            + reviewer (object) - Reviewer details.
+                + firstName: John (string) - Reviewer's first name, if available.
+                + lastName: Doe (string) - Reviewer's last name, if available.
+                + nickName: John D (string) - Reviewer's display name, if available.
+                + thumbnailUrl: https://cdn.example.com/reviewer.jpg (string) - Reviewer's profile image URL.
+            + sourceType: Google (string) - Human-readable source name.
+            + reviewUrl: https://google.com/... (string) - Public URL of the review.
+            + reviewDate: 2024-01-15 (string) - Review creation date.
+            + rDate: 1705276800000 (number) - Review creation timestamp in milliseconds.
+            + response: Thank you for your feedback! (string) - Business response text, if available.
+            + responseDate: 2024-01-16 (string) - Business response date, if available.
+            + businessId: 1001 (string) - Business identifier linked to the review.
+            + businessName: Acme Corp - Downtown (string) - Business name linked to the review.
+            + medias (array) - Media attached to the review.
+                + (object)
+                    + url: https://cdn.example.com/photo.jpg (string) - Media URL.
+                    + type: IMAGE (string) - Media type.
+
+    + Body
+
+            [
+              {
+                "reviewId": "123456745001001",
+                "rating": 4.0,
+                "comments": "Great service!",
+                "title": null,
+                "recommended": 1,
+                "status": "2",
+                "reviewer": {
+                  "firstName": "John",
+                  "lastName": "Doe",
+                  "nickName": null,
+                  "thumbnailUrl": "https://..."
+                },
+                "sourceType": "Google",
+                "reviewUrl": "https://google.com/...",
+                "reviewDate": "2024-01-15",
+                "rDate": 1705276800000,
+                "response": "Thank you for your feedback!",
+                "responseDate": "2024-01-16",
+                "businessId": "1001",
+                "businessName": "Acme Corp - Downtown",
+                "medias": [
+                  {
+                    "url": "https://cdn.example.com/photo.jpg",
+                    "type": "IMAGE"
+                  }
+                ]
+              }
+            ]
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 400
+
+    [2177][]
+
+
 
 ## Review Summary [/v1/review/businessid/{businessId}/summary{?statuses}]
 Review Summary API returns the number of reviews based on the review source.
@@ -21476,6 +21601,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>04/20/2026</b> - Added Archive Public Reviews API  under Reviews group.
 * <b>04/06/2026</b> - Updated Get Reviews API documentation to improve clarity on review statuses and how to retrieve all review types.
 * <b>03/24/2026</b> - Added Social Open URL Performance Report API and Insight AI APIs to retrieve location-wise metrics and benchmark score.
 * <b>03/18/2026</b> - Added Create Custom Card Time API under custom fields section.
