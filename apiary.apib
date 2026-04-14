@@ -5282,10 +5282,18 @@ Get Reviews returns reviews for a business account with detailed review fields.
 
 
 
-## Archive Public Reviews [/v1/review/archive/public]
-Archive Public Reviews returns archived public reviews for the requested business and date range, with optional filters for source, delete date, ratings, tags, and search text.
+## Archive Public Reviews [/v1/review/archive/public{?includeNonAggregatedReviews,sindex,count,sortby,sortorder}]
+Archive Public Reviews returns archived public reviews for the requested business and date range, with optional filters for source, delete date, ratings, status, and search text.
 
 ### Archive Public Reviews [POST]
+
++ Parameters
+
+    + includeNonAggregatedReviews: false (boolean, optional) - Include reviews whose auto-crawling is blocked. Default is `false`.
+    + sindex: 0 (integer, optional) - Start index of the reviews. Default is `0`.
+    + count: 10000 (integer, optional) - Number of reviews to fetch. Default is `10000`.
+    + sortby: 2 (integer, optional) - Sort field identifier. Default is `2`.
+    + sortorder: 1 (integer, optional) - Sort order identifier. Default is `1`.
 
 + Request (application/json)
 
@@ -5293,7 +5301,7 @@ Archive Public Reviews returns archived public reviews for the requested busines
 
             Accept: application/json
             x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
-            x-business-number: [Required] User assosiated businessNumber
+            x-business-number: [Required] User-associated business number.
 
     + Attributes
         + businessNumbers (array) - List of business numbers to filter the report. If empty, all accessible business numbers are considered.
@@ -5303,7 +5311,7 @@ Archive Public Reviews returns archived public reviews for the requested busines
         + deleteStartDate: 02/01/2026 (string) - Archived/deleted date start in `MM/dd/YYYY` format.
         + deleteEndDate: 02/15/2026 (string) - Archived/deleted date end in `MM/dd/YYYY` format.
         + ratings: 4,5 (array) - Review ratings to filter. Possible values are `0,1,2,3,4,5`.
-        + tagNames: vip,follow-up (array) - List of review tags to filter.
+        + statuses: published (string) - Review status filter. Supported values are `published`, `parked`, and `all`. Default is `published`.
         + searchStr: great service (string) - Free-text search term for review content.
 
     + Body
@@ -5322,10 +5330,7 @@ Archive Public Reviews returns archived public reviews for the requested busines
                     4,
                     5
                 ],
-                "tagNames": [
-                    "abc",
-                    "def"
-                ],
+                "statuses": "published",
                 "searchStr": "great service"
             }
 
@@ -5338,7 +5343,7 @@ Archive Public Reviews returns archived public reviews for the requested busines
             + comments: Great service! (string) - Review comment text.
             + title: Great experience (string) - Review title, if available; can be `null`.
             + recommended: 1 (number) - Recommendation flag for supported sources.
-            + status: 2 (string) - Status value returned for the archived review record.
+            + status: Published (string) - Review status label returned for the review record.
             + reviewer (object) - Reviewer details.
                 + firstName: John (string) - Reviewer's first name, if available.
                 + lastName: Doe (string) - Reviewer's last name, if available.
@@ -5348,10 +5353,14 @@ Archive Public Reviews returns archived public reviews for the requested busines
             + reviewUrl: https://google.com/... (string) - Public URL of the review.
             + reviewDate: 2024-01-15 (string) - Review creation date.
             + rDate: 1705276800000 (number) - Review creation timestamp in milliseconds.
+            + archiveDate: Apr 05, 2026 (string) - Date when the review was archived.
+            + deletedDate: 2027-04-06 00:00:00 (string) - Date-time when the review was deleted.
             + response: Thank you for your feedback! (string) - Business response text, if available.
             + responseDate: 2024-01-16 (string) - Business response date, if available.
             + businessId: 1001 (string) - Business identifier linked to the review.
             + businessName: Acme Corp - Downtown (string) - Business name linked to the review.
+            + businessType: Business (string) - Business type linked to the review.
+            + customerId: 3923910 (number) - Customer identifier mapped to the review, if available.
             + medias (array) - Media attached to the review.
                 + (object)
                     + url: https://cdn.example.com/photo.jpg (string) - Media URL.
@@ -5366,7 +5375,7 @@ Archive Public Reviews returns archived public reviews for the requested busines
                 "comments": "Great service!",
                 "title": null,
                 "recommended": 1,
-                "status": "2",
+                "status": "Published",
                 "reviewer": {
                   "firstName": "John",
                   "lastName": "Doe",
@@ -5377,10 +5386,14 @@ Archive Public Reviews returns archived public reviews for the requested busines
                 "reviewUrl": "https://google.com/...",
                 "reviewDate": "2024-01-15",
                 "rDate": 1705276800000,
+                "archiveDate": "Apr 05, 2026",
+                "deletedDate": "2027-04-06 00:00:00",
                 "response": "Thank you for your feedback!",
                 "responseDate": "2024-01-16",
-                "businessId": "1001",
+                "businessId": "1001312321",
                 "businessName": "Acme Corp - Downtown",
+                "businessType": "Business",
+                "customerId": 3923910,
                 "medias": [
                   {
                     "url": "https://cdn.example.com/photo.jpg",
