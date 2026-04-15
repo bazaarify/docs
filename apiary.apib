@@ -5305,11 +5305,11 @@ Archive Public Reviews returns archived public reviews for the requested busines
 
     + Attributes
         + businessNumbers (array) - List of business numbers to filter the report. If empty, all accessible business numbers are considered.
-        + startDate: 02/03/2021 (string, required) - Review date start in `MM/dd/YYYY` format.
-        + endDate: 02/10/2026 (string, required) - Review date end in `MM/dd/YYYY` format.
+        + startDate: 1712986782000 (number, required) - Start date in milliseconds, pass epoch timestamp.
+        + endDate: 1715578782000 (number, required) - End date in milliseconds, pass epoch timestamp.
         + sourceAlias: google,facebook (array) - List of review source aliases to include.
-        + deleteStartDate: 02/01/2026 (string) - Archived/deleted date start in `MM/dd/YYYY` format.
-        + deleteEndDate: 02/15/2026 (string) - Archived/deleted date end in `MM/dd/YYYY` format.
+        + deleteStartDate: 1712986782000 (number) - Start date in milliseconds, pass epoch timestamp.
+        + deleteEndDate: 1715578782000 (number) - End date in milliseconds, pass epoch timestamp.
         + ratings: 4,5 (array) - Review ratings to filter. Possible values are `0,1,2,3,4,5`.
         + statuses: published (string) - Review status filter. Supported values are `published`, `parked`, and `all`. Default is `published`.
         + searchStr: great service (string) - Free-text search term for review content.
@@ -5318,14 +5318,14 @@ Archive Public Reviews returns archived public reviews for the requested busines
 
             {
                 "businessNumbers": [],
-                "startDate": "02/03/2021",
-                "endDate": "02/10/2026",
+                "startDate": 1712986782000,
+                "endDate": 1715578782000,
                 "sourceAlias": [
                     "google",
                     "facebook"
                 ],
-                "deleteStartDate": "02/01/2026",
-                "deleteEndDate": "02/15/2026",
+                "deleteStartDate": 1712986782000,
+                "deleteEndDate": 1715578782000,
                 "ratings": [
                     4,
                     5
