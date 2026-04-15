@@ -2404,7 +2404,7 @@ For example :
             "code": 2003,
             "message": "businessNumbers are mandatory"
         }
-        
+
 ## 6000 [/6000]
 
 + Model (application/json)
@@ -2413,7 +2413,7 @@ For example :
             "code": 6000,
             "message": "The 'sub_locality' field is mandatory for addresses in New Zealand."
         }
-        
+
 ## 6001 [/6001]
 
 + Model (application/json)
@@ -2766,6 +2766,7 @@ Get Business API gets business information, including product features opted and
         + location (object) - Business address
             + address1: 7405 Morro Rd (string) - Address of the business.
             + address2: Suite 102 (string) - Address of the business.
+            + subLocality: Auckland CBD (string) - (Char 4-80) Mandatory for: New Zealand (Enter the Suburb) Other Countries: This field is not required. Any data entered here for countries outside of New Zealand will be ignored by the system.
             + city: Atascadero (string) - City (Max 1000 character long).
             + state: CA (string) - State (2 character state code).
             + countryCode: US (string) - Country Code (2 character country code).
@@ -2917,6 +2918,7 @@ Get Business API gets business information, including product features opted and
               "location": {
                 "address1": "90 W Mount Pleasant Ave",
                 "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+                "subLocality": "Auckland CBD",
                 "city": "Livingston",
                 "state": "NJ",
                 "zip": "07039",
@@ -2979,6 +2981,7 @@ Update Business API updates business information.
         + location (object) - Business address
             + address1: 7405 Morro Rd (string) - Address of the business/location.
             + address2: Suite 102 (string) - Address of the business/location.
+            + subLocality: Auckland CBD (string) - (Char 4-80) Mandatory for: New Zealand (Enter the Suburb) Other Countries: This field is not required. Any data entered here for countries outside of New Zealand will be ignored by the system.
             + city: Atascadero (string) - City (Max 1000 character long).
             + state: CA (string) - State (2 character state code).
             + countryCode: US (string) - Country Code (2 character country code).
@@ -3098,6 +3101,7 @@ Update Business API updates business information.
               "location": {
                 "address1": "90 W Mount Pleasant Ave",
                 "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+                "subLocality":"Auckland CBD",
                 "city": "Livingston",
                 "state": "NJ",
                 "zip": "07039",
@@ -3630,6 +3634,14 @@ Update Business API updates business information.
 
     [2520][]
 
++ Response 400
+
+    [6000][]
+
++ Response 400
+
+    [6001][]
+
 
 ## Delete [/v1/business/{business_Id}]
 Delete Business API deletes an account or sub-reseller under a reseller.
@@ -3747,6 +3759,7 @@ Child Businesses API gets all the businesses under an account.
             + address (object) - Business address
                 + address1: 7405 Morro Rd (string) - Address of the business.
                 + address2: Suite 102 (string) - Address of the business.
+                + subLocality: Auckland CBD (string) - (Char 4-80) Mandatory for: New Zealand (Enter the Suburb) Other Countries: This field is not required. Any data entered here for countries outside of New Zealand will be ignored by the system.
                 + city: Atascadero (string) - City (Max 1000 character long).
                 + state: CA (string) - State (2 character state code).
                 + countryCode: US (string) - Country Code (2 character country code).
@@ -3767,6 +3780,7 @@ Child Businesses API gets all the businesses under an account.
                 "address": {
                     "address1": "5152 Blazer Memorial Pkwy",
                     "address2": "Ste 102",
+                    "subLocality": "Auckland CBD",
                     "city": "Dublin",
                     "state": "OH",
                     "zip": "43017",
@@ -3786,6 +3800,7 @@ Child Businesses API gets all the businesses under an account.
                 "address": {
                     "address1": "200 Hoff Rd",
                     "address2": "Unit P",
+                    "subLocality": "Auckland CBD",
                     "city": "Westerville",
                     "state": "OH",
                     "zip": "43082",
@@ -3955,6 +3970,7 @@ between businesses.
                             "address": {
                                 "address1": "NYC Center for Treatment and Research",
                                 "address2": "561 West 35th Street, 11th Floor",
+                                "subLocality": "Auckland CBD",
                                 "city": "New York",
                                 "state": "NY",
                                 "zip": "10036",
