@@ -5311,7 +5311,7 @@ Archived Get Reviews returns archived public reviews for the requested business 
         + deleteStartDate: 1712986782000 (number) - Start date in milliseconds, pass epoch timestamp.
         + deleteEndDate: 1715578782000 (number) - End date in milliseconds, pass epoch timestamp.
         + ratings: 4,5 (array) - Review ratings to filter. Possible values are `0,1,2,3,4,5`.
-        + statuses: published (string) - Review status filter. Supported values are `published`, `parked`, and `all`. Default is `published`.
+        + statuses: published,parked (array) - Review status filter. Valid values are "published", "parked". If omitted, default is "published" only (featured reviews). "published" refers to featured reviews and "parked" refers to non-featured reviews.
         + searchStr: great service (string) - Free-text search term for review content.
 
     + Body
@@ -5330,7 +5330,7 @@ Archived Get Reviews returns archived public reviews for the requested business 
                     4,
                     5
                 ],
-                "statuses": "published",
+                "statuses":["published","parked"],
                 "searchStr": "great service"
             }
 
