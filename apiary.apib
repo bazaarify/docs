@@ -2404,6 +2404,24 @@ For example :
             "code": 2003,
             "message": "businessNumbers are mandatory"
         }
+        
+## 6000 [/6000]
+
++ Model (application/json)
+
+        {
+            "code": 6000,
+            "message": "The 'sub_locality' field is mandatory for addresses in New Zealand."
+        }
+        
+## 6001 [/6001]
+
++ Model (application/json)
+
+        {
+            "code": 6001,
+            "message": "The 'sub_locality' field cannot exceed 80 characters."
+        }
 
 
 # Group Business
@@ -17063,6 +17081,7 @@ Create Listing API publishes information on online listing sources. We post pres
                 + state: CA (string) - State (2 character state code).
                 + countryCode: US (string) - Country Code (2 character country code).
                 + zip: 93422 (required,string) - Zip Code.
+                + subLocality: Auckland CBD (string) - (Char 4-80) Mandatory for: New Zealand (Enter the Suburb) Other Countries: This field is not required. Any data entered here for countries outside of New Zealand will be ignored by the system.
         + additionalInfo - Business Additional Information
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
@@ -17234,6 +17253,7 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                     "location": {
                         "address1": "90 W Mount Pleasant Ave",
                         "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+                        "subLocality": "Auckland CBD",
                         "city": "Livingston",
                         "state": "NJ",
                         "zip": "07039",
@@ -17828,6 +17848,14 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
 
     [2522][]
 
++ Response 400
+
+    [6000][]
+
++ Response 400
+
+    [6001][]
+
 ## Update Listing [/v1/listing/{businessNumber}/update]
 The Update Listing API will update the location details on all your listings sites.
 
@@ -17866,6 +17894,7 @@ The Update Listing API will update the location details on all your listings sit
                 + state: CA (string) - State (2 character state code).
                 + countryCode: US (string) - Country Code (2 character country code).
                 + zip: 93422 (required,string) - Zip Code.
+                + subLocality: Auckland CBD (string) - (Char 4-80) Mandatory for: New Zealand (Enter the Suburb) Other Countries: This field is not required. Any data entered here for countries outside of New Zealand will be ignored by the system.
         + additionalInfo - Business Additional Information
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
@@ -18037,6 +18066,7 @@ The Update Listing API will update the location details on all your listings sit
                     "location": {
                         "address1": "90 W Mount Pleasant Ave",
                         "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+                        "subLocality": "Auckland CBD",
                         "city": "Livingston",
                         "state": "NJ",
                         "zip": "07039",
@@ -18631,6 +18661,14 @@ The Update Listing API will update the location details on all your listings sit
 
     [2522][]
 
++ Response 400
+
+    [6000][]
+
++ Response 400
+
+    [6001][]
+
 ## Get Listing [/v1/listing/{businessNumber}/get]
 The Get Listing API will get the listing information for the given business number/ ID.
 
@@ -18672,6 +18710,7 @@ The Get Listing API will get the listing information for the given business numb
                 + state: CA (string) - State (2 character state code).
                 + countryCode: US (string) - Country Code (2 character country code).
                 + zip: 93422 (string) - Zip Code.
+                + subLocality: Auckland CBD (string) - (Char 4-80) Mandatory for: New Zealand (Enter the Suburb) Other Countries: This field is not required. Any data entered here for countries outside of New Zealand will be ignored by the system.
         + additionalInfo - Business Additional Information
             + establishedYear: 2012 (number) - Year established
             + timezone: America/Los_Angeles (string)- Timezone of the business.
@@ -18844,6 +18883,7 @@ The Get Listing API will get the listing information for the given business numb
                     "location": {
                         "address1": "90 W Mount Pleasant Ave",
                         "address2": "(btwn Preston Dr. &amp; N. Mitchell Ave.)",
+                        "subLocality": "Auckland CBD",
                         "city": "Livingston",
                         "state": "NJ",
                         "zip": "07039",
@@ -21612,6 +21652,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>04/22/2026</b> - Provide subLocality field support in Get, Create and Update Listings APIs for NZ Locations.
 * <b>04/16/2026</b> - Added Archived Get Reviews API  under Reviews group.
 * <b>04/06/2026</b> - Updated Get Reviews API documentation to improve clarity on review statuses and how to retrieve all review types.
 * <b>03/24/2026</b> - Added Social Open URL Performance Report API and Insight AI APIs to retrieve location-wise metrics and benchmark score.
