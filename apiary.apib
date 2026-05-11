@@ -10656,8 +10656,7 @@ Post a survey response API submits the survey response for a particular survey u
                 "logoUrl": "https://d2xt3xymj142xp.cloudfront.net/145301531829695/logo%2F57db1409813c70.82884191.png",
                 "name": "JetBlue Customer Satisfaction Survey",
                 "status": "new",
-              "created": 1484941995000,
-              "lastModified": 1484941995000,
+              "created": 1484941995000, // UTC Epoch milliseconds
               "responses": 0,
               "questionCount": 4,
               "pages": [
@@ -21668,6 +21667,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>05/11/2026</b> - Added support for backdated survey responses in the POST Survey Response API. The `created` field (UTC Epoch milliseconds) is optional; if omitted, the server defaults to the current UTC timestamp.
 * <b>04/22/2026</b> - Provide subLocality field support in Get, Create and Update Listings APIs for NZ Locations.
 * <b>04/16/2026</b> - Added Archived Get Reviews API  under Reviews group.
 * <b>04/06/2026</b> - Updated Get Reviews API documentation to improve clarity on review statuses and how to retrieve all review types.
