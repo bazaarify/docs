@@ -3059,8 +3059,8 @@ Update Business API updates business information.
             + bingDescription (string) - Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (string) - Business description cannot be more than 5000 characters.
-            + category (string) - Primary category of business.
-            + subcategory (string) - You can add up to 3 subcategories.
+            + category (required, string) - Primary category of business.
+            + subcategory (required, string) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - Provide data for facebook listing purpose.
             + category (string) - You can add up to 3 categories.
@@ -3277,7 +3277,7 @@ Update Business API updates business information.
                 "bingPhoneNumber": ""
               },
               "internalListing": {
-                "description": "pecialties\nBridal ServicesMakeup: Makeovers/Lessons/ Faux Lash applicationMassagesFacialsMicrocurrentMicrodermabrasionBody…",
+                "description": "specialties\nBridal ServicesMakeup: Makeovers/Lessons/ Faux Lash applicationMassagesFacialsMicrocurrentMicrodermabrasionBody…",
                 "category": "",
                 "subcategory1": "",
                 "subcategory2": "",
@@ -17191,8 +17191,8 @@ Create Listing API publishes information on online listing sources. We post pres
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
-            + subCategories (array) - Primary category of business.
-            + subcategory (string) - You can add up to 3 subcategories.
+            + category (required, string) - Primary category of business.
+            + subCategories (required, array) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
@@ -18004,8 +18004,8 @@ The Update Listing API will update the location details on all your listings sit
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
-            + subCategories (array) - Primary category of business.
-            + subcategory (string) - You can add up to 3 subcategories.
+            + category (required, string) - Primary category of business.
+            + subCategories (required, array) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
@@ -18820,8 +18820,8 @@ The Get Listing API will get the listing information for the given business numb
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
-            + subCategories (array) - Primary category of business.
-            + subcategory (string) - You can add up to 3 subcategories.
+            + category (required, string) - Primary category of business.
+            + subCategories (required, array) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
