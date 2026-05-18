@@ -3097,7 +3097,11 @@ Update Business API updates business information.
             + fieldValue: GR (string)- Custom field value.
             + fieldName: colours (required,string)-Name of custom field (Make sure to enter the same fieldName or else the new field will be created).
             + id: 376 (required,number)- fieldId of the custom field created earlier.
-
+        + entityCategory: physical_location (string) - Specifies the category of the business entity being created or updated. Valid values are:
+        physical_location,provider.
+         physical_location represents a physical office, branch, or storefront location.
+         provider represents an individual practitioner or provider (e.g. doctor, dentist, loan officer) operating within one or more physical locations.
+         If entityCategory is not provided, the entity is created as physical_location by default.
     + Body
 
             {
@@ -3352,6 +3356,7 @@ Update Business API updates business information.
                 "bbbUrl": null
               },
               "isSEOEnabled": "false",
+              "entityCategory": "physical_location",
               "externalReferenceId" : "",
                 "customFields": [
                  {
