@@ -2453,6 +2453,7 @@ Create a business API creates a new business under a reseller.
                 "zip": 32323,
                 "type": "Business",
                 "phone": "4032365164",
+                "entityCategory": "physical_location"
                 "countryCode": "US"
                 "aggrOptions" : 1
             }
@@ -2468,6 +2469,11 @@ Create a business API creates a new business under a reseller.
                 Reseller
                 or a existing custom hierarchy type. Default is: Business.
         + phone: 4032365164 (required,number)- Phone number of the Business.
+        + entityCategory: physical_location (string) - Specifies the category of the business entity being created or updated. Valid values are:
+        physical_location,provider.
+         physical_location represents a physical office, branch, or storefront location.
+         provider represents an individual practitioner or provider (e.g. doctor, dentist, loan officer) operating within one or more physical locations.
+         If entityCategory is not provided, the entity is created as physical_location by default.
         + countryCode: AU (string) - This field is mandatory for non US locations.
         + aggrOptions:1 (number)- Aggregation Options to enable/disable aggregations. Possible values are [0,1]
                 0 to Disable Search Business
