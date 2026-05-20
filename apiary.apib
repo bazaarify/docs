@@ -7845,6 +7845,11 @@ Get source list API returns the list of aggregations associated with the locatio
             + sourceAlias: citysearch (string) - Source alias.
             + sourceUrl: http://www.citysearch.com/biz/trattoria-da-vittorio-san-francisco (string) - Source url.
             + sourceName: Citysearch (string) - Source name.
+            + status: (number) - This field indicates the status of aggregation:
+            4 – Aggregation setup has been completed.
+            3 – Reviews are currently being aggregated.
+            Please note that this is a one-time status and does not change afterward.
+            The value represents the current state of a newly added monitoring URL. It has no relation to the daily aggregation status.
 
 
 
@@ -7855,19 +7860,22 @@ Get source list API returns the list of aggregations associated with the locatio
                     "id": "234970154",
                     "sourceAlias": "our_website",
                     "sourceUrl": "http://birdeye.com/trattoria-da-vittorio-943999808/recommendus",
-                    "sourceName": "Our Website"
+                    "sourceName": "Our Website",
+                    "status": 3
                 },
                 {
                     "id": "234950761",
                     "sourceAlias": "citysearch",
                     "sourceUrl": "http://www.citysearch.com/biz/trattoria-da-vittorio-san-francisco",
-                    "sourceName": "Citysearch"
+                    "sourceName": "Citysearch",
+                    "status": 3
                 },
                 {
                     "id": "235020762",
                     "sourceAlias": "google",
                     "sourceUrl": "https://plus.google.com/112610500708977805079/about?gl=US&hl=en-US",
-                    "sourceName": "Google"
+                    "sourceName": "Google",
+                    "status": 4
                 }
             ]}
 
