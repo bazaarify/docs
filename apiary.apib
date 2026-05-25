@@ -4162,6 +4162,103 @@ Get Customer card API returns the detail of customer card of the location
 
     [1011][]
 
+## Manage Custom card [/v1/business/public/card/{cardId}]
+Manage Custom card API supports updating and deleting a custom card for a business profile.
+
+### Update Custom card [PUT]
+
++ Parameters
+    + cardId (number, required) - Id of the custom card to update.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Long Business Number.
+
+    + Attributes
+        + cardId: 14744 (required, number) - Id of the custom card to update.
+        + title: title (required, string) - Title shown on the custom card.
+        + description: desc (string) - Description/content shown on the custom card.
+        + imageURL: https://d1py4eyp5hehj0.cloudfront.net/upload/1475208/1737886366109/Screenshot20250109040058.png (string) - Public image URL displayed on the card.
+        + imagePosition: 1 (string) - Image position value. Possible values are:
+                1 - image is placed at top,
+                2 - image is placed at left,
+                3 - image is placed at right
+        + isVisible: 1 (number) - Visibility status of card on the microsite. Possible values are:
+                0 - card will not be visible on the microsite,
+                1 - card will be visible on the microsite
+        + isPinOnTop: 1 (number) - Pin status of card on the microsite.
+        + clickURL: https://www.google.com/ (string) - Redirect URL for card click action.
+        + linkText: "" (string) - Text displayed for the link.
+        + type: Link type (string) - Type/category of the custom card.
+
+    + Body
+
+            {
+              "cardId": 14744,
+              "title": "title",
+              "description": "desc",
+              "imageURL": "https://d1py4eyp5hehj0.cloudfront.net/upload/1475208/1737886366109/Screenshot20250109040058.png",
+              "imagePosition": "1",
+              "isVisible": 1,
+              "isPinOnTop": 1,
+              "clickURL": "https://www.google.com/",
+              "linkText": "",
+              "type": "Link type"
+            }
+
++ Response 200
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1011][]
+
+### Delete Custom card [DELETE]
+
++ Parameters
+    + cardId (number, required) - Id of the custom card to delete.
+
++ Request
+
+    + Headers
+
+            Accept: */*
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Long Business Number.
+
++ Response 200
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1011][]
+
 
 ## Get Timezone List [/v1/business/{businessNumber}/timezones]
 Get Timezone List API fetches the list of all available timezones.
@@ -21686,6 +21783,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>05/25/2026</b> - Added Update Custom card (PUT) and Delete Custom card (DELETE) API documentation under the Business profile custom card section.
 * <b>05/11/2026</b> - Added support for backdated survey responses in the POST Survey Response API. The `created` field (UTC Epoch milliseconds) is optional; if omitted, the server defaults to the current UTC timestamp.
 * <b>04/22/2026</b> - Provide subLocality field support in Get, Create and Update Listings APIs for NZ Locations.
 * <b>04/16/2026</b> - Added Archived Get Reviews API  under Reviews group.
