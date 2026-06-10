@@ -6235,6 +6235,7 @@ Get Contact fetches Customer details.
         + cid: 293847172 (string) - Id of customer mapping on a location. optional (if id, phone or email is provided).
         + email: ron@test.con (string) - Email of customer, optional (if phone, id or cid is provided).
         + phone: 123 456 7890 (string) - Phone of customer optional (if email, id or cid is provided).
+        + experienceScore: false (boolean) - If true, includes the experience score of the customer in the response. Default is false.
 
 
     + Body
@@ -6243,7 +6244,8 @@ Get Contact fetches Customer details.
                 "id": 115339282,
                 "cid": 293847172,
                 "email": "test.user@test.com",
-                "phone": "(212) xxx-xxxx"
+                "phone": "(212) xxx-xxxx",
+                "experienceScore": false
             }
 
 + Response 200 (application/json)
@@ -6271,6 +6273,8 @@ Get Contact fetches Customer details.
                 + type: text (string) - Field type.
                 + fieldValue: Dunder Mifflin (string) - Value of field.
         + externalId: ABC123 (string) - Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
+        + experienceScore: 8 (number, optional) - Experience score of the customer. Returned only when experienceScore is true in the request.
+        + experienceScoreSource: review (string, optional) - Source of the experience score (e.g. review, survey). Returned only when experienceScore is true in the request.
 
 
     + Body
@@ -6312,7 +6316,9 @@ Get Contact fetches Customer details.
                     "type": "text",
                     "fieldValue": "Paper"
                 }],
-                "externalId": "ABC123"
+                "externalId": "ABC123",
+                "experienceScore": 8,
+                "experienceScoreSource": "review"
             }
 
 + Response 401
@@ -21783,6 +21789,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>06/10/2026</b> - Updated Get Contact API to support an optional `experienceScore` boolean field in the request body (default: false). When set to true, the response includes the customer's experience score and source.
 * <b>05/25/2026</b> - Added Update Custom card (PUT) and Delete Custom card (DELETE) API documentation under the Business profile custom card section.
 * <b>05/11/2026</b> - Added support for backdated survey responses in the POST Survey Response API. The `created` field (UTC Epoch milliseconds) is optional; if omitted, the server defaults to the current UTC timestamp.
 * <b>04/22/2026</b> - Provide subLocality field support in Get, Create and Update Listings APIs for NZ Locations.
