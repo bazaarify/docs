@@ -17341,6 +17341,8 @@ Create Listing API publishes information on online listing sources. We post pres
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
 crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
+            + appleBusinessName (string, optional) - Business name shown on your Apple Business listing. Must be between 3 and 250 characters.
+            + appleBusinessDescription (string, optional) - Business description shown on your Apple Business listing. Must be between 20 and 500 characters.
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
             + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories. Note: This is a Mandatory field if thirdPartyCategory is available.
@@ -17861,7 +17863,9 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                         "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
                          }
                         ],
-                    "phoneNumber": "+1 201-819-7989"
+                    "phoneNumber": "+1 201-819-7989",
+                    "appleBusinessName": "This is sample business name",
+                    "appleBusinessDescription": "This is sample business description"
                },
                  "socialProfileURLs": {
                     "googleUrl": "http://www.google.com/123",
@@ -18154,6 +18158,8 @@ The Update Listing API will update the location details on all your listings sit
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
                   crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
+            + appleBusinessName (string, optional) - Business name shown on your Apple Business listing. Must be between 3 and 250 characters.
+            + appleBusinessDescription (string, optional) - Business description shown on your Apple Business listing. Must be between 20 and 500 characters.
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
             + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories. Note: This is a Mandatory field if thirdPartyCategory is available.
@@ -18674,7 +18680,9 @@ The Update Listing API will update the location details on all your listings sit
                         "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
                          }
                         ],
-                    "phoneNumber": "+1 201-819-7989"
+                    "phoneNumber": "+1 201-819-7989",
+                    "appleBusinessName": "This is sample business name",
+                    "appleBusinessDescription": "This is sample business description"
                },
                  "socialProfileURLs": {
                     "googleUrl": "http://www.google.com/123",
@@ -18972,6 +18980,8 @@ The Get Listing API will get the listing information for the given business numb
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
                crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
+            + appleBusinessName (string, optional) - Business name shown on your Apple Business listing. Must be between 3 and 250 characters.
+            + appleBusinessDescription (string, optional) - Business description shown on your Apple Business listing. Must be between 20 and 500 characters.
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
             + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories. Note: This is a Mandatory field if thirdPartyCategory is available.
@@ -19496,7 +19506,9 @@ The Get Listing API will get the listing information for the given business numb
                         "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
                          }
                         ],
-                    "phoneNumber": "+1 201-819-7989"
+                    "phoneNumber": "+1 201-819-7989",
+                    "appleBusinessName": "This is sample business name",
+                    "appleBusinessDescription": "This is sample business description"
                },
                  "socialProfileURLs": {
                     "googleUrl": "http://www.google.com/123",
