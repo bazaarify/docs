@@ -2453,7 +2453,8 @@ Create a business API creates a new business under a reseller.
                 "zip": 32323,
                 "type": "Business",
                 "phone": "4032365164",
-                "countryCode": "US"
+                "entityCategory": "physical_location",
+                "countryCode": "US",
                 "aggrOptions" : 1
             }
 
@@ -2468,6 +2469,11 @@ Create a business API creates a new business under a reseller.
                 Reseller
                 or a existing custom hierarchy type. Default is: Business.
         + phone: 4032365164 (required,number)- Phone number of the Business.
+        + entityCategory: physical_location (string) - Specifies the category of the business entity being created or updated. Valid values are:
+        physical_location,provider.
+         physical_location represents a physical office, branch, or storefront location.
+         provider represents an individual practitioner or provider (e.g. doctor, dentist, loan officer) operating within one or more physical locations.
+         If entityCategory is not provided, the entity is created as physical_location by default.
         + countryCode: AU (string) - This field is mandatory for non US locations.
         + aggrOptions:1 (number)- Aggregation Options to enable/disable aggregations. Possible values are [0,1]
                 0 to Disable Search Business
@@ -3059,8 +3065,8 @@ Update Business API updates business information.
             + bingDescription (string) - Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (string) - Business description cannot be more than 5000 characters.
-            + category (string) - Primary category of business.
-            + subcategory (string) - You can add up to 3 subcategories.
+            + category (required, string) - Primary category of business.
+            + subcategory (required, string) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - Provide data for facebook listing purpose.
             + category (string) - You can add up to 3 categories.
@@ -3091,7 +3097,11 @@ Update Business API updates business information.
             + fieldValue: GR (string)- Custom field value.
             + fieldName: colours (required,string)-Name of custom field (Make sure to enter the same fieldName or else the new field will be created).
             + id: 376 (required,number)- fieldId of the custom field created earlier.
-
+        + entityCategory: physical_location (string) - Specifies the category of the business entity being created or updated. Valid values are:
+        physical_location,provider.
+         physical_location represents a physical office, branch, or storefront location.
+         provider represents an individual practitioner or provider (e.g. doctor, dentist, loan officer) operating within one or more physical locations.
+         If entityCategory is not provided, the entity is created as physical_location by default.
     + Body
 
             {
@@ -3277,7 +3287,7 @@ Update Business API updates business information.
                 "bingPhoneNumber": ""
               },
               "internalListing": {
-                "description": "pecialties\nBridal ServicesMakeup: Makeovers/Lessons/ Faux Lash applicationMassagesFacialsMicrocurrentMicrodermabrasionBody…",
+                "description": "specialties\nBridal ServicesMakeup: Makeovers/Lessons/ Faux Lash applicationMassagesFacialsMicrocurrentMicrodermabrasionBody…",
                 "category": "",
                 "subcategory1": "",
                 "subcategory2": "",
@@ -3346,6 +3356,7 @@ Update Business API updates business information.
                 "bbbUrl": null
               },
               "isSEOEnabled": "false",
+              "entityCategory": "physical_location",
               "externalReferenceId" : "",
                 "customFields": [
                  {
@@ -4134,6 +4145,103 @@ Get Customer card API returns the detail of customer card of the location
                 ]
             }
 
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1011][]
+
+## Manage Custom card [/v1/business/public/card/{cardId}]
+Manage Custom card API supports updating and deleting a custom card for a business profile.
+
+### Update Custom card [PUT]
+
++ Parameters
+    + cardId (number, required) - Id of the custom card to update.
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Long Business Number.
+
+    + Attributes
+        + cardId: 14744 (required, number) - Id of the custom card to update.
+        + title: title (required, string) - Title shown on the custom card.
+        + description: desc (string) - Description/content shown on the custom card.
+        + imageURL: https://d1py4eyp5hehj0.cloudfront.net/upload/1475208/1737886366109/Screenshot20250109040058.png (string) - Public image URL displayed on the card.
+        + imagePosition: 1 (string) - Image position value. Possible values are:
+                1 - image is placed at top,
+                2 - image is placed at left,
+                3 - image is placed at right
+        + isVisible: 1 (number) - Visibility status of card on the microsite. Possible values are:
+                0 - card will not be visible on the microsite,
+                1 - card will be visible on the microsite
+        + isPinOnTop: 1 (number) - Pin status of card on the microsite.
+        + clickURL: https://www.google.com/ (string) - Redirect URL for card click action.
+        + linkText: "" (string) - Text displayed for the link.
+        + type: Link type (string) - Type/category of the custom card.
+
+    + Body
+
+            {
+              "cardId": 14744,
+              "title": "title",
+              "description": "desc",
+              "imageURL": "https://d1py4eyp5hehj0.cloudfront.net/upload/1475208/1737886366109/Screenshot20250109040058.png",
+              "imagePosition": "1",
+              "isVisible": 1,
+              "isPinOnTop": 1,
+              "clickURL": "https://www.google.com/",
+              "linkText": "",
+              "type": "Link type"
+            }
+
++ Response 200
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 401
+
+    [1167][]
+
++ Response 401
+
+    [1011][]
+
+### Delete Custom card [DELETE]
+
++ Parameters
+    + cardId (number, required) - Id of the custom card to delete.
+
++ Request
+
+    + Headers
+
+            Accept: */*
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Long Business Number.
+
++ Response 200
 
 + Response 401
 
@@ -6127,6 +6235,7 @@ Get Contact fetches Customer details.
         + cid: 293847172 (string) - Id of customer mapping on a location. optional (if id, phone or email is provided).
         + email: ron@test.con (string) - Email of customer, optional (if phone, id or cid is provided).
         + phone: 123 456 7890 (string) - Phone of customer optional (if email, id or cid is provided).
+        + experienceScore: false (boolean) - If true, includes the experience score of the customer in the response. Default is false.
 
 
     + Body
@@ -6135,7 +6244,8 @@ Get Contact fetches Customer details.
                 "id": 115339282,
                 "cid": 293847172,
                 "email": "test.user@test.com",
-                "phone": "(212) xxx-xxxx"
+                "phone": "(212) xxx-xxxx",
+                "experienceScore": false
             }
 
 + Response 200 (application/json)
@@ -6163,6 +6273,8 @@ Get Contact fetches Customer details.
                 + type: text (string) - Field type.
                 + fieldValue: Dunder Mifflin (string) - Value of field.
         + externalId: ABC123 (string) - Unique external identifier of the contact which could be from the CRM or any external system storing your contacts.
+        + experienceScore: 8 (number, optional) - Experience score of the customer. Returned only when experienceScore is true in the request.
+        + experienceScoreSource: review (string, optional) - Source of the experience score (e.g. review, survey). Returned only when experienceScore is true in the request.
 
 
     + Body
@@ -6204,7 +6316,9 @@ Get Contact fetches Customer details.
                     "type": "text",
                     "fieldValue": "Paper"
                 }],
-                "externalId": "ABC123"
+                "externalId": "ABC123",
+                "experienceScore": 8,
+                "experienceScoreSource": "review"
             }
 
 + Response 401
@@ -7834,6 +7948,11 @@ Get source list API returns the list of aggregations associated with the locatio
             + sourceAlias: citysearch (string) - Source alias.
             + sourceUrl: http://www.citysearch.com/biz/trattoria-da-vittorio-san-francisco (string) - Source url.
             + sourceName: Citysearch (string) - Source name.
+            + status: (number) - This field indicates the status of aggregation:
+            4 – Aggregation setup has been completed.
+            3 – Reviews are currently being aggregated.
+            Please note that this is a one-time status and does not change afterward.
+            The value represents the current state of a newly added monitoring URL. It has no relation to the daily aggregation status.
 
 
 
@@ -7844,19 +7963,22 @@ Get source list API returns the list of aggregations associated with the locatio
                     "id": "234970154",
                     "sourceAlias": "our_website",
                     "sourceUrl": "http://birdeye.com/trattoria-da-vittorio-943999808/recommendus",
-                    "sourceName": "Our Website"
+                    "sourceName": "Our Website",
+                    "status": 3
                 },
                 {
                     "id": "234950761",
                     "sourceAlias": "citysearch",
                     "sourceUrl": "http://www.citysearch.com/biz/trattoria-da-vittorio-san-francisco",
-                    "sourceName": "Citysearch"
+                    "sourceName": "Citysearch",
+                    "status": 3
                 },
                 {
                     "id": "235020762",
                     "sourceAlias": "google",
                     "sourceUrl": "https://plus.google.com/112610500708977805079/about?gl=US&hl=en-US",
-                    "sourceName": "Google"
+                    "sourceName": "Google",
+                    "status": 4
                 }
             ]}
 
@@ -10656,8 +10778,7 @@ Post a survey response API submits the survey response for a particular survey u
                 "logoUrl": "https://d2xt3xymj142xp.cloudfront.net/145301531829695/logo%2F57db1409813c70.82884191.png",
                 "name": "JetBlue Customer Satisfaction Survey",
                 "status": "new",
-              "created": 1484941995000,
-              "lastModified": 1484941995000,
+              "created": 1484941995000, // UTC Epoch milliseconds
               "responses": 0,
               "questionCount": 4,
               "pages": [
@@ -17192,8 +17313,8 @@ Create Listing API publishes information on online listing sources. We post pres
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
-            + subCategories (array) - Primary category of business.
-            + subcategory (string) - You can add up to 3 subcategories.
+            + category (required, string) - Primary category of business.
+            + subCategories (required, array) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
@@ -17221,6 +17342,8 @@ Create Listing API publishes information on online listing sources. We post pres
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
 crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
+            + appleBusinessName (string, optional) - Business name shown on your Apple Business listing. Must be between 3 and 250 characters.
+            + appleBusinessDescription (string, optional) - Business description shown on your Apple Business listing. Must be between 20 and 500 characters.
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
             + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories. Note: This is a Mandatory field if thirdPartyCategory is available.
@@ -17761,7 +17884,9 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                         "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
                          }
                         ],
-                    "phoneNumber": "+1 201-819-7989"
+                    "phoneNumber": "+1 201-819-7989",
+                    "appleBusinessName": "This is sample business name",
+                    "appleBusinessDescription": "This is sample business description"
                },
                  "socialProfileURLs": {
                     "googleUrl": "http://www.google.com/123",
@@ -18026,8 +18151,8 @@ The Update Listing API will update the location details on all your listings sit
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
-            + subCategories (array) - Primary category of business.
-            + subcategory (string) - You can add up to 3 subcategories.
+            + category (required, string) - Primary category of business.
+            + subCategories (required, array) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
@@ -18055,6 +18180,8 @@ The Update Listing API will update the location details on all your listings sit
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
                   crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
+            + appleBusinessName (string, optional) - Business name shown on your Apple Business listing. Must be between 3 and 250 characters.
+            + appleBusinessDescription (string, optional) - Business description shown on your Apple Business listing. Must be between 20 and 500 characters.
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
             + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories. Note: This is a Mandatory field if thirdPartyCategory is available.
@@ -18595,7 +18722,9 @@ The Update Listing API will update the location details on all your listings sit
                         "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
                          }
                         ],
-                    "phoneNumber": "+1 201-819-7989"
+                    "phoneNumber": "+1 201-819-7989",
+                    "appleBusinessName": "This is sample business name",
+                    "appleBusinessDescription": "This is sample business description"
                },
                  "socialProfileURLs": {
                     "googleUrl": "http://www.google.com/123",
@@ -18863,8 +18992,8 @@ The Get Listing API will get the listing information for the given business numb
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
             + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
-            + subCategories (array) - Primary category of business.
-            + subcategory (string) - You can add up to 3 subcategories.
+            + category (required, string) - Primary category of business.
+            + subCategories (required, array) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
         + facebookListing (object) - This data will be used to update your Facebook business page/ listing.
             + facebookPhoneNumber (string) - Phone number for facebook profile. This phone number will override the main phone number on your Facebook business page
@@ -18894,6 +19023,8 @@ The Get Listing API will get the listing information for the given business numb
             + appleLocationAttributes (object) - Apple connect attributes are highly visible statements about your business that appear on your Apple Business listing. Few Apple Supported attributes are:
                crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Crossbusiness.attire.casual .These help your potential customers understand more about your business.
             + appleActionLinks (object) - Apple actionLinks are shown on the Apple maps place card which helps users to access or redirect to some website or app store. These are typical CTA’s that you would like to expose to your potential customers. Apple action links can only be selected from pre-defined set of action links which you can get using the GET Action links API.
+            + appleBusinessName (string, optional) - Business name shown on your Apple Business listing. Must be between 3 and 250 characters.
+            + appleBusinessDescription (string, optional) - Business description shown on your Apple Business listing. Must be between 20 and 500 characters.
         + thirdPartyListing (object) - This data will be used to update your secondary listings sites.
             + thirdPartyCategory: Towing Service (string) - Primary business category for third party listings. Note: This is a Mandatory field if vendor is applicable.
             + thirdPartySubCategories: Car Dealer, Auto Glass Shop (string) - Additional sub categories. You can set a maximum of 3 sub categories. Note: This is a Mandatory field if thirdPartyCategory is available.
@@ -19438,7 +19569,9 @@ The Get Listing API will get the listing information for the given business numb
                         "appStoreUrl" : "https://apps.apple.com/your_apps_store_url"
                          }
                         ],
-                    "phoneNumber": "+1 201-819-7989"
+                    "phoneNumber": "+1 201-819-7989",
+                    "appleBusinessName": "This is sample business name",
+                    "appleBusinessDescription": "This is sample business description"
                },
                  "socialProfileURLs": {
                     "googleUrl": "http://www.google.com/123",
@@ -21858,6 +21991,9 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>06/10/2026</b> - Updated Get Contact API to support an optional `experienceScore` boolean field in the request body (default: false). When set to true, the response includes the customer's experience score and source.
+* <b>05/25/2026</b> - Added Update Custom card (PUT) and Delete Custom card (DELETE) API documentation under the Business profile custom card section.
+* <b>05/11/2026</b> - Added support for backdated survey responses in the POST Survey Response API. The `created` field (UTC Epoch milliseconds) is optional; if omitted, the server defaults to the current UTC timestamp.
 * <b>04/22/2026</b> - Provide subLocality field support in Get, Create and Update Listings APIs for NZ Locations.
 * <b>04/16/2026</b> - Added Archived Get Reviews API  under Reviews group.
 * <b>04/06/2026</b> - Updated Get Reviews API documentation to improve clarity on review statuses and how to retrieve all review types.
