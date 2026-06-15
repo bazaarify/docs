@@ -17329,6 +17329,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+            + hotelAttributes (object) - Hotel attributes are key characteristics and amenities of your property that help guests discover and understand what your hotel offers. These attributes enhance your hotel's visibility and searchability across booking platforms and travel sites. Supported attributes are Services, Policies and payments, FoodAndDrink, Pools, Wellness, Activities, Transportation, Families, Connectivity, Business, Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability, ViewsFromUnit.
             + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
             + whatsappBusinessLink (string) - Enter your WhatsApp Business link to display a direct chat option on your live Google Business Profile. This allows customers to easily message you. Example https://wa.me/<yourphonenumber>
@@ -17835,6 +17836,26 @@ crossbusiness.family_kids.kids_playarea, crossbusiness.barservice.happyhour Cros
                             }
                         ]
                     },
+                    "hotelAttributes": {
+                        "sustainability": {
+                            "energyEfficiency": {
+                                "energyConservationProgram": {
+                                    "attributeId": "energyConservationProgram",
+                                    "attributeName": "Energy conservation program",
+                                    "value": true
+                                }
+                            }
+                        },
+                        "parking": {
+                            "parking": {
+                                "parkingAvailable": {
+                                    "attributeId": "parkingAvailable",
+                                    "attributeName": "Parking available",
+                                    "value": true
+                                }
+                            }
+                        }
+                    },
                     "foodDelivery":"https://www.ubereats.com",
                     "foodTakeout":"https://www.ubereats.com",
                     "whatsappBusinessLink":"https://wa.me/9737160007",
@@ -18146,6 +18167,7 @@ The Update Listing API will update the location details on all your listings sit
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+            + hotelAttributes (object) - Hotel attributes are key characteristics and amenities of your property that help guests discover and understand what your hotel offers. These attributes enhance your hotel's visibility and searchability across booking platforms and travel sites. Supported attributes are Services, Policies and payments, FoodAndDrink, Pools, Wellness, Activities, Transportation, Families, Connectivity, Business, Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability, ViewsFromUnit.
             + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
             + whatsappBusinessLink (string) - Enter your WhatsApp Business link to display a direct chat option on your live Google Business Profile. This allows customers to easily message you. Example https://wa.me/<yourphonenumber>
@@ -18652,6 +18674,26 @@ The Update Listing API will update the location details on all your listings sit
                             }
                         ]
                     },
+                    "hotelAttributes": {
+                        "sustainability": {
+                            "energyEfficiency": {
+                                "energyConservationProgram": {
+                                    "attributeId": "energyConservationProgram",
+                                    "attributeName": "Energy conservation program",
+                                    "value": true
+                                }
+                            }
+                        },
+                        "parking": {
+                            "parking": {
+                                "parkingAvailable": {
+                                    "attributeId": "parkingAvailable",
+                                    "attributeName": "Parking available",
+                                    "value": true
+                                }
+                            }
+                        }
+                    },
                     "foodDelivery":"https://www.ubereats.com",
                     "foodTakeout":"https://www.ubereats.com",
                     "whatsappBusinessLink":"https://wa.me/9737160007",
@@ -18966,6 +19008,7 @@ The Get Listing API will get the listing information for the given business numb
             + googleDescription (string) - An ‘about your business’ description. Google description cannot be more than 750 characters.
             + attributes (object) - Google my business attributes are highly visible statements about your business that appear on your Google My Business listing. Supported attributes are
                     Accessibility,Amenities,Crowd,Dining options,Highlights,Planning,Offerings,Health & safety.
+            + hotelAttributes (object) - Hotel attributes are key characteristics and amenities of your property that help guests discover and understand what your hotel offers. These attributes enhance your hotel's visibility and searchability across booking platforms and travel sites. Supported attributes are Services, Policies and payments, FoodAndDrink, Pools, Wellness, Activities, Transportation, Families, Connectivity, Business, Accessibility, Pets, Parking, Housekeeping, HealthAndSafety, Sustainability, ViewsFromUnit.
             + foodDelivery (string) - Enter the redirect URL where customers can place delivery orders.This field is applicable for hospitality business and is category dependent.Example http://www.ubereats.com
             + foodTakeout (string) - Enter the redirect URL where customers can place 'takeout' food orders. This field is applicable for hospitality business and is category dependent.Example : http://www.ubereats.com
             + whatsappBusinessLink (string) - Enter your WhatsApp Business link to display a direct chat option on your live Google Business Profile. This allows customers to easily message you. Example https://wa.me/<yourphonenumber>
@@ -19472,6 +19515,26 @@ The Get Listing API will get the listing information for the given business numb
                                 "value": true
                             }
                         ]
+                    },
+                    "hotelAttributes": {
+                        "sustainability": {
+                            "energyEfficiency": {
+                                "energyConservationProgram": {
+                                    "attributeId": "energyConservationProgram",
+                                    "attributeName": "Energy conservation program",
+                                    "value": true
+                                }
+                            }
+                        },
+                        "parking": {
+                            "parking": {
+                                "parkingAvailable": {
+                                    "attributeId": "parkingAvailable",
+                                    "attributeName": "Parking available",
+                                    "value": true
+                                }
+                            }
+                        }
                     },
                     "foodDelivery":"https://www.ubereats.com",
                     "foodTakeout":"https://www.ubereats.com",
@@ -19994,6 +20057,133 @@ This API retrieves structured menu information for specified business numbers.
 + Response 400
 
     [2458][]
+
+
+## Get Hotel Attributes [/v1/listing/get/hotel-attributes]
+
+The Get Hotel Attributes API fetches the list of applicable hotel attributes configured for the selected business.
+
+### Get Hotel Attributes [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Accept: application/json
+            x-api-key: [Required] Partner specific API key provided by Birdeye for data exchange.
+            x-business-number: [Required] Business Number for which hotel attributes are to be fetched.
+
++ Response 200
+
+    + Attributes
+        + hotelAttributes (object) - This is a dynamic field. Depends upon the hotel attributes supported for the selected business.
+            + services (object)
+                + services (object)
+                    + frontDesk (object)
+                        + attributeId: frontDesk (string) - Attribute Id.
+                        + attributeName: Front desk (string) - Attribute display name.
+                        + columnId: 20001 (number) - Internal column identifier.
+                        + possibleValues (array) - Contains the list of possible values for the attribute.
+                            + (object)
+                                + value: true (boolean) - Possible attribute value.
+                                + name: Available (string) - Attribute value display name.
+
+    + Body
+
+            {
+                "hotelAttributes": {
+                    "services": {
+                        "services": {
+                            "frontDesk": {
+                                "attributeId": "frontDesk",
+                                "attributeName": "Front desk",
+                                "possibleValues": [
+                                    {
+                                        "value": true,
+                                        "name": "Available"
+                                    },
+                                    {
+                                        "value": false,
+                                        "name": "Not Available"
+                                    }
+                                ],
+                                "columnId": 20001
+                            },
+                            "twentyFourHourFrontDesk": {
+                                "attributeId": "twentyFourHourFrontDesk",
+                                "attributeName": "Twenty four hour front desk",
+                                "possibleValues": [
+                                    {
+                                        "value": true,
+                                        "name": "Available"
+                                    },
+                                    {
+                                        "value": false,
+                                        "name": "Not Available"
+                                    }
+                                ],
+                                "columnId": 20002
+                            }
+                        }
+                    },
+                    "parking": {
+                        "parking": {
+                            "parkingAvailable": {
+                                "attributeId": "parkingAvailable",
+                                "attributeName": "Parking available",
+                                "possibleValues": [
+                                    {
+                                        "value": true,
+                                        "name": "Available"
+                                    },
+                                    {
+                                        "value": false,
+                                        "name": "Not Available"
+                                    }
+                                ],
+                                "columnId": 20097
+                            }
+                        }
+                    },
+                    "sustainability": {
+                        "energyEfficiency": {
+                            "energyConservationProgram": {
+                                "attributeId": "energyConservationProgram",
+                                "attributeName": "Energy conservation program",
+                                "possibleValues": [
+                                    {
+                                        "value": true,
+                                        "name": "Available"
+                                    },
+                                    {
+                                        "value": false,
+                                        "name": "Not Available"
+                                    }
+                                ],
+                                "columnId": 20134
+                            }
+                        }
+                    }
+                }
+            }
+
+
++ Response 401
+
+    [1161][]
+
++ Response 429
+
+    [89][]
+
++ Response 400
+
+    [2521][]
+
++ Response 400
+
+    [2522][]
+    
 
 # Group GMB Products
 To manage products, locations, and business details through Listing GMB platform
