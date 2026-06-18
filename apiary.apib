@@ -20802,7 +20802,7 @@ Removes products (by IDs) to the Google profile of the business provided in head
 # Group Search AI
 Search AI provides a comprehensive view of your business performance across AI-powered search platforms, including data accuracy, sentiment analysis, citations, brand ranking, and overall visibility.
 
-## Get Search AI Configuration [/v1/listing/searchAi/account-setup]
+## Get Search AI Configuration [/v1/listing/searchAi/public/account-setup]
 Retrieves the Search AI configuration for the specified business.
 
 
@@ -20875,7 +20875,7 @@ Retrieves the Search AI configuration for the specified business.
 
     [89][]
 
-## Get Search AI Available Runs [/v1/listing/searchAi/available-runs]
+## Get Search AI Available Runs [/v1/listing/searchAi/public/available-runs]
 Retrieves the Search AI available runs for the specified business.
 
 
@@ -20988,8 +20988,8 @@ Retrieves Search AI citations for the specified business, including sources refe
         + theme - Specifies the theme or category used to filter the report data.
         + pageNo - Specifies the page number for paginated results. Defaults to 1.
         + pageSize - Defines the number of records to be returned per page. Defaults to 25.
-        + startDate - Start date for the report range (format: **`yyyy-MM-dd`**).
-        + endDate - End date for the report range (format: **`yyyy-MM-dd`**).
+        + startDate - Start date for the report range (format: **`mm/dd/yyyy`**).
+        + endDate - End date for the report range (format: **`mm/dd/yyyy`**).
         + viewReportType - Defines the level at which the report is generated. Allowed values: **`LOCATION_LEVEL`**, **`ACCOUNT_LEVEL`**
 
     + Body
@@ -21000,8 +21000,8 @@ Retrieves Search AI citations for the specified business, including sources refe
               "theme": "Dental implants",
               "pageNo": 1,
               "pageSize": 25,
-              "startDate": "2026-03-01",
-              "endDate": "2026-03-31",
+              "startDate": "03/01/2026",
+              "endDate": "03/31/2026",
               "viewReportType": "LOCATION_LEVEL"
             }
 
@@ -21014,7 +21014,7 @@ Retrieves Search AI citations for the specified business, including sources refe
                   "prompt": "Best dental implants near me",
                   "aiModel": "CHATGPT",
                   "businessNumber": 67348934989,
-                  "processedDate": "2026-03-10",
+                  "processedDate": "10-Mar-2026",
                   "citations": [
                     {
                       "url": "https://www.healthline.com/health/dental-and-oral-health/dental-implants",
@@ -21035,7 +21035,7 @@ Retrieves Search AI citations for the specified business, including sources refe
                   "prompt": "Cost of dental implants in India",
                   "aiModel": "GEMINI",
                   "businessNumber": 327349434334,
-                  "processedDate": "2026-03-15",
+                  "processedDate": "15-Mar-2026",
                   "citations": [
                     {
                       "url": "https://www.practo.com/healthfeed/dental-implant-cost-in-india-45910/post",
@@ -21056,7 +21056,7 @@ Retrieves Search AI citations for the specified business, including sources refe
                   "prompt": "Are dental implants safe?",
                   "aiModel": "CHATGPT",
                   "businessNumber": 278237892323,
-                  "processedDate": "2026-03-20",
+                  "processedDate": "20-Mar-2026",
                   "citations": [
                     {
                       "url": "https://www.webmd.com/oral-health/guide/dental-implants",
