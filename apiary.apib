@@ -17207,7 +17207,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
             + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
-            + mainBusinessDescription: The business is a dental partnership providing general and specialized dental care services, including preventive checkups (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
+            + mainBusinessDescription: The business is a dental partnership providing general and specialized dental care services, including preventive checkups (string, optional) - Business Description is optional. If this field is included with an empty value in the API request, the existing Business Description will be cleared for the location. If a value is provided, it must contain at least 200 characters. Avoid sending URLs, phone numbers, addresses, or promotional content in this field.
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
@@ -17312,7 +17312,7 @@ Create Listing API publishes information on online listing sources. We post pres
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
-            + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
+            + description (string, optional) - Microsite Override Business Description is optional. If this field is included with an empty value in the API request, the existing Microsite Override Business Description will be cleared for the location. Avoid sending URLs, phone numbers, addresses, or promotional content in this field.
             + category (required, string) - Primary category of business.
             + subCategories (required, array) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
@@ -18045,7 +18045,7 @@ The Update Listing API will update the location details on all your listings sit
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
             + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
-            + mainBusinessDescription: The business is a dental partnership providing general and specialized dental care services, including preventive checkups (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
+            + mainBusinessDescription: The business is a dental partnership providing general and specialized dental care services, including preventive checkups (string, optional) - Business Description is optional. If this field is included with an empty value in the API request, the existing Business Description will be cleared for the location. If a value is provided, it must contain at least 200 characters. Avoid sending URLs, phone numbers, addresses, or promotional content in this field.
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
@@ -18150,7 +18150,7 @@ The Update Listing API will update the location details on all your listings sit
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
-            + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
+            + description (string, optional) - Microsite Override Business Description is optional. If this field is included with an empty value in the API request, the existing Microsite Override Business Description will be cleared for the location. Avoid sending URLs, phone numbers, addresses, or promotional content in this field.
             + category (required, string) - Primary category of business.
             + subCategories (required, array) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
@@ -18885,7 +18885,7 @@ The Get Listing API will get the listing information for the given business numb
             + emailId: 4568@livelovespa.com (string) - Business Email ID.
             + isAddressHidden: note that this isn’t supported by all sites Possible Values  “Yes” or “No” (string) - If your business doesn’t have a place for your customers to visit, then you can hide your street address.
             + isServiceAreaProvider: Possible Values “Yes” or “No (string) - If you deliver or provide service at customer locations.
-            + mainBusinessDescription: The business is a dental partnership providing general and specialized dental care services (string) - A description of the business between 200–750 characters, excluding any URLs, phone numbers, addresses, or promotional content, accurately depicting the nature of the business.
+            + mainBusinessDescription: The business is a dental partnership providing general and specialized dental care services (string, optional) - Business Description is optional. If this field is included with an empty value in the API request, the existing Business Description will be cleared for the location. If a value is provided, it must contain at least 200 characters. Avoid sending URLs, phone numbers, addresses, or promotional content in this field.
             + serviceAreas (array) - Locations where you deliver or provide service (applicable if isServiceAreaProvider is 'Yes').NOTE: Maximum service areas that can be provided are 10.
                 + (object)
                     + description (string) - Area, City, State, Zip, Country. e.g.  "1735 Berryessa Rd, San Jose, CA 95133, USA", “Onalaska, WI, USA”.
@@ -18991,7 +18991,7 @@ The Get Listing API will get the listing information for the given business numb
             + bingPhoneNumber (string) - You can provide a phone number which will be pushed only to your Bing listing site and will override the primary phone number set.
             + bingDescription (string) - An ‘About the business description’. Bing description cannot be more than 4096 characters.
         + internalListing (object) - Provide data for microsite listing purpose.
-            + description (required, string) - An ‘about your business’ description. Business description cannot be more than 5000 characters and cannot be less than 200 characters.
+            + description (string, optional) - Microsite Override Business Description is optional. If this field is included with an empty value in the API request, the existing Microsite Override Business Description will be cleared for the location. Avoid sending URLs, phone numbers, addresses, or promotional content in this field.
             + category (required, string) - Primary category of business.
             + subCategories (required, array) - You can add up to 3 subcategories.
             + displayCategory (string) - Choose one of the category either from primary category or from sub categories.
