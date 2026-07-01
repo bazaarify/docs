@@ -21477,6 +21477,7 @@ Create reviews, untagged, and survey responses tickets.
                                                 review,
                                                 untagged,
                                                 SURVEY
+        + severity: HIGH (string, optional) - Severity of the ticket. Possible values: LOW, MEDIUM, HIGH, CRITICAL.
         + customer (object) -Customer details for which ticket is created, Mandatory and applicable for untagged ticket
             + emailId: steven@ymail.com (string) - Email id of the customer.
             + firstName: Steve (string) - First name of the customer.
@@ -21509,6 +21510,7 @@ Create reviews, untagged, and survey responses tickets.
                 "externalId": 3943351204239963055,
                 "assignedTo": "pranav.singh@birdeye.com",
                 "ticketType":"review",
+                "severity": "HIGH",
                 "customer": {
                     "emailId": "test+4@yopmail.com",
                     "firstName": "Steve",
@@ -21657,6 +21659,7 @@ Update the ticket status or ticket assignee.
                 + assignedTo: steve@ymail.com (string) - New assignee of the ticket.
                 + ticketId: 882382 (string) - Id of the ticket.
                 + ticketStatus: assigned (string) - Status to be changed.
+                + severity: CRITICAL (string, optional) - Severity of the ticket. Possible values: LOW, MEDIUM, HIGH, CRITICAL.
 
 
     + Body
@@ -21665,7 +21668,8 @@ Update the ticket status or ticket assignee.
                 "ticketUpdateMessages": [{
                     "assignedTo": "steve@ymail.com",
                     "ticketId": "882382",
-                    "ticketStatus": "assigned"
+                    "ticketStatus": "assigned",
+                    "severity": "CRITICAL"
                 }],
                 "userEmail": "pranav.singh@birdeye.com"
             }
@@ -21730,6 +21734,7 @@ Get tickets
         + sourceTypes: phone (array) - Source Type.
         + tagNames: newReview (array) - Tag assigned to any review ticket.
         + ticketStatuses: new (array) - Filter tickets with status.
+        + ticketSeverities: HIGH,CRITICAL (array, optional) - Filter tickets with severity. Possible values: LOW, MEDIUM, HIGH, CRITICAL.
         + ticketTypes: review,survey (array) - List of ticket type, Possible values
                                                 review,
                                                 untagged,
@@ -21746,6 +21751,7 @@ Get tickets
                 "sourceTypes": ["phone","socialmedia","chat","internal"],
                 "tagNames": ["newReview"],
                 "ticketStatuses": ["assigned", "new"],
+                "ticketSeverities": ["HIGH", "CRITICAL"],
                 "ticketTypes": ["review", "survey", "untagged"],
                 "toDate": 1707460464000
             }
@@ -21758,6 +21764,7 @@ Get tickets
         + ticketDetails (array) - Ticket Details.
             + (object)
                 + id: 188556 (number) - Id of the ticket.
+                + severity: HIGH (string) - Severity of the ticket. Null if not set. Possible values: LOW, MEDIUM, HIGH, CRITICAL.
                 + status: new (string) - Ticket status.
                 + rating: 5.0 (number) - Review rating.
                 + externalId: 213243231 (string) - Public review id.
@@ -21787,6 +21794,7 @@ Get tickets
             {
                 "ticketDetails": [{
                     "id": 188556,
+                    "severity": "HIGH",
                     "status": "assigned",
                     "rating": 5.0,
                     "externalId": 2131605005145285326,
@@ -21838,6 +21846,7 @@ Get tickets
                 },
                 {
                     "id": 192727,
+                    "severity": null,
                     "status": "assigned",
                     "date": "2020-02-18 00:34:00",
                     "updateDate": "2020-02-18 00:00:00",
@@ -21869,6 +21878,7 @@ Get tickets
                 },
                 {
                     "id": 199287,
+                    "severity": "CRITICAL",
                     "status": "assigned",
                     "date": "2020-02-27 01:28:00",
                     "postedOn": "2020-02-27 00:00:00",
@@ -21991,6 +22001,7 @@ Add Business Integration Mapping adds locations to integrations and set them act
 
 # Group Change Logs
 
+* <b>07/01/2026</b> - Added severity support in Ticket APIs for create/update requests, get-all request filters, and get-all response data.
 * <b>06/10/2026</b> - Updated Get Contact API to support an optional `experienceScore` boolean field in the request body (default: false). When set to true, the response includes the customer's experience score and source.
 * <b>05/25/2026</b> - Added Update Custom card (PUT) and Delete Custom card (DELETE) API documentation under the Business profile custom card section.
 * <b>05/11/2026</b> - Added support for backdated survey responses in the POST Survey Response API. The `created` field (UTC Epoch milliseconds) is optional; if omitted, the server defaults to the current UTC timestamp.
